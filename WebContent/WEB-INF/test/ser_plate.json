@@ -1,0 +1,160 @@
+{
+  "code":0,
+  "message":"success",
+  "data":{
+        "total":111,
+	    "list":[
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                 
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,           
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"           
+
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                  
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,           
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                  
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,            
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                 
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,            
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                  
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,            
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                 
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,            
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                  
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,            
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       },
+	       {
+				"fid":1,
+				"name":"xxx",
+				"name_spell":"xxx",
+				"icon":"statics/img/img1.jpg",
+				"type":1,                 
+				"threads":111,
+				"today_threads":11,
+				"yesterday_threads": 11,
+				"follows":11,            
+				"yesterday_follows":11,
+				"create_time":"xx",	
+				"prefecture_url":"xx",       
+				"gift_url":"xx"
+	       
+	       }
+	    ]
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

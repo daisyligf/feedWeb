@@ -1,0 +1,99 @@
+{
+  "code":0,
+  "message":"success",
+  "data":{
+        "total":111,
+	    "list":[
+	       {
+				"fid":11,
+				"tid":15,
+				"user_id":10,
+				"title":"tiezi",
+				"subject":"tiezi",
+				"replies":12,         
+				"pageview":13,        
+				"share_times":11,     
+				"utime":11,           
+				"last_poster_id":2014, 
+				"last_post_time":"2015-14-23",  
+				"is_closed":1,        
+				"recommends":11,      
+				"status":0,           
+				"link_url":"tiezi",
+				"nickname":"tiezi",
+				"avatar":"statics/img/img1.jpg",
+				"user":"",
+				"tags":"1,4,9,10",
+				"last_poster_name":"tiezi"
+	       
+	       },
+	       {
+				"fid":11,
+				"tid":15,
+				"user_id":10,
+				"title":"tiezi",
+				"subject":"tiezi",
+				"replies":12,         
+				"pageview":13,        
+				"share_times":11,     
+				"utime":11,           
+				"last_poster_id":2014, 
+				"last_post_time":"2015-14-23",  
+				"is_closed":1,        
+				"recommends":11,      
+				"status":0,           
+				"link_url":"tiezi",
+				"nickname":"tiezi",
+				"avatar":"statics/img/img1.jpg",
+				"user":"",
+				"tags":"1,4,9,10",
+				"last_poster_name":"tiezi"
+	       
+	       },
+	       {
+				"fid":11,
+				"tid":15,
+				"user_id":10,
+				"title":"tiezi",
+				"subject":"tiezi",
+				"replies":12,         
+				"pageview":13,        
+				"share_times":11,     
+				"utime":11,           
+				"last_poster_id":2014, 
+				"last_post_time":"2015-14-23",  
+				"is_closed":1,        
+				"recommends":11,      
+				"status":0,           
+				"link_url":"tiezi",
+				"nickname":"tiezi",
+				"avatar":"statics/img/img1.jpg",
+				"user":"",
+				"tags":"4,9,10",
+				"last_poster_name":"tiezi"
+	       }
+	    ]
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
