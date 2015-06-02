@@ -1,13 +1,9 @@
 package com.mofang.feedweb.controller.web;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,72 +11,140 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mofang.feedweb.entity.FeedForum;
-import com.mofang.feedweb.entity.FeedThreadStarterInfo;
+import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.util.Tools;
 
-//@Controller
-//public class FeedSearchController {
-//
-//	private FeedSearchPageServiceImpl searchService = new FeedSearchPageServiceImpl();
-//	private StringBuffer message = null;
-//	
-//	//搜索页
-//	@RequestMapping(value = "/search",method = RequestMethod.GET)
-//	@ResponseBody
-//	public String initsearchPage(@RequestBody String keyword,HttpServletRequest request) throws Exception {
-//		message = new StringBuffer();
-//		
-//		int p = 1;
-//		//获取版块list
-//		JSONObject forumListResult = searchService.forumSearch(keyword, p, 8);
-//		if (null != forumListResult) {
-//			int code = forumListResult.optInt("code", -1);
-//			if (0 != code) {
-//				message.append(forumListResult.optString("message", ""));
-//			} else {
-//				JSONObject data = forumListResult.optJSONObject("data");
-//				
-//				//通过总数算出页码
-//				int total = data.optInt("total",0);
-//				request.setAttribute("pageList", Tools.editPageNumber(total, p));
-//				request.setAttribute("page", p);
-//				request.setAttribute("totalPages", total);
-//				
-//				JSONArray list = data.optJSONArray("list");
-//				List<FeedForum> listForum = new ArrayList<FeedForum>();
-//				FeedForum objFeedForum = null;
-//				JSONObject jsonFeedForum = null;
-//				for(int i=0; i<list.length(); i++)
-//				{
-//					jsonFeedForum = list.getJSONObject(i);
-//					objFeedForum = new FeedForum();
-//					objFeedForum.setForum_id(jsonFeedForum.optLong("fid", 0));
-//					objFeedForum.setForum_name(jsonFeedForum.optString("name", ""));
-//					objFeedForum.setTotal_threads(jsonFeedForum.optInt("threads", 0));
-//					objFeedForum.setToday_threads(jsonFeedForum.optInt("today_threads", 0));
-//					objFeedForum.setForum_url("");
-//					objFeedForum.setGift_url(jsonFeedForum.optString("gift_url", ""));
-//					objFeedForum.setPrefecture_url(jsonFeedForum.optString("prefecture_url", ""));
-//					listForum.add(objFeedForum);
-//				}
-//				
-//				request.setAttribute("forumList", listForum);
-//				
-//			}	
-//		} else {
-//			request.setAttribute("forumList", new ArrayList<FeedForum>());
-//		}
-//		
-//		//获取帖子list
-//		
-//		return "search";
-//
-//	}
-//
+@Controller
+public class FeedSearchController extends FeedCommonController{
+
+	/***
+	 * 组装 板块，帖子 数据
+	 * @param keyword
+	 * @param p
+	 * @param pagesize
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/search",method = RequestMethod.GET)
+	@ResponseBody
+	public String search(@RequestParam(value = "keyword") String keyword, HttpServletRequest request) throws Exception {
+		keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
+		StringBuffer requestParam = new StringBuffer();
+		requestParam.append("p=1&");
+		requestParam.append("pagesize=8&");
+		requestParam.append("keyword=").append(keyword);
+		
+		//获取版块list
+		JSONObject forumListResult = getHttpInfo(getFeedUrlInfo() + Constant.LIST_FORUM_SEARCH_URL, requestParam.toString(), request);
+		if (forumListResult != null) {
+			int code = forumListResult.optInt("code", -1);
+			if (0 != code) {
+				//错误信息
+				String message = forumListResult.optString("message", "");
+			} else {
+				JSONObject data = forumListResult.optJSONObject("data");
+				//通过总数算出页码
+				int total = data.optInt("total",0);
+				
+				request.setAttribute("pageList", Tools.editPageNumber(total, 1, 8));
+				request.setAttribute("page", 1);
+				request.setAttribute("totalPages", total);
+				
+				JSONArray jsonArr = data.optJSONArray("list");
+				int length = jsonArr.length();
+				List<FeedForum> listForum = new ArrayList<FeedForum>(length);
+				FeedForum objFeedForum = null;
+				for(int idx = 0; idx < length; idx ++) {
+					JSONObject jsonFeedForum = jsonArr.getJSONObject(idx);
+					objFeedForum = new FeedForum();
+					
+					long forumId = jsonFeedForum.optLong("fid", 0);
+					objFeedForum.setForum_id(forumId);
+					objFeedForum.setForum_name(jsonFeedForum.optString("name", ""));
+					objFeedForum.setTotal_threads(jsonFeedForum.optInt("threads", 0));
+					objFeedForum.setToday_threads(jsonFeedForum.optInt("today_threads", 0));
+					objFeedForum.setIcon(jsonFeedForum.optString("icon", ""));
+					objFeedForum.setForum_url("http://bbs.mofang.com/f/" + forumId);
+					objFeedForum.setGift_url(jsonFeedForum.optString("gift_url", ""));
+					objFeedForum.setPrefecture_url(jsonFeedForum.optString("prefecture_url", ""));
+					
+					listForum.add(objFeedForum);
+				}
+				request.setAttribute("forumList", listForum);
+			}	
+		} else {
+			request.setAttribute("forumList", new ArrayList<FeedForum>(0));
+		}
+		
+		
+		
+		//获取帖子list
+		
+		return "search";
+	}
+	
+	
+	@RequestMapping(value = "/thread/search",method = RequestMethod.GET)
+	@ResponseBody
+	public String searchThread(@RequestBody int fid, int status, String keyword, int p, int pagesize, HttpServletRequest request) throws Exception {
+		StringBuffer requestParam = new StringBuffer();
+		requestParam.append("fid=").append(fid).append("&");
+		requestParam.append("status=").append(status).append("&");
+		requestParam.append("p=").append(p).append("&");
+		requestParam.append("pagesize=").append(pagesize).append("&");
+		requestParam.append("keyword=").append(keyword).append("&");
+		requestParam.append("keyword=").append(keyword).append("&");
+		
+		//获取版块list
+		JSONObject forumListResult = getHttpInfo(Constant.LIST_THREAD_SEARCH_URL, requestParam.toString(), request);
+		if (forumListResult != null) {
+			int code = forumListResult.optInt("code", -1);
+			if (0 != code) {
+				//错误信息
+				String message = forumListResult.optString("message", "");
+			} else {
+				JSONObject data = forumListResult.optJSONObject("data");
+				//通过总数算出页码
+				int total = data.optInt("total",0);
+				
+				
+				request.setAttribute("pageList", Tools.editPageNumber(total, p));
+				request.setAttribute("page", p);
+				request.setAttribute("totalPages", total);
+				
+				JSONArray list = data.optJSONArray("list");
+				List<FeedThread> threadList = new ArrayList<FeedThread>();
+				FeedThread feedThread = null;
+				JSONObject jsonThread = null;
+				for(int i=0; i<list.length(); i++) {
+					jsonThread = list.getJSONObject(i);
+					feedThread = new FeedThread();
+					feedThread.setForum_id(jsonThread.optLong("fid", 0));
+					feedThread.setThread_id(jsonThread.optLong("tid", 0));
+					feedThread.setUser_name(jsonThread.optString("nickname",""));
+					feedThread.setIcon(jsonThread.optString("icon", ""));
+					feedThread.setReplies(jsonThread.optInt("replies", 0));
+					feedThread.setPage_view(jsonThread.optInt("pageview", 0));
+					threadList.add(feedThread);
+				}
+				request.setAttribute("forumList", list);
+			}	
+		} else {
+			request.setAttribute("forumList", new ArrayList<FeedForum>());
+		}
+		//获取帖子list
+		return "search";
+	}
+	
+	
+	
+
 //	 //版块点击更多
 //	 @RequestMapping(value = { "/forumMore" })
 //	 @ResponseBody
@@ -169,7 +233,7 @@ import com.mofang.feedweb.util.Tools;
 //		Tools.renderData(response, threadlist.toString());
 //	
 //	 }
-//	
-//	
-//
-//}
+	
+	
+
+}

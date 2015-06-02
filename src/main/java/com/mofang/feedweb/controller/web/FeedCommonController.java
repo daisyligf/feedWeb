@@ -72,8 +72,8 @@ public class FeedCommonController {
 
 	protected JSONObject getHttpInfo(String getUrl, String param,HttpServletRequest request) 
 	{
-        try
-        {	String uid = "";
+        try {	
+        	String uid = "129707";
         	if (null != request.getSession().getAttribute(Constant.SESSION_USERID)) {
         		 uid = String.valueOf(request.getSession().getAttribute(Constant.SESSION_USERID));
         	}
@@ -92,12 +92,9 @@ public class FeedCommonController {
     		String result = httpComp.get(clientservice, strb.toString());
     		if(StringUtil.isNullOrEmpty(result))
     			return null;
-    		
     		return new JSONObject(result);
-    		
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
         	GlobalObject.ERROR_LOG.error("FeedCommonController.getHttpInfo", e);
         	return null;
         }

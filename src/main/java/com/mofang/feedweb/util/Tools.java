@@ -1,30 +1,23 @@
 package com.mofang.feedweb.util;
 
 
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-
 
 import com.mofang.feedweb.component.HttpComponent;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
-import com.mofang.feedweb.net.http.HttpClientConfig;
 import com.mofang.feedweb.net.http.HttpClientProvider;
-import com.mofang.feedweb.properties.annotation.HttpClientInfo;
 
 @Component
 public class Tools {
@@ -265,6 +258,24 @@ public class Tools {
 		}
 		return pageArr;
 		
+	}
+	
+	public static List<Integer> editPageNumber(int total, int selectPage, int pageSize) {
+		int totalPage = total/pageSize;
+		if(total % pageSize != 0){
+		    totalPage += 1;
+		}
+		List<Integer> pageArr = new ArrayList<Integer>();
+		int start = 1;
+		if(selectPage >= 10){
+		     start = selectPage/10 * 10;
+		 }
+		int num = start;
+		while(!(num > totalPage || num > start + 10)){
+		     pageArr.add(num);
+		    ++num;
+		}
+		return pageArr;
 	}
 	
 	public static int editTotalPageNumber(int total) {
