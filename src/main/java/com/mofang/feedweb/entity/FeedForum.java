@@ -144,3 +144,4 @@ public class FeedForum {
 		this.roleList = roleList;
 	}
 }
+

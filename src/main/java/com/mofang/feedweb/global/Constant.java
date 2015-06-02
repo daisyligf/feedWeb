@@ -92,7 +92,7 @@ public class Constant {
 	
 	//搜索页
 	//板块搜索
-	public static final String LIST_FORUM_SEARCH_URL = "/feed/v2/forum/searchforum";
+	public static final String LIST_FORUM_SEARCH_URL = "/feed/v2/searchforum";
 	//帖子搜索
 	public static final String LIST_THREAD_SEARCH_URL = "/feed/v2/thread/search";
 	

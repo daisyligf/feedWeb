@@ -9,6 +9,7 @@ public class FeedThread {
 	private long thread_id;
 	private String thread_name;
 	private String htmlContent;
+	private String icon;
 	private int page_view;
 	private int replies;
 	private String create_time;
@@ -20,7 +21,6 @@ public class FeedThread {
 	private long forum_id;
 	private String forum_name;
 	private String pic;
-	
 	
 	public long getThread_id() {
 		return thread_id;
@@ -106,7 +106,12 @@ public class FeedThread {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 	
 	
 }

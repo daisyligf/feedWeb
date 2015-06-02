@@ -220,4 +220,3 @@ public class FeedForumContentController extends FeedCommonController {
 	}
 	
 }
-
