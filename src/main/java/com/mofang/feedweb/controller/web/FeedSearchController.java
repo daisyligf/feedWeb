@@ -161,7 +161,7 @@ public class FeedSearchController extends FeedCommonController{
 					thread.setForum_name(jsonThread.optString("name", ""));
 					thread.setThread_id(jsonThread.optLong("tid", 0));
 					thread.setUser_id(jsonThread.optLong("user_id", 0));
-					thread.setThread_name(jsonThread.optString("subject", ""));
+					thread.setSubject(jsonThread.optString("subject", ""));
 					thread.setReplies(jsonThread.optInt("replies", 0));
 					thread.setPage_view(jsonThread.optInt("pageview", 0));
 					thread.setIcon(jsonThread.optString("icon", ""));

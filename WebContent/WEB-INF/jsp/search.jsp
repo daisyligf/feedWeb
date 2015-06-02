@@ -192,7 +192,7 @@
 	                    <dl class="clearfix">
 	                        <dt><a href="#"><img src="${thread.icon}" alt=""></a></dt>
 	                        <div class="infos">
-	                            <dd class="title"><a href="#">${thread.thread_name}<s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
+	                            <dd class="title"><a href="#">${thread.subject}<s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
 	                            <dd>${thread.content }</dd>
 	                            <dd class="info clearfix">
 	                                <p class="author">
