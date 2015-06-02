@@ -1,5 +1,7 @@
 package com.mofang.feedweb.entity;
 
+import java.util.Date;
+
 /**
  * @author ke
  *
@@ -12,12 +14,19 @@ public class FeedThread {
 	private String icon;
 	private int page_view;
 	private int replies;
-	private String create_time;
+	private Date create_time;
+	private int shareTimes;
+	private boolean isClosed;
+	private boolean isElite;
+	private boolean isTop;
+	private boolean isModerator;
 	private String last_post_time;
 	private int recommends;
 	private int status;
 	private long user_id;
 	private String user_name;
+	private String avatar;
+	
 	private long forum_id;
 	private String forum_name;
 	private String pic;
@@ -46,12 +55,26 @@ public class FeedThread {
 	public void setReplies(int replies) {
 		this.replies = replies;
 	}
-	public String getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(String create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
+	
+	public int getShareTimes() {
+		return shareTimes;
+	}
+	public void setShareTimes(int shareTimes) {
+		this.shareTimes = shareTimes;
+	}
+	public boolean isClosed() {
+		return isClosed;
+	}
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
+	}
+	
 	public String getLast_post_time() {
 		return last_post_time;
 	}
@@ -70,6 +93,25 @@ public class FeedThread {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	public boolean isElite() {
+		return isElite;
+	}
+	public void setElite(boolean isElite) {
+		this.isElite = isElite;
+	}
+	public boolean isTop() {
+		return isTop;
+	}
+	public void setTop(boolean isTop) {
+		this.isTop = isTop;
+	}
+	public boolean isModerator() {
+		return isModerator;
+	}
+	public void setModerator(boolean isModerator) {
+		this.isModerator = isModerator;
+	}
 	public long getUser_id() {
 		return user_id;
 	}
@@ -81,6 +123,12 @@ public class FeedThread {
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	public long getForum_id() {
 		return forum_id;
