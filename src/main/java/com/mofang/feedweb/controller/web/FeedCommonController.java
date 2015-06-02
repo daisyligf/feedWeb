@@ -57,6 +57,22 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url() + Constant.FORUM_INFO_GET_URL;
 	}
 	
+	protected String getRoleInfoListGetUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.LIST_MODERATOR_GET_URL;
+	}
+	
+	protected String getThreadListUrl() {
+		return  externalUrlInfo.getFeed_info_url() + Constant.LIST_THREAD_GET_URL;
+	}
+	
+	protected String getTopThreadsUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.SUBJECT_INFO_GET_URL;
+	}
+	
+	protected String getRecommendGameRankUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.RECOMMEND_GAME_RANK_GET_URL;
+	}
+	
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();
@@ -77,8 +93,8 @@ public class FeedCommonController {
 
 	protected JSONObject getHttpInfo(String getUrl, String param,HttpServletRequest request) 
 	{
-        try {	
-        	String uid = "129707";
+        try
+        {	String uid = "";
         	if (null != request.getSession().getAttribute(Constant.SESSION_USERID)) {
         		 uid = String.valueOf(request.getSession().getAttribute(Constant.SESSION_USERID));
         	}
@@ -97,9 +113,12 @@ public class FeedCommonController {
     		String result = httpComp.get(clientservice, strb.toString());
     		if(StringUtil.isNullOrEmpty(result))
     			return null;
+    		
     		return new JSONObject(result);
+    		
         }
-        catch(Exception e) {
+        catch(Exception e)
+        {
         	GlobalObject.ERROR_LOG.error("FeedCommonController.getHttpInfo", e);
         	return null;
         }

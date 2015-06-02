@@ -7,7 +7,7 @@ package com.mofang.feedweb.entity;
 public class FeedThread {
 
 	private long thread_id;
-	private String thread_name;
+	private String subject;
 	private String htmlContent;
 	private String icon;
 	private int page_view;
@@ -29,11 +29,11 @@ public class FeedThread {
 	public void setThread_id(long thread_id) {
 		this.thread_id = thread_id;
 	}
-	public String getThread_name() {
-		return thread_name;
+	public String getSubject() {
+		return subject;
 	}
-	public void setThread_name(String thread_name) {
-		this.thread_name = thread_name;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	public int getPage_view() {
 		return page_view;
