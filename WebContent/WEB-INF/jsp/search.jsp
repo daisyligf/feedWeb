@@ -23,11 +23,11 @@
     <meta name="description" content="">
     <title>bbs搜索页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
-    <link rel="stylesheet" href="./statics/css/base.css">
-    <link rel="stylesheet" href="./statics/css/common.css">
-    <link rel="stylesheet" href="./statics/css/search.css">
-    <script src="./statics/js/sea.js"></script>
-    <script src="./statics/js/sea-config.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/search.css">
+    <script src="js/sea.js"></script>
+    <script src="js/sea-config.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./statics/js/loader/dd_belatedpng.js"></script>
@@ -95,7 +95,7 @@
         <div class="con clearfix">
             
            <!-- 搜索板块开始 -->
-           <div class="h2">板块<span>20</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
+           <div class="h2">板块<span>${forumTotalPages}</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
            <!-- 板块模板 -->
             <script id="plateTemplate" type="text/x-handlebars-template">
                 {{#each list}}
@@ -126,14 +126,13 @@
 		                      <a href="${forum.prefecture_url}"  class="zq">专区</a><a href="${forum.gift_url}">礼包</a> 
 		                   </div>
 		                </div>
-                     					
 	           </c:forEach>
                 
            </div> 
            <!-- 搜索板块结束 -->
               
            <!-- 搜索帖子开始 -->
-           <div class="h2">帖子<span>24</span><a href="#">更多 ></a></div>
+           <div class="h2">帖子<span>${threadTotalPages}</span><a href="#">更多 ></a></div>
             <div class="con-bottom clearfix">
              <div class="col-xs-12 bg-white">
 
@@ -169,7 +168,8 @@
                     {{/each}} 
                 </script>
                 <div class="con-left-con" id="post">
-                    <dl class="clearfix">
+                
+<!--                     <dl class="clearfix">
                         <dt><a href="#"><img src="statics/img/img1.jpg"alt=""></a></dt>
                         <div class="infos">
                             <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
@@ -186,17 +186,71 @@
                             </dd> 
                         </div>
                         
-                    </dl>
+                    </dl> -->
+                   
+                    <c:forEach items="${threadList}" var="thread">
+	                    <dl class="clearfix">
+	                        <dt><a href="#"><img src="${thread.icon}" alt=""></a></dt>
+	                        <div class="infos">
+	                            <dd class="title"><a href="#">${thread.thread_name}<s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
+	                            <dd>${thread.content }</dd>
+	                            <dd class="info clearfix">
+	                                <p class="author">
+	                                    <span>作者吧主 ${thread.user_name }</span>
+	                                    <span class="time">${thread.create_time }</span>
+	                                </p>
+	                                <p class="look">
+	                                    <span><s class="icon-look"></s>${thread.page_view }</span>
+	                                    <span><s class="icon-ask"></s>${thread.replies }</span>
+	                                </p>
+	                            </dd> 
+	                        </div>
+	                        
+	                    </dl>
+                   </c:forEach>
                    
                 </div>
                 <div class="page-plug">
                     <ul class="page-pc" id="pagePc">
-                       <!--  <li class="prev"><a href="#">上一页</a></li>
+                    	<!-- 上一页 -->
+                    	<c:choose>
+                    		<c:when test="${threadPage != 1 }">
+                    			<li class="prev"><a href="thread/search?p=${threadPage-1}&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">上一页</a></li>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<li class="prev"><a href="#" >上一页</a></li>
+                    		</c:otherwise>
+                    	</c:choose>
+                    	
+ 						<!-- 页数列表 -->
+						<c:forEach items="${threadPageList}" var="item">
+							<c:choose>
+								<c:when test="${item == threadPage}">
+									<li class="active"><a href="thread/search?p=${item }&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">${item }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="thread/search?p=${item }&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">${item }</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+                    	
+						<!-- 下一页 按钮 -->
+						<c:choose>
+							<c:when test="${threadPage != threadTotalPages}">
+								<li class="next"><a href="thread/search?p=${threadPage+1}&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">下一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="next"><a href="#">下一页</a></li>
+							</c:otherwise>
+						</c:choose>                    	
+                    	
+<!--                         <li class="prev"><a href="#">上一页</a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li class="active"><a href="javascript:;">3</a></li>
                         <li><a href="#">4</a></li>
                         <li class="next"><a href="#">下一页</a></li> -->
+                        
                     </ul>
 
                     <ul class="page-mobile">
@@ -218,7 +272,7 @@
         <!-- 底部结束 -->
     </div>
     
-   <script src="./statics/js/mod/search.js"></script>
+   <script src="js/mod/search.js"></script>
    
 </body>
 </html>

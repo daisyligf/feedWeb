@@ -1,47 +1,85 @@
 package com.mofang.feedweb.controller.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.global.Constant;
+import com.mofang.feedweb.util.TimeUtil;
 import com.mofang.feedweb.util.Tools;
 
 @Controller
 public class FeedSearchController extends FeedCommonController{
 
-	/***
-	 * 组装 板块，帖子 数据
-	 * @param keyword
-	 * @param p
-	 * @param pagesize
-	 * @param request
-	 * @return
-	 * @throws Exception
-	 */
 	@RequestMapping(value = "/search",method = RequestMethod.GET)
 	@ResponseBody
-	public String search(@RequestParam(value = "keyword") String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView search(@RequestParam(value = "keyword") String keyword, 
+			@RequestParam(value = "fid", required=false) String fid,@RequestParam(value = "author", required=false) String author,
+			@RequestParam(value = "status",required=false) String status,
+			HttpServletRequest request) throws Exception {
 		keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
-		StringBuffer requestParam = new StringBuffer();
+		StringBuilder requestParam = new StringBuilder();
 		requestParam.append("p=1&");
 		requestParam.append("pagesize=8&");
 		requestParam.append("keyword=").append(keyword);
 		
-		//获取版块list
-		JSONObject forumListResult = getHttpInfo(getFeedUrlInfo() + Constant.LIST_FORUM_SEARCH_URL, requestParam.toString(), request);
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.putAll(forumMap(requestParam.toString(), 1, request));
+		
+		requestParam = new StringBuilder();
+		if(!StringUtils.isEmpty(author)){
+			author = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		//测试数据
+		if(StringUtils.isEmpty(fid)){
+			fid = "10";
+		}
+		if(StringUtils.isEmpty(status)){
+			status = "1";
+		}
+		if(StringUtils.isEmpty(author)){
+			author = "";
+		}
+		
+		requestParam.append("fid=").append(fid).append("&");
+		requestParam.append("author=").append(author).append("&");
+		requestParam.append("status=").append(status).append("&");
+		requestParam.append("keyword=").append(keyword).append("&");
+		requestParam.append("p=1&pagesize=20");
+		
+		map.putAll(threadMap(requestParam.toString(), 1, request));
+		map.put("keyword", keyword);
+		
+		return new ModelAndView("search", map);
+	}
+	
+	/***
+	 * 
+	 * @param requestParam
+	 * @param p 页码
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String, Object> forumMap(String requestParam, int p, HttpServletRequest request) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>(4);
+		JSONObject forumListResult = getHttpInfo(getFeedUrlInfo() + Constant.LIST_FORUM_SEARCH_URL, requestParam, request);
 		if (forumListResult != null) {
 			int code = forumListResult.optInt("code", -1);
 			if (0 != code) {
@@ -52,9 +90,10 @@ public class FeedSearchController extends FeedCommonController{
 				//通过总数算出页码
 				int total = data.optInt("total",0);
 				
-				request.setAttribute("pageList", Tools.editPageNumber(total, 1, 8));
-				request.setAttribute("page", 1);
-				request.setAttribute("totalPages", total);
+				
+				map.put("forumPageList", Tools.editPageNumber(total, p, 8));
+				map.put("forumPage", 1);
+				map.put("forumTotalPages", total);
 				
 				JSONArray jsonArr = data.optJSONArray("list");
 				int length = jsonArr.length();
@@ -70,170 +109,127 @@ public class FeedSearchController extends FeedCommonController{
 					objFeedForum.setTotal_threads(jsonFeedForum.optInt("threads", 0));
 					objFeedForum.setToday_threads(jsonFeedForum.optInt("today_threads", 0));
 					objFeedForum.setIcon(jsonFeedForum.optString("icon", ""));
-					objFeedForum.setForum_url("http://bbs.mofang.com/f/" + forumId);
+					objFeedForum.setForum_url("http://bbs.mofang.com/f/" + forumId + ".html");
 					objFeedForum.setGift_url(jsonFeedForum.optString("gift_url", ""));
 					objFeedForum.setPrefecture_url(jsonFeedForum.optString("prefecture_url", ""));
 					
 					listForum.add(objFeedForum);
 				}
-				request.setAttribute("forumList", listForum);
+				map.put("forumList", listForum);
 			}	
 		} else {
-			request.setAttribute("forumList", new ArrayList<FeedForum>(0));
-		}
+			map.put("forumList", new ArrayList<FeedForum>(0));
+		}		
+		return map;
+	}
+	
+	/***
+	 * 
+	 * @param requestParam
+	 * @param p 页码
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String, Object> threadMap(String requestParam, int p, HttpServletRequest request) throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>(4);
+		JSONObject threadListResult = getHttpInfo(getFeedUrlInfo() + Constant.LIST_THREAD_SEARCH_URL, requestParam, request);
+		if (threadListResult != null) {
+			int code = threadListResult.optInt("code", -1);
+			if (0 != code) {
+				//错误信息
+				String message = threadListResult.optString("message", "");
+			} else {
+				JSONObject data = threadListResult.optJSONObject("data");
+				//通过总数算出页码
+				int total = data.optInt("total",0);
+				
+				map.put("threadPageList", Tools.editPageNumber(total, p, 20));
+				map.put("threadPage", 1);
+				map.put("threadTotalPages", total);
+				
+				JSONArray jsonArr = data.optJSONArray("list");
+				int length = jsonArr.length();
+				List<FeedThread> threadList = new ArrayList<FeedThread>(length);
+				FeedThread thread = null;
+				for(int idx = 0; idx < length; idx ++) {
+					JSONObject jsonThread = jsonArr.getJSONObject(idx);
+					thread = new FeedThread();
+					
+					long forumId = jsonThread.optLong("fid", 0);
+					thread.setForum_id(forumId);
+					thread.setForum_name(jsonThread.optString("name", ""));
+					thread.setThread_id(jsonThread.optLong("tid", 0));
+					thread.setUser_id(jsonThread.optLong("user_id", 0));
+					thread.setThread_name(jsonThread.optString("subject", ""));
+					thread.setReplies(jsonThread.optInt("replies", 0));
+					thread.setPage_view(jsonThread.optInt("pageview", 0));
+					thread.setIcon(jsonThread.optString("icon", ""));
+					
+					long createTime = jsonThread.optLong("utime", 0l);
+					thread.setCreate_time(TimeUtil.format(createTime));
+					thread.setUser_name(jsonThread.optString("nickname" , ""));
+					
+					String content = jsonThread.optString("content", "");
+					if(StringUtils.isEmpty(content)){
+						content = "test test test test test test test test test test test test test test ";
+					}
+					thread.setContent(content);
+					
+					threadList.add(thread);
+				}
+				map.put("threadList", threadList);
+			}	
+		} else {
+			map.put("threadList", new ArrayList<FeedThread>(0));
+		}	
 		
-		
-		
-		//获取帖子list
-		
-		return "search";
+		return map;
 	}
 	
 	
 	@RequestMapping(value = "/thread/search",method = RequestMethod.GET)
 	@ResponseBody
-	public String searchThread(@RequestBody int fid, int status, String keyword, int p, int pagesize, HttpServletRequest request) throws Exception {
-		StringBuffer requestParam = new StringBuffer();
-		requestParam.append("fid=").append(fid).append("&");
-		requestParam.append("status=").append(status).append("&");
-		requestParam.append("p=").append(p).append("&");
-		requestParam.append("pagesize=").append(pagesize).append("&");
-		requestParam.append("keyword=").append(keyword).append("&");
-		requestParam.append("keyword=").append(keyword).append("&");
+	public ModelAndView searchThread(@RequestParam(value = "keyword") String keyword, 
+			@RequestParam(value = "fid") String fid,@RequestParam(value = "author") String author,
+			@RequestParam(value = "status") String status, 
+			@RequestParam(value = "p") int p,HttpServletRequest request) throws Exception {
 		
-		//获取版块list
-		JSONObject forumListResult = getHttpInfo(Constant.LIST_THREAD_SEARCH_URL, requestParam.toString(), request);
-		if (forumListResult != null) {
-			int code = forumListResult.optInt("code", -1);
-			if (0 != code) {
-				//错误信息
-				String message = forumListResult.optString("message", "");
-			} else {
-				JSONObject data = forumListResult.optJSONObject("data");
-				//通过总数算出页码
-				int total = data.optInt("total",0);
-				
-				
-				request.setAttribute("pageList", Tools.editPageNumber(total, p));
-				request.setAttribute("page", p);
-				request.setAttribute("totalPages", total);
-				
-				JSONArray list = data.optJSONArray("list");
-				List<FeedThread> threadList = new ArrayList<FeedThread>();
-				FeedThread feedThread = null;
-				JSONObject jsonThread = null;
-				for(int i=0; i<list.length(); i++) {
-					jsonThread = list.getJSONObject(i);
-					feedThread = new FeedThread();
-					feedThread.setForum_id(jsonThread.optLong("fid", 0));
-					feedThread.setThread_id(jsonThread.optLong("tid", 0));
-					feedThread.setUser_name(jsonThread.optString("nickname",""));
-					feedThread.setIcon(jsonThread.optString("icon", ""));
-					feedThread.setReplies(jsonThread.optInt("replies", 0));
-					feedThread.setPage_view(jsonThread.optInt("pageview", 0));
-					threadList.add(feedThread);
-				}
-				request.setAttribute("forumList", list);
-			}	
-		} else {
-			request.setAttribute("forumList", new ArrayList<FeedForum>());
+		//测试数据
+		if(StringUtils.isEmpty(fid)){
+			fid = "10";
 		}
-		//获取帖子list
-		return "search";
-	}
-	
-	
-	
+		if(StringUtils.isEmpty(status)){
+			status = "1";
+		}
+		if(StringUtils.isEmpty(author)){
+			author = "";
+		}
+		if(!StringUtils.isEmpty(keyword)){
+			keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		StringBuilder requestParam = new StringBuilder();
+		requestParam.append("p=1&");
+		requestParam.append("pagesize=8&");
+		requestParam.append("keyword=").append(keyword);
+		map.putAll(forumMap(requestParam.toString(), p, request));
+		
+		requestParam = new StringBuilder();
+		requestParam.append("fid=").append(fid).append("&");
+		requestParam.append("author=").append(author).append("&");
+		requestParam.append("status=").append(status).append("&");
+		requestParam.append("keyword=").append(keyword).append("&");
+		requestParam.append("p=").append(p).append("&pagesize=20");
+		map.putAll(threadMap(requestParam.toString(), p, request));
+		
+		map.put("keyword", keyword);
 
-//	 //版块点击更多
-//	 @RequestMapping(value = { "/forumMore" })
-//	 @ResponseBody
-//	 public void forumMore(@RequestBody long fid, String keyword, int p ,HttpServletRequest request,
-//	 HttpServletResponse response) throws IOException {
-////
-////		String author = "";
-////		int status = 1;
-////		//热门游戏版块list
-////		JSONObject threadInfoResult = searchService.forumSearch(keyword, p, 8);
-////		List<Map<String, Object>> threadlist = new ArrayList<Map<String,Object>>();
-////		Map<String, Object> map1 = null;
-////		if (null != threadInfoResult) {
-////			JSONObject data = threadInfoResult.optJSONObject("data");
-////
-////			//通过总数算出页码
-////			int total = data.optInt("total",0);
-////			request.setAttribute("pageList", Tools.editPageNumber(total, p));
-////			request.setAttribute("page", p);
-////			request.setAttribute("totalPages", total);
-////			
-////			JSONArray list = data.optJSONArray("list");
-////			JSONObject jsonthread = null;
-////			for(int i=0; i<list.length(); i++)
-////			{
-////				jsonthread = list.getJSONObject(i);
-////				map1 = new HashMap<String, Object>(10);
-////				map1.put("fid", jsonthread.optLong("fid", 0));
-////				map1.put("tid", jsonthread.optLong("tid", 0));
-////				map1.put("icon", jsonthread.optString("icon", ""));
-////				map1.put("thread_name", jsonthread.optString("subject", ""));
-////				map1.put("user_id", jsonthread.optLong("uid", 0));
-////				map1.put("user_name", jsonthread.optString("nickname", ""));
-////				map1.put("pageview", jsonthread.optInt("pageview", 0));
-////				map1.put("replies", jsonthread.optInt("replies", 0));
-////				threadlist.add(map1);
-////				
-////			}
-////			
-////		}
-////		Tools.renderData(response, threadlist.toString());
-//	
-//	 }
-//	
-//	 //主题分页点击
-//	 @RequestMapping(value = { "/threadPageClick" }, method = RequestMethod.POST)
-//	 @ResponseBody
-//	 public void threadPageClick(@RequestBody long fid, String keyword, int p ,HttpServletRequest request,
-//	 HttpServletResponse response) throws Exception {
-//		 
-//		
-//		String author = "";
-//		int status = 1;
-//		//热门游戏版块list
-//		JSONObject threadInfoResult = searchService.threadSearch(fid, author, status, keyword, p, Constant.PAGE_SIZE);
-//		List<Map<String, Object>> threadlist = new ArrayList<Map<String,Object>>();
-//		Map<String, Object> map1 = null;
-//		if (null != threadInfoResult) {
-//			JSONObject data = threadInfoResult.optJSONObject("data");
-//
-//			//通过总数算出页码
-//			int total = data.optInt("total",0);
-//			request.setAttribute("pageList", Tools.editPageNumber(total, p));
-//			request.setAttribute("page", p);
-//			request.setAttribute("totalPages", total);
-//			
-//			JSONArray list = data.optJSONArray("list");
-//			JSONObject jsonthread = null;
-//			for(int i=0; i<list.length(); i++)
-//			{
-//				jsonthread = list.getJSONObject(i);
-//				map1 = new HashMap<String, Object>(10);
-//				map1.put("fid", jsonthread.optLong("fid", 0));
-//				map1.put("tid", jsonthread.optLong("tid", 0));
-//				map1.put("icon", jsonthread.optString("icon", ""));
-//				map1.put("thread_name", jsonthread.optString("subject", ""));
-//				map1.put("user_id", jsonthread.optLong("uid", 0));
-//				map1.put("user_name", jsonthread.optString("nickname", ""));
-//				map1.put("pageview", jsonthread.optInt("pageview", 0));
-//				map1.put("replies", jsonthread.optInt("replies", 0));
-//				threadlist.add(map1);
-//				
-//			}
-//			
-//		}
-//		Tools.renderData(response, threadlist.toString());
-//	
-//	 }
-	
+		return new ModelAndView("search", map);
+	}
 	
 
 }

@@ -21,6 +21,7 @@ public class FeedThread {
 	private long forum_id;
 	private String forum_name;
 	private String pic;
+	private String content;
 	
 	public long getThread_id() {
 		return thread_id;
@@ -111,6 +112,12 @@ public class FeedThread {
 	}
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 	
