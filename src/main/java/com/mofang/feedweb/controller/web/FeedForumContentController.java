@@ -170,7 +170,7 @@ public class FeedForumContentController extends FeedCommonController {
 		return roleList;
 	}
 	
-	private List<FeedThread> getThreadList(HttpServletRequest request, long fid) {
+	private List<FeedThread> getThreadList(HttpServletRequest request, long fid) throws Exception {
 		List<FeedThread> threadList = new ArrayList<FeedThread>();
 		int threadType = 0; // 0表示普通，1表示精华
 		String typeString = request.getParameter("type");
@@ -213,6 +213,19 @@ public class FeedForumContentController extends FeedCommonController {
 		JSONObject json = getHttpInfo(getThreadListUrl(), paramBuilder.toString(), request);
 		
 		if (json.optInt("code", -1) == 0) {
+			JSONObject data = json.optJSONObject("data");
+			int total = data.optInt("total", 0);
+			JSONArray threads = data.optJSONArray("threads");
+			if (threads != null && threads.length() > 0) {
+				for (int i = 0; i < threads.length(); i++) {
+					
+					JSONObject obj = threads.getJSONObject(i);
+					FeedThread feedThread = new FeedThread();
+					feedThread.setThread_id(obj.optLong("tid", 0));
+					feedThread.setSubject(obj.optString("subject", ""));
+					feedThread.setPage_view(obj.optInt("page_view", 0));
+				}
+			}
 			
 		}
 		

@@ -33,7 +33,7 @@
     <script src="js/sea-config.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
-        <script src="./statics/js/loader/dd_belatedpng.js"></script>
+        <script src="js/loader/dd_belatedpng.js"></script>
         <script>
             DD_belatedPNG.fix('.pngfix');
         </script>
@@ -42,7 +42,7 @@
 
     <!--{* ie8 以下浏览器html5兼容层 *}-->
     <!--[if lt IE 9]>
-        <script src="./statics/js/loader/html5shiv.js"></script>
+        <script src="js/loader/html5shiv.js"></script>
     <![endif]-->
 
 </head>
@@ -146,6 +146,7 @@
                         </div>
                     </div>
                     <div class="con-left-con">
+                    	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
                             <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
                             <div class="infos">
@@ -164,132 +165,8 @@
                             </div>
                             
                         </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
-                        <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
-                            <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
-                                <dd class="info clearfix">
-                                    <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
-                                    </p>
-                                    <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
-                                    </p>
-                                </dd> 
-                            </div>
-                            
-                        </dl>
+                       </c:forEach>
+                       
                         <div class="page-plug">
                             <ul class="page-pc">
                                 <li class="prev"><a href="#">上一页</a></li>
