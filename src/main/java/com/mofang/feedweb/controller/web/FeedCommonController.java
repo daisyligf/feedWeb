@@ -53,6 +53,11 @@ public class FeedCommonController {
 		return externalUrlInfo.getUser_info_url() + Constant.USER_STATE_UPDATE_URL;
 	}
 	
+	protected String getForumInfoGetUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.FORUM_INFO_GET_URL;
+	}
+	
+	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();
 		config.setHost(connInfo.getHost());

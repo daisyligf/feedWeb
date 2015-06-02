@@ -1,5 +1,8 @@
 package com.mofang.feedweb.entity;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author ke
  *
@@ -16,13 +19,14 @@ public class FeedForum {
 	private int yesterday_threads;
 	private int total_follows;
 	private int yestoday_follows;
-	private String create_time;
-	private int tag_id;
-	private String tag_name;
+	private Date create_time;
+//	private int tag_id;
+//	private String tag_name;
 	private String forum_url;
 	private String download_url;
 	private String gift_url;
 	private String prefecture_url;
+	private List<FeedTag> tags;
 	
 	
 	public long getForum_id() {
@@ -79,24 +83,24 @@ public class FeedForum {
 	public void setYestoday_follows(int yestoday_follows) {
 		this.yestoday_follows = yestoday_follows;
 	}
-	public String getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(String create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
-	public int getTag_id() {
-		return tag_id;
-	}
-	public void setTag_id(int tag_id) {
-		this.tag_id = tag_id;
-	}
-	public String getTag_name() {
-		return tag_name;
-	}
-	public void setTag_name(String tag_name) {
-		this.tag_name = tag_name;
-	}
+//	public int getTag_id() {
+//		return tag_id;
+//	}
+//	public void setTag_id(int tag_id) {
+//		this.tag_id = tag_id;
+//	}
+//	public String getTag_name() {
+//		return tag_name;
+//	}
+//	public void setTag_name(String tag_name) {
+//		this.tag_name = tag_name;
+//	}
 	public int getToday_threads() {
 		return today_threads;
 	}
@@ -127,6 +131,10 @@ public class FeedForum {
 	public void setPrefecture_url(String prefecture_url) {
 		this.prefecture_url = prefecture_url;
 	}
-
-	
+	public List<FeedTag> getTags() {
+		return tags;
+	}
+	public void setTags(List<FeedTag> tags) {
+		this.tags = tags;
+	}
 }

@@ -1,5 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ page import="com.mofang.feedweb.entity.FeedForum"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <!--{* 使用IE最高版本渲染,如果有chrome frome插件,则使用chrome frame *}-->
@@ -18,7 +23,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>bbs列表页</title>
+    <title>版块内容页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
@@ -81,10 +86,10 @@
             <div class="con-top container clearfix">
                 <div class="con-top-con col-xs-12">
                     <dl>
-                       <dt><img src="img/img1.jpg" height="336" width="448" alt=""></dt>
-                       <dd class="title">三国来了</dd>
-                       <dd>关注  1352</dd>
-                       <dd>帖子  10870</dd>
+                       <dt><img src="${feedForum.icon}" height="336" width="448" alt=""></dt>
+                       <dd class="title">${feedForum.forum_name}</dd>
+                       <dd>关注  ${feedForum.total_follows}</dd>
+                       <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                     <a href="#" class="follow fllowed">+ 关注</a>
                     <a href="#" class="post">发帖</a>
@@ -98,10 +103,9 @@
                     <div class="con-nav">
                         <div class="left">
                             <a href="#" class="active">综合</a>
-                            <a href="#">技术秘籍</a>
-                            <a href="#">求助讨论</a>
-                            <a href="#">游戏灌水</a>
-                            <a href="#">活动</a>
+                            <c:forEach var="tag" items="${feedForum.tags}">
+                            	<a href="#">${tag.tag_name}</a>
+                            </c:forEach>
                         </div>
                         <div class="right">
                             <div>
