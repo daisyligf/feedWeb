@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page import="com.mofang.feedweb.entity.FeedForum"%>
+<%@ page import="com.mofang.feedweb.entity.HotThread"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -80,6 +81,17 @@
             </div>
         </div>
         <!-- 头部结束 -->
+        <!-- 搜索开始 -->
+        <div class="search">
+            <div class="bbs-logo">
+                <img src="img/icon/bbs_icon.png" alt="">
+            </div>
+            <div class="bbs-search">
+                <input type="submit" class="ser-but" value="" id="submit"/>
+                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
+            </div>
+        </div>
+        <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
             <!-- 第一块内容top -->
@@ -302,60 +314,83 @@
                         吧主团队 <a href="#">申请吧主</a>
                     </h2>
                     <div class="lum-list">
-                       <dl>
-                            <dt><a href="#"><img src="img/img1.jpg" alt=""></a></dt>
-                            <dd><a href="#">三锻钢戟</a></dd>
-                        </dl> 
-                        <dl>
-                            <dt><a href="#"><img src="img/img1.jpg" alt=""></a></dt>
-                            <dd><a href="#">三锻钢戟</a></dd>
-                        </dl>
-                        <dl>
-                            <dt><a href="#"><img src="img/img1.jpg" alt=""></a></dt>
-                            <dd><a href="#">三锻钢戟</a></dd>
-                        </dl>
-                        <dl>
-                            <dt><a href="#"><img src="img/img1.jpg" alt=""></a></dt>
-                            <dd><a href="#">三锻钢戟</a></dd>
-                        </dl>
+                    	<c:forEach  var="roleInfo" items="${feedForum.roleList}">
+                    		<dl>
+                            	<dt><a href="#"><img src="${roleInfo.icon}" alt=""></a></dt>
+                            	<dd><a href="#">${roleInfo.roleName}</a></dd>
+                        	</dl> 
+                    	</c:forEach>
                     </div>
                     
                 </div>
-                <div class="lord-team">
-                    <h2 class="lum">
-                        礼包发号
-                    </h2>
-                    <div class="lum-list libao-list">
-                       <ul>
-                           <li><s class="black"></s><a href="#">我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                       </ul>
-                    </div>
-                    
-                </div>
-                <div class="lord-team hot-tj">
-                    <!-- <div class="col-xs-12 hot-tj-con"> -->
-                        <h2 class="lum">
-                            新游推荐
-                        </h2>
-                       
-                        <div class="lum-list rec-list">
-                            <ul>
-                                <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/down.png"></span></li>
-                                <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
-                                <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/level.png"></span></li>
-                                <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
-                                <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
-
-                            </ul>
-                        </div>
-                        
-                    <!-- </div> -->
-                    
-                </div>
+                <c:choose>
+                    <c:when test="${feedForum.type == 3}">
+                        <div class="lord-team">
+		                    <h2 class="lum">
+		                    	最新热帖
+		                    </h2>
+		                    <div class="lum-list libao-list">
+		                       <ul>
+		                           <c:forEach var="hotThread" items="${hotThreadList}">
+		                           <li><s class="black"></s><a href="#">${hotThread.subject}</a></li>
+		                           </c:forEach>
+		                       </ul>
+		                    </div>
+		                    
+		                </div>
+		                <div class="lord-team hot-tj">
+		                    <!-- <div class="col-xs-12 hot-tj-con"> -->
+		                        <h2 class="lum">
+		                            热门游戏
+		                        </h2>
+		                       
+		                        <div class="lum-list rec-list">
+		                            <ul>
+		                            	<c:set var="i" value="1"/>
+		                            	<c:forEach var="newGame" items="${newGameList}">
+		                           		<li class="clearfix"><span class="num num-color">0${i}</span><a href="#" class="title"><img src="${newGame.icon}" alt="">${newGame.forumName}</a><span class="rank"><a href="${newGame.downloadUrl}" target="_blank"></a><img src="img/icon/down.png"></a></span></li>
+		                           		<c:set var="i" value="${i+1}"/>
+		                           		</c:forEach>
+		                            </ul>
+		                        </div>
+		                </div>	
+                    </c:when>
+                    <c:otherwise>
+		               <div class="lord-team">
+		                    <h2 class="lum">
+		                    	礼包发号
+		                    </h2>
+		                    <div class="lum-list libao-list">
+		                       <ul>
+		                           <li><s class="black"></s><a href="#">我是大礼包</a></li>
+		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+		                       </ul>
+		                    </div>
+		                    
+		                </div>
+		                <div class="lord-team hot-tj">
+		                    <!-- <div class="col-xs-12 hot-tj-con"> -->
+		                        <h2 class="lum">
+		                            新游推荐
+		                        </h2>
+		                       
+		                        <div class="lum-list rec-list">
+		                            <ul>
+		                                <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/down.png"></span></li>
+		                                <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
+		                                <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/level.png"></span></li>
+		                                <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
+		                                <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
+		
+		                            </ul>
+		                        </div>
+		                </div>
+                     </c:otherwise>
+                </c:choose>
+                
              </div>
            </div>
               

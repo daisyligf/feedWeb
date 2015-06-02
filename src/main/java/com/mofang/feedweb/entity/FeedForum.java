@@ -27,7 +27,7 @@ public class FeedForum {
 	private String gift_url;
 	private String prefecture_url;
 	private List<FeedTag> tags;
-	
+	private List<RoleInfo> roleList;
 	
 	public long getForum_id() {
 		return forum_id;
@@ -136,5 +136,11 @@ public class FeedForum {
 	}
 	public void setTags(List<FeedTag> tags) {
 		this.tags = tags;
+	}
+	public List<RoleInfo> getRoleList() {
+		return roleList;
+	}
+	public void setRoleList(List<RoleInfo> roleList) {
+		this.roleList = roleList;
 	}
 }

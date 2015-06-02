@@ -57,6 +57,22 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url() + Constant.FORUM_INFO_GET_URL;
 	}
 	
+	protected String getRoleInfoListGetUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.LIST_MODERATOR_GET_URL;
+	}
+	
+	protected String getThreadListUrl() {
+		return  externalUrlInfo.getFeed_info_url() + Constant.LIST_THREAD_GET_URL;
+	}
+	
+	protected String getTopThreadsUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.SUBJECT_INFO_GET_URL;
+	}
+	
+	protected String getRecommendGameRankUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.RECOMMEND_GAME_RANK_GET_URL;
+	}
+	
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();

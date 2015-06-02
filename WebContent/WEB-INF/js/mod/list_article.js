@@ -10,7 +10,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
 	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_TEST_DATA = 1;//测试数据
 
 	
 	var getFollowUrl = "" //关注
@@ -21,8 +21,8 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 		getNoFollowUrl='/bbs_html/statics/test/follow.json';
 	}
 	if(USE_TEST_DATA){
-		getPlateUrl='';
-		getPostUrl='';
+		getFollowUrl='';
+		getNoFollowUrl='';
 	}
 
 	getPlateInfo();
