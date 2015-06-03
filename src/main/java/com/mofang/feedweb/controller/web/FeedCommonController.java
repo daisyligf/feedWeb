@@ -4,19 +4,10 @@ package com.mofang.feedweb.controller.web;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mofang.feedweb.component.HttpComponent;
-import com.mofang.feedweb.form.FeedForumOfficalForm;
-import com.mofang.feedweb.form.FeedHomeHotForumRankForm;
-import com.mofang.feedweb.form.FeedHomeListHotForumForm;
-import com.mofang.feedweb.form.FeedHomeListRecommendGameForm;
-import com.mofang.feedweb.form.FeedHomeRecommendGameRankForm;
-import com.mofang.feedweb.form.FeedHomeSubjectForm;
-import com.mofang.feedweb.form.FeedHomeTickerForm;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.net.http.HttpClientConfig;
@@ -93,6 +84,14 @@ public class FeedCommonController {
 	
 	protected String getForumFollowUrl() {
 		return externalUrlInfo.getUser_info_url() + Constant.FORUM_FOLLOW_URL;
+	}
+	
+	protected String getModeratorCheckUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_CHECK_URL;
+	}
+	
+	protected String getModeratorApplyUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_APPLY_URL;
 	}
 	
 	

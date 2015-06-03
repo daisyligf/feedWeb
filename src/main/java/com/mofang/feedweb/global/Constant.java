@@ -149,6 +149,10 @@ public class Constant {
 	// 用户删除
 	// 用户恢复
 	// 用户批量恢复
+	// 检查版主申请条件
+	public static final String MODERATOR_CHECK_URL = "/feed/v2/web/moderator/check";
+	// 申请版主
+	public static final String MODERATOR_APPLY_URL = "/feed/v2/web/moderator/apply";
 
 	// 外部接口
 	// 图片上传
