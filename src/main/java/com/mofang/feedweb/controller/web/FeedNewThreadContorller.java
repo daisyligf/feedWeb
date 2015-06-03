@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.global.Constant;
 
+@Controller
 public class FeedNewThreadContorller extends FeedCommonController {
 
 	@RequestMapping(value = "/newThreadInit", method = RequestMethod.GET)
@@ -34,7 +36,13 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		map.putAll(userJson("user_id=" + uid, request));
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
-
+		
+		map.put("fid", fid);
+		map.put("tid", 0);
+		map.put("tagId", 0);
+		FeedThread threadinfo = new FeedThread();
+		map.put("threadInfo", threadinfo);
+		
 		return new ModelAndView("new_thread", map);
 	}
 
@@ -101,6 +109,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 				threadinfo.setSubject(data.optString("subject", ""));
 				threadinfo.setHtmlContent(data.optString("html_content", ""));
 				threadinfo.setPic(data.optString("pic", ""));
+				threadinfo.setTagId(data.optInt("tag_id", 0));
 
 			}
 		}
@@ -122,6 +131,11 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		map.putAll(userJson("user_id=" + uid, request));
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
+		
+		map.put("fid", fid);
+		map.put("tid", 0);
+		map.put("tagId", 0);
+		
 
 		return new ModelAndView("new_thread", map);
 	}

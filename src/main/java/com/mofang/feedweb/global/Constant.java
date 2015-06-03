@@ -41,7 +41,7 @@ public class Constant {
 	//上传图片地址
 	public static final String UPLOAD_URL = "http://api.mofang.com/mcss/v1/upload";
 
-	public static final boolean TEST_FLG = false;
+	public static final boolean TEST_FLG = true;
 
 	// 帖子详情页
 	// 楼层列表
@@ -108,11 +108,11 @@ public class Constant {
 	// 发帖
 	public static final String THREAD_CREATE_URL = "/feed/v2/web/newthread";
 	// 楼主信息
-	public static final String THREAD_MODERATOR_INFO_URL = "feed/v2/web/user/info";
+	public static final String THREAD_MODERATOR_INFO_URL = "/feed/v2/web/user/info";
 	// 版块标签
-	public static final String FORUM_TAG_LIST_URL = "feed/v2/web/forum/taglist"; 
+	public static final String FORUM_TAG_LIST_URL = "/feed/v2/web/forum/taglist"; 
 	// 帖子详情
-	public static final String THREAD_INFO_URL = "feed/v2/web/thread/info"; 
+	public static final String THREAD_INFO_URL = "/feed/v2/web/thread/info"; 
 	// 帖子-编辑更新
 	public static final String THREAD_EDIT_URL = "/feed/v2/web/thread/edit";
 
@@ -122,22 +122,22 @@ public class Constant {
 
 	// 首页
 	// 轮播海报
-	public static final String TICKER_INFO_GET_URL = "/feed/v2/home/ticker";
+	public static final String TICKER_INFO_GET_URL = "/feed/v2/web/home/ticker";
 	// 首页头条
-	public static final String SUBJECT_INFO_GET_URL = "/feed/v2/home/threads";
+	public static final String SUBJECT_INFO_GET_URL = "/feed/v2/web/home/threads";
 	// 热游排行榜
-	public static final String HOT_FOURM_RANK_GET_URL = "/feed/v2/home/hotForumRank";
+	public static final String HOT_FOURM_RANK_GET_URL = "/feed/v2/web/home/hotForumRank";
 	// 新游排行榜
 
-	public static final String RECOMMEND_GAME_RANK_GET_URL = "/feed/v2/home/recommendGameRank";
+	public static final String RECOMMEND_GAME_RANK_GET_URL = "/feed/v2/web/home/recommendGameRank";
 	// 热游列表
-	public static final String LIST_HOT_FOURM_GET_URL = "/feed/v2/home/hotForumList";
+	public static final String LIST_HOT_FOURM_GET_URL = "/feed/v2/web/home/hotForumList";
 	// 新游列表
-	public static final String LIST_RECOMMENDGAME_GET_URL = "/feed/v2/home/recommendGameList";
+	public static final String LIST_RECOMMENDGAME_GET_URL = "/feed/v2/web/home/recommendGameList";
 	// 综合专区
-	public static final String PREFECTURE_INFO_GET_URL = "/feed/v2/home/prefecture";
+	public static final String PREFECTURE_INFO_GET_URL = "/feed/v2/web/home/prefecture";
 	// 搜索关键字
-	public static final String HOME_SEARCH_KEYWORD_GET_URL = "/feed/v2/home/keyworkd";
+	public static final String HOME_SEARCH_KEYWORD_GET_URL = "/feed/v2/web/home/keyworkd";
 
 	// 普通用户
 	// 用户详情
