@@ -267,11 +267,11 @@ public class Tools {
 		}
 		List<Integer> pageArr = new ArrayList<Integer>();
 		int start = 1;
-		if(selectPage >= 10){
-		     start = selectPage/10 * 10;
+		if(selectPage >= 4){
+		     start = selectPage/4 * 4;
 		 }
 		int num = start;
-		while(!(num > totalPage || num > start + 10)){
+		while(!(num > totalPage || num > start + 4)){
 		     pageArr.add(num);
 		    ++num;
 		}
