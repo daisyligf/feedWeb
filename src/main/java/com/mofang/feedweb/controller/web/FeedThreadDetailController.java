@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mofang.feedweb.entity.FeedPost;
 import com.mofang.feedweb.entity.FeedThread;
-import com.mofang.feedweb.entity.FeedThreadStarterInfo;
+import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.util.Tools;
 

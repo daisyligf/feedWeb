@@ -102,9 +102,9 @@ public class Constant {
 	//楼主信息
 	public static final String THREAD_MODERATOR_INFO_URL = "feed/v2/user/info";
 	//版块标签
-	public static final String FORUM_TAGINFO_URL = "feed/v2/tag/list";
+	public static final String FORUM_TAG_LIST_URL = "feed/v2/web/forum/taglist";
 	//帖子详情
-	public static final String THREAD_INFO_URL = "feed/v2/thread/edit/info";
+	public static final String THREAD_INFO_URL = "feed/v2/web/thread/info";
 	//帖子-编辑更新
 	public static final String THREAD_EDIT_URL = "/feed/v2/thread/edit";
 	

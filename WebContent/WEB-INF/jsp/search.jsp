@@ -30,20 +30,16 @@
     <script src="js/sea-config.js"></script>
     <script src="js/lib/jquery.js"></script>
     <script type="text/javascript">
-    
-      
-    
-/* 	    $('#submit').click(function() {
+	/*$('#submit').click(function() {
 	    	//location.href="subject";
 	    	alert(1);
 	    });
      */
 		function search(){
-    		//var s = $("#submit").val();
-    		alert(1);
-			//window.location.href = 'search?keyword=';
+    		//var s = $("#keyword").val();
+    		//alert(document.getElementById("keyword").value);
+			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
     	} 
-    
     
     </script>
     <!--{* IE6 png 图像处理 *}-->
