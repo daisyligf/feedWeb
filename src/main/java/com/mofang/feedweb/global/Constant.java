@@ -38,6 +38,8 @@ public class Constant {
 	public static final String STR_WXYZ = "WXYZ";
 	// 字母#(其它)
 	public static final String STR_OTHER = "#";
+	//上传图片地址
+	public static final String UPLOAD_URL = "http://api.mofang.com/mcss/v1/upload";
 
 	public static final boolean TEST_FLG = false;
 

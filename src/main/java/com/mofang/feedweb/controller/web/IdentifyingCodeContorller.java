@@ -6,14 +6,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.Random;
-
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IdentifyingCodeContorller {
@@ -22,11 +21,19 @@ public class IdentifyingCodeContorller {
 
 	private static int HEIGHT = 22;// 设置图片的高度
 
-	@RequestMapping("/randomCode")
+	@RequestMapping("/checkCode")
+	public void check(@RequestParam String randCode, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String rand = (String)request.getSession().getAttribute("randCode"); 
+		if(rand.equals(randCode)) {
+			response.getWriter().print(1);
+		}else{
+			response.getWriter().print(0);
+		}
+	}
+	
+	@RequestMapping("/generageCode")
 	public void generate(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		//HttpSession session = request.getSession();
-		
 		response.setContentType("image/jpeg");
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
@@ -62,7 +69,7 @@ public class IdentifyingCodeContorller {
 		
 		//String randomCode = new String(rands);
 		//response.getWriter().print(randomCode);
-		//session.setAttribute("randomCode", new String(rands));
+		request.getSession().setAttribute("randCode", new String(rands));
 	}
 
 	private void drawBackground(Graphics g) {
@@ -102,5 +109,7 @@ public class IdentifyingCodeContorller {
 		}
 		return rands;
 	}
+	
+	
 
 }
