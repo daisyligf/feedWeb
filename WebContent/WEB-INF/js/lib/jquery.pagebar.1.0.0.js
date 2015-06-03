@@ -89,6 +89,12 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                        _this.onClickPage(_this.currentPage-1);
 	                    })
 	                    .appendTo(pagebar);
+
+	                    //移动端上一页
+	                    $(".page-mobile .prev").unbind("click").bind("click",function(){
+	                    	_this.onClickPage(_this.currentPage-1);
+	                    });
+
 	                }
 
 	                //处理数字页码
@@ -141,11 +147,10 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                        _this.onClickPage(parseInt(_this.currentPage)+1);
 	                    })
 	                    .appendTo(pagebar);
-	                    /*$('<a>尾页</a> ').attr('class',_this.pageNameCssName)
-	                    .bind("click", function(){
-	                        _this.onClickPage(_this.totalpage);
-	                    })
-	                    .appendTo(pagebar);*/
+	                    //移动端下一页
+	                    $(".page-mobile .next").unbind("click").bind("click",function(){
+	                    	_this.onClickPage(_this.currentPage+1);
+	                    });
 	                }
 
 	               /* $('<li><a>&nbsp;&nbsp;</a></li>')

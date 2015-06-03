@@ -28,6 +28,24 @@
     <link rel="stylesheet" href="css/search.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
+    <script src="js/lib/jquery.js"></script>
+    <script type="text/javascript">
+    
+      
+    
+/* 	    $('#submit').click(function() {
+	    	//location.href="subject";
+	    	alert(1);
+	    });
+     */
+		function search(){
+    		//var s = $("#submit").val();
+    		alert(1);
+			//window.location.href = 'search?keyword=';
+    	} 
+    
+    
+    </script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./statics/js/loader/dd_belatedpng.js"></script>
@@ -52,24 +70,12 @@
                     <a href="http://www.mofang.com">魔方网首页</a>
                 </div>
                 <div class="nav-right">
-                    <!-- 登陆状态 -->
-                    <!-- <a href="#" class="head"><img src="statics/img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money"><s class="icon-money"></s>34356</li>
-                            <li class="zuji"><a href="#">足迹</a><a href="#" class="msg">消息<s class="icon-red"></s></a><a href="#" class="libao">礼包库</a></li>
-                            <li class="info">
-                               <a href="#">个人信息</a><a href="#">设置</a><a href="#" class="out">退出</a> 
-                            </li>
-                        </ul>
-                    </div> -->
-                    <!-- 登陆状态 -->
-                    <a href="#" class="load"><img src="statics/img/icon/load.png"></a>
+                    <a href="#" class="load"><img src="img/icon/load.png"></a>
                 </div>
             </div>
             <div class="nav-wap clearfix">
               <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="statics/img/icon/nav_three.png"></a>
+                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a class="nav-info-home">首页</a>
                     <a>个人中心</a>
@@ -81,13 +87,13 @@
         <!-- 搜索开始 -->
         <div class="search">
             <div class="bbs-logo">
-                <img src="statics/img/icon/bbs_icon.png" alt="">
+                <img src="img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
-                <form action="search.html">
-                    <input type="submit" class="ser-but" value="" id="submit"/>
-                    <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
-                </form> 
+                <!-- <form action="search"> -->
+                    <input type="submit" class="ser-but" value=""  id="submit" onclick="search()"/>
+                    <input type="text" class="ser-text" value="${keyword }" id="keyword" placeholder="过来搜我"/>
+               <!--  </form>  -->
             </div>
         </div>
         <!-- 搜索结束 -->
@@ -95,7 +101,7 @@
         <div class="con clearfix">
             
            <!-- 搜索板块开始 -->
-           <div class="h2">板块<span>${forumTotalPages}</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
+           <div class="h2">板块<span>20</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
            <!-- 板块模板 -->
             <script id="plateTemplate" type="text/x-handlebars-template">
                 {{#each list}}
@@ -114,48 +120,42 @@
             </script>
            <div class="h2-con clearfix container" id="plate">
                 
-                <c:forEach items="${forumList}" var="forum">
-			            <div class="col-xs-3 col-md-4  col-sm-6">
-		                   <dl class="clearfix">
-		                       <dt><a href="${forum.forum_url}"><img src="${forum.icon}" alt=""></a></dt>
-		                       <dd><a href="${forum.forum_url}">${forum.forum_name}</a></dd>
-		                       <dd>今日  ${forum.today_threads}</dd>
-		                       <dd>帖子  ${forum.total_threads}</dd>
-		                   </dl>
-		                   <div class="h2-con-bot">
-		                      <a href="${forum.prefecture_url}"  class="zq">专区</a><a href="${forum.gift_url}">礼包</a> 
-		                   </div>
-		                </div>
-	           </c:forEach>
-                
            </div> 
            <!-- 搜索板块结束 -->
               
            <!-- 搜索帖子开始 -->
-           <div class="h2">帖子<span>${threadTotalPages}</span><a href="#">更多 ></a></div>
+           <div class="h2">帖子<span>24</span><a href="#">更多 ></a></div>
             <div class="con-bottom clearfix">
              <div class="col-xs-12 bg-white">
 
                                     <!-- <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s> -->
                 <!-- 帖子模板 -->
                 <script id="postTemplate" type="text/x-handlebars-template">
-                    {{#each list}}
+                    {{#each threads}}
                     <dl class="clearfix">
-                        <dt><a href="{{link_url}}"><img src="{{avatar}}"alt=""></a></dt>
+                        <dt><a href="{{link_url}}"><img src="{{user.avatar}}"alt=""></a></dt>
                         <div class="infos">
                             <dd class="title">
-                                <a href="{{link_url}}">{{title}}
+                                <a href="{{link_url}}">{{subject}}
+								 {{#if is_top}}
+		    						<s class="icon-ding"></s>
+		    					 {{/if}}
+								
+ 								 {{#if is_elite}}
+		    					    <s class="icon-jing"></s>
+		    				     {{/if}}
 
-                                    
-                                    {{compare tags}}
-                                    
+								 {{#if is_closed}}
+		    						<s class="icon-tu"></s>
+                                 {{/if}}                                 
+
                                 </a>
                             </dd>
-                            <dd>{{subject}}</dd>
+                            <dd>{{content}}</dd>
                             <dd class="info clearfix">
                                 <p class="author">
-                                    <span>{{nickname}}</span>
-                                    <span class="time">{{utime}}</span>
+                                    <span>{{user.nickname}}</span>
+                                    <span class="time">{{user.create_time}}</span>
                                 </p>
                                 <p class="look">
                                     <span><s class="icon-look"></s>{{pageview}}</span>
@@ -168,8 +168,7 @@
                     {{/each}} 
                 </script>
                 <div class="con-left-con" id="post">
-                
-<!--                     <dl class="clearfix">
+                    <!-- <dl class="clearfix">
                         <dt><a href="#"><img src="statics/img/img1.jpg"alt=""></a></dt>
                         <div class="infos">
                             <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
@@ -188,75 +187,21 @@
                         
                     </dl> -->
                    
-                    <c:forEach items="${threadList}" var="thread">
-	                    <dl class="clearfix">
-	                        <dt><a href="#"><img src="${thread.icon}" alt=""></a></dt>
-	                        <div class="infos">
-	                            <dd class="title"><a href="#">${thread.subject}<s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-	                            <dd>${thread.content }</dd>
-	                            <dd class="info clearfix">
-	                                <p class="author">
-	                                    <span>作者吧主 ${thread.user_name }</span>
-	                                    <span class="time">${thread.create_time }</span>
-	                                </p>
-	                                <p class="look">
-	                                    <span><s class="icon-look"></s>${thread.page_view }</span>
-	                                    <span><s class="icon-ask"></s>${thread.replies }</span>
-	                                </p>
-	                            </dd> 
-	                        </div>
-	                        
-	                    </dl>
-                   </c:forEach>
-                   
                 </div>
                 <div class="page-plug">
                     <ul class="page-pc" id="pagePc">
-                    	<!-- 上一页 -->
-                    	<c:choose>
-                    		<c:when test="${threadPage != 1 }">
-                    			<li class="prev"><a href="thread/search?p=${threadPage-1}&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">上一页</a></li>
-                    		</c:when>
-                    		<c:otherwise>
-                    			<li class="prev"><a href="#" >上一页</a></li>
-                    		</c:otherwise>
-                    	</c:choose>
-                    	
- 						<!-- 页数列表 -->
-						<c:forEach items="${threadPageList}" var="item">
-							<c:choose>
-								<c:when test="${item == threadPage}">
-									<li class="active"><a href="thread/search?p=${item }&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">${item }</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="thread/search?p=${item }&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">${item }</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-                    	
-						<!-- 下一页 按钮 -->
-						<c:choose>
-							<c:when test="${threadPage != threadTotalPages}">
-								<li class="next"><a href="thread/search?p=${threadPage+1}&fid=${fid}&status=${status}&keyword=${keyword}&author=${author}">下一页</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="next"><a href="#">下一页</a></li>
-							</c:otherwise>
-						</c:choose>                    	
-                    	
-<!--                         <li class="prev"><a href="#">上一页</a></li>
+                       <!--  <li class="prev"><a href="#">上一页</a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li class="active"><a href="javascript:;">3</a></li>
                         <li><a href="#">4</a></li>
                         <li class="next"><a href="#">下一页</a></li> -->
-                        
                     </ul>
 
                     <ul class="page-mobile">
-                        <li class="prev"><a href="#">上一页</a></li>
+                        <li class="prev"><a href="javascript:;">上一页</a></li>
                         <li class="text">5/235</li>
-                        <li class="next"><a href="#">下一页</a></li>
+                        <li class="next"><a href="javascript:;">下一页</a></li>
                     </ul>
                 </div>
              </div>
@@ -276,3 +221,4 @@
    
 </body>
 </html>
+
