@@ -224,6 +224,8 @@ public class FeedForumContentController extends FeedCommonController {
 					feedThread.setThread_id(obj.optLong("tid", 0));
 					feedThread.setSubject(obj.optString("subject", ""));
 					feedThread.setPage_view(obj.optInt("page_view", 0));
+//					feedThread.setCreate_time(obj.);
+//					feedThread.
 				}
 			}
 			
