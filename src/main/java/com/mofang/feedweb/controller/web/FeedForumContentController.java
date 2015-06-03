@@ -76,7 +76,7 @@ public class FeedForumContentController extends FeedCommonController {
 		JSONObject json = getHttpInfo(getRecommendGameRankUrl(), "", request);
 		List<NewGame> newGameList = new ArrayList<NewGame>();
 		
-		if (json.optInt("code", -1) == 0) {
+		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");
 			
 			if (data != null && data.length() > 0) {
@@ -101,7 +101,7 @@ public class FeedForumContentController extends FeedCommonController {
 		JSONObject json = getHttpInfo(getTopThreadsUrl(), "", request);
 		List<HotThread> hotThreadList = new ArrayList<HotThread>();
 		
-		if (json.optInt("code", -1) == 0) {
+		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");
 			
 			if (data != null && data.length() > 0) {
@@ -121,7 +121,7 @@ public class FeedForumContentController extends FeedCommonController {
 		JSONObject json = getHttpInfo(getForumInfoGetUrl(), param, request);
 		
 		FeedForum feedForum = new FeedForum();
-		if (json.optInt("code", -1) == 0) {
+		if (json != null && json.optInt("code", -1) == 0) {
 			JSONObject forum = json.optJSONObject("data");
 			
 			feedForum.setForum_id(forum.optLong("fid", 0));
@@ -157,7 +157,7 @@ public class FeedForumContentController extends FeedCommonController {
 		String param = "fid=" + fid;
 		JSONObject json = getHttpInfo(getRoleInfoListGetUrl(), param, request);
 		List<RoleInfo> roleList = new ArrayList<RoleInfo>();
-		if (json.optInt("code", -1) == 0) {
+		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");
 			if (data != null && data.length() > 0) {
 				for (int i = 0; i < data.length(); i++) {
@@ -212,7 +212,7 @@ public class FeedForumContentController extends FeedCommonController {
 		
 		JSONObject json = getHttpInfo(getThreadListUrl(), paramBuilder.toString(), request);
 		
-		if (json.optInt("code", -1) == 0) {
+		if (json != null && json.optInt("code", -1) == 0) {
 			JSONObject data = json.optJSONObject("data");
 			int total = data.optInt("total", 0);
 			JSONArray threads = data.optJSONArray("threads");
@@ -223,9 +223,24 @@ public class FeedForumContentController extends FeedCommonController {
 					FeedThread feedThread = new FeedThread();
 					feedThread.setThread_id(obj.optLong("tid", 0));
 					feedThread.setSubject(obj.optString("subject", ""));
-					feedThread.setPage_view(obj.optInt("page_view", 0));
-//					feedThread.setCreate_time(obj.);
-//					feedThread.
+					feedThread.setContent(obj.optString("content", ""));
+					feedThread.setPage_view(obj.optInt("pageview", 0));
+					feedThread.setReplies(obj.optInt("replies", 0));
+					feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
+					feedThread.setClosed(obj.optBoolean("is_closed", false));
+					feedThread.setElite(obj.optBoolean("is_elite", false));
+					feedThread.setTop(obj.optBoolean("is_top", false));
+					feedThread.setRecommends(obj.optInt("recommends", 0));
+					feedThread.setModerator(obj.optBoolean("is_moderator", false));
+					
+					JSONObject userObj = obj.optJSONObject("user");
+					if (userObj != null) {
+						feedThread.setUser_id(userObj.optLong("user_id", 0));
+						feedThread.setUser_name(userObj.optString("nickname", ""));
+						feedThread.setAvatar(userObj.optString("avatar", ""));
+					}
+					
+					threadList.add(feedThread);
 				}
 			}
 			

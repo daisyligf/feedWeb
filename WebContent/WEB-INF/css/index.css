@@ -10,7 +10,14 @@
   overflow: hidden;
   position: relative;
  }
-
+.con .con-top .box{
+	min-height: 336px;
+}
+.con .con-top .box img{
+	width:100%;
+	height:100%;
+	min-height: 336px;
+}
 .con .con-top .box ul{
 	-position: absolute;
 	z-index:1;
@@ -59,14 +66,7 @@
 	box-sizing: border-box;
 	padding-right:20px;  
 }
-.con .con-top .box{
-	min-height: 336px;
-}
-.con .con-top .box img{
-	width:100%;
-	height:100%;
-	min-height: 336px;
-}
+
 
 .con .con-top .rec .rec-con{
 	padding:20px;
@@ -292,6 +292,9 @@
 
 /*移动端响应*/
 @media (max-width:1024px){
+	.container{
+		margin-right:-15px;
+	}
 	.con .h2-con .col-md-4{
 		padding-right:15px;
 		margin-bottom:15px;
@@ -305,14 +308,16 @@
 	.con .con-top .col-xs-9{
 		margin-bottom:15px;
 	}
+
 	.con .con-top .col-xs-6{
 		padding-right:15px;
 	}
+	.con .con-top .hot-tj{
+		padding-right:15px;
+		max-height: initial;
+	}
 	.con .con-top .hot-tj .hot-con .title{
 		line-height: 60px;
-	}
-	.con .con-top .hot-tj{
-		max-height: initial;
 	}
 	.con .con-top .hot-tj .hot-con a img{
 		width:60px;
@@ -321,6 +326,7 @@
 	
 }
 @media (max-width:1024px) and (min-width:540px){
+	
 	.con .con-top .box{
 		height:336px;
 	}
@@ -336,10 +342,31 @@
 	}
 }
 @media (max-width:540px){
-	
+	.container{
+		margin-right:0px;
+	}
+	.con .h2-con{
+		margin-right:-10px;
+	}
+	.con .h2-con .col-md-4{
+		padding-right:10px;
+		margin-bottom: 10px;
+	}
+	.con{
+		padding:0px 10px;
+	}
+	.con .con-top .box{
+		min-height: 0px;
+	}
+	.con .con-top .box img{
+		min-height: 0px;
+	}
 	.con .con-top .rec{
 		padding:0px 16px 0px 0px;
 		margin-top:10px;
+	}
+	.con .con-top .col-xs-6{
+		padding:0px;
 	}
 	.con .con-top .col-xs-9{
 		margin-bottom: 5px;
@@ -351,7 +378,7 @@
 		display: none;
 	}
 	.con .con-top .hot-tj{
-		padding:0px 16px 0px 0px;
+		padding:0px;
 		margin-top:10px;
 	}
 	
@@ -389,8 +416,7 @@
 	}
 
 	.con .h2-con{
-		padding:0px 8px 0px 3px;
-	}
+		padding:0px;
 	.con .h2-con .col-sm-6{
 		padding-right:10px;
 		margin-bottom:10px;
