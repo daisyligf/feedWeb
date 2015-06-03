@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -141,11 +142,20 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
-	public void newThread(@RequestParam(value = "tid", required = false) long tid, @RequestParam String subject,
+	public void newThread(/*@RequestParam(value = "tid", required = false) long tid, 
 			@RequestParam String content, @RequestParam(value = "tagId") int tagId,
-			@RequestParam(value = "fid", required = false) int fid,
+			@RequestParam String subject, @RequestParam(value = "fid", required = false) int fid,*/
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		long tid = Integer.valueOf(request.getParameter("tid"));
+		String content = request.getParameter("content");
+		String strTagId = request.getParameter("tagId");
+		int tagId = 0;
+		if(!StringUtils.isEmpty(strTagId)){
+			tagId = Integer.valueOf(strTagId);
+		}
+		String subject = request.getParameter("subject");
+		int fid = Integer.valueOf(request.getParameter("fid"));
 		
 		String message = "保存失败";
 		

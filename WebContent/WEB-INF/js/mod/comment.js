@@ -17,17 +17,22 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
     var USE_TEST_DATA = 0;//测试数据
 
     var getUrl = "";//url路径示范
-    var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
-    var getCheckCode = "";//验证码校验
-    var codeUrl = "http://u.mofang.com/captcha/captcha";//验证码url
+    //var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+    //var codeUrl = "http://u.mofang.com/captcha/captcha";//验证码url
+    var getUserLoginStatus = "loginStatus";
+    var codeUrl = "generageCode";
+    var getCheckCode = "checkCode?code=" + $(".code-text").val();//验证码校验
     var ajaxMethod="json"; 
     if(USE_LOCAL_DATA){
-        getUserLoginStatus = "/bbs_html/statics/test/get_user.json"; //获取用户的登录状态
-        getCheckCode = "/bbs_html/statics/test/follow.json";
+//        getUserLoginStatus = "/bbs_html/statics/test/get_user.json"; //获取用户的登录状态
+//        getCheckCode = "/bbs_html/statics/test/follow.json";
+    	getUserLoginStatus = "loginStatus";
+    	getCheckCode = "checkCode?code=" + $(".code-text").val();
         ajaxMethod="json";
     }
     if(USE_TEST_DATA){
-        getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+        //getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+    	getUserLoginStatus = "loginStatus";
     }   
 
 
