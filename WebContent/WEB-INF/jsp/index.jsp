@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
 <html lang="en">
@@ -23,14 +24,15 @@
     <meta name="description" content="">
     <title>bbs首页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
-    <link rel="stylesheet" href="./statics/css/base.css">
-    <link rel="stylesheet" href="./statics/css/common.css">
-    <link rel="stylesheet" href="./statics/css/index.css">
-    <script src="./statics/js/sea.js"></script>
-    <script src="./statics/js/sea-config.js"></script>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/sea.js"></script>
+    <script src="./js/sea-config.js"></script>
+    <script src="./js/bbs-config.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
-        <script src="./statics/js/loader/dd_belatedpng.js"></script>
+        <script src="./js/loader/dd_belatedpng.js"></script>
         <script>
             DD_belatedPNG.fix('.pngfix');
         </script>
@@ -39,7 +41,7 @@
 
     <!--{* ie8 以下浏览器html5兼容层 *}-->
     <!--[if lt IE 9]>
-        <script src="./statics/js/loader/html5shiv.js"></script>
+        <script src="./js/loader/html5shiv.js"></script>
     <![endif]-->
 
 </head>
@@ -51,30 +53,37 @@
                 <div class="nav-left">
                     <a href="http://www.mofang.com">魔方网首页</a>
                 </div>
-                <div class="nav-right">
+                <div class="nav-right" id="topUserInfo">
                     <!-- 登陆状态 -->
-                    <!-- <a href="#" class="head"><img src="statics/img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
+                    <!-- top登录模板 -->
+                    
+                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
                     <div class="user-info">
                         <ul class="clearfix">
-                            <li class="header-money"><s class="icon-money"></s>34356</li>
-                            <li class="zuji"><a href="#">足迹</a><a href="#" class="msg">消息<s class="icon-red"></s></a><a href="#" class="libao">礼包库</a></li>
+                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
+                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
                             <li class="info">
-                               <a href="#">个人信息</a><a href="#">设置</a><a href="#" class="out">退出</a> 
+                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
                             </li>
                         </ul>
-                    </div> -->
+                    </div>
+                    
                     <!-- 登陆状态 -->
-                    <a href="#" class="load"><img src="statics/img/icon/load.png"></a>
+                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="statics/img/icon/load.png"></a>
                 </div>
             </div>
             <div class="nav-wap clearfix">
-              <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="statics/img/icon/nav_three.png"></a>
+                <div class="nav-wap-left">
+                  <a href="javascript:;"><img src="statics/img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a class="nav-info-home">首页</a>
-                    <a>个人中心</a>
+                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
+                    <a href="http://u.mofang.com">个人中心</a>
                   </p>
-              </div> 
+                </div>
+                  <div class="wap-logo">
+                    <img src="statics/img/icon/bbs_icon_wap.png"alt="">
+                  </div>
+               
             </div>
         </div>
         <!-- 头部结束 -->
@@ -85,7 +94,7 @@
             </div>
             <div class="bbs-search">
                 <input type="submit" class="ser-but" value="" id="submit"/>
-                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
+                <input type="text" class="ser-text" value="${recommendSearchKey} " id="keyword" placeholder="过来搜我"/>
             </div>
         </div>
         <!-- 搜索结束 -->
@@ -99,16 +108,16 @@
                             <!-- <div class="swipe-wrap"> -->
                                <ul class="swipe-wrap">
                                   <li>
-                                    <a href="#"><img src="./statics/img/img1.jpg"alt="" /></a>
-                                    <b class="swipe-wrap-info">愤怒的小鸟作者再出神作</b>
+                                    <a href="${tickers.thread_link1} "><img src="${tickers.ticker_icon1} "alt="" /></a>
+                                    <b class="swipe-wrap-info" >愤怒的小鸟作者再出神作</b>
                                   </li>
                                   <li>
-                                    <a href="#"><img src="./statics/img/img2.jpg"alt="" /></a>
-                                    <b class="swipe-wrap-info">愤怒的小鸟作者再出神作</b>
+                                    <a href="${tickers.thread_link2}"><img src="${tickers.ticker_icon2}"alt="" /></a>
+                                    <b class="swipe-wrap-info" >愤怒的小鸟作者再出神作</b>
                                   </li>
                                   <li>
-                                    <a href="#"><img src="./statics/img/img3.jpg"alt="" /></a>
-                                    <b class="swipe-wrap-info">愤怒的小鸟作者再出神作</b>
+                                    <a href="${tickers.thread_link3}"><img src="${tickers.ticker_icon3}"alt="" /></a>
+                                    <b class="swipe-wrap-info" >愤怒的小鸟作者再出神作</b>
                                   </li>
                                </ul>
                                <ol>
@@ -405,9 +414,10 @@
             <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
         </div>
         <!-- 底部结束 -->
-    </div>
+    </div>	
     
-   <script src="./statics/js/mod/index.js"></script>
+   <script src="./js/mod/index.js"></script>
+   <script src="./js/mod/common.js"></script>
    
 </body>
 </html>
