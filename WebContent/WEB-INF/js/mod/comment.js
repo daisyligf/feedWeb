@@ -141,7 +141,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
 
         //标签
         if(tags.length){
-            tags.val($(".sel-one").html());
+            tags.val($(".sel-one").attr("data-tagsId"));
         }
         
         //标题
@@ -321,9 +321,13 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
     function choice(_this){
         $(_this).next(".sel-more").find("a").unbind("click").bind("click",function(){
             var _v = $(this).html();
+            var _vId = $(this).attr("data-tagsId");
             var _vshow = $(_this).html();
+            var _vshowId = $(_this).attr("data-tagsId");
             $(_this).html(_v);
+            $(_this).attr("tagsId",_vId);
             $(this).html(_vshow);
+            $(this).attr("tagsId",_vshowId);
             $(".sel-one").removeClass('active');
             $(".sel-one").next(".sel-more").hide();
             return false;

@@ -11,9 +11,8 @@ public class FeedTag {
 
 	public FeedTag() {
 	}
-
+	
 	public FeedTag(int tag_id, String tag_name) {
-		super();
 		this.tag_id = tag_id;
 		this.tag_name = tag_name;
 	}

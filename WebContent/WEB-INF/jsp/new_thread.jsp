@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="com.mofang.feedweb.entity.FeedTag"%>
+<%@ page language="java" import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +71,7 @@
                 </div>
                 <div class="nav-right">
                     <!-- 登陆状态 -->
-                    <!-- <a href="#" class="head"><img src="statics/img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
+                    <!-- <a href="#" class="head"><img src="img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
                     <div class="user-info">
                         <ul class="clearfix">
                             <li class="header-money"><s class="icon-money"></s>34356</li>
@@ -79,12 +82,12 @@
                         </ul>
                     </div> -->
                     <!-- 登陆状态 -->
-                    <a href="#" class="load"><img src="statics/img/icon/load.png"></a>
+                    <a href="#" class="load"><img src="img/icon/load.png"></a>
                 </div>
             </div>
             <div class="nav-wap clearfix">
               <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="statics/img/icon/nav_three.png"></a>
+                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a class="nav-info-home">首页</a>
                     <a>个人中心</a>
@@ -98,14 +101,14 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                        <dd><a href='#'>带你装逼带你飞</a></dd>
-                        <dd class="money"><s class="icon-money"></s>235427</dd>
+                        <dt><a href="#"><img src="${user.avatar }" alt=""></a></dt>
+                        <dd><a href='#'>${user.nickname }</a></dd>
+                        <dd class="money"><s class="icon-money"></s>${user.coin }</dd>
                     </dl>
                     <ul class="clearfix">
-                        <li class="col-xs-4"><span>20</span>帖子</li>
-                        <li class="col-xs-4"><span>220</span>回复</li>
-                        <li class="col-xs-4 no-line"><span>10</span>精华</li>
+                        <li class="col-xs-4"><span>${user.threads }</span>帖子</li>
+                        <li class="col-xs-4"><span>${user.replies }</span>回复</li>
+                        <li class="col-xs-4 no-line"><span>${user.eliteThreads }</span>精华</li>
                     </ul> 
                 </div>
                 
@@ -118,9 +121,23 @@
                         <div class="sel">
                             <a class="sel-one">综合</a>
                             <div class="sel-more">
-                                <a href="javascript:;">置顶</a>
-                                <a href="javascript:;">精华</a>
-                                <a href="javascript:;">锁帖</a>
+                            
+<%--                             	<c:forEach items=" ${tagList}" var="tag" >
+	                                <a href="javascript:;"  data-tagsId="${tag.tag_id }" >1</a>
+                            	</c:forEach> --%>
+                            	<%
+                            		List<FeedTag> list = (List)request.getAttribute("tagList");
+                            		for(int idx =0 ; idx < list.size(); idx ++ ) {
+                            			FeedTag tag = list.get(idx);
+                            	%>
+                            			<a href="javascript:;"  data-tagsId="<%=tag.getTag_id() %>>" ><%=tag.getTag_name() %></a>
+                            	<%
+                            		}
+                            	%>
+                            	
+<!--                                 <a href="javascript:;"   data-tagsId="2">精华</a>
+                                <a href="javascript:;"   data-tagsId="3">锁帖</a> -->
+                                
                             </div>
                         </div>
                     </div>
@@ -137,12 +154,12 @@
                                 <script type="text/plain" id="myEditor" style="height:240px;"></script>
                             </div>
                         </dd>
-                        <form id="editor-form" action="/" method="get">
-                            <input type="hidden" name="fid" class="editor-fid" value="123124"/>
-                            <input type="hidden" name="tid"  class="editor-tid" value="1234">
-                            <input type="hidden" name="title"  class="editor-title" value="1234">
-                            <input type="hidden" name="tags"  class="editor-tags" value="1234">
-                            <input type="hidden" name="content"  class="editor-cont" value=""/>
+                        <form id="editor-form" action="newThread" method="post">
+                            <input type="hidden" name="fid" class="editor-fid" value="${fid }"/>
+                            <input type="hidden" name="tid"  class="editor-tid" value="${tid }">
+                            <input type="hidden" name="subject"  class="editor-title" value="${threadInfo.subject }">
+                            <input type="hidden" name="tagId"  class="editor-tags" value="${tagId }">
+                            <input type="hidden" name="content"  class="editor-cont" value="${threadInfo.htmlContent }"/>
                         </form>
                     </dl>
 
@@ -171,11 +188,11 @@
         
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="statics/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="mg/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">
-            <img src="statics/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
         </div>
         <!-- 弹出框结束 -->
     </div>

@@ -114,11 +114,11 @@ public class Constant {
 	// 发帖
 	public static final String THREAD_CREATE_URL = "/feed/v2/web/newthread";
 	// 楼主信息
-	public static final String THREAD_MODERATOR_INFO_URL = "feed/v2/web/user/info";
+	public static final String THREAD_MODERATOR_INFO_URL = "/feed/v2/web/user/info";
 	// 版块标签
-	public static final String FORUM_TAG_LIST_URL = "feed/v2/web/forum/taglist"; 
+	public static final String FORUM_TAG_LIST_URL = "/feed/v2/web/forum/taglist"; 
 	// 帖子详情
-	public static final String THREAD_INFO_URL = "feed/v2/web/thread/info"; 
+	public static final String THREAD_INFO_URL = "/feed/v2/web/thread/info"; 
 	// 帖子-编辑更新
 	public static final String THREAD_EDIT_URL = "/feed/v2/web/thread/edit";
 

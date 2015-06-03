@@ -9,10 +9,10 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	require("jquery/jquery-pagebar");//分页插件
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
-	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_LOCAL_DATA = 0;//本地数据
+	var USE_TEST_DATA = 1;//测试数据
 
-	
+		
 	var getPlateUrl = "" //获取搜索板块数据
 	var getPostUrl = "" //获取搜索帖子数据
 	var ajaxMethod="json";
@@ -21,8 +21,8 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		getPostUrl='/bbs_html/statics/test/ser_post.json';
 	}
 	if(USE_TEST_DATA){
-		getPlateUrl='';
-		getPostUrl='';
+		getPlateUrl='searchForum';
+		getPostUrl='searchThread';
 	}
 
 	Handlebars.registerHelper("isshowimg",function(v1,v2,options){
@@ -37,7 +37,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	Handlebars.registerHelper("timeformat",function(value){
 		//console.log(typeof value);
 
-		var time = new Date(value*1000);
+		var time = new Date(value);
 
 		var year = time.getFullYear();
 		var month = time.getMonth()+1;
@@ -99,7 +99,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 
 		$.ajax({
 		    url:getPlateUrl,
-		    type:"POST",
+		    type:"GET",
 		    dataType:ajaxMethod,
 		    data:options,
 		    success: function(res) {
@@ -161,7 +161,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		options = $.extend(true, defaults, options);
 		$.ajax({
 		    url:getPostUrl,
-		    type:"POST",
+		    type:"GET",
 		    dataType:ajaxMethod,
 		    data:options,
 		    success: function(res) {
