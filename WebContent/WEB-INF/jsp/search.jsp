@@ -28,23 +28,16 @@
     <link rel="stylesheet" href="css/search.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
-    <script src="js/lib/jquery.js"></script>
     <script type="text/javascript">
-	/*$('#submit').click(function() {
-	    	//location.href="subject";
-	    	alert(1);
-	    });
-     */
 		function search(){
-    		//var s = $("#keyword").val();
-    		//alert(document.getElementById("keyword").value);
+			//var s = $("#keyword").val();
+			//alert(document.getElementById("keyword").value);
 			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
-    	} 
-    
+		}
     </script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
-        <script src="./statics/js/loader/dd_belatedpng.js"></script>
+        <script src="js/loader/dd_belatedpng.js"></script>
         <script>
             DD_belatedPNG.fix('.pngfix');
         </script>
@@ -53,7 +46,7 @@
 
     <!--{* ie8 以下浏览器html5兼容层 *}-->
     <!--[if lt IE 9]>
-        <script src="./statics/js/loader/html5shiv.js"></script>
+        <script src="js/loader/html5shiv.js"></script>
     <![endif]-->
 
 </head>
@@ -86,10 +79,10 @@
                 <img src="img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
-                <!-- <form action="search"> -->
-                    <input type="submit" class="ser-but" value=""  id="submit" onclick="search()"/>
+                <!-- <form action="search.html"> -->
+                    <input type="submit" class="ser-but" value="" id="submit" onclick="search()"/>
                     <input type="text" class="ser-text" value="${keyword }" id="keyword" placeholder="过来搜我"/>
-               <!--  </form>  -->
+                <!-- </form> --> 
             </div>
         </div>
         <!-- 搜索结束 -->
@@ -97,7 +90,7 @@
         <div class="con clearfix">
             
            <!-- 搜索板块开始 -->
-           <div class="h2">板块<span>20</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
+           <div class="h2 plate-num">板块<span>20</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
            <!-- 板块模板 -->
             <script id="plateTemplate" type="text/x-handlebars-template">
                 {{#each list}}
@@ -120,7 +113,7 @@
            <!-- 搜索板块结束 -->
               
            <!-- 搜索帖子开始 -->
-           <div class="h2">帖子<span>24</span><a href="#">更多 ></a></div>
+           <div class="h2 post-num">帖子<span>24</span><a href="#">更多 ></a></div>
             <div class="con-bottom clearfix">
              <div class="col-xs-12 bg-white">
 
@@ -129,29 +122,30 @@
                 <script id="postTemplate" type="text/x-handlebars-template">
                     {{#each threads}}
                     <dl class="clearfix">
-                        <dt><a href="{{link_url}}"><img src="{{user.avatar}}"alt=""></a></dt>
+                        <dt><a href="{{link_url}}"><img src="{{avatar}}"alt=""></a></dt>
                         <div class="infos">
                             <dd class="title">
-                                <a href="{{link_url}}">{{subject}}
-								 {{#if is_top}}
-		    						<s class="icon-ding"></s>
-		    					 {{/if}}
-								
- 								 {{#if is_elite}}
-		    					    <s class="icon-jing"></s>
-		    				     {{/if}}
+                                <a href="{{link_url}}">{{title}}
 
-								 {{#if is_closed}}
-		    						<s class="icon-tu"></s>
-                                 {{/if}}                                 
+                                    {{#isshowimg pic 0}}
+                                        <s class="icon-tu"></s>
+                                    {{else}}
 
+                                    {{/isshowimg}}
+                                    {{#if is_top}}
+                                        <s class="icon-ding"></s>
+                                    {{/if}}
+                                    {{#if is_elite}}
+                                    </s><s class="icon-jing"></s>
+                                    {{/if}}
+                                    
                                 </a>
                             </dd>
-                            <dd>{{content}}</dd>
+                            <dd>{{subject}}</dd>
                             <dd class="info clearfix">
                                 <p class="author">
-                                    <span>{{user.nickname}}</span>
-                                    <span class="time">{{user.create_time}}</span>
+                                    <span>{{nickname}}</span>
+                                    <span class="time">{{timeformat create_time}}</span>
                                 </p>
                                 <p class="look">
                                     <span><s class="icon-look"></s>{{pageview}}</span>

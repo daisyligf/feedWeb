@@ -54,6 +54,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 				info.setReplies(data.optInt("replies", 0));
 				info.setThreads(data.optInt("threads", 0));
 				info.setEliteThreads(data.optInt("elite_threads", 0));
+				info.setCoin(data.optInt("coin", 0));
 			}
 		}
 		map.put("user", info);
@@ -132,7 +133,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		String message = "保持失败";
+		String message = "保存失败";
 		
 		//发新帖
 		if(tid == 0) {
@@ -173,5 +174,5 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		response.getWriter().print(message);
 	}
 	
-
+	
 }

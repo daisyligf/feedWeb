@@ -23,10 +23,16 @@
     <title>bbs发帖页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <link rel="stylesheet" href="css/base.css">
+
+    <link rel="stylesheet" href="js/editor/css/umeditor.css">
+    <link rel="stylesheet" href="js/editor/css/fixeditor.css">
+    <link rel="stylesheet" href="js/editor/emotion.css">
+
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/post.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
+    <script src="js/bbs-config.js"></script>
 
 
     <!--{* IE6 png 图像处理 *}-->
@@ -43,16 +49,13 @@
         <script src="js/loader/html5shiv.js"></script>
     <![endif]-->
    
-    <link rel="stylesheet" href="js/editor/css/umeditor.css">
-    <link rel="stylesheet" href="js/editor/css/fixeditor.css">
-    <link rel="stylesheet" href="js/editor/emotion.css">
+    
     <script src="js/editor/js/jquery.min.js"></script>
     <script src="js/editor/js/umeditor.config.js"></script>
     <script src="js/editor/js/umeditor.js"></script>
     <script src="js/editor/lang/zh-cn/zh-cn.js"></script>
     <script src="js/editor/btn.js"></script>
     <script src="js/editor/feed-emotion.js"></script>
-    <script src="js/editor/comment.js"></script>
     
 </head>
 <body>
@@ -110,26 +113,46 @@
             <div class="col-xs-9 col-md-12 post">
                 <h2>发新帖</h2>
                 <div class="title-type clearfix">
-                    <input type="text" class="col-xs-10 title" placeholder="帖子标题">
+                    <input type="text" class="col-xs-10 title editor-title" placeholder="帖子标题不超过30个字">
                     <div class="col-xs-2">
                         <div class="sel">
-                            <a class="sel-defa">
-                                综合
-                            </a>
+                            <a class="sel-one">综合</a>
+                            <div class="sel-more">
+                                <a href="javascript:;">置顶</a>
+                                <a href="javascript:;">精华</a>
+                                <a href="javascript:;">锁帖</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="editer">
-                    <div class="editor-textarea">
-                    </div>
-                    <script type="text/plain" id="myEditor" style="height:240px;">{$post.content}</script>
+                    <dl>
+                        <dt></dt>
+                       
+                        <dd>
+                            <div class="editer">
+                                <div class="editor-textarea">
+                                    <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.mofang.com/">登录</a> | <a  class="maskReg" href="http://u.mofang.com/">立即注册</a></div>
+                                </div>
+                                <script type="text/plain" id="myEditor" style="height:240px;"></script>
+                            </div>
+                        </dd>
+                        <form id="editor-form" action="/" method="get">
+                            <input type="hidden" name="fid" class="editor-fid" value="123124"/>
+                            <input type="hidden" name="tid"  class="editor-tid" value="1234">
+                            <input type="hidden" name="title"  class="editor-title" value="1234">
+                            <input type="hidden" name="tags"  class="editor-tags" value="1234">
+                            <input type="hidden" name="content"  class="editor-cont" value=""/>
+                        </form>
+                    </dl>
 
-                    <!-- <textarea name="" id="" class="textarea" cols="30" rows="10"></textarea> -->
                 </div>
                 <div class="sub clearfix">
                     <input type="text" class="code-text">
-                    <img src="statics/img/img1.jpg" alt="" class="code">
-                    <input type="submit" class="submit" value="发表帖子">
+                    <img src="http://u.mofang.com/captcha/captcha" alt="" class="code">
+
+                    <input type="button" class="submit reply-submit" value="发表帖子">
+                    <span class="word-count">还可以输入5000字</span>
                 </div>
             </div>
         </div>
@@ -139,11 +162,26 @@
             <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
         </div>
         <!-- 底部结束 -->
+        <!-- 弹出框开始 -->
+        <!-- 遮罩层开始 -->
+        <div class="mask-bg">
+            
+        </div>
+        <!-- 遮罩层结束 -->
+        
+        <!-- 成功 -->
+        <div class="pop pop-post-ok">   
+            <img src="statics/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+        </div>
+        <!-- 失败 -->
+        <div class="pop pop-top-fail">
+            <img src="statics/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+        </div>
+        <!-- 弹出框结束 -->
     </div>
-    <script>
-        seajs.use("comment");
-    </script>
-   <script src="js/mod/index.js"></script>
+    
+   <script src="js/mod/common.js"></script>
+   <script src="js/mod/comment.js"></script>
    
 </body>
 </html>

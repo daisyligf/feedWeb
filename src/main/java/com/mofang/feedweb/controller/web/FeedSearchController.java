@@ -45,8 +45,10 @@ public class FeedSearchController extends FeedCommonController{
 					String content = objThread.optString("content", "");
 					if(!StringUtils.isEmpty(content)) {
 						//截取
-						content = content.substring(0, 39);
-						objThread.put("content", content);
+						if(content.length() > 40){
+							content = content.substring(0, 39);
+							objThread.put("content", content);
+						}
 					}
 				}
 			}
