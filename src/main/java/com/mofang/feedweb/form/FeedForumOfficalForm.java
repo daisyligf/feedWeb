@@ -6,22 +6,22 @@ public class FeedForumOfficalForm {
 	private String forumName1;
 	private String icon1;
 	private int totalThreads1;
-	private int today_threads1;
+	private int todayThreads1;
 	private long forumId2;
 	private String forumName2;
 	private String icon2;
 	private int totalThreads2;
-	private int today_threads2;
+	private int todayThreads2;
 	private long forumId3;
 	private String forumName3;
 	private String icon3;
 	private int totalThreads3;
-	private int today_threads3;
+	private int todayThreads3;
 	private long forumId4;
 	private String forumName4;
 	private String icon4;
 	private int totalThreads4;
-	private int today_threads4;
+	private int todayThreads4;
 	
 	public long getForumId1() {
 		return forumId1;
@@ -47,11 +47,11 @@ public class FeedForumOfficalForm {
 	public void setTotalThreads1(int totalThreads1) {
 		this.totalThreads1 = totalThreads1;
 	}
-	public int getToday_threads1() {
-		return today_threads1;
+	public int getTodayThreads1() {
+		return todayThreads1;
 	}
-	public void setToday_threads1(int today_threads1) {
-		this.today_threads1 = today_threads1;
+	public void setTodayThreads1(int todayThreads1) {
+		this.todayThreads1 = todayThreads1;
 	}
 	public long getForumId2() {
 		return forumId2;
@@ -77,11 +77,11 @@ public class FeedForumOfficalForm {
 	public void setTotalThreads2(int totalThreads2) {
 		this.totalThreads2 = totalThreads2;
 	}
-	public int getToday_threads2() {
-		return today_threads2;
+	public int getTodayThreads2() {
+		return todayThreads2;
 	}
-	public void setToday_threads2(int today_threads2) {
-		this.today_threads2 = today_threads2;
+	public void setTodayThreads2(int todayThreads2) {
+		this.todayThreads2 = todayThreads2;
 	}
 	public long getForumId3() {
 		return forumId3;
@@ -107,11 +107,11 @@ public class FeedForumOfficalForm {
 	public void setTotalThreads3(int totalThreads3) {
 		this.totalThreads3 = totalThreads3;
 	}
-	public int getToday_threads3() {
-		return today_threads3;
+	public int getTodayThreads3() {
+		return todayThreads3;
 	}
-	public void setToday_threads3(int today_threads3) {
-		this.today_threads3 = today_threads3;
+	public void setTodayThreads3(int todayThreads3) {
+		this.todayThreads3 = todayThreads3;
 	}
 	public long getForumId4() {
 		return forumId4;
@@ -137,12 +137,14 @@ public class FeedForumOfficalForm {
 	public void setTotalThreads4(int totalThreads4) {
 		this.totalThreads4 = totalThreads4;
 	}
-	public int getToday_threads4() {
-		return today_threads4;
+	public int getTodayThreads4() {
+		return todayThreads4;
 	}
-	public void setToday_threads4(int today_threads4) {
-		this.today_threads4 = today_threads4;
+	public void setTodayThreads4(int todayThreads4) {
+		this.todayThreads4 = todayThreads4;
 	}
+	
+	
 	
 	
 }

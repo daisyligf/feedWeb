@@ -15,48 +15,64 @@ public class FeedHomeListHotForumForm {
 	private int hotTodayThreads1;
 	private int hotTotalThreads1;
 	private String hotForumUrl1;
+	private String hotPrefectureUrl1;
+	private String hotGiftUrl1;
 	private long hotForumId2;
 	private String hotForumName2;
 	private String hotIcon2;
 	private int hotTodayThreads2;
 	private int hotTotalThreads2;
 	private String hotForumUrl2;
+	private String hotPrefectureUrl2;
+	private String hotGiftUrl2;
 	private long hotForumId3;
 	private String hotForumName3;
 	private String hotIcon3;
 	private int hotTodayThreads3;
 	private int hotTotalThreads3;
 	private String hotForumUrl3;
+	private String hotPrefectureUrl3;
+	private String hotGiftUrl3;
 	private long hotForumId4;
 	private String hotForumName4;
 	private String hotIcon4;
 	private int hotTodayThreads4;
 	private int hotTotalThreads4;
 	private String hotForumUrl4;
+	private String hotPrefectureUrl4;
+	private String hotGiftUrl4;
 	private long hotForumId5;
 	private String hotForumName5;
 	private String hotIcon5;
 	private int hotTodayThreads5;
 	private int hotTotalThreads5;
 	private String hotForumUrl5;
+	private String hotPrefectureUrl5;
+	private String hotGiftUrl5;
 	private long hotForumId6;
 	private String hotForumName6;
 	private String hotIcon6;
 	private int hotTodayThreads6;
 	private int hotTotalThreads6;
 	private String hotForumUrl6;
+	private String hotPrefectureUrl6;
+	private String hotGiftUrl6;
 	private long hotForumId7;
 	private String hotForumName7;
 	private String hotIcon7;
 	private int hotTodayThreads7;
 	private int hotTotalThreads7;
 	private String hotForumUrl7;
+	private String hotPrefectureUrl7;
+	private String hotGiftUrl7;
 	private long hotForumId8;
 	private String hotForumName8;
 	private String hotIcon8;
 	private int hotTodayThreads8;
 	private int hotTotalThreads8;
 	private String hotForumUrl8;
+	private String hotPrefectureUrl8;
+	private String hotGiftUrl8;
 	
 	
 	public long getHotForumId1() {
@@ -95,6 +111,18 @@ public class FeedHomeListHotForumForm {
 	public void setHotForumUrl1(String hotForumUrl1) {
 		this.hotForumUrl1 = hotForumUrl1;
 	}
+	public String getHotPrefectureUrl1() {
+		return hotPrefectureUrl1;
+	}
+	public void setHotPrefectureUrl1(String hotPrefectureUrl1) {
+		this.hotPrefectureUrl1 = hotPrefectureUrl1;
+	}
+	public String getHotGiftUrl1() {
+		return hotGiftUrl1;
+	}
+	public void setHotGiftUrl1(String hotGiftUrl1) {
+		this.hotGiftUrl1 = hotGiftUrl1;
+	}
 	public long getHotForumId2() {
 		return hotForumId2;
 	}
@@ -130,6 +158,18 @@ public class FeedHomeListHotForumForm {
 	}
 	public void setHotForumUrl2(String hotForumUrl2) {
 		this.hotForumUrl2 = hotForumUrl2;
+	}
+	public String getHotPrefectureUrl2() {
+		return hotPrefectureUrl2;
+	}
+	public void setHotPrefectureUrl2(String hotPrefectureUrl2) {
+		this.hotPrefectureUrl2 = hotPrefectureUrl2;
+	}
+	public String getHotGiftUrl2() {
+		return hotGiftUrl2;
+	}
+	public void setHotGiftUrl2(String hotGiftUrl2) {
+		this.hotGiftUrl2 = hotGiftUrl2;
 	}
 	public long getHotForumId3() {
 		return hotForumId3;
@@ -167,6 +207,18 @@ public class FeedHomeListHotForumForm {
 	public void setHotForumUrl3(String hotForumUrl3) {
 		this.hotForumUrl3 = hotForumUrl3;
 	}
+	public String getHotPrefectureUrl3() {
+		return hotPrefectureUrl3;
+	}
+	public void setHotPrefectureUrl3(String hotPrefectureUrl3) {
+		this.hotPrefectureUrl3 = hotPrefectureUrl3;
+	}
+	public String getHotGiftUrl3() {
+		return hotGiftUrl3;
+	}
+	public void setHotGiftUrl3(String hotGiftUrl3) {
+		this.hotGiftUrl3 = hotGiftUrl3;
+	}
 	public long getHotForumId4() {
 		return hotForumId4;
 	}
@@ -202,6 +254,18 @@ public class FeedHomeListHotForumForm {
 	}
 	public void setHotForumUrl4(String hotForumUrl4) {
 		this.hotForumUrl4 = hotForumUrl4;
+	}
+	public String getHotPrefectureUrl4() {
+		return hotPrefectureUrl4;
+	}
+	public void setHotPrefectureUrl4(String hotPrefectureUrl4) {
+		this.hotPrefectureUrl4 = hotPrefectureUrl4;
+	}
+	public String getHotGiftUrl4() {
+		return hotGiftUrl4;
+	}
+	public void setHotGiftUrl4(String hotGiftUrl4) {
+		this.hotGiftUrl4 = hotGiftUrl4;
 	}
 	public long getHotForumId5() {
 		return hotForumId5;
@@ -239,6 +303,18 @@ public class FeedHomeListHotForumForm {
 	public void setHotForumUrl5(String hotForumUrl5) {
 		this.hotForumUrl5 = hotForumUrl5;
 	}
+	public String getHotPrefectureUrl5() {
+		return hotPrefectureUrl5;
+	}
+	public void setHotPrefectureUrl5(String hotPrefectureUrl5) {
+		this.hotPrefectureUrl5 = hotPrefectureUrl5;
+	}
+	public String getHotGiftUrl5() {
+		return hotGiftUrl5;
+	}
+	public void setHotGiftUrl5(String hotGiftUrl5) {
+		this.hotGiftUrl5 = hotGiftUrl5;
+	}
 	public long getHotForumId6() {
 		return hotForumId6;
 	}
@@ -274,6 +350,18 @@ public class FeedHomeListHotForumForm {
 	}
 	public void setHotForumUrl6(String hotForumUrl6) {
 		this.hotForumUrl6 = hotForumUrl6;
+	}
+	public String getHotPrefectureUrl6() {
+		return hotPrefectureUrl6;
+	}
+	public void setHotPrefectureUrl6(String hotPrefectureUrl6) {
+		this.hotPrefectureUrl6 = hotPrefectureUrl6;
+	}
+	public String getHotGiftUrl6() {
+		return hotGiftUrl6;
+	}
+	public void setHotGiftUrl6(String hotGiftUrl6) {
+		this.hotGiftUrl6 = hotGiftUrl6;
 	}
 	public long getHotForumId7() {
 		return hotForumId7;
@@ -311,6 +399,18 @@ public class FeedHomeListHotForumForm {
 	public void setHotForumUrl7(String hotForumUrl7) {
 		this.hotForumUrl7 = hotForumUrl7;
 	}
+	public String getHotPrefectureUrl7() {
+		return hotPrefectureUrl7;
+	}
+	public void setHotPrefectureUrl7(String hotPrefectureUrl7) {
+		this.hotPrefectureUrl7 = hotPrefectureUrl7;
+	}
+	public String getHotGiftUrl7() {
+		return hotGiftUrl7;
+	}
+	public void setHotGiftUrl7(String hotGiftUrl7) {
+		this.hotGiftUrl7 = hotGiftUrl7;
+	}
 	public long getHotForumId8() {
 		return hotForumId8;
 	}
@@ -347,6 +447,19 @@ public class FeedHomeListHotForumForm {
 	public void setHotForumUrl8(String hotForumUrl8) {
 		this.hotForumUrl8 = hotForumUrl8;
 	}
+	public String getHotPrefectureUrl8() {
+		return hotPrefectureUrl8;
+	}
+	public void setHotPrefectureUrl8(String hotPrefectureUrl8) {
+		this.hotPrefectureUrl8 = hotPrefectureUrl8;
+	}
+	public String getHotGiftUrl8() {
+		return hotGiftUrl8;
+	}
+	public void setHotGiftUrl8(String hotGiftUrl8) {
+		this.hotGiftUrl8 = hotGiftUrl8;
+	}
+	
 	
 	
 

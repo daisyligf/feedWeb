@@ -12,52 +12,67 @@ public class FeedHomeListRecommendGameForm {
 	private long forumId1;
 	private String forumName1;
 	private String icon1;
-	private String todayThreads1;
-	private String totalThreads1;
+	private int todayThreads1;
+	private int totalThreads1;
 	private String forumUrl1;
+	private String downloadUrl1;
+	private String giftUrl1;
 	private long forumId2;
 	private String forumName2;
 	private String icon2;
-	private String todayThreads2;
-	private String totalThreads2;
+	private int todayThreads2;
+	private int totalThreads2;
 	private String forumUrl2;
+	private String downloadUrl2;
+	private String giftUrl2;
 	private long forumId3;
 	private String forumName3;
 	private String icon3;
-	private String todayThreads3;
-	private String totalThreads3;
+	private int todayThreads3;
+	private int totalThreads3;
 	private String forumUrl3;
+	private String downloadUrl3;
+	private String giftUrl3;
 	private long forumId4;
 	private String forumName4;
 	private String icon4;
-	private String todayThreads4;
-	private String totalThreads4;
+	private int todayThreads4;
+	private int totalThreads4;
 	private String forumUrl4;
+	private String downloadUrl4;
+	private String giftUrl4;
 	private long forumId5;
 	private String forumName5;
 	private String icon5;
-	private String todayThreads5;
-	private String totalThreads5;
+	private int todayThreads5;
+	private int totalThreads5;
 	private String forumUrl5;
+	private String downloadUrl5;
+	private String giftUrl5;
 	private long forumId6;
 	private String forumName6;
 	private String icon6;
-	private String todayThreads6;
-	private String totalThreads6;
+	private int todayThreads6;
+	private int totalThreads6;
 	private String forumUrl6;
+	private String downloadUrl6;
+	private String giftUrl6;
 	private long forumId7;
 	private String forumName7;
 	private String icon7;
-	private String todayThreads7;
-	private String totalThreads7;
+	private int todayThreads7;
+	private int totalThreads7;
 	private String forumUrl7;
+	private String downloadUrl7;
+	private String giftUrl7;
 	private long forumId8;
 	private String forumName8;
 	private String icon8;
-	private String todayThreads8;
-	private String totalThreads8;
+	private int todayThreads8;
+	private int totalThreads8;
 	private String forumUrl8;
-	
+	private String downloadUrl8;
+	private String giftUrl8;
 	
 	public long getForumId1() {
 		return forumId1;
@@ -77,16 +92,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon1(String icon1) {
 		this.icon1 = icon1;
 	}
-	public String getTodayThreads1() {
+	public int getTodayThreads1() {
 		return todayThreads1;
 	}
-	public void setTodayThreads1(String todayThreads1) {
+	public void setTodayThreads1(int todayThreads1) {
 		this.todayThreads1 = todayThreads1;
 	}
-	public String getTotalThreads1() {
+	public int getTotalThreads1() {
 		return totalThreads1;
 	}
-	public void setTotalThreads1(String totalThreads1) {
+	public void setTotalThreads1(int totalThreads1) {
 		this.totalThreads1 = totalThreads1;
 	}
 	public String getForumUrl1() {
@@ -94,6 +109,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl1(String forumUrl1) {
 		this.forumUrl1 = forumUrl1;
+	}
+	public String getDownloadUrl1() {
+		return downloadUrl1;
+	}
+	public void setDownloadUrl1(String downloadUrl1) {
+		this.downloadUrl1 = downloadUrl1;
+	}
+	public String getGiftUrl1() {
+		return giftUrl1;
+	}
+	public void setGiftUrl1(String giftUrl1) {
+		this.giftUrl1 = giftUrl1;
 	}
 	public long getForumId2() {
 		return forumId2;
@@ -113,16 +140,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon2(String icon2) {
 		this.icon2 = icon2;
 	}
-	public String getTodayThreads2() {
+	public int getTodayThreads2() {
 		return todayThreads2;
 	}
-	public void setTodayThreads2(String todayThreads2) {
+	public void setTodayThreads2(int todayThreads2) {
 		this.todayThreads2 = todayThreads2;
 	}
-	public String getTotalThreads2() {
+	public int getTotalThreads2() {
 		return totalThreads2;
 	}
-	public void setTotalThreads2(String totalThreads2) {
+	public void setTotalThreads2(int totalThreads2) {
 		this.totalThreads2 = totalThreads2;
 	}
 	public String getForumUrl2() {
@@ -130,6 +157,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl2(String forumUrl2) {
 		this.forumUrl2 = forumUrl2;
+	}
+	public String getDownloadUrl2() {
+		return downloadUrl2;
+	}
+	public void setDownloadUrl2(String downloadUrl2) {
+		this.downloadUrl2 = downloadUrl2;
+	}
+	public String getGiftUrl2() {
+		return giftUrl2;
+	}
+	public void setGiftUrl2(String giftUrl2) {
+		this.giftUrl2 = giftUrl2;
 	}
 	public long getForumId3() {
 		return forumId3;
@@ -149,16 +188,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon3(String icon3) {
 		this.icon3 = icon3;
 	}
-	public String getTodayThreads3() {
+	public int getTodayThreads3() {
 		return todayThreads3;
 	}
-	public void setTodayThreads3(String todayThreads3) {
+	public void setTodayThreads3(int todayThreads3) {
 		this.todayThreads3 = todayThreads3;
 	}
-	public String getTotalThreads3() {
+	public int getTotalThreads3() {
 		return totalThreads3;
 	}
-	public void setTotalThreads3(String totalThreads3) {
+	public void setTotalThreads3(int totalThreads3) {
 		this.totalThreads3 = totalThreads3;
 	}
 	public String getForumUrl3() {
@@ -166,6 +205,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl3(String forumUrl3) {
 		this.forumUrl3 = forumUrl3;
+	}
+	public String getDownloadUrl3() {
+		return downloadUrl3;
+	}
+	public void setDownloadUrl3(String downloadUrl3) {
+		this.downloadUrl3 = downloadUrl3;
+	}
+	public String getGiftUrl3() {
+		return giftUrl3;
+	}
+	public void setGiftUrl3(String giftUrl3) {
+		this.giftUrl3 = giftUrl3;
 	}
 	public long getForumId4() {
 		return forumId4;
@@ -185,16 +236,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon4(String icon4) {
 		this.icon4 = icon4;
 	}
-	public String getTodayThreads4() {
+	public int getTodayThreads4() {
 		return todayThreads4;
 	}
-	public void setTodayThreads4(String todayThreads4) {
+	public void setTodayThreads4(int todayThreads4) {
 		this.todayThreads4 = todayThreads4;
 	}
-	public String getTotalThreads4() {
+	public int getTotalThreads4() {
 		return totalThreads4;
 	}
-	public void setTotalThreads4(String totalThreads4) {
+	public void setTotalThreads4(int totalThreads4) {
 		this.totalThreads4 = totalThreads4;
 	}
 	public String getForumUrl4() {
@@ -202,6 +253,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl4(String forumUrl4) {
 		this.forumUrl4 = forumUrl4;
+	}
+	public String getDownloadUrl4() {
+		return downloadUrl4;
+	}
+	public void setDownloadUrl4(String downloadUrl4) {
+		this.downloadUrl4 = downloadUrl4;
+	}
+	public String getGiftUrl4() {
+		return giftUrl4;
+	}
+	public void setGiftUrl4(String giftUrl4) {
+		this.giftUrl4 = giftUrl4;
 	}
 	public long getForumId5() {
 		return forumId5;
@@ -221,16 +284,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon5(String icon5) {
 		this.icon5 = icon5;
 	}
-	public String getTodayThreads5() {
+	public int getTodayThreads5() {
 		return todayThreads5;
 	}
-	public void setTodayThreads5(String todayThreads5) {
+	public void setTodayThreads5(int todayThreads5) {
 		this.todayThreads5 = todayThreads5;
 	}
-	public String getTotalThreads5() {
+	public int getTotalThreads5() {
 		return totalThreads5;
 	}
-	public void setTotalThreads5(String totalThreads5) {
+	public void setTotalThreads5(int totalThreads5) {
 		this.totalThreads5 = totalThreads5;
 	}
 	public String getForumUrl5() {
@@ -238,6 +301,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl5(String forumUrl5) {
 		this.forumUrl5 = forumUrl5;
+	}
+	public String getDownloadUrl5() {
+		return downloadUrl5;
+	}
+	public void setDownloadUrl5(String downloadUrl5) {
+		this.downloadUrl5 = downloadUrl5;
+	}
+	public String getGiftUrl5() {
+		return giftUrl5;
+	}
+	public void setGiftUrl5(String giftUrl5) {
+		this.giftUrl5 = giftUrl5;
 	}
 	public long getForumId6() {
 		return forumId6;
@@ -257,16 +332,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon6(String icon6) {
 		this.icon6 = icon6;
 	}
-	public String getTodayThreads6() {
+	public int getTodayThreads6() {
 		return todayThreads6;
 	}
-	public void setTodayThreads6(String todayThreads6) {
+	public void setTodayThreads6(int todayThreads6) {
 		this.todayThreads6 = todayThreads6;
 	}
-	public String getTotalThreads6() {
+	public int getTotalThreads6() {
 		return totalThreads6;
 	}
-	public void setTotalThreads6(String totalThreads6) {
+	public void setTotalThreads6(int totalThreads6) {
 		this.totalThreads6 = totalThreads6;
 	}
 	public String getForumUrl6() {
@@ -274,6 +349,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl6(String forumUrl6) {
 		this.forumUrl6 = forumUrl6;
+	}
+	public String getDownloadUrl6() {
+		return downloadUrl6;
+	}
+	public void setDownloadUrl6(String downloadUrl6) {
+		this.downloadUrl6 = downloadUrl6;
+	}
+	public String getGiftUrl6() {
+		return giftUrl6;
+	}
+	public void setGiftUrl6(String giftUrl6) {
+		this.giftUrl6 = giftUrl6;
 	}
 	public long getForumId7() {
 		return forumId7;
@@ -293,16 +380,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon7(String icon7) {
 		this.icon7 = icon7;
 	}
-	public String getTodayThreads7() {
+	public int getTodayThreads7() {
 		return todayThreads7;
 	}
-	public void setTodayThreads7(String todayThreads7) {
+	public void setTodayThreads7(int todayThreads7) {
 		this.todayThreads7 = todayThreads7;
 	}
-	public String getTotalThreads7() {
+	public int getTotalThreads7() {
 		return totalThreads7;
 	}
-	public void setTotalThreads7(String totalThreads7) {
+	public void setTotalThreads7(int totalThreads7) {
 		this.totalThreads7 = totalThreads7;
 	}
 	public String getForumUrl7() {
@@ -310,6 +397,18 @@ public class FeedHomeListRecommendGameForm {
 	}
 	public void setForumUrl7(String forumUrl7) {
 		this.forumUrl7 = forumUrl7;
+	}
+	public String getDownloadUrl7() {
+		return downloadUrl7;
+	}
+	public void setDownloadUrl7(String downloadUrl7) {
+		this.downloadUrl7 = downloadUrl7;
+	}
+	public String getGiftUrl7() {
+		return giftUrl7;
+	}
+	public void setGiftUrl7(String giftUrl7) {
+		this.giftUrl7 = giftUrl7;
 	}
 	public long getForumId8() {
 		return forumId8;
@@ -329,16 +428,16 @@ public class FeedHomeListRecommendGameForm {
 	public void setIcon8(String icon8) {
 		this.icon8 = icon8;
 	}
-	public String getTodayThreads8() {
+	public int getTodayThreads8() {
 		return todayThreads8;
 	}
-	public void setTodayThreads8(String todayThreads8) {
+	public void setTodayThreads8(int todayThreads8) {
 		this.todayThreads8 = todayThreads8;
 	}
-	public String getTotalThreads8() {
+	public int getTotalThreads8() {
 		return totalThreads8;
 	}
-	public void setTotalThreads8(String totalThreads8) {
+	public void setTotalThreads8(int totalThreads8) {
 		this.totalThreads8 = totalThreads8;
 	}
 	public String getForumUrl8() {
@@ -347,7 +446,18 @@ public class FeedHomeListRecommendGameForm {
 	public void setForumUrl8(String forumUrl8) {
 		this.forumUrl8 = forumUrl8;
 	}
+	public String getDownloadUrl8() {
+		return downloadUrl8;
+	}
+	public void setDownloadUrl8(String downloadUrl8) {
+		this.downloadUrl8 = downloadUrl8;
+	}
+	public String getGiftUrl8() {
+		return giftUrl8;
+	}
+	public void setGiftUrl8(String giftUrl8) {
+		this.giftUrl8 = giftUrl8;
+	}
 	
-
 
 }
