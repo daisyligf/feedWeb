@@ -126,13 +126,52 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
-	public String newThread(@RequestParam(value = "tid", required = false) long tid, @RequestParam String subject,
+	public void newThread(@RequestParam(value = "tid", required = false) long tid, @RequestParam String subject,
 			@RequestParam String content, @RequestParam(value = "tagId") int tagId,
 			@RequestParam(value = "fid", required = false) int fid,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
-		return null;
+		
+		String message = "保持失败";
+		
+		//发新帖
+		if(tid == 0) {
+			long forumId = fid;
+			JSONObject json = new JSONObject();
+			json.put("fid", forumId);
+			json.put("subject", subject);
+			json.put("content", content);
+			json.put("tag_id", tagId);
+			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json);
+			int code = result.optInt("code", -1);
+			//跳转到 板块内容页
+			if(code == 0){
+				
+			}
+			
+			message = result.optString("message", "");
+			
+		//编辑
+		}else if(tid > 0){
+			long threadId = tid;
+			JSONObject json = new JSONObject();
+			json.put("tid", threadId);
+			json.put("subject", subject);
+			json.put("content", content);
+			json.put("tag_id", tagId);
+			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json);
+			int code = result.optInt("code", -1);
+			//跳转到 帖子详情页
+			if(code == 0){
+				
+			}
+			
+			message = result.optString("message", "");
+		}
+		
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(message);
 	}
+	
 
 }
