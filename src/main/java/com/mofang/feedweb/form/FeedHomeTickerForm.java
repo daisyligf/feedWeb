@@ -1,7 +1,5 @@
 package com.mofang.feedweb.form;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  * @author ke
@@ -9,75 +7,50 @@ import org.json.JSONObject;
  */
 public class FeedHomeTickerForm {
 
-	private String ticker_icon1;
-	private String thread_link1;
-	private String ticker_icon2;
-	private String thread_link2;
-	private String ticker_icon3;
-	private String thread_link3;
+	private String tickerIcon1;
+	private String threadLink1;
+	private String tickerIcon2;
+	private String threadLink2;
+	private String tickerIcon3;
+	private String threadLink3;
+	
+	public String getTickerIcon1() {
+		return tickerIcon1;
+	}
+	public void setTickerIcon1(String tickerIcon1) {
+		this.tickerIcon1 = tickerIcon1;
+	}
+	public String getThreadLink1() {
+		return threadLink1;
+	}
+	public void setThreadLink1(String threadLink1) {
+		this.threadLink1 = threadLink1;
+	}
+	public String getTickerIcon2() {
+		return tickerIcon2;
+	}
+	public void setTickerIcon2(String tickerIcon2) {
+		this.tickerIcon2 = tickerIcon2;
+	}
+	public String getThreadLink2() {
+		return threadLink2;
+	}
+	public void setThreadLink2(String threadLink2) {
+		this.threadLink2 = threadLink2;
+	}
+	public String getTickerIcon3() {
+		return tickerIcon3;
+	}
+	public void setTickerIcon3(String tickerIcon3) {
+		this.tickerIcon3 = tickerIcon3;
+	}
+	public String getThreadLink3() {
+		return threadLink3;
+	}
+	public void setThreadLink3(String threadLink3) {
+		this.threadLink3 = threadLink3;
+	}
 	
 	
-	public String getTicker_icon1() {
-		return ticker_icon1;
-	}
-	public void setTicker_icon1(String ticker_icon1) {
-		this.ticker_icon1 = ticker_icon1;
-	}
-	public String getThread_link1() {
-		return thread_link1;
-	}
-	public void setThread_link1(String thread_link1) {
-		this.thread_link1 = thread_link1;
-	}
-	public String getTicker_icon2() {
-		return ticker_icon2;
-	}
-	public void setTicker_icon2(String ticker_icon2) {
-		this.ticker_icon2 = ticker_icon2;
-	}
-	public String getThread_link2() {
-		return thread_link2;
-	}
-	public void setThread_link2(String thread_link2) {
-		this.thread_link2 = thread_link2;
-	}
-	public String getTicker_icon3() {
-		return ticker_icon3;
-	}
-	public void setTicker_icon3(String ticker_icon3) {
-		this.ticker_icon3 = ticker_icon3;
-	}
-	public String getThread_link3() {
-		return thread_link3;
-	}
-	public void setThread_link3(String thread_link3) {
-		this.thread_link3 = thread_link3;
-	}
-
-	public JSONObject toJson()
-	{
-		try
-		{
-			JSONObject json = new JSONObject();
-			JSONArray data = new JSONArray();
-			json.put("icon", ticker_icon1);
-			json.put("link_url", thread_link1);
-			data.put(json);
-			json = new JSONObject();
-			json.put("icon", ticker_icon2);
-			json.put("link_url", thread_link2);
-			data.put(json);
-			json = new JSONObject();
-			json.put("icon", ticker_icon3);
-			json.put("link_url", thread_link3);
-			data.put(json);
-			json = new JSONObject();
-			json.putOpt("data", data);
-			return json;
-		}
-		catch(Exception e)
-		{
-			return null;
-		}
-	}
+	
 }
