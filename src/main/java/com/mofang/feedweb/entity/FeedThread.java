@@ -20,6 +20,7 @@ public class FeedThread {
 	private boolean isElite;
 	private boolean isTop;
 	private boolean isModerator;
+	private boolean hasPic;
 	private String last_post_time;
 	private int recommends;
 	private int status;
@@ -112,6 +113,13 @@ public class FeedThread {
 	}
 	public void setModerator(boolean isModerator) {
 		this.isModerator = isModerator;
+	}
+	
+	public boolean isHasPic() {
+		return hasPic;
+	}
+	public void setHasPic(boolean hasPic) {
+		this.hasPic = hasPic;
 	}
 	public long getUser_id() {
 		return user_id;

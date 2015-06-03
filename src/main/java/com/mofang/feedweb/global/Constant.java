@@ -97,13 +97,7 @@ public class Constant {
 	// 吧主信息
 
 	public static final String LIST_MODERATOR_GET_URL = "/feed/v2/web/forum/roleInfoList";
-	// 关注板块
-
-	public static final String FORUM_FOLLOW_URL = "/feed/v2/web/forum/follow";
-	// 取消关注板块
-
-	public static final String FORUM_CANCELFOLLOW_URL = "/feed/v2/web/forum/follow/cancel";
-
+	
 	// 搜索页
 	// 板块搜索
 	public static final String LIST_FORUM_SEARCH_URL = "/feed/v2/web/forum/search";
@@ -169,4 +163,6 @@ public class Constant {
 	public static final String GAME_INFO_URL = "/api/web/getgameinfo";
 	// 普通用户冻结 解冻
 	public static final String USER_STATE_UPDATE_URL = "/apis/user/update_status";
+	// 关注板块
+	public static final String FORUM_FOLLOW_URL = "/area/follow";
 }
