@@ -58,7 +58,7 @@
 	margin-top: -200px;
 	box-sizing: border-box;
 	background: #fff;
-	display: none;
+	display: block;
 }
 .alert-post-delete h2{
 	font-size: 18px;
@@ -81,11 +81,29 @@
 	color: #999;
 }
 .alert-post-delete .post-delete-reason .delete-reason-choose{
+	position: relative;
+}
+.alert-post-delete .post-delete-reason .delete-choose-title{
 	line-height: 40px;
+	font-size: 14px;
 	padding: 0 10px;
 	margin-bottom: 10px;
 	border: 1px solid #e9e9e9;
 	background: url(../img/icon/post_input.png) 98% center no-repeat;
+}
+.alert-post-delete .post-delete-reason .delete-choose-sort{
+	position: absolute;
+	top: 42px;
+	width: 100%;
+	line-height: 40px;
+	background: #fff;
+
+}
+.alert-post-delete .delete-choose-sort span{
+	padding: 0 5px;
+	display: block;
+	border: 1px solid #e9e9e9;
+	margin-top: -1px;
 }
 .alert-post-delete .post-delete-reason textarea{
 	width: 100%;
@@ -155,7 +173,7 @@
 	text-align: center;
 	box-sizing: border-box;
 	background: #fff;
-	display: block;
+	display: none;
 }
 .alert-top-fail img{
 	width: 25%;
@@ -183,7 +201,7 @@
 	}
 	/*删除帖子*/
 	.alert-post-delete{
-		width: 36%;
+		width: 40%;
 		margin-left: -18%;
 		margin-top: -120px;
 	}
@@ -199,9 +217,14 @@
 	.alert-post-delete .post-delete-reason .post-delete-sure{
 		line-height: 35px;
 	}
+	.alert-post-delete .post-delete-reason .delete-choose-title{
+		padding: 0 8px;
+	}
+	.alert-post-delete .post-delete-reason .delete-choose-sort{
+		line-height: 35px;
+	}
 	.alert-post-delete .post-delete-reason .delete-reason-choose{
 		line-height: 25px;
-		padding: 0 8px;
 		margin-bottom: 15px;
 	}
 	.alert-post-delete .post-delete-reason textarea{
@@ -277,8 +300,10 @@
 	}
 	.alert-post-delete .post-delete-reason .delete-reason-choose{
 		line-height: 20px;
-		padding: 0 5px;
 		margin-bottom: 8px;
+	}
+	.alert-post-delete .post-delete-reason .delete-choose-title{
+		padding: 0 5px;
 	}
 	.alert-post-delete .post-delete-reason textarea{
 		height: 80px;

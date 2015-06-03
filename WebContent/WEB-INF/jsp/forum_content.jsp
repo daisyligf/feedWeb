@@ -4,6 +4,7 @@
 <%@ page import="com.mofang.feedweb.entity.FeedForum"%>
 <%@ page import="com.mofang.feedweb.entity.HotThread"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -124,7 +125,7 @@
                                 <span class="triangle">
                                     
                                 </span>
-                                <p>全部</p>
+                                <p id="quan">全部</p>
                                 <p class="list">
                                     <a href="#">精华</a>
                                     <a href="#">精华1</a>
@@ -136,7 +137,7 @@
                                 <span class="triangle">
                                     
                                 </span>
-                                <p>回复时间</p>
+                                <p id="time">回复时间</p>
                                 <p class="list">
                                     <a href="#">发帖时间</a>
                                     <a href="#">论坛时间</a>
@@ -148,18 +149,23 @@
                     <div class="con-left-con">
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
-                            <dt><a href="#"><img src="img/img1.jpg"alt=""></a></dt>
+                            <dt><a href="#"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
-                                <dd class="title"><a href="#">《最终幻想14》2.2新版截图推出炫耀装备系统 <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s></a></dd>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们</dd>
+                                <dd class="title"><a href="#">${feedThread.subject}
+                                <c:if test="${feedThread.top}"><s class="icon-ding"></s></c:if>
+                                
+                                <c:if test="${feedThread.elite}"><s class="icon-jing"></s></c:if>
+                                <s class="icon-tu"></s>
+                                </a></dd>
+                                <dd>${feedThread.content}</dd>
                                 <dd class="info clearfix">
                                     <p class="author">
-                                        <span>作者吧主</span>
-                                        <span class="time">05-22 18:90</span>
+                                        <span>作者：${feedThread.user_name}</span>
+                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
-                                        <span><s class="icon-look"></s>3425</span>
-                                        <span><s class="icon-ask"></s>563</span>
+                                        <span><s class="icon-look"></s>${feedThread.page_view}</span>
+                                        <span><s class="icon-ask"></s>${feedThread.replies}</span>
                                     </p>
                                 </dd> 
                             </div>
@@ -188,7 +194,7 @@
              <div class="col-xs-3 con-bot-right">
                 <div class="lord-team">
                     <h2 class="lum">
-                        吧主团队 <a href="#">申请吧主</a>
+                        吧主团队 <a href="apply_moderator">申请吧主</a>
                     </h2>
                     <div class="lum-list">
                     	<c:forEach  var="roleInfo" items="${feedForum.roleList}">
@@ -233,39 +239,33 @@
 		                </div>	
                     </c:when>
                     <c:otherwise>
-		               <div class="lord-team">
-		                    <h2 class="lum">
-		                    	礼包发号
-		                    </h2>
-		                    <div class="lum-list libao-list">
-		                       <ul>
-		                           <li><s class="black"></s><a href="#">我是大礼包</a></li>
-		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-		                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-		                       </ul>
-		                    </div>
-		                    
-		                </div>
-		                <div class="lord-team hot-tj">
-		                    <!-- <div class="col-xs-12 hot-tj-con"> -->
-		                        <h2 class="lum">
-		                            新游推荐
-		                        </h2>
-		                       
-		                        <div class="lum-list rec-list">
-		                            <ul>
-		                                <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/down.png"></span></li>
-		                                <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
-		                                <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/level.png"></span></li>
-		                                <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
-		                                <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="img/icon/up.png"></span></li>
-		
-		                            </ul>
-		                        </div>
-		                </div>
-                     </c:otherwise>
+		                <div class="lord-team">
+                    		<h2 class="lum">
+                        	游戏下载 
+                    		</h2>
+                    	<div class="down">
+	                       	<p>
+	                           首款3D推塔动作手游《乱斗西游》，告别动作手游的单调闯关刷图，打造你的西游英雄战阵，在磨难重重的西游路上磨练你的战斗技巧吧! 独创手游版MOBA对抗玩法，在推塔...
+	                       	</p>
+	                       	<a href="#">立即下载</a>
+                    	</div>
+                	</div>
+                	<div class="lord-team">
+	                    <h2 class="lum">
+	                        礼包发号
+	                    </h2>
+	                    <div class="lum-list libao-list">
+	                       <ul>
+	                           <li><s class="black"></s><a href="#">我是大礼包</a></li>
+	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+	                       </ul>
+	                    </div>
+                    
+                	</div>
+                  </c:otherwise>
                 </c:choose>
                 
              </div>

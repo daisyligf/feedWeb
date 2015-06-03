@@ -69,13 +69,13 @@ public class FeedThread {
 	public void setShareTimes(int shareTimes) {
 		this.shareTimes = shareTimes;
 	}
+	
 	public boolean isClosed() {
 		return isClosed;
 	}
 	public void setClosed(boolean isClosed) {
 		this.isClosed = isClosed;
 	}
-	
 	public String getLast_post_time() {
 		return last_post_time;
 	}

@@ -128,17 +128,18 @@
 .con .con-right1 h2 .manage-more{
 	position: absolute;
 	padding: 0px 0px 10px 10px;
-	right: 55px;
-	top: 50px;
+	right: 105px;
+	top: 41px;
 	z-index: 50;
 	box-shadow: 1px 1px 5px #999;
 	background-color: #fff;
+	display: none;
 }
 .con .con-right1 h2 .manage-more a{
 	display: block;
 	float: none;
 }
-.con .con-right1 h2 a{
+.con .con-right1 h2 a,.con .con-right1 h2 div.manage{
 	float:right;
 	margin-top:10px;
 	margin-right:10px;
@@ -150,8 +151,8 @@
 	height:28px;
 	line-height:28px;
 }
-.con .con-right1 h2 .manage{
-	background: url(../img/icon/post_input.png) 98% center no-repeat;	
+.con .con-right1 h2 div.manage{
+	background: url(../img/icon/post_input.png) 95% center no-repeat;	
 }
 .con .con-right1 h3{
 	font-size:14px;
@@ -235,9 +236,19 @@
 .con .con-right2 .look{
 	margin-right:0px;
 	margin-bottom:0px;
+
+	
 }
 .con .con-right2 .look .zan{
 	margin-right:28px;
+	cursor: pointer;
+}
+.con .con-right2 .look .floor-rec{
+	cursor: pointer;
+}
+.con .con-right2 .look .floor-stop{
+	display: none;
+	cursor: pointer;
 }
 .con .con-right2 .look .reply-hide{
 	width: 16px;
@@ -245,6 +256,7 @@
 	background-size: 100% 100%;
 }
 .con .con-right2 .con-list-reply{
+	display: none;
 	border:1px solid #eee;
 	background: #fafafa;
 	padding:20px;
@@ -281,13 +293,14 @@
 .con .con-right2 .reply-textarea{
 
 }
-.con .reply-textarea-info p{
+.con .reply-textarea-info p.reply-head{
 	float: left;
 	width: 60px;
 	height: 60px;
 	margin-top: 24px;
 	overflow: hidden;
 	border-radius: 50%;
+
 }
 .con .reply-textarea-info p img{
 	width: 60px;
@@ -295,6 +308,7 @@
 }
 .con .reply-textarea-info dl{
 	margin-left: 72px;
+	margin-bottom:10px;
 }
 .con .con-right2 .reply-textarea textarea{
 	width:100%;
@@ -304,11 +318,11 @@
 	padding:5px;
 	box-sizing:border-box;
 }
-.con .reply-textarea p{
+.con .reply-textarea p.replay-floor{
 	text-align: right;
 	color:#999;
 }
-.con .reply-textarea p .reply-textarea{
+.con .reply-textarea p .reply-editer{
 	width:100px;
 	height:40px;
 	color:#fff;
@@ -324,7 +338,8 @@
 	background: #fff;
 	padding:30px;
 }
-.con .con-right3 textarea{
+.con .con-right3 textarea.editor-cont{
+	display: none;
 	width:100%;
 	height:140px;
 	margin:25px 0px;
@@ -335,7 +350,6 @@
 
 
 .con .con-right2 .page-plug{
-
 	margin-top:20px;
 }
 @media (max-width:1024px){
@@ -404,9 +418,6 @@
 	.user-info-out{
 		display: none;
 	}
-	.con .reply-textarea-info p{
-		display: none;
-	}
 	.con .reply-textarea-info dl{
 		margin-left: 0;
 	}
@@ -415,6 +426,13 @@
 		border: 1px solid #e2e2e2;
 		border-radius: 20px;
 	}
+	.con .con-right3{
+		padding:0px;
+	}
+	.con .reply-textarea-info p.reply-head{
+		display: none;
+	}
+	
 
 }
 @media (max-width:540px){
