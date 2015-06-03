@@ -88,7 +88,13 @@ public class FeedCommonController {
 	protected String getForumFollowUrl() {
 		return externalUrlInfo.getUser_info_url() + Constant.FORUM_FOLLOW_URL;
 	}
-
+	protected String getModeratorCheckUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_CHECK_URL;
+	}	protected String getModeratorApplyUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_APPLY_URL;
+	}
+	
+	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();
 		config.setHost(connInfo.getHost());
