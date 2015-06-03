@@ -122,10 +122,10 @@
                 <script id="postTemplate" type="text/x-handlebars-template">
                     {{#each threads}}
                     <dl class="clearfix">
-                        <dt><a href="{{link_url}}"><img src="{{avatar}}"alt=""></a></dt>
+                        <dt><a href="{{link_url}}"><img src="{{user.avatar}}"alt=""></a></dt>
                         <div class="infos">
                             <dd class="title">
-                                <a href="{{link_url}}">{{title}}
+                                <a href="{{link_url}}">{{subject}}
 
                                     {{#isshowimg pic 0}}
                                         <s class="icon-tu"></s>
@@ -141,10 +141,10 @@
                                     
                                 </a>
                             </dd>
-                            <dd>{{subject}}</dd>
+                            <dd>{{content}}</dd>
                             <dd class="info clearfix">
                                 <p class="author">
-                                    <span>{{nickname}}</span>
+                                    <span>{{user.nickname}}</span>
                                     <span class="time">{{timeformat create_time}}</span>
                                 </p>
                                 <p class="look">
