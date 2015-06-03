@@ -83,6 +83,14 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url() + Constant.RECOMMEND_GAME_RANK_GET_URL;
 	}
 	
+	protected String getGameInfoUrl() {
+		return externalUrlInfo.getGame_info_url() + Constant.GAME_INFO_URL;
+	}
+	
+	protected String getGameGiftListUrl() {
+		return externalUrlInfo.getGift_info_url() + Constant.GIFT_LIST_URL;
+	}
+	
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();

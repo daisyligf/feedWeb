@@ -14,6 +14,7 @@ public class FeedForum {
 	private String name_spell;
 	private String icon;
 	private int type;
+	private int gameId;
 	private int total_threads;
 	private int today_threads;
 	private int yesterday_threads;
@@ -58,6 +59,12 @@ public class FeedForum {
 	}
 	public void setType(int type) {
 		this.type = type;
+	}
+	public int getGameId() {
+		return gameId;
+	}
+	public void setGameId(int gameId) {
+		this.gameId = gameId;
 	}
 	public int getTotal_threads() {
 		return total_threads;

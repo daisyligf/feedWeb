@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
+import com.mofang.feedweb.entity.Game;
+import com.mofang.feedweb.entity.GameGift;
 import com.mofang.feedweb.entity.HotThread;
 import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
@@ -62,13 +64,66 @@ public class FeedForumContentController extends FeedCommonController {
 			model.put("newGameList", newGameList);
 			
 		} else { // else 获取该版块关联的游戏信息和礼包发号
+			// 游戏信息
+			int gameId = feedForum.getGameId();
+			Game game = getGameInfo(request, gameId);
 			
+			model.put("game", game);
 			
+			// 礼包发号
+			List<GameGift> giftList = getGiftList(request, gameId);
+			model.put("giftList", giftList);
 		}
 		
 		model.put("feedForum", feedForum);
 		
 		return new ModelAndView("forum_content", model);
+	}
+	
+	private List<GameGift> getGiftList(HttpServletRequest request, int gameId) {
+		List<GameGift> giftList = new ArrayList<GameGift>();
+		
+		StringBuilder param = new StringBuilder();
+		param.append("game_id=").append(gameId);
+		param.append("&offset=0&limit=5");
+		
+		JSONObject json = getHttpInfo(getGameGiftListUrl(), param.toString(), request);
+		
+		if (json != null && json.optInt("code", -1) == 0) {
+			JSONArray data = json.optJSONArray("data");
+			if (data != null && data.length() > 0) {
+				for (int i = 0; i < data.length(); i++) {
+					JSONObject obj = data.optJSONObject(i);
+					
+					GameGift gameGift = new GameGift();
+					gameGift.setId(obj.optInt("id", 0));
+					gameGift.setName(obj.optString("name", ""));
+					gameGift.setIcon(obj.optString("icon", ""));
+					gameGift.setUrl(obj.optString("url", ""));
+					gameGift.setWapUrl(obj.optString("wap_url", ""));
+					
+					giftList.add(gameGift);
+				}
+			}
+		}
+		
+		return giftList;
+	}
+	
+	private Game getGameInfo(HttpServletRequest request, int gameId) {
+		String param = "id=" + gameId;
+		JSONObject json = getHttpInfo(getGameInfoUrl(), param, request);
+		
+		Game game = new Game(gameId);
+		if (json != null && json.optInt("code", -1) == 0) {
+			JSONObject obj = json.optJSONObject("data");
+			game.setName(obj.optString("name", ""));
+			game.setIcon(obj.optString("icon", ""));
+			game.setUrl(obj.optString("url", ""));
+			game.setComment(obj.optString("comment", ""));
+		}
+		
+		return game;
 	}
 
 	private List<NewGame> getNewGameList(HttpServletRequest request)
@@ -129,6 +184,7 @@ public class FeedForumContentController extends FeedCommonController {
 			feedForum.setName_spell(forum.optString("name_spell", ""));
 			feedForum.setIcon(forum.optString("icon", ""));
 			feedForum.setType(forum.optInt("type", -1));
+			feedForum.setGameId(forum.optInt("game_id", 0));
 			feedForum.setTotal_threads(forum.optInt("threads", 0));
 			feedForum.setYesterday_threads(forum.optInt("yesterday_threads", 0));
 			feedForum.setTotal_follows(forum.optInt("follows", 0));
