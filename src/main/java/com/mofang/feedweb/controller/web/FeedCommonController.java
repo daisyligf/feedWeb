@@ -91,6 +91,10 @@ public class FeedCommonController {
 		return externalUrlInfo.getGift_info_url() + Constant.GIFT_LIST_URL;
 	}
 	
+	protected String getForumFollowUrl() {
+		return externalUrlInfo.getUser_info_url() + Constant.FORUM_FOLLOW_URL;
+	}
+	
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();

@@ -1,5 +1,6 @@
 package com.mofang.feedweb.controller.web;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,6 +80,26 @@ public class FeedForumContentController extends FeedCommonController {
 		model.put("feedForum", feedForum);
 		
 		return new ModelAndView("forum_content", model);
+	}
+	
+	@RequestMapping(value = "/follow")
+	public String follow(@RequestParam("forum_id") long forumId, @RequestParam("is_follow") int isFollow, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		JSONObject postData = new JSONObject();
+		postData.put("area_id", forumId);
+		postData.put("dofollow", isFollow);
+		
+		
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+		out.close();
+		
+		return null;
 	}
 	
 	private List<GameGift> getGiftList(HttpServletRequest request, int gameId) {
@@ -289,6 +311,12 @@ public class FeedForumContentController extends FeedCommonController {
 					feedThread.setRecommends(obj.optInt("recommends", 0));
 					feedThread.setModerator(obj.optBoolean("is_moderator", false));
 					
+					JSONArray pics = obj.getJSONArray("pic");
+					if (pics != null && pics.length() > 0) {
+						feedThread.setHasPic(true);
+					} else {
+						feedThread.setHasPic(false);
+					}
 					JSONObject userObj = obj.optJSONObject("user");
 					if (userObj != null) {
 						feedThread.setUser_id(userObj.optLong("user_id", 0));

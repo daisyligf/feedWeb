@@ -129,8 +129,6 @@
                                 <p id="quan">全部</p>
                                 <p class="list">
                                     <a href="#">精华</a>
-                                    <a href="#">精华1</a>
-                                    <a href="#">精华2</a> 
                                 </p>
                                 
                             </div>
@@ -141,8 +139,6 @@
                                 <p id="time">回复时间</p>
                                 <p class="list">
                                     <a href="#">发帖时间</a>
-                                    <a href="#">论坛时间</a>
-                                    <a href="#">某个时间</a>
                                 </p>
                             </div>
                         </div>
@@ -156,7 +152,7 @@
                                 <c:if test="${feedThread.top}"><s class="icon-ding"></s></c:if>
                                 
                                 <c:if test="${feedThread.elite}"><s class="icon-jing"></s></c:if>
-                                <s class="icon-tu"></s>
+                                <c:if test="${feedThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
                                 <dd>${fn:substring(feedThread.content, 0, 100)}...</dd>
                                 <dd class="info clearfix">
