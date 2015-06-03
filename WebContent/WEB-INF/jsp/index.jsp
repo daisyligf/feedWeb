@@ -68,19 +68,19 @@
                     </div>
                     
                     <!-- 登陆状态 -->
-                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="statics/img/icon/load.png"></a>
+                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
                 </div>
             </div>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
-                  <a href="javascript:;"><img src="statics/img/icon/nav_three.png"></a>
+                  <a href="javascript:;"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
                     <a href="http://u.mofang.com">个人中心</a>
                   </p>
                 </div>
                   <div class="wap-logo">
-                    <img src="statics/img/icon/bbs_icon_wap.png"alt="">
+                    <img src="./img/icon/bbs_icon_wap.png"alt="">
                   </div>
                
             </div>
@@ -89,7 +89,7 @@
         <!-- 搜索开始 -->
         <div class="search">
             <div class="bbs-logo">
-                <img src="statics/img/icon/bbs_icon.png" alt="">
+                <img src="./img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
                 <input type="submit" class="ser-but" value="" id="submit"/>
@@ -130,19 +130,19 @@
                     <div class="rec col-xs-6 col-md-6 col-sm-12">
                         <div class="col-xs-12 rec-con">
                             <dl class="title-red">
-                                <dt><a href="#">《放开那三国》携漫画征集大赛圆满</a></dt>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们，己的身体为武</dd>
+                                <dt><a href="#">${subjects.threadName1} </a></dt>
+                                <dd>${subjects.content1}</dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">《放开那三国》携画征集大赛圆满</a></dt>
-                                <dd>是一款首发于iOS，而后跨平台的触摸类游戏。在游戏中，为了报复偷走鸟蛋的绿皮猪们，各己的身体为武</dd>
+                                <dt><a href="#">${subjects.threadName2}</a></dt>
+                                <dd>${subjects.content2}</dd>
                             </dl>
                             <ul>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">蹲坑神作杀时间精品扑家下载 </a> <span class="lm">梦幻西游</span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">蹲坑神作杀时间精品扑家下载 </a> <span class="lm">梦幻西游</span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">蹲坑神作杀时间精品扑家下载 </a> <span class="lm">梦幻西游</span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">蹲坑神作杀时间精品扑家下载 </a> <span class="lm">梦幻西游</span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">蹲坑神作杀时间精品扑家下载 </a> <span class="lm">梦幻西游</span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName3} </a> <span class="lm">${subjects.forumNmae3} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName4} </a> <span class="lm">${subjects.forumNmae4} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName5} </a> <span class="lm">${subjects.forumNmae5} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName6} </a> <span class="lm">${subjects.forumNmae6} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName7} </a> <span class="lm">${subjects.forumNmae7} </span></li>
                              </ul> 
                         </div>
                     </div>
@@ -157,18 +157,78 @@
                             <div class="hot-con swipe-wrap">
                                 
                                 <ul>
-                                    <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="statics/img/icon/down.png"></span></li>
-                                    <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="statics/img/icon/up.png"></span></li>
-                                    <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="statics/img/icon/level.png"></span></li>
-                                    <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="statics/img/icon/up.png"></span></li>
-                                    <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span class="rank"><img src="statics/img/icon/up.png"></span></li>
+                                    <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="${hotRank.icon1} " alt="">${hotRank.forumName1} </a>
+	                                    <span class="rank">
+		                                    <c:if  test="${hotRank.upDown1=='0'}">
+		                                    	<img src="./img/icon/up.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown1=='1'}>
+		                                    	<img src="./img/icon/down.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown1=='2'}>
+		                                    	<img src="./img/icon/level.png">
+		                                    </c:if>
+		                                </span>
+                                    </li>
+                                    <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="${hotRank.icon2} " alt="">${hotRank.forumName2}</a>
+                                    <span class="rank">
+                                     		<c:if  test="${hotRank.upDown2=='0'}">
+		                                    	<img src="./img/icon/up.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    	<img src="./img/icon/down.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    	<img src="./img/icon/level.png">
+		                                    </c:if>
+                                    </span>
+                                    </li>
+                                    <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="${hotRank.icon3} " alt="">${hotRank.forumName3}</a>
+                                    	<span class="rank">
+                                    		<c:if  test="${hotRank.upDown2=='0'}">
+		                                    	<img src="./img/icon/up.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    	<img src="./img/icon/down.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    	<img src="./img/icon/level.png">
+		                                    </c:if>
+                                    	</span>
+                                    </li>
+                                    <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="${hotRank.icon4} " alt="">${hotRank.forumName4}</a>
+                                    	<span class="rank">
+                                    	    <c:if  test="${hotRank.upDown2=='0'}">
+		                                    	<img src="./img/icon/up.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    	<img src="./img/icon/down.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    	<img src="./img/icon/level.png">
+		                                    </c:if>
+                                    	</span>
+                                    </li>
+                                    <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="${hotRank.icon5} " alt="">${hotRank.forumName5}</a>
+                                    	<span class="rank">
+                                    	     <c:if  test="${hotRank.upDown2=='0'}">
+		                                    	<img src="./img/icon/up.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    	<img src="./img/icon/down.png">
+		                                    </c:if>
+		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    	<img src="./img/icon/level.png">
+		                                    </c:if>
+                                    	</span>
+                                    </li>
                                 </ul>
                                 <ul>
-                                    <li class="clearfix"><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span><a class="package" href="#">礼包</a> <a class="down" href="#">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span><a class="package" href="#">礼包</a> <a class="down" href="#">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span><a class="package" href="#">礼包</a> <a class="down" href="#">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span><a class="package" href="#">礼包</a> <a class="down" href="#">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="statics/img/img1.jpg" alt="">保卫萝卜</a><span><a class="package" href="#">礼包</a> <a class="down" href="#">下载</a></span></li>
+                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a><span><a class="package" href="${recommendRank.giftUrl1}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl1}">下载</a></span></li>
+                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon2}" alt="">${recommendRank.forumName2}</a><span><a class="package" href="${recommendRank.giftUrl2}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl2}">下载</a></span></li>
+                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon3}" alt="">${recommendRank.forumName3}</a><span><a class="package" href="${recommendRank.giftUrl3}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl3}">下载</a></span></li>
+                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon4}" alt="">${recommendRank.forumName4}</a><span><a class="package" href="${recommendRank.giftUrl4}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl4}">下载</a></span></li>
+                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon5}" alt="">${recommendRank.forumName5}</a><span><a class="package" href="${recommendRank.giftUrl5}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl5}">下载</a></span></li>
 
                                 </ul>
                             </div>
@@ -185,19 +245,21 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b class="update">1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="# "><img src="${hotForum.hotIcon1}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName1}</a></dd>
+                       <dd>今日  <b class="update">${hotForum.hotTodayThreads1} </b></dd>
+                       <dd>帖子  ${hotForum.hotTodayThreads1}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="javascript:;"  class="zq bg-grey">专区</a><a href="javascript:;" class="bg-grey">礼包</a> 
+                    <c:if  test="${hotRank.upDown1==''}">
+                      <a href="${hotForum.hotTodayThreads1}"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;" class="bg-grey">礼包</a> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon2}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName2}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -207,8 +269,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon3}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName3}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -218,8 +280,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon4}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName4}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -229,8 +291,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon5}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName5}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -240,8 +302,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon6}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName6}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -251,8 +313,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon7}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName7}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -262,8 +324,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
+                       <dt><a href="#"><img src="${hotForum.hotIcon8}" alt=""></a></dt>
+                       <dd><a href="#">${hotForum.hotForumName8}</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
                    </dl>
@@ -279,7 +341,7 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b class="update">1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -290,7 +352,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -301,7 +363,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -312,7 +374,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -323,7 +385,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -334,7 +396,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -345,7 +407,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -356,7 +418,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -373,7 +435,7 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b class="update">1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -381,7 +443,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -389,7 +451,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>
@@ -397,7 +459,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="statics/img/img1.jpg" alt=""></a></dt>
+                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
                        <dd><a href="#">金箍棒OL</a></dd>
                        <dd>今日  <b>1352</b></dd>
                        <dd>帖子  10870</dd>

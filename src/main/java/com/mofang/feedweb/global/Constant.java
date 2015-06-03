@@ -166,7 +166,7 @@ public class Constant {
 	// 礼包列表
 	public static final String GIFT_LIST_URL = "/api/v1/gift/list";
 	// 游戏介绍内容
-	public static final String GAME_INFO_URL = "/index.php?r=api/web";
+	public static final String GAME_INFO_URL = "/api/web/getgameinfo";
 	// 普通用户冻结 解冻
 	public static final String USER_STATE_UPDATE_URL = "/apis/user/update_status";
 }

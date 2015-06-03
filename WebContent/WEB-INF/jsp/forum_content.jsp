@@ -5,6 +5,7 @@
 <%@ page import="com.mofang.feedweb.entity.HotThread"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -157,7 +158,7 @@
                                 <c:if test="${feedThread.elite}"><s class="icon-jing"></s></c:if>
                                 <s class="icon-tu"></s>
                                 </a></dd>
-                                <dd>${feedThread.content}</dd>
+                                <dd>${fn:substring(feedThread.content, 0, 100)}...</dd>
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${feedThread.user_name}</span>
@@ -245,9 +246,9 @@
                     		</h2>
                     	<div class="down">
 	                       	<p>
-	                           首款3D推塔动作手游《乱斗西游》，告别动作手游的单调闯关刷图，打造你的西游英雄战阵，在磨难重重的西游路上磨练你的战斗技巧吧! 独创手游版MOBA对抗玩法，在推塔...
+	                           ${game.comment }
 	                       	</p>
-	                       	<a href="#">立即下载</a>
+	                       	<a href="${game.url }" target="_blank">立即下载</a>
                     	</div>
                 	</div>
                 	<div class="lord-team">
@@ -256,11 +257,9 @@
 	                    </h2>
 	                    <div class="lum-list libao-list">
 	                       <ul>
-	                           <li><s class="black"></s><a href="#">我是大礼包</a></li>
-	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-	                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+	                       	   <c:forEach var="gift" items="${giftList }">
+	                       	   	<li><s class="black"></s><a href="${gift.url }">${gift.name }</a></li>
+	                       	   </c:forEach>
 	                       </ul>
 	                    </div>
                     
