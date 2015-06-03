@@ -3,14 +3,15 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require, exports, module) {
+define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
+	require("jquery/jquery-pop");//弹出框插件
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
 	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_TEST_DATA = 0;//测试数据
 
 	
 	var getFollowUrl = "" //关注
@@ -21,25 +22,31 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 		getNoFollowUrl='/bbs_html/statics/test/follow.json';
 	}
 	if(USE_TEST_DATA){
-		getFollowUrl='';
-		getNoFollowUrl='';
+		getPlateUrl='';
+		getPostUrl='';
 	}
 
 	getPlateInfo();
 	function getPlateInfo(){
-
-		
-
 		$("body").on("click",".follow",function(){
+			if(!loginStatus){
+				$(".pop-top-fail").pop({
+					msg:"未登录"
+				});
+				return false;
+			}
 			var _this = this;
 			var url = '';
-			var msg = '';
+			var msgSuc = '',
+				msgErr = '';
 			if($(_this).hasClass('followed')){
 				url = getNoFollowUrl;
-				msg = '取消成功';
+				msgSuc = '取消关注成功';
+				msgErr = '取消关注失败'
 			}else{
 				url = getFollowUrl;
-				msg = '关注成功';
+				msgSuc = '关注成功';
+				msgErr = '关注失败';
 
 			}
 
@@ -53,7 +60,11 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 			    },
 			    success: function(res) {
 			    	if(res && !res.code){
-			    		alert(msg);
+			    		
+			    		$(".pop-post-ok").pop({
+			    			msg : msgSuc
+			    		});
+
 			    		if($(_this).hasClass('followed')){
 			    			$(_this).removeClass('followed');
 			    			$(_this).html("+ 关注");
@@ -62,7 +73,9 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 			    			$(_this).html("已关注");
 			    		}
 			    	}else{
-			    		alert(res.message);
+			    		$(".pop-top-fail").pop({
+			    			msg : msgErr
+			    		});
 			    	}
 			    },
 			    error: function() {
@@ -75,6 +88,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 		});
 		
 	}
+
 	//下拉框
 	$("#quan").click(function(){
 		var _this = this;
@@ -108,4 +122,3 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 });
 
 seajs.use('index');
-

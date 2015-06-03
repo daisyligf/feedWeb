@@ -3,14 +3,14 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require, exports, module) {
+define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
-	var USE_LOCAL_DATA = 0;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_LOCAL_DATA = 1;//本地数据
+	var USE_TEST_DATA = 0;//测试数据
 
 	
 	var getPlateUrl = "" //获取搜索板块数据
@@ -21,13 +21,41 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 		getPostUrl='/bbs_html/statics/test/ser_post.json';
 	}
 	if(USE_TEST_DATA){
-		getPlateUrl='searchForum';
-		getPostUrl='searchThread';
+		getPlateUrl='';
+		getPostUrl='';
 	}
 
+	Handlebars.registerHelper("isshowimg",function(v1,v2,options){
+		if(v1.length>v2){
+			return options.fn(this);
+		}else{
+			return options.inverse(this);
+		}
+		
+    });
+    //注册一个handlebarsjs方法
+	Handlebars.registerHelper("timeformat",function(value){
+		//console.log(typeof value);
 
+		var time = new Date(value*1000);
 
+		var year = time.getFullYear();
+		var month = time.getMonth()+1;
+		var date = time.getDate();
 
+		var hours = time.getHours();
+		var minutes = time.getMinutes();
+		var seconds = time.getSeconds();
+
+		var str = to2(year)+'-'+to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes)+':'+to2(seconds);
+		
+		return str;
+
+		function to2(n){
+			return n<10 ? '0'+n : n;
+		}
+		
+    });
 	getPlate();//板块
 	
 	function getPlate(){
@@ -71,12 +99,14 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 
 		$.ajax({
 		    url:getPlateUrl,
-		    type:"GET",
+		    type:"POST",
 		    dataType:ajaxMethod,
 		    data:options,
 		    success: function(res) {
 		    	if(res && !res.code){
 		    		var plateTemplate = Handlebars.compile($("#plateTemplate").html());
+
+		    		$(".plate-num span").html(res.data.total);
 		    		$("#plate").append(plateTemplate(res.data));
 		    	}
 		    	fnCallback && fnCallback();
@@ -113,7 +143,8 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 	           	   $.fn.setCurrentPage(this, pageIndex);
 	                getPostData({
 	                	p: pageIndex
-	                })
+	                });
+	                $(".page-mobile .text").html(pageIndex+'/'+total);
 	            }
 	      });
 		});//获取帖子第一页
@@ -130,20 +161,25 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 		options = $.extend(true, defaults, options);
 		$.ajax({
 		    url:getPostUrl,
-		    type:"GET",
+		    type:"POST",
 		    dataType:ajaxMethod,
 		    data:options,
 		    success: function(res) {
+
 		    	if(res && !res.code){
 		    		var postTemplate = Handlebars.compile($("#postTemplate").html());
 
 
+
+		    		$(".post-num span").html(res.data.total);
 					
-		    		console.log(res.data);
+		    	
 		    		$("#post").html(postTemplate(res.data));	
 		    	}
-
+		    	$(".page-mobile .text").html(options.p+'/'+res.data.total);
 		    	fnCallback && fnCallback(res.data.total,options.p,options.pagesize);
+
+
 		    },
 		    error: function(err) {
 		    	console.log(err);
@@ -159,4 +195,4 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar'],function(require,
 
 });
 
-seajs.use('index');
+seajs.use('search');

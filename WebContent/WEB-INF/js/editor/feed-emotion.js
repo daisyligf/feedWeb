@@ -76,6 +76,8 @@ UM.plugins['feed-emotion'] = function () {
         $("#facebox").show();
     } else {
         init = true;
+        var docWidth = $(document).width();//获取屏幕宽度
+
         // 创建表情框子
         if($('#face').length<=0){//{{{
             strFace = '<div id="facebox" class="qqFace">' + '<table border="0" cellspacing="0" cellpadding="0"><tr>';
@@ -85,7 +87,12 @@ UM.plugins['feed-emotion'] = function () {
                 var imgSrc = o.icon;
                 //imgSrc += "?r=" + Math.floor(Math.random() * 1000000000000);
                 strFace += '<td><img class="emotion-item" data-face = "'+o.labFace+'"  src="' + imgSrc + '"/></td>';
-                if( i % 15 == 0 ) strFace += '</tr><tr>';
+                if(docWidth<540){
+                    if( i % 9 == 0 ) strFace += '</tr><tr>';
+                }else{
+                    if( i % 15 == 0 ) strFace += '</tr><tr>';
+                }
+                
             }
 
             strFace += '</tr></table></div>';

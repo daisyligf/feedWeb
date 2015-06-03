@@ -1,0 +1,84 @@
+{
+  "code":0,
+  "message":"success",
+  "data":{
+  	 	"commentlist": [
+		    {
+			"uid": 30501187,
+			"rid": 5584861,
+			"uid": 0,
+			"nickname": "zainali",
+			"avatar": "http://pic0.mofang.com/119/005/79aa5fe8434fcb9411a5570e0b8b574d0283fa81_80.png",
+			"ctime": 1423131227,
+			"content": "I am xukuikui, who are you?",
+			"tid": 5585031
+		    },
+		    {
+			"uid": 30501187,
+			"rid": 5584861,
+			"uid": 0,
+			"nickname": "zainali",
+			"avatar": "http://pic0.mofang.com/119/005/79aa5fe8434fcb9411a5570e0b8b574d0283fa81_80.png",
+			"ctime": 1423131227,
+			"content": "I am xukuikui, who are you?",
+			"tid": 5585031
+		    },
+		    {
+			"uid": 30501187,
+			"rid": 5584861,
+			"uid": 0,
+			"nickname": "zainali",
+			"avatar": "http://pic0.mofang.com/119/005/79aa5fe8434fcb9411a5570e0b8b574d0283fa81_80.png",
+			"ctime": 1423131227,
+			"content": "I am xukuikui, who are you?",
+			"tid": 5585031
+		    },
+		    {
+			"uid": 30501187,
+			"rid": 5584861,
+			"uid": 0,
+			"nickname": "zainali",
+			"avatar": "http://pic0.mofang.com/119/005/79aa5fe8434fcb9411a5570e0b8b574d0283fa81_80.png",
+			"ctime": 1423131227,
+			"content": "I am xukuikui, who are you?",
+			"tid": 5585031
+		    },
+		    {
+			"uid": 30501187,
+			"rid": 5584861,
+			"uid": 14343,
+			"nickname": "zainali",
+			"avatar": "http://pic0.mofang.com/119/005/79aa5fe8434fcb9411a5570e0b8b574d0283fa81_80.png",
+			"ctime": 1423131227,
+			"content": "I am xukuikui, who are you?",
+			"tid": 5585031
+		    }
+	     ],
+	     "comments":{
+	        "total": 123
+	     }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

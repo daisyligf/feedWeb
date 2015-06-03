@@ -152,6 +152,7 @@
 	line-height:28px;
 }
 .con .con-right1 h2 div.manage{
+
 	background: url(../img/icon/post_input.png) 95% center no-repeat;	
 }
 .con .con-right1 h3{
@@ -322,6 +323,16 @@
 	text-align: right;
 	color:#999;
 }
+.con .reply-textarea p .reply-btn{
+	width:100px;
+	height:40px;
+	color:#fff;
+	background: #ff9900;
+	border:0px;
+	cursor: pointer;
+	margin-left: 23px;
+	font-size: 14px;
+}
 .con .reply-textarea p .reply-editer{
 	width:100px;
 	height:40px;
@@ -363,6 +374,10 @@
 	.con .con-right1 .con-author{
 		display: block;
 	}
+	.con .con-right1 h2 div.manage{
+
+		display: none;	
+	}
 	.con .con-right1 .author-img{
 		float: left;
 		width: 60px;
@@ -398,10 +413,11 @@
 	.con .con-right1 h2 a,.con .con-right1 h3,.con .con-right1 h2 .manage-more{
 		display: none;
 	}
-
+	
 	.con .con-right1 .con-con{
 		padding: 0px;
 	}
+
 	.con .con-right2{
 		padding: 20px;
 		margin-top: 15px;

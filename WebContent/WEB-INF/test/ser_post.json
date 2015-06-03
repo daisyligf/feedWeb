@@ -3,7 +3,7 @@
   "message":"success",
   "data":{
         "total":111,
-	    "list":[
+	    "threads":[
 	       {
 				"fid":11,
 				"tid":15,
@@ -13,7 +13,7 @@
 				"replies":12,         
 				"pageview":13,        
 				"share_times":11,     
-				"utime":11,           
+				"create_time":1423131227,           
 				"last_poster_id":2014, 
 				"last_post_time":"2015-14-23",  
 				"is_closed":1,        
@@ -23,7 +23,10 @@
 				"nickname":"tiezi",
 				"avatar":"statics/img/img1.jpg",
 				"user":"",
-				"tags":"1,4,9,10",
+				"is_closed" : false,
+				"is_elite" : true,			
+				"is_top" : true,
+				"pic" : ["sdfasdf","sadfas","asdfasfd"],
 				"last_poster_name":"tiezi"
 	       
 	       },
@@ -46,7 +49,10 @@
 				"nickname":"tiezi",
 				"avatar":"statics/img/img1.jpg",
 				"user":"",
-				"tags":"1,4,9,10",
+				"is_closed" : false,
+				"is_elite" : true,			
+				"is_top" : true,
+				"pic" : [],
 				"last_poster_name":"tiezi"
 	       
 	       },
@@ -69,8 +75,12 @@
 				"nickname":"tiezi",
 				"avatar":"statics/img/img1.jpg",
 				"user":"",
-				"tags":"4,9,10",
+				"is_closed" : false,
+				"is_elite" : true,			
+				"is_top" : true,
+				"pic" : [],
 				"last_poster_name":"tiezi"
+	       
 	       }
 	    ]
     }

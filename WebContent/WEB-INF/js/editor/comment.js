@@ -52,9 +52,6 @@ define("comment",["jquery",'handlebars'],function(require, exports, module) {
     function editorInit () {//{{{
         um = UM.getEditor('myEditor',{
             toolbar:[
-                ' bold italic underline |',
-                'forecolor fontsize' ,
-                'link unlink | image feed-emotion',
             ],
            imageScaleEnabled:false
         });
