@@ -1,3 +1,4 @@
+
 package com.mofang.feedweb.controller.web;
 
 
@@ -293,22 +294,27 @@ public class FeedCommonController {
 					if (i == 0) {
 						objHotForumrank.setForumId1(jsonRank.optLong("forum_id", 0));
 						objHotForumrank.setForumName1(jsonRank.optString("forum_name", ""));
+						objHotForumrank.setIcon1(jsonRank.optString("icon", ""));
 						objHotForumrank.setUpDown1(jsonRank.optInt("up_down", 0));
 					} else if (i == 1) {
 						objHotForumrank.setForumId1(jsonRank.optLong("forum_id", 0));
 						objHotForumrank.setForumName1(jsonRank.optString("forum_name", ""));
+						objHotForumrank.setIcon2(jsonRank.optString("icon", ""));
 						objHotForumrank.setUpDown1(jsonRank.optInt("up_down", 0));
 					} else if (i == 2) {
 						objHotForumrank.setForumId1(jsonRank.optLong("forum_id", 0));
 						objHotForumrank.setForumName1(jsonRank.optString("forum_name", ""));
+						objHotForumrank.setIcon3(jsonRank.optString("icon", ""));
 						objHotForumrank.setUpDown1(jsonRank.optInt("up_down", 0));
 					} else if (i == 3) {
 						objHotForumrank.setForumId1(jsonRank.optLong("forum_id", 0));
 						objHotForumrank.setForumName1(jsonRank.optString("forum_name", ""));
+						objHotForumrank.setIcon4(jsonRank.optString("icon", ""));
 						objHotForumrank.setUpDown1(jsonRank.optInt("up_down", 0));
 					} else if (i == 4) {
 						objHotForumrank.setForumId1(jsonRank.optLong("forum_id", 0));
 						objHotForumrank.setForumName1(jsonRank.optString("forum_name", ""));
+						objHotForumrank.setIcon5(jsonRank.optString("icon", ""));
 						objHotForumrank.setUpDown1(jsonRank.optInt("up_down", 0));
 					}
 				}
