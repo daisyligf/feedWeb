@@ -154,7 +154,7 @@ public class FeedCommonController {
 			HttpComponent httpComp = new HttpComponent();
 			CloseableHttpClient clientservice = getHttpProvider()
 					.getHttpClient();
-			String result = httpComp.post(clientservice, postUrl + "?atom=" + atom,
+			String result = httpComp.post(clientservice, postUrl + "?" + atom,
 					postData.toString());
 			if (StringUtil.isNullOrEmpty(result))
 				return null;
