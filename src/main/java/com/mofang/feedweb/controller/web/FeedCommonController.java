@@ -156,9 +156,9 @@ public class FeedCommonController {
 				+ Constant.THREAD_CANCELELITE_URL;
 	}
 
-//	protected String getUploadImgUrl() {
-//		return externalUrlInfo.getUpload_img_url();
-//	}
+	protected String getUploadImgUrl() {
+		return externalUrlInfo.getUpload_img_url();
+	}
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();
