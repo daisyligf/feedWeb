@@ -32,6 +32,7 @@
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
+    <script type="text/javascript" src="./js/jquery-2.1.4.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -662,7 +663,6 @@
 </body>
 <script type="text/javascript">
 $('#search').click(function() {
-	alert('haha');
 	var searchKey = $('#searchKey').val();
 	window.location.href = "search?keyword="+searchKey;
 });
