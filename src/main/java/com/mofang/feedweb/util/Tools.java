@@ -66,15 +66,15 @@ public class Tools {
         }
 	}
 	
-	public static  String encodetoAtom(String data)
+	public static  String encodetoAtom(String uid)
     {	
 		if (Constant.TEST_FLG) {
-			data = "129707";
+			uid = "129707";
 		}
 		String atom = "";
-		if (null != data ) {
-			data = Constant.STR_UID_CODE + data;
-			atom = new String(Base64.encodeBase64(data.getBytes()));
+		if (null != uid ) {
+			uid = Constant.STR_UID_CODE + uid;
+			atom = new String(Base64.encodeBase64(uid.getBytes()));
 			atom = Constant.STR_ATOM_MARK +atom ;
 		  }
 	  return atom;
