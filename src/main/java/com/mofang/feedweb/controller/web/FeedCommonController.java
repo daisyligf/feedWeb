@@ -88,58 +88,72 @@ public class FeedCommonController {
 	protected String getForumFollowUrl() {
 		return externalUrlInfo.getUser_info_url() + Constant.FORUM_FOLLOW_URL;
 	}
+
 	protected String getModeratorCheckUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_CHECK_URL;
-	}	protected String getModeratorApplyUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_APPLY_URL;
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.MODERATOR_CHECK_URL;
 	}
-	
+
+	protected String getModeratorApplyUrl() {
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.MODERATOR_APPLY_URL;
+	}
+
 	protected String getThreadInfoUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_INFO_URL;
 	}
-	
+
 	protected String getPostListUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_POSTLIST_GET_URL;
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.THREAD_POSTLIST_GET_URL;
 	}
-	
+
 	protected String getCommentListUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_COMMENTLIST_GET_URL;
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.THREAD_COMMENTLIST_GET_URL;
 	}
-	
+
 	protected String getReplyPostUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_REPLY_URL;
 	}
-	
+
 	protected String getDelFloorUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_DELETE_URL;
 	}
-	
+
 	protected String getRecommendFloorUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_COMMEND_URL;
 	}
-	
+
 	protected String getCloseThreadUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_CLOSE_URL;
 	}
-	
+
 	protected String getOpenThreadUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_OPEN_URL;
 	}
-	
+
 	protected String getSetTopThreadUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_SETTOP_URL;
 	}
-	
+
 	protected String getCancelTopThreadUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_CANCELTOP_URL;
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.THREAD_CANCELTOP_URL;
 	}
-	
+
 	protected String getEliteThreadUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_SETELITE_URL;
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.THREAD_SETELITE_URL;
 	}
-	
+
 	protected String getCancelEliteThreadUrl() {
-		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_CANCELELITE_URL;
+		return externalUrlInfo.getFeed_info_url()
+				+ Constant.THREAD_CANCELELITE_URL;
+	}
+
+	protected String getUploadImgUrl() {
+		return externalUrlInfo.getUpload_img_url();
 	}
 	
 	protected HttpClientProvider getHttpProvider() {
@@ -154,7 +168,6 @@ public class FeedCommonController {
 		config.setCheckIdleInitialDelay(connInfo.getCheckIdleInitialDelay());
 		config.setCheckIdlePeriod(connInfo.getCheckIdlePeriod());
 		config.setCloseIdleTimeout(connInfo.getCloseIdleTimeout());
-
 		HttpClientProvider provider = new HttpClientProvider(config);
 		return provider;
 	}
@@ -178,9 +191,6 @@ public class FeedCommonController {
 				strb.append(param);
 			}
 			HttpComponent httpComp = new HttpComponent();
-			// String getHttpUrl =
-			// getUrl.concat(Constant.STR_QUESTION_MARK).concat(interfaceURL).concat(
-			// strb.toString());
 			CloseableHttpClient clientservice = getHttpProvider()
 					.getHttpClient();
 			String result = httpComp.get(clientservice, strb.toString());
