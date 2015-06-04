@@ -94,6 +94,53 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url() + Constant.MODERATOR_APPLY_URL;
 	}
 	
+	protected String getThreadInfoUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_INFO_URL;
+	}
+	
+	protected String getPostListUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_POSTLIST_GET_URL;
+	}
+	
+	protected String getCommentListUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_COMMENTLIST_GET_URL;
+	}
+	
+	protected String getReplyPostUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.POST_REPLY_URL;
+	}
+	
+	protected String getDelFloorUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.POST_DELETE_URL;
+	}
+	
+	protected String getRecommendFloorUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.POST_COMMEND_URL;
+	}
+	
+	protected String getCloseThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_CLOSE_URL;
+	}
+	
+	protected String getOpenThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_OPEN_URL;
+	}
+	
+	protected String getSetTopThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_SETTOP_URL;
+	}
+	
+	protected String getCancelTopThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_CANCELTOP_URL;
+	}
+	
+	protected String getEliteThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_SETELITE_URL;
+	}
+	
+	protected String getCancelEliteThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_CANCELELITE_URL;
+	}
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();

@@ -1,5 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ page import="com.mofang.feedweb.entity.FeedForum"%>
+<%@ page import="com.mofang.feedweb.entity.FeedThread"%>
+<%@ page import="com.mofang.feedweb.entity.FeedPost"%>
+<%@ page import="com.mofang.feedweb.entity.FeedComment"%>
+<%@ page import="com.mofang.feedweb.entity.ThreadUserInfo"%>
+<%@ page import="com.mofang.feedweb.entity.UserInfo"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <!--{* 使用IE最高版本渲染,如果有chrome frome插件,则使用chrome frame *}-->
@@ -18,7 +29,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>bbs帖子页</title>
+    <title>帖子详情页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <link rel="stylesheet" href="css/base.css">
 
@@ -32,7 +43,6 @@
     <script src="js/sea-config.js"></script>
     <script src="js/bbs-config.js"></script>
 
-    
     <script src="js/editor/js/jquery.min.js"></script>
     <script src="js/editor/js/umeditor.config.js"></script>
     <script src="js/editor/js/umeditor.js"></script>
@@ -98,7 +108,7 @@
         <div class="con clearfix">
             <div class="nav clearfix">
                 <div class="nav-left">
-                    <a href="#">论坛首页</a> > <a href="#">乱斗西游</a> > <a href="javascript:;" class="end">舌尖上西游</a>
+                    <a href="#">论坛首页</a> > <a href="forum_content?fid=${feedForum.forum_id }">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
                 <div class="page-plug">
                     <ul class="page-pc">
@@ -119,14 +129,14 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="#"><img src="img/img1.jpg" alt=""></a></dt>
-                        <dd><a href='#'>带你装逼带你飞</a></dd>
-                        <dd class="money"><s class="icon-money"></s>235427</dd>
+                        <dt><a href="#"><img src="${threadUserInfo.avatar}" alt=""></a></dt>
+                        <dd><a href='#'>${threadUserInfo.nickname}</a></dd>
+                        <dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>
                     </dl>
                     <ul class="clearfix">
-                        <li class="col-xs-4"><span>20</span>帖子</li>
-                        <li class="col-xs-4"><span>220</span>回复</li>
-                        <li class="col-xs-4 no-line"><span>10</span>精华</li>
+                        <li class="col-xs-4"><span>${threadUserInfo.threads}</span>帖子</li>
+                        <li class="col-xs-4"><span>${threadUserInfo.replies}</span>回复</li>
+                        <li class="col-xs-4 no-line"><span>${threadUserInfo.eliteThreads}</span>精华</li>
                     </ul> 
                 </div>
                 <div class="lord-team">
@@ -156,7 +166,7 @@
                         <dd class="author-name">但岁先生</dd>
                         <dd class="author-detail"><b>楼主</b><span>05-14</span><span> 15:10</span></dd>
                     </dl>
-                    <h2>《最终幻想14》2.2新版截图推出炫耀装备系统 
+                    <h2> ${feedThread.subject } 
                         <a href="#" class="landord">只看楼主</a>
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
@@ -167,10 +177,9 @@
                         </div>
                         
                     </h2>
-                    <h3>楼主  <a href="#">张无忌打太极</a>  发表于  5-18  12:12</h3>
+                    <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></h3>
                     <div class="con-con">
-                        <p>游戏在操作上，融合了塔防的常规操作，但又和一般闯关游戏有着截然不同的操作。在 闯关任务中，玩家不再是依靠虚拟摇杆以及虚拟按键，而采用了随机划线的方式，可以根据自己设计的路线，规划出机器人的行 走路线。而且路线不单单是走直角或转直角，斜角路线的加入，让游戏更加具有可玩性外，还非常的人性化。</p>
-                        <img src="img/img3.jpg" height="336" width="448" alt="">
+                    	${feedThread.htmlContent }
                     </div>
                     <p class="look">
                         <span class="zan"><s class="icon-zan"></s><a href="javascript:;">3425</a></span>
@@ -223,7 +232,7 @@
                                     <input type="hidden"  name="uid" class="uid" value="2342"/>
                                     <input type="hidden"  name="postname" class="postname" value="2342"/>
                                     <textarea name="" class="dianping-textarea" cols="30" rows="10">回复</textarea>
-                                    <p class="replay-floor">还可以输入140字 <input type="button" class="reply-btn" value="回复"></p>
+                                    <p class="replay-floor"><span class="replay-count">还可以输入140字</span> <input type="button" class="reply-btn" value="回复"></p>
                                 </div>
                             </div>
                             
@@ -232,7 +241,8 @@
                     </div>
                     <!-- 分页 -->
                     <div class="page-plug">
-                        
+                        <input type="hidden" id="currPage" value="${p}"/>
+                        <input type="hidden" id="pageSize" value="${pagesize}"/>
                         <ul class="page-mobile clearfix">
                             <li class="prev"><a href="#">上一页</a></li>
                             <li class="text">5/235</li>
@@ -252,13 +262,19 @@
                                     <div class="editor-textarea">
                                         <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.mofang.com/">登录</a> | <a  class="maskReg" href="http://u.mofang.com/">立即注册</a></div>
                                     </div>
-                                    <script type="text/plain" id="myEditor" style="height:240px;">您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发您需要登录后才可以发</script>
+                                    <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                 </div>
                             </dd>
+                            <form id="editor-form" action="/" method="POST">
+                                <input type="hidden" name="fid" class="editor-fid" value="123124"/>
+                                <input type="hidden" name="tid"  class="editor-tid" value="1234">
+                                <input type="hidden" name="uid"  class="editor-tid" value="1234">
+                                <input type="hidden" name="content"  class="editor-cont" value=""/>
+                            </form>
                         </dl>
                     </div>
                     
-                    <p class="replay-floor">还可以输入10000字 <input type="button" class="reply-editer reply-submit" value="回复"></p>
+                    <p class="replay-floor"><span class="word-count">还可以输入5000字</span> <input type="button" class="reply-editer reply-submit" value="回复"></p>
                 </div>
             </div>
         </div>
@@ -283,15 +299,20 @@
             </h2>
             <div class="post-delete-reason">
                 <p  class="post-delete-sure pop-title">确定要删除帖子？</p>
-                <form action="">
-                    <div class="delete-reason-choose pop-msg-title">选择原因</div>
+                    <div class="delete-reason-choose">
+                        <h3 class="delete-choose-title">不喜欢</h3>
+                        <div class="delete-choose-sort">
+                            <span>不喜欢这个帖子</span>
+                            <span>烦这个帖子</span>
+                            <span>鄙视这个帖子</span>
+                        </div>
+                    </div>
     
                     <textarea name="" class="pop-msg"></textarea>
                     <p class="delete-reason-but clearfix">
                         <input type="button" class="delete-reason-cancel pop-cancel" value="取消">
                         <input type="button" class="delete-reason-ok pop-ok" value="确定">
                     </p>
-                </form>
             </div>
         </div>
         <!-- 成功 -->
