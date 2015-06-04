@@ -142,10 +142,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
-	public void newThread(/*@RequestParam(value = "tid", required = false) long tid, 
-			@RequestParam String content, @RequestParam(value = "tagId") int tagId,
-			@RequestParam String subject, @RequestParam(value = "fid", required = false) int fid,*/
-			HttpServletRequest request, HttpServletResponse response)
+	public void newThread(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		long tid = Integer.valueOf(request.getParameter("tid"));
 		String content = request.getParameter("content");
