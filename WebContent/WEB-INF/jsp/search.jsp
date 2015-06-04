@@ -96,8 +96,8 @@
                 {{#each list}}
                 <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="{{icon}}" alt=""></a></dt>
-                       <dd><a href="#">{{name}}</a></dd>
+                       <dt><a href="{{link_url}}"><img src="{{icon}}" alt=""></a></dt>
+                       <dd><a href="{{link_url}}">{{name}}</a></dd>
                        <dd>今日  {{today_threads}}</dd>
                        <dd>帖子  {{threads}}</dd>
                    </dl>
@@ -113,7 +113,7 @@
            <!-- 搜索板块结束 -->
               
            <!-- 搜索帖子开始 -->
-           <div class="h2 post-num">帖子<span>24</span><a href="#">更多 ></a></div>
+           <div class="h2 post-num">帖子<span>24</span><!-- <a href="#">更多 ></a> --></div>
             <div class="con-bottom clearfix">
              <div class="col-xs-12 bg-white">
 

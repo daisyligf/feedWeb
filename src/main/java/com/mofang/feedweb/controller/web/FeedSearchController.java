@@ -2,8 +2,10 @@ package com.mofang.feedweb.controller.web;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.mofang.feedweb.global.Constant;
 
 @Controller
@@ -29,28 +31,45 @@ public class FeedSearchController extends FeedCommonController{
 	
 	private JSONObject forumJson(String requestParam, int p, HttpServletRequest request) throws Exception{
 		JSONObject result = getHttpInfo(getFeedUrlInfo() + Constant.LIST_FORUM_SEARCH_URL, requestParam, request);
+		if(result==null){
+			return new JSONObject();
+		}
+		int code = result.optInt("code", -1);
+		if(code == 0) {
+			JSONObject objData = result.optJSONObject("data");
+			JSONArray jsonArr = objData.optJSONArray("list");
+			for(int idx = 0; idx < jsonArr.length(); idx ++) {
+				JSONObject objForum = jsonArr.getJSONObject(idx);
+				long fid = objForum.optLong("fid", 0l);
+				objForum.put("link_url", "forum_content?fid=" +  fid);
+			}
+		}
 		return result;
 	}
 	
 	private JSONObject threadJson(String requestParam, int p, HttpServletRequest request) throws Exception{
 		JSONObject result = getHttpInfo(getFeedUrlInfo() + Constant.LIST_THREAD_SEARCH_URL, requestParam, request);
-		//content字段截取40个字符显示
-		if(result != null) {
-			int code = result.optInt("code", -1);
-			if(code == 0){
-				JSONObject objData = result.optJSONObject("data");
-				JSONArray jsonArr = objData.optJSONArray("threads");
-				for(int idx = 0; idx < jsonArr.length(); idx ++) {
-					JSONObject objThread = jsonArr.getJSONObject(idx);
-					String content = objThread.optString("content", "");
-					if(!StringUtils.isEmpty(content)) {
-						//截取
-						if(content.length() > 40){
-							content = content.substring(0, 39);
-							objThread.put("content", content);
-						}
+		if(result==null){
+			return new JSONObject();
+		}
+		
+		int code = result.optInt("code", -1);
+		if(code == 0){
+			JSONObject objData = result.optJSONObject("data");
+			JSONArray jsonArr = objData.optJSONArray("threads");
+			for(int idx = 0; idx < jsonArr.length(); idx ++) {
+				JSONObject objThread = jsonArr.getJSONObject(idx);
+				String content = objThread.optString("content", "");
+				if(!StringUtils.isEmpty(content)) {
+					// content字段截取40个字符显示
+					if(content.length() > 40){
+						content = content.substring(0, 39);
+						objThread.put("content", content);
 					}
 				}
+				
+				long threadId = objThread.optLong("tid", 0l);
+				objThread.put("link_url", "thread_info?thread_id=" + threadId);
 			}
 		}
 		return result;
@@ -58,22 +77,17 @@ public class FeedSearchController extends FeedCommonController{
 	
 	@RequestMapping(value = "/searchThread",method = RequestMethod.GET)
 	public void searchThread(@RequestParam(value = "keyword") String keyword, 
-			@RequestParam(value = "fid", required=false) String fid,@RequestParam(value = "author", required=false) String author,
-			@RequestParam(value = "status", required=false) String status, 
-			@RequestParam(value = "p", required=false) int p,HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		//测试数据
-		if(StringUtils.isEmpty(fid)){
-			fid = "10";
-		}
-		if(StringUtils.isEmpty(status)){
-			status = "1";
-		}
-		if(StringUtils.isEmpty(author)){
-			author = "";
-		}
+			@RequestParam(value = "fid", required=false) String strFid,
+			@RequestParam(value = "p", required=false) int p,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String status = "1";
+		String author = "";
 		if(!StringUtils.isEmpty(keyword)){
 			keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		long fid = 0;
+		if(!StringUtils.isEmpty(strFid)) {
+			fid = Long.valueOf(strFid);
 		}
 		StringBuilder requestParam = new StringBuilder();
 		requestParam.append("fid=").append(fid).append("&");
@@ -87,10 +101,9 @@ public class FeedSearchController extends FeedCommonController{
 	}
 	
 	@RequestMapping(value = "/searchForum",method = RequestMethod.GET)
-	@ResponseBody
-	public void searchForum(@RequestParam(value = "keyword") String keyword, @RequestParam(value = "p", required=false) int p,
+	public void searchForum(@RequestParam(value = "keyword") String keyword,
+			@RequestParam(value = "p", required=false) int p,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		if(!StringUtils.isEmpty(keyword)){
 			keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		}

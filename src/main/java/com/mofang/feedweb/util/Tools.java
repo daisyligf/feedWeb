@@ -12,14 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 
 import com.mofang.feedweb.component.HttpComponent;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.net.http.HttpClientProvider;
 
-@Component
 public class Tools {
 	
 	public static String getHttpInfo(String feedUrl, HttpClientProvider provider,String interfaceURL) 

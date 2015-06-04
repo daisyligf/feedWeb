@@ -29,9 +29,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
+import com.mofang.feedweb.entity.ModeratorApplyCondition;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.global.Constant;
 
@@ -133,9 +135,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			@RequestParam(value = "uid") long uid,
 			@RequestParam(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
 		Map<String, Object> map = new HashMap<String, Object>();
-
 		// 帖子信息
 		map.putAll(threadInfoJson("tid=" + tid, request));
 		// 用户信息
@@ -143,6 +143,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
 		
+		// 默认综合 特殊处理
 		FeedThread threadInfo = (FeedThread)map.get("threadInfo");
 		if(threadInfo != null) {
 			int tagId = threadInfo.getTagId();
@@ -156,25 +157,29 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
-	public void newThread(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
 			throws Exception {
-		long tid = Integer.valueOf(request.getParameter("tid"));
+		String strTid = request.getParameter("tid");
 		String content = request.getParameter("content");
 		String strTagId = request.getParameter("tagId");
+		String subject = request.getParameter("subject");
+		String strFid = request.getParameter("fid");
+		
+		long tid = 0;
+		if(!StringUtils.isEmpty(strTid)) {
+			tid = Long.valueOf(strTid);
+		}
 		int tagId = 0;
 		if(!StringUtils.isEmpty(strTagId)){
 			tagId = Integer.valueOf(strTagId);
 		}
-		String subject = request.getParameter("subject");
-		int fid = Integer.valueOf(request.getParameter("fid"));
 		
 		String message = "保存失败";
 		
 		//发新帖
 		if(tid == 0) {
-			long forumId = fid;
 			JSONObject json = new JSONObject();
-			json.put("fid", forumId);
+			json.put("fid", strFid);
 			json.put("subject", subject);
 			json.put("content", content);
 			json.put("tag_id", tagId);
@@ -182,7 +187,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			int code = result.optInt("code", -1);
 			//跳转到 板块内容页
 			if(code == 0){
-				
+				redirectAtt.addAttribute("fid", strFid);
+				return new ModelAndView("redirect:/forum_content");
 			}
 			
 			message = result.optString("message", "");
@@ -199,7 +205,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			int code = result.optInt("code", -1);
 			//跳转到 帖子详情页
 			if(code == 0){
-				
+				redirectAtt.addAttribute("thread_id", strTid);
+				return new ModelAndView("redirect:/thread_info");
 			}
 			
 			message = result.optString("message", "");
@@ -207,10 +214,12 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(message);
+		return null;
 	}
 	
 	@RequestMapping(value = "/upload" , method = RequestMethod.POST)
-	public void upload(@RequestParam("upfile") CommonsMultipartFile file, MultipartHttpServletRequest multiRequest, HttpServletResponse response) throws Exception {
+	public void upload(@RequestParam("upfile") CommonsMultipartFile file, 
+			MultipartHttpServletRequest multiRequest, HttpServletResponse response) throws Exception {
 		String fileName = file.getOriginalFilename();
 		PostMethod filePost = new PostMethod(getUploadImgUrl());
 		HttpClient client = new HttpClient();
