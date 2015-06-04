@@ -46,7 +46,7 @@ public class Constant {
 	// 帖子详情页
 	// 楼层列表
 
-	public static final String THREAD_POSTLIST_GET_URL = "/feed/v2/web/floorlist";
+	public static final String THREAD_POSTLIST_GET_URL = "/feed/v2/web/post/list";
 	// 楼层评论列表
 
 	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v2/web/commentdisplay";

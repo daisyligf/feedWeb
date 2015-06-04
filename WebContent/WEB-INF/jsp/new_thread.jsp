@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" import="com.mofang.feedweb.entity.FeedTag"%>
+<%@ page language="java" import="com.mofang.feedweb.entity.FeedThread"%>
 <%@ page language="java" import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,30 +115,66 @@
                 
             </div>
             <div class="col-xs-9 col-md-12 post">
-                <h2>发新帖</h2>
+                <h2>
+     	               <c:choose>
+                   			<c:when test="${threadInfo.thread_id == 0 }">
+                   				发新帖
+                   			</c:when>
+                   			<c:otherwise>
+                   				编辑帖
+                   			</c:otherwise>
+                   		</c:choose>
+                </h2>
                 <div class="title-type clearfix">
-                    <input type="text" class="col-xs-10 title editor-title" placeholder="帖子标题不超过30个字">
+                    <input type="text" class="col-xs-10 title editor-title" placeholder="帖子标题不超过30个字"  value="${threadInfo.subject }">
                     <div class="col-xs-2">
                         <div class="sel">
-                            <a class="sel-one">综合</a>
+                        
+<%--                               <c:forEach items=" ${tagList}" var="tag" >
+                              		<c:choose>
+                              			<c:when test="${tag.tag_id == threadInfo.tagId }">
+                              				<a class="sel-one">${tag.tag_name }</a>
+                              			</c:when>
+                              			<c:otherwise>
+                              				<a class="sel-one">综合</a>
+                              			</c:otherwise>
+                              		</c:choose>
+                            	</c:forEach> --%>
+                           <!--  <a class="sel-one">综合</a> -->
+                            	<%
+                            		FeedThread threadInfo = (FeedThread)request.getAttribute("threadInfo");
+                            		List<FeedTag> list = (List)request.getAttribute("tagList");
+                            		for(int idx =0 ; idx < list.size(); idx ++ ) {
+                            			FeedTag tag = list.get(idx);
+                            			if(threadInfo.getTagId() == tag.getTag_id()) {
+                            	%>
+                            			<a class="sel-one" data-tagsId="<%=tag.getTag_id() %>"><%=tag.getTag_name() %></a>
+                            	<%
+                            				break;
+                            			}else if(threadInfo.getTagId() == 0){
+                            	 %>			
+                            			 <a class="sel-one" data-tagsId="0">综合</a>
+                            	 <%			
+                            	 			break;
+                            			}
+                            		}
+                            	%>             
                             <div class="sel-more">
                             
 <%--                             	<c:forEach items=" ${tagList}" var="tag" >
 	                                <a href="javascript:;"  data-tagsId="${tag.tag_id }" >1</a>
                             	</c:forEach> --%>
+                            	
                             	<%
-                            		List<FeedTag> list = (List)request.getAttribute("tagList");
                             		for(int idx =0 ; idx < list.size(); idx ++ ) {
                             			FeedTag tag = list.get(idx);
+                            			if(threadInfo.getTagId() != tag.getTag_id()) {
                             	%>
-                            			<a href="javascript:;"  data-tagsId="<%=tag.getTag_id() %>>" ><%=tag.getTag_name() %></a>
+                            			<a href="javascript:;"  data-tagsId="<%=tag.getTag_id() %>" ><%=tag.getTag_name() %></a>
                             	<%
+                            			}
                             		}
                             	%>
-                            	
-<!--                                 <a href="javascript:;"   data-tagsId="2">精华</a>
-                                <a href="javascript:;"   data-tagsId="3">锁帖</a> -->
-                                
                             </div>
                         </div>
                     </div>
@@ -151,14 +188,14 @@
                                 <div class="editor-textarea">
                                     <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.mofang.com/">登录</a> | <a  class="maskReg" href="http://u.mofang.com/">立即注册</a></div>
                                 </div>
-                                <script type="text/plain" id="myEditor" style="height:240px;"></script>
+                                <script type="text/plain" id="myEditor" style="height:240px;">${threadInfo.htmlContent }</script>
                             </div>
                         </dd>
                         <form id="editor-form" action="newThread" method="post" ENCTYPE="multipart/form-data">
                             <input type="hidden" name="fid" class="editor-fid" value="${fid }"/>
-                            <input type="hidden" name="tid"  class="editor-tid" value="${tid }">
+                            <input type="hidden" name="tid"  class="editor-tid" value="${threadInfo.thread_id }">
                             <input type="hidden" name="subject"  class="editor-title" value="${threadInfo.subject }">
-                            <input type="hidden" name="tagId"  class="editor-tags" value="${tagId }">
+                            <input type="hidden" name="tagId"  class="editor-tags" value="${threadInfo.tagId }">
                             <input type="hidden" name="content"  class="editor-cont" value="${threadInfo.htmlContent }"/>
                         </form>
                     </dl>

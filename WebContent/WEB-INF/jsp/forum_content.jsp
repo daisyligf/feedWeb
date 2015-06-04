@@ -148,10 +148,10 @@
                         <dl class="clearfix">
                             <dt><a href="#"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
-                                <dd class="title"><a href="#">${feedThread.subject}
-                                <c:if test="${feedThread.top}"><s class="icon-ding"></s></c:if>
+                                <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }">${feedThread.subject}
+                                <c:if test="${feedThread.isTop}"><s class="icon-ding"></s></c:if>
                                 
-                                <c:if test="${feedThread.elite}"><s class="icon-jing"></s></c:if>
+                                <c:if test="${feedThread.isElite}"><s class="icon-jing"></s></c:if>
                                 <c:if test="${feedThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
                                 <dd>${fn:substring(feedThread.content, 0, 100)}...</dd>

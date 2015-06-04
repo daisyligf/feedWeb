@@ -330,9 +330,9 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
             var _vshow = $(_this).html();
             var _vshowId = $(_this).attr("data-tagsId");
             $(_this).html(_v);
-            $(_this).attr("tagsId",_vId);
+            $(_this).attr("data-tagsId",_vId);
             $(this).html(_vshow);
-            $(this).attr("tagsId",_vshowId);
+            $(this).attr("data-tagsId",_vshowId);
             $(".sel-one").removeClass('active');
             $(".sel-one").next(".sel-more").hide();
             return false;

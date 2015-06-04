@@ -1,5 +1,7 @@
 package com.mofang.feedweb.entity;
 
+import java.util.Date;
+
 /**
  * @author ke
  *
@@ -7,14 +9,15 @@ package com.mofang.feedweb.entity;
 public class FeedComment {
 
 	private long comment_id;
-	private String comment_name;
-	private String create_time;
+	private String content;
+	private Date create_time;
 	private int status;
 	private long user_id;
 	private String user_name;
 	private long forum_id;
 	private long thread_id;
 	private long post_id;
+	private UserInfo userInfo;
 	
 	public long getComment_id() {
 		return comment_id;
@@ -22,16 +25,16 @@ public class FeedComment {
 	public void setComment_id(long comment_id) {
 		this.comment_id = comment_id;
 	}
-	public String getComment_name() {
-		return comment_name;
+	public String getContent() {
+		return content;
 	}
-	public void setComment_name(String comment_name) {
-		this.comment_name = comment_name;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(String create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
 	public int getStatus() {
@@ -70,9 +73,11 @@ public class FeedComment {
 	public void setPost_id(long post_id) {
 		this.post_id = post_id;
 	}
-	
-	
-	
-	
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
 	
 }
