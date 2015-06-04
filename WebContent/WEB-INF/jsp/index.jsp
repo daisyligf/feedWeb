@@ -244,7 +244,7 @@
             </div>
            <!-- 第一块内容结束 -->
            <!-- 热门游戏开始 -->
-           <div class="h2">热门游戏 <a href="#">更多 ></a></div>
+           <div class="h2">热门游戏 <a href="forumList?forumType=1">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
@@ -255,17 +255,17 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl1==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="#"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl1 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl1}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl1}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl1==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="#" class="zq bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl1 != ''}">
-                      	<a href="#">礼包</a> 
-                    </c:if> 
+                      	<a href="${hotForum.hotGiftUrl1}"  class="zq r">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -277,16 +277,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl2==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="#"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl2 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl2}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl2}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl2==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl2 != ''}">
-                      	<a href="#">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl2}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -426,7 +426,7 @@
            </div>
            <!-- 热门游戏结束 -->
           	<!-- 新游推荐开始 -->
-           <div class="h2">新游推荐 <a href="#">更多 ></a></div>
+           <div class="h2">新游推荐 <a href="forumList?forumType=2">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">

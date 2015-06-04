@@ -1,12 +1,214 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <!--{* 使用IE最高版本渲染,如果有chrome frome插件,则使用chrome frame *}-->
+
+    <!--[if !IE]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--<![endif]-->
+
+    <!--{* 让360浏览器默认以chrome内核显示 *}-->
+    <meta name="renderer" content="webkit">
+
+    <!-- 移动端处理 -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--  phone numer select -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>bbs列表页</title>
+    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/channel.css">
+    <script src="./js/sea.js"></script>
+    <script src="./js/sea-config.js"></script>
+    <!--{* IE6 png 图像处理 *}-->
+    <!--[if IE 6]>
+        <script src="./js/loader/dd_belatedpng.js"></script>
+        <script>
+            DD_belatedPNG.fix('.pngfix');
+        </script>
+    <![endif]-->
+
+
+    <!--{* ie8 以下浏览器html5兼容层 *}-->
+    <!--[if lt IE 9]>
+        <script src="./js/loader/html5shiv.js"></script>
+    <![endif]-->
+
 </head>
 <body>
-<p>forumlist</p>
+    <div class="page">
+        <!-- 头部开始 -->
+        <div class="header clearfix">
+            <div class="nav clearfix">
+                <div class="nav-left">
+                    <a href="http://www.mofang.com">魔方网首页</a>
+                </div>
+                <div class="nav-right">
+                    <!-- 登陆状态 -->
+                    <!-- <a href="#" class="head"><img src="./img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
+                    <div class="user-info">
+                        <ul class="clearfix">
+                            <li class="header-money"><s class="icon-money"></s>34356</li>
+                            <li class="zuji"><a href="#">足迹</a><a href="#" class="msg">消息<s class="icon-red"></s></a><a href="#" class="libao">礼包库</a></li>
+                            <li class="info">
+                               <a href="#">个人信息</a><a href="#">设置</a><a href="#" class="out">退出</a> 
+                            </li>
+                        </ul>
+                    </div> -->
+                    <!-- 登陆状态 -->
+                    <a href="#" class="load"><img src="./img/icon/load.png"></a>
+                </div>
+                
+            </div>
+            <div class="nav-wap clearfix">
+              <div class="nav-wap-left">
+                  <a href="http://www.mofang.com"><img src="./img/icon/nav_three.png"></a>
+                  <p class="nav-info">
+                    <a class="nav-info-home">首页</a>
+                    <a>个人中心</a>
+                  </p>
+              </div> 
+            </div>
+        </div>
+        <!-- 头部结束 -->
+        <!-- 搜索开始 -->
+        <div class="search">
+            <div class="bbs-logo">
+                <img src="./img/icon/bbs_icon.png" alt="">
+            </div>
+            <div class="bbs-search">
+                <input type="submit" class="ser-but" value="" id="submit"/>
+                <input type="text" class="ser-text" value="${searchkey} " id="keyword" placeholder="过来搜我"/>
+                <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
+                <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
+            </div>
+        </div>
+        <!-- 搜索结束 -->
+        <!-- 内容开始 -->
+        <div class="con clearfix">
+           <div class="h2">热门游戏</div>
+           <div class="channel-list">
+           <c:if test="${letterGroup=='ABCDE'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=ABCDE&currentPage=1&forumType=${forumType}">ABCDE</a></div>
+           </c:if>  
+           <c:if test="${letterGroup !='ABCDE'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=ABCDE&currentPage=1&forumType=${forumType}">ABCDE</a></div>
+           </c:if>
+           <c:if test="${letterGroup =='FGHIJ'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=FGHIJ&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
+           </c:if>
+           <c:if test="${letterGroup !='FGHIJ'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=FGHIJ&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
+           </c:if>
+           <c:if test="${letterGroup =='KLMNO'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=KLMNO&currentPage=1&forumType=${forumType}">KLMNO</a></div>
+           </c:if>
+           <c:if test="${letterGroup !='KLMNO'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=KLMNO&currentPage=1&forumType=${forumType}">KLMNO</a></div>
+           </c:if> 
+           <c:if test="${letterGroup =='PQRST'}">
+           		<div class="col-xs-2" active><a href="forumList?letterGroup=PQRST&currentPage=1&forumType=${forumType}">PQRST</a></div>
+           </c:if>   
+            <c:if test="${letterGroup !='PQRST'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=PQRST&currentPage=1&forumType=${forumType}">PQRST</a></div>
+           </c:if>   
+           <c:if test="${letterGroup =='WXYZ'}">
+           		<div class="col-xs-2" active><a href="forumList?letterGroup=WXYZ&currentPage=1&forumType=${forumType}">WXYZ</a></div>
+           </c:if>
+            <c:if test="${letterGroup !='WXYZ'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=WXYZ&currentPage=1&forumType=${forumType}">WXYZ</a></div>
+           </c:if>
+           <c:if test="${letterGroup =='OTHER'}">
+               <div class="col-xs-2"><a href="forumList?letterGroup=OTHER&currentPage=1&forumType=${forumType}">#</a></div>
+           </c:if>
+           <c:if test="${letterGroup !='OTHER'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=OTHER&currentPage=1&forumType=${forumType}">#</a></div>
+           </c:if>
+           </div>
+           <div class="h2-con clearfix container">
+           <!-- 内容循环开始 -->
+           	<c:choose>
+				<c:when test="${not empty listInfo}">
+					<c:forEach items="${listInfo}" var="forum" varStatus="vs">						
+			               <div class="col-xs-3 col-md-4  col-sm-6">
+			                   <dl class="clearfix">
+			                       <dt><a href="#"><img src="${forum.icon} " alt=""></a></dt>
+			                       <dd><a href="#">${forum.forumName}</a></dd>
+			                       <dd>今日  <b class="update">${forum.todayThreads}</b></dd>
+			                       <dd>帖子  ${forum.totalThreads}</dd>
+			                   </dl>
+			                   <div class="h2-con-bot">
+			                   <c:if test="${forumType == 1}">
+			                      <c:if test="${forum.prefectureUrl != ''}">
+			                      <a href="${forum.prefectureUrl}"  class="zq">专区</a>
+			                      </c:if>
+			                      <c:if test="${forum.prefectureUrl == ''}">
+			                      <a href="#"  class="zq bg-grey">专区</a>
+			                      </c:if>
+			                   </c:if>
+			                    <c:if test="${forumType == 2}">
+			                      <c:if test="${forum.downLoadUrl != ''}">
+			                      <a href="${forum.downLoadUrl}"  class="zq">下载</a>
+			                      </c:if>
+			                      <c:if test="${forum.downLoadUrl == ''}">
+			                      <a href="#"  class="zq bg-grey">下载</a>
+			                      </c:if>
+			                   </c:if>
+			                   <c:if test="${forum.giftUrl != ''}">
+			                      <a href="${forum.giftUrl}">礼包</a> 
+			                   </c:if>
+			                   <c:if test="${forum.giftUrl == ''}">
+			                      <a href="#">礼包</a> 
+			                   </c:if>
+			                   </div>
+			               </div>
+            		</c:forEach>
+				</c:when>
+			</c:choose>
+            <!-- 内容循环结束 -->   
+           </div>
+          <!--  <div class="load-more">
+              <a href="#">加载更多</a>
+           </div>-->
+            <div class="page-plug">
+                <ul class="page-pc">
+                    <li class="prev"><a href="#">上一页</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li class="active"><a href="javascript:;">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li class="next"><a href="#">下一页</a></li>
+                </ul>
+           <!--     <ul class="page-mobile">
+                    <li class="prev"><a href="#">上一页</a></li>
+                    <li class="text">5/235</li>
+                    <li class="next"><a href="#">下一页</a></li>
+                </ul>
+
+            </div> -->
+              
+           
+        </div>
+        <!-- 内容结束 -->
+        <!-- 底部开始 -->
+        <div class="footer cleafix">
+            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
+        </div>
+        <!-- 底部结束 -->
+    </div>
+    
+   <script src="./js/mod/channel.js"></script>
+   
 </body>
 </html>

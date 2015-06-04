@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,23 +20,22 @@ import com.mofang.feedweb.form.FeedForumListForm;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
-
+@Controller
 public class FeedForumListController extends FeedCommonController {
 	
 	
 	//版块列表
 	@RequestMapping(value = "/forumList")
-	@ResponseBody
 	public ModelAndView forumList(HttpServletRequest request) throws Exception {
 		
-		String letterGroup = "";
+		String letterGroup = Constant.STR_ABCDE;
 		if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
 			letterGroup = request.getParameter("letterGroup");
 		}
-		int currePage = 1;
-		if (!StringUtil.isNullOrEmpty(request.getParameter("currePage"))) {
-			currePage = Integer.valueOf(
-					Tools.replaceBlank(request.getParameter("currePage")));
+		int currentPage = 1;
+		if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
+			currentPage = Integer.valueOf(
+					Tools.replaceBlank(request.getParameter("currentPage")));
 		}
 		int forumType = 1;//热门游戏  ：1  新游推荐 ：2
 		if (!StringUtil.isNullOrEmpty(request.getParameter("forumType"))) {
@@ -46,15 +46,16 @@ public class FeedForumListController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		//获取版块list
-		FeedForumListForm form = getForumList(request, currePage, forumType, letterGroup);
+		FeedForumListForm form = getForumList(request, currentPage, forumType, letterGroup);
 		int total = form.getTotal();
 		
 		
 		model.put("listInfo", form.getInfoList());
+		model.put("letterGroup", letterGroup);
 		model.put("searchkey", "");
-		model.put("currePage", currePage);
+		model.put("currentPage", currentPage);
 		model.put("totalPages", Tools.editTotalPageNumber(total));
-		model.put("pagelist", Tools.editPageNumber(total, currePage));
+		model.put("pagelist", Tools.editPageNumber(total, currentPage));
 		model.put("forumType", forumType);
 		
 		return new ModelAndView("forumList", model);
