@@ -151,25 +151,25 @@
 			                   <div class="h2-con-bot">
 			                   <c:if test="${forumType == 1}">
 			                      <c:if test="${forum.prefectureUrl != ''}">
-			                      <a href="${forum.prefectureUrl}"  class="zq">专区</a>
+			                      <a href="${forum.prefectureUrl}"  class="zq l">专区</a>
 			                      </c:if>
 			                      <c:if test="${forum.prefectureUrl == ''}">
-			                      <a href="#"  class="zq bg-grey">专区</a>
+			                      <a href="#"  class="zq bg-grey l">专区</a>
 			                      </c:if>
 			                   </c:if>
 			                    <c:if test="${forumType == 2}">
 			                      <c:if test="${forum.downLoadUrl != ''}">
-			                      <a href="${forum.downLoadUrl}"  class="zq">下载</a>
+			                      <a href="${forum.downLoadUrl}"  class="zq l">下载</a>
 			                      </c:if>
 			                      <c:if test="${forum.downLoadUrl == ''}">
-			                      <a href="#"  class="zq bg-grey">下载</a>
+			                      <a href="#"  class="zq bg-grey l">下载</a>
 			                      </c:if>
 			                   </c:if>
 			                   <c:if test="${forum.giftUrl != ''}">
-			                      <a href="${forum.giftUrl}">礼包</a> 
+			                      <a href="${forum.giftUrl}" class="zq r">礼包</a> 
 			                   </c:if>
 			                   <c:if test="${forum.giftUrl == ''}">
-			                      <a href="#">礼包</a> 
+			                      <a href="#" class="zq bg-grey r">礼包</a> 
 			                   </c:if>
 			                   </div>
 			               </div>

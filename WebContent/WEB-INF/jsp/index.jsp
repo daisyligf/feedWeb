@@ -255,13 +255,13 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl1==''}">
-                      <a href="#"  class="zq bg-grey l">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl1 != ''}">
                       <a href="${hotForum.hotPrefectureUrl1}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl1==''}">
-                      	<a href="#" class="zq bg-grey r">礼包</a> 
+                      	<a href="javascript:;" class="zq bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl1 != ''}">
                       	<a href="${hotForum.hotGiftUrl1}"  class="zq r">礼包</a> 
@@ -277,7 +277,7 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl2==''}">
-                      <a href="#"  class="zq bg-grey l">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl2 != ''}">
                       <a href="${hotForum.hotPrefectureUrl2}"  class="zq l">专区</a>
@@ -299,16 +299,16 @@
                    </dl>
                    <div class="h2-con-bot">
                      <c:if  test="${hotForum.hotPrefectureUrl3==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl3 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl3}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl3}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl3==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl3 != ''}">
-                      	<a href="${hotForum.hotGiftUrl3}">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl3}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -321,16 +321,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl4==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl4 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl4}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl4}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl4==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl4 != ''}">
-                      	<a href="${hotForum.hotGiftUrl4}">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl4} r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -343,16 +343,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl5==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl5 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl5}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl5}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl5==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl5 != ''}">
-                      	<a href="${hotForum.hotGiftUrl5}">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl5}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -365,16 +365,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl6==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl6 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl6}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl6}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl6==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl6 != ''}">
-                      	<a href="${hotForum.hotGiftUrl6}">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl6}"  class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -387,16 +387,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl7==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl7 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl7}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl7}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl7==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl7 != ''}">
-                      	<a href="${hotForum.hotGiftUrl7}">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl7}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -409,16 +409,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${hotForum.hotPrefectureUrl8==''}">
-                      <a href="#"  class="zq bg-grey">专区</a>
+                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl8 != ''}">
-                      <a href="${hotForum.hotPrefectureUrl8}"  class="zq">专区</a>
+                      <a href="${hotForum.hotPrefectureUrl8}"  class="zq l">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl8==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl8 != ''}">
-                      	<a href="${hotForum.hotGiftUrl8}">礼包</a> 
+                      	<a href="${hotForum.hotGiftUrl8}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -437,16 +437,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl1==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl1 != ''}">
-                      <a href="${recommendForum.downloadUrl1}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl1}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl1==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl1 != ''}">
-                      	<a href="${recommendForum.giftUrl1}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl1}" class="zq r">礼包</a> 
                     </c:if> 
                    </div>
                </div>
@@ -459,16 +459,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl2==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl2 != ''}">
-                      <a href="${recommendForum.downloadUrl2}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl2}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl2==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl2 != ''}">
-                      	<a href="${recommendForum.giftUrl2}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl2}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -481,16 +481,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl3==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl3 != ''}">
-                      <a href="${recommendForum.downloadUrl3}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl3}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl3==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl3 != ''}">
-                      	<a href="${recommendForum.giftUrl3}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl3}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -503,16 +503,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl4==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl4 != ''}">
-                      <a href="${recommendForum.downloadUrl4}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl4}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl4==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl4 != ''}">
-                      	<a href="${recommendForum.giftUrl4}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl4}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -525,16 +525,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl5==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl5 != ''}">
-                      <a href="${recommendForum.downloadUrl5}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl5}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl5==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl5 != ''}">
-                      	<a href="${recommendForum.giftUrl5}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl5}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -547,16 +547,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl6==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="#"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl6 != ''}">
-                      <a href="${recommendForum.downloadUrl6}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl6}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl6==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl6 != ''}">
-                      	<a href="${recommendForum.giftUrl6}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl6}" class="zq r">礼包</a> 
                     </c:if> 
                    </div>
                </div>
@@ -569,16 +569,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl7==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="#"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl7 != ''}">
-                      <a href="${recommendForum.downloadUrl7}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl7}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl7==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl7 != ''}">
-                      	<a href="${recommendForum.giftUrl7}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl7}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
@@ -591,16 +591,16 @@
                    </dl>
                    <div class="h2-con-bot">
                     <c:if  test="${recommendForum.downloadUrl8==''}">
-                      <a href="#"  class="zq bg-grey">下载</a>
+                      <a href="#"  class="zq bg-grey l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl8 != ''}">
-                      <a href="${recommendForum.downloadUrl8}"  class="zq">下载</a>
+                      <a href="${recommendForum.downloadUrl8}"  class="zq l">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl8==''}">
-                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl8 != ''}">
-                      	<a href="${recommendForum.giftUrl8}">礼包</a> 
+                      	<a href="${recommendForum.giftUrl8}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
