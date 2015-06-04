@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <!--{* 使用IE最高版本渲染,如果有chrome frome插件,则使用chrome frame *}-->
@@ -107,16 +110,16 @@
                             <!-- <div class="swipe-wrap"> -->
                                <ul class="swipe-wrap">
                                   <li>
-                                    <a href="${tickers.thread_link1} "><img src="${tickers.ticker_icon1} "alt="" /></a>
-                                    <b class="swipe-wrap-info" >愤怒的小鸟作者再出神作</b>
+                                    <a href="${tickers.threadLink1} "><img src="${tickers.tickerIcon1} "alt="" /></a>
+                                    <b class="swipe-wrap-info" ></b>
                                   </li>
                                   <li>
-                                    <a href="${tickers.thread_link2}"><img src="${tickers.ticker_icon2}"alt="" /></a>
-                                    <b class="swipe-wrap-info" >愤怒的小鸟作者再出神作</b>
+                                    <a href="${tickers.threadLink2}"><img src="${tickers.tickerIcon2}"alt="" /></a>
+                                    <b class="swipe-wrap-info" ></b>
                                   </li>
                                   <li>
-                                    <a href="${tickers.thread_link3}"><img src="${tickers.ticker_icon3}"alt="" /></a>
-                                    <b class="swipe-wrap-info" >愤怒的小鸟作者再出神作</b>
+                                    <a href="${tickers.threadLink3}"><img src="${tickers.tickerIcon3}"alt="" /></a>
+                                    <b class="swipe-wrap-info" ></b>
                                   </li>
                                </ul>
                                <ol>
@@ -159,65 +162,65 @@
                                 <ul>
                                     <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="${hotRank.icon1} " alt="">${hotRank.forumName1} </a>
 	                                    <span class="rank">
-		                                    <c:if  test="${hotRank.upDown1=='0'}">
+		                                     <c:if test="${hotRank.upDown1==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown1=='1'}>
+		                                    <c:if test="${hotRank.upDown1==1}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown1=='2'}>
+		                                    <c:if test="${hotRank.upDown1==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
 		                                </span>
                                     </li>
                                     <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="${hotRank.icon2} " alt="">${hotRank.forumName2}</a>
                                     <span class="rank">
-                                     		<c:if  test="${hotRank.upDown2=='0'}">
+                                     		<c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    <c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     </span>
                                     </li>
                                     <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="${hotRank.icon3} " alt="">${hotRank.forumName3}</a>
                                     	<span class="rank">
-                                    		<c:if  test="${hotRank.upDown2=='0'}">
+                                    		<c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    <c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     	</span>
                                     </li>
                                     <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="${hotRank.icon4} " alt="">${hotRank.forumName4}</a>
                                     	<span class="rank">
-                                    	    <c:if  test="${hotRank.upDown2=='0'}">
+                                    	    <c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    <c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     	</span>
                                     </li>
                                     <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="${hotRank.icon5} " alt="">${hotRank.forumName5}</a>
                                     	<span class="rank">
-                                    	     <c:if  test="${hotRank.upDown2=='0'}">
+                                    	    <c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='1'}>
+		                                    <c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2=='2'}>
+		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     	</span>
@@ -248,226 +251,364 @@
                        <dt><a href="# "><img src="${hotForum.hotIcon1}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName1}</a></dd>
                        <dd>今日  <b class="update">${hotForum.hotTodayThreads1} </b></dd>
-                       <dd>帖子  ${hotForum.hotTodayThreads1}</dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads1}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <c:if  test="${hotRank.upDown1==''}">
-                      <a href="${hotForum.hotTodayThreads1}"  class="zq bg-grey">专区</a>
-                      <a href="javascript:;" class="bg-grey">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl1==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl1 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl1}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl1==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl1 != ''}">
+                      	<a href="#">礼包</a> 
+                    </c:if> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon2}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName2}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads2}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads2}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl2==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl2 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl2}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl2==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl2 != ''}">
+                      	<a href="#">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon3}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName3}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads3}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads3}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                     <c:if  test="${hotForum.hotPrefectureUrl3==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl3 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl3}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl3==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl3 != ''}">
+                      	<a href="${hotForum.hotGiftUrl3}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon4}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName4}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads4}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads4}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl4==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl4 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl4}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl4==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl4 != ''}">
+                      	<a href="${hotForum.hotGiftUrl4}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon5}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName5}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads5}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads5}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl5==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl5 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl5}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl5==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl5 != ''}">
+                      	<a href="${hotForum.hotGiftUrl5}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon6}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName6}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads6}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads6}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl6==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl6 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl6}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl6==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl6 != ''}">
+                      	<a href="${hotForum.hotGiftUrl6}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon7}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName7}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads7}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads7}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl7==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl7 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl7}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl7==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl7 != ''}">
+                      	<a href="${hotForum.hotGiftUrl7}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
                        <dt><a href="#"><img src="${hotForum.hotIcon8}" alt=""></a></dt>
                        <dd><a href="#">${hotForum.hotForumName8}</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dd>今日  <b>${hotForum.hotTodayThreads8}</b></dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads8}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${hotForum.hotPrefectureUrl8==''}">
+                      <a href="#"  class="zq bg-grey">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotPrefectureUrl8 != ''}">
+                      <a href="${hotForum.hotPrefectureUrl8}"  class="zq">专区</a>
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl8==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${hotForum.hotGiftUrl8 != ''}">
+                      	<a href="${hotForum.hotGiftUrl8}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
 
            </div>
            <!-- 热门游戏结束 -->
-           <!-- 新游推荐开始 -->
+          	<!-- 新游推荐开始 -->
            <div class="h2">新游推荐 <a href="#">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b class="update">1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon1}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName1}</a></dd>
+                       <dd>今日  <b class="update">${recommendForum.todayThreads1}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads1}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl1==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl1 != ''}">
+                      <a href="${recommendForum.downloadUrl1}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl1==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl1 != ''}">
+                      	<a href="${recommendForum.giftUrl1}">礼包</a> 
+                    </c:if> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon2}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName2}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads2}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads2}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl2==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl2 != ''}">
+                      <a href="${recommendForum.downloadUrl2}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl2==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl2 != ''}">
+                      	<a href="${recommendForum.giftUrl2}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon3}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName3}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads3}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads3}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl3==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl3 != ''}">
+                      <a href="${recommendForum.downloadUrl3}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl3==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl3 != ''}">
+                      	<a href="${recommendForum.giftUrl3}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon4}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName4}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads4}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads4}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl4==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl4 != ''}">
+                      <a href="${recommendForum.downloadUrl4}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl4==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl4 != ''}">
+                      	<a href="${recommendForum.giftUrl4}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon5}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName5}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads5}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads5}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl5==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl5 != ''}">
+                      <a href="${recommendForum.downloadUrl5}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl5==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl5 != ''}">
+                      	<a href="${recommendForum.giftUrl5}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon6}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName6}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads6}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads6}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl6==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl6 != ''}">
+                      <a href="${recommendForum.downloadUrl6}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl6==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl6 != ''}">
+                      	<a href="${recommendForum.giftUrl6}">礼包</a> 
+                    </c:if> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon7}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName7}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads7}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads7}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl7==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl7 != ''}">
+                      <a href="${recommendForum.downloadUrl7}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl7==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl7 != ''}">
+                      	<a href="${recommendForum.giftUrl7}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
+                       <dt><a href="#"><img src="${recommendForum.icon8}" alt=""></a></dt>
+                       <dd><a href="#">${recommendForum.forumName8}</a></dd>
+                       <dd>今日  <b>${recommendForum.todayThreads8}</b></dd>
+                       <dd>帖子  ${recommendForum.totalThreads8}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="#"  class="zq">专区</a><a href="#">礼包</a> 
+                    <c:if  test="${recommendForum.downloadUrl8==''}">
+                      <a href="#"  class="zq bg-grey">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.downloadUrl8 != ''}">
+                      <a href="${recommendForum.downloadUrl8}"  class="zq">下载</a>
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl8==''}">
+                      	<a href="javascript:;" class="bg-grey">礼包</a> 
+                    </c:if>
+                    <c:if  test="${recommendForum.giftUrl8 != ''}">
+                      	<a href="${recommendForum.giftUrl8}">礼包</a> 
+                    </c:if>
                    </div>
                </div>
                
            </div>
            <!-- 新游推荐结束 -->
-           <!-- 综合专区开始 -->
-           <div class="h2">综合专区</div>
-           <div class="h2-con clearfix container">
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b class="update">1352</b></dd>
-                       <dd>帖子  10870</dd>
-                   </dl>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
-                   </dl>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
-                   </dl>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="#"><img src="./img/img1.jpg" alt=""></a></dt>
-                       <dd><a href="#">金箍棒OL</a></dd>
-                       <dd>今日  <b>1352</b></dd>
-                       <dd>帖子  10870</dd>
-                   </dl>
-               </div>
-               
-           </div>
-           <!-- 综合专区结束 -->
+           
+     
         </div>
         <!-- 内容结束 -->
         <!-- 底部开始 -->

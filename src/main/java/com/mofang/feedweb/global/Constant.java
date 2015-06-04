@@ -106,7 +106,7 @@ public class Constant {
 
 	// 发帖页
 	// 发帖
-	public static final String THREAD_CREATE_URL = "/feed/v2/web/newthread";
+	public static final String THREAD_CREATE_URL = "/feed/v2/web/thread/add";
 	// 楼主信息
 	public static final String THREAD_MODERATOR_INFO_URL = "/feed/v2/web/user/info";
 	// 版块标签

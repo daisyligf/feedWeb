@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,11 +39,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		map.putAll(tagJson("fid=" + fid, request));
 		
 		map.put("fid", fid);
-		map.put("tid", 0);
-		map.put("tagId", 0);
 		FeedThread threadinfo = new FeedThread();
 		map.put("threadInfo", threadinfo);
-		
 		return new ModelAndView("new_thread", map);
 	}
 
@@ -117,6 +115,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		return map;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = { "/editThreadInit" })
 	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
 			@RequestParam(value = "uid") long uid,
@@ -132,20 +131,30 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
 		
+		FeedThread threadInfo = (FeedThread)map.get("threadInfo");
+		if(threadInfo != null) {
+			int tagId = threadInfo.getTagId();
+			if(tagId > 0){
+				List<FeedTag> list = (List)map.get("tagList");
+				list.add(new FeedTag(0, "综合"));
+			}
+		}
 		map.put("fid", fid);
-		map.put("tid", 0);
-		map.put("tagId", 0);
-		
-
 		return new ModelAndView("new_thread", map);
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
-	public void newThread(@RequestParam(value = "tid", required = false) long tid, @RequestParam String subject,
-			@RequestParam String content, @RequestParam(value = "tagId") int tagId,
-			@RequestParam(value = "fid", required = false) int fid,
-			HttpServletRequest request, HttpServletResponse response)
+	public void newThread(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		long tid = Integer.valueOf(request.getParameter("tid"));
+		String content = request.getParameter("content");
+		String strTagId = request.getParameter("tagId");
+		int tagId = 0;
+		if(!StringUtils.isEmpty(strTagId)){
+			tagId = Integer.valueOf(strTagId);
+		}
+		String subject = request.getParameter("subject");
+		int fid = Integer.valueOf(request.getParameter("fid"));
 		
 		String message = "保存失败";
 		
