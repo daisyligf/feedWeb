@@ -154,7 +154,7 @@
                                 <script type="text/plain" id="myEditor" style="height:240px;"></script>
                             </div>
                         </dd>
-                        <form id="editor-form" action="newThread" method="post">
+                        <form id="editor-form" action="newThread" method="post" ENCTYPE="multipart/form-data">
                             <input type="hidden" name="fid" class="editor-fid" value="${fid }"/>
                             <input type="hidden" name="tid"  class="editor-tid" value="${tid }">
                             <input type="hidden" name="subject"  class="editor-title" value="${threadInfo.subject }">
@@ -166,8 +166,8 @@
                 </div>
                 <div class="sub clearfix">
                     <input type="text" class="code-text">
-                    <img src="http://u.mofang.com/captcha/captcha" alt="" class="code">
-
+                   <!--  <img src="http://u.mofang.com/captcha/captcha" alt="" class="code"> -->
+					<img src="generageCode" alt="" class="code">
                     <input type="button" class="submit reply-submit" value="发表帖子">
                     <span class="word-count">还可以输入5000字</span>
                 </div>
@@ -188,7 +188,7 @@
         
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="mg/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">

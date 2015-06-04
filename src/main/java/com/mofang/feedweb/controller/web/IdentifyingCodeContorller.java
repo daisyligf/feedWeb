@@ -6,11 +6,15 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.Random;
+
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,13 +26,22 @@ public class IdentifyingCodeContorller {
 	private static int HEIGHT = 22;// 设置图片的高度
 
 	@RequestMapping("/checkCode")
-	public void check(@RequestParam String randCode, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public void check(@RequestParam(value = "code") String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		JSONObject json = new JSONObject();
 		String rand = (String)request.getSession().getAttribute("randCode"); 
-		if(rand.equals(randCode)) {
-			response.getWriter().print(1);
-		}else{
-			response.getWriter().print(0);
+		if(StringUtils.isEmpty(code) || StringUtils.isEmpty(rand)) {
+			json.put("code", 0);
 		}
+		if(!StringUtils.isEmpty(code) && !StringUtils.isEmpty(rand)) {
+			code = code.toLowerCase();
+			rand = rand.toLowerCase();
+			if(rand.equals(code)) {
+				json.put("code", 1);
+			}else{
+				json.put("code", 0);
+			}
+		}
+		response.getWriter().print(json.toString());
 	}
 	
 	@RequestMapping("/generageCode")

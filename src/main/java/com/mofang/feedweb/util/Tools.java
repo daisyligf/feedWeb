@@ -22,22 +22,6 @@ import com.mofang.feedweb.net.http.HttpClientProvider;
 @Component
 public class Tools {
 	
-//	
-//	public static String getFeedUrlInfo() throws Exception
-//	{
-//        try
-//        {	
-//        	FeedUrlInfo feedUrlInfo = getFeedUrlInfoProperties();
-//        	return feedUrlInfo.getFeed_info_url();
-//        	
-//        }
-//        catch(Exception e)
-//        {
-//        	GlobalObject.ERROR_LOG.error("Tools.getFeedUrlInfo", e);
-//        	return null;
-//        }
-//	}
-	
 	public static String getHttpInfo(String feedUrl, HttpClientProvider provider,String interfaceURL) 
 	{
         try
@@ -82,112 +66,18 @@ public class Tools {
         }
 	}
 	
-//	public static CloseableHttpClient httpClientInit() 
-//	{
-//        try
-//        {
-//        		HttpClientProvider provider = getHttpClientProvider();
-//        		return provider.getHttpClient();
-//        }
-//        catch(Exception e)
-//        {
-//        	GlobalObject.ERROR_LOG.error("Tools.CloseableHttpClient", e);
-//        }
-//        return null;
-//	}
-//	
-//	private static HttpClientProvider getHttpClientProvider() 
-//	{
-//		HttpClientInfo connInfo;
-//		try {
-//			connInfo = getHttpClientInfoProperties();
-//			
-//			HttpClientConfig config = new HttpClientConfig();
-//			config.setHost(connInfo.getHost());
-//			config.setPort(connInfo.getPort());
-//			config.setMaxTotal(connInfo.getMaxTotal());
-//			config.setCharset(connInfo.getCharset());
-//			config.setConnTimeout(connInfo.getConnTimeout());
-//			config.setSocketTimeout(connInfo.getSocketTimeout());
-//			config.setDefaultKeepAliveTimeout(connInfo.getKeepAliveTimeout());
-//			config.setCheckIdleInitialDelay(connInfo.getCheckIdleInitialDelay());
-//			config.setCheckIdlePeriod(connInfo.getCheckIdlePeriod());
-//			config.setCloseIdleTimeout(connInfo.getCloseIdleTimeout());
-////			HttpClientConfig config = new HttpClientConfig();
-////			config.setHost(host);
-////			config.setPort(port);
-////			config.setMaxTotal(maxTotal);
-////			config.setCharset(charset);
-////			config.setConnTimeout(connTimeout);
-////			config.setSocketTimeout(socketTimeout);
-////			config.setDefaultKeepAliveTimeout(keepAliveTimeout);
-////			config.setCheckIdleInitialDelay(checkIdleInitialDelay);
-////			config.setCheckIdlePeriod(checkIdlePeriod);
-////			config.setCloseIdleTimeout(closeIdleTimeout);
-//			
-//			HttpClientProvider provider = new HttpClientProvider(config);
-//			return provider;
-//		} catch (Exception e) {
-//			
-//			GlobalObject.ERROR_LOG.error("Tools.HttpClientProvider", e);
-//		}
-//		return null;
-//		
-//	}
-	
-	
-//	public static HttpClientInfo getHttpClientInfoProperties() 
-//	{
-//        try
-//        {
-//    		ApplicationContext appContext = new ClassPathXmlApplicationContext(
-//    				"feedAdmin-servlet.xml");
-//    		HttpClientInfo httpClientInfo = appContext
-//    				.getBean(HttpClientInfo.class);
-//    		
-//			return httpClientInfo;
-//        }
-//        catch(Exception e)
-//        {
-//        	GlobalObject.ERROR_LOG.error("Tools.getHttpClientInfoProperties", e);
-//        }
-//        return null;
-//	}
-//	
-//	public static FeedUrlInfo getFeedUrlInfoProperties() 
-//	{
-//        try
-//        {
-//    		ApplicationContext appContext = new ClassPathXmlApplicationContext(
-//    				"feedAdmin-servlet.xml");
-//    		FeedUrlInfo feedUrlInfo = appContext
-//    				.getBean(FeedUrlInfo.class);
-//    		
-//			return feedUrlInfo;
-//        }
-//        catch(Exception e)
-//        {
-//        	GlobalObject.ERROR_LOG.error("Tools.getFeedUrlInfoProperties", e);
-//        }
-//        return null;
-//	}
-	
 	public static  String encodetoAtom(String data)
     {	
 		if (Constant.TEST_FLG) {
-		data = "129707";
+			data = "129707";
 		}
 		String atom = "";
-		  if (null != data ) {
+		if (null != data ) {
 			data = Constant.STR_UID_CODE + data;
 			atom = new String(Base64.encodeBase64(data.getBytes()));
-//				atom = URLEncoder.encode(data, "UTF-8");
-//				atom = new String(Base64.encodeBase64(atom.getBytes()), "UTF-8");
 			atom = Constant.STR_ATOM_MARK +atom ;
 		  }
-		  
 	  return atom;
-        
     }
 	
 	public static  String editURLParameter(String name, String content)
@@ -208,23 +98,6 @@ public class Tools {
         return result.toString();
     }
 	
-//	public static  String editFeedrequestUrl(String interfaceURL)
-//    {
-//		try {
-//			
-//			StringBuffer requestURL = new StringBuffer();
-//			requestURL.append(Tools.getFeedUrlInfo());
-//			requestURL.append(interfaceURL);
-//			requestURL.append(Constant.STR_QUESTION_MARK);
-//			
-//			return requestURL.toString();
-//			
-//		} catch (Exception e) {
-//			GlobalObject.ERROR_LOG.error("Tools.editFeedrequestUrl", e);
-//		}
-//		return null;
-//    }
-	
 	public static void renderData(HttpServletResponse response, JSONObject data) {
 	    	PrintWriter printWriter = null;
 	    try {
@@ -241,7 +114,6 @@ public class Tools {
 	  }
 	
 	public static List<Integer> editPageNumber(int total, int selectPage) {
-		
 		int totalPage = total/Constant.PAGE_SIZE;
 		if(total % Constant.PAGE_SIZE != 0){
 		    totalPage += 1;
@@ -257,7 +129,6 @@ public class Tools {
 		    ++num;
 		}
 		return pageArr;
-		
 	}
 	
 	public static List<Integer> editPageNumber(int total, int selectPage, int pageSize) {
@@ -279,16 +150,13 @@ public class Tools {
 	}
 	
 	public static int editTotalPageNumber(int total) {
-		
 		int totalPage = total/Constant.PAGE_SIZE;
 		if(total % Constant.PAGE_SIZE != 0){
 		    totalPage += 1;
 		}
 		if (total == 0) 
 			totalPage = 1;
-		
 		return totalPage;
-		
 	}
 	
 	public static String replaceBlank(String page) {
@@ -297,7 +165,6 @@ public class Tools {
 		} else {
 			return "";
 		}
-		
 	}
 	
 	public static String getAtom() {

@@ -1,5 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ page import="com.mofang.feedweb.entity.ModeratorApplyCondition"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <!--{* 使用IE最高版本渲染,如果有chrome frome插件,则使用chrome frame *}-->
@@ -26,6 +31,7 @@
     <link rel="stylesheet" href="css/add_list_article.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
+    
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./statics/js/loader/dd_belatedpng.js"></script>
@@ -84,39 +90,41 @@
                     <div class="feed-user-apply-hd clearfix">
                         <!-- {if $noApplyReason == null} -->
                         <!--申请-->
-                        <div class="apply-hd-main">
-                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="/f/{$fid}.html" class="apply-link" target="_blank">神马</a> 吧主</span></h3>
-                            <div class="feed-user-apply-form">
-                            <div class="feed-user-infos"></div>
-                                <form action="" class="user-apply-form">
-                                    <input type="hidden" name="fid" value="{$fid}"/>
-                                    <input class="J_focus apply-text apply-user-qq" type="text" data-type="qq" name="qq" value="请输入您的QQ号">
-                                    <input  class="J_focus apply-text apply-user-phone" type="text" data-type="phone" name="phone" value="请输入您的手机号">
-                                    <textarea  class="J_focus apply-text apply-user-text"name="text" data-type="text">描述一下游戏经历，让我们更了解你！</textarea>
-                                    <input class="apply-user-btn" type="submit" value="立即申请">
-                                </form>
-                            </div>
-                        </div>
-                        <!--申请 end -->
-                        <!-- {else} -->
-                        <!--error start-->
-                        <div class="apply-hd-main-error clearfix">
-                            <div class="apply-hd-main">
-                                <h3 class="apply-hd-error-title"> 对不起，你还不满足吧主申请条件!  </h3>
-                                <p class="apply-line"></p>
-                                <div class="apply-status-list">
-                                    <ul>
-                                        <li class="no-meet">您还没有登录,请登录后再试!</li>
-                                    </ul>
-                                    
-                                </div>
-                            </div>
-                            <!--error end-->
-                            <!-- {/if} -->
-                            <div class="apply-hd-show">
-                                <img src="img/apply.jpg" alt="">
-                            </div>
-                        </div>
+                        <c:choose>
+	                        <c:when test="${moderatorApplyCondition.isPass}">
+	                        <div class="apply-hd-main">
+	                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="/f/{$fid}.html" class="apply-link" target="_blank">神马</a> 吧主</span></h3>
+	                            <div class="feed-user-apply-form">
+	                            <div class="feed-user-infos"></div>
+	                                <form action="" class="user-apply-form">
+	                                    <input type="hidden" name="fid" id="forum_id" value="${forum_id}"/>
+	                                    <input class="J_focus apply-text apply-user-qq" type="text" data-type="qq" id="qq" name="qq" value="请输入您的QQ号">
+	                                    <input  class="J_focus apply-text apply-user-phone" type="text" data-type="phone" id="phone" name="phone" value="请输入您的手机号">
+	                                    <textarea  class="J_focus apply-text apply-user-text" id="game_exp" name="game_exp" data-type="text">描述一下游戏经历，让我们更了解你！</textarea>
+	                                    <input class="apply-user-btn" type="button" id="applyBtn" value="立即申请">
+	                                </form>
+	                            </div>
+	                        </div>
+	                        </c:when>
+	                        <c:otherwise>
+	                        <div class="apply-hd-main-error clearfix">
+	                            <div class="apply-hd-main">
+	                                <h3 class="apply-hd-error-title"> 对不起，你还不满足吧主申请条件!  </h3>
+	                                <p class="apply-line"></p>
+	                                <div class="apply-status-list">
+	                                    <ul>
+	                                        <li class="no-meet">您还没有登录,请登录后再试!</li>
+	                                    </ul>
+	                                    
+	                                </div>
+	                            </div>
+	                           
+	                            <div class="apply-hd-show">
+	                                <img src="img/apply.jpg" alt="">
+	                            </div>
+	                        </div>
+	                        </c:otherwise>
+                        </c:choose>
 
                     </div>
                     <!--header end -->
@@ -158,6 +166,32 @@
         <!-- 底部结束 -->
     </div>
 </body>
+<script src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript">
+$('#applyBtn').click(function() {
+	alert('haha');
+	var forumId = $('#forum_id').val();
+	var qq = $('#qq').val();
+	var phone = $('#phone').val();
+	var gameExp = $('#game_exp').val();
+	
+	$.ajax({
+		url:'apply',
+		type:'POST',
+		dataType:'json',
+		data:{'forum_id':forumId, 'qq':qq, 'phone':phone, 'game_exp':gameExp},
+		success:function(data){
+			if (data != null && data.code == 0) {
+				alert('申请成功！');
+				location.href="forum_content?fid="+forumId;
+			} else {
+				alert('申请失败！');
+				return;
+			}
+		}
+	});
+});
+</script>
 </html>
 
 
