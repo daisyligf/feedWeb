@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,7 @@ import com.mofang.feedweb.entity.FeedComment;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedPost;
 import com.mofang.feedweb.entity.FeedThread;
+import com.mofang.feedweb.entity.QueryPage;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.util.StringUtil;
@@ -42,15 +42,14 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 		getThreadInfo(request, threadId, model);
 		
-		
 		return new ModelAndView("thread_info", model);
 	}
 	
-	private void getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws JSONException {
+	private void getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
 		
 		StringBuilder param = new StringBuilder();
 		param.append("tid=").append(threadId);
-		
+		long forumId = 0;
 		String currPage = request.getParameter("currPage");
 		int page = 1;
 		if (currPage != null && StringUtil.isInteger(currPage)) {
@@ -103,7 +102,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 				
 				JSONObject forumObj = threadObj.optJSONObject("forum");
 				if (forumObj != null) {
-					feedForum.setForum_id(forumObj.optLong("fid", 0));
+					forumId = forumObj.optLong("fid", 0);
+					feedForum.setForum_id(forumId);
 					feedForum.setForum_name(forumObj.optString("name", ""));
 				}
 				
@@ -131,7 +131,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 					feedPost.setHtmlContent(postObj.optString("html_content", ""));
 					feedPost.setRecommends(postObj.optInt("recommends", 0));
 					feedPost.setPosition(postObj.optInt("position", 0));
-					feedPost.setCreate_time(new Date(postObj.optLong("reate_time", 0)));
+					feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));
+					feedPost.setComments(postObj.optInt("comments", 0));
 					
 					List<FeedComment> commentList = new ArrayList<FeedComment>();
 					
@@ -171,13 +172,43 @@ public class FeedThreadInfoController extends FeedCommonController {
 			
 		}
 		
+		List<FeedThread> highestList = replyHighest(request, forumId);
+		
+		QueryPage queryPage = new QueryPage(page, size, total);
+		
 		model.put("total", total);
 		model.put("feedThread", feedThread);
 		model.put("feedForum", feedForum);
 		model.put("threadUserInfo", threadUserInfo);
 		model.put("postList", postList);
+		model.put("highestList", highestList);
+		model.put("currPage", queryPage.getCurrPageNum());
+		model.put("totalPage", queryPage.getTotalPageNum());
+		model.put("pageBar", queryPage.getPagebar());
+//		model.put("pageUrl", pageUrl.toString());
 		
+		model.put("page", page);
+		model.put("size", size);
+	}
+	
+	private List<FeedThread> replyHighest(HttpServletRequest request, long forumId) throws Exception {
+		String param = "fid=" + forumId;
+		List<FeedThread> threadList = new ArrayList<FeedThread>();
+		JSONObject json = getHttpInfo(getCommentListUrl(), param, request);
+		if (json != null && json.optInt("code", -1) == 0) {
+			JSONArray data = json.optJSONArray("data");
+			if (data != null && data.length() > 0) {
+				for (int i = 0; i < data.length(); i++) {
+					JSONObject obj = data.getJSONObject(i);
+					FeedThread feedThread = new FeedThread();
+					feedThread.setThread_id(obj.optLong("tid", 0));
+					feedThread.setSubject(obj.optString("subject", ""));
+					threadList.add(feedThread);
+				}
+			}
+		}
 		
+		return threadList;
 	}
 	
 	@RequestMapping(value = "comment_list.json")
@@ -228,8 +259,26 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("pid", pid);
 		postData.put("reason", reason);
 		
-		
 		JSONObject json = postHttpInfo(getDelFloorUrl(), postData);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+		out.close();
+		
+		return null;
+	}
+	
+	@RequestMapping(value = "recommend_thread.json")
+	public String recommendThread(@RequestParam("tid") long tid, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		JSONObject postData = new JSONObject();
+		postData.put("tid", tid);
+		
+		JSONObject json = postHttpInfo(getRecommendThreadUrl(), postData);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");

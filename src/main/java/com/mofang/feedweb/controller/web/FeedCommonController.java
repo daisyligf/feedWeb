@@ -120,7 +120,11 @@ public class FeedCommonController {
 	protected String getDelFloorUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_DELETE_URL;
 	}
-
+	
+	protected String getRecommendThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_RECOMMEND_URL;
+	}
+	
 	protected String getRecommendFloorUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_COMMEND_URL;
 	}
@@ -152,9 +156,9 @@ public class FeedCommonController {
 				+ Constant.THREAD_CANCELELITE_URL;
 	}
 
-	protected String getUploadImgUrl() {
-		return externalUrlInfo.getUpload_img_url();
-	}
+//	protected String getUploadImgUrl() {
+//		return externalUrlInfo.getUpload_img_url();
+//	}
 	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();

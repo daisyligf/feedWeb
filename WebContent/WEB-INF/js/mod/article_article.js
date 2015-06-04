@@ -18,6 +18,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var setAddPostUrl = "";//回复帖子接口
 	var setReplyPostUrl = ""; //回复楼层数据
 	var setDelFloorUrl = ""; //删除楼层接口
+	var setPraThreadUrl = ""; // 点赞帖子接口
 	var setPraFloorUrl = ""; //点赞楼层接口
 	var setLockPostUrl = ""; //锁帖
 	var setOffLockPostUrl = ""; //取消锁帖
@@ -43,6 +44,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		getFloorComUrl='comment_list.json';
 		setReplyPostUrl='reply_post.json';
 		setDelFloorUrl='del_floor.json';
+		setPraThreadUrl = "recommend_thread.json";
 		setPraFloorUrl = "recommend_floor.json"; //点赞楼层接口
 		setLockPostUrl = "close_thread.json"; //锁帖
 		setOffLockPostUrl = "open_thread.json"; //取消锁帖
@@ -278,7 +280,39 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				});
 			}
 			
+			// 帖子点赞
+			$("body").on("click",".thread-zan",function(){
+				var _this =this;
+				var tid = $(_this).parents(".con-list").attr("data-postid");
+				var uid = $(_this).parents(".con-list").attr("data-uid");
 
+				var reason = "点赞";
+				fnAjax(setPraThreadUrl,{
+					tid : tid,
+					uid : uid
+				},function(res){
+					if(res && res.code==0){
+						var val = parseInt($(_this).find("a").html());
+						var v = $(_this).find("a").html(val+1);
+						$(".pop-post-ok").pop({
+							msg:"点赞成功",
+							autoTime:1000
+						});
+					}else{
+						$(".pop-top-fail").pop({
+						msg:"点赞失败",
+						autoTime:1000
+					});
+					}
+				},function(res){
+					$(".pop-top-fail").pop({
+						msg:"点赞失败",
+						autoTime:1000
+					});
+				});
+
+			});
+			
 		});
 
 		//回复楼层
@@ -467,7 +501,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			});
 
 		});
-
+		
 		//检测回复楼层文本框变化
 
 		$("body").on("input propertychange click keyup",".dianping-textarea",function(){

@@ -78,10 +78,12 @@ public class Constant {
 
 	public static final String THREAD_OPEN_URL = "/feed/v2/web/threads/open";
 	// 楼层删除
-
 	public static final String POST_DELETE_URL = "/feed/v2/web/floor/del";
+	
+	// 帖子点赞
+	public static final String THREAD_RECOMMEND_URL = "/feed/v2/web/thread/recommend";
+	
 	// 楼层点赞
-
 	public static final String POST_COMMEND_URL = "/feed/v2/web/floor/hotreply_add";
 	// 最热推荐
 
@@ -115,6 +117,8 @@ public class Constant {
 	public static final String THREAD_INFO_URL = "/feed/v2/web/thread/info"; 
 	// 帖子-编辑更新
 	public static final String THREAD_EDIT_URL = "/feed/v2/web/thread/edit";
+	// 回复最高的7条帖子
+	public static final String REPLY_HIGHEST_URL = "/feed/v2/web/threads/replyHighest";
 
 	// 板块列表页
 	// 板块列表
