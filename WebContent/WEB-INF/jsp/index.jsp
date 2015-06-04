@@ -162,7 +162,7 @@
                                 <ul>
                                     <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="${hotRank.icon1} " alt="">${hotRank.forumName1} </a>
 	                                    <span class="rank">
-		                                  <!--    <c:if test="${hotRank.upDown1==0}">
+		                                     <c:if test="${hotRank.upDown1==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown1==1}">
@@ -170,12 +170,12 @@
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown1==2}">
 		                                    	<img src="./img/icon/level.png">
-		                                    </c:if>-->
+		                                    </c:if>
 		                                </span>
                                     </li>
                                     <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="${hotRank.icon2} " alt="">${hotRank.forumName2}</a>
                                     <span class="rank">
-                                     	<!--	<c:if test="${hotRank.upDown2==0}">
+                                     		<c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==1}">
@@ -183,12 +183,12 @@
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
-		                                    </c:if>-->
+		                                    </c:if>
                                     </span>
                                     </li>
                                     <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="${hotRank.icon3} " alt="">${hotRank.forumName3}</a>
                                     	<span class="rank">
-                                    		<!--<c:if test="${hotRank.upDown2==0}">
+                                    		<c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==1}">
@@ -196,12 +196,12 @@
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
-		                                    </c:if>-->
+		                                    </c:if>
                                     	</span>
                                     </li>
                                     <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="${hotRank.icon4} " alt="">${hotRank.forumName4}</a>
                                     	<span class="rank">
-                                    	 <!--   <c:if test="${hotRank.upDown2==0}">
+                                    	    <c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==1}">
@@ -209,12 +209,12 @@
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
-		                                    </c:if>-->
+		                                    </c:if>
                                     	</span>
                                     </li>
                                     <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="${hotRank.icon5} " alt="">${hotRank.forumName5}</a>
                                     	<span class="rank">
-                                    	   <!--    <c:if test="${hotRank.upDown2==0}">
+                                    	    <c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==1}">
@@ -222,7 +222,7 @@
 		                                    </c:if>
 		                                    <c:if test="${hotRank.upDown2==2}">
 		                                    	<img src="./img/icon/level.png">
-		                                    </c:if>-->
+		                                    </c:if>
                                     	</span>
                                     </li>
                                 </ul>
@@ -254,7 +254,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads1}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                   <!--  <c:if  test="${hotForum.hotPrefectureUrl1==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl1==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl1 != ''}">
@@ -265,7 +265,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl1 != ''}">
                       	<a href="#">礼包</a> 
-                    </c:if> -->
+                    </c:if> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -276,7 +276,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads2}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                   <!--   <c:if  test="${hotForum.hotPrefectureUrl2==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl2==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl2 != ''}">
@@ -287,7 +287,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl2 != ''}">
                       	<a href="#">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -298,7 +298,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads3}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                  <!--    <c:if  test="${hotForum.hotPrefectureUrl3==''}">
+                     <c:if  test="${hotForum.hotPrefectureUrl3==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl3 != ''}">
@@ -309,7 +309,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl3 != ''}">
                       	<a href="${hotForum.hotGiftUrl3}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -320,7 +320,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads4}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <!--<c:if  test="${hotForum.hotPrefectureUrl4==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl4==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl4 != ''}">
@@ -331,7 +331,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl4 != ''}">
                       	<a href="${hotForum.hotGiftUrl4}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -342,7 +342,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads5}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <!--   <c:if  test="${hotForum.hotPrefectureUrl5==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl5==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl5 != ''}">
@@ -353,7 +353,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl5 != ''}">
                       	<a href="${hotForum.hotGiftUrl5}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -364,7 +364,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads6}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                   <!--     <c:if  test="${hotForum.hotPrefectureUrl6==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl6==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl6 != ''}">
@@ -375,7 +375,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl6 != ''}">
                       	<a href="${hotForum.hotGiftUrl6}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -386,7 +386,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads7}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                  <!--   <c:if  test="${hotForum.hotPrefectureUrl7==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl7==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl7 != ''}">
@@ -397,7 +397,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl7 != ''}">
                       	<a href="${hotForum.hotGiftUrl7}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -408,7 +408,7 @@
                        <dd>帖子  ${hotForum.hotTotalThreads8}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <!--   <c:if  test="${hotForum.hotPrefectureUrl8==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl8==''}">
                       <a href="#"  class="zq bg-grey">专区</a>
                     </c:if>
                     <c:if  test="${hotForum.hotPrefectureUrl8 != ''}">
@@ -419,7 +419,7 @@
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl8 != ''}">
                       	<a href="${hotForum.hotGiftUrl8}">礼包</a> 
-                    </c:if> -->
+                    </c:if>
                    </div>
                </div>
 
@@ -436,7 +436,7 @@
                        <dd>帖子  ${recommendForum.totalThreads1}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                  <!--   <c:if  test="${recommendForum.downloadUrl1==''}">
+                    <c:if  test="${recommendForum.downloadUrl1==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl1 != ''}">
@@ -447,7 +447,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl1 != ''}">
                       	<a href="${recommendForum.giftUrl1}">礼包</a> 
-                    </c:if> -->
+                    </c:if> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -458,7 +458,7 @@
                        <dd>帖子  ${recommendForum.totalThreads2}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <!-- <c:if  test="${recommendForum.downloadUrl2==''}">
+                    <c:if  test="${recommendForum.downloadUrl2==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl2 != ''}">
@@ -469,7 +469,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl2 != ''}">
                       	<a href="${recommendForum.giftUrl2}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -480,7 +480,7 @@
                        <dd>帖子  ${recommendForum.totalThreads3}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                  <!--   <c:if  test="${recommendForum.downloadUrl3==''}">
+                    <c:if  test="${recommendForum.downloadUrl3==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl3 != ''}">
@@ -491,7 +491,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl3 != ''}">
                       	<a href="${recommendForum.giftUrl3}">礼包</a> 
-                    </c:if> -->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -502,7 +502,7 @@
                        <dd>帖子  ${recommendForum.totalThreads4}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                   <!--     <c:if  test="${recommendForum.downloadUrl4==''}">
+                    <c:if  test="${recommendForum.downloadUrl4==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl4 != ''}">
@@ -513,7 +513,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl4 != ''}">
                       	<a href="${recommendForum.giftUrl4}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -524,7 +524,7 @@
                        <dd>帖子  ${recommendForum.totalThreads5}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                   <!--  <c:if  test="${recommendForum.downloadUrl5==''}">
+                    <c:if  test="${recommendForum.downloadUrl5==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl5 != ''}">
@@ -535,7 +535,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl5 != ''}">
                       	<a href="${recommendForum.giftUrl5}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -546,7 +546,7 @@
                        <dd>帖子  ${recommendForum.totalThreads6}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                   <!--  <c:if  test="${recommendForum.downloadUrl6==''}">
+                    <c:if  test="${recommendForum.downloadUrl6==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl6 != ''}">
@@ -557,7 +557,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl6 != ''}">
                       	<a href="${recommendForum.giftUrl6}">礼包</a> 
-                    </c:if> --> 
+                    </c:if> 
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -568,7 +568,7 @@
                        <dd>帖子  ${recommendForum.totalThreads7}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <!--  <c:if  test="${recommendForum.downloadUrl7==''}">
+                    <c:if  test="${recommendForum.downloadUrl7==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl7 != ''}">
@@ -579,7 +579,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl7 != ''}">
                       	<a href="${recommendForum.giftUrl7}">礼包</a> 
-                    </c:if>-->
+                    </c:if>
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
@@ -590,7 +590,7 @@
                        <dd>帖子  ${recommendForum.totalThreads8}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                    <!--<c:if  test="${recommendForum.downloadUrl8==''}">
+                    <c:if  test="${recommendForum.downloadUrl8==''}">
                       <a href="#"  class="zq bg-grey">下载</a>
                     </c:if>
                     <c:if  test="${recommendForum.downloadUrl8 != ''}">
@@ -601,7 +601,7 @@
                     </c:if>
                     <c:if  test="${recommendForum.giftUrl8 != ''}">
                       	<a href="${recommendForum.giftUrl8}">礼包</a> 
-                    </c:if> -->
+                    </c:if>
                    </div>
                </div>
                

@@ -155,34 +155,82 @@ public class FeedHomeController extends FeedCommonController {
 					jsonThreadsTitle = data.getJSONObject(i);
 					if (i == 0) {
 						subjectForm.setThreadId1(jsonThreadsTitle.optLong("thread_id",0));
-						subjectForm.setThreadName1(jsonThreadsTitle.optString("subject",""));
-						subjectForm.setContent1(jsonThreadsTitle.optString("content",""));
+						if (jsonThreadsTitle.optString("subject","").length() > 30) {
+							subjectForm.setThreadName1(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName1(jsonThreadsTitle.optString("subject",""));
+						}
+						if (jsonThreadsTitle.optString("content","").length() > 30) {
+							subjectForm.setThreadName1(jsonThreadsTitle.optString("content","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName1(jsonThreadsTitle.optString("content",""));
+						}
 						subjectForm.setLinkUrl1(jsonThreadsTitle.optString("link_url",""));
 						subjectForm.setForumNmae1(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 1) {
 						subjectForm.setThreadId2(jsonThreadsTitle.optLong("thread_id",0));
-						subjectForm.setThreadName2(jsonThreadsTitle.optString("subject",""));
-						subjectForm.setContent2(jsonThreadsTitle.optString("content",""));
+						if (jsonThreadsTitle.optString("subject","").length() > 30) {
+							subjectForm.setThreadName2(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName2(jsonThreadsTitle.optString("subject",""));
+						}
+						if (jsonThreadsTitle.optString("content","").length() > 30) {
+							subjectForm.setThreadName2(jsonThreadsTitle.optString("content","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName2(jsonThreadsTitle.optString("content",""));
+						}
 						subjectForm.setLinkUrl2(jsonThreadsTitle.optString("link_url",""));
 						subjectForm.setForumNmae2(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 2) {
 						subjectForm.setThreadId3(jsonThreadsTitle.optLong("thread_id",0));
-						subjectForm.setThreadName3(jsonThreadsTitle.optString("subject",""));
-						subjectForm.setContent3(jsonThreadsTitle.optString("content",""));
+						if (jsonThreadsTitle.optString("subject","").length() > 30) {
+							subjectForm.setThreadName3(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName3(jsonThreadsTitle.optString("subject",""));
+						}
+						if (jsonThreadsTitle.optString("content","").length() > 30) {
+							subjectForm.setThreadName3(jsonThreadsTitle.optString("content","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName3(jsonThreadsTitle.optString("content",""));
+						}
 						subjectForm.setLinkUrl3(jsonThreadsTitle.optString("link_url",""));
 						subjectForm.setForumNmae3(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 3) {
 						subjectForm.setThreadId4(jsonThreadsTitle.optLong("thread_id",0));
-						subjectForm.setThreadName4(jsonThreadsTitle.optString("subject",""));
-						subjectForm.setContent4(jsonThreadsTitle.optString("content",""));
+						if (jsonThreadsTitle.optString("subject","").length() > 30) {
+							subjectForm.setThreadName4(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName4(jsonThreadsTitle.optString("subject",""));
+						}
+						if (jsonThreadsTitle.optString("content","").length() > 30) {
+							subjectForm.setThreadName4(jsonThreadsTitle.optString("content","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName4(jsonThreadsTitle.optString("content",""));
+						}
 						subjectForm.setLinkUrl4(jsonThreadsTitle.optString("link_url",""));
-						subjectForm.setForumNmae4(jsonThreadsTitle.optString("forum_name",""));
+						if (jsonThreadsTitle.optString("forum_name","").length() > 10) {
+							subjectForm.setForumNmae4(jsonThreadsTitle.optString("forum_name","").substring(0, 10));
+						} else {
+							subjectForm.setForumNmae4(jsonThreadsTitle.optString("forum_name",""));
+						}
 					} else if (i == 4) {
 						subjectForm.setThreadId5(jsonThreadsTitle.optLong("thread_id",0));
-						subjectForm.setThreadName5(jsonThreadsTitle.optString("subject",""));
-						subjectForm.setContent5(jsonThreadsTitle.optString("content",""));
+						if (jsonThreadsTitle.optString("subject","").length() > 30) {
+							subjectForm.setThreadName5(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName5(jsonThreadsTitle.optString("subject",""));
+						}
+						if (jsonThreadsTitle.optString("content","").length() > 30) {
+							subjectForm.setThreadName5(jsonThreadsTitle.optString("content","").substring(0, 30));
+						} else {
+							subjectForm.setThreadName5(jsonThreadsTitle.optString("content",""));
+						}
 						subjectForm.setLinkUrl5(jsonThreadsTitle.optString("link_url",""));
-						subjectForm.setForumNmae5(jsonThreadsTitle.optString("forum_name",""));
+						if (jsonThreadsTitle.optString("forum_name","").length() > 10) {
+							subjectForm.setForumNmae5(jsonThreadsTitle.optString("forum_name","").substring(0, 10));
+						} else {
+							subjectForm.setForumNmae5(jsonThreadsTitle.optString("forum_name",""));
+						}
 					} else if (i == 5) {
 						subjectForm.setThreadId6(jsonThreadsTitle.optLong("thread_id",0));
 						subjectForm.setThreadName6(jsonThreadsTitle.optString("subject",""));
