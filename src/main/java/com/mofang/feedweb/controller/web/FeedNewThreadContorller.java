@@ -2,8 +2,6 @@ package com.mofang.feedweb.controller.web;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,8 +26,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.entity.FeedTag;
@@ -212,38 +210,57 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "/upload" , method = RequestMethod.POST)
-	public void upload(@RequestParam("upfile") String file, MultipartHttpServletRequest request, HttpServletResponse response) throws Exception {
-		MultipartFile mpf = request.getFile(file);
+	public void upload(@RequestParam("upfile") CommonsMultipartFile file, MultipartHttpServletRequest multiRequest, HttpServletResponse response) throws Exception {
+		String fileName = file.getOriginalFilename();
 		PostMethod filePost = new PostMethod(getUploadImgUrl());
 		HttpClient client = new HttpClient();
-		String filePath = request.getSession().getServletContext().getRealPath("/")
-				+ "files/";
-
+		String filePath = multiRequest.getSession().getServletContext().getRealPath("/")
+				+ "tmpfile/";
+		FileOutputStream fileOut=null;
 		try {
-			FileCopyUtils.copy(mpf.getBytes(), new FileOutputStream(filePath
-					+ mpf.getOriginalFilename()));
-			String tempDir = filePath + mpf.getOriginalFilename();
-			Part[] parts = { new StringPart("type", "image"), new StringPart("from", "bbs"), new FilePart("file", new File(tempDir)) };
-			filePost.setRequestEntity(new MultipartRequestEntity(parts,
-					filePost.getParams()));
-			client.getHttpConnectionManager().getParams()
-					.setConnectionTimeout(5000);
-			int status = client.executeMethod(filePost);
+			String tempDir = filePath + fileName;
+			File newFile = new File(filePath);
+			if(!newFile.exists()){
+				newFile.mkdir();
+			}
+			fileOut = new FileOutputStream(tempDir);
+			FileCopyUtils.copy(file.getBytes(), fileOut);
+			Part[] parts = {
+								  new StringPart("type", "image"), 
+								  new StringPart("from", "bbs"), 
+								  new FilePart("file", new File(tempDir)) 
+								 };
+			filePost.setRequestEntity(new MultipartRequestEntity(parts, filePost.getParams()));
+			client.getHttpConnectionManager().getParams().setConnectionTimeout(5000);
+		    int status = client.executeMethod(filePost);
 			if (status == HttpStatus.SC_OK) {
 				String body = filePost.getResponseBodyAsString();
 				JSONObject obj = new JSONObject(body);
-
+				String url = "";
+				if(obj.optInt("code", -1) == 0) {
+					JSONObject urlObj = obj.optJSONObject("data");
+					url = urlObj.optString("url", "");
+				}
+				
+				JSONObject convertJsonObj = new JSONObject();
+				convertJsonObj.put("originalName", fileName);
+				convertJsonObj.put("name", fileName);
+				convertJsonObj.put("url", url);
+				convertJsonObj.put("size", file.getBytes().length);
+				String type = fileName.substring(fileName.lastIndexOf("."));
+				convertJsonObj.put("type", type);
+				convertJsonObj.put("state", "SUCCESS");
+				
 				response.setContentType("text/html; charset=UTF-8");
 				response.setCharacterEncoding("UTF-8");
-				response.getWriter().print(obj);
-			} else {
-				//log.info("上传失败");
+				response.getWriter().print(convertJsonObj);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			response.getWriter().flush();
-			response.getWriter().close();
+			if(fileOut != null) {
+				fileOut.close();
+			}
 		}		
 	}
 	
