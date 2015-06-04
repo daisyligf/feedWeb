@@ -17,6 +17,7 @@ public class ForumListInfo {
 	private String prefectureUrl;
 	private String giftUrl;
 	private String downLoadUrl;
+	private long gameId;
 	
 	
 	public long getForumId() {
@@ -72,6 +73,12 @@ public class ForumListInfo {
 	}
 	public void setDownLoadUrl(String downLoadUrl) {
 		this.downLoadUrl = downLoadUrl;
+	}
+	public long getGameId() {
+		return gameId;
+	}
+	public void setGameId(long gameId) {
+		this.gameId = gameId;
 	}
 
 	
