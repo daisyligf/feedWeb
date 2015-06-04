@@ -95,8 +95,9 @@
                 <img src="./img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
-                <input type="submit" class="ser-but" value="" id="submit"/>
-                <input type="text" class="ser-text" value="${recommendSearchKey} " id="keyword" placeholder="过来搜我"/>
+               <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
+               <input type="button" class="ser-but" value="" name="search" id="search"/>
+                <input type="text" class="ser-text" value="${searchKey} " id="searchKey" placeholder="过来搜我"/>
             </div>
         </div>
         <!-- 搜索结束 -->
@@ -607,7 +608,44 @@
                
            </div>
            <!-- 新游推荐结束 -->
-           
+           <!-- 综合专区开始 -->
+           <div class="h2">综合专区</div>
+           <div class="h2-con clearfix container">
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="#"><img src="${officalForum.icon1} " alt=""></a></dt>
+                       <dd><a href="#">${officalForum.forumName1}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads1}</dd>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="#"><img src="${officalForum.icon2}" alt=""></a></dt>
+                       <dd><a href="#">${officalForum.forumName2}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads2}</dd>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="#"><img src="${officalForum.icon3}" alt=""></a></dt>
+                       <dd><a href="#">${officalForum.forumName3}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads3}</dd>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="#"><img src="${officalForum.icon4}" alt=""></a></dt>
+                       <dd><a href="#">${officalForum.forumName4}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads4}</dd>
+                   </dl>
+               </div>
+               
+           </div>
+           <!-- 综合专区结束 -->
      
         </div>
         <!-- 内容结束 -->
@@ -622,4 +660,12 @@
    <script src="./js/mod/common.js"></script>
    
 </body>
+<script type="text/javascript">
+$('#search').click(function() {
+	alert('haha');
+	var searchKey = $('#searchKey').val();
+	window.location.href = "search?keyword="+searchKey;
+});
+
+</script>
 </html>
