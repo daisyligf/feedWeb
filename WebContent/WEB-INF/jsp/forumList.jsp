@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="./css/channel.css">
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
+    <script type="text/javascript" src="./js/jquery-2.1.4.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -88,7 +89,7 @@
                 <img src="./img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
-                <input type="submit" class="ser-but" value="" id="submit"/>
+                <input type="button" class="ser-but" value="" name="search" id="search"/>
                 <input type="text" class="ser-text" value="${searchkey} " id="keyword" placeholder="过来搜我"/>
                 <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
                 <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
@@ -151,25 +152,25 @@
 			                   <div class="h2-con-bot">
 			                   <c:if test="${forumType == 1}">
 			                      <c:if test="${forum.prefectureUrl != ''}">
-			                      <a href="${forum.prefectureUrl}"  class="zq">专区</a>
+			                      <a href="${forum.prefectureUrl}"  class="zq l">专区</a>
 			                      </c:if>
 			                      <c:if test="${forum.prefectureUrl == ''}">
-			                      <a href="#"  class="zq bg-grey">专区</a>
+			                      <a href="#"  class="zq bg-grey l">专区</a>
 			                      </c:if>
 			                   </c:if>
 			                    <c:if test="${forumType == 2}">
 			                      <c:if test="${forum.downLoadUrl != ''}">
-			                      <a href="${forum.downLoadUrl}"  class="zq">下载</a>
+			                      <a href="${forum.downLoadUrl}"  class="zq l">下载</a>
 			                      </c:if>
 			                      <c:if test="${forum.downLoadUrl == ''}">
-			                      <a href="#"  class="zq bg-grey">下载</a>
+			                      <a href="#"  class="zq bg-grey l">下载</a>
 			                      </c:if>
 			                   </c:if>
 			                   <c:if test="${forum.giftUrl != ''}">
-			                      <a href="${forum.giftUrl}">礼包</a> 
+			                      <a href="${forum.giftUrl}" class="zq r">礼包</a> 
 			                   </c:if>
 			                   <c:if test="${forum.giftUrl == ''}">
-			                      <a href="#">礼包</a> 
+			                      <a href="#" class="zq bg-grey r">礼包</a> 
 			                   </c:if>
 			                   </div>
 			               </div>
@@ -211,4 +212,11 @@
    <script src="./js/mod/channel.js"></script>
    
 </body>
+<script type="text/javascript">
+$('#search').click(function() {
+	var searchKey = $('#searchKey').val();
+	window.location.href = "search?keyword="+searchKey;
+});
+
+</script>
 </html>
