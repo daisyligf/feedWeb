@@ -39,11 +39,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		map.putAll(tagJson("fid=" + fid, request));
 		
 		map.put("fid", fid);
-		map.put("tid", 0);
-		map.put("tagId", 0);
 		FeedThread threadinfo = new FeedThread();
 		map.put("threadInfo", threadinfo);
-		
 		return new ModelAndView("new_thread", map);
 	}
 
@@ -118,6 +115,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		return map;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = { "/editThreadInit" })
 	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
 			@RequestParam(value = "uid") long uid,
@@ -133,11 +131,15 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
 		
+		FeedThread threadInfo = (FeedThread)map.get("threadInfo");
+		if(threadInfo != null) {
+			int tagId = threadInfo.getTagId();
+			if(tagId > 0){
+				List<FeedTag> list = (List)map.get("tagList");
+				list.add(new FeedTag(0, "综合"));
+			}
+		}
 		map.put("fid", fid);
-		map.put("tid", 0);
-		map.put("tagId", 0);
-		
-
 		return new ModelAndView("new_thread", map);
 	}
 
