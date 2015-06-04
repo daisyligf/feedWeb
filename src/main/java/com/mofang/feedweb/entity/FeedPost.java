@@ -1,5 +1,8 @@
 package com.mofang.feedweb.entity;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author ke
  *
@@ -12,13 +15,16 @@ public class FeedPost {
 	private int comments;
 	private int replies;
 	private int recommends;
-	private String create_time;
+	private Date create_time;
 	private int status;
 	private long user_id;
 	private String user_name;
 	private long forum_id;
 	private long thread_id;
 	private String content;
+	private String htmlContent;
+	private UserInfo postUserInfo;
+	private List<FeedComment> commentList;
 	
 	public long getPost_id() {
 		return post_id;
@@ -50,10 +56,10 @@ public class FeedPost {
 	public void setRecommends(int recommends) {
 		this.recommends = recommends;
 	}
-	public String getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(String create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
 	public int getStatus() {
@@ -92,6 +98,13 @@ public class FeedPost {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public String getHtmlContent() {
+		return htmlContent;
+	}
+	public void setHtmlContent(String htmlContent) {
+		this.htmlContent = htmlContent;
+	}
 	public int getReplies() {
 		return replies;
 	}
@@ -99,6 +112,18 @@ public class FeedPost {
 		this.replies = replies;
 	}
 	
+	public UserInfo getPostUserInfo() {
+		return postUserInfo;
+	}
+	public void setPostUserInfo(UserInfo postUserInfo) {
+		this.postUserInfo = postUserInfo;
+	}
+	public List<FeedComment> getCommentList() {
+		return commentList;
+	}
+	public void setCommentList(List<FeedComment> commentList) {
+		this.commentList = commentList;
+	}
 	
 	
 }

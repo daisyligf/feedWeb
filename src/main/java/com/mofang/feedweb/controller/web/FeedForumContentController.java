@@ -306,11 +306,11 @@ public class FeedForumContentController extends FeedCommonController {
 					feedThread.setPage_view(obj.optInt("pageview", 0));
 					feedThread.setReplies(obj.optInt("replies", 0));
 					feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
-					feedThread.setClosed(obj.optBoolean("is_closed", false));
-					feedThread.setElite(obj.optBoolean("is_elite", false));
-					feedThread.setTop(obj.optBoolean("is_top", false));
+					feedThread.setIsClosed(obj.optBoolean("is_closed", false));
+					feedThread.setIsElite(obj.optBoolean("is_elite", false));
+					feedThread.setIsTop(obj.optBoolean("is_top", false));
 					feedThread.setRecommends(obj.optInt("recommends", 0));
-					feedThread.setModerator(obj.optBoolean("is_moderator", false));
+					feedThread.setIsModerator(obj.optBoolean("is_moderator", false));
 					
 					JSONArray pics = obj.getJSONArray("pic");
 					if (pics != null && pics.length() > 0) {

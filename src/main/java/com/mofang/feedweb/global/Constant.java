@@ -37,7 +37,7 @@ public class Constant {
 	// 字母WXYZ
 	public static final String STR_WXYZ = "WXYZ";
 	// 字母#(其它)
-	public static final String STR_OTHER = "#";
+	public static final String STR_OTHER = "OTHER";
 	//上传图片地址
 	public static final String UPLOAD_URL = "http://api.mofang.com/mcss/v1/upload";
 
@@ -46,7 +46,7 @@ public class Constant {
 	// 帖子详情页
 	// 楼层列表
 
-	public static final String THREAD_POSTLIST_GET_URL = "/feed/v2/web/floorlist";
+	public static final String THREAD_POSTLIST_GET_URL = "/feed/v2/web/post/list";
 	// 楼层评论列表
 
 	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v2/web/commentdisplay";
@@ -118,7 +118,7 @@ public class Constant {
 
 	// 板块列表页
 	// 板块列表
-	public static final String LIST_FORUM_GET_URL = "/feed/v2/web/forum/listByLetterGroup";
+	public static final String LIST_FORUM_GET_URL = "/feed/v2/web/forum/listbyletter";
 
 	// 首页
 	// 轮播海报

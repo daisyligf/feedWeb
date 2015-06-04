@@ -1,6 +1,7 @@
 package com.mofang.feedweb.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author ke
@@ -33,7 +34,7 @@ public class FeedThread {
 	private String pic;
 	private String content;
 	private int tagId;
-
+	
 	public int getTagId() {
 		return tagId;
 	}
@@ -90,11 +91,11 @@ public class FeedThread {
 		this.shareTimes = shareTimes;
 	}
 
-	public boolean isClosed() {
+	public boolean getIsClosed() {
 		return isClosed;
 	}
 
-	public void setClosed(boolean isClosed) {
+	public void setIsClosed(boolean isClosed) {
 		this.isClosed = isClosed;
 	}
 
@@ -122,27 +123,27 @@ public class FeedThread {
 		this.status = status;
 	}
 
-	public boolean isElite() {
+	public boolean getIsElite() {
 		return isElite;
 	}
 
-	public void setElite(boolean isElite) {
+	public void setIsElite(boolean isElite) {
 		this.isElite = isElite;
 	}
 
-	public boolean isTop() {
+	public boolean getIsTop() {
 		return isTop;
 	}
 
-	public void setTop(boolean isTop) {
+	public void setIsTop(boolean isTop) {
 		this.isTop = isTop;
 	}
 
-	public boolean isModerator() {
+	public boolean getIsModerator() {
 		return isModerator;
 	}
 
-	public void setModerator(boolean isModerator) {
+	public void setIsModerator(boolean isModerator) {
 		this.isModerator = isModerator;
 	}
 	public boolean isHasPic() {

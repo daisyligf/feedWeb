@@ -10,8 +10,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	require("jquery/jquery-pop");//弹出框插件
 	var Handlebars = require("handlebars");//handlebars模板引擎获取登录状态
 
-	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_LOCAL_DATA = 0;//本地数据
+	var USE_TEST_DATA = 1;//测试数据
 
 	
 	var getFloorComUrl = ""; //获取楼层评论数据
@@ -23,26 +23,33 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var setOffLockPostUrl = ""; //取消锁帖
 	var setTopPostUrl = ""; //置顶帖子
 	var setOffTopPostUrl = ""; //取消置顶
-	var setAddPostUrl = ""; //加精
-	var setOffAddPostUrl = "";//取消加精
+	var setAddDigestUrl = ""; //加精
+	var setOffAddDigestUrl = "";//取消加精
 
 	var ajaxMethod="json";
 	if(USE_LOCAL_DATA){
-		getFloorComUrl='/bbs_html/statics/test/get_floor_comment.json';
-		setReplyPostUrl='/bbs_html/statics/test/setReplyPost.json';
-		setDelFloorUrl='/bbs_html/statics/test/follow.json';
+		getFloorComUrl='/bbs_html/statics/test/get_floor_comment.json';//楼层评论列表
+		setReplyPostUrl='/bbs_html/statics/test/setReplyPost.json';//回复帖子接口
+		setDelFloorUrl='/bbs_html/statics/test/follow.json';//删除楼层接口
 		setPraFloorUrl = "/bbs_html/statics/test/follow.json"; //点赞楼层接口
 		setLockPostUrl = "/bbs_html/statics/test/follow.json"; //锁帖
 		setOffLockPostUrl = "/bbs_html/statics/test/follow.json"; //取消锁帖
 		setTopPostUrl = "/bbs_html/statics/test/follow.json"; //置顶帖子
 		setOffTopPostUrl = "/bbs_html/statics/test/follow.json"; //取消置顶
-		setAddPostUrl = "/bbs_html/statics/test/follow.json"; //加精
+		setAddDigestUrl = "/bbs_html/statics/test/follow.json"; //加精
 		setOffAddPostUrl = "/bbs_html/statics/test/follow.json";//取消加精
 	}
 	if(USE_TEST_DATA){
-		getFloorComUrl='';
-		setReplyPostUrl='';
-		setDelFloorUrl='';
+		getFloorComUrl='comment_list.json';
+		setReplyPostUrl='reply_post.json';
+		setDelFloorUrl='del_floor.json';
+		setPraFloorUrl = "recommend_floor.json"; //点赞楼层接口
+		setLockPostUrl = "close_thread.json"; //锁帖
+		setOffLockPostUrl = "open_thread.json"; //取消锁帖
+		setTopPostUrl = "top_thread.json"; //置顶帖子
+		setOffTopPostUrl = "cancel_top_thread.json"; //取消置顶
+		setAddDigestUrl = "elite_thread.json"; //加精
+		setOffAddPostUrl = "cancel_elite_thread.json";//取消加精
 	}
 
 	//注册一个handlebarsjs方法
@@ -151,9 +158,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 
 			var url = '';
 			if($(_this).hasClass('off-manege-top')){
-				url=setOffLockPostUrl;
+				url=setOffTopPostUrl;
 			}else{
-				url=setLockPostUrl;
+				url=setTopPostUrl;
 			}
 			var tids = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
@@ -214,10 +221,10 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var _this =this;
 			var url = '';
 			if($(_this).hasClass('off-manege-great')){
-				url=setOffLockPostUrl;
+				url=setOffAddDigestUrl;
 				
 			}else{
-				url=setLockPostUrl;
+				url=setAddDigestUrl;
 			}
 			var tids = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
@@ -434,8 +441,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var pid = $(_this).parents(".con-list").attr("data-postid");
 			var uid = $(_this).parents(".con-list").attr("data-uid");
 
-			var reason = "我想删除";
-			fnAjax(setDelFloorUrl,{
+			var reason = "点赞";
+			fnAjax(setPraFloorUrl,{
 				pid : pid,
 				uid : uid
 			},function(res){
