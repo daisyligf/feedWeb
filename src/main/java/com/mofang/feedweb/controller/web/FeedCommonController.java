@@ -114,6 +114,10 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_DELETE_URL;
 	}
 	
+	protected String getRecommendThreadUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_RECOMMEND_URL;
+	}
+	
 	protected String getRecommendFloorUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_COMMEND_URL;
 	}

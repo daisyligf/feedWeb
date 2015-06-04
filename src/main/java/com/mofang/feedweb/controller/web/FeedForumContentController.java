@@ -82,8 +82,8 @@ public class FeedForumContentController extends FeedCommonController {
 		return new ModelAndView("forum_content", model);
 	}
 	
-	@RequestMapping(value = "/follow")
-	public String follow(@RequestParam("forum_id") long forumId, @RequestParam("is_follow") int isFollow, 
+	@RequestMapping(value = "/follow.json")
+	public String follow(@RequestParam("fid") long forumId, @RequestParam("is_follow") int isFollow, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		JSONObject postData = new JSONObject();

@@ -110,21 +110,9 @@
                 <div class="nav-left">
                     <a href="#">论坛首页</a> > <a href="forum_content?fid=${feedForum.forum_id }">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
-                <div class="page-plug">
-                    <ul class="page-pc">
-                        <li class="prev"><a href="#">上一页</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="javascript:;">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li class="next"><a href="#">下一页</a></li>
-                    </ul>
-                    <ul class="page-mobile">
-                        <li class="prev"><a href="#">上一页</a></li>
-                        <li class="text">5/235</li>
-                        <li class="next"><a href="#">下一页</a></li>
-                    </ul>
-                </div>
+                <jsp:include   page="page.jsp" flush="true"/>
+                <input type="hidden" id="currPage" value="${p}"/>
+        		<input type="hidden" id="pageSize" value="${pagesize}"/>  
             </div>
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
@@ -145,19 +133,16 @@
                     </h2>
                     <div class="lum-list libao-list">
                        <ul>
-                           <li><s class="black"></s><a href="#">我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
-                           <li><s class="black"></s><a href="#">我是大礼包我是大礼包</a></li>
+                       	   <c:forEach var="highThread" items="${highestList }">
+                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.tid }">${highThread.subject }</a></li>
+                       	   </c:forEach>
                        </ul>
                     </div>
                     
                 </div>
             </div>
             <div class="col-xs-9 col-md-12" id="getPostData" data-tid="23245" data-uid="23412" data-fid="">
+            	<c:if test="${page==1}">
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
@@ -179,13 +164,14 @@
                     </h2>
                     <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></h3>
                     <div class="con-con">
-                    	${feedThread.htmlContent }
+                    	${postList[0].htmlContent }
                     </div>
                     <p class="look">
-                        <span class="zan"><s class="icon-zan"></s><a href="javascript:;">3425</a></span>
+                        <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">3425</a></span>
                         <span><a href="#conRight2"><s class="icon-ask"></s>325</a></span>
                     </p>
                 </div>
+                </c:if>
                 <div class="con-right2" id="conRight2">
                     <!-- 楼层回复模板1 -->
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
@@ -207,17 +193,26 @@
                         </dl>
                     </script>
                     
+                    <c:choose>
+                    	<c:when test="${page==1}">
+                    		<c:set var="start" value="1"></c:set>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<c:set var="start" value="0"></c:set>
+                    	</c:otherwise>
+                    </c:choose>
+                    <c:forEach var="feedPost" begin="${start }" items="${postList }">
                     <div class="con-list" data-postid="123214" data-uid="1234" data-page='1'>
                         <p class="con-list-left">
-                            <img src="img/img1.jpg" alt="">
+                            <img src="${feedPost.postUserInfo.avatar }" alt="">
                         </p>
                         <div class="con-list-right">
                             <dl class="list-right-dl">
-                                <dt><a href="javascript:;" class="list-del">删除</a>2楼  <a href="#">腰里别块砖</a>    发表于  5-18  12:12</dt>
-                                <dd>主打变形格斗的次时代科幻热血格斗手游，游戏以未来世界人类陷入虚拟游戏的囚禁、为挣脱枷锁全力战斗为背景，给玩家们展示了一个充满变异物种岌岌可危的世界。</dd>
+                                <dt><a href="javascript:;" class="list-del">删除</a>${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="MM-dd HH:mm"/></dt>
+                                <dd>${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">
-                                        <span class="zan"><s class="icon-zan"></s><a href="javascript:;">3425</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">3425</a></span>
+                                        <span class="zan"><s class="icon-zan"></s><a href="javascript:;">${feedPost.recommends}</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">${feedPost.replies}</a></span>
                                     </p>
                                 </dd>
                             </dl>
@@ -226,7 +221,7 @@
                                     <!--楼层回复内容-->
                                 </div>
                                 
-                                <p class="floor-reply-more">更多128条回复    <a href="javascript:;">点击加载</a></p>
+                                <p class="floor-reply-more">更多${feedPost.comments }条回复    <a href="javascript:;">点击加载</a></p>
                                 <div class="reply-textarea">
                                     <input type="hidden"  name="tid" class="tid" value="2342"/>
                                     <input type="hidden"  name="uid" class="uid" value="2342"/>
@@ -239,10 +234,9 @@
                         </div>
                        
                     </div>
+                    </c:forEach>
                     <!-- 分页 -->
                     <div class="page-plug">
-                        <input type="hidden" id="currPage" value="${p}"/>
-                        <input type="hidden" id="pageSize" value="${pagesize}"/>
                         <ul class="page-mobile clearfix">
                             <li class="prev"><a href="#">上一页</a></li>
                             <li class="text">5/235</li>
