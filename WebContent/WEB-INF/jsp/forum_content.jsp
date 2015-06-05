@@ -169,22 +169,58 @@
                             
                         </dl>
                        </c:forEach>
-                       
-                        <div class="page-plug">
-                            <ul class="page-pc">
-                                <li class="prev"><a href="#">上一页</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li class="active"><a href="javascript:;">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li class="next"><a href="#">下一页</a></li>
-                            </ul>
-                            <ul class="page-mobile">
-                                <li class="prev"><a href="#">上一页</a></li>
-                                <li class="text">5/235</li>
-                                <li class="next"><a href="#">下一页</a></li>
-                            </ul>
-                        </div>
+                       <div class="page-plug col-xs-6">
+			                <ul class="page-pc">
+			                <!-- 上一页 按钮 -->
+			                
+							<c:choose>
+							<c:when test="${currentPage != 1}">
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+							</c:otherwise>
+							</c:choose>
+							
+							<!-- 页数列表 -->
+							<c:forEach items="${pagelist}" var="item">
+							<c:choose>
+							<c:when test="${item == currentPage}">
+								<li class="active"><a href="forum_content?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="forum_content?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+							</c:otherwise>
+							</c:choose>
+							</c:forEach>
+							
+							<!-- 下一页 按钮 -->
+							<c:choose>
+							<c:when test="${currentPage != totalPages}">
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+							</c:otherwise>
+							</c:choose>
+			                </ul>
+			                
+			                
+			                <!--
+			                <li class="prev"><a href="#">上一页</a></li>
+			                <li><a href="#">1</a></li>
+			                <li><a href="#">2</a></li>
+			                <li class="active"><a href="javascript:;">3</a></li>
+			                <li><a href="#">4</a></li>
+			                <li class="next"><a href="#">下一页</a></li>
+			                </ul>
+			                <ul class="page-mobile">
+			                    <li class="prev"><a href="#">上一页</a></li>
+			                    <li class="text">5/235</li>
+			                    <li class="next"><a href="#">下一页</a></li>
+			                </ul>-->
+			
+			            </div>
                     </div>
                 </div>
              </div>

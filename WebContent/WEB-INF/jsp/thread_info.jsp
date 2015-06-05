@@ -9,6 +9,7 @@
 <%@ page import="com.mofang.feedweb.entity.UserInfo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -107,12 +108,61 @@
         <!-- 内容开始 -->
         <div class="con clearfix">
             <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="#">论坛首页</a> > <a href="forum_content?fid=${feedForum.forum_id }">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
+                <div class="nav-left col-xs-6">
+                    <a href="index">论坛首页</a> > <a href="forum_content?fid=${feedForum.forum_id }">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
-                <jsp:include   page="page.jsp" flush="true"/>
-                <input type="hidden" id="currPage" value="${p}"/>
-        		<input type="hidden" id="pageSize" value="${pagesize}"/>  
+                <div class="page-plug col-xs-6">
+                <ul class="page-pc">
+                <!-- 上一页 按钮 -->
+                
+				<c:choose>
+				<c:when test="${currentPage != 1}">
+					<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+				</c:otherwise>
+				</c:choose>
+				
+				<!-- 页数列表 -->
+				<c:forEach items="${pagelist}" var="item">
+				<c:choose>
+				<c:when test="${item == currentPage}">
+					<li class="active"><a href="thread_info?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="thread_info?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+				</c:otherwise>
+				</c:choose>
+				</c:forEach>
+				
+				<!-- 下一页 按钮 -->
+				<c:choose>
+				<c:when test="${currentPage != totalPages}">
+					<li class="next"><a href="thread_info?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+				</c:otherwise>
+				</c:choose>
+                </ul>
+                
+                
+                <!--
+                <li class="prev"><a href="#">上一页</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li class="active"><a href="javascript:;">3</a></li>
+                <li><a href="#">4</a></li>
+                <li class="next"><a href="#">下一页</a></li>
+                </ul>
+                <ul class="page-mobile">
+                    <li class="prev"><a href="#">上一页</a></li>
+                    <li class="text">5/235</li>
+                    <li class="next"><a href="#">下一页</a></li>
+                </ul>-->
+
+            </div>
             </div>
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
@@ -167,8 +217,8 @@
                     	${postList[0].htmlContent }
                     </div>
                     <p class="look">
-                        <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">3425</a></span>
-                        <span><a href="#conRight2"><s class="icon-ask"></s>325</a></span>
+                        <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
+                        <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.page_view }</a></span>
                     </p>
                 </div>
                 </c:if>
@@ -259,9 +309,9 @@
                                     <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                 </div>
                             </dd>
-                            <form id="editor-form" action="/" method="POST">
-                                <input type="hidden" name="fid" class="editor-fid" value="123124"/>
-                                <input type="hidden" name="tid"  class="editor-tid" value="1234">
+                            <form id="editor-form" action="send_reply" method="POST">
+                                <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
+                                <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
                                 <input type="hidden" name="uid"  class="editor-tid" value="1234">
                                 <input type="hidden" name="content"  class="editor-cont" value=""/>
                             </form>

@@ -52,7 +52,7 @@ public class Constant {
 	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v2/web/commentdisplay";
 	// 新增楼层
 
-	public static final String POST_CREATE_URL = "/feed/v2/web/sendreply";
+	public static final String POST_CREATE_URL = "/feed/v2/web/post/add";
 	// 回复指定楼层
 
 	public static final String POST_REPLY_URL = "/feed/v2/web/sendcomment";
