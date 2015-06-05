@@ -155,13 +155,13 @@ public class FeedHomeController extends FeedCommonController {
 					jsonThreadsTitle = data.getJSONObject(i);
 					if (i == 0) {
 						subjectForm.setThreadId1(jsonThreadsTitle.optLong("thread_id",0));
-						if (jsonThreadsTitle.optString("subject","").length() > 30) {
-							subjectForm.setThreadName1(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						if (jsonThreadsTitle.optString("subject","").length() > 15) {
+							subjectForm.setThreadName1(jsonThreadsTitle.optString("subject","").substring(0, 15));
 						} else {
 							subjectForm.setThreadName1(jsonThreadsTitle.optString("subject",""));
 						}
-						if (jsonThreadsTitle.optString("content","").length() > 30) {
-							subjectForm.setThreadName1(jsonThreadsTitle.optString("content","").substring(0, 30));
+						if (jsonThreadsTitle.optString("content","").length() > 15) {
+							subjectForm.setThreadName1(jsonThreadsTitle.optString("content","").substring(0, 15));
 						} else {
 							subjectForm.setThreadName1(jsonThreadsTitle.optString("content",""));
 						}
@@ -169,8 +169,8 @@ public class FeedHomeController extends FeedCommonController {
 						subjectForm.setForumNmae1(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 1) {
 						subjectForm.setThreadId2(jsonThreadsTitle.optLong("thread_id",0));
-						if (jsonThreadsTitle.optString("subject","").length() > 30) {
-							subjectForm.setThreadName2(jsonThreadsTitle.optString("subject","").substring(0, 30));
+						if (jsonThreadsTitle.optString("subject","").length() > 15) {
+							subjectForm.setThreadName2(jsonThreadsTitle.optString("subject","").substring(0, 15));
 						} else {
 							subjectForm.setThreadName2(jsonThreadsTitle.optString("subject",""));
 						}
