@@ -229,7 +229,12 @@
                                     </li>
                                 </ul>
                                 <ul>
-                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId1}" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a><span><a class="package" href="${recommendRank.giftUrl1}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl1}">下载</a></span></li>
+                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId1}" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a>
+                                    <span>
+                                    	<a class="package" href="${recommendRank.giftUrl1}">礼包</a>
+                                    	<a class="down" href="${recommendRank.downLoadUrl1}">下载</a>
+                                    </span>
+                                    </li>
                                     <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId2}" class="title"><img src="${recommendRank.icon2}" alt="">${recommendRank.forumName2}</a><span><a class="package" href="${recommendRank.giftUrl2}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl2}">下载</a></span></li>
                                     <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId3}" class="title"><img src="${recommendRank.icon3}" alt="">${recommendRank.forumName3}</a><span><a class="package" href="${recommendRank.giftUrl3}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl3}">下载</a></span></li>
                                     <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId4}" class="title"><img src="${recommendRank.icon4}" alt="">${recommendRank.forumName4}</a><span><a class="package" href="${recommendRank.giftUrl4}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl4}">下载</a></span></li>
