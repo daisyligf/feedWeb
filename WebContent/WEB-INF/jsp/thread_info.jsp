@@ -117,7 +117,7 @@
                 
 				<c:choose>
 				<c:when test="${currentPage != 1}">
-					<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+					<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -128,10 +128,10 @@
 				<c:forEach items="${pagelist}" var="item">
 				<c:choose>
 				<c:when test="${item == currentPage}">
-					<li class="active"><a href="thread_info?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+					<li class="active"><a href="thread_info?currentPage=${item }&thread_id=${feedThread.thread_id}&type=${type}" >${item}</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="thread_info?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+					<li><a href="thread_info?currentPage=${item}&thread_id=${feedThread.thread_id}&type=${type}">${item}</a></li>
 				</c:otherwise>
 				</c:choose>
 				</c:forEach>
@@ -139,7 +139,7 @@
 				<!-- 下一页 按钮 -->
 				<c:choose>
 				<c:when test="${currentPage != totalPages}">
-					<li class="next"><a href="thread_info?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+					<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -192,7 +192,7 @@
                 </div>
             </div>
             <div class="col-xs-9 col-md-12" id="getPostData" data-tid="23245" data-uid="23412" data-fid="">
-            	<c:if test="${page==1}">
+            	<c:if test="${currentPage==1}">
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
@@ -202,7 +202,15 @@
                         <dd class="author-detail"><b>楼主</b><span>05-14</span><span> 15:10</span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
-                        <a href="#" class="landord">只看楼主</a>
+                     <c:choose>
+                        	<c:when test="${type==1 }">
+                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
+                        	</c:otherwise>
+                        </c:choose>
+                        
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
                                 <a href="#" class="manege-top">置顶</a>
@@ -244,7 +252,7 @@
                     </script>
                     
                     <c:choose>
-                    	<c:when test="${page==1}">
+                    	<c:when test="${currentPage==1}">
                     		<c:set var="start" value="1"></c:set>
                     	</c:when>
                     	<c:otherwise>

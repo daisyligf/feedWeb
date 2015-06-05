@@ -93,11 +93,11 @@
                         <c:choose>
 	                        <c:when test="${moderatorApplyCondition.isPass}">
 	                        <div class="apply-hd-main">
-	                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="/f/{$fid}.html" class="apply-link" target="_blank">神马</a> 吧主</span></h3>
+	                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="forum_content?fid=${feedForum.forum_id}" class="apply-link" target="_blank">${feedForum.forum_name }</a> 吧主</span></h3>
 	                            <div class="feed-user-apply-form">
 	                            <div class="feed-user-infos"></div>
 	                                <form action="" class="user-apply-form">
-	                                    <input type="hidden" name="fid" id="forum_id" value="${forum_id}"/>
+	                                    <input type="hidden" name="fid" id="forum_id" value="${feedForum.forum_id}"/>
 	                                    <input class="J_focus apply-text apply-user-qq" type="text" data-type="qq" id="qq" name="qq" value="请输入您的QQ号">
 	                                    <input  class="J_focus apply-text apply-user-phone" type="text" data-type="phone" id="phone" name="phone" value="请输入您的手机号">
 	                                    <textarea  class="J_focus apply-text apply-user-text" id="game_exp" name="game_exp" data-type="text">描述一下游戏经历，让我们更了解你！</textarea>
