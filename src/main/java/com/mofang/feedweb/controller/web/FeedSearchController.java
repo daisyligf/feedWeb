@@ -23,7 +23,7 @@ public class FeedSearchController extends FeedCommonController{
 	@RequestMapping(value = "/search",method = RequestMethod.GET)
 	public ModelAndView search(@RequestParam(value = "keyword") String keyword,
 			HttpServletRequest request) throws Exception {
-//		keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
+		keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		Map<String, Object> map = new HashMap<String, Object>(1);
 		map.put("keyword", keyword);
 		return new ModelAndView("search", map);
