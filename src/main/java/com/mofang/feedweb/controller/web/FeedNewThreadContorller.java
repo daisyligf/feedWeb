@@ -40,9 +40,14 @@ import com.mofang.feedweb.global.Constant;
 public class FeedNewThreadContorller extends FeedCommonController {
 
 	@RequestMapping(value = "/newThreadInit", method = RequestMethod.GET)
-	public ModelAndView init(@RequestParam(value = "fid") long fid,
-			@RequestParam(value = "uid") long uid, HttpServletRequest request)
+	public ModelAndView init(@RequestParam(value = "fid") long fid,HttpServletRequest request)
 			throws Exception {
+		
+		String uid  = String.valueOf(request.getSession().getAttribute("uid"));
+		//test
+		if(StringUtils.isEmpty(uid)) {
+			uid = "129707";
+		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -131,9 +136,15 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = { "/editThreadInit" })
 	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
-			@RequestParam(value = "uid") long uid,
 			@RequestParam(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		String uid  = String.valueOf(request.getSession().getAttribute("uid"));
+		//test
+		if(StringUtils.isEmpty(uid)) {
+			uid = "129707";
+		}
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 帖子信息
 		map.putAll(threadInfoJson("tid=" + tid, request));
@@ -173,6 +184,14 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			tagId = Integer.valueOf(strTagId);
 		}
 		
+		if(!StringUtils.isEmpty(content)) {
+			content =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		if(!StringUtils.isEmpty(subject)) {
+			subject =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		
+		
 		JSONObject obj = new JSONObject();
 		
 		//发新帖
@@ -183,9 +202,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			json.put("content", content);
 			json.put("tag_id", tagId);
 			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json);
-			
-			if(result != null) {
-				int code = result.optInt("code", -1);
+			int code;
+			if(result != null && (code = result.optInt("code", -1)) == 0) {
 				String message = result.optString("message", "");
 				obj.put("code", code);
 				obj.put("message", message);
@@ -211,9 +229,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			json.put("content", content);
 			json.put("tag_id", tagId);
 			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json);
-			
-			if(result != null) {
-				int code = result.optInt("code", -1);
+			int code;
+			if(result != null && (code = result.optInt("code", -1)) == 0) {
 				String message = result.optString("message", "");
 				obj.put("code", code);
 				obj.put("message", message);
