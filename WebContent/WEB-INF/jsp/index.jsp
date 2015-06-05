@@ -135,19 +135,19 @@
                     <div class="rec col-xs-6 col-md-6 col-sm-12">
                         <div class="col-xs-12 rec-con">
                             <dl class="title-red">
-                                <dt><a href="#">${subjects.threadName1} </a></dt>
+                                <dt><a href="thread_info?thread_id=${subjects.threadId1} ">${subjects.threadName1} </a></dt>
                                 <dd>${subjects.content1}</dd>
                             </dl>
                             <dl>
-                                <dt><a href="#">${subjects.threadName2}</a></dt>
+                                <dt><a href="thread_info?thread_id=${subjects.threadId2}">${subjects.threadName2}</a></dt>
                                 <dd>${subjects.content2}</dd>
                             </dl>
                             <ul>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName3} </a> <span class="lm">${subjects.forumNmae3} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName4} </a> <span class="lm">${subjects.forumNmae4} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName5} </a> <span class="lm">${subjects.forumNmae5} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName6} </a> <span class="lm">${subjects.forumNmae6} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="#">${subjects.threadName7} </a> <span class="lm">${subjects.forumNmae7} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId3}">${subjects.threadName3} </a> <span class="lm">${subjects.forumNmae3} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId4}">${subjects.threadName4} </a> <span class="lm">${subjects.forumNmae4} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId5}">${subjects.threadName5} </a> <span class="lm">${subjects.forumNmae5} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId6}">${subjects.threadName6} </a> <span class="lm">${subjects.forumNmae6} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId7}">${subjects.threadName7} </a> <span class="lm">${subjects.forumNmae7} </span></li>
                              </ul> 
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                             <div class="hot-con swipe-wrap">
                                 
                                 <ul>
-                                    <li class="clearfix"><span class="num num-color">01</span><a href="#" class="title"><img src="${hotRank.icon1} " alt="">${hotRank.forumName1} </a>
+                                    <li class="clearfix"><span class="num num-color">01</span><a href="forum_content?fid=${hotRank.forumId1}" class="title"><img src="${hotRank.icon1} " alt="">${hotRank.forumName1} </a>
 	                                    <span class="rank">
 		                                     <c:if test="${hotRank.upDown1==0}">
 		                                    	<img src="./img/icon/up.png">
@@ -175,7 +175,7 @@
 		                                    </c:if>
 		                                </span>
                                     </li>
-                                    <li class="clearfix"><span class="num num-color">02</span><a href="#" class="title"><img src="${hotRank.icon2} " alt="">${hotRank.forumName2}</a>
+                                    <li class="clearfix"><span class="num num-color">02</span><a href="forum_content?fid=${hotRank.forumId2}" class="title"><img src="${hotRank.icon2} " alt="">${hotRank.forumName2}</a>
                                     <span class="rank">
                                      		<c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
@@ -188,7 +188,7 @@
 		                                    </c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><span class="num num-color">03</span><a href="#" class="title"><img src="${hotRank.icon3} " alt="">${hotRank.forumName3}</a>
+                                    <li class="clearfix"><span class="num num-color">03</span><a href="forum_content?fid=${hotRank.forumId3}" class="title"><img src="${hotRank.icon3} " alt="">${hotRank.forumName3}</a>
                                     	<span class="rank">
                                     		<c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
@@ -201,7 +201,7 @@
 		                                    </c:if>
                                     	</span>
                                     </li>
-                                    <li class="clearfix"><span class="num">04</span><a href="#" class="title"><img src="${hotRank.icon4} " alt="">${hotRank.forumName4}</a>
+                                    <li class="clearfix"><span class="num">04</span><a href="forum_content?fid=${hotRank.forumId4}" class="title"><img src="${hotRank.icon4} " alt="">${hotRank.forumName4}</a>
                                     	<span class="rank">
                                     	    <c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
@@ -214,7 +214,7 @@
 		                                    </c:if>
                                     	</span>
                                     </li>
-                                    <li class="clearfix"><span class="num">05</span><a href="#" class="title"><img src="${hotRank.icon5} " alt="">${hotRank.forumName5}</a>
+                                    <li class="clearfix"><span class="num">05</span><a href="forum_content?fid=${hotRank.forumId5}" class="title"><img src="${hotRank.icon5} " alt="">${hotRank.forumName5}</a>
                                     	<span class="rank">
                                     	    <c:if test="${hotRank.upDown2==0}">
 		                                    	<img src="./img/icon/up.png">
@@ -229,11 +229,11 @@
                                     </li>
                                 </ul>
                                 <ul>
-                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a><span><a class="package" href="${recommendRank.giftUrl1}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl1}">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon2}" alt="">${recommendRank.forumName2}</a><span><a class="package" href="${recommendRank.giftUrl2}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl2}">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon3}" alt="">${recommendRank.forumName3}</a><span><a class="package" href="${recommendRank.giftUrl3}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl3}">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon4}" alt="">${recommendRank.forumName4}</a><span><a class="package" href="${recommendRank.giftUrl4}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl4}">下载</a></span></li>
-                                    <li class="clearfix"><a href="#" class="title"><img src="${recommendRank.icon5}" alt="">${recommendRank.forumName5}</a><span><a class="package" href="${recommendRank.giftUrl5}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl5}">下载</a></span></li>
+                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId1}" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a><span><a class="package" href="${recommendRank.giftUrl1}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl1}">下载</a></span></li>
+                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId2}" class="title"><img src="${recommendRank.icon2}" alt="">${recommendRank.forumName2}</a><span><a class="package" href="${recommendRank.giftUrl2}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl2}">下载</a></span></li>
+                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId3}" class="title"><img src="${recommendRank.icon3}" alt="">${recommendRank.forumName3}</a><span><a class="package" href="${recommendRank.giftUrl3}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl3}">下载</a></span></li>
+                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId4}" class="title"><img src="${recommendRank.icon4}" alt="">${recommendRank.forumName4}</a><span><a class="package" href="${recommendRank.giftUrl4}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl4}">下载</a></span></li>
+                                    <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId5}" class="title"><img src="${recommendRank.icon5}" alt="">${recommendRank.forumName5}</a><span><a class="package" href="${recommendRank.giftUrl5}">礼包</a> <a class="down" href="${recommendRank.downLoadUrl5}">下载</a></span></li>
 
                                 </ul>
                             </div>
@@ -250,8 +250,8 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="# "><img src="${hotForum.hotIcon1}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName1}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId1}"><img src="${hotForum.hotIcon1}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId1}">${hotForum.hotForumName1}</a></dd>
                        <dd>今日  <b class="update">${hotForum.hotTodayThreads1} </b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads1}</dd>
                    </dl>
@@ -272,8 +272,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon2}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName2}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId2}"><img src="${hotForum.hotIcon2}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId2}">${hotForum.hotForumName2}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads2}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads2}</dd>
                    </dl>
@@ -294,8 +294,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon3}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName3}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId3}"><img src="${hotForum.hotIcon3}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId3}">${hotForum.hotForumName3}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads3}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads3}</dd>
                    </dl>
@@ -316,8 +316,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon4}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName4}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId4}"><img src="${hotForum.hotIcon4}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId4}">${hotForum.hotForumName4}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads4}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads4}</dd>
                    </dl>
@@ -338,8 +338,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon5}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName5}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId5}"><img src="${hotForum.hotIcon5}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId5}">${hotForum.hotForumName5}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads5}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads5}</dd>
                    </dl>
@@ -360,8 +360,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon6}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName6}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId6}"><img src="${hotForum.hotIcon6}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId6}">${hotForum.hotForumName6}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads6}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads6}</dd>
                    </dl>
@@ -382,8 +382,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon7}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName7}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId7}"><img src="${hotForum.hotIcon7}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId7}">${hotForum.hotForumName7}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads7}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads7}</dd>
                    </dl>
@@ -404,8 +404,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${hotForum.hotIcon8}" alt=""></a></dt>
-                       <dd><a href="#">${hotForum.hotForumName8}</a></dd>
+                       <dt><a href="forum_content?fid=${hotForum.hotForumId8}"><img src="${hotForum.hotIcon8}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${hotForum.hotForumId8}">${hotForum.hotForumName8}</a></dd>
                        <dd>今日  <b>${hotForum.hotTodayThreads8}</b></dd>
                        <dd>帖子  ${hotForum.hotTotalThreads8}</dd>
                    </dl>
@@ -432,8 +432,8 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon1}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName1}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId1}"><img src="${recommendForum.icon1}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId1}">${recommendForum.forumName1}</a></dd>
                        <dd>今日  <b class="update">${recommendForum.todayThreads1}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads1}</dd>
                    </dl>
@@ -454,8 +454,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon2}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName2}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId2}"><img src="${recommendForum.icon2}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId2}">${recommendForum.forumName2}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads2}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads2}</dd>
                    </dl>
@@ -476,8 +476,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon3}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName3}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId3}"><img src="${recommendForum.icon3}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId3}">${recommendForum.forumName3}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads3}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads3}</dd>
                    </dl>
@@ -498,8 +498,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon4}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName4}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId4}"><img src="${recommendForum.icon4}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId4}">${recommendForum.forumName4}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads4}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads4}</dd>
                    </dl>
@@ -520,8 +520,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon5}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName5}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId5}"><img src="${recommendForum.icon5}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId5}">${recommendForum.forumName5}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads5}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads5}</dd>
                    </dl>
@@ -542,8 +542,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon6}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName6}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId6}"><img src="${recommendForum.icon6}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId6}">${recommendForum.forumName6}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads6}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads6}</dd>
                    </dl>
@@ -564,8 +564,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon7}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName7}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId7}"><img src="${recommendForum.icon7}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId7}">${recommendForum.forumName7}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads7}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads7}</dd>
                    </dl>
@@ -586,8 +586,8 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${recommendForum.icon8}" alt=""></a></dt>
-                       <dd><a href="#">${recommendForum.forumName8}</a></dd>
+                       <dt><a href="forum_content?fid=${recommendForum.forumId8}"><img src="${recommendForum.icon8}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${recommendForum.forumId8}">${recommendForum.forumName8}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads8}</b></dd>
                        <dd>帖子  ${recommendForum.totalThreads8}</dd>
                    </dl>
@@ -614,32 +614,32 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${officalForum.icon1} " alt=""></a></dt>
-                       <dd><a href="#">${officalForum.forumName1}</a></dd>
+                       <dt><a href="forum_content?fid=${officalForum.forumId1}"><img src="${officalForum.icon1} " alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId1}">${officalForum.forumName1}</a></dd>
                        <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
                        <dd>帖子  ${officalForum.totalThreads1}</dd>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${officalForum.icon2}" alt=""></a></dt>
-                       <dd><a href="#">${officalForum.forumName2}</a></dd>
+                       <dt><a href="forum_content?fid=${officalForum.forumId2}"><img src="${officalForum.icon2}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId2}">${officalForum.forumName2}</a></dd>
                        <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
                        <dd>帖子  ${officalForum.totalThreads2}</dd>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${officalForum.icon3}" alt=""></a></dt>
-                       <dd><a href="#">${officalForum.forumName3}</a></dd>
+                       <dt><a href="forum_content?fid=${officalForum.forumId3}"><img src="${officalForum.icon3}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId3}">${officalForum.forumName3}</a></dd>
                        <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
                        <dd>帖子  ${officalForum.totalThreads3}</dd>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="#"><img src="${officalForum.icon4}" alt=""></a></dt>
-                       <dd><a href="#">${officalForum.forumName4}</a></dd>
+                       <dt><a href="forum_content?fid=${officalForum.forumId4}"><img src="${officalForum.icon4}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId4}">${officalForum.forumName4}</a></dd>
                        <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
                        <dd>帖子  ${officalForum.totalThreads4}</dd>
                    </dl>
