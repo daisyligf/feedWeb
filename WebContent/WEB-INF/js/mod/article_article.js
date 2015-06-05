@@ -428,7 +428,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			replyFloorPost(_this,{
 				tid : tid,
 				uid : uid,
-				postid : postid,
+				pid : postid,
 				content : content
 			});
 		});

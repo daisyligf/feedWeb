@@ -202,7 +202,15 @@
                         <dd class="author-detail"><b>楼主</b><span>05-14</span><span> 15:10</span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
-                        <a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
+                     <c:choose>
+                        	<c:when test="${type==1 }">
+                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
+                        	</c:otherwise>
+                        </c:choose>
+                        
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
                                 <a href="#" class="manege-top">置顶</a>

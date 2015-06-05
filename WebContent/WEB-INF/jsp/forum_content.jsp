@@ -111,7 +111,7 @@
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                    <a href="#" class="follow fllowed">+ 关注</a>
+                    <a href="javascript:;" class="follow fllowed" data-areaid='234' data-dofollow='0'>+ 关注</a>
                     <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
@@ -135,7 +135,7 @@
                                 </span>
                                 <p id="quan">全部</p>
                                 <p class="list">
-                                    <a href="#">精华</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">精华</a>
                                 </p>
                                 
                             </div>
@@ -145,7 +145,7 @@
                                 </span>
                                 <p id="time">回复时间</p>
                                 <p class="list">
-                                    <a href="#">发帖时间</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">发帖时间</a>
                                 </p>
                             </div>
                         </div>
@@ -290,6 +290,7 @@
 	                       	<a href="${game.url }" target="_blank">立即下载</a>
                     	</div>
                 	</div>
+                	<c:if test="${fn:length(giftList) > 0}">
                 	<div class="lord-team">
 	                    <h2 class="lum">
 	                        礼包发号
@@ -303,6 +304,7 @@
 	                    </div>
                     
                 	</div>
+                	</c:if>
                   </c:otherwise>
                 </c:choose>
                 
@@ -317,6 +319,39 @@
             <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
         </div>
         <!-- 底部结束 -->
+        <!-- 弹出框插件开始 -->
+        <!-- 遮罩层开始 -->
+        <div class="mask-bg">
+            
+        </div>
+        <!-- 遮罩层结束 -->
+        <!-- 确定不玩？弹出框开始 -->
+        <div class="pop pop-play pop-warn">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="好的，去取消">
+            </p>
+        </div>
+        <!--未登录-->
+        <div class="pop pop-play pop-login">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="前往登录">
+            </p>
+        </div>
+        <!-- 成功 -->
+        <div class="pop pop-post-ok">   
+            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+        </div>
+        <!-- 失败 -->
+        <div class="pop pop-top-fail">
+            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+        </div>
+        <!-- 弹出框插件结束 -->
     </div>
     
    <script src="js/mod/list_article.js"></script>

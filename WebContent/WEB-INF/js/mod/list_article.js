@@ -10,57 +10,64 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	require("jquery/jquery-pop");//弹出框插件
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
-	var USE_LOCAL_DATA = 0;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_LOCAL_DATA = 1;//本地数据
+	var USE_TEST_DATA = 0;//测试数据
 
-	
-	var getFollowUrl = "" //关注
-	var getNoFollowUrl = "" //取消关注
-	var ajaxMethod="json";
+	var loginUrl = "http://u.mofang.com/";//登录跳转路径
+	var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
+	var ajaxMethod="jsonp";
 	if(USE_LOCAL_DATA){
 		getFollowUrl='/bbs_html/statics/test/follow.json';
-		getNoFollowUrl='/bbs_html/statics/test/follow.json';
+		loginUrl='/';
+		var ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		getPlateUrl='follow.json';
-		getPostUrl='follow.json';
+		var getFollowUrl = "http://u.test.mofang.com/home/area/follow?area_id=54"; //关注/取消关注
 	}
 
 	getPlateInfo();
 	function getPlateInfo(){
 		$("body").on("click",".follow",function(){
 			if(!loginStatus){
-				$(".pop-top-fail").pop({
-					msg:"未登录"
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg){
+						if(isTrue){
+							window.location.href=loginUrl;
+						}
+					}
 				});
 				return false;
 			}
 			var _this = this;
-			var url = '';
 			var msgSuc = '',
 				msgErr = '';
 			if($(_this).hasClass('followed')){
-				url = getNoFollowUrl;
 				msgSuc = '取消关注成功';
 				msgErr = '取消关注失败'
 			}else{
-				url = getFollowUrl;
 				msgSuc = '关注成功';
 				msgErr = '关注失败';
 
 			}
 
 			$.ajax({
-			    url:url,
-			    type:"POST",
+			    url:getFollowUrl,
+			    type:"GET",
 			    dataType:ajaxMethod,
 			    data:{
-			    	fid:$(_this).attr('data-fid'),
-			    	uid:$(_this).attr('data-id')
+			    	area_id:$(_this).attr('data-areaid'),
+			    	dofollow:$(_this).attr('data-dofollow')
 			    },
 			    success: function(res) {
+			    	console.log(res.code);
 			    	if(res && !res.code){
-			    		
+			    		if($(_this).attr('data-dofollow')==0){
+			    			$(_this).attr('data-dofollow',1);
+			    		}else{
+			    			$(_this).attr('data-dofollow',0);
+			    		}
 			    		$(".pop-post-ok").pop({
 			    			msg : msgSuc
 			    		});
@@ -72,6 +79,17 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    			$(_this).addClass('followed');
 			    			$(_this).html("已关注");
 			    		}
+			    	}else if(res && res.code==969){
+			    		$(".pop-warn").pop({
+							type:"confirm",
+							title:"关注过多",
+							msg:"您目前关注的游戏版块已经超过100，为了给您提供更好的服务，请取消部分历史关注之后，重新关注此版块",
+							fnCallback: function(isTrue,msg){
+								if(isTrue){
+									window.location.href="http://u.mofang.com/home/footprints/follow";
+								}
+							}
+						});
 			    	}else{
 			    		$(".pop-top-fail").pop({
 			    			msg : msgErr
@@ -79,7 +97,9 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    	}
 			    },
 			    error: function() {
-			    	
+			    	$(".pop-top-fail").pop({
+		    			msg : msgErr
+		    		});
 			    },
 			    complete: function(){
 			    	
