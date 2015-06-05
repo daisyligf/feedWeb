@@ -160,6 +160,10 @@ public class FeedCommonController {
 		return externalUrlInfo.getUpload_img_url();
 	}
 	
+	protected String getSendReplyUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.POST_CREATE_URL;
+	}
+	
 	protected HttpClientProvider getHttpProvider() {
 		HttpClientConfig config = new HttpClientConfig();
 		config.setHost(connInfo.getHost());

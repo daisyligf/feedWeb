@@ -27,8 +27,10 @@ import com.mofang.feedweb.entity.GameGift;
 import com.mofang.feedweb.entity.HotThread;
 import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
+import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.ForumType;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.Tools;
 
 /**
  * 
@@ -51,8 +53,8 @@ public class FeedForumContentController extends FeedCommonController {
 		feedForum.setRoleList(roleList);
 		
 		// 获取版块下的帖子列表
-		List<FeedThread> threadList = getThreadList(request, fid);
-		model.put("threadList", threadList);
+		List<FeedThread> threadList = getThreadList(request, fid, model);
+//		model.put("threadList", threadList);
 		
 		// if 是官方版块，获取头条列表和新游推荐
 		int type = feedForum.getType();
@@ -249,8 +251,9 @@ public class FeedForumContentController extends FeedCommonController {
 		return roleList;
 	}
 	
-	private List<FeedThread> getThreadList(HttpServletRequest request, long fid) throws Exception {
+	private List<FeedThread> getThreadList(HttpServletRequest request, long fid, Map<String, Object> model) throws Exception {
 		List<FeedThread> threadList = new ArrayList<FeedThread>();
+		int total = 0;
 		int threadType = 0; // 0表示普通，1表示精华
 		String typeString = request.getParameter("type");
 		if (typeString != null && StringUtil.isInteger(typeString)) {
@@ -293,7 +296,7 @@ public class FeedForumContentController extends FeedCommonController {
 		
 		if (json != null && json.optInt("code", -1) == 0) {
 			JSONObject data = json.optJSONObject("data");
-			int total = data.optInt("total", 0);
+			total = data.optInt("total", 0);
 			JSONArray threads = data.optJSONArray("threads");
 			if (threads != null && threads.length() > 0) {
 				for (int i = 0; i < threads.length(); i++) {
@@ -330,6 +333,11 @@ public class FeedForumContentController extends FeedCommonController {
 			}
 			
 		}
+		
+		model.put("threadList", threadList);
+		model.put("currentPage", p);
+		model.put("totalPages", Tools.editTotalPageNumber(total));
+		model.put("pagelist", Tools.editPageNumber(total, p,Constant.PAGE_SIZE));
 		
 		return threadList;
 	}
