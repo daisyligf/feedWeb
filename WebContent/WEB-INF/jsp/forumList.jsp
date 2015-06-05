@@ -55,22 +55,24 @@
                 <div class="nav-left">
                     <a href="http://www.mofang.com">魔方网首页</a>
                 </div>
-                <div class="nav-right">
+                <div class="nav-right" id="topUserInfo">
                     <!-- 登陆状态 -->
-                    <!-- <a href="#" class="head"><img src="./img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
+                    <!-- top登录模板 -->
+                    
+                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
                     <div class="user-info">
                         <ul class="clearfix">
-                            <li class="header-money"><s class="icon-money"></s>34356</li>
-                            <li class="zuji"><a href="#">足迹</a><a href="#" class="msg">消息<s class="icon-red"></s></a><a href="#" class="libao">礼包库</a></li>
+                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
+                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
                             <li class="info">
-                               <a href="#">个人信息</a><a href="#">设置</a><a href="#" class="out">退出</a> 
+                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
                             </li>
                         </ul>
-                    </div> -->
+                    </div>
+                    
                     <!-- 登陆状态 -->
-                    <a href="#" class="load"><img src="./img/icon/load.png"></a>
+                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
                 </div>
-                
             </div>
             <div class="nav-wap clearfix">
               <div class="nav-wap-left">
@@ -144,8 +146,8 @@
 					<c:forEach items="${listInfo}" var="forum" varStatus="vs">						
 			               <div class="col-xs-3 col-md-4  col-sm-6">
 			                   <dl class="clearfix">
-			                       <dt><a href="#"><img src="${forum.icon} " alt=""></a></dt>
-			                       <dd><a href="#">${forum.forumName}</a></dd>
+			                       <dt><a href="forum_content?fid=${forum.forumId}"><img src="${forum.icon} " alt=""></a></dt>
+			                       <dd><a href="forum_content?fid=${forum.forumId}">${forum.forumName}</a></dd>
 			                       <dd>今日  <b class="update">${forum.todayThreads}</b></dd>
 			                       <dd>帖子  ${forum.totalThreads}</dd>
 			                   </dl>
@@ -218,20 +220,6 @@
 				</c:choose>
                 </ul>
                 
-                
-                <!--
-                <li class="prev"><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li class="active"><a href="javascript:;">3</a></li>
-                <li><a href="#">4</a></li>
-                <li class="next"><a href="#">下一页</a></li>
-                </ul>
-                <ul class="page-mobile">
-                    <li class="prev"><a href="#">上一页</a></li>
-                    <li class="text">5/235</li>
-                    <li class="next"><a href="#">下一页</a></li>
-                </ul>-->
 
             </div> 
               
