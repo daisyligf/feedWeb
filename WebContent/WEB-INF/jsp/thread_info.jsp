@@ -191,7 +191,7 @@
                     
                 </div>
             </div>
-            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="23245" data-uid="23412" data-fid="">
+            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="23412" data-fid="${feedForum.forum_id }">
             	<c:if test="${currentPage==1}">
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
