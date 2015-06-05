@@ -33,6 +33,12 @@
     <link rel="stylesheet" href="css/add_list_article.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+		function search(){
+			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
+		}
+    </script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -89,7 +95,7 @@
                 <img src="img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
-                <input type="submit" class="ser-but" value="" id="submit"/>
+                <input type="submit" class="ser-but" value="" id="submit" onclick="search()"/>
                 <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
             </div>
         </div>
@@ -105,8 +111,8 @@
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                    <a href="#" class="follow fllowed">+ 关注</a>
-                    <a href="#" class="post">发帖</a>
+                    <a href="javascript:;" class="follow fllowed" data-areaid='234' data-dofollow='0'>+ 关注</a>
+                    <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->
@@ -116,10 +122,11 @@
                 <div class="con-bot-left">
                     <div class="con-nav">
                         <div class="left">
-                            <a href="#" class="active">综合</a>
+                            <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}" id="tag_all">综合</a>
                             <c:forEach var="tag" items="${feedForum.tags}">
-                            	<a href="#">${tag.tag_name}</a>
+                            	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag.tag_id}" id="tag_${tag.tag_id }">${tag.tag_name}</a>
                             </c:forEach>
+                            <input type="hidden" id="tag_id" value="${tag_id }"/>
                         </div>
                         <div class="right">
                             <div>
@@ -128,7 +135,7 @@
                                 </span>
                                 <p id="quan">全部</p>
                                 <p class="list">
-                                    <a href="#">精华</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">精华</a>
                                 </p>
                                 
                             </div>
@@ -138,7 +145,7 @@
                                 </span>
                                 <p id="time">回复时间</p>
                                 <p class="list">
-                                    <a href="#">发帖时间</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">发帖时间</a>
                                 </p>
                             </div>
                         </div>
@@ -175,7 +182,7 @@
 			                
 							<c:choose>
 							<c:when test="${currentPage != 1}">
-								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">上一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -186,10 +193,10 @@
 							<c:forEach items="${pagelist}" var="item">
 							<c:choose>
 							<c:when test="${item == currentPage}">
-								<li class="active"><a href="forum_content?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+								<li class="active"><a href="forum_content?currentPage=${item }&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >${item}</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="forum_content?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+								<li><a href="forum_content?currentPage=${item}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">${item}</a></li>
 							</c:otherwise>
 							</c:choose>
 							</c:forEach>
@@ -197,7 +204,7 @@
 							<!-- 下一页 按钮 -->
 							<c:choose>
 							<c:when test="${currentPage != totalPages}">
-								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">下一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -283,6 +290,7 @@
 	                       	<a href="${game.url }" target="_blank">立即下载</a>
                     	</div>
                 	</div>
+                	<c:if test="${fn:length(giftList) > 0}">
                 	<div class="lord-team">
 	                    <h2 class="lum">
 	                        礼包发号
@@ -296,6 +304,7 @@
 	                    </div>
                     
                 	</div>
+                	</c:if>
                   </c:otherwise>
                 </c:choose>
                 
@@ -310,9 +319,50 @@
             <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
         </div>
         <!-- 底部结束 -->
+        <!-- 弹出框插件开始 -->
+        <!-- 遮罩层开始 -->
+        <div class="mask-bg">
+            
+        </div>
+        <!-- 遮罩层结束 -->
+        <!-- 确定不玩？弹出框开始 -->
+        <div class="pop pop-play pop-warn">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="好的，去取消">
+            </p>
+        </div>
+        <!--未登录-->
+        <div class="pop pop-play pop-login">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="前往登录">
+            </p>
+        </div>
+        <!-- 成功 -->
+        <div class="pop pop-post-ok">   
+            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+        </div>
+        <!-- 失败 -->
+        <div class="pop pop-top-fail">
+            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+        </div>
+        <!-- 弹出框插件结束 -->
     </div>
     
    <script src="js/mod/list_article.js"></script>
+   <script>
+   		var tagId = $('#tag_id').val();
+   		if (tagId != '' && tagId > 0) {
+   			$("#tag_" + tagId).addClass('active');
+   		} else {
+   			$("#tag_all").addClass('active');
+   		}
+   </script>
    
 </body>
 </html>

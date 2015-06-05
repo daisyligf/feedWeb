@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.ModeratorApplyCondition;
 
 /**
@@ -26,13 +27,14 @@ import com.mofang.feedweb.entity.ModeratorApplyCondition;
 public class FeedApplyModeratorController extends FeedCommonController {
 
 	@RequestMapping(value = "/apply_check", method = RequestMethod.GET)
-	public ModelAndView applyCheck(HttpServletRequest request, @RequestParam("forum_id") long forumId) {
+	public ModelAndView applyCheck(HttpServletRequest request, @RequestParam("forum_id") long forumId) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		ModeratorApplyCondition condition = moderatorCheck(request, forumId);
 		
+		FeedForum feedForum = getFeedForumInfo(request, forumId);
 		model.put("moderatorApplyCondition", condition);
-		model.put("forum_id", forumId);
+		model.put("feedForum", feedForum);
 		
 		return new ModelAndView("apply_moderator", model);
 	}

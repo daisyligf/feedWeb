@@ -1,18 +1,22 @@
 package com.mofang.feedweb.controller.web;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.http.impl.client.CloseableHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mofang.feedweb.component.HttpComponent;
+import com.mofang.feedweb.entity.FeedForum;
+import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
-import com.mofang.feedweb.net.http.HttpClientConfig;
-import com.mofang.feedweb.net.http.HttpClientProvider;
 import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
-import com.mofang.feedweb.properties.annotation.HttpClientInfo;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
 
@@ -21,8 +25,11 @@ public class FeedCommonController {
 	@Autowired
 	private ExternalUrlInfo externalUrlInfo;
 
+	//@Autowired
+	//private HttpClientInfo connInfo;
+	
 	@Autowired
-	private HttpClientInfo connInfo;
+	private HttpComponent httpComp;
 
 	protected String getFeedUrlInfo() {
 		return externalUrlInfo.getFeed_info_url();
@@ -164,21 +171,22 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_CREATE_URL;
 	}
 	
-	protected HttpClientProvider getHttpProvider() {
-		HttpClientConfig config = new HttpClientConfig();
-		config.setHost(connInfo.getHost());
-		config.setPort(connInfo.getPort());
-		config.setMaxTotal(connInfo.getMaxTotal());
-		config.setCharset(connInfo.getCharset());
-		config.setConnTimeout(connInfo.getConnTimeout());
-		config.setSocketTimeout(connInfo.getSocketTimeout());
-		config.setDefaultKeepAliveTimeout(connInfo.getKeepAliveTimeout());
-		config.setCheckIdleInitialDelay(connInfo.getCheckIdleInitialDelay());
-		config.setCheckIdlePeriod(connInfo.getCheckIdlePeriod());
-		config.setCloseIdleTimeout(connInfo.getCloseIdleTimeout());
-		HttpClientProvider provider = new HttpClientProvider(config);
-		return provider;
-	}
+
+//	protected HttpClientProvider getHttpProvider() {
+//		HttpClientConfig config = new HttpClientConfig();
+//		config.setHost(connInfo.getHost());
+//		config.setPort(connInfo.getPort());
+//		config.setMaxTotal(connInfo.getMaxTotal());
+//		config.setCharset(connInfo.getCharset());
+//		config.setConnTimeout(connInfo.getConnTimeout());
+//		config.setSocketTimeout(connInfo.getSocketTimeout());
+//		config.setDefaultKeepAliveTimeout(connInfo.getKeepAliveTimeout());
+//		config.setCheckIdleInitialDelay(connInfo.getCheckIdleInitialDelay());
+//		config.setCheckIdlePeriod(connInfo.getCheckIdlePeriod());
+//		config.setCloseIdleTimeout(connInfo.getCloseIdleTimeout());
+//		HttpClientProvider provider = new HttpClientProvider(config);
+//		return provider;
+//	}
 
 	protected JSONObject getHttpInfo(String getUrl, String param,
 			HttpServletRequest request) {
@@ -198,10 +206,12 @@ public class FeedCommonController {
 				strb.append(Constant.STR_AND);
 				strb.append(param);
 			}
-			HttpComponent httpComp = new HttpComponent();
-			CloseableHttpClient clientservice = getHttpProvider()
-					.getHttpClient();
-			String result = httpComp.get(clientservice, strb.toString());
+
+//			HttpComponent httpComp = new HttpComponent();
+//			CloseableHttpClient clientservice = getHttpProvider()
+//					.getHttpClient();
+//			String result = httpComp.get(clientservice, strb.toString());
+			String result = httpComp.get(strb.toString());
 			if (StringUtil.isNullOrEmpty(result))
 				return null;
 
@@ -216,11 +226,13 @@ public class FeedCommonController {
 	protected JSONObject postHttpInfo(String postUrl, JSONObject postData) {
 		try {
 			String atom = Tools.encodetoAtom("129707");
-			HttpComponent httpComp = new HttpComponent();
-			CloseableHttpClient clientservice = getHttpProvider()
-					.getHttpClient();
-			String result = httpComp.post(clientservice, postUrl + "?" + atom,
-					postData.toString());
+
+//			HttpComponent httpComp = new HttpComponent();
+//			CloseableHttpClient clientservice = getHttpProvider()
+//					.getHttpClient();
+//			String result = httpComp.post(clientservice, postUrl + "?" + atom,
+//					postData.toString());
+			String result = httpComp.post(postUrl + "?" + atom,postData.toString());
 			if (StringUtil.isNullOrEmpty(result))
 				return null;
 			return new JSONObject(result);
@@ -229,6 +241,45 @@ public class FeedCommonController {
 					.error("FeedCommonController.postHttpInfo", e);
 			return null;
 		}
+	}
+	
+	protected FeedForum getFeedForumInfo(HttpServletRequest request, long fid)
+			throws JSONException {
+		String param = "fid=" + fid;
+		JSONObject json = getHttpInfo(getForumInfoGetUrl(), param, request);
+		
+		FeedForum feedForum = new FeedForum();
+		if (json != null && json.optInt("code", -1) == 0) {
+			JSONObject forum = json.optJSONObject("data");
+			
+			feedForum.setForum_id(forum.optLong("fid", 0));
+			feedForum.setForum_name(forum.optString("name", ""));
+			feedForum.setName_spell(forum.optString("name_spell", ""));
+			feedForum.setIcon(forum.optString("icon", ""));
+			feedForum.setType(forum.optInt("type", -1));
+			feedForum.setGameId(forum.optInt("game_id", 0));
+			feedForum.setTotal_threads(forum.optInt("threads", 0));
+			feedForum.setYesterday_threads(forum.optInt("yesterday_threads", 0));
+			feedForum.setTotal_follows(forum.optInt("follows", 0));
+			feedForum.setYestoday_follows(forum.optInt("yesterday_follows", 0));
+			feedForum.setCreate_time(new Date(forum.optLong("create_time", 0)));
+			
+			JSONArray tags = forum.optJSONArray("tags");
+			List<FeedTag> tagList = new ArrayList<FeedTag>();
+			if (tags != null && tags.length() > 0) {
+				FeedTag feedTag = null;
+				
+				for (int i = 0; i < tags.length(); i++) {
+					
+					JSONObject tagJson = tags.getJSONObject(i);
+					feedTag = new FeedTag(tagJson.optInt("tag_id", 0), tagJson.optString("tag_name", ""));
+					tagList.add(feedTag);
+				}
+			}
+			feedForum.setTags(tagList);
+		}
+		
+		return feedForum;
 	}
 
 }

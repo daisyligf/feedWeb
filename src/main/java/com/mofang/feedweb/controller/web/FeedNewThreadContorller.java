@@ -33,7 +33,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
-import com.mofang.feedweb.entity.ModeratorApplyCondition;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.global.Constant;
 
@@ -41,10 +40,15 @@ import com.mofang.feedweb.global.Constant;
 public class FeedNewThreadContorller extends FeedCommonController {
 
 	@RequestMapping(value = "/newThreadInit", method = RequestMethod.GET)
-	public ModelAndView init(@RequestParam(value = "fid") long fid,
-			@RequestParam(value = "uid") long uid, HttpServletRequest request)
+	public ModelAndView init(@RequestParam(value = "fid") long fid,HttpServletRequest request)
 			throws Exception {
-
+		
+		String uid  = String.valueOf(request.getSession().getAttribute("uid"));
+		//test
+		if(StringUtils.isEmpty(uid)) {
+			uid = "129707";
+		}
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		// 用户信息
@@ -132,9 +136,15 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = { "/editThreadInit" })
 	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
-			@RequestParam(value = "uid") long uid,
 			@RequestParam(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		String uid  = String.valueOf(request.getSession().getAttribute("uid"));
+		//test
+		if(StringUtils.isEmpty(uid)) {
+			uid = "129707";
+		}
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 帖子信息
 		map.putAll(threadInfoJson("tid=" + tid, request));
@@ -157,7 +167,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
-	public ModelAndView newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
+	public void newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
 			throws Exception {
 		String strTid = request.getParameter("tid");
 		String content = request.getParameter("content");
@@ -174,7 +184,15 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			tagId = Integer.valueOf(strTagId);
 		}
 		
-		String message = "保存失败";
+		if(!StringUtils.isEmpty(content)) {
+			content =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		if(!StringUtils.isEmpty(subject)) {
+			subject =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
+		}
+		
+		
+		JSONObject obj = new JSONObject();
 		
 		//发新帖
 		if(tid == 0) {
@@ -184,14 +202,23 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			json.put("content", content);
 			json.put("tag_id", tagId);
 			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json);
-			int code = result.optInt("code", -1);
-			//跳转到 板块内容页
-			if(code == 0){
-				redirectAtt.addAttribute("fid", strFid);
-				return new ModelAndView("redirect:/forum_content");
+			int code;
+			if(result != null && (code = result.optInt("code", -1)) == 0) {
+				String message = result.optString("message", "");
+				obj.put("code", code);
+				obj.put("message", message);
+			}else{
+				obj.put("code", -1);
+				obj.put("message", "保存失败");
 			}
+//			int code = result.optInt("code", -1);
+//			//跳转到 板块内容页
+//			if(code == 0){
+//				result.put("code", 0);
+//				redirectAtt.addAttribute("fid", strFid);
+//				return new ModelAndView("redirect:/forum_content");
+//			}
 			
-			message = result.optString("message", "");
 			
 		//编辑
 		}else if(tid > 0){
@@ -202,19 +229,28 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			json.put("content", content);
 			json.put("tag_id", tagId);
 			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json);
-			int code = result.optInt("code", -1);
-			//跳转到 帖子详情页
-			if(code == 0){
-				redirectAtt.addAttribute("thread_id", strTid);
-				return new ModelAndView("redirect:/thread_info");
+			int code;
+			if(result != null && (code = result.optInt("code", -1)) == 0) {
+				String message = result.optString("message", "");
+				obj.put("code", code);
+				obj.put("message", message);
+			}else{
+				obj.put("code", -1);
+				obj.put("message", "保存失败");
 			}
-			
-			message = result.optString("message", "");
+//			int code = result.optInt("code", -1);
+//			//跳转到 帖子详情页
+//			if(code == 0){
+//				redirectAtt.addAttribute("thread_id", strTid);
+//				return new ModelAndView("redirect:/thread_info");
+//			}
+//			
+//			message = result.optString("message", "");
 		}
 		
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().print(message);
-		return null;
+		response.getWriter().print(obj.toString());
+		//return null;
 	}
 	
 	@RequestMapping(value = "/upload" , method = RequestMethod.POST)

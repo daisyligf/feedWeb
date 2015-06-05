@@ -17,6 +17,8 @@ public class ExternalUrlInfo {
 	private String game_info_url;
 	@Value("#{configProperties['upload_img_url']}")
 	private String upload_img_url;
+	@Value("#{configProperties['user_loginstatus_url']}")
+	private String user_loginstatus_url;
 
 	public String getFeed_info_url() {
 		return feed_info_url;
@@ -65,4 +67,13 @@ public class ExternalUrlInfo {
 	public void setUpload_img_url(String upload_img_url) {
 		this.upload_img_url = upload_img_url;
 	}
+
+	public String getUser_loginstatus_url() {
+		return user_loginstatus_url;
+	}
+
+	public void setUser_loginstatus_url(String user_loginstatus_url) {
+		this.user_loginstatus_url = user_loginstatus_url;
+	}
+
 }

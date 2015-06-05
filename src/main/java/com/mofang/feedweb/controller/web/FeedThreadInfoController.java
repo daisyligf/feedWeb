@@ -180,6 +180,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		StringBuilder pageUrl = new StringBuilder();
 		
 		model.put("total", total);
+		model.put("type", type);
 		model.put("feedThread", feedThread);
 		model.put("feedForum", feedForum);
 		model.put("threadUserInfo", threadUserInfo);
