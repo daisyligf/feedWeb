@@ -188,7 +188,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			content =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
 		}
 		if(!StringUtils.isEmpty(subject)) {
-			subject =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
+			subject =  new String(subject.getBytes("ISO-8859-1"), "UTF-8");
 		}
 		
 		

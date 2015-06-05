@@ -1,10 +1,8 @@
 package com.mofang.feedweb.properties.annotation;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component
-public class HttpClientInfo {
+public class AbstractHttpClientInfo {
 	@Value("#{configProperties['host']}")
 	private String host;
 	@Value("#{configProperties['port']}")
@@ -105,7 +103,5 @@ public class HttpClientInfo {
 	public void setCloseIdleTimeout(int closeIdleTimeout) {
 		this.closeIdleTimeout = closeIdleTimeout;
 	}
-	
-	
 
 }

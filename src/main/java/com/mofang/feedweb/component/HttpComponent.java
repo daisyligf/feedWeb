@@ -1,46 +1,53 @@
 package com.mofang.feedweb.component;
 
 import javax.annotation.PostConstruct;
-
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.net.http.HttpClientConfig;
 import com.mofang.feedweb.net.http.HttpClientProvider;
 import com.mofang.feedweb.net.http.HttpClientSender;
-import com.mofang.feedweb.properties.annotation.HttpClientInfo;
+import com.mofang.feedweb.properties.annotation.AbstractHttpClientInfo;
+import com.mofang.feedweb.properties.annotation.FeedHttpClientInfo;
+import com.mofang.feedweb.properties.annotation.UserHttpClientInfo;
 
 @Component
 public class HttpComponent {
 
 	@Autowired
-	private HttpClientInfo connInfo;
+	private FeedHttpClientInfo feedHttClientInfo;
+	@Autowired
+	private UserHttpClientInfo userHttpClientInfo;
 
 	private CloseableHttpClient feedHttpClient;
+	
+	private CloseableHttpClient userHttpClient;
 
 	@PostConstruct
-	public void init(){
-		feedHttpClient = getHttpProvider().getHttpClient();
+	public void init() {
+		feedHttpClient = getHttpProvider(feedHttClientInfo).getHttpClient();
+		userHttpClient = getHttpProvider(userHttpClientInfo).getHttpClient();
 	}
-	
-	protected HttpClientProvider getHttpProvider() {
+
+	protected HttpClientProvider getHttpProvider(AbstractHttpClientInfo clientInfo) {
 		HttpClientConfig config = new HttpClientConfig();
-		config.setHost(connInfo.getHost());
-		config.setPort(connInfo.getPort());
-		config.setMaxTotal(connInfo.getMaxTotal());
-		config.setCharset(connInfo.getCharset());
-		config.setConnTimeout(connInfo.getConnTimeout());
-		config.setSocketTimeout(connInfo.getSocketTimeout());
-		config.setDefaultKeepAliveTimeout(connInfo.getKeepAliveTimeout());
-		config.setCheckIdleInitialDelay(connInfo.getCheckIdleInitialDelay());
-		config.setCheckIdlePeriod(connInfo.getCheckIdlePeriod());
-		config.setCloseIdleTimeout(connInfo.getCloseIdleTimeout());
+		config.setHost(clientInfo.getHost());
+		config.setPort(clientInfo.getPort());
+		config.setMaxTotal(clientInfo.getMaxTotal());
+		config.setCharset(clientInfo.getCharset());
+		config.setConnTimeout(clientInfo.getConnTimeout());
+		config.setSocketTimeout(clientInfo.getSocketTimeout());
+		config.setDefaultKeepAliveTimeout(clientInfo
+				.getKeepAliveTimeout());
+		config.setCheckIdleInitialDelay(clientInfo
+				.getCheckIdleInitialDelay());
+		config.setCheckIdlePeriod(clientInfo.getCheckIdlePeriod());
+		config.setCloseIdleTimeout(clientInfo.getCloseIdleTimeout());
 		HttpClientProvider provider = new HttpClientProvider(config);
 		return provider;
 	}
-
+	
 	public String get(String requestUrl) {
 		StringBuilder strLog = new StringBuilder();
 		strLog.append("request url: " + requestUrl + " ");
@@ -72,31 +79,15 @@ public class HttpComponent {
 			return null;
 		}
 	}
-
-	public String get(CloseableHttpClient httpClient, String requestUrl) {
+	
+	public String getUser(String requestUrl) {
 		StringBuilder strLog = new StringBuilder();
 		strLog.append("request url: " + requestUrl + " ");
 		try {
-			String result = HttpClientSender.get(httpClient, requestUrl);
+			String result = HttpClientSender.get(userHttpClient, requestUrl);
 			strLog.append("response data: " + ((null == result) ? "" : result)
 					+ " ");
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public String post(CloseableHttpClient httpClient, String requestUrl,
-			String postData) {
-		StringBuilder strLog = new StringBuilder();
-		strLog.append("request url: " + requestUrl + " ");
-		strLog.append("request data: " + postData + " ");
-		try {
-			String result = HttpClientSender.post(httpClient, requestUrl,
-					postData);
-			strLog.append("response data: " + ((null == result) ? "" : result)
-					+ " ");
+			GlobalObject.INFO_LOG.info(strLog.toString());
 			return result;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(strLog.toString(), e);
