@@ -28,10 +28,11 @@ public class FeedForumListController extends FeedCommonController {
 	@RequestMapping(value = "/forumList")
 	public ModelAndView forumList(HttpServletRequest request) throws Exception {
 		
-		String letterGroup = Constant.STR_ABCDE;
+		int letterGroup = 1;
 		if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
-			letterGroup = request.getParameter("letterGroup");
+			letterGroup = Integer.valueOf(request.getParameter("letterGroup"));
 		}
+		
 		int currentPage = 1;
 		if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
 			currentPage = Integer.valueOf(
@@ -43,10 +44,26 @@ public class FeedForumListController extends FeedCommonController {
 					Tools.replaceBlank(request.getParameter("forumType")));
 		}
 		
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		//获取版块list
-		FeedForumListForm form = getForumList(request, currentPage, forumType, letterGroup);
+		String getLetterGroup = "";
+		if (letterGroup == 1) {
+			getLetterGroup = Constant.STR_ABCDE;
+		} else if (letterGroup == 2) {
+			getLetterGroup = Constant.STR_FGHIJ;
+		} else if (letterGroup == 3) {
+			getLetterGroup = Constant.STR_KLMNO;
+		} else if (letterGroup == 4) {
+			getLetterGroup = Constant.STR_PQRST;
+		} else if (letterGroup == 5) {
+			getLetterGroup = Constant.STR_WXYZ;
+		} else if (letterGroup == 6) {
+			getLetterGroup = Constant.STR_OTHER;
+		}
+		
+		FeedForumListForm form = getForumList(request, currentPage, forumType, getLetterGroup);
 		int total = form.getTotal();
 		
 		
