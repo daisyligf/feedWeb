@@ -100,41 +100,41 @@
         <div class="con clearfix">
            <div class="h2">热门游戏</div>
            <div class="channel-list">
-           <c:if test="${letterGroup=='ABCDE'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=ABCDE&currentPage=1&forumType=${forumType}">ABCDE</a></div>
+           <c:if test="${letterGroup=='1'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}">ABCDE</a></div>
            </c:if>  
-           <c:if test="${letterGroup !='ABCDE'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=ABCDE&currentPage=1&forumType=${forumType}">ABCDE</a></div>
+           <c:if test="${letterGroup !='1'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}">ABCDE</a></div>
            </c:if>
-           <c:if test="${letterGroup =='FGHIJ'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=FGHIJ&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
+           <c:if test="${letterGroup =='2'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
            </c:if>
-           <c:if test="${letterGroup !='FGHIJ'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=FGHIJ&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
+           <c:if test="${letterGroup !='2'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
            </c:if>
-           <c:if test="${letterGroup =='KLMNO'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=KLMNO&currentPage=1&forumType=${forumType}">KLMNO</a></div>
+           <c:if test="${letterGroup =='3'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}">KLMNO</a></div>
            </c:if>
-           <c:if test="${letterGroup !='KLMNO'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=KLMNO&currentPage=1&forumType=${forumType}">KLMNO</a></div>
-           </c:if> 
-           <c:if test="${letterGroup =='PQRST'}">
-           		<div class="col-xs-2" active><a href="forumList?letterGroup=PQRST&currentPage=1&forumType=${forumType}">PQRST</a></div>
+           <c:if test="${letterGroup !='3'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}">KLMNO</a></div>
+           </c:if>
+           <c:if test="${letterGroup =='4'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}">PQRST</a></div>
            </c:if>   
-            <c:if test="${letterGroup !='PQRST'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=PQRST&currentPage=1&forumType=${forumType}">PQRST</a></div>
+            <c:if test="${letterGroup !='4'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}">PQRST</a></div>
            </c:if>   
-           <c:if test="${letterGroup =='WXYZ'}">
-           		<div class="col-xs-2" active><a href="forumList?letterGroup=WXYZ&currentPage=1&forumType=${forumType}">WXYZ</a></div>
+           <c:if test="${letterGroup =='5'}">
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}">WXYZ</a></div>
            </c:if>
-            <c:if test="${letterGroup !='WXYZ'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=WXYZ&currentPage=1&forumType=${forumType}">WXYZ</a></div>
+            <c:if test="${letterGroup !='5'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}">WXYZ</a></div>
            </c:if>
-           <c:if test="${letterGroup =='OTHER'}">
-               <div class="col-xs-2"><a href="forumList?letterGroup=OTHER&currentPage=1&forumType=${forumType}">#</a></div>
+           <c:if test="${letterGroup =='6'}">
+               <div class="col-xs-2 active"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}">#</a></div>
            </c:if>
-           <c:if test="${letterGroup !='OTHER'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=OTHER&currentPage=1&forumType=${forumType}">#</a></div>
+           <c:if test="${letterGroup !='6'}">
+           		<div class="col-xs-2"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}">#</a></div>
            </c:if>
            </div>
            <div class="h2-con clearfix container">
