@@ -1,3 +1,4 @@
+
 /**
  * @file editor-main.js
  * @brief   editor upload mod
@@ -6,33 +7,47 @@
  * @date 2015-6-1
  */
 
-define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, exports, module) {
+define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'],function(require, exports, module) {
 
     //var login = require("mf/login");
     var $ = require("jquery"),
         _h = require("handlebars");  
     require("jquery/jquery-pop");//弹出框插件
+    require("jquery/jquery-form");//jquery表单ajax提交插件
 
     var USE_LOCAL_DATA = 1;//本地数据
     var USE_TEST_DATA = 0;//测试数据
 
     var getUrl = "";//url路径示范
-    //var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
-    //var codeUrl = "http://u.mofang.com/captcha/captcha";//验证码url
-    var getUserLoginStatus = "loginStatus";
-    var codeUrl = "generageCode";
+    var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
     var getCheckCode = "checkCode?code=" + $(".code-text").val();//验证码校验
+    var codeUrl = "generageCode";//验证码url
+    var postUrl = "";//发帖
+    var relayPostUrl = "";//回复帖子
+
+    if($("#editor-form .editor-fid").length>0){
+        var localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//发帖成功，跳转的路径
+        var localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//编辑帖子成功，跳转的路径
+    }
+    
+
     var ajaxMethod="json"; 
     if(USE_LOCAL_DATA){
-//        getUserLoginStatus = "/bbs_html/statics/test/get_user.json"; //获取用户的登录状态
-//        getCheckCode = "/bbs_html/statics/test/follow.json";
-    	getUserLoginStatus = "loginStatus";
-    	getCheckCode = "checkCode?code=" + $(".code-text").val();
+        getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+    	//getUserLoginStatus = "loginStatus";
+        getCheckCode = "checkCode?code=" + $(".code-text").val();
+        postUrl = "newThread";//发帖
+        relayPostUrl = "/bbs_html/statics/test/follow.json";//回复帖子
+        
+        if($("#editor-form .editor-fid").length>0){
+            localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//发帖成功，跳转的路径
+            localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//编辑帖子成功，跳转的路径
+        }
+
         ajaxMethod="json";
     }
     if(USE_TEST_DATA){
-        //getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
-    	getUserLoginStatus = "loginStatus";
+        getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
     }   
 
 
@@ -56,6 +71,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
     var arrData = [],
         editorCont = "",
         feedFlag = 0;
+
 
     /**实例化编辑器**/
     function editorInit () {//{{{
@@ -90,9 +106,6 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
              
 
         });
-        
-        
-
     }
 
     reply.on("click",function (){
@@ -141,30 +154,135 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
     
     function formSubmit (data) {//{{{
 
-        //内容
+        //内容赋值
         cont.val(editorCont);
 
-        //标签
-        if(tags.length){
-            tags.val($(".sel-one").attr("data-tagsId"));
-        }
-        
-        //标题
-        if(posttit.length) {
-            posttit.val($.trim(editorTit.val()));
-        }
-        //验证码
-        if(codeText.length){
-            $.ajax({
-                url:getCheckCode,
-                type:"GET",
-                dataType:ajaxMethod,
-                success: function(res) {
-                    if(res && !res.code){
 
-                        $(this).serialize();
-                        editorForm.submit();
-                    }else{
+       //发帖回调
+        var optionsPost = {
+            beforeSubmit:function(){
+
+            },
+            error:function(){
+                $(".pop-warn").pop({
+                    type:"confirm",
+                    msg:"帖子发布失败，请重新发送。",
+                    fnCallback: function(isTrue,msg){
+                        if(isTrue){
+                            editorForm.submit();
+                        }
+                    }
+                });
+                //变换验证码
+                fnChangeCode(); 
+            },
+            success: function(res) {
+                if(typeof res=='string'){
+                    res=$.parseJSON(res);
+                }
+                if(res && res.code==0){
+                    $(".pop-post-ok").pop({
+                        msg: "发送成功",
+                        autoTime:500
+                    }); 
+                    setTimeout(function(){
+                        if(editorForm.attr("data-tid")==0){
+                            window.location.href=localPlateUrl;
+                        }else{
+                            window.location.href=localPostUrl;  
+                        }
+                        
+                    },600); 
+                }else{
+                    $(".pop-warn").pop({
+                        type:"confirm",
+                        msg:"帖子发布失败，请重新发送。",
+                        fnCallback: function(isTrue,msg){
+                            if(isTrue){
+                                editorForm.submit();
+                                
+                            }
+                        }
+                    });
+                    //变换验证码
+                    fnChangeCode(); 
+                }
+                  
+            } 
+        };
+        //回复帖子回调
+        var optionsReplayPost = {
+            beforeSubmit:function(){
+
+            },
+            error:function(){
+               $(".pop-top-fail").pop({
+                    msg: "回复失败",
+                    autoTime:500
+                }); 
+            },
+            success:function(res) {
+                if(typeof res=='string'){
+                    res=$.parseJSON(res);
+                }
+                if(res && res.code==0){
+                    $(".pop-post-ok").pop({
+                        msg: "发送成功",
+                        autoTime:500
+                    });
+                    setTimeout(function(){
+                        window.location.reload();
+                    },600);
+                }else{
+                    alert();
+                    $(".pop-top-fail").pop({
+                        msg: "回复失败",
+                        autoTime:500
+                    });
+                }
+            } 
+        };
+        //回复帖子
+        if(editorForm.attr('data-form')=='replayPost'){
+            // 将options传给ajaxForm
+            editorForm.ajaxForm(optionsReplayPost);
+            editorForm.submit();
+            return false;
+        }
+
+        //发帖
+        if(editorForm.attr('data-form')=='post'){
+            // 将options传给ajaxForm
+            editorForm.ajaxForm(optionsPost);
+            //标签
+            if(tags.length){
+                tags.val($(".sel-one").attr("data-tagsId"));
+            }
+            
+            //标题
+            if(posttit.length) {
+                posttit.val($.trim(editorTit.val()));
+            }
+            //验证码
+            if(codeText.length){
+                $.ajax({
+                    url:getCheckCode,
+                    type:"GET",
+                    dataType:ajaxMethod,
+                    success: function(res) {
+                        if(res && !res.code){
+                            editorForm.submit();
+                        }else{
+                            $(".pop-top-fail").pop({
+                                msg: "验证码错误",
+                                autoTime:500
+                            });
+
+                            //变换验证码
+                            fnChangeCode(); 
+                        }
+                    },
+                    error: function() {
                         $(".pop-top-fail").pop({
                             msg: "验证码错误",
                             autoTime:500
@@ -172,21 +290,15 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
                         //变换验证码
                         fnChangeCode(); 
                     }
-                },
-                error: function() {
-                    $(".pop-top-fail").pop({
-                        msg: "验证码错误",
-                        autoTime:500
-                    });
-                    //变换验证码
-                    fnChangeCode(); 
-                }
-            });
-        }else{
-            $(this).serialize();
+                });
+                return false;
+            }
+            // 将options传给ajaxForm
             editorForm.submit();
+            return false;
         }
-       
+        
+        
     }
 
     function rgb2hex(rgb) {//{{{
@@ -326,13 +438,9 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop'],function(require, e
     function choice(_this){
         $(_this).next(".sel-more").find("a").unbind("click").bind("click",function(){
             var _v = $(this).html();
-            var _vId = $(this).attr("data-tagsId");
             var _vshow = $(_this).html();
-            var _vshowId = $(_this).attr("data-tagsId");
             $(_this).html(_v);
-            $(_this).attr("data-tagsId",_vId);
             $(this).html(_vshow);
-            $(this).attr("data-tagsId",_vshowId);
             $(".sel-one").removeClass('active');
             $(".sel-one").next(".sel-more").hide();
             return false;

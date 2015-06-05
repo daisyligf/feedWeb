@@ -90,7 +90,7 @@
         <div class="con clearfix">
             
            <!-- 搜索板块开始 -->
-           <div class="h2 plate-num">板块<span>20</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
+           <div class="h2 plate-num">板块<span>0</span> <a href="javascript:;" id="plateMore" class="plate-more">更多 ></a></div>
            <!-- 板块模板 -->
             <script id="plateTemplate" type="text/x-handlebars-template">
                 {{#each list}}
@@ -113,7 +113,7 @@
            <!-- 搜索板块结束 -->
               
            <!-- 搜索帖子开始 -->
-           <div class="h2 post-num">帖子<span>24</span><!-- <a href="#">更多 ></a> --></div>
+           <div class="h2 post-num">帖子<span>0</span><!-- <a href="#">更多 ></a> --></div>
             <div class="con-bottom clearfix">
              <div class="col-xs-12 bg-white">
 
