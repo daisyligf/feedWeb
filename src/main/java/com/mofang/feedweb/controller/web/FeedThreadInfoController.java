@@ -25,7 +25,9 @@ import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.QueryPage;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.Tools;
 
 /**
  * 
@@ -175,6 +177,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		List<FeedThread> highestList = replyHighest(request, forumId);
 		
 		QueryPage queryPage = new QueryPage(page, size, total);
+		StringBuilder pageUrl = new StringBuilder();
 		
 		model.put("total", total);
 		model.put("feedThread", feedThread);
@@ -182,13 +185,18 @@ public class FeedThreadInfoController extends FeedCommonController {
 		model.put("threadUserInfo", threadUserInfo);
 		model.put("postList", postList);
 		model.put("highestList", highestList);
-		model.put("currPage", queryPage.getCurrPageNum());
-		model.put("totalPage", queryPage.getTotalPageNum());
-		model.put("pageBar", queryPage.getPagebar());
-//		model.put("pageUrl", pageUrl.toString());
 		
-		model.put("page", page);
-		model.put("size", size);
+//		model.put("currPage", queryPage.getCurrPageNum());
+//		model.put("totalPage", queryPage.getTotalPageNum());
+//		model.put("pageBar", queryPage.getPagebar());
+//		model.put("pageUrl", pageUrl.toString());
+//		model.put("currUrl", "thread_info?page=" + currPage + "&");
+//		model.put("page", page);
+//		model.put("", value)
+		model.put("currentPage", page);
+		model.put("totalPages", Tools.editTotalPageNumber(total));
+		model.put("pagelist", Tools.editPageNumber(total, page,Constant.PAGE_SIZE));
+		
 	}
 	
 	private List<FeedThread> replyHighest(HttpServletRequest request, long forumId) throws Exception {
@@ -432,6 +440,30 @@ public class FeedThreadInfoController extends FeedCommonController {
 		out.flush();
 		out.close();
 		
+		return null;
+	}
+	
+	@RequestMapping(value = "send_reply")
+	public ModelAndView sendReply(@RequestParam("tid") long threadId, @RequestParam("content") String content, HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		JSONObject postData = new JSONObject();
+		postData.put("tid", threadId);
+		postData.put("content", content);
+		
+		JSONObject json = postHttpInfo(getSendReplyUrl(), postData);
+		
+//		String msg = "<script language='javascript'> alert('回复成功);'</script>";
+//		if(json != null && json.optInt("code", -1) == 0) {
+//			msg = "<script language='javascript'> alert('回复失败);'</script>";
+//		}
+//		response.setContentType("text/html; charset=UTF-8");
+//		response.setCharacterEncoding("UTF-8");
+//		PrintWriter out = response.getWriter();
+//		out.print(msg);
+//		out.flush();
+//		out.close();
+		
+		response.sendRedirect("thread_info?thread_id=" + threadId);
 		return null;
 	}
 	
