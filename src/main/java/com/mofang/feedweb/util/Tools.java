@@ -135,15 +135,20 @@ public class Tools {
 		    totalPage += 1;
 		}
 		List<Integer> pageArr = new ArrayList<Integer>();
-		int start = 1;
-		if(selectPage >= 4){
-		     start = selectPage/4 * 4;
-		 }
-		int num = start;
-		while(!(num > totalPage || num > start + 4)){
-		     pageArr.add(num);
-		    ++num;
-		}
+		 int front_block = selectPage - 5;// 当前页码前面一截
+         int back_block = selectPage + 5;// 当前页码后面一截
+         //有多页
+         int tempBack_block = totalPage;
+         int tempFront_block = 1;
+         if (back_block < totalPage)
+             tempBack_block = back_block;
+         if (front_block > 1)
+             tempFront_block = front_block;
+
+         for (int  i = tempFront_block; i <= tempBack_block; i++) {
+     			pageArr.add(i);
+         	};
+
 		return pageArr;
 	}
 	

@@ -55,7 +55,7 @@ public class FeedForumListController extends FeedCommonController {
 		model.put("searchkey", "");
 		model.put("currentPage", currentPage);
 		model.put("totalPages", Tools.editTotalPageNumber(total));
-		model.put("pagelist", Tools.editPageNumber(total, currentPage));
+		model.put("pagelist", Tools.editPageNumber(total, currentPage,Constant.PAGE_SIZE));
 		model.put("forumType", forumType);
 		
 		return new ModelAndView("forumList", model);
@@ -119,6 +119,25 @@ public class FeedForumListController extends FeedCommonController {
 			
 		}
 		
+		
+//		if (Constant.TEST_FLG) {
+//			ForumListInfo info = null;
+//			total = 20;
+//			for(int i=0; i<20; i++)
+//			{
+//				info = new ForumListInfo();
+//				info.setForumId(111111);
+//				info.setGameId(22222);
+//				info.setForumName("梦幻西游");
+//				info.setIcon("./image/image1.jpg");
+//				info.setTodayThreads(3332);
+//				info.setTotalThreads(555);
+//				info.setPrefectureUrl("www.mofang.com");
+//				info.setGiftUrl("www.mofang.com");
+//				info.setDownLoadUrl("www.mofang.com");
+//				listInfo.add(info);
+//			}
+//		}
 		form.setInfoList(listInfo);
 		form.setTotal(total);
 		
