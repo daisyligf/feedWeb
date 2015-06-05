@@ -35,7 +35,7 @@ public class FeedHomeController extends FeedCommonController {
 		if (null !=  request.getSession().getAttribute("uid")) {
 			uid = String.valueOf(request.getSession().getAttribute("uid"));
 		}
-		request.getSession().setAttribute(Constant.SESSION_OPERATORID, uid);
+		//request.getSession().setAttribute(Constant.SESSION_OPERATORID, uid);
 		
 //		Cookie[] cookies=request.getCookies();//从request中获得cookie对象的集合  
 //		String userID="";//登录用户   
