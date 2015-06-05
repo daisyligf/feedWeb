@@ -18,14 +18,6 @@
     <servlet-name>default</servlet-name>
     <url-pattern>/static/*</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>RandomCodeServlet</servlet-name>
-    <servlet-class>com.mofang.feedweb.util.RandomCode</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RandomCodeServlet</servlet-name>
-    <url-pattern>/imgcode</url-pattern>
-  </servlet-mapping>
   <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:log4j.properties</param-value>
@@ -40,7 +32,7 @@
         </listener-class>
   </listener>
   <filter>
-    <filter-name>CharacterFilter</filter-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
@@ -48,7 +40,7 @@
     </init-param>
   </filter>
   <filter-mapping>
-    <filter-name>CharacterFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/</url-pattern>
   </filter-mapping>
 </web-app>

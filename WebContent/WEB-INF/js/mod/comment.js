@@ -33,8 +33,8 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
     var ajaxMethod="json"; 
     if(USE_LOCAL_DATA){
-        getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
-    	//getUserLoginStatus = "loginStatus";
+        //getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+    	getUserLoginStatus = "loginStatus";
         getCheckCode = "checkCode?code=" + $(".code-text").val();
         postUrl = "newThread";//发帖
         relayPostUrl = "/bbs_html/statics/test/follow.json";//回复帖子

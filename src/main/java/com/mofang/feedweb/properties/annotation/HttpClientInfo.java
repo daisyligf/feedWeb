@@ -3,8 +3,6 @@ package com.mofang.feedweb.properties.annotation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.mofang.feedweb.global.Constant;
-
 @Component
 public class HttpClientInfo {
 	@Value("#{configProperties['host']}")
