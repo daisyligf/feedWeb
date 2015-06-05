@@ -33,6 +33,12 @@
     <link rel="stylesheet" href="css/add_list_article.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+		function search(){
+			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
+		}
+    </script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -89,7 +95,7 @@
                 <img src="img/icon/bbs_icon.png" alt="">
             </div>
             <div class="bbs-search">
-                <input type="submit" class="ser-but" value="" id="submit"/>
+                <input type="submit" class="ser-but" value="" id="submit" onclick="search()"/>
                 <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
             </div>
         </div>
@@ -106,7 +112,7 @@
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                     <a href="#" class="follow fllowed">+ 关注</a>
-                    <a href="#" class="post">发帖</a>
+                    <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->
@@ -116,10 +122,11 @@
                 <div class="con-bot-left">
                     <div class="con-nav">
                         <div class="left">
-                            <a href="#" class="active">综合</a>
+                            <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}" id="tag_all">综合</a>
                             <c:forEach var="tag" items="${feedForum.tags}">
-                            	<a href="#">${tag.tag_name}</a>
+                            	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag.tag_id}" id="tag_${tag.tag_id }">${tag.tag_name}</a>
                             </c:forEach>
+                            <input type="hidden" id="tag_id" value="${tag_id }"/>
                         </div>
                         <div class="right">
                             <div>
@@ -175,7 +182,7 @@
 			                
 							<c:choose>
 							<c:when test="${currentPage != 1}">
-								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">上一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -186,10 +193,10 @@
 							<c:forEach items="${pagelist}" var="item">
 							<c:choose>
 							<c:when test="${item == currentPage}">
-								<li class="active"><a href="forum_content?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+								<li class="active"><a href="forum_content?currentPage=${item }&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >${item}</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="forum_content?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+								<li><a href="forum_content?currentPage=${item}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">${item}</a></li>
 							</c:otherwise>
 							</c:choose>
 							</c:forEach>
@@ -197,7 +204,7 @@
 							<!-- 下一页 按钮 -->
 							<c:choose>
 							<c:when test="${currentPage != totalPages}">
-								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">下一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -313,6 +320,14 @@
     </div>
     
    <script src="js/mod/list_article.js"></script>
+   <script>
+   		var tagId = $('#tag_id').val();
+   		if (tagId != '' && tagId > 0) {
+   			$("#tag_" + tagId).addClass('active');
+   		} else {
+   			$("#tag_all").addClass('active');
+   		}
+   </script>
    
 </body>
 </html>

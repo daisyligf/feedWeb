@@ -195,45 +195,6 @@ public class FeedForumContentController extends FeedCommonController {
 		return hotThreadList;
 	}
 	
-	private FeedForum getFeedForumInfo(HttpServletRequest request, long fid)
-			throws JSONException {
-		String param = "fid=" + fid;
-		JSONObject json = getHttpInfo(getForumInfoGetUrl(), param, request);
-		
-		FeedForum feedForum = new FeedForum();
-		if (json != null && json.optInt("code", -1) == 0) {
-			JSONObject forum = json.optJSONObject("data");
-			
-			feedForum.setForum_id(forum.optLong("fid", 0));
-			feedForum.setForum_name(forum.optString("name", ""));
-			feedForum.setName_spell(forum.optString("name_spell", ""));
-			feedForum.setIcon(forum.optString("icon", ""));
-			feedForum.setType(forum.optInt("type", -1));
-			feedForum.setGameId(forum.optInt("game_id", 0));
-			feedForum.setTotal_threads(forum.optInt("threads", 0));
-			feedForum.setYesterday_threads(forum.optInt("yesterday_threads", 0));
-			feedForum.setTotal_follows(forum.optInt("follows", 0));
-			feedForum.setYestoday_follows(forum.optInt("yesterday_follows", 0));
-			feedForum.setCreate_time(new Date(forum.optLong("create_time", 0)));
-			
-			JSONArray tags = forum.optJSONArray("tags");
-			List<FeedTag> tagList = new ArrayList<FeedTag>();
-			if (tags != null && tags.length() > 0) {
-				FeedTag feedTag = null;
-				
-				for (int i = 0; i < tags.length(); i++) {
-					
-					JSONObject tagJson = tags.getJSONObject(i);
-					feedTag = new FeedTag(tagJson.optInt("tag_id", 0), tagJson.optString("tag_name", ""));
-					tagList.add(feedTag);
-				}
-			}
-			feedForum.setTags(tagList);
-		}
-		
-		return feedForum;
-	}
-	
 	private List<RoleInfo> getFeedForumRoleInfoList(HttpServletRequest request, long fid) throws Exception {
 		String param = "fid=" + fid;
 		JSONObject json = getHttpInfo(getRoleInfoListGetUrl(), param, request);
@@ -268,16 +229,16 @@ public class FeedForumContentController extends FeedCommonController {
 		}
 		
 		int p = 1;
-		String pString = request.getParameter("p");
+		String pString = request.getParameter("currentPage");
 		if (pString != null && StringUtil.isInteger(pString)) {
 			p = Integer.parseInt(pString);
 		}
 		
-		int pageSize = 30;
-		String pageSizeString = request.getParameter("pagesize");
-		if (pageSizeString != null && StringUtil.isInteger(pageSizeString)) {
-			pageSize = Integer.parseInt(pageSizeString);
-		}
+		int pageSize = 20;
+//		String pageSizeString = request.getParameter("pagesize");
+//		if (pageSizeString != null && StringUtil.isInteger(pageSizeString)) {
+//			pageSize = Integer.parseInt(pageSizeString);
+//		}
 		
 		StringBuilder paramBuilder = new StringBuilder();
 		paramBuilder.append("fid=").append(fid);
@@ -286,9 +247,10 @@ public class FeedForumContentController extends FeedCommonController {
 		paramBuilder.append("&p=").append(p);
 		paramBuilder.append("pagesize=").append(pageSize);
 		
+		int tagId = 0;
 		String tagIdString = request.getParameter("tag_id");
 		if (tagIdString != null && StringUtil.isInteger(tagIdString)) {
-			int tagId = Integer.parseInt(tagIdString);
+			tagId = Integer.parseInt(tagIdString);
 			paramBuilder.append("&tagId=").append(tagId);
 		}
 		
@@ -335,6 +297,9 @@ public class FeedForumContentController extends FeedCommonController {
 		}
 		
 		model.put("threadList", threadList);
+		model.put("type", threadType);
+		model.put("timeType", timeType);
+		model.put("tag_id", tagId);
 		model.put("currentPage", p);
 		model.put("totalPages", Tools.editTotalPageNumber(total));
 		model.put("pagelist", Tools.editPageNumber(total, p,Constant.PAGE_SIZE));
