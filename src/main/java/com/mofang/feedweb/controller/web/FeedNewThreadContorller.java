@@ -20,6 +20,7 @@ import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
@@ -31,6 +32,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mofang.feedweb.component.UserComponent;
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
@@ -40,6 +42,9 @@ import com.mofang.feedweb.global.Constant;
 @Controller
 public class FeedNewThreadContorller extends FeedCommonController {
 
+	@Autowired
+	private UserComponent userComp;
+	
 	@RequestMapping(value = "/newThreadInit", method = RequestMethod.GET)
 	public ModelAndView init(@RequestParam(value = "fid") long fid,HttpServletRequest request)
 			throws Exception {
@@ -174,6 +179,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	public void newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
 			throws Exception {
 		
+		boolean loginstatus = userComp.validate(request);
+		System.out.println("用户登录状态 == " + loginstatus);
 		
 		String strTid = request.getParameter("tid");
 		String content = request.getParameter("content");
