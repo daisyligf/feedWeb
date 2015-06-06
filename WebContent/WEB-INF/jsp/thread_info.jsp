@@ -6,6 +6,7 @@
 <%@ page import="com.mofang.feedweb.entity.FeedPost"%>
 <%@ page import="com.mofang.feedweb.entity.FeedComment"%>
 <%@ page import="com.mofang.feedweb.entity.ThreadUserInfo"%>
+<%@ page import="com.mofang.feedweb.entity.CurrentUser"%>
 <%@ page import="com.mofang.feedweb.entity.UserInfo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -213,7 +214,7 @@
                         	</c:otherwise>
                         </c:choose>
                         
-                        <c:if test="${fn:length(currentUser.privileges) > 0}">
+                        <c:if test="${currentUser.isAdmin || fn:length(currentUser.privileges) > 0}">
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
                                 <a href="#" class="manege-top">置顶</a>

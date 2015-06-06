@@ -112,7 +112,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
        if(loginStatus) {
              checkEditor();
        } else {
-            window.location.href="http://u.mofang.com/home/account/index";
+            window.location.href="http://u.test.mofang.com/home/account/index";
             return false;
        }
      })

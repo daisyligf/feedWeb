@@ -202,7 +202,7 @@ public class FeedCommonController {
 			StringBuffer strb = new StringBuffer();
 			if(userInfo != null) {
 				String atom = Tools.encodetoAtom(String.valueOf(userInfo.getUserId()));
-				strb.append(getUrl).append("?atom=").append(atom);
+				strb.append(getUrl).append("?").append(atom);
 				if (!StringUtil.isNullOrEmpty(param)) {
 					strb.append("&").append(param);
 				}
