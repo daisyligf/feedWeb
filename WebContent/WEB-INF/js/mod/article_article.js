@@ -48,6 +48,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	}
 	if(USE_TEST_DATA){
 		getFloorComUrl='comment_list.json';
+		setAddPostUrl = "send_reply.json"; // 回复帖子接口
 		setReplyPostUrl='reply_post.json';
 		setDelFloorUrl='del_floor.json';
 		setPraThreadUrl = "recommend_thread.json";

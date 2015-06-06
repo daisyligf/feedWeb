@@ -122,6 +122,10 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url()
 				+ Constant.THREAD_COMMENTLIST_GET_URL;
 	}
+	
+	protected String getAddPostUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.POST_CREATE_URL;
+	}
 
 	protected String getReplyPostUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_REPLY_URL;
