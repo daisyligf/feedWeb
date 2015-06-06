@@ -447,12 +447,12 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		$("body").on("click",".list-del",function(){
 			var _this =this;
 			var pid = $(_this).parents(".con-list").attr("data-postid");
-			var uid = $(_this).parents(".con-list").attr("data-uid");
+			//var uid = $(_this).parents(".con-list").attr("data-uid");
 
 			var reason = "我想删除";
 			fnAjax(setDelFloorUrl,{
 				pid : pid,
-				uid : uid,
+				//uid : uid,
 				reason : reason
 			},function(res){
 				if(res && res.code==0){

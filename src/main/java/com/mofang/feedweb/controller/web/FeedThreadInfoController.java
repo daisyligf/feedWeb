@@ -23,7 +23,6 @@ import com.mofang.feedweb.entity.FeedComment;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedPost;
 import com.mofang.feedweb.entity.FeedThread;
-import com.mofang.feedweb.entity.QueryPage;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
@@ -44,6 +43,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		getThreadInfo(request, threadId, model);
+		
+		UserInfo loginUser = getUserInfo(request);
+		model.put("loginUser", loginUser);
 		
 		return new ModelAndView("thread_info", model);
 	}
@@ -77,15 +79,12 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 		JSONObject json = getHttpInfo(getPostListUrl(), param.toString(), request);
 		
-		System.out.println("json:" + json);
-		
 		int total = 0;
-//		boolean isModerator = false;
-//		boolean isAdmin = false;
-//		int[] privileges = {};
+
 		FeedThread feedThread = new FeedThread();
 		FeedForum feedForum = new FeedForum();
 		ThreadUserInfo threadUserInfo = new ThreadUserInfo();
+		CurrentUser currentUser = new CurrentUser();
 		List<FeedPost> postList = new ArrayList<FeedPost>();
 		
 		if (json != null && json.optInt("code", -1) == 0) {
@@ -125,8 +124,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 			}
 			
 			JSONObject currentUserObj = data.optJSONObject("current_user");
+			System.out.println("currentUserObj:" + currentUserObj);
 			
-			CurrentUser currentUser = new CurrentUser();
 			if (currentUserObj != null) {
 				currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
 				currentUser.setIsAdmin(currentUserObj.optBoolean("is_admin", false));
@@ -159,6 +158,16 @@ public class FeedThreadInfoController extends FeedCommonController {
 					feedPost.setPosition(postObj.optInt("position", 0));
 					feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));
 					feedPost.setComments(postObj.optInt("comments", 0));
+					
+					JSONObject postUserJson = postObj.optJSONObject("user");
+					UserInfo postUserInfo = new UserInfo();
+					if (postUserJson != null && postUserJson.length() > 0) {
+						postUserInfo.setUserId(postUserJson.optLong("user_id", 0));
+						postUserInfo.setNickname(postUserJson.optString("nickname", ""));
+						postUserInfo.setAvatar(postUserJson.optString("avatar", ""));
+					}
+					
+					feedPost.setPostUserInfo(postUserInfo);
 					
 					List<FeedComment> commentList = new ArrayList<FeedComment>();
 					
@@ -200,24 +209,15 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 		List<FeedThread> highestList = replyHighest(request, forumId);
 		
-		QueryPage queryPage = new QueryPage(page, size, total);
-		StringBuilder pageUrl = new StringBuilder();
-		
 		model.put("total", total);
 		model.put("type", type);
 		model.put("feedThread", feedThread);
 		model.put("feedForum", feedForum);
 		model.put("threadUserInfo", threadUserInfo);
+		model.put("currentUser", currentUser);
 		model.put("postList", postList);
 		model.put("highestList", highestList);
 		
-//		model.put("currPage", queryPage.getCurrPageNum());
-//		model.put("totalPage", queryPage.getTotalPageNum());
-//		model.put("pageBar", queryPage.getPagebar());
-//		model.put("pageUrl", pageUrl.toString());
-//		model.put("currUrl", "thread_info?page=" + currPage + "&");
-//		model.put("page", page);
-//		model.put("", value)
 		model.put("currentPage", page);
 		model.put("totalPages", Tools.editTotalPageNumber(total));
 		model.put("pagelist", Tools.editPageNumber(total, page,Constant.PAGE_SIZE));

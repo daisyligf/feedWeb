@@ -6,6 +6,7 @@
 <%@ page import="com.mofang.feedweb.entity.FeedPost"%>
 <%@ page import="com.mofang.feedweb.entity.FeedComment"%>
 <%@ page import="com.mofang.feedweb.entity.ThreadUserInfo"%>
+<%@ page import="com.mofang.feedweb.entity.CurrentUser"%>
 <%@ page import="com.mofang.feedweb.entity.UserInfo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -213,7 +214,7 @@
                         	</c:otherwise>
                         </c:choose>
                         
-                        <c:if test="${fn:length(currentUser.privileges) > 0}">
+                        <c:if test="${currentUser.isAdmin || fn:length(currentUser.privileges) > 0}">
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
                                 <a href="#" class="manege-top">置顶</a>
@@ -264,7 +265,7 @@
                     	</c:otherwise>
                     </c:choose>
                     <c:forEach var="feedPost" begin="${start }" items="${postList }">
-                    <div class="con-list" data-postid="123214" data-uid="1234" data-page='1'>
+                    <div class="con-list" data-postid="${feedPost.post_id }" data-uid="1234" data-page='1'>
                         <p class="con-list-left">
                             <img src="${feedPost.postUserInfo.avatar }" alt="">
                         </p>
@@ -309,7 +310,7 @@
                 </div>
                 <div class="con-right3 reply-textarea">
                     <div class="reply-textarea-info clearfix">
-                        <p class="reply-head"><a href="#"><img src="img/img1.jpg" alt=""></a></p>
+                        <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
                         <dl>
                             <dt></dt>
                             <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>

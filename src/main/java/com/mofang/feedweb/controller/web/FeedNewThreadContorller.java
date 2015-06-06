@@ -197,12 +197,12 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			tagId = Integer.valueOf(strTagId);
 		}
 		
-		if(!StringUtils.isEmpty(content)) {
-			content =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
-		}
-		if(!StringUtils.isEmpty(subject)) {
-			subject =  new String(subject.getBytes("ISO-8859-1"), "UTF-8");
-		}
+//		if(!StringUtils.isEmpty(content)) {
+//			content =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
+//		}
+//		if(!StringUtils.isEmpty(subject)) {
+//			subject =  new String(subject.getBytes("ISO-8859-1"), "UTF-8");
+//		}
 		
 		
 		JSONObject obj = new JSONObject();
