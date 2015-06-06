@@ -47,7 +47,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         ajaxMethod="json";
     }
     if(USE_TEST_DATA){
-        getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+        getUserLoginStatus = "http://u.test.mofang.com/account/status"; //获取用户的登录状态
     }   
 
 

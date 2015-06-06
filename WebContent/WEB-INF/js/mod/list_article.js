@@ -22,7 +22,9 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 		var ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		var getFollowUrl = "http://u.test.mofang.com/home/area/follow?area_id=54"; //关注/取消关注
+		loginUrl = "http://u.test.mofang.com/";
+		//var getFollowUrl = "http://u.test.mofang.com/home/area/follow?area_id=54"; //关注/取消关注
+		getFollowUrl = "http://u.test.mofang.com/home/area/follow"; //关注/取消关注
 	}
 
 	getPlateInfo();

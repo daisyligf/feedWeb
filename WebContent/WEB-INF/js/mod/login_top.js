@@ -25,9 +25,9 @@ define('login_top',['jquery',],function(require, exports, module) {
 		ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		getUserLoginStatus = "http://u.mofang.com/account/status" //获取用户的登录状态
-		getUserInfo = "http://u.mofang.com/home/api/get_login_userinfo"; //获取用户信息
-		getUserLogout = "http://u.mofang.com/account/logout"; //用户退出接口
+		getUserLoginStatus = "http://u.test.mofang.com/account/status" //获取用户的登录状态
+		getUserInfo = "http://u.test.mofang.com/home/api/get_login_userinfo"; //获取用户信息
+		getUserLogout = "http://u.test.mofang.com/account/logout"; //用户退出接口
 	}
 
 	var cLoginDom={
