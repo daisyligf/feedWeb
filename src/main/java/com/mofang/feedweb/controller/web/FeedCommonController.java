@@ -12,8 +12,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mofang.feedweb.component.HttpComponent;
+import com.mofang.feedweb.component.UserComponent;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedTag;
+import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
@@ -24,7 +26,8 @@ public class FeedCommonController {
 
 	@Autowired
 	private ExternalUrlInfo externalUrlInfo;
-
+	@Autowired
+	private UserComponent userComp;
 //	 @Autowired
 //	 private HttpClientInfo connInfo;
 
@@ -179,22 +182,14 @@ public class FeedCommonController {
 	protected String getViperAwardUrl() {
 		return externalUrlInfo.getViper_info_url() + Constant.VIPER_AWARD_URL;
 	}
-
-//	 protected HttpClientProvider getHttpProvider() {
-//		 HttpClientConfig config = new HttpClientConfig();
-//		 config.setHost(connInfo.getHost());
-//		 config.setPort(connInfo.getPort());
-//		 config.setMaxTotal(connInfo.getMaxTotal());
-//		 config.setCharset(connInfo.getCharset());
-//		 config.setConnTimeout(connInfo.getConnTimeout());
-//		 config.setSocketTimeout(connInfo.getSocketTimeout());
-//		 config.setDefaultKeepAliveTimeout(connInfo.getKeepAliveTimeout());
-//		 config.setCheckIdleInitialDelay(connInfo.getCheckIdleInitialDelay());
-//		 config.setCheckIdlePeriod(connInfo.getCheckIdlePeriod());
-//		 config.setCloseIdleTimeout(connInfo.getCloseIdleTimeout());
-//		 HttpClientProvider provider = new HttpClientProvider(config);
-//		 return provider;
-//	 }
+	
+	protected UserInfo getUserInfo(HttpServletRequest request) throws Exception {
+		return userComp.getUserInfo(request);
+	}
+	
+	protected boolean validate(HttpServletRequest request) throws Exception {
+		return userComp.validate(request);
+	}
 
 	protected JSONObject getHttpInfo(String getUrl, String param,
 			HttpServletRequest request) {
@@ -214,11 +209,6 @@ public class FeedCommonController {
 				strb.append(Constant.STR_AND);
 				strb.append(param);
 			}
-
-			// HttpComponent httpComp = new HttpComponent();
-			// CloseableHttpClient clientservice = getHttpProvider()
-			// .getHttpClient();
-			// String result = httpComp.get(clientservice, strb.toString());
 			String result = httpComp.get(strb.toString());
 			if (StringUtil.isNullOrEmpty(result))
 				return null;
@@ -234,13 +224,6 @@ public class FeedCommonController {
 	protected JSONObject postHttpInfo(String postUrl, JSONObject postData) {
 		try {
 			String atom = Tools.encodetoAtom("129707");
-
-//			 HttpComponent httpComp = new HttpComponent();
-//			 CloseableHttpClient clientservice = getHttpProvider()
-//			 .getHttpClient();
-//			 String result = httpComp.post(clientservice, postUrl + "?" +
-//			 atom,
-//			 postData.toString());
 			String result = httpComp.post(postUrl + "?" + atom,
 					postData.toString());
 			if (StringUtil.isNullOrEmpty(result))

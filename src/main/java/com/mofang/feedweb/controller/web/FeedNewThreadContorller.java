@@ -34,6 +34,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
+import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 
 @Controller
@@ -43,16 +44,16 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	public ModelAndView init(@RequestParam(value = "fid") long fid,HttpServletRequest request)
 			throws Exception {
 		
-		String uid  = String.valueOf(request.getSession().getAttribute("uid"));
-		//test
-		if(StringUtils.isEmpty(uid)) {
-			uid = "129707";
-		}
+		UserInfo userInfo = getUserInfo(request);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		// 用户信息
-		map.putAll(userJson("user_id=" + uid, request));
+		if(userInfo != null) {
+			map.putAll(userJson("user_id=" + userInfo.getUserId(), request));
+		}else {
+			map.put("user", new ThreadUserInfo());
+		}
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
 		
@@ -139,17 +140,17 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			@RequestParam(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		String uid  = String.valueOf(request.getSession().getAttribute("uid"));
-		//test
-		if(StringUtils.isEmpty(uid)) {
-			uid = "129707";
-		}
+		UserInfo userInfo = getUserInfo(request);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 帖子信息
 		map.putAll(threadInfoJson("tid=" + tid, request));
 		// 用户信息
-		map.putAll(userJson("user_id=" + uid, request));
+		if(userInfo != null) {
+			map.putAll(userJson("user_id=" + userInfo.getUserId(), request));
+		}else {
+			map.put("user", new ThreadUserInfo());
+		}
 		// 标签列表
 		map.putAll(tagJson("fid=" + fid, request));
 		

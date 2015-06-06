@@ -1,17 +1,21 @@
 package com.mofang.feedweb.component;
 
 import java.net.URLDecoder;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
 
 /***
  * 蛋碎的登录
+ * 
  * @author linjx
  */
 @Component
@@ -22,41 +26,34 @@ public class UserComponent {
 	private ExternalUrlInfo externalUrlInfo;
 	// 缓存cookie信息
 	private final ThreadLocal<String> cookieCache = new ThreadLocal<String>();
+	// 缓存用户信息
+	private final ThreadLocal<UserInfo> userCache = new ThreadLocal<UserInfo>();
 
-	// @SuppressWarnings("deprecation")
-	// public UserInfo getUserInfo(HttpServletRequest request) throws Exception
-	// {
-	// UserInfo userInfo = cache.get();
-	// if(userInfo != null) {
-	// return userInfo;
-	// }
-	// Cookie[] cookies=request.getCookies();//从request中获得cookie对象的集合
-	// String user="";//登录用户
-	// if(cookies != null){
-	// for(int idx = 0;idx < cookies.length; idx++){
-	// if(cookies[idx].getName().equals("mf_scis")){
-	// user = URLDecoder.decode(cookies[idx].getValue());//获取用户名
-	// }
-	// }
-	// }
-	// String strResult = httpComp.get(externalUrlInfo.getUser_loginstatus_url()
-	// + "?user=" + user);
-	// JSONObject json = new JSONObject(strResult);
-	// int code = json.optInt("code" , -1);
-	// if(code != 0) {
-	// return null;
-	// }
-	// JSONObject data = json.optJSONObject("data");
-	// String userName = data.optString("username", "");
-	// long userId = data.optLong("uid", 0l);
-	// String avatar = data.optString("avatar", "");
-	// userInfo = new UserInfo();
-	// userInfo.setUserId(userId);
-	// userInfo.setAvatar(avatar);
-	// userInfo.setNickname(userName);
-	// cache.set(userInfo);
-	// return userInfo;
-	// }
+	public UserInfo getUserInfo(HttpServletRequest request) throws Exception {
+		boolean loginStatus = this.validate(request);
+		//如果是未登录状态 或者 缓存为空重新获取用户信息
+		if(!loginStatus || userCache.get() == null) {
+			String mcs = this.getCookie(request);
+			String strResult = httpComp.get(externalUrlInfo
+					.getUser_loginstatus_url() + "?user=" + mcs);
+			JSONObject json = new JSONObject(strResult);
+			int code = json.optInt("code", -1);
+			if (code != 0) {
+				return null;
+			}
+			JSONObject data = json.optJSONObject("data");
+			String userName = data.optString("username", "");
+			long userId = data.optLong("uid", 0l);
+			String avatar = data.optString("avatar", "");
+			UserInfo userInfo = new UserInfo();
+			userInfo.setUserId(userId);
+			userInfo.setAvatar(avatar);
+			userInfo.setNickname(userName);
+			userCache.set(userInfo);
+		}
+		UserInfo userInfo = userCache.get();
+		return userInfo;
+	}
 
 	@SuppressWarnings("deprecation")
 	private String getCookie(HttpServletRequest request) {
@@ -73,7 +70,8 @@ public class UserComponent {
 	}
 
 	/***
-	 *  验证用户登录状态
+	 * 验证用户登录状态
+	 * 
 	 * @param request
 	 * @return
 	 * @throws Exception
