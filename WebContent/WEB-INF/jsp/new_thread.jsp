@@ -72,16 +72,16 @@
                 </div>
                 <div class="nav-right">
                     <!-- 登陆状态 -->
-                    <!-- <a href="#" class="head"><img src="img/img1.jpg" alt="">蛋碎先生<s class="icon-red"></s></a>
+                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
                     <div class="user-info">
                         <ul class="clearfix">
-                            <li class="header-money"><s class="icon-money"></s>34356</li>
+                            <li class="header-money"><s class="icon-money"></s></li>
                             <li class="zuji"><a href="#">足迹</a><a href="#" class="msg">消息<s class="icon-red"></s></a><a href="#" class="libao">礼包库</a></li>
                             <li class="info">
                                <a href="#">个人信息</a><a href="#">设置</a><a href="#" class="out">退出</a> 
                             </li>
                         </ul>
-                    </div> -->
+                    </div>
                     <!-- 登陆状态 -->
                     <a href="#" class="load"><img src="img/icon/load.png"></a>
                 </div>

@@ -107,6 +107,9 @@ public class FeedNewThreadContorller extends FeedCommonController {
 				}
 			}
 		}
+		if(tagList.size() == 0) {
+			tagList.add(new FeedTag(0, "综合"));
+		}
 		map.put("tagList", tagList);
 		return map;
 	}
