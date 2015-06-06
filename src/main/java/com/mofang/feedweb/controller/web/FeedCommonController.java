@@ -223,9 +223,14 @@ public class FeedCommonController {
 		}
 	}
 
-	protected JSONObject postHttpInfo(String postUrl, JSONObject postData) {
+	protected JSONObject postHttpInfo(String postUrl, JSONObject postData, HttpServletRequest request) {
 		try {
-			String atom = Tools.encodetoAtom("129707");
+			UserInfo userInfo = this.getUserInfo(request);
+			if(userInfo == null) {
+				return null;
+			}
+			String userId = String.valueOf(userInfo.getUserId());
+			String atom = Tools.encodetoAtom(userId);
 			String result = httpComp.post(postUrl + "?" + atom,
 					postData.toString());
 			if (StringUtil.isNullOrEmpty(result))

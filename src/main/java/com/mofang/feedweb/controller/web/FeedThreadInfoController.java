@@ -272,7 +272,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("pid", pid);
 		postData.put("content", content);
 		
-		JSONObject json = postHttpInfo(getReplyPostUrl(), postData);
+		JSONObject json = postHttpInfo(getReplyPostUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -292,7 +292,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("pid", pid);
 		postData.put("reason", reason);
 		
-		JSONObject json = postHttpInfo(getDelFloorUrl(), postData);
+		JSONObject json = postHttpInfo(getDelFloorUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -311,7 +311,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		JSONObject postData = new JSONObject();
 		postData.put("tid", tid);
 		
-		JSONObject json = postHttpInfo(getRecommendThreadUrl(), postData);
+		JSONObject json = postHttpInfo(getRecommendThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -330,7 +330,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		JSONObject postData = new JSONObject();
 		postData.put("pid", pid);
 		
-		JSONObject json = postHttpInfo(getRecommendFloorUrl(), postData);
+		JSONObject json = postHttpInfo(getRecommendFloorUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -351,7 +351,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getCloseThreadUrl(), postData);
+		JSONObject json = postHttpInfo(getCloseThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -372,7 +372,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -393,7 +393,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -414,7 +414,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -435,7 +435,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -456,7 +456,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -478,7 +478,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		awardJson.put("coin", coin);
 		postData.put("reward", awardJson);
 		
-		JSONObject json = postHttpInfo(getViperAwardUrl(), postData);
+		JSONObject json = postHttpInfo(getViperAwardUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -497,7 +497,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("tid", tid);
 		postData.put("reason", reason);
 		
-		JSONObject json = postHttpInfo(getThreadDeleteUrl(), postData);
+		JSONObject json = postHttpInfo(getThreadDeleteUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -516,7 +516,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("tid", threadId);
 		postData.put("content", content);
 		
-		JSONObject json = postHttpInfo(getSendReplyUrl(), postData);
+		JSONObject json = postHttpInfo(getSendReplyUrl(), postData, request);
 		
 //		String msg = "<script language='javascript'> alert('回复成功);'</script>";
 //		if(json != null && json.optInt("code", -1) == 0) {

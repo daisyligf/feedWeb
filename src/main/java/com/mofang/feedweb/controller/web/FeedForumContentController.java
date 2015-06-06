@@ -93,7 +93,7 @@ public class FeedForumContentController extends FeedCommonController {
 		postData.put("dofollow", isFollow);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData);
+		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");

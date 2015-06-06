@@ -205,7 +205,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			json.put("subject", subject);
 			json.put("content", content);
 			json.put("tag_id", tagId);
-			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json);
+			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json, request);
 			int code;
 			if(result != null && (code = result.optInt("code", -1)) == 0) {
 				String message = result.optString("message", "");
@@ -232,7 +232,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			json.put("subject", subject);
 			json.put("content", content);
 			json.put("tag_id", tagId);
-			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json);
+			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json, request);
 			int code;
 			if(result != null && (code = result.optInt("code", -1)) == 0) {
 				String message = result.optString("message", "");

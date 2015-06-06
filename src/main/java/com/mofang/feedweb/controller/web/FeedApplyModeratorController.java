@@ -91,7 +91,7 @@ public class FeedApplyModeratorController extends FeedCommonController {
 		postData.put("qq", qq);
 		postData.put("mobile", mobile);
 		
-		JSONObject json = postHttpInfo(getModeratorApplyUrl(), postData);
+		JSONObject json = postHttpInfo(getModeratorApplyUrl(), postData, request);
 		if (json != null && json.optInt("code", -1) == 0) {
 			return json.optJSONObject("data");
 		}
