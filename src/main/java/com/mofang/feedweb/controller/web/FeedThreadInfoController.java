@@ -23,7 +23,6 @@ import com.mofang.feedweb.entity.FeedComment;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedPost;
 import com.mofang.feedweb.entity.FeedThread;
-import com.mofang.feedweb.entity.QueryPage;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
@@ -44,6 +43,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		getThreadInfo(request, threadId, model);
+		
+		UserInfo loginUser = getUserInfo(request);
+		model.put("loginUser", loginUser);
 		
 		return new ModelAndView("thread_info", model);
 	}
@@ -200,9 +202,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 		List<FeedThread> highestList = replyHighest(request, forumId);
 		
-		QueryPage queryPage = new QueryPage(page, size, total);
-		StringBuilder pageUrl = new StringBuilder();
-		
 		model.put("total", total);
 		model.put("type", type);
 		model.put("feedThread", feedThread);
@@ -211,13 +210,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 		model.put("postList", postList);
 		model.put("highestList", highestList);
 		
-//		model.put("currPage", queryPage.getCurrPageNum());
-//		model.put("totalPage", queryPage.getTotalPageNum());
-//		model.put("pageBar", queryPage.getPagebar());
-//		model.put("pageUrl", pageUrl.toString());
-//		model.put("currUrl", "thread_info?page=" + currPage + "&");
-//		model.put("page", page);
-//		model.put("", value)
 		model.put("currentPage", page);
 		model.put("totalPages", Tools.editTotalPageNumber(total));
 		model.put("pagelist", Tools.editPageNumber(total, page,Constant.PAGE_SIZE));

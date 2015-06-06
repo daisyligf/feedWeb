@@ -264,7 +264,7 @@
                     	</c:otherwise>
                     </c:choose>
                     <c:forEach var="feedPost" begin="${start }" items="${postList }">
-                    <div class="con-list" data-postid="123214" data-uid="1234" data-page='1'>
+                    <div class="con-list" data-postid="${feedPost.post_id }" data-uid="1234" data-page='1'>
                         <p class="con-list-left">
                             <img src="${feedPost.postUserInfo.avatar }" alt="">
                         </p>
@@ -309,7 +309,7 @@
                 </div>
                 <div class="con-right3 reply-textarea">
                     <div class="reply-textarea-info clearfix">
-                        <p class="reply-head"><a href="#"><img src="img/img1.jpg" alt=""></a></p>
+                        <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
                         <dl>
                             <dt></dt>
                             <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
