@@ -319,10 +319,9 @@
                                     <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                 </div>
                             </dd>
-                            <form id="editor-form" action="send_reply" method="POST">
+                            <form id="editor-form" data-form="post" data-tid="${feedThread.thread_id }" action="send_reply" method="POST">
                                 <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
                                 <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
-                                <input type="hidden" name="uid"  class="editor-tid" value="1234">
                                 <input type="hidden" name="content"  class="editor-cont" value=""/>
                             </form>
                         </dl>
