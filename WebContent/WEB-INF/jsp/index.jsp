@@ -56,9 +56,11 @@
                 <div class="nav-left">
                     <a href="http://www.mofang.com">魔方网首页</a>
                 </div>
-                <div class="nav-right" id="topUserInfo">
-                    <!-- 登陆状态 -->
-                    <!-- top登录模板 -->
+                
+                	<jsp:include page="user_info.jsp" flush='true'/>
+<!--                 <div class="nav-right" id="topUserInfo">
+                    登陆状态
+                    top登录模板
                     
                     <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
                     <div class="user-info">
@@ -71,9 +73,9 @@
                         </ul>
                     </div>
                     
-                    <!-- 登陆状态 -->
+                    登陆状态
                     <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
-                </div>
+                </div> -->
             </div>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
