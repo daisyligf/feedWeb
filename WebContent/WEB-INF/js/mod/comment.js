@@ -15,8 +15,8 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     require("jquery/jquery-pop");//弹出框插件
     require("jquery/jquery-form");//jquery表单ajax提交插件
 
-    var USE_LOCAL_DATA = 1;//本地数据
-    var USE_TEST_DATA = 0;//测试数据
+    var USE_LOCAL_DATA = 0;//本地数据
+    var USE_TEST_DATA = 1;//测试数据
 
     var getUrl = "";//url路径示范
     var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态

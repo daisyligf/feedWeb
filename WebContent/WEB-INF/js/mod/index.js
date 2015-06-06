@@ -8,8 +8,8 @@ define('index',['jquery','swipe'],function(require, exports, module) {
 	var $ = jQuery = require("jquery");//jquery库
 	var Swipe = require('swipe');//引入box切换插件
 
-	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_LOCAL_DATA = 0;//本地数据
+	var USE_TEST_DATA = 1;//测试数据
 
 	var getUrl = "";//url路径示范
 	var ajaxMethod="json";

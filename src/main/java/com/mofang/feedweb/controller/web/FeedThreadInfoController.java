@@ -444,6 +444,47 @@ public class FeedThreadInfoController extends FeedCommonController {
 		return null;
 	}
 	
+	@RequestMapping(value = "award.json")
+	public String award(@RequestParam("uid") long uid, @RequestParam("coin") int coin, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		JSONObject postData = new JSONObject();
+		postData.put("uid", uid);
+		
+		JSONObject awardJson = new JSONObject();
+		awardJson.put("coin", coin);
+		postData.put("reward", awardJson);
+		
+		JSONObject json = postHttpInfo(getViperAwardUrl(), postData);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+		out.close();
+		
+		return null;
+	}
+	
+	@RequestMapping(value = "del_thread.json")
+	public String deleteThread(@RequestParam("tid") long tid, @RequestParam("reason") String reason, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		JSONObject postData = new JSONObject();
+		postData.put("tid", tid);
+		postData.put("reason", reason);
+		
+		JSONObject json = postHttpInfo(getThreadDeleteUrl(), postData);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+		out.close();
+		
+		return null;
+	}
+	
 	@RequestMapping(value = "send_reply")
 	public ModelAndView sendReply(@RequestParam("tid") long threadId, @RequestParam("content") String content, HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
@@ -467,5 +508,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		response.sendRedirect("thread_info?thread_id=" + threadId);
 		return null;
 	}
+	
+	
 	
 }

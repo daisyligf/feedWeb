@@ -2,8 +2,8 @@ var setSbUrl = "/laizhubiao/index.php/Index/Order/img_upload";//上传商标地�
 var setZzUrl = "/laizhubiao/index.php/Index/Order/img_upload";//发送执照地址
 var ajaxMethed="json";
 
-var USE_LOCAL_DATA = 1;//本地数据
-    var USE_TEST_DATA = 0;//测试数据
+var USE_LOCAL_DATA = 0;//本地数据
+    var USE_TEST_DATA = 1;//测试数据
 
 if(USE_LOCAL_DATA){
     setSbUrl="/lzb/data/test/getImg.json";

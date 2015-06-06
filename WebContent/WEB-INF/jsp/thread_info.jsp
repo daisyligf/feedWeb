@@ -339,7 +339,23 @@
         <!-- 弹出框开始 -->
         <!-- 遮罩层开始 -->
         <div class="mask-bg">
-            
+             <h2>《最终幻想14》2.2新版截图推出炫耀装备系统 
+                 <a href="#" class="landord">只看楼主</a>
+                 <div class="manage">帖子管理
+	                 <div class="manage-more clearfix">
+	                      <a href="#">编辑</a>
+	                      <a href="javascript:;" class="manage-delete">删除</a>
+	                      <a href="javascript:;" class="manege-top">置顶</a>
+	                       <a href="javascript:;" class="manege-top off-manege-top">取消精华</a>
+	                      <a href="javascript:;" class="manege-great">精华</a>
+	                      <a href="javascript:;" class="manege-great off-manege-great">取消精华</a>
+	                      <a href="javascript:;" class="manage-lock">锁帖</a>
+	                      <a href="javascript:;" class="manage-lock off-manege-lock">锁帖</a>
+	                      <a href="javascript:;" class="manage-reward">奖励</a>
+	                  </div>
+                 </div>
+                        
+            </h2>
         </div>
         <!-- 遮罩层结束 -->
         

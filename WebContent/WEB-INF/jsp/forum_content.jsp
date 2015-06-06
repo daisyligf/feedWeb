@@ -133,20 +133,25 @@
                                 <span class="triangle">
                                     
                                 </span>
-                                <p id="quan">全部</p>
-                                <p class="list">
+                                <p id="quan">
+                                	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=0&timeType=${timeType}">全部</a>
+                                </p>
+                                <p id="type_1">
                                     <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">精华</a>
                                 </p>
-                                
+                                <input type="hidden" value="${type }" id="threadType" name="threadType"/>
                             </div>
                             <div>
                                 <span class="triangle">
                                     
                                 </span>
-                                <p id="time">回复时间</p>
-                                <p class="list">
-                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">发帖时间</a>
+                                <p id="time">
+                                 	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=0">回复时间</a>
                                 </p>
+                                <p id="add_thread_time">
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=1">发帖时间</a>
+                                </p>
+                                <input type="hidden" value="${timeType }" id="timeType" name="timeType"/>
                             </div>
                         </div>
                     </div>
@@ -362,6 +367,21 @@
    		} else {
    			$("#tag_all").addClass('active');
    		}
+   		
+   		var type = $('#threadType').val();
+   		if (type == 1) {
+   			$('#quan').addClass('list');
+   		} else {
+   			$('#type_1').addClass('list');
+   		}
+   		
+   		var timeType = $('#timeType').val();
+   		if (timeType == 0) {
+   			$('#add_thread_time').addClass('list');
+   		} else {
+   			$('#add_time').addClass('list');
+   		}
+   		
    </script>
    
 </body>

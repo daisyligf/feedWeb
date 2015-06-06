@@ -19,6 +19,7 @@ define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 			type:'alert', //alert,confirm,prompt
 			title:'我是标题,只有有标题的框才用',
 			msg:'',
+			dropSel:[],
 			autoTime: 3000,
 			fnCallback: function(isTrue,msg){
 
@@ -53,6 +54,18 @@ define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 				$(_this).find('.pop-msg').val(options.msg);
 				$(_this).find('.pop-title').html(options.title);
 
+				var arrData = options.dropSel;
+				if(arrData.length>0){
+					$(_this).find('.delete-choose-title').html(arrData[0]);
+					var arrData1= arrData.slice(1);
+					var str = '';
+					for(var i=0;i<arrData1.length;i++){
+						str+='<span>'+arrData1[i]+'</span>';
+					}
+					$(_this).find(".delete-choose-sort").html(str);
+				}
+				
+
 		}
 		//右上角关闭
 		$(_this).off('click','.close').on('click','.close',function(){
@@ -78,7 +91,14 @@ define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 			if(options.type=='confirm'){
 				options.fnCallback(isTrue);
 			}else if(options.type=='prompt'){
-				var msg = $(_this).find(".delete-choose-title").html()+$(_this).find(".pop-msg").val();
+
+				if(options.dropSel.length>0){
+					var msg = $(_this).find(".delete-choose-title").html()+$(_this).find(".pop-msg").val();
+				}else{
+					
+					var msg = $(_this).find(".pop-msg").val();
+				}
+				
 				options.fnCallback(isTrue,msg);
 			}
 			$(_this).fadeOut(200);

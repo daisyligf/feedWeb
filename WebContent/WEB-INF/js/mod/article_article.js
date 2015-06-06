@@ -26,6 +26,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var setOffTopPostUrl = ""; //取消置顶
 	var setAddDigestUrl = ""; //加精
 	var setOffAddDigestUrl = "";//取消加精
+	var setdeletePostUrl = ""; //删除帖子
+	var setAddDigestUrl = ""; //奖励
+	var deleteHrefUrl = "forum_content?fid"+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
 
 	var ajaxMethod="json";
 	if(USE_LOCAL_DATA){
@@ -39,6 +42,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setOffTopPostUrl = "/bbs_html/statics/test/follow.json"; //取消置顶
 		setAddDigestUrl = "/bbs_html/statics/test/follow.json"; //加精
 		setOffAddPostUrl = "/bbs_html/statics/test/follow.json";//取消加精
+		setdeletePostUrl = "/bbs_html/statics/test/follow.json"; //删除帖子
+		setAddDigestUrl = "/bbs_html/statics/test/follow.json"; //奖励
+		//deleteHrefUrl = "http://www.baidu.com";//删除帖子跳转的路径
 	}
 	if(USE_TEST_DATA){
 		getFloorComUrl='comment_list.json';
@@ -52,6 +58,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setOffTopPostUrl = "cancel_top_thread.json"; //取消置顶
 		setAddDigestUrl = "elite_thread.json"; //加精
 		setOffAddPostUrl = "cancel_elite_thread.json";//取消加精
+		setdeletePostUrl = "del_thread.json"; //删除帖子
+		setAddDigestUrl = "award.json"; //奖励
+		//deleteHrefUrl = "forum_content";//删除帖子跳转的路径
 	}
 
 	//注册一个handlebarsjs方法

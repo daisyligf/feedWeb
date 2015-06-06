@@ -56,23 +56,23 @@ public class Constant {
 	// 回复指定楼层
 
 	public static final String POST_REPLY_URL = "/feed/v2/web/sendcomment";
+	
 	// 帖子管理-删除
-
-	public static final String THREAD_DELETE_URL = "/feed/v2/web/removethread";
+	public static final String THREAD_DELETE_URL = "/feed/v2/web/thread/delete";
+	
 	// 帖子管理-加精
-
 	public static final String THREAD_SETELITE_URL = "/feed/v2/web/thread/tag";
+
 	// 帖子管理-取消加精
-
 	public static final String THREAD_CANCELELITE_URL = "/feed/v2/web/thread/tag/cancel";
+	
 	// 帖子管理-置顶
-
 	public static final String THREAD_SETTOP_URL = "/feed/v2/web/thread/top";
+	
 	// 帖子管理-取消置顶
-
 	public static final String THREAD_CANCELTOP_URL = "/feed/v2/web/thread/canceltop";
+	
 	// 帖子管理-锁帖
-
 	public static final String THREAD_CLOSE_URL = "/feed/v2/web/threads/close";
 	// 帖子管理-取消锁帖
 
@@ -173,4 +173,6 @@ public class Constant {
 	public static final String USER_STATE_UPDATE_URL = "/apis/user/update_status";
 	// 关注板块
 	public static final String FORUM_FOLLOW_URL = "/area/follow";
+	
+	public static final String VIPER_AWARD_URL = "/viper/user/add";
 }

@@ -10,8 +10,8 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	require("jquery/jquery-pop");//弹出框插件
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
-	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_LOCAL_DATA = 0;//本地数据
+	var USE_TEST_DATA = 1;//测试数据
 
 	var loginUrl = "http://u.mofang.com/";//登录跳转路径
 	var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注

@@ -19,6 +19,8 @@ public class ExternalUrlInfo {
 	private String upload_img_url;
 	@Value("#{configProperties['user_loginstatus_url']}")
 	private String user_loginstatus_url;
+	@Value("${viper_info_url}")
+	private String viper_info_url;
 
 	public String getFeed_info_url() {
 		return feed_info_url;
@@ -74,6 +76,14 @@ public class ExternalUrlInfo {
 
 	public void setUser_loginstatus_url(String user_loginstatus_url) {
 		this.user_loginstatus_url = user_loginstatus_url;
+	}
+	
+	public void setViper_info_url(String viper_info_url) {
+		this.viper_info_url = viper_info_url;
+	}
+
+	public String getViper_info_url() {
+		return viper_info_url;
 	}
 
 }

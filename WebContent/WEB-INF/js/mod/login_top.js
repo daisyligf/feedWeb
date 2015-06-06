@@ -8,8 +8,8 @@ define('login_top',['jquery',],function(require, exports, module) {
 	var $ = jQuery = require("jquery");//jquery库
 
 	window.loginStatus=false;//检查登录状态
-	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_LOCAL_DATA = 0;//本地数据
+	var USE_TEST_DATA = 1;//测试数据
 
 	var getUrl = "";//url路径示范
 	var getUserLoginStatus = "http://u.mofang.com/account/status" //获取用户的登录状态

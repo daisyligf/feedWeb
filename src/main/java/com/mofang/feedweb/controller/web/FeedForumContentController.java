@@ -223,7 +223,7 @@ public class FeedForumContentController extends FeedCommonController {
 		
 		int timeType = 0; // 0表示按回复时间排序、1表示按发帖时间排序
 		
-		String timeTypeString = request.getParameter("timetype");
+		String timeTypeString = request.getParameter("timeType");
 		if (timeTypeString != null && StringUtil.isInteger(timeTypeString)) {
 			timeType = Integer.parseInt(timeTypeString);
 		}

@@ -7,8 +7,8 @@ define('demo',['jquery','jquery/jquery-validate'],function(require, exports, mod
 
 	var $ = jQuery = require("jquery");//jquery库
 
-	var USE_LOCAL_DATA = 1;//本地数据
-	var USE_TEST_DATA = 0;//测试数据
+	var USE_LOCAL_DATA = 0;//本地数据
+	var USE_TEST_DATA = 1;//测试数据
 
 	var getUrl = "";//url路径示范
 	var ajaxMethod="json";

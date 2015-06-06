@@ -171,6 +171,14 @@ public class FeedCommonController {
 	protected String getSendReplyUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_CREATE_URL;
 	}
+	
+	protected String getThreadDeleteUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_DELETE_URL;
+	}
+	
+	protected String getViperAwardUrl() {
+		return externalUrlInfo.getViper_info_url() + Constant.VIPER_AWARD_URL;
+	}
 
 //	 protected HttpClientProvider getHttpProvider() {
 //		 HttpClientConfig config = new HttpClientConfig();
