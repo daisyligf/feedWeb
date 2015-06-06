@@ -101,6 +101,12 @@
             </div>
         </div>-->
         <!-- 头部结束 -->
+        <!-- 搜索开始 -->
+        <div class="search">
+            <div class="bbs-logo">
+                <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
+            </div>
+        </div>
         <!-- 内容开始 -->
         <div class="con clearfix">
             <div class="col-xs-3 user-info-out">
