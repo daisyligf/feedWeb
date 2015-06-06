@@ -221,6 +221,22 @@ public class FeedCommonController {
 			return null;
 		}
 	}
+	
+	protected JSONObject getHttpInfoWithoutAtom(String getUrl, String param,
+			HttpServletRequest request) {
+		try {
+			StringBuffer strb = new StringBuffer();
+			strb.append(getUrl);
+			strb.append("?").append(param);
+			String result = httpComp.get(strb.toString());
+			if (StringUtil.isNullOrEmpty(result))
+				return null;
+			return new JSONObject(result);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("FeedCommonController.getHttpInfoWithoutAtom", e);
+			return null;
+		}
+	}
 
 	protected JSONObject postHttpInfo(String postUrl, JSONObject postData, HttpServletRequest request) {
 		try {
