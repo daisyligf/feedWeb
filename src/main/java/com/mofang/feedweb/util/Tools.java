@@ -18,7 +18,7 @@ import com.mofang.feedweb.global.GlobalObject;
 public class Tools {
 
 	public static String encodetoAtom(String uid) {
-		if (Constant.TEST_FLG && !StringUtils.isEmpty(uid)) {
+		if (Constant.TEST_FLG && StringUtils.isEmpty(uid)) {
 			uid = "129707";
 		}
 		String atom = "";
