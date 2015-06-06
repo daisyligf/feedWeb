@@ -49,15 +49,18 @@
 </head>
 <body>
     <div class="page">
-        <!-- 头部开始 -->
-        <div class="header clearfix">
+    
+    <jsp:include page="user_info.jsp" flush='true'/>
+         <!-- 头部开始 -->
+          	<jsp:include page="user_info.jsp" flush='true'/>
+      <!--   <div class="header clearfix">
             <div class="nav clearfix">
                 <div class="nav-left">
                     <a href="http://www.mofang.com">魔方网首页</a>
                 </div>
                 
-                <jsp:include page="user_info.jsp" flush='true'/>
-   <!--              <div class="nav-right">
+                
+               <div class="nav-right">
                     top登录模板
                     
                     <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
@@ -73,7 +76,7 @@
                     
                     登陆状态
                     <a href="#" class="load"><img src="img/icon/load.png"></a>
-                </div> -->
+                </div> 
             </div>
             <div class="nav-wap clearfix">
               <div class="nav-wap-left">
@@ -84,7 +87,7 @@
                   </p>
               </div> 
             </div>
-        </div>
+        </div>-->
         <!-- 头部结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
