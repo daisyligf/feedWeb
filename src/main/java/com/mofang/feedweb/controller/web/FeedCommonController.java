@@ -205,12 +205,12 @@ public class FeedCommonController {
 				String atom = Tools.encodetoAtom(String.valueOf(userInfo.getUserId()));
 				strb.append(getUrl).append("?atom=").append(atom);
 				if (!StringUtil.isNullOrEmpty(param)) {
-					strb.append("?").append(param);
+					strb.append("&").append(param);
 				}
 			}else {
 				strb.append(getUrl);
 				if (!StringUtil.isNullOrEmpty(param)) {
-					strb.append("?").append(param);
+					strb.append("&").append(param);
 				}
 			}
 			String result = httpComp.get(strb.toString());

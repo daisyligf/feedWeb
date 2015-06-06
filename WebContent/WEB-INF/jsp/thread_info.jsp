@@ -213,7 +213,7 @@
                         	</c:otherwise>
                         </c:choose>
                         
-                         <c:if test="${fn:length(currentUser.privileges) > 0}">
+                        <c:if test="${fn:length(currentUser.privileges) > 0}">
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
                                 <a href="#" class="manege-top">置顶</a>
