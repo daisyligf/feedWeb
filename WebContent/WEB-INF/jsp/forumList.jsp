@@ -60,7 +60,6 @@
                 <div class="nav-right" id="topUserInfo">
                     登陆状态
                     top登录模板
-                    
                     <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
                     <div class="user-info">
                         <ul class="clearfix">

@@ -64,7 +64,6 @@
                     <a href="http://www.mofang.com">魔方网首页</a>
                 </div>
                 
-                  
                 <div class="nav-right" id="topUserInfo">
                     登陆状态
                     top登录模板

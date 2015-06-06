@@ -52,7 +52,7 @@
     <div class="page">
         <!-- 头部开始 -->
         <jsp:include page="user_info.jsp" flush='true'/>
-      <!--   <div class="header clearfix">
+      	<!--   <div class="header clearfix">
             <div class="nav clearfix">
                 <div class="nav-left">
                     <a href="http://www.mofang.com">魔方网首页</a>
