@@ -38,8 +38,9 @@ public class Constant {
 	public static final String STR_WXYZ = "WXYZ";
 	// 字母#(其它)
 	public static final String STR_OTHER = "OTHER";
-	//上传图片地址
-	public static final String UPLOAD_URL = "http://api.mofang.com/mcss/v1/upload";
+	
+	public static final String APP_ID = "20007";
+	public static final String SECRET = "4c49d0ba2ab71d69d31a2353347fa7ac";
 
 	public static final boolean TEST_FLG = true;
 
@@ -159,8 +160,6 @@ public class Constant {
 	public static final String MODERATOR_APPLY_URL = "/feed/v2/web/moderator/apply";
 
 	// 外部接口
-	// 图片上传
-	public static final String IMAGE_UPLOAD_URL = "/mcss/v1/upload";
 	// 用户logout
 	public static final String USER_LOGOUT_URL = "/account/logout";
 	// 用户登录
