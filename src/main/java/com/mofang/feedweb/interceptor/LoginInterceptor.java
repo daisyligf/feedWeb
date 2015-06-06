@@ -14,7 +14,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object arg2) throws Exception {
 
-		if (userComp.validate(request)) {
+		if (!userComp.validate(request)) {
 			response.sendRedirect("http://u.mofang.com/home/account/index");
 			return false;
 		}
