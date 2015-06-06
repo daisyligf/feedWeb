@@ -15,7 +15,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object arg2) throws Exception {
 
 		if (userComp.validate(request)) {
-			return true;
+			response.sendRedirect("http://u.mofang.com/home/account/index");
+			return false;
 		}
 		// JSONObject result = new JSONObject();
 		// result.put("code", -1) ;
