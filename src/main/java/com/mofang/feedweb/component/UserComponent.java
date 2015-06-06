@@ -28,7 +28,7 @@ public class UserComponent {
 	private final ThreadLocal<String> cookieCache = new ThreadLocal<String>();
 	// 缓存用户信息
 	private final ThreadLocal<UserInfo> userCache = new ThreadLocal<UserInfo>();
-
+	
 	public UserInfo getUserInfo(HttpServletRequest request) throws Exception {
 		boolean loginStatus = this.validate(request);
 		//如果是未登录状态 或者 缓存为空重新获取用户信息

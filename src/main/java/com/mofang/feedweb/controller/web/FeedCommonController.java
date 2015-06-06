@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 import com.mofang.feedweb.component.HttpComponent;
 import com.mofang.feedweb.component.UserComponent;
@@ -194,27 +195,24 @@ public class FeedCommonController {
 	protected JSONObject getHttpInfo(String getUrl, String param,
 			HttpServletRequest request) {
 		try {
-			String uid = "";
-			if (null != request.getSession().getAttribute(
-					Constant.SESSION_USERID)) {
-				uid = String.valueOf(request.getSession().getAttribute(
-						Constant.SESSION_USERID));
+			UserInfo userInfo = this.getUserInfo(request);
+			if(userInfo == null) {
+				return null;
 			}
+			String atom = Tools.encodetoAtom(String.valueOf(userInfo.getUserId()));
 			StringBuffer strb = new StringBuffer();
 			strb.append(getUrl);
 			strb.append(Constant.STR_QUESTION_MARK);
-			strb.append(Tools.encodetoAtom(uid));
+			strb.append(atom);
 
-			if (!"".equals(param)) {
+			if (!StringUtil.isNullOrEmpty(param)) {
 				strb.append(Constant.STR_AND);
 				strb.append(param);
 			}
 			String result = httpComp.get(strb.toString());
 			if (StringUtil.isNullOrEmpty(result))
 				return null;
-
 			return new JSONObject(result);
-
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("FeedCommonController.getHttpInfo", e);
 			return null;
