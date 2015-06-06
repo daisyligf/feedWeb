@@ -34,6 +34,7 @@
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
     <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/bbs-config.js"></script>
     <script type="text/javascript">
 		function search(){
 			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
