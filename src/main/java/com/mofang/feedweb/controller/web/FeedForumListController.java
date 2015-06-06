@@ -27,7 +27,7 @@ public class FeedForumListController extends FeedCommonController {
 	//版块列表
 	@RequestMapping(value = "/forumList")
 	public ModelAndView forumList(HttpServletRequest request) throws Exception {
-		
+		 
 		int letterGroup = 1;
 		if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
 			letterGroup = Integer.valueOf(request.getParameter("letterGroup"));
