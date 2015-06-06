@@ -10,7 +10,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 
 import com.mofang.feedweb.component.HttpComponent;
 import com.mofang.feedweb.component.UserComponent;
@@ -210,7 +209,7 @@ public class FeedCommonController {
 			}else {
 				strb.append(getUrl);
 				if (!StringUtil.isNullOrEmpty(param)) {
-					strb.append("&").append(param);
+					strb.append("?").append(param);
 				}
 			}
 			String result = httpComp.get(strb.toString());
