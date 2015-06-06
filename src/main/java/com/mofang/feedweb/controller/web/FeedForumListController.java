@@ -87,7 +87,7 @@ public class FeedForumListController extends FeedCommonController {
 		
 		StringBuffer name = new StringBuffer();
 		StringBuffer content = new StringBuffer();
-		name.append("p");
+		name.append("page");
 		name.append(Constant.STR_COMMA);
 		name.append("type");
 		name.append(Constant.STR_COMMA);

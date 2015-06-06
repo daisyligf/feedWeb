@@ -5,8 +5,6 @@ import java.net.URI;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * 
