@@ -173,6 +173,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
 	public void newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
 			throws Exception {
+		
+		
 		String strTid = request.getParameter("tid");
 		String content = request.getParameter("content");
 		String strTagId = request.getParameter("tagId");

@@ -200,18 +200,18 @@ public class FeedCommonController {
 			HttpServletRequest request) {
 		try {
 			UserInfo userInfo = this.getUserInfo(request);
-			if(userInfo == null) {
-				return null;
-			}
-			String atom = Tools.encodetoAtom(String.valueOf(userInfo.getUserId()));
 			StringBuffer strb = new StringBuffer();
-			strb.append(getUrl);
-			strb.append(Constant.STR_QUESTION_MARK);
-			strb.append(atom);
-
-			if (!StringUtil.isNullOrEmpty(param)) {
-				strb.append(Constant.STR_AND);
-				strb.append(param);
+			if(userInfo != null) {
+				String atom = Tools.encodetoAtom(String.valueOf(userInfo.getUserId()));
+				strb.append(getUrl).append("?atom=").append(atom);
+				if (!StringUtil.isNullOrEmpty(param)) {
+					strb.append("&").append(param);
+				}
+			}else {
+				strb.append(getUrl);
+				if (!StringUtil.isNullOrEmpty(param)) {
+					strb.append("&").append(param);
+				}
 			}
 			String result = httpComp.get(strb.toString());
 			if (StringUtil.isNullOrEmpty(result))

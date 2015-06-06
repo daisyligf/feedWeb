@@ -97,7 +97,7 @@
         <!-- 搜索开始 -->
         <div class="search">
             <div class="bbs-logo">
-                <img src="img/icon/bbs_icon.png" alt="">
+                <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
             </div>
             <div class="bbs-search">
                 <input type="submit" class="ser-but" value="" id="submit" onclick="search()"/>
