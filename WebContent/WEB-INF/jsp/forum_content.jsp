@@ -308,7 +308,7 @@
 	                    <div class="lum-list libao-list">
 	                       <ul>
 	                       	   <c:forEach var="gift" items="${giftList }">
-	                       	   	<li><s class="black"></s><a href="${gift.url }">${gift.name }</a></li>
+	                       	   	<li><s class="black"></s><a href="${gift.url }" target="_blank">${gift.name }</a></li>
 	                       	   </c:forEach>
 	                       </ul>
 	                    </div>

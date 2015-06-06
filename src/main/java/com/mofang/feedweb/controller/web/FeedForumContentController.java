@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.entity.FeedForum;
-import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.Game;
 import com.mofang.feedweb.entity.GameGift;
@@ -29,6 +28,7 @@ import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.ForumType;
+import com.mofang.feedweb.util.SignUtil;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
 
@@ -108,11 +108,19 @@ public class FeedForumContentController extends FeedCommonController {
 	private List<GameGift> getGiftList(HttpServletRequest request, int gameId) {
 		List<GameGift> giftList = new ArrayList<GameGift>();
 		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("game_id", String.valueOf(gameId));
+		map.put("appid", Constant.APP_ID);
+		
+		String sign = SignUtil.buildSign(map, null, Constant.SECRET);
+		
 		StringBuilder param = new StringBuilder();
 		param.append("game_id=").append(gameId);
-		param.append("&offset=0&limit=5");
+		//param.append("&offset=0&limit=5");
+		param.append("&appid=").append(Constant.APP_ID);
+		param.append("&sign=").append(sign);
 		
-		JSONObject json = getHttpInfo(getGameGiftListUrl(), param.toString(), request);
+		JSONObject json = this.getHttpInfoWithoutAtom(getGameGiftListUrl(), param.toString(), request);
 		
 		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");
