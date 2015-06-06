@@ -277,7 +277,7 @@ public class FeedForumContentController extends FeedCommonController {
 					feedThread.setRecommends(obj.optInt("recommends", 0));
 					feedThread.setIsModerator(obj.optBoolean("is_moderator", false));
 					
-					JSONArray pics = obj.getJSONArray("pic");
+					JSONArray pics = obj.optJSONArray("pic");
 					if (pics != null && pics.length() > 0) {
 						feedThread.setHasPic(true);
 					} else {

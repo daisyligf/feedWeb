@@ -78,7 +78,7 @@ public class Constant {
 
 	public static final String THREAD_OPEN_URL = "/feed/v2/web/threads/open";
 	// 楼层删除
-	public static final String POST_DELETE_URL = "/feed/v2/web/floor/del";
+	public static final String POST_DELETE_URL = "/feed/v2/web/post/delete";
 	
 	// 帖子点赞
 	public static final String THREAD_RECOMMEND_URL = "/feed/v2/web/thread/recommend";

@@ -211,6 +211,7 @@
                         	</c:otherwise>
                         </c:choose>
                         
+                         <c:if test="${fn:length(currentUser.privileges) > 0}">
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
                                 <a href="#" class="manege-top">置顶</a>
@@ -218,6 +219,7 @@
                                 <a href="#" class="manage-lock">锁帖</a>
                             </div>
                         </div>
+                        </c:if>
                         
                     </h2>
                     <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></h3>

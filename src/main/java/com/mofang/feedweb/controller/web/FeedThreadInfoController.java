@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mofang.feedweb.entity.CurrentUser;
 import com.mofang.feedweb.entity.FeedComment;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedPost;
@@ -76,10 +77,12 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 		JSONObject json = getHttpInfo(getPostListUrl(), param.toString(), request);
 		
+		System.out.println("json:" + json);
+		
 		int total = 0;
-		boolean isModerator = false;
-		boolean isAdmin = false;
-		int[] privileges = {};
+//		boolean isModerator = false;
+//		boolean isAdmin = false;
+//		int[] privileges = {};
 		FeedThread feedThread = new FeedThread();
 		FeedForum feedForum = new FeedForum();
 		ThreadUserInfo threadUserInfo = new ThreadUserInfo();
@@ -122,6 +125,27 @@ public class FeedThreadInfoController extends FeedCommonController {
 			}
 			
 			JSONObject currentUserObj = data.optJSONObject("current_user");
+			
+			CurrentUser currentUser = new CurrentUser();
+			if (currentUserObj != null) {
+				currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
+				currentUser.setIsAdmin(currentUserObj.optBoolean("is_admin", false));
+				
+				List<Integer> privileges = new ArrayList<Integer>();
+				
+				JSONArray privilegesArray = currentUserObj.optJSONArray("privileges");
+				if (privilegesArray != null && privilegesArray.length() > 0) {
+					for (int i = 0; i < privilegesArray.length(); i++) {
+						
+						int privilege = privilegesArray.optInt(i, 0);
+						if (privilege > 0) {
+							privileges.add(privilege);
+						}
+					}
+				}
+				
+				currentUser.setPrivileges(privileges);
+			}
 			
 			JSONArray posts = data.optJSONArray("posts");
 			if (posts != null && posts.length() > 0) {
