@@ -169,7 +169,6 @@
 <script src="js/jquery-2.1.4.js"></script>
 <script type="text/javascript">
 $('#applyBtn').click(function() {
-	alert('haha');
 	var forumId = $('#forum_id').val();
 	var qq = $('#qq').val();
 	var phone = $('#phone').val();
