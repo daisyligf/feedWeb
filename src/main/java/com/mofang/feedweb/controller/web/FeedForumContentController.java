@@ -248,6 +248,10 @@ public class FeedForumContentController extends FeedCommonController {
 //			pageSize = Integer.parseInt(pageSizeString);
 //		}
 		
+		if (p == 1) {
+			getThreadTopList(request, fid, model);
+		}
+		
 		StringBuilder paramBuilder = new StringBuilder();
 		paramBuilder.append("fid=").append(fid);
 		paramBuilder.append("&type=").append(threadType);
@@ -270,33 +274,8 @@ public class FeedForumContentController extends FeedCommonController {
 			JSONArray threads = data.optJSONArray("threads");
 			if (threads != null && threads.length() > 0) {
 				for (int i = 0; i < threads.length(); i++) {
-					
 					JSONObject obj = threads.getJSONObject(i);
-					FeedThread feedThread = new FeedThread();
-					feedThread.setThread_id(obj.optLong("tid", 0));
-					feedThread.setSubject(obj.optString("subject", ""));
-					feedThread.setContent(obj.optString("content", ""));
-					feedThread.setPage_view(obj.optInt("pageview", 0));
-					feedThread.setReplies(obj.optInt("replies", 0));
-					feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
-					feedThread.setIsClosed(obj.optBoolean("is_closed", false));
-					feedThread.setIsElite(obj.optBoolean("is_elite", false));
-					feedThread.setIsTop(obj.optBoolean("is_top", false));
-					feedThread.setRecommends(obj.optInt("recommends", 0));
-					feedThread.setIsModerator(obj.optBoolean("is_moderator", false));
-					
-					JSONArray pics = obj.optJSONArray("pic");
-					if (pics != null && pics.length() > 0) {
-						feedThread.setHasPic(true);
-					} else {
-						feedThread.setHasPic(false);
-					}
-					JSONObject userObj = obj.optJSONObject("user");
-					if (userObj != null) {
-						feedThread.setUser_id(userObj.optLong("user_id", 0));
-						feedThread.setUser_name(userObj.optString("nickname", ""));
-						feedThread.setAvatar(userObj.optString("avatar", ""));
-					}
+					FeedThread feedThread = this.fromJsonToFeedThread(obj);
 					
 					threadList.add(feedThread);
 				}
@@ -315,13 +294,51 @@ public class FeedForumContentController extends FeedCommonController {
 		return threadList;
 	}
 	
-	private List<FeedThread> getThreadTopList(HttpServletRequest request, long forumId, Map<String, Object> model) {
+	private FeedThread fromJsonToFeedThread(JSONObject obj) {
+		
+		FeedThread feedThread = new FeedThread();
+		feedThread.setThread_id(obj.optLong("tid", 0));
+		feedThread.setSubject(obj.optString("subject", ""));
+		feedThread.setContent(obj.optString("content", ""));
+		feedThread.setPage_view(obj.optInt("pageview", 0));
+		feedThread.setReplies(obj.optInt("replies", 0));
+		feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
+		feedThread.setIsClosed(obj.optBoolean("is_closed", false));
+		feedThread.setIsElite(obj.optBoolean("is_elite", false));
+		feedThread.setIsTop(obj.optBoolean("is_top", false));
+		feedThread.setRecommends(obj.optInt("recommends", 0));
+		feedThread.setIsModerator(obj.optBoolean("is_moderator", false));
+		
+		JSONArray pics = obj.optJSONArray("pic");
+		if (pics != null && pics.length() > 0) {
+			feedThread.setHasPic(true);
+		} else {
+			feedThread.setHasPic(false);
+		}
+		JSONObject userObj = obj.optJSONObject("user");
+		if (userObj != null) {
+			feedThread.setUser_id(userObj.optLong("user_id", 0));
+			feedThread.setUser_name(userObj.optString("nickname", ""));
+			feedThread.setAvatar(userObj.optString("avatar", ""));
+		}
+		return feedThread;
+	}
+	
+	private List<FeedThread> getThreadTopList(HttpServletRequest request, long forumId, Map<String, Object> model) throws Exception {
 		String param = "fid=" + forumId;
-		JSONObject json = getHttpInfo(getForumInfoGetUrl(), param, request);
+		JSONObject json = getHttpInfo(getThreadTopListUrl(), param, request);
 		List<FeedThread> topThreadList = new ArrayList<FeedThread>();
 		
 		if (json != null && json.optInt("code", -1) == 0) {
-			
+			JSONObject data = json.optJSONObject("data");
+			JSONArray threads = data.optJSONArray("threads");
+			if (threads != null && threads.length() > 0) {
+				for (int i = 0; i < threads.length(); i++) {
+					JSONObject obj = threads.getJSONObject(i);
+					FeedThread feedThread = this.fromJsonToFeedThread(obj);
+					topThreadList.add(feedThread);
+				}
+			}
 		}
 		
 		model.put("topThreadList", topThreadList);

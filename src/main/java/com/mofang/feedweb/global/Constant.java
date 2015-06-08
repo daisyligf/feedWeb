@@ -62,22 +62,22 @@ public class Constant {
 	public static final String THREAD_DELETE_URL = "/feed/v2/web/thread/delete";
 	
 	// 帖子管理-加精
-	public static final String THREAD_SETELITE_URL = "/feed/v2/web/thread/tag";
+	public static final String THREAD_SETELITE_URL = "/feed/v2/web/thread/setelite";
 
 	// 帖子管理-取消加精
-	public static final String THREAD_CANCELELITE_URL = "/feed/v2/web/thread/tag/cancel";
+	public static final String THREAD_CANCELELITE_URL = "/feed/v2/web/thread/cancelelite";
 	
 	// 帖子管理-置顶
-	public static final String THREAD_SETTOP_URL = "/feed/v2/web/thread/top";
+	public static final String THREAD_SETTOP_URL = "/feed/v2/web/thread/settop";
 	
 	// 帖子管理-取消置顶
 	public static final String THREAD_CANCELTOP_URL = "/feed/v2/web/thread/canceltop";
 	
 	// 帖子管理-锁帖
-	public static final String THREAD_CLOSE_URL = "/feed/v2/web/threads/close";
+	public static final String THREAD_CLOSE_URL = "/feed/v2/web/thread/close";
 	// 帖子管理-取消锁帖
 
-	public static final String THREAD_OPEN_URL = "/feed/v2/web/threads/open";
+	public static final String THREAD_OPEN_URL = "/feed/v2/web/thread/open";
 	// 楼层删除
 	public static final String POST_DELETE_URL = "/feed/v2/web/post/delete";
 	
@@ -175,5 +175,5 @@ public class Constant {
 	// 关注板块
 	public static final String FORUM_FOLLOW_URL = "/area/follow";
 	
-	public static final String VIPER_AWARD_URL = "/viper/user/add";
+	public static final String VIPER_AWARD_URL = "/user/add";
 }

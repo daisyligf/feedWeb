@@ -27,7 +27,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var setAddDigestUrl = ""; //加精
 	var setOffAddDigestUrl = "";//取消加精
 	var setdeletePostUrl = ""; //删除帖子
-	var setAddDigestUrl = ""; //奖励
+	var setAwardUrl = ""; //奖励
 	var deleteHrefUrl = "forum_content?fid"+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
 
 	var ajaxMethod="json";
@@ -43,8 +43,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setAddDigestUrl = "/bbs_html/statics/test/follow.json"; //加精
 		setOffAddPostUrl = "/bbs_html/statics/test/follow.json";//取消加精
 		setdeletePostUrl = "/bbs_html/statics/test/follow.json"; //删除帖子
-		setAddDigestUrl = "/bbs_html/statics/test/follow.json"; //奖励
-		//deleteHrefUrl = "http://www.baidu.com";//删除帖子跳转的路径
+		setAwardUrl = "/bbs_html/statics/test/follow.json"; //奖励
+		deleteHrefUrl = "http://www.baidu.com";//删除帖子跳转的路径
 	}
 	if(USE_TEST_DATA){
 		getFloorComUrl='comment_list.json';
@@ -60,8 +60,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setAddDigestUrl = "elite_thread.json"; //加精
 		setOffAddPostUrl = "cancel_elite_thread.json";//取消加精
 		setdeletePostUrl = "del_thread.json"; //删除帖子
-		setAddDigestUrl = "award.json"; //奖励
-		//deleteHrefUrl = "forum_content";//删除帖子跳转的路径
+		setAwardUrl = "award.json"; //奖励
+		deleteHrefUrl = "forum_content?fid="+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
 	}
 
 	//注册一个handlebarsjs方法
@@ -94,23 +94,124 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	function postManage(){
 		//帖子管理效果
 		$(".manage").hover(function(ev){
-
-			console.log($(this).html());
 			$(".manage-more").stop().slideDown(200);
 		},function(){
 			$(".manage-more").stop().slideUp(200);
 		});
+		//奖励
+		$("body").on("click",".manage-reward",function(){
+			var _this =this;
+			
+			var tid = $("#getPostData").attr("data-tid");
+			var uid = $("#getPostData").attr("data-uid");
+			var coin = $(_this).find(".reward-icon").val();
+			var reason = "";
+
+			$(".pop-post-reward").pop({
+				type : 'prompt',
+				title : $(_this).html()+'魔币及原因',
+				fnCallback : function(isTrue,msg){
+					if(isTrue){
+						reason=msg;
+						//发送数据
+						rewardFnAjax();
+						
+					}
+				}
+			});
+
+			function rewardFnAjax(){
+
+				fnAjax(setAwardUrl,{
+					tid : tid,
+					uid : uid,
+					coin : $(".pop-post-reward").find(".reward-icon").val(),
+					reason : reason
+				},function(res){
+					if(res && res.code==0){
+						$(".pop-post-ok").pop({
+							msg:$(_this).html()+"成功",
+							autoTime:2000
+						});
+
+					}else{
+						$(".pop-top-fail").pop({
+							msg:$(_this).html()+'失败'
+						});
+					}
+				},function(res){
+					$(".pop-top-fail").pop({
+						msg:$(_this).html()+'失败'
+					});
+				});
+			}
+			
+		});
+		//删除帖子
+		$("body").on("click",".manage-delete",function(){
+			var _this =this;
+			
+			var tid = $("#getPostData").attr("data-tid");
+			var uid = $("#getPostData").attr("data-uid");
+			var reason = "";
+
+			$(".pop-post-delete").pop({
+				type : 'prompt',
+				title : $(_this).html()+'原因',
+				dropSel:[
+					'广告垃圾',
+					'恶意灌水',
+					'违规内容',
+					'重复发帖'
+				],
+				fnCallback : function(isTrue,msg){
+					if(isTrue){
+						reason=msg;
+						//发送数据
+						deleteFnAjax();
+						
+					}
+				}
+			});
+
+			function deleteFnAjax(){
+				fnAjax(setdeletePostUrl,{
+					tid : tid,
+					uid : uid,
+					reason : reason
+				},function(res){
+					if(res && res.code==0){
+						$(".pop-post-ok").pop({
+							msg:$(_this).html()+"成功",
+							autoTime:500
+						});
+						setTimeout(function(){
+							window.location.href=deleteHrefUrl;
+						},600);
+
+					}else{
+						$(".pop-top-fail").pop({
+							msg:$(_this).html()+'失败'
+						});
+					}
+				},function(res){
+					$(".pop-top-fail").pop({
+						msg:$(_this).html()+'失败'
+					});
+				});
+			}
+			
+		});
 		//锁帖/取消锁帖
 		$("body").on("click",".manage-lock",function(){
 			var _this =this;
-			var isReturn = true;
 			var url = '';
 			if($(_this).hasClass('off-manege-lock')){
 				url=setOffLockPostUrl;
 			}else{
 				url=setLockPostUrl;
 			}
-			var tids = $("#getPostData").attr("data-tid");
+			var tid = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
 
 			
@@ -119,6 +220,12 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(".pop-post-delete").pop({
 				type : 'prompt',
 				title : $(_this).html()+'原因',
+				dropSel:[
+					'广告垃圾',
+					'恶意灌水',
+					'违规内容',
+					'重复发帖'
+				],
 				fnCallback : function(isTrue,msg){
 					if(isTrue){
 						reason=msg;
@@ -131,7 +238,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 
 			function lockFnAjax(){
 				fnAjax(url,{
-					tids : tids,
+					tid : tid,
 					uid : uid,
 					reason : reason
 				},function(res){
@@ -144,7 +251,6 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 							$(_this).removeClass('off-manege-lock');
 							$(_this).html("锁帖");
 						}else{
-							
 							$(".pop-post-ok").pop({
 								msg:$(_this).html()+"成功"
 							});
@@ -164,6 +270,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			}
 			
 		});
+		
 		//置顶/取消置顶
 		$("body").on("click",".manege-top",function(){
 			var _this =this;
@@ -174,7 +281,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			}else{
 				url=setTopPostUrl;
 			}
-			var tids = $("#getPostData").attr("data-tid");
+			var tid = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
 			var reason = "";
 
@@ -182,6 +289,11 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(".pop-post-delete").pop({
 				type : 'prompt',
 				title : $(_this).html()+'原因',
+				dropSel:[
+					'原创鼓励',
+					'精品文章',
+					'绝世好帖'
+				],
 				fnCallback : function(isTrue,msg){
 					if(isTrue){
 						reason=msg;
@@ -196,7 +308,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 
 			function topFnAjax(){
 				fnAjax(url,{
-					tids : tids,
+					tid : tid,
 					uid : uid,
 					reason : reason
 				},function(res){
@@ -238,13 +350,18 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			}else{
 				url=setAddDigestUrl;
 			}
-			var tids = $("#getPostData").attr("data-tid");
+			var tid = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
 			var reason = "";
 
 			$(".pop-post-delete").pop({
 				type : 'prompt',
 				title : $(_this).html()+'原因',
+				dropSel:[
+					'原创鼓励',
+					'精品文章',
+					'绝世好帖'
+				],
 				fnCallback : function(isTrue,msg){
 					if(isTrue){
 						reason=msg;
@@ -257,7 +374,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 
 			function greatFnAjax(){
 				fnAjax(url,{
-					tids : tids,
+					tid : tid,
 					uid : uid,
 					reason : reason
 				},function(res){
@@ -290,39 +407,6 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				});
 			}
 			
-		});
-		
-		// 帖子点赞
-		$("body").on("click",".thread-zan",function(){
-			var _this =this;
-			var tid = $(_this).parents(".look").attr("data-tid");
-			//var uid = $(_this).parents(".con-list").attr("data-uid");
-
-			var reason = "点赞";
-			fnAjax(setPraThreadUrl,{
-				tid : tid
-				//uid : uid
-			},function(res){
-				if(res && res.code==0){
-					var val = parseInt($(_this).find("a").html());
-					var v = $(_this).find("a").html(val+1);
-					$(".pop-post-ok").pop({
-						msg:"点赞成功",
-						autoTime:1000
-					});
-				}else{
-					$(".pop-top-fail").pop({
-					msg:"点赞失败",
-					autoTime:1000
-				});
-				}
-			},function(res){
-				$(".pop-top-fail").pop({
-					msg:"点赞失败",
-					autoTime:1000
-				});
-			});
-
 		});
 
 		//回复楼层

@@ -396,7 +396,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
+		JSONObject json = postHttpInfo(getOpenThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -417,7 +417,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
+		JSONObject json = postHttpInfo(getSetTopThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -438,7 +438,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
+		JSONObject json = postHttpInfo(getCancelTopThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -459,7 +459,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
+		JSONObject json = postHttpInfo(getEliteThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -480,7 +480,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("reason", reason);
 		
 		
-		JSONObject json = postHttpInfo(getForumFollowUrl(), postData, request);
+		JSONObject json = postHttpInfo(getCancelEliteThreadUrl(), postData, request);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");

@@ -195,7 +195,7 @@
                     
                 </div>
             </div>
-            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="23412" data-fid="${feedForum.forum_id }">
+            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }">
             	<c:if test="${currentPage==1}">
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
@@ -218,25 +218,45 @@
                         <c:if test="${fn:length(currentUser.privileges) > 0}">
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
-		                      <a href="#">编辑</a>
-		                      <a href="javascript:;" class="manage-delete">删除</a>
-		                      <a href="javascript:;" class="manege-top">置顶</a>
-		                       <a href="javascript:;" class="manege-top off-manege-top">取消精华</a>
-		                      <a href="javascript:;" class="manege-great">精华</a>
-		                      <a href="javascript:;" class="manege-great off-manege-great">取消精华</a>
-		                      <a href="javascript:;" class="manage-lock">锁帖</a>
-		                      <a href="javascript:;" class="manage-lock off-manege-lock">锁帖</a>
-		                      <a href="javascript:;" class="manage-reward">奖励</a>
-		                       <% 
+                            	<% 
                                 CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
-                                boolean hasTopThread = currentUser.getPrivileges().contains(SysPrivilege.TOP_THREAD); 
-                                if (hasTopThread) {
+                            	FeedThread feedThread = (FeedThread) request.getAttribute("feedThread");
+                                if (currentUser.getPrivileges().contains(SysPrivilege.EDIT_THREAD)) {
                                 %>
-                                <a href="#" class="manege-top">置顶</a>
-                                <% } %>
+		                      	<a href="editThreadInit?fid=${feedForum.forum_id }&tid=${feedThread.thread_id}" target="_blank">编辑</a><% } %>
+		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.DEL_THREAD)) {
+                                %>
+		                      	<a href="javascript:;" class="manage-delete">删除</a><% } %>
+		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.TOP_THREAD)) {
+                                %>
+                                <% if (feedThread.getIsTop()) {%>
+		                      	<a href="javascript:;" class="manege-top off-manege-top">取消置顶</a>
+		                      	
+		                      	<%} else {%>
+		                      	<a href="javascript:;" class="manege-top">置顶</a>
+		                      	<%} %>
+		                      	<%} %>
+		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.ELITE_THREAD)) {
+                                %>
                                 
-                                <a href="#" class="manege-great">精华</a>
-                                <a href="#" class="manage-lock">锁帖</a>
+                                <% if (feedThread.getIsElite()) {%>
+                                <a href="javascript:;" class="manege-great off-manege-great">取消精华</a>
+                                <%} else {%>
+		                       	<a href="javascript:;" class="manege-great">精华</a>
+		                   		<%} %>
+		                       	<%} %>
+		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.CLOSE_THREAD)) {
+                                %>
+                                
+                                <% if (feedThread.getIsClosed()) {%>
+                                <a href="javascript:;" class="manage-lock off-manage-lock">打开帖子</a>
+                                <%} else {%>
+		                      	<a href="javascript:;" class="manage-lock">锁帖</a>
+		                      	<%} %>
+		                       	<%} %>
+		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.AWARD)) {
+                                %>
+		                      	<a href="javascript:;" class="manage-reward">奖励</a><%} %>
                             </div>
                         </div>
                         </c:if>
@@ -248,7 +268,7 @@
                     </div>
                     <p class="look" data-tid="${feedThread.thread_id }">
                         <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
-                        <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.page_view }</a></span>
+                        <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                 </div>
                 </c:if>
@@ -360,14 +380,16 @@
         <!-- 弹出框开始 -->
         <!-- 遮罩层开始 -->
         <div class="mask-bg">
+            
         </div>
         <!-- 遮罩层结束 -->
         
+        <!-- 删除/置顶/加精 -->
         <div class="pop pop-post-delete">
             <h2 class="clearfix">
                 <span>
-                    <img src="img/icon/pop_close.png" class="close">
-                </span>删除帖子
+                    <img src="statics/img/icon/pop_close.png" class="close">
+                </span>帖子管理操作
             </h2>
             <div class="post-delete-reason">
                 <p  class="post-delete-sure pop-title">确定要删除帖子？</p>
@@ -387,13 +409,42 @@
                     </p>
             </div>
         </div>
+        <!-- 奖励 -->
+        <div class="pop pop-post-reward">
+            <h2 class="clearfix">
+                <span>
+                    <img src="statics/img/icon/pop_close.png" class="close">
+                </span>帖子管理操作
+            </h2>
+            <div class="post-delete-reason">
+                <p  class="post-delete-sure pop-title">奖励原因</p>
+                    <div class="delete-reason-choose">
+                       <input class="reward-icon" type="text" value="" class="">
+                    </div>
+    
+                    <textarea name="" class="pop-msg"></textarea>
+                    <p class="delete-reason-but clearfix">
+                        <input type="button" class="delete-reason-cancel pop-cancel" value="取消">
+                        <input type="button" class="delete-reason-ok pop-ok" value="确定">
+                    </p>
+            </div>
+        </div>
+        <!-- 发帖失败 -->
+        <div class="pop pop-play pop-warn">
+            <p class="pop-play-close"><img src="statics/img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="稍后再试">
+                <input type="button" class="pop-play-ok pop-ok" value="重新发送">
+            </p>
+        </div>
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="statics/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">
-            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+            <img src="statics/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
         </div>
         <!-- 弹出框结束 -->
     </div>

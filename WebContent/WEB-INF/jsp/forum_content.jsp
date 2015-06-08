@@ -135,38 +135,95 @@
                             <input type="hidden" id="tag_id" value="${tag_id }"/>
                         </div>
                         <div class="right">
-                            <div>
+                            <div id="quan">
                                 <span class="triangle">
                                     
                                 </span>
-                                <p id="quan">
+                                <c:if test="${type==0 }">
+                                <p>全部</p>
+                                <p class="list">
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">精华</a>
+                                </p>
+                                </c:if>
+                                
+                                <c:if test="${type ==1 }">
+                                <p>精华</p>
+                                <p class="list">
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=0&timeType=${timeType}">全部</a>
+                                </p>
+                                </c:if>
+                                
+                                <%-- <p >
                                 	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=0&timeType=${timeType}">全部</a>
                                 </p>
                                 <p id="type_1">
                                     <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">精华</a>
-                                </p>
+                                </p> --%>
                                 <input type="hidden" value="${type }" id="threadType" name="threadType"/>
                             </div>
-                            <div>
+                            <div id="time">
                                 <span class="triangle">
                                     
                                 </span>
-                                <p id="time">
+                                
+                                <c:if test="${timeType==0 }">
+                                <p id="reply_time">回复时间</p>
+                                <p id="create_time" class="list">
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=1">发帖时间</a>
+                                </p>
+                                </c:if>
+                                
+                                <c:if test="${timeType==1 }">
+                                <p id="reply_time">发帖时间</p>
+                                <p id="create_time" class="list">
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=0">回复时间</a>
+                                </p>
+                                </c:if>
+                               
+                                <%-- <p>
                                  	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=0">回复时间</a>
                                 </p>
                                 <p id="add_thread_time">
                                     <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=1">发帖时间</a>
-                                </p>
+                                </p> --%>
                                 <input type="hidden" value="${timeType }" id="timeType" name="timeType"/>
                             </div>
                         </div>
                     </div>
                     <div class="con-left-con">
+                    	<c:if test="${currentPage==1 }">
+                    	<c:forEach var="topThread" items="${topThreadList}">
+                        <dl class="clearfix">
+                            <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
+                            <div class="infos">
+                                <dd class="title"><a href="thread_info?thread_id=${topThread.thread_id }" target="_blank">${topThread.subject}
+                                <c:if test="${topThread.isTop}"><s class="icon-ding"></s></c:if>
+                                
+                                <c:if test="${topThread.isElite}"><s class="icon-jing"></s></c:if>
+                                <c:if test="${topThread.hasPic}"><s class="icon-tu"></s></c:if>
+                                </a></dd>
+                                <dd>${fn:substring(topThread.content, 0, 100)}...</dd>
+                                <dd class="info clearfix">
+                                    <p class="author">
+                                        <span>作者：${topThread.user_name}</span>
+                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                    </p>
+                                    <p class="look">
+                                        <span><s class="icon-look"></s>${topThread.page_view}</span>
+                                        <span><s class="icon-ask"></s>${topThread.replies}</span>
+                                    </p>
+                                </dd> 
+                            </div>
+                            
+                        </dl>
+                       </c:forEach>
+                    	
+                    	</c:if>
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
                             <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
-                                <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }">${feedThread.subject}
+                                <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }" target="_blank">${feedThread.subject}
                                 <c:if test="${feedThread.isTop}"><s class="icon-ding"></s></c:if>
                                 
                                 <c:if test="${feedThread.isElite}"><s class="icon-jing"></s></c:if>
@@ -372,20 +429,6 @@
    			$("#tag_" + tagId).addClass('active');
    		} else {
    			$("#tag_all").addClass('active');
-   		}
-   		
-   		var type = $('#threadType').val();
-   		if (type == 1) {
-   			$('#quan').addClass('list');
-   		} else {
-   			$('#type_1').addClass('list');
-   		}
-   		
-   		var timeType = $('#timeType').val();
-   		if (timeType == 0) {
-   			$('#add_thread_time').addClass('list');
-   		} else {
-   			$('#add_time').addClass('list');
    		}
    		
    </script>

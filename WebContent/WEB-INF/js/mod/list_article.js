@@ -112,34 +112,16 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	}
 
 	//下拉框
-	$("#quan").click(function(){
-		var _this = this;
-		showList(_this);
-		return false;
-	});
-	$("#time").click(function(){
-		var _this = this;
-		showList(_this);
-		return false;
+	$("#quan").hover(function(){
+		$(this).find(".list").show();
+	},function(){
+		$(this).find(".list").hide();
 	});
 
-	function showList(_this){
-		$("#quan").removeClass('active');
-		$("#time").removeClass('active');
-		$(".con-nav .list").hide();
-		
-		if($(_this).hasClass('active')){
-			$(_this).removeClass('active');
-			$(_this).next(".list").hide();
-		}else{
-			$(_this).addClass('active');
-			$(_this).next(".list").show();
-		}
-	}
-	$(document).click(function(){
-		$("#quan").removeClass('active');
-		$("#time").removeClass('active');
-		$(".con-nav .list").hide();
+	$("#time").hover(function(){
+		$(this).find(".list").show();
+	},function(){
+		$(this).find(".list").hide();
 	});
 });
 
