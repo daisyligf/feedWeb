@@ -93,8 +93,8 @@
                 <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
             </div>
             <div class="bbs-search">
-                <input type="button" class="ser-but" value="" name="search" id="search"/>
-                <input type="text" class="ser-text" value="${searchkey} " id="keyword" placeholder="过来搜我"/>
+                <input type="button" class="ser-but" value="" name="search" id="submit"/>
+                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
                 <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
                 <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
             </div>
@@ -105,40 +105,40 @@
            <div class="h2">热门游戏</div>
            <div class="channel-list">
            <c:if test="${letterGroup=='1'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}">ABCDE</a></div>
+           		<div class="col-xs-2 active" ><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}" style=text-decoration:none>ABCDE</a></div>
            </c:if>  
            <c:if test="${letterGroup !='1'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}">ABCDE</a></div>
+           		<div class="col-xs-2"><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}" style=text-decoration:none>ABCDE</a></div>
            </c:if>
            <c:if test="${letterGroup =='2'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}" style=text-decoration:none>FGHIJ</a></div>
            </c:if>
            <c:if test="${letterGroup !='2'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}">FGHIJ</a></div>
+           		<div class="col-xs-2"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}" style=text-decoration:none>FGHIJ</a></div>
            </c:if>
            <c:if test="${letterGroup =='3'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}">KLMNO</a></div>
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}" style=text-decoration:none>KLMNO</a></div>
            </c:if>
            <c:if test="${letterGroup !='3'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}">KLMNO</a></div>
+           		<div class="col-xs-2"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}" style=text-decoration:none>KLMNO</a></div>
            </c:if>
            <c:if test="${letterGroup =='4'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}">PQRST</a></div>
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}" style=text-decoration:none>PQRST</a></div>
            </c:if>   
             <c:if test="${letterGroup !='4'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}">PQRST</a></div>
+           		<div class="col-xs-2"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}" style=text-decoration:none>PQRST</a></div>
            </c:if>   
            <c:if test="${letterGroup =='5'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}">WXYZ</a></div>
+           		<div class="col-xs-2 active"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}" style=text-decoration:none>WXYZ</a></div>
            </c:if>
             <c:if test="${letterGroup !='5'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}">WXYZ</a></div>
+           		<div class="col-xs-2"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}" style=text-decoration:none>WXYZ</a></div>
            </c:if>
            <c:if test="${letterGroup =='6'}">
-               <div class="col-xs-2 active"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}">#</a></div>
+               <div class="col-xs-2 active"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}" style=text-decoration:none>#</a></div>
            </c:if>
            <c:if test="${letterGroup !='6'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}">#</a></div>
+           		<div class="col-xs-2"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}" style=text-decoration:none>#</a></div>
            </c:if>
            </div>
            <div class="h2-con clearfix container">
@@ -236,13 +236,8 @@
     </div>
     
    <script src="./js/mod/channel.js"></script>
+   <script src="js/mod/common.js"></script>
    
 </body>
-<script type="text/javascript">
-$('#search').click(function() {
-	var searchKey = $('#searchKey').val();
-	window.location.href = "search?keyword="+searchKey;
-});
 
-</script>
 </html>

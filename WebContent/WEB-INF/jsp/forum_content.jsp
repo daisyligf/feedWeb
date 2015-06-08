@@ -432,6 +432,6 @@
    		}
    		
    </script>
-   
+    <script src="js/mod/common.js"></script>
 </body>
 </html>
