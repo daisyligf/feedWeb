@@ -244,7 +244,7 @@
                             
                         </dl>
                        </c:forEach>
-                       <div class="page-plug col-xs-6">
+                       <div class="page-plug">
 			                <ul class="page-pc">
 			                <!-- 上一页 按钮 -->
 			                

@@ -255,15 +255,15 @@ public class FeedForumContentController extends FeedCommonController {
 		StringBuilder paramBuilder = new StringBuilder();
 		paramBuilder.append("fid=").append(fid);
 		paramBuilder.append("&type=").append(threadType);
-		paramBuilder.append("&timeType=").append(timeType);
-		paramBuilder.append("&p=").append(p);
-		paramBuilder.append("pagesize=").append(pageSize);
+		paramBuilder.append("&timetype=").append(timeType);
+		paramBuilder.append("&page=").append(p);
+		paramBuilder.append("&size=").append(pageSize);
 		
 		int tagId = 0;
 		String tagIdString = request.getParameter("tag_id");
 		if (tagIdString != null && StringUtil.isInteger(tagIdString)) {
 			tagId = Integer.parseInt(tagIdString);
-			paramBuilder.append("&tagId=").append(tagId);
+			paramBuilder.append("&tagid=").append(tagId);
 		}
 		
 		JSONObject json = getHttpInfo(getThreadListUrl(), paramBuilder.toString(), request);
