@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 
+   <script src="./js/mod/common.js"></script>
    <!-- 头部开始 -->
         <div class="header clearfix">
             <div class="nav clearfix">

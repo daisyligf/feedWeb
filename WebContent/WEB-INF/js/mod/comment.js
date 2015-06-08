@@ -20,7 +20,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
     var getUrl = "";//url路径示范
     var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
-    var getCheckCode = "checkCode?code=" + $(".code-text").val();//验证码校验
+    var getCheckCode = "checkCode";//验证码校验
     var codeUrl = "generageCode";//验证码url
     var postUrl = "";//发帖
     var relayPostUrl = "";//回复帖子
@@ -35,7 +35,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     if(USE_LOCAL_DATA){
         getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
     	//getUserLoginStatus = "loginStatus";
-        getCheckCode = "checkCode?code=" + $(".code-text").val();
+        getCheckCode = "checkCode";
         postUrl = "newThread";//发帖
         relayPostUrl = "/bbs_html/statics/test/follow.json";//回复帖子
         
@@ -268,6 +268,9 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 $.ajax({
                     url:getCheckCode,
                     type:"GET",
+                    data:{
+                    	code: $(".code-text").val()
+                    },
                     dataType:ajaxMethod,
                     success: function(res) {
                         if(res && !res.code){

@@ -734,7 +734,6 @@
     </div>	
     
    <script src="./js/mod/index.js"></script>
-   <script src="./js/mod/common.js"></script>
    
 </body>
 <script type="text/javascript">
