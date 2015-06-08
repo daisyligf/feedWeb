@@ -179,8 +179,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	public void newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
 			throws Exception {
 		
-		boolean loginstatus = userComp.validate(request);
-		System.out.println("用户登录状态 == " + loginstatus);
+//		boolean loginstatus = userComp.validate(request);
+//		System.out.println("用户登录状态 == " + loginstatus);
 		
 		String strTid = request.getParameter("tid");
 		String content = request.getParameter("content");

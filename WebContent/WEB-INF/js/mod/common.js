@@ -29,6 +29,33 @@ define('common',['jquery','login_top'],function(require, exports, module) {
 		login_top.logout();
 
 	});
+	
+	//search 头部搜索
+	search();
+	function search(){
+		$(document).keydown(function(ev) {
+			if(ev.which == 13){
+				searchJumpUrl();
+			}
+		});
+		$("#submit").click(function(ev) {
+			searchJumpUrl();
+			
+		});
+	}
+
+	function searchJumpUrl(){
+
+		var keyword = $.trim($("#keyword").val());
+		$("#keyword").css({
+			border:'1px solid #eee'
+		});
+		if(keyword==''){
+			return false;
+		}
+
+		window.location.href = "search?keyword="+keyword;
+	}
 
 		
 });
