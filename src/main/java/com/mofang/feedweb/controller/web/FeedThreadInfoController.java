@@ -97,7 +97,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 			if (threadObj != null) {
 				feedThread.setThread_id(threadObj.optLong("tid", 0));
 				feedThread.setSubject(threadObj.optString("subject", ""));
-				feedThread.setContent(threadObj.optString("content", ""));
+				
+				String content = threadObj.optString("content", "");
+				feedThread.setContent(replaceEmoji(content));
 				feedThread.setPage_view(threadObj.optInt("pageview", 0));
 				feedThread.setReplies(threadObj.optInt("replies", 0));
 				feedThread.setCreate_time(new Date(threadObj.optLong("create_time", 0)));
@@ -161,8 +163,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 					JSONObject postObj = posts.getJSONObject(i);
 					FeedPost feedPost = new FeedPost();
 					feedPost.setPost_id(postObj.optLong("pid", 0));
-					feedPost.setContent(postObj.optString("content", ""));
-					feedPost.setHtmlContent(postObj.optString("html_content", ""));
+					feedPost.setContent(replaceEmoji(postObj.optString("content", "")));
+					feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));
 					feedPost.setRecommends(postObj.optInt("recommends", 0));
 					feedPost.setPosition(postObj.optInt("position", 0));
 					feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));

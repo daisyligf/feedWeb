@@ -299,7 +299,7 @@ public class FeedForumContentController extends FeedCommonController {
 		FeedThread feedThread = new FeedThread();
 		feedThread.setThread_id(obj.optLong("tid", 0));
 		feedThread.setSubject(obj.optString("subject", ""));
-		feedThread.setContent(obj.optString("content", ""));
+		feedThread.setContent(replaceEmoji(obj.optString("content", "")));
 		feedThread.setPage_view(obj.optInt("pageview", 0));
 		feedThread.setReplies(obj.optInt("replies", 0));
 		feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
