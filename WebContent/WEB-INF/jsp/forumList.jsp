@@ -93,8 +93,8 @@
                 <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
             </div>
             <div class="bbs-search">
-                <input type="button" class="ser-but" value="" name="search" id="search"/>
-                <input type="text" class="ser-text" value="${searchkey} " id="keyword" placeholder="过来搜我"/>
+                <input type="button" class="ser-but" value="" name="search" id="submit"/>
+                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
                 <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
                 <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
             </div>
@@ -236,13 +236,8 @@
     </div>
     
    <script src="./js/mod/channel.js"></script>
+   <script src="js/mod/common.js"></script>
    
 </body>
-<script type="text/javascript">
-$('#search').click(function() {
-	var searchKey = $('#searchKey').val();
-	window.location.href = "search?keyword="+searchKey;
-});
 
-</script>
 </html>
