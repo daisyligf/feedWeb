@@ -1,4 +1,4 @@
-package com.mofang.feedweb.controller.web;
+package com.mofang.feedweb.controller;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.mofang.feedweb.controller.web;
+package com.mofang.feedweb.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;

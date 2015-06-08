@@ -1,4 +1,4 @@
-package com.mofang.feedweb.controller.web;
+package com.mofang.feedweb.controller;
 
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
