@@ -98,6 +98,54 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		},function(){
 			$(".manage-more").stop().slideUp(200);
 		});
+		
+		
+		//帖子点赞
+		$("body").on("click",".thread-zan",function(){
+			var _this =this;
+			var tid = $(_this).parents(".look").attr("data-tid");
+			//var uid = $(_this).parents(".con-list").attr("data-uid");
+
+			var reason = "点赞";
+			if(!loginStatus){
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg){
+						if(isTrue){
+							window.location.href=loginUrl;
+						}
+					}
+				});
+				return false;
+			}
+			
+			fnAjax(setPraThreadUrl,{
+				tid : tid,
+				//uid : uid
+			},function(res){
+				if(res && res.code==0){
+					var val = parseInt($(_this).find("a").html());
+					var v = $(_this).find("a").html(val+1);
+					$(".pop-post-ok").pop({
+						msg:"点赞成功",
+						autoTime:1000
+					});
+				}else{
+					$(".pop-top-fail").pop({
+					msg:"点赞失败",
+					autoTime:1000
+				});
+				}
+			},function(res){
+				$(".pop-top-fail").pop({
+					msg:"点赞失败",
+					autoTime:1000
+				});
+			});
+
+		});
+		
 		//奖励
 		$("body").on("click",".manage-reward",function(){
 			var _this =this;
@@ -131,7 +179,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 					if(res && res.code==0){
 						$(".pop-post-ok").pop({
 							msg:$(_this).html()+"成功",
-							autoTime:2000
+							autoTime:1000
 						});
 
 					}else{
@@ -416,7 +464,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var fid = $("#getPostData").attr("data-fid");
 			var con = $("#reply-con").val();
 			var pic = [];
-			fnAjax("setAddPostUrl",{
+			fnAjax(setAddPostUrl,{
 				fid : fid,
 				tid : tid,
 				uid : uid,
@@ -495,11 +543,18 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		$("body").on("click",".reply-btn",function(){
 			
 			if(!loginStatus){
-				$(".pop-top-fail").pop({
-					msg:"未登录"
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg){
+						if(isTrue){
+							window.location.href=loginUrl;
+						}
+					}
 				});
 				return false;
 			}
+			
 			var _this = this;
 			var tid = $(_this).parents(".reply-textarea").find(".tid").val();
 			var uid = $(_this).parents(".reply-textarea").find(".uid").val();
@@ -572,6 +627,19 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var uid = $(_this).parents(".con-list").attr("data-uid");
 
 			var reason = "点赞";
+			if(!loginStatus){
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg){
+						if(isTrue){
+							window.location.href=loginUrl;
+						}
+					}
+				});
+				return false;
+			}
+			
 			fnAjax(setPraFloorUrl,{
 				pid : pid,
 				uid : uid
