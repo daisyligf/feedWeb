@@ -21,7 +21,6 @@ import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
-import com.sun.tools.internal.jxc.apt.Const;
 
 public class FeedCommonController {
 

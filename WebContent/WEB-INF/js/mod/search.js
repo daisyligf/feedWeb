@@ -107,6 +107,9 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		    		var plateTemplate = Handlebars.compile($("#plateTemplate").html());
 
 		    		$(".plate-num span").html(res.data.total);
+		    		if(res.data.total<options.pagesize){
+		    				$("#plateMore").remove();
+		    		}
 		    		$("#plate").append(plateTemplate(res.data));
 		    	}
 		    	fnCallback && fnCallback();

@@ -23,11 +23,12 @@
     <meta name="description" content="">
     <title>bbs搜索页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/search.css">
-    <script src="js/sea.js"></script>
-    <script src="js/sea-config.js"></script>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <script src="./js/sea.js"></script>
+    <script src="./js/sea-config.js"></script>
+    <script src="./js/bbs-config.js"></script>
     <script type="text/javascript">
 		function search(){
 			//var s = $("#keyword").val();
@@ -223,7 +224,7 @@
         <!-- 底部结束 -->
     </div>
     
-   <script src="js/mod/search.js"></script>
+   <script src="./js/mod/search.js"></script>
    
 </body>
 </html>
