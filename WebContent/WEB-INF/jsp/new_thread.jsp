@@ -4,6 +4,14 @@
 <%@ page language="java" import="com.mofang.feedweb.entity.FeedTag"%>
 <%@ page language="java" import="com.mofang.feedweb.entity.FeedThread"%>
 <%@ page language="java" import="java.util.*"%>
+<%  
+	String path=application.getRealPath(request.getRequestURI());  
+	String realPath = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/newThreadInit";
+	if(request.getQueryString()!=null) {   
+		realPath+="?"+request.getQueryString();           
+	} 
+	//String realPath = request.getHeader("Referer");
+%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -202,7 +210,7 @@
                         <dd>
                             <div class="editer">
                                 <div class="editor-textarea">
-                                    <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.mofang.com/">登录</a> | <a  class="maskReg" href="http://u.mofang.com/">立即注册</a></div>
+                                    <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.test.mofang.com">登录</a> | <a  class="maskReg" href="http://u.test.mofang.com">立即注册</a></div>
                                 </div>
                                 <script type="text/plain" id="myEditor" style="height:240px;">${threadInfo.htmlContent }</script>
                             </div>
