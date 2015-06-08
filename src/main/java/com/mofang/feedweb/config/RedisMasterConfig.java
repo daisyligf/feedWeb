@@ -1,10 +1,10 @@
-package com.mofang.feedweb.properties.annotation;
+package com.mofang.feedweb.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RedisSlaveConfig {
+public class RedisMasterConfig {
 	@Value("#{configProperties['host']}")
 	private String host;
 	@Value("#{configProperties['port']}")
@@ -53,5 +53,6 @@ public class RedisSlaveConfig {
 	public void setTestOnBorrow(String testOnBorrow) {
 		this.testOnBorrow = testOnBorrow;
 	}
-
+	
+	
 }

@@ -12,9 +12,9 @@ import org.springframework.util.StringUtils;
 
 import redis.clients.jedis.Jedis;
 
+import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.RedisKey;
-import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
 import com.mofang.feedweb.redis.RedisWorker;
 
 /***
@@ -28,7 +28,7 @@ public class UserComponent {
 	@Autowired
 	private ExternalUrlInfo externalUrlInfo;
 	@Autowired
-	private RedisCompnent redisComp;
+	private RedisComponent redisComp;
 	
 //	// 缓存cookie信息
 //	private final ThreadLocal<String> cookieCache = new ThreadLocal<String>();

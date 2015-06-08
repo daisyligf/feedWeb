@@ -1,4 +1,4 @@
-package com.mofang.feedweb.properties.annotation;
+package com.mofang.feedweb.config;
 
 import org.springframework.beans.factory.annotation.Value;
 

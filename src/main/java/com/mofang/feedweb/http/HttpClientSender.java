@@ -1,4 +1,4 @@
-package com.mofang.feedweb.net.http;
+package com.mofang.feedweb.http;
 
 import java.io.IOException;
 

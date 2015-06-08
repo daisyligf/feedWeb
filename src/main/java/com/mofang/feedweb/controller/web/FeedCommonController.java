@@ -15,12 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mofang.feedweb.component.HttpComponent;
 import com.mofang.feedweb.component.UserComponent;
+import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
-import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
 

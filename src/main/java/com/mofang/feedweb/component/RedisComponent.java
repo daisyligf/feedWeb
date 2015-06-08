@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-import com.mofang.feedweb.properties.annotation.RedisMasterConfig;
-import com.mofang.feedweb.properties.annotation.RedisSlaveConfig;
+import com.mofang.feedweb.config.RedisMasterConfig;
+import com.mofang.feedweb.config.RedisSlaveConfig;
 import com.mofang.feedweb.redis.RedisExecutor;
 import com.mofang.feedweb.redis.RedisWorker;
 import com.mofang.feedweb.redis.pool.RedisPoolConfig;
 import com.mofang.feedweb.redis.pool.RedisPoolProvider;
 
 @Component
-public class RedisCompnent {
+public class RedisComponent {
 
 	private final RedisExecutor REDIS_MASTER_EXECUTOR = new RedisExecutor();
 	private final RedisExecutor REDIS_SLAVE_EXECUTOR = new RedisExecutor();

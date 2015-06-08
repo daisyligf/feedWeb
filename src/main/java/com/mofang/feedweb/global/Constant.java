@@ -148,7 +148,7 @@ public class Constant {
 
 	// 普通用户
 	// 用户详情
-	public static final String USER_INFO_URL = "/feed/v2/backend/user/info";
+	public static final String USER_INFO_URL = "/feed/v2/web/user/info";
 	// 用户禁言
 	public static final String USER_SETPROHIBIT_URL = "/feed/v2/backend/user/setprohibit";
 	// 用户取消禁言

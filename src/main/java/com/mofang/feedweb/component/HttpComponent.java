@@ -1,16 +1,18 @@
 package com.mofang.feedweb.component;
 
 import javax.annotation.PostConstruct;
+
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.mofang.feedweb.config.AbstractHttpClientInfo;
+import com.mofang.feedweb.config.FeedHttpClientInfo;
+import com.mofang.feedweb.config.UserHttpClientInfo;
 import com.mofang.feedweb.global.GlobalObject;
-import com.mofang.feedweb.net.http.HttpClientConfig;
-import com.mofang.feedweb.net.http.HttpClientProvider;
-import com.mofang.feedweb.net.http.HttpClientSender;
-import com.mofang.feedweb.properties.annotation.AbstractHttpClientInfo;
-import com.mofang.feedweb.properties.annotation.FeedHttpClientInfo;
-import com.mofang.feedweb.properties.annotation.UserHttpClientInfo;
+import com.mofang.feedweb.http.HttpClientConfig;
+import com.mofang.feedweb.http.HttpClientProvider;
+import com.mofang.feedweb.http.HttpClientSender;
 
 @Component
 public class HttpComponent {
