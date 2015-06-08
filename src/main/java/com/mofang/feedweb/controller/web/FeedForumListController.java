@@ -123,7 +123,12 @@ public class FeedForumListController extends FeedCommonController {
 					json = list.getJSONObject(i);
 					info.setForumId(json.optLong("fid", 0));
 					info.setGameId(json.optLong("game_id", 0));
-					info.setForumName(json.optString("name", ""));
+					if (json.optString("name", "").length() > 10) {
+						info.setForumName(json.optString("name", "").substring(0, 10));
+					} else {
+						info.setForumName(json.optString("name", ""));
+					}
+					
 					info.setIcon(json.optString("icon", ""));
 					info.setTodayThreads(json.optInt("today_threads", 0));
 					info.setTotalThreads(json.optInt("total_threads", 0));
