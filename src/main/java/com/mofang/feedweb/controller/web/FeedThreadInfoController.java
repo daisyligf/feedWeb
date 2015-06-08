@@ -40,7 +40,7 @@ import com.mofang.feedweb.util.Tools;
  */
 @Controller
 public class FeedThreadInfoController extends FeedCommonController {
-
+	
 	@RequestMapping(value = "/thread_info", method = RequestMethod.GET)
 	public ModelAndView getThreadInfo(HttpServletRequest request, @RequestParam("thread_id") long threadId) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();

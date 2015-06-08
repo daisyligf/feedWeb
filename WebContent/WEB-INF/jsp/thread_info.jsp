@@ -9,6 +9,7 @@
 <%@ page import="com.mofang.feedweb.entity.CurrentUser"%>
 <%@ page import="com.mofang.feedweb.global.SysPrivilege"%>
 <%@ page import="com.mofang.feedweb.entity.UserInfo"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -370,7 +371,7 @@
                             <dd>
                                 <div class="editer">
                                     <div class="editor-textarea">
-                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.mofang.com/">登录</a> | <a  class="maskReg" href="http://u.mofang.com/">立即注册</a></div>
+                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
                                     </div>
                                     <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                 </div>
