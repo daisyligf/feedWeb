@@ -99,7 +99,7 @@
             <div class="bbs-search">
                <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
                <input type="button" class="ser-but" value="" id="submit"/>
-                <input type="text" class="ser-text" value="${searchKey} " id="keyword" placeholder="过来搜我"/>
+                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
             </div>
         </div>
         <!-- 搜索结束 -->
@@ -734,6 +734,7 @@
     </div>	
     
    <script src="./js/mod/index.js"></script>
+   <script src="js/mod/common.js"></script>
    
 </body>
 
