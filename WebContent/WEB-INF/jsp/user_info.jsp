@@ -24,7 +24,7 @@
                     </div>
                     
                     <!-- 登陆状态 -->
-                    <a href="http://u.test.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
+                    <a href="http://u.test.mofang.com" class="load" ><img src="./img/icon/load.png"></a>
                 </div>
             </div>
             <div class="nav-wap clearfix">

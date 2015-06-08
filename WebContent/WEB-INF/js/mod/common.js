@@ -57,6 +57,28 @@ define('common',['jquery','login_top'],function(require, exports, module) {
 		window.location.href = "search?keyword="+keyword;
 	}
 
+	//登录跳转插件
+	$.fn.loginUserUrl=function(){
+		var _this = this;
+
+		var urlcur = $(_this).attr('href');
+		var jumpUrl = '';
+		if(urlcur.indexOf('mofang.com')<0){
+			urlcur="http://u.test.mofang.com";
+		}
+		urlcur = urlcur.indexOf("?") < 0 ? urlcur + "?ref=" + encodeURIComponent(window.location.href) : urlcur + "&ref=" + encodeURIComponent(window.location.href);
+		$(_this).attr('href',urlcur);
+		return urlcur;
+	};
+
+	//头部登录跳转
+	$(".header .load").loginUserUrl();
+
+	//弹出框登录跳转
+
+	//编辑框登录跳转	
+	$(".maskLogin").loginUserUrl();
+	$(".maskReg").loginUserUrl();
 		
 });
 

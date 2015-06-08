@@ -210,7 +210,7 @@
                         <dd>
                             <div class="editer">
                                 <div class="editor-textarea">
-                                    <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.test.mofang.com?ref=<%=realPath%>">登录</a> | <a  class="maskReg" href="http://u.test.mofang.comref=<%=realPath%>">立即注册</a></div>
+                                    <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.test.mofang.com">登录</a> | <a  class="maskReg" href="http://u.test.mofang.com">立即注册</a></div>
                                 </div>
                                 <script type="text/plain" id="myEditor" style="height:240px;">${threadInfo.htmlContent }</script>
                             </div>
