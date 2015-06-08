@@ -1,7 +1,7 @@
 package com.mofang.feedweb.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 
@@ -13,7 +13,7 @@ public class CurrentUser {
 	
 	private boolean isAdmin = false;
 	
-	private List<Integer> privileges = new ArrayList<Integer>();
+	private Set<Integer> privileges = new HashSet<Integer>();
 
 	public boolean getIsModerator() {
 		return isModerator;
@@ -31,11 +31,11 @@ public class CurrentUser {
 		this.isAdmin = isAdmin;
 	}
 
-	public List<Integer> getPrivileges() {
+	public Set<Integer> getPrivileges() {
 		return privileges;
 	}
 
-	public void setPrivileges(List<Integer> privileges) {
+	public void setPrivileges(Set<Integer> privileges) {
 		this.privileges = privileges;
 	}
 	

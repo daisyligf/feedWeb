@@ -8,7 +8,7 @@ package com.mofang.feedweb.entity;
  */
 public class RoleInfo {
 	
-	private int roleId;
+	private long roleId;
 	
 	private String roleName;
 	
@@ -18,18 +18,18 @@ public class RoleInfo {
 		super();
 	}
 
-	public RoleInfo(int roleId, String roleName, String icon) {
+	public RoleInfo(long roleId, String roleName, String icon) {
 		super();
 		this.roleId = roleId;
 		this.roleName = roleName;
 		this.icon = icon;
 	}
 
-	public int getRoleId() {
+	public long getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(int roleId) {
+	public void setRoleId(long roleId) {
 		this.roleId = roleId;
 	}
 

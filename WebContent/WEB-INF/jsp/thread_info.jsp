@@ -7,6 +7,7 @@
 <%@ page import="com.mofang.feedweb.entity.FeedComment"%>
 <%@ page import="com.mofang.feedweb.entity.ThreadUserInfo"%>
 <%@ page import="com.mofang.feedweb.entity.CurrentUser"%>
+<%@ page import="com.mofang.feedweb.global.SysPrivilege"%>
 <%@ page import="com.mofang.feedweb.entity.UserInfo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -214,10 +215,26 @@
                         	</c:otherwise>
                         </c:choose>
                         
-                        <c:if test="${currentUser.isAdmin || fn:length(currentUser.privileges) > 0}">
+                        <c:if test="${fn:length(currentUser.privileges) > 0}">
                         <div class="manage">帖子管理
                             <div class="manage-more clearfix">
+		                      <a href="#">编辑</a>
+		                      <a href="javascript:;" class="manage-delete">删除</a>
+		                      <a href="javascript:;" class="manege-top">置顶</a>
+		                       <a href="javascript:;" class="manege-top off-manege-top">取消精华</a>
+		                      <a href="javascript:;" class="manege-great">精华</a>
+		                      <a href="javascript:;" class="manege-great off-manege-great">取消精华</a>
+		                      <a href="javascript:;" class="manage-lock">锁帖</a>
+		                      <a href="javascript:;" class="manage-lock off-manege-lock">锁帖</a>
+		                      <a href="javascript:;" class="manage-reward">奖励</a>
+		                       <% 
+                                CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
+                                boolean hasTopThread = currentUser.getPrivileges().contains(SysPrivilege.TOP_THREAD); 
+                                if (hasTopThread) {
+                                %>
                                 <a href="#" class="manege-top">置顶</a>
+                                <% } %>
+                                
                                 <a href="#" class="manege-great">精华</a>
                                 <a href="#" class="manage-lock">锁帖</a>
                             </div>
@@ -229,7 +246,7 @@
                     <div class="con-con">
                     	${postList[0].htmlContent }
                     </div>
-                    <p class="look">
+                    <p class="look" data-tid="${feedThread.thread_id }">
                         <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
                         <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.page_view }</a></span>
                     </p>
@@ -242,7 +259,7 @@
                         <dl class="clearfix">
                             <dt><a href="{{url}}"><img src="{{avatar}}" alt=""></a></dt>
                             <dd><a href="{{url}}">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
-                            <dd class="autor">{{timeformat ctime}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
+                            <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
                         </dl>
                         {{/each}} 
                     </script>
@@ -252,7 +269,7 @@
                         <dl class="clearfix">
                             <dt><a href="{{url}}"><img src="{{avatar}}" alt=""></a></dt>
                             <dd><a href="{{url}}">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
-                            <dd class="autor">{{timeformat ctime}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
+                            <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
                         </dl>
                     </script>
                     
@@ -275,7 +292,7 @@
                                 <dd>${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">
-                                        <span class="zan"><s class="icon-zan"></s><a href="javascript:;">${feedPost.recommends}</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">${feedPost.replies}</a></span>
+                                        <span class="zan"><s class="icon-zan"></s><a href="javascript:;">${feedPost.recommends}</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">${feedPost.comments}</a></span>
                                     </p>
                                 </dd>
                             </dl>
@@ -343,23 +360,6 @@
         <!-- 弹出框开始 -->
         <!-- 遮罩层开始 -->
         <div class="mask-bg">
-             <h2>《最终幻想14》2.2新版截图推出炫耀装备系统 
-                 <a href="#" class="landord">只看楼主</a>
-                 <div class="manage">帖子管理
-	                 <div class="manage-more clearfix">
-	                      <a href="#">编辑</a>
-	                      <a href="javascript:;" class="manage-delete">删除</a>
-	                      <a href="javascript:;" class="manege-top">置顶</a>
-	                       <a href="javascript:;" class="manege-top off-manege-top">取消精华</a>
-	                      <a href="javascript:;" class="manege-great">精华</a>
-	                      <a href="javascript:;" class="manege-great off-manege-great">取消精华</a>
-	                      <a href="javascript:;" class="manage-lock">锁帖</a>
-	                      <a href="javascript:;" class="manage-lock off-manege-lock">锁帖</a>
-	                      <a href="javascript:;" class="manage-reward">奖励</a>
-	                  </div>
-                 </div>
-                        
-            </h2>
         </div>
         <!-- 遮罩层结束 -->
         

@@ -68,7 +68,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	Handlebars.registerHelper("timeformat",function(value){
 		//console.log(typeof value);
 
-		var time = new Date(value*1000);
+		var time = new Date(value);
 
 		var year = time.getFullYear();
 		var month = time.getMonth()+1;
@@ -290,39 +290,39 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				});
 			}
 			
-			// 帖子点赞
-			$("body").on("click",".thread-zan",function(){
-				var _this =this;
-				var tid = $(_this).parents(".con-list").attr("data-postid");
-				var uid = $(_this).parents(".con-list").attr("data-uid");
+		});
+		
+		// 帖子点赞
+		$("body").on("click",".thread-zan",function(){
+			var _this =this;
+			var tid = $(_this).parents(".look").attr("data-tid");
+			//var uid = $(_this).parents(".con-list").attr("data-uid");
 
-				var reason = "点赞";
-				fnAjax(setPraThreadUrl,{
-					tid : tid,
-					uid : uid
-				},function(res){
-					if(res && res.code==0){
-						var val = parseInt($(_this).find("a").html());
-						var v = $(_this).find("a").html(val+1);
-						$(".pop-post-ok").pop({
-							msg:"点赞成功",
-							autoTime:1000
-						});
-					}else{
-						$(".pop-top-fail").pop({
-						msg:"点赞失败",
+			var reason = "点赞";
+			fnAjax(setPraThreadUrl,{
+				tid : tid
+				//uid : uid
+			},function(res){
+				if(res && res.code==0){
+					var val = parseInt($(_this).find("a").html());
+					var v = $(_this).find("a").html(val+1);
+					$(".pop-post-ok").pop({
+						msg:"点赞成功",
 						autoTime:1000
 					});
-					}
-				},function(res){
+				}else{
 					$(".pop-top-fail").pop({
-						msg:"点赞失败",
-						autoTime:1000
-					});
+					msg:"点赞失败",
+					autoTime:1000
 				});
-
+				}
+			},function(res){
+				$(".pop-top-fail").pop({
+					msg:"点赞失败",
+					autoTime:1000
+				});
 			});
-			
+
 		});
 
 		//回复楼层
@@ -359,6 +359,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(_this).siblings(".floor-stop").show();
 			$(_this).parents(".con-list-right").find(".con-list-reply").show();
 			_this.pagecur=0;
+			$(_this).parents(".con-list-right").find(".con-list-replycon").html('');
 			getFloorCommentData(_this,{
 				p : 1
 			},function(){
@@ -383,7 +384,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			},function(){
 				//处理pagecurrent
 				var pagecur = $(_this).parents(".con-list").attr("data-page");
-				$(_this).parents(".con-list").attr("data-page",pagecur++);
+				pagecur++;
+				$(_this).parents(".con-list").attr("data-page",pagecur);
 			})
 		});
 
@@ -532,7 +534,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	function getFloorCommentData(obj,options,fnCallback){
 
 		var defaults = {
-			postid : $(obj).parents(".con-list").attr("data-postid"),
+			pid : $(obj).parents(".con-list").attr("data-postid"),
 			p : 1,
 			pagesize : 10
 		};
@@ -540,20 +542,21 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 
 		$.ajax({
 		    url:getFloorComUrl,
-		    type:"POST",
+		    type:"GET",
 		    dataType:ajaxMethod,
 		    data:options,
 		    success: function(res) {
 		    	if(res && !res.code){
 		    		var floorCommentTemplate = Handlebars.compile($("#floorCommentTemplate").html());
-		    			
-		    		if(res.data.comments.total<=0){
+		    		var curtotal = res.data.total-options.p*options.pagesize;
+		    		
+		    		if(curtotal<=0){
 		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("");
 		    		}else{
-		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("更多"+res.data.comments.total+"条回复    <a href='javascript:;''>点击加载</a>");
+		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("更多"+curtotal+"条回复    <a href='javascript:;''>点击加载</a>");
 		    		}
 		    		
-		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data.commentlist));
+		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data.comments));
 		    	}
 		    	fnCallback && fnCallback();
 		    },

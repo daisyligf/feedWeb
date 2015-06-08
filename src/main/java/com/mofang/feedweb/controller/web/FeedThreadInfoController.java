@@ -1,11 +1,14 @@
 package com.mofang.feedweb.controller.web;
 
 import java.io.PrintWriter;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -124,21 +127,27 @@ public class FeedThreadInfoController extends FeedCommonController {
 			}
 			
 			JSONObject currentUserObj = data.optJSONObject("current_user");
-			System.out.println("currentUserObj:" + currentUserObj);
+//			System.out.println("currentUserObj:" + currentUserObj);
 			
 			if (currentUserObj != null) {
 				currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
-				currentUser.setIsAdmin(currentUserObj.optBoolean("is_admin", false));
+				boolean isAdmin = currentUserObj.optBoolean("is_admin", false);
+				currentUser.setIsAdmin(isAdmin);
 				
-				List<Integer> privileges = new ArrayList<Integer>();
+				Set<Integer> privileges = new HashSet<Integer>();
 				
-				JSONArray privilegesArray = currentUserObj.optJSONArray("privileges");
-				if (privilegesArray != null && privilegesArray.length() > 0) {
-					for (int i = 0; i < privilegesArray.length(); i++) {
-						
-						int privilege = privilegesArray.optInt(i, 0);
-						if (privilege > 0) {
-							privileges.add(privilege);
+				if (isAdmin) {
+					privileges = getAllPrivileges();
+				} else {
+					JSONArray privilegesArray = currentUserObj.optJSONArray("privileges");
+					if (privilegesArray != null && privilegesArray.length() > 0) {
+						for (int i = 0; i < privilegesArray.length(); i++) {
+							
+							int privilege = privilegesArray.optInt(i, 0);
+							if (privilege > 0) {
+								privileges.add(privilege);
+								
+							}
 						}
 					}
 				}
@@ -157,7 +166,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 					feedPost.setRecommends(postObj.optInt("recommends", 0));
 					feedPost.setPosition(postObj.optInt("position", 0));
 					feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));
-					feedPost.setComments(postObj.optInt("comments", 0));
+					feedPost.setComments(postObj.optInt("comments", 0)); // TODO:数字取得不对
 					
 					JSONObject postUserJson = postObj.optJSONObject("user");
 					UserInfo postUserInfo = new UserInfo();
@@ -176,7 +185,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 						for (int j = 0; j < comments.length(); j++) {
 							FeedComment comment = new FeedComment();
 							
-							JSONObject commentObj = comments.getJSONObject(i);
+							JSONObject commentObj = comments.getJSONObject(j);
 							comment.setComment_id(commentObj.optLong("cid", 0));
 							comment.setContent(commentObj.optString("content", ""));
 							comment.setCreate_time(new Date(commentObj.optLong("create_time", 0)));
@@ -224,6 +233,20 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 	}
 	
+	private Set<Integer> getAllPrivileges() throws Exception {
+		Set<Integer> privileges = new HashSet<Integer>();
+		Class<?> clz = Class.forName("com.mofang.feedweb.global.SysPrivilege");
+		
+        // 获取实体类的所有属性，返回Field数组  
+        Field[] fields = clz.getDeclaredFields();
+        for (int i = 0; i < fields.length; i++) {
+        	Field field = fields[i];
+        	String name = field.getName();
+        	privileges.add(field.getInt(name));
+        }
+		return privileges;
+	}
+
 	private List<FeedThread> replyHighest(HttpServletRequest request, long forumId) throws Exception {
 		String param = "fid=" + forumId;
 		List<FeedThread> threadList = new ArrayList<FeedThread>();
@@ -245,12 +268,13 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "comment_list.json")
-	public String commentList(@RequestParam("pid") long pid, 
+	public String commentList(@RequestParam("pid") long pid, @RequestParam("p") int p, @RequestParam("pagesize") int pageSize,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		StringBuilder param = new StringBuilder();
 		param.append("pid=").append(pid);
-		param.append("&page=1&size=10");
+		param.append("&page=").append(p);
+		param.append("&size=").append(pageSize);
 		
 		JSONObject json = getHttpInfo(getCommentListUrl(), param.toString(), request);
 		
@@ -304,7 +328,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		return null;
 	}
 	
-	@RequestMapping(value = "recommend_thread.json")
+	@RequestMapping(value = "recommend_thread.json", method = RequestMethod.POST)
 	public String recommendThread(@RequestParam("tid") long tid, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -323,7 +347,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		return null;
 	}
 	
-	@RequestMapping(value = "recommend_floor.json")
+	@RequestMapping(value = "recommend_floor.json", method = RequestMethod.POST)
 	public String recommendFloor(@RequestParam("pid") long pid, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -342,7 +366,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		return null;
 	}
 	
-	@RequestMapping(value = "close_thread.json")
+	@RequestMapping(value = "close_thread.json", method = RequestMethod.POST)
 	public String closeThread(@RequestParam("tid") long tid, @RequestParam("reason") String reason, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		

@@ -50,13 +50,13 @@ public class Constant {
 	public static final String THREAD_POSTLIST_GET_URL = "/feed/v2/web/post/list";
 	// 楼层评论列表
 
-	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v2/web/commentdisplay";
+	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v2/web/comment/list";
 	// 新增楼层
 
 	public static final String POST_CREATE_URL = "/feed/v2/web/post/add";
 	// 回复指定楼层
 
-	public static final String POST_REPLY_URL = "/feed/v2/web/sendcomment";
+	public static final String POST_REPLY_URL = "/feed/v2/web/comment/add";
 	
 	// 帖子管理-删除
 	public static final String THREAD_DELETE_URL = "/feed/v2/web/thread/delete";
@@ -85,21 +85,23 @@ public class Constant {
 	public static final String THREAD_RECOMMEND_URL = "/feed/v2/web/thread/recommend";
 	
 	// 楼层点赞
-	public static final String POST_COMMEND_URL = "/feed/v2/web/floor/hotreply_add";
+	public static final String POST_COMMEND_URL = "/feed/v2/web/post/recommend";
 	// 最热推荐
 
 	public static final String HOST_RECOMMEND_URL = "/feed/v2/web/floor/hotRecommend";
 
 	// 板块内容页
 	// 帖子列表
-
 	public static final String LIST_THREAD_GET_URL = "/feed/v2/web/thread/list";
+	
+	// 置顶帖子列表（版块下）
+	public static final String THREAD_TOP_LIST_URL = "/feed/v2/web/thread/toplist";
+	
 	// 板块信息
-
 	public static final String FORUM_INFO_GET_URL = "/feed/v2/web/forum/info";
+	
 	// 吧主信息
-
-	public static final String LIST_MODERATOR_GET_URL = "/feed/v2/web/forum/roleInfoList";
+	public static final String LIST_MODERATOR_GET_URL = "/feed/v2/web/moderator/list";
 	
 	// 搜索页
 	// 板块搜索

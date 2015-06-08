@@ -212,7 +212,7 @@ public class FeedForumContentController extends FeedCommonController {
 			if (data != null && data.length() > 0) {
 				for (int i = 0; i < data.length(); i++) {
 					JSONObject obj = data.getJSONObject(i);
-					RoleInfo roleInfo = new RoleInfo(obj.optInt("role_id", 0), obj.optString("role_name", ""), obj.optString("icon", ""));
+					RoleInfo roleInfo = new RoleInfo(obj.optLong("user_id", 0), obj.optString("nickname", ""), obj.optString("avatar", ""));
 					roleList.add(roleInfo);
 				}
 			}
@@ -313,6 +313,20 @@ public class FeedForumContentController extends FeedCommonController {
 		model.put("pagelist", Tools.editPageNumber(total, p,Constant.PAGE_SIZE));
 		
 		return threadList;
+	}
+	
+	private List<FeedThread> getThreadTopList(HttpServletRequest request, long forumId, Map<String, Object> model) {
+		String param = "fid=" + forumId;
+		JSONObject json = getHttpInfo(getForumInfoGetUrl(), param, request);
+		List<FeedThread> topThreadList = new ArrayList<FeedThread>();
+		
+		if (json != null && json.optInt("code", -1) == 0) {
+			
+		}
+		
+		model.put("topThreadList", topThreadList);
+		return topThreadList;
+		
 	}
 	
 }

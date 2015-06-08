@@ -51,8 +51,7 @@
     <div class="page">
     
     <jsp:include page="user_info.jsp" flush='true'/>
-         <!-- 头部开始 -->
-          <jsp:include page="user_info.jsp" flush='true'/>
+     <!-- 头部开始 -->
       <!--   <div class="header clearfix">
             <div class="nav clearfix">
                 <div class="nav-left">
