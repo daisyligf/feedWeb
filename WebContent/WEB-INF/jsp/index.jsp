@@ -32,7 +32,7 @@
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
-    <script type="text/javascript" src="./js/jquery-2.1.4.js"></script>
+    <!-- <script type="text/javascript" src="./js/jquery-2.1.4.js"></script> -->
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -98,8 +98,8 @@
             </div>
             <div class="bbs-search">
                <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
-               <input type="button" class="ser-but" value="" name="search" id="search"/>
-                <input type="text" class="ser-text" value="${searchKey} " id="searchKey" placeholder="过来搜我"/>
+               <input type="button" class="ser-but" value="" id="submit"/>
+                <input type="text" class="ser-text" value="${searchKey} " id="keyword" placeholder="过来搜我"/>
             </div>
         </div>
         <!-- 搜索结束 -->
@@ -737,11 +737,5 @@
    <script src="./js/mod/common.js"></script>
    
 </body>
-<script type="text/javascript">
-$('#search').click(function() {
-	var searchKey = $('#searchKey').val();
-	window.location.href = "search?keyword="+searchKey;
-});
 
-</script>
 </html>
