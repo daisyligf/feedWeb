@@ -34,6 +34,7 @@
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
     <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/bbs-config.js"></script>
     <script type="text/javascript">
 		function search(){
 			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
@@ -163,7 +164,7 @@
                     <div class="con-left-con">
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
-                            <dt><a href="#"><img src="${feedThread.avatar}"alt=""></a></dt>
+                            <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }">${feedThread.subject}
                                 <c:if test="${feedThread.isTop}"><s class="icon-ding"></s></c:if>

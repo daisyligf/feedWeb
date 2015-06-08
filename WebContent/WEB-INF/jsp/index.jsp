@@ -299,13 +299,13 @@
                                        	<c:if test="${recommendRank.giftUrl5 == ''}">
                                     	<a class="package off-package" href="javascript:;">礼包</a>
                                     	</c:if>
-                                    	<c:if test="${recommendRank.giftUrl5 == ''}">
+                                    	<c:if test="${recommendRank.giftUrl5 != ''}">
                                     	<a class="package" href="${recommendRank.giftUrl5}">礼包</a>
                                     	</c:if>
                                     	<c:if test="${recommendRank.downLoadUrl5 == ''}">
                                     	<a class="down off-package" href="javascript:;">下载</a>
                                     	</c:if>
-                                    	<c:if test="${recommendRank.downLoadUrl5 == ''}">
+                                    	<c:if test="${recommendRank.downLoadUrl5 != ''}">
                                     	<a class="down" href="${recommendRank.downLoadUrl5}">下载</a>
                                     	</c:if>
                                     </span>

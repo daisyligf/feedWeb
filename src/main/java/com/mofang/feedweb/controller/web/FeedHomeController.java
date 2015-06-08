@@ -376,8 +376,8 @@ public class FeedHomeController extends FeedCommonController {
 					jsonRank = data.getJSONObject(i);
 					if (i == 0) {
 						recommendRank.setForumId1(jsonRank.optLong("forum_id", 0));
-						if (jsonRank.optString("forum_name", "").length() > 8) {
-							recommendRank.setForumName1(jsonRank.optString("forum_name", "").substring(0, 8));
+						if (jsonRank.optString("forum_name", "").length() > 6) {
+							recommendRank.setForumName1(jsonRank.optString("forum_name", "").substring(0, 6));
 						} else {
 							recommendRank.setForumName1(jsonRank.optString("forum_name", ""));
 						}
@@ -387,8 +387,8 @@ public class FeedHomeController extends FeedCommonController {
 						recommendRank.setGiftUrl1(jsonRank.optString("gift_url", ""));
 					} else if (i == 1) {
 						recommendRank.setForumId2(jsonRank.optLong("forum_id", 0));
-						if (jsonRank.optString("forum_name", "").length() > 8) {
-							recommendRank.setForumName2(jsonRank.optString("forum_name", "").substring(0, 8));
+						if (jsonRank.optString("forum_name", "").length() > 6) {
+							recommendRank.setForumName2(jsonRank.optString("forum_name", "").substring(0, 6));
 						} else {
 							recommendRank.setForumName2(jsonRank.optString("forum_name", ""));
 						}
@@ -398,8 +398,8 @@ public class FeedHomeController extends FeedCommonController {
 						recommendRank.setGiftUrl2(jsonRank.optString("gift_url", ""));
 					} else if (i == 2) {
 						recommendRank.setForumId3(jsonRank.optLong("forum_id", 0));
-						if (jsonRank.optString("forum_name", "").length() > 8) {
-							recommendRank.setForumName3(jsonRank.optString("forum_name", "").substring(0, 8));
+						if (jsonRank.optString("forum_name", "").length() > 6) {
+							recommendRank.setForumName3(jsonRank.optString("forum_name", "").substring(0, 6));
 						} else {
 							recommendRank.setForumName3(jsonRank.optString("forum_name", ""));
 						}
@@ -409,8 +409,8 @@ public class FeedHomeController extends FeedCommonController {
 						recommendRank.setGiftUrl3(jsonRank.optString("gift_url", ""));
 					} else if (i == 3) {
 						recommendRank.setForumId4(jsonRank.optLong("forum_id", 0));
-						if (jsonRank.optString("forum_name", "").length() > 8) {
-							recommendRank.setForumName4(jsonRank.optString("forum_name", "").substring(0, 8));
+						if (jsonRank.optString("forum_name", "").length() > 6) {
+							recommendRank.setForumName4(jsonRank.optString("forum_name", "").substring(0, 6));
 						} else {
 							recommendRank.setForumName4(jsonRank.optString("forum_name", ""));
 						}
@@ -420,8 +420,8 @@ public class FeedHomeController extends FeedCommonController {
 						recommendRank.setGiftUrl4(jsonRank.optString("gift_url", ""));
 					} else if (i == 4) {
 						recommendRank.setForumId5(jsonRank.optLong("forum_id", 0));
-						if (jsonRank.optString("forum_name", "").length() > 8) {
-							recommendRank.setForumName5(jsonRank.optString("forum_name", "").substring(0, 8));
+						if (jsonRank.optString("forum_name", "").length() > 6) {
+							recommendRank.setForumName5(jsonRank.optString("forum_name", "").substring(0, 6));
 						} else {
 							recommendRank.setForumName5(jsonRank.optString("forum_name", ""));
 						}
