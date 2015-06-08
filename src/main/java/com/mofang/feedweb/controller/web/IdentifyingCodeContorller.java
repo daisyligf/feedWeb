@@ -29,15 +29,15 @@ public class IdentifyingCodeContorller {
 		JSONObject json = new JSONObject();
 		String rand = (String)request.getSession().getAttribute("randCode"); 
 		if(StringUtils.isEmpty(code) || StringUtils.isEmpty(rand)) {
-			json.put("code", 0);
+			json.put("code", 1);
 		}
 		if(!StringUtils.isEmpty(code) && !StringUtils.isEmpty(rand)) {
 			code = code.toLowerCase();
 			rand = rand.toLowerCase();
 			if(rand.equals(code)) {
-				json.put("code", 1);
-			}else{
 				json.put("code", 0);
+			}else{
+				json.put("code", 1);
 			}
 		}
 		response.getWriter().print(json.toString());

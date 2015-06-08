@@ -42,7 +42,7 @@ public class UserComponent {
 				return null;
 			}
 			JSONObject data = json.optJSONObject("data");
-			String userName = data.optString("username", "");
+			String userName = data.optString("nickname", "");
 			long userId = data.optLong("uid", 0l);
 			String avatar = data.optString("avatar", "");
 			UserInfo userInfo = new UserInfo();
