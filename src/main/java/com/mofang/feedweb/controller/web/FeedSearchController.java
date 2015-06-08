@@ -23,8 +23,8 @@ public class FeedSearchController extends FeedCommonController{
 	@RequestMapping(value = "/search",method = RequestMethod.GET)
 	public ModelAndView search(@RequestParam(value = "keyword") String keyword,
 			HttpServletRequest request) throws Exception {
-		keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		Map<String, Object> map = new HashMap<String, Object>(1);
+		keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		map.put("keyword", keyword);
 		return new ModelAndView("search", map);
 	}
@@ -80,6 +80,19 @@ public class FeedSearchController extends FeedCommonController{
 			@RequestParam(value = "fid", required=false) String strFid,
 			@RequestParam(value = "p", required=false) int p,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		if(StringUtils.isEmpty(keyword)) {
+			JSONObject json = new JSONObject();
+			json.put("code", 0);
+			json.put("message", "ok");
+			JSONObject data = new JSONObject();
+			data.put("total", 0);
+			data.put("threads", "[]");
+			json.put("data", data);
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().print(json.toString());
+			return;
+		}
+		
 		String status = "1";
 		String author = "";
 		if(!StringUtils.isEmpty(keyword)){
@@ -104,6 +117,19 @@ public class FeedSearchController extends FeedCommonController{
 	public void searchForum(@RequestParam(value = "keyword") String keyword,
 			@RequestParam(value = "p", required=false) int p,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		if(StringUtils.isEmpty(keyword)) {
+			JSONObject json = new JSONObject();
+			json.put("code", 0);
+			json.put("message", "ok");
+			JSONObject data = new JSONObject();
+			data.put("total", 0);
+			data.put("list", "[]");
+			json.put("data", data);
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().print(json.toString());
+			return;
+		}
+		
 		if(!StringUtils.isEmpty(keyword)){
 			keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		}
