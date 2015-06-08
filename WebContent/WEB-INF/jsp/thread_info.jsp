@@ -287,9 +287,9 @@
                     <script id="floorCommentTemplate2" type="text/x-handlebars-template">
                         
                         <dl class="clearfix">
-                            <dt><a href="{{url}}"><img src="{{avatar}}" alt=""></a></dt>
-                            <dd><a href="{{url}}">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
-                            <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
+                            <dt><a href="{{url}}"><img src="{{user.avatar}}" alt=""></a></dt>
+                            <dd><a href="{{url}}">{{user.nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
+                            <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{user.nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
                         </dl>
                     </script>
                     
@@ -308,7 +308,12 @@
                         </p>
                         <div class="con-list-right">
                             <dl class="list-right-dl">
-                                <dt><a href="javascript:;" class="list-del">删除</a>${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="MM-dd HH:mm"/></dt>
+                                <dt><% 
+                                CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
+                                if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
+                                %><a href="javascript:;" class="list-del">删除</a> <%} %>
+                                
+                                ${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="MM-dd HH:mm"/></dt>
                                 <dd>${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">
@@ -359,7 +364,7 @@
                                     <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                 </div>
                             </dd>
-                            <form id="editor-form" data-form="post" data-tid="${feedThread.thread_id }" action="send_reply" method="POST">
+                            <form id="editor-form" data-form="post" data-tid="${feedThread.thread_id }" action="send_reply.json" method="POST">
                                 <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
                                 <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
                                 <input type="hidden" name="content"  class="editor-cont" value=""/>

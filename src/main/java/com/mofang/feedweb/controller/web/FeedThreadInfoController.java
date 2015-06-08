@@ -533,7 +533,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		return null;
 	}
 	
-	@RequestMapping(value = "send_reply")
+	@RequestMapping(value = "send_reply.json")
 	public ModelAndView sendReply(@RequestParam("tid") long threadId, @RequestParam("content") String content, HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 		JSONObject postData = new JSONObject();
@@ -541,6 +541,13 @@ public class FeedThreadInfoController extends FeedCommonController {
 		postData.put("content", content);
 		
 		JSONObject json = postHttpInfo(getSendReplyUrl(), postData, request);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+		out.close();
 		
 //		String msg = "<script language='javascript'> alert('回复成功);'</script>";
 //		if(json != null && json.optInt("code", -1) == 0) {
@@ -553,7 +560,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 //		out.flush();
 //		out.close();
 		
-		response.sendRedirect("thread_info?thread_id=" + threadId);
+//		response.sendRedirect("thread_info?thread_id=" + threadId);
 		return null;
 	}
 	
