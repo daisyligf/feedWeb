@@ -207,7 +207,7 @@
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${topThread.user_name}</span>
-                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
                                         <span><s class="icon-look"></s>${topThread.page_view}</span>
@@ -234,7 +234,7 @@
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${feedThread.user_name}</span>
-                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
                                         <span><s class="icon-look"></s>${feedThread.page_view}</span>
