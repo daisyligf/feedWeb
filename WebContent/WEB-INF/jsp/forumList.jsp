@@ -32,7 +32,7 @@
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
-    <script type="text/javascript" src="./js/jquery-2.1.4.js"></script>
+    <script src="js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -215,6 +215,32 @@
                 </ul>
                 
 
+            <ul class="page-mobile">
+                <!-- 上一页 按钮 -->
+                
+				<c:choose>
+				<c:when test="${currentPage != 1}">
+					<li class="prev"><a href="forumList?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+				</c:otherwise>
+				</c:choose>
+				
+				 <li class="text">${currentPage}/${totalPages}</li>
+				
+				<!-- 下一页 按钮 -->
+				<c:choose>
+				<c:when test="${currentPage != totalPages}">
+					<li class="next"><a href="forumList?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+				</c:otherwise>
+				</c:choose>
+                </ul>
+
+				
             </div> 
               
            
@@ -227,8 +253,8 @@
         <!-- 底部结束 -->
     </div>
     
-   <script src="./js/mod/channel.js"></script>
-   <script src="js/mod/common.js"></script>
+   
+   
    
 </body>
 
