@@ -292,7 +292,12 @@
                                     </p>
                                 </dd>
                             </dl>
+                            <c:if test="${feedPost.comments > 0}">
                             <div class="con-list-reply clearfix" style="display: block;">
+                            </c:if>
+                            <c:if test="${feedPost.comments == 0}">
+                            <div class="con-list-reply clearfix">
+                            </c:if>
                                 <div class="con-list-replycon">
                                     <!--楼层回复内容-->
                                 </div>
