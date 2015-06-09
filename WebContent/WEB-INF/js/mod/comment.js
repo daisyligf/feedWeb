@@ -166,7 +166,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             error:function(){
                 $(".pop-warn").pop({
                     type:"confirm",
-                    msg:"帖子发布失败，请重新发送。",
+                    msg:"网络出错，请重新发送。",
                     fnCallback: function(isTrue,msg){
                         if(isTrue){
                             editorForm.submit();
@@ -196,7 +196,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 }else{
                     $(".pop-warn").pop({
                         type:"confirm",
-                        msg:"帖子发布失败，请重新发送。",
+                        msg:res.message,
                         fnCallback: function(isTrue,msg){
                             if(isTrue){
                                 editorForm.submit();

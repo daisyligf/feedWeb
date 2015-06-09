@@ -280,9 +280,9 @@
                     <div class="con-con">
                     	${postList[0].htmlContent }
                     </div>
-                    <p class="look" data-tid="${feedThread.thread_id }">
-                        <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
-                        <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
+                   <p class="look" data-tid="${feedThread.thread_id }">
+                        <span class="thread-zan zan-hover"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
+                        <span class="thread-comment"><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                 </div>
                 <!--</c:if>-->
@@ -339,7 +339,7 @@
                                 <div class="con-list-replycon">
                                     <!--楼层回复内容-->
                                 </div>
-                                
+                                <div class="replay-lay-btn">回复层主</div>
                                 <p class="floor-reply-more">更多${feedPost.comments }条回复    <a href="javascript:;">点击加载</a></p>
                                 <div class="reply-textarea">
                                     <input type="hidden"  name="tid" class="tid" value="2342"/>
@@ -355,14 +355,49 @@
                     </div>
                     </c:forEach>
                     <!-- 分页 -->
-                    <div class="page-plug">
+                       <!-- 上一页 按钮 -->
+                <div class="page-plug">
+                        <ul class="page-pc clearfix">
+						<c:choose>
+						<c:when test="${currentPage != 1}">
+							<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
+						</c:when>
+						<c:otherwise>
+							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+						</c:otherwise>
+						</c:choose>
+						
+						<!-- 页数列表 -->
+						<c:forEach items="${pagelist}" var="item">
+						<c:choose>
+						<c:when test="${item == currentPage}">
+							<li class="active"><a href="thread_info?currentPage=${item }&thread_id=${feedThread.thread_id}&type=${type}" >${item}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="thread_info?currentPage=${item}&thread_id=${feedThread.thread_id}&type=${type}">${item}</a></li>
+						</c:otherwise>
+						</c:choose>
+						</c:forEach>
+						
+						<!-- 下一页 按钮 -->
+						<c:choose>
+						<c:when test="${currentPage != totalPages}">
+							<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
+						</c:when>
+						<c:otherwise>
+							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+						</c:otherwise>
+						</c:choose>
+                	</ul>
+                </div>
+                   <!-- <div class="page-plug">
                         <ul class="page-mobile clearfix">
                             <li class="prev"><a href="#">上一页</a></li>
                             <li class="text">5/235</li>
                             <li class="next"><a href="#">下一页</a></li>
                         </ul>
                     </div>
-
+					-->
                 </div>
                 <div class="con-right3 reply-textarea">
                     <div class="reply-textarea-info clearfix">

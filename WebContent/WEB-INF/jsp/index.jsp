@@ -32,7 +32,6 @@
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
-    <!-- <script type="text/javascript" src="./js/jquery-2.1.4.js"></script> -->
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -52,44 +51,6 @@
     <div class="page">
         <!-- 头部开始 -->
         <jsp:include page="user_info.jsp" flush='true'/>
-      	<!--   <div class="header clearfix">
-            <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="http://www.mofang.com">魔方网首页</a>
-                </div>
-                <div class="nav-right" id="topUserInfo">-->
-                    <!-- 登陆状态 -->
-                    <!-- top登录模板 -->
-                  <!--  
-                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
-                            <li class="info">
-                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
-                            </li>
-                        </ul>
-                    </div>
-                    -->
-                    <!-- 登陆状态 -->
-                   <!--  <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
-                </div>
-            </div>
-            <div class="nav-wap clearfix">
-                <div class="nav-wap-left">
-                  <a href="javascript:;"><img src="./img/icon/nav_three.png"></a>
-                  <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
-                    <a href="http://u.mofang.com">个人中心</a>
-                  </p>
-                </div>
-                  <div class="wap-logo">
-                    <img src="./img/icon/bbs_icon_wap.png"alt="">
-                  </div>
-               
-            </div>
-        </div>-->
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
         <div class="search">
@@ -233,13 +194,13 @@
                                     <li class="clearfix"><a href="forum_content?fid=${recommendRank.forumId1}" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a>
                                     <span>
                                         <c:if test="${recommendRank.giftUrl1 == ''}">
-                                    	<a class="package" href="javascript:;">礼包</a>
+                                    	<a class="package off-package" href="javascript:;">礼包</a>
                                     	</c:if>
                                     	 <c:if test="${recommendRank.giftUrl1 != ''}">
                                     	<a class="package" href="${recommendRank.giftUrl1}">礼包</a>
                                     	</c:if>
                                     	<c:if test="${recommendRank.downLoadUrl1 == ''}">
-                                    	<a class="down" href="javascript:;">下载</a>
+                                    	<a class="down off-down" href="javascript:;">下载</a>
                                     	</c:if>
                                     	<c:if test="${recommendRank.downLoadUrl1 != ''}">
                                     	<a class="down" href="${recommendRank.downLoadUrl1}">下载</a>
@@ -321,6 +282,44 @@
 
             </div>
            <!-- 第一块内容结束 -->
+           <!-- 综合专区开始 -->
+           <div class="h2">综合专区</div>
+           <div class="h2-con clearfix container">
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="forum_content?fid=${officalForum.forumId1}"><img src="${officalForum.icon1} " alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId1}">${officalForum.forumName1}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads1}</dd>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="forum_content?fid=${officalForum.forumId2}"><img src="${officalForum.icon2}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId2}">${officalForum.forumName2}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads2}</dd>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="forum_content?fid=${officalForum.forumId3}"><img src="${officalForum.icon3}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId3}">${officalForum.forumName3}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads3}</dd>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <dt><a href="forum_content?fid=${officalForum.forumId4}"><img src="${officalForum.icon4}" alt=""></a></dt>
+                       <dd><a href="forum_content?fid=${officalForum.forumId4}">${officalForum.forumName4}</a></dd>
+                       <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
+                       <dd>帖子  ${officalForum.totalThreads4}</dd>
+                   </dl>
+               </div>
+               
+           </div>
+           <!-- 综合专区结束 -->
            <!-- 热门游戏开始 -->
            <div class="h2">热门游戏 <a href="forumList?forumType=1">更多 ></a></div>
            <div class="h2-con clearfix container">
@@ -685,44 +684,7 @@
                
            </div>
            <!-- 新游推荐结束 -->
-           <!-- 综合专区开始 -->
-           <div class="h2">综合专区</div>
-           <div class="h2-con clearfix container">
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="forum_content?fid=${officalForum.forumId1}"><img src="${officalForum.icon1} " alt=""></a></dt>
-                       <dd><a href="forum_content?fid=${officalForum.forumId1}">${officalForum.forumName1}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads1}</dd>
-                   </dl>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="forum_content?fid=${officalForum.forumId2}"><img src="${officalForum.icon2}" alt=""></a></dt>
-                       <dd><a href="forum_content?fid=${officalForum.forumId2}">${officalForum.forumName2}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads2}</dd>
-                   </dl>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="forum_content?fid=${officalForum.forumId3}"><img src="${officalForum.icon3}" alt=""></a></dt>
-                       <dd><a href="forum_content?fid=${officalForum.forumId3}">${officalForum.forumName3}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads3}</dd>
-                   </dl>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                       <dt><a href="forum_content?fid=${officalForum.forumId4}"><img src="${officalForum.icon4}" alt=""></a></dt>
-                       <dd><a href="forum_content?fid=${officalForum.forumId4}">${officalForum.forumName4}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads4}</dd>
-                   </dl>
-               </div>
-               
-           </div>
-           <!-- 综合专区结束 -->
+           
      
         </div>
         <!-- 内容结束 -->

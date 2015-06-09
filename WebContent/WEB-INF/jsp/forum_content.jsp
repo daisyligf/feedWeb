@@ -34,13 +34,7 @@
     <link rel="stylesheet" href="css/add_list_article.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
-    <script src="js/jquery-2.1.4.js"></script>
     <script src="js/bbs-config.js"></script>
-    <script type="text/javascript">
-		function search(){
-			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
-		}
-    </script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -60,41 +54,6 @@
     <div class="page">
         <!-- 头部开始 -->
         <jsp:include page="user_info.jsp" flush='true'/>
-      <!--   <div class="header clearfix">
-            <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="http://www.mofang.com">魔方网首页</a>
-                </div>
-                
-                <div class="nav-right" id="topUserInfo">
-                    登陆状态
-                    top登录模板
-                    
-                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
-                            <li class="info">
-                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    登陆状态
-                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
-                </div> 
-            </div>
-            <div class="nav-wap clearfix">
-              <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
-                  <p class="nav-info">
-                    <a class="nav-info-home">首页</a>
-                    <a>个人中心</a>
-                  </p>
-              </div> 
-            </div>
-        </div>-->
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
         <div class="search">
@@ -118,7 +77,7 @@
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                    <a href="javascript:;" class="follow fllowed" data-areaid='234' data-dofollow='0'>+ 关注</a>
+                    <a href="javascript:;" class="follow followed" data-areaid='234' data-dofollow='0'>+ 关注</a>
                     <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
