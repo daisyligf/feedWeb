@@ -499,6 +499,13 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	
 	function FloorManage(){
 		var countNum = 0;
+		//如果有评价加载数据
+		$(".floor-rec a").each(function(){
+			var _this = this;
+			if($(_this).html()>0){
+				$(_this).parents(".con-list-right").find(".floor-rec").click();
+			}
+		});
 		//点击获取评论数据
 		$("body").on("click",".floor-rec",function(){
 			var _this  = this;
