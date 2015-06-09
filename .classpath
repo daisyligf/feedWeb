@@ -23,5 +23,7 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.3.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk6_gr"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jedis-2.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
