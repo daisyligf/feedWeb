@@ -690,13 +690,13 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 					});
 				}else{
 					$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 				}
 			},function(res){
 				$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 			});
