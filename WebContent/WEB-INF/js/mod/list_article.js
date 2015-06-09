@@ -122,6 +122,15 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	},function(){
 		$(this).find(".list").hide();
 	});
+	
+	//页面标签处理
+	var tagId = $('#tag_id').val();
+		if (tagId != '' && tagId > 0) {
+			$("#tag_" + tagId).addClass('active');
+		} else {
+			$("#tag_all").addClass('active');
+		}
+		
 });
 
 seajs.use('index');
