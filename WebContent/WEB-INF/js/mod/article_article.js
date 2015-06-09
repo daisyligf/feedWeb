@@ -696,7 +696,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 						var v = $(_this).find("a").html(val+1);
 					}
 					$(".pop-post-ok").pop({
-						msg:"点赞成功",
+						msg:reason+"成功",
 						autoTime:1000
 					});
 				}else{
