@@ -17,6 +17,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mofang.feedweb.util.StringUtil;
+
 @Controller
 public class IdentifyingCodeContorller {
 
@@ -28,10 +30,10 @@ public class IdentifyingCodeContorller {
 	public void check(@RequestParam(value = "code") String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		JSONObject json = new JSONObject();
 		String rand = (String)request.getSession().getAttribute("randCode"); 
-		if(StringUtils.isEmpty(code) || StringUtils.isEmpty(rand)) {
+		if(StringUtil.isNullOrEmpty(code) || StringUtil.isNullOrEmpty(rand)) {
 			json.put("code", 1);
 		}
-		if(!StringUtils.isEmpty(code) && !StringUtils.isEmpty(rand)) {
+		if(!StringUtil.isNullOrEmpty(code) && !StringUtil.isNullOrEmpty(rand)) {
 			code = code.toLowerCase();
 			rand = rand.toLowerCase();
 			if(rand.equals(code)) {

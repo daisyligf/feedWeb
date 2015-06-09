@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.global.Constant;
+import com.mofang.feedweb.util.StringUtil;
 
 @Controller
 public class FeedSearchController extends FeedCommonController{
@@ -60,7 +60,7 @@ public class FeedSearchController extends FeedCommonController{
 			for(int idx = 0; idx < jsonArr.length(); idx ++) {
 				JSONObject objThread = jsonArr.getJSONObject(idx);
 				String content = objThread.optString("content", "");
-				if(!StringUtils.isEmpty(content)) {
+				if(!StringUtil.isNullOrEmpty(content)) {
 					// content字段截取40个字符显示
 					if(content.length() > 40){
 						content = content.substring(0, 39);
@@ -80,7 +80,7 @@ public class FeedSearchController extends FeedCommonController{
 			@RequestParam(value = "fid", required=false) String strFid,
 			@RequestParam(value = "p", required=false) int p,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(StringUtils.isEmpty(keyword)) {
+		if(StringUtil.isNullOrEmpty(keyword)) {
 			JSONObject json = new JSONObject();
 			json.put("code", 0);
 			json.put("message", "ok");
@@ -95,11 +95,11 @@ public class FeedSearchController extends FeedCommonController{
 		
 		String status = "1";
 		String author = "";
-		if(!StringUtils.isEmpty(keyword)){
+		if(!StringUtil.isNullOrEmpty(keyword)){
 			keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		}
 		long fid = 0;
-		if(!StringUtils.isEmpty(strFid)) {
+		if(!StringUtil.isNullOrEmpty(strFid)) {
 			fid = Long.valueOf(strFid);
 		}
 		StringBuilder requestParam = new StringBuilder();
@@ -117,7 +117,7 @@ public class FeedSearchController extends FeedCommonController{
 	public void searchForum(@RequestParam(value = "keyword") String keyword,
 			@RequestParam(value = "p", required=false) int p,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(StringUtils.isEmpty(keyword)) {
+		if(StringUtil.isNullOrEmpty(keyword)) {
 			JSONObject json = new JSONObject();
 			json.put("code", 0);
 			json.put("message", "ok");
@@ -130,7 +130,7 @@ public class FeedSearchController extends FeedCommonController{
 			return;
 		}
 		
-		if(!StringUtils.isEmpty(keyword)){
+		if(!StringUtil.isNullOrEmpty(keyword)){
 			keyword = new String(keyword.getBytes("ISO-8859-1"), "UTF-8");
 		}
 

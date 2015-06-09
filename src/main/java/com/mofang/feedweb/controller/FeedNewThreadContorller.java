@@ -38,6 +38,7 @@ import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
+import com.mofang.feedweb.util.StringUtil;
 
 @Controller
 public class FeedNewThreadContorller extends FeedCommonController {
@@ -189,11 +190,11 @@ public class FeedNewThreadContorller extends FeedCommonController {
 		String strFid = request.getParameter("fid");
 		
 		long tid = 0;
-		if(!StringUtils.isEmpty(strTid)) {
+		if(!StringUtil.isNullOrEmpty(strTid)) {
 			tid = Long.valueOf(strTid);
 		}
 		int tagId = 0;
-		if(!StringUtils.isEmpty(strTagId)){
+		if(!StringUtil.isNullOrEmpty(strTagId)){
 			tagId = Integer.valueOf(strTagId);
 		}
 		
