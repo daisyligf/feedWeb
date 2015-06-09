@@ -208,7 +208,7 @@
                 </div>
             </div>
             <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }">
-            	<c:if test="${currentPage==1}">
+            	<!--<c:if test="${currentPage==1}">-->
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
@@ -220,10 +220,12 @@
                     <h2> ${feedThread.subject } 
                      <c:choose>
                         	<c:when test="${type==1 }">
-                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
+                        	<!--  <a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>-->
+                        	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
                         	</c:when>
                         	<c:otherwise>
-                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
+                        	<!--<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>-->
+                        	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
                         	</c:otherwise>
                         </c:choose>
                         
@@ -283,7 +285,7 @@
                         <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                 </div>
-                </c:if>
+                <!--</c:if>-->
                 <div class="con-right2" id="conRight2">
                     <!-- 楼层回复模板1 -->
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
