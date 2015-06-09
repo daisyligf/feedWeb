@@ -23,7 +23,6 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	}
 	if(USE_TEST_DATA){
 		loginUrl = "http://u.test.mofang.com/";
-		//var getFollowUrl = "http://u.test.mofang.com/home/area/follow?area_id=54"; //关注/取消关注
 		getFollowUrl = "http://u.test.mofang.com/home/area/follow"; //关注/取消关注
 	}
 

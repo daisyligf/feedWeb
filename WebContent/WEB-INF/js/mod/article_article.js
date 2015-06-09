@@ -3,11 +3,12 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop'],function(require, exports, module) {
+define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','loginUserUrl'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
 	require("jquery/jquery-pop");//弹出框插件
+	require("loginUserUrl");//跳转登录路径
 	var Handlebars = require("handlebars");//handlebars模板引擎获取登录状态
 
 	var USE_LOCAL_DATA = 0;//本地数据
@@ -104,42 +105,54 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		$("body").on("click",".thread-zan",function(){
 			var _this =this;
 			var tid = $(_this).parents(".look").attr("data-tid");
-			//var uid = $(_this).parents(".con-list").attr("data-uid");
-
-			var reason = "点赞";
+			
+			
+			var reason="";
 			if(!loginStatus){
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
 				return false;
 			}
 			
+			if($(_this).hasClass('zan-hover')){
+				reason = "取消点赞";
+			}else{
+				reason = "点赞";
+			}
 			fnAjax(setPraThreadUrl,{
-				tid : tid,
-				//uid : uid
+				tid : tid
 			},function(res){
 				if(res && res.code==0){
 					var val = parseInt($(_this).find("a").html());
-					var v = $(_this).find("a").html(val+1);
+					
+					if($(_this).hasClass('zan-hover')){
+						$(_this).removeClass('zan-hover');
+						var v = $(_this).find("a").html(val-1);
+					}else{
+						$(_this).addClass('zan-hover');
+						var v = $(_this).find("a").html(val+1);
+					}
+					
 					$(".pop-post-ok").pop({
-						msg:"点赞成功",
+						msg:reason+"成功",
 						autoTime:1000
 					});
 				}else{
 					$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 				}
 			},function(res){
 				$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 			});
@@ -492,6 +505,10 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(_this).parents(".con-list-right").find(".con-list-reply").show();
 			_this.pagecur=0;
 			$(_this).parents(".con-list-right").find(".con-list-replycon").html('');
+			if($(_this).find("a").html()==0){
+				$(_this).parents(".con-list-right").find(".reply-textarea").show();
+				$(_this).parents(".con-list-right").find(".replay-lay-btn").hide();
+			}
 			getFloorCommentData(_this,{
 				p : 1
 			},function(){
@@ -506,7 +523,12 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			;
 			$(_this).parents(".con-list-right").find(".con-list-reply").hide();
 		});
-		//
+		//回复楼层文本框show
+		$("body").on("click",".replay-lay-btn",function(){
+			var _this  = this;
+			$(_this).hide();
+			$(_this).siblings(".reply-textarea").show();
+		});
 		//加载更多
 		$("body").on("click",".floor-reply-more",function(){
 			var _this  = this;
@@ -626,18 +648,25 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var pid = $(_this).parents(".con-list").attr("data-postid");
 			var uid = $(_this).parents(".con-list").attr("data-uid");
 
-			var reason = "点赞";
+			var reason = "";
 			if(!loginStatus){
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
 				return false;
+			}
+			
+			
+			if($(_this).hasClass('zan-hover')){
+				reason = "取消点赞";
+			}else{
+				reason = "点赞";
 			}
 			
 			fnAjax(setPraFloorUrl,{
@@ -646,7 +675,13 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			},function(res){
 				if(res && res.code==0){
 					var val = parseInt($(_this).find("a").html());
-					var v = $(_this).find("a").html(val+1);
+					if($(_this).hasClass('zan-hover')){
+						$(_this).removeClass('zan-hover');
+						var v = $(_this).find("a").html(val-1);
+					}else{
+						$(_this).addClass('zan-hover');
+						var v = $(_this).find("a").html(val+1);
+					}
 					$(".pop-post-ok").pop({
 						msg:"点赞成功",
 						autoTime:1000

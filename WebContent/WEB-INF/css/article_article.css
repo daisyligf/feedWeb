@@ -184,19 +184,35 @@
 .con .look .zan{
 	margin-right:25px;
 }
-.con .look .zan-hover{
+.con .look .zan-hover a{
 	color: #f90;
 }
 .con .look .zan-hover .icon-zan{
-	border: 1px solid #e2e2e2;
 	background: url(../img/icon/zan_hover.png) no-repeat;
 	background-size: 100% 100%;
+}
+.con .look{
+	float:right;
+	margin-bottom: 24px
+}
+.con .look .thread-zan{
+	margin-right:25px;
+}
+.con .look .thread-comment{
+	margin-right:30px;
+}
+.con .look a{
+	color:#7fafd4;
 }
 .con .con-right2{
 	margin-top:20px;
 	padding:30px;
+	padding-top:0px;
 	background: #fff;
 	border:1px solid #eee;
+}
+.con .con-right2 .con-list{
+	padding-top:30px;
 }
 .con .con-right2 .con-list-left{
 	position: relative;
@@ -291,8 +307,18 @@
 	margin-left: 25px;
 	color:#96c5e9;
 }
+.con .con-right2 .replay-lay-btn{
+	float:right;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	background: #ff9900;
+	cursor:pointer;
+}
 .con .con-right2 .reply-textarea{
-
+	display:none;
 }
 .con .reply-textarea-info p.reply-head{
 	float: left;

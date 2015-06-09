@@ -66,7 +66,6 @@ define('index',['jquery','swipe'],function(require, exports, module) {
 		/*var aBtn = $("#hotNewTab ol li");*/
 		//这个插件用的是原生的对象
 		var ImgTabs = new Swipe(oBox,{
-			auto:4000,
 			callback: function(index) {
 				setTab(index%2);
 			}

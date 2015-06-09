@@ -70,44 +70,9 @@
 </head>
 <body>
     <div class="page">
-    
-    <jsp:include page="user_info.jsp" flush='true'/>
-        <!-- 头部开始 -->
-       <!--  <div class="header clearfix">
-            <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="http://www.mofang.com">魔方网首页</a>
-                </div>
-                <div class="nav-right" id="topUserInfo">
-                    登陆状态
-                    top登录模板
-                    
-                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
-                            <li class="info">
-                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    登陆状态
-                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
-                </div> 
-            </div>
-            <div class="nav-wap clearfix">
-              <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
-                  <p class="nav-info">
-                    <a class="nav-info-home">首页</a>
-                    <a>个人中心</a>
-                  </p>
-              </div> 
-            </div>
-        </div>-->
-        <!-- 头部结束 -->
+      <!-- 头部开始 -->
+        <jsp:include page="user_info.jsp" flush='true'/>
+      <!-- 头部结束 -->
       <!-- 搜索开始 -->
         <div class="search">
             <div class="bbs-logo">
@@ -278,8 +243,8 @@
                     	${postList[0].htmlContent }
                     </div>
                     <p class="look" data-tid="${feedThread.thread_id }">
-                        <span class="thread-zan"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
-                        <span><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
+                        <span class="thread-zan zan-hover"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
+                        <span class="thread-comment"><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                 </div>
                 </c:if>
@@ -332,12 +297,13 @@
                                     </p>
                                 </dd>
                             </dl>
-                            <div class="con-list-reply">
+                            <div class="con-list-reply clearfix">
                                 <div class="con-list-replycon">
                                     <!--楼层回复内容-->
                                 </div>
                                 
                                 <p class="floor-reply-more">更多${feedPost.comments }条回复    <a href="javascript:;">点击加载</a></p>
+                                <div class="replay-lay-btn">回复层主</div>
                                 <div class="reply-textarea">
                                     <input type="hidden"  name="tid" class="tid" value="2342"/>
                                     <input type="hidden"  name="uid" class="uid" value="2342"/>
@@ -452,6 +418,15 @@
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="稍后再试">
                 <input type="button" class="pop-play-ok pop-ok" value="重新发送">
+            </p>
+        </div>
+        <!--未登录-->
+        <div class="pop pop-play pop-login">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="前往登录">
             </p>
         </div>
         <!-- 成功 -->
