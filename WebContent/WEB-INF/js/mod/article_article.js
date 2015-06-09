@@ -499,15 +499,10 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	
 	function FloorManage(){
 		var countNum = 0;
-		//如果有评价加载数据
-		$(".floor-rec a").each(function(){
-			var _this = this;
-			if($(_this).html()>0){
-				$(_this).parents(".con-list-right").find(".floor-rec").click();
-			}
-		});
+		
 		//点击获取评论数据
 		$("body").on("click",".floor-rec",function(){
+			
 			var _this  = this;
 			$(_this).hide();
 			$(_this).siblings(".floor-stop").show();
@@ -531,6 +526,13 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(_this).siblings(".floor-rec").show();
 			;
 			$(_this).parents(".con-list-right").find(".con-list-reply").hide();
+		});
+		//如果有评价加载数据
+		$(".floor-rec").each(function(){
+			var _this = this;
+			if($(_this).find('a').html()>0){
+				$(_this).click();
+			}
 		});
 		//回复楼层文本框show
 		$("body").on("click",".replay-lay-btn",function(){
@@ -785,7 +787,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".dianping-textarea").val('回复');
 		    		$(obj).parents(".con-list-right").find(".reply-textarea").hide();
-		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").hide();
+		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").show();
 					
 		    		$(".pop-post-ok").pop({
 						msg:"回复成功"
