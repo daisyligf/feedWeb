@@ -79,7 +79,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             toolbar:[
                 ' bold italic underline |',
                 'forecolor fontsize' ,
-                'link unlink | image feed-emotion',
+                'link unlink | image feed-emotion | video',
             ],
            imageScaleEnabled:false
         });
@@ -182,7 +182,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 }
                 if(res && res.code==0){
                     $(".pop-post-ok").pop({
-                        msg: "发送成功",
+                        msg: "发帖成功",
                         autoTime:500
                     }); 
                     setTimeout(function(){
