@@ -252,7 +252,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 	private List<FeedThread> replyHighest(HttpServletRequest request, long forumId) throws Exception {
 		String param = "fid=" + forumId;
 		List<FeedThread> threadList = new ArrayList<FeedThread>();
-		JSONObject json = getHttpInfo(getCommentListUrl(), param, request);
+		JSONObject json = getHttpInfo(getFeedUrlInfo() + Constant.REPLY_HIGHEST_URL, param, request);
 		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");
 			if (data != null && data.length() > 0) {
@@ -364,7 +364,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 		out.print(json);
 		out.flush();
 		out.close();
-		
 		return null;
 	}
 	
