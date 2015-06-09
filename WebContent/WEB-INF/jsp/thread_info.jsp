@@ -276,7 +276,7 @@
                         </c:if>
                         
                     </h2>
-                    <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></h3>
+                    <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent }
                     </div>
@@ -327,7 +327,7 @@
                                 if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
                                 %><a href="javascript:;" class="list-del">删除</a> <%} %>
                                 
-                                ${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="MM-dd HH:mm"/></dt>
+                                ${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
                                 <dd>${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">

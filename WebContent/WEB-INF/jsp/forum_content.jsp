@@ -162,7 +162,7 @@
                                 <c:if test="${topThread.isElite}"><s class="icon-jing"></s></c:if>
                                 <c:if test="${topThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
-                                <dd>${fn:substring(topThread.content, 0, 100)}...</dd>
+                                <dd>${fn:substring(topThread.content, 0, 40)}...</dd>
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${topThread.user_name}</span>
@@ -189,7 +189,7 @@
                                 <c:if test="${feedThread.isElite}"><s class="icon-jing"></s></c:if>
                                 <c:if test="${feedThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
-                                <dd>${fn:substring(feedThread.content, 0, 100)}...</dd>
+                                <dd>${fn:substring(feedThread.content, 0, 40)}...</dd>
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${feedThread.user_name}</span>
