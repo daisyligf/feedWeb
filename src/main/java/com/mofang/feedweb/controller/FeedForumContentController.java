@@ -78,7 +78,7 @@ public class FeedForumContentController extends FeedCommonController {
 			List<GameGift> giftList = getGiftList(request, gameId);
 			model.put("giftList", giftList);
 		}
-		
+		model.put("keyword", getSearchKey(request));
 		model.put("feedForum", feedForum);
 		
 		return new ModelAndView("forum_content", model);

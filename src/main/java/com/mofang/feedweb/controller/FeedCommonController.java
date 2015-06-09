@@ -321,5 +321,26 @@ public class FeedCommonController {
 	private Map<String, String> getEmojiMap() {
 		return EmojiUtil.getEmojiMap();
 	}
+	
+	protected String getSearchKey(
+			HttpServletRequest request) throws JSONException 
+	{
+		//搜索关键字
+			JSONObject keywordResult = getHttpInfo(
+					getFeedUrlInfo().concat(
+							Constant.HOME_SEARCH_KEYWORD_GET_URL),"" , request);
+			String searchKey = "";
+			if (null != keywordResult) {
+				int code = keywordResult.optInt("code", -1);
+				if (0 != code) {
+				} else {
+					JSONObject data = keywordResult.optJSONObject("data");
+					searchKey = data.optString("key_word", "");
+				}	
+			}
+		
+		return searchKey;
+		
+	}
 
 }

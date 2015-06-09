@@ -50,7 +50,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		
 		UserInfo loginUser = getUserInfo(request);
 		model.put("loginUser", loginUser);
-		
+		model.put("keyword", getSearchKey(request));
 		return new ModelAndView("thread_info", model);
 	}
 	

@@ -74,6 +74,7 @@ public class FeedForumListController extends FeedCommonController {
 		model.put("totalPages", Tools.editTotalPageNumber(total));
 		model.put("pagelist", Tools.editPageNumber(total, currentPage,Constant.PAGE_SIZE));
 		model.put("forumType", forumType);
+		model.put("keyword", getSearchKey(request));
 		
 		return new ModelAndView("forumList", model);
 
