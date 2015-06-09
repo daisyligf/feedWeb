@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page import="com.mofang.feedweb.entity.FeedForum"%>
 <%@ page import="com.mofang.feedweb.entity.HotThread"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -142,14 +143,14 @@
                                 <c:if test="${type==0 }">
                                 <p>全部</p>
                                 <p class="list">
-                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}">精华</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}&tag_id=${tag_id}">精华</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${type ==1 }">
                                 <p>精华</p>
                                 <p class="list">
-                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=0&timeType=${timeType}">全部</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=0&timeType=${timeType}&tag_id=${tag_id}">全部</a>
                                 </p>
                                 </c:if>
                                 
@@ -169,14 +170,14 @@
                                 <c:if test="${timeType==0 }">
                                 <p id="reply_time">回复时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=1">发帖时间</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=1&tag_id=${tag_id}">发帖时间</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${timeType==1 }">
                                 <p id="reply_time">发帖时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=0">回复时间</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=0&tag_id=${tag_id}">回复时间</a>
                                 </p>
                                 </c:if>
                                
@@ -194,7 +195,7 @@
                     	<c:if test="${currentPage==1 }">
                     	<c:forEach var="topThread" items="${topThreadList}">
                         <dl class="clearfix">
-                            <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title"><a href="thread_info?thread_id=${topThread.thread_id }" target="_blank">${topThread.subject}
                                 <c:if test="${topThread.isTop}"><s class="icon-ding"></s></c:if>
@@ -221,7 +222,7 @@
                     	</c:if>
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
-                            <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }" target="_blank">${feedThread.subject}
                                 <c:if test="${feedThread.isTop}"><s class="icon-ding"></s></c:if>
@@ -244,7 +245,7 @@
                             
                         </dl>
                        </c:forEach>
-                       <div class="page-plug col-xs-6">
+                       <div class="page-plug">
 			                <ul class="page-pc">
 			                <!-- 上一页 按钮 -->
 			                

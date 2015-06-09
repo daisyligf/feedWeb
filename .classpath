@@ -22,6 +22,16 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-web-3.2.3.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.3.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk6_gr"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/cglib-nodep-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-all-1.8.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
