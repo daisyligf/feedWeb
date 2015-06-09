@@ -50,7 +50,7 @@ public class FeedHomeController extends FeedCommonController {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
-		model.put("recommendSearchKey", getSearchKey(request));
+		model.put("keyword", getSearchKey(request));
 		//大小标题
 		model.put("tickers", getHomeTickers(request));
 		//大小标题
