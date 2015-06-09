@@ -1,5 +1,6 @@
 package com.mofang.feedweb.global;
 
+
 /**
  * 
  * @author daisyli

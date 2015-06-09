@@ -2,7 +2,6 @@ package com.mofang.feedweb.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -321,12 +320,6 @@ public class FeedCommonController {
 
 	private Map<String, String> getEmojiMap() {
 		return EmojiUtil.getEmojiMap();
-	}
-
-	public static void main(String[] args) {
-		FeedCommonController common = new FeedCommonController();
-		String content = "[尴尬]好看的。。。。。。[汗呐][亲嘴]";
-		System.out.print(common.replaceEmoji(content));
 	}
 
 }
