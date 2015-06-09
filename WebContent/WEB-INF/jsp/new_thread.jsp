@@ -77,7 +77,11 @@
         <jsp:include page="user_info.jsp" flush='true'/>
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
-     
+         <div class="search">
+        <div class="bbs-logo">
+           <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
+        </div>
+        </div>
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
