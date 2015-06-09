@@ -58,7 +58,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		StringBuilder param = new StringBuilder();
 		param.append("tid=").append(threadId);
 		long forumId = 0;
-		String currPage = request.getParameter("currPage");
+		String currPage = request.getParameter("currentPage");
 		int page = 1;
 		if (currPage != null && StringUtil.isInteger(currPage)) {
 			page = Integer.parseInt(currPage);
@@ -67,7 +67,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 		param.append("&page=").append(page);
 		
 		String pageSize = request.getParameter("pageSize");
-		int size = 30;
+		//int size = 30;
+		int size = 20;
 		if (pageSize != null && StringUtil.isInteger(pageSize)) {
 			size = Integer.parseInt(pageSize);
 		}
