@@ -54,16 +54,6 @@
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
         <jsp:include page="commonSearch.jsp" flush='true'/>
-        <!--<div class="search">
-            <div class="bbs-logo">
-                <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
-            </div>
-            <div class="bbs-search">-->
-               <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
-              <!--  <input type="button" class="ser-but" value="" id="submit"/>
-                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
-            </div>
-        </div>-->
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">

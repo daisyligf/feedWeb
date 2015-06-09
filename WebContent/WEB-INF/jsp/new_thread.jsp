@@ -236,9 +236,9 @@
         </div>
         <!-- 内容结束 -->
         <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
-        </div>
+        <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
         <!-- 底部结束 -->
         <!-- 弹出框开始 -->
         <!-- 遮罩层开始 -->

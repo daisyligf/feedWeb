@@ -46,7 +46,7 @@
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
     <script src="js/bbs-config.js"></script>
-
+    <script src="js/mod/common.js"></script>
     <script src="js/editor/js/jquery.min.js"></script>
     <script src="js/editor/js/umeditor.config.js"></script>
     <script src="js/editor/js/umeditor.js"></script>
@@ -72,54 +72,11 @@
 <body>
     <div class="page">
     
-    <jsp:include page="user_info.jsp" flush='true'/>
         <!-- 头部开始 -->
-       <!--  <div class="header clearfix">
-            <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="http://www.mofang.com">魔方网首页</a>
-                </div>
-                <div class="nav-right" id="topUserInfo">
-                    登陆状态
-                    top登录模板
-                    
-                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
-                            <li class="info">
-                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    登陆状态
-                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
-                </div> 
-            </div>
-            <div class="nav-wap clearfix">
-              <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
-                  <p class="nav-info">
-                    <a class="nav-info-home">首页</a>
-                    <a>个人中心</a>
-                  </p>
-              </div> 
-            </div>
-        </div>-->
+         <jsp:include page="user_info.jsp" flush='true'/>
         <!-- 头部结束 -->
-      <!-- 搜索开始 -->
-        <div class="search">
-            <div class="bbs-logo">
-                <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
-            </div>
-            <div class="bbs-search">
-               <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
-               <input type="button" class="ser-but" value="" id="submit"/>
-                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
-            </div>
-        </div>
+        <!-- 搜索开始 -->
+        <jsp:include page="commonSearch.jsp" flush='true'/>
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
@@ -450,9 +407,9 @@
         </div>
         <!-- 内容结束 -->
         <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
-        </div>
+        <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
         <!-- 底部结束 -->
         <!-- 弹出框开始 -->
         <!-- 遮罩层开始 -->
@@ -527,7 +484,6 @@
     </div>
     
     <script src="js/mod/article_article.js"></script>
-    <script src="js/mod/common.js"></script>
     <script src="js/mod/comment.js"></script>
 </body>
 </html>
