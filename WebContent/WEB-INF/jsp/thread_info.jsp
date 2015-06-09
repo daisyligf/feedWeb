@@ -200,7 +200,7 @@
                     <div class="lum-list libao-list">
                        <ul>
                        	   <c:forEach var="highThread" items="${highestList }">
-                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.tid }">${highThread.subject }</a></li>
+                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.thread_id }">${highThread.subject }</a></li>
                        	   </c:forEach>
                        </ul>
                     </div>
