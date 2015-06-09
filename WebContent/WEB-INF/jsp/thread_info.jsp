@@ -335,7 +335,7 @@
                                     </p>
                                 </dd>
                             </dl>
-                            <div class="con-list-reply">
+                            <div class="con-list-reply clearfix" style="display: block;">
                                 <div class="con-list-replycon">
                                     <!--楼层回复内容-->
                                 </div>
@@ -356,7 +356,7 @@
                     </c:forEach>
                     <!-- 分页 -->
                        <!-- 上一页 按钮 -->
-                <div class="page-plug">
+               		<div class="page-plug">
                         <ul class="page-pc clearfix">
 						<c:choose>
 						<c:when test="${currentPage != 1}">
@@ -378,6 +378,29 @@
 						</c:otherwise>
 						</c:choose>
 						</c:forEach>
+						
+						<!-- 下一页 按钮 -->
+						<c:choose>
+						<c:when test="${currentPage != totalPages}">
+							<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
+						</c:when>
+						<c:otherwise>
+							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+						</c:otherwise>
+						</c:choose>
+                	</ul>
+                	
+                	  <ul class="page-mobile clearfix">
+						<c:choose>
+						<c:when test="${currentPage != 1}">
+							<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
+						</c:when>
+						<c:otherwise>
+							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+						</c:otherwise>
+						</c:choose>
+						
+						<li class="text">${currentPage}/${totalPages}</li>
 						
 						<!-- 下一页 按钮 -->
 						<c:choose>
