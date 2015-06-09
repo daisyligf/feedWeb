@@ -30,6 +30,12 @@
 .con .channel-list .col-xs-2{
 	border-right:1px solid #eee;
 }
+.con .channel-list .col-xs-2 a{
+	color:#333;
+}
+.con .channel-list .active a{
+	color:#fff;
+}
 .con .h2-con dl{
 	padding:20px;
 	border:1px solid #eee;
