@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/search.css">
     <script src="./js/sea.js"></script>
-    <script src="js/mod/common.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
+    <script src="js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
