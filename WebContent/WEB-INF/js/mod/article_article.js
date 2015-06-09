@@ -560,6 +560,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(_this).parents(".con-list-right").find(".uid").val(uid);
 			$(_this).parents(".con-list-right").find(".tid").val(tid);
 			$(_this).parents(".con-list-right").find(".postname").val("@" + name + "：");
+			$(_this).parents(".con-list-right").find(".reply-textarea").show();
+			$(_this).parents(".con-list-right").find(".replay-lay-btn").hide();
 			
 		});
 
@@ -570,9 +572,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
@@ -775,6 +777,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		console.log(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".dianping-textarea").val('回复');
+		    		$(obj).parents(".con-list-right").find(".reply-textarea").hide();
+		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").hide();
+					
 		    		$(".pop-post-ok").pop({
 						msg:"回复成功"
 					});
