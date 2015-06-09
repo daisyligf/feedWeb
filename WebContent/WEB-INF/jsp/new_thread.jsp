@@ -77,7 +77,7 @@
         <jsp:include page="user_info.jsp" flush='true'/>
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
-        <jsp:include page="commonSearch.jsp" flush='true'/>
+     
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
