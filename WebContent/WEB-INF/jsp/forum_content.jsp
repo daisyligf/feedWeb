@@ -35,6 +35,7 @@
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
     <script src="js/bbs-config.js"></script>
+    <script src="js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -56,7 +57,8 @@
         <jsp:include page="user_info.jsp" flush='true'/>
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
-        <div class="search">
+         <jsp:include page="commonSearch.jsp" flush='true'/>
+       <!-- <div class="search">
             <div class="bbs-logo">
                 <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
             </div>
@@ -64,7 +66,7 @@
                 <input type="submit" class="ser-but" value="" id="submit" onclick="search()"/>
                 <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
             </div>
-        </div>
+        </div>-->
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
@@ -77,7 +79,9 @@
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                    <a href="javascript:;" class="follow followed" data-areaid='234' data-dofollow='0'>+ 关注</a>
+                    
+                    <a href="javascript:;" class="follow" data-areaid='234' data-dofollow='0'>+ 关注</a>
+                    <a href="javascript:;" class="follow followed" data-areaid='234' data-dofollow='0'>已关注</a>
                     <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
@@ -254,6 +258,32 @@
 			                    <li class="text">5/235</li>
 			                    <li class="next"><a href="#">下一页</a></li>
 			                </ul>-->
+			                
+			                <ul class="page-mobile">
+			                <!-- 上一页 按钮 -->
+			                
+							<c:choose>
+							<c:when test="${currentPage != 1}">
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">上一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+							</c:otherwise>
+							</c:choose>
+							
+							 <li class="text">${currentPage}/${totalPages}</li>
+							
+							<!-- 下一页 按钮 -->
+							<c:choose>
+							<c:when test="${currentPage != totalPages}">
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">下一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+							</c:otherwise>
+							</c:choose>
+			                </ul>
+			                
 			
 			            </div>
                     </div>
@@ -342,11 +372,9 @@
            <!-- 帖子列表结束 -->
         </div>
         <!-- 内容结束 -->
-        <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
-        </div>
-        <!-- 底部结束 -->
+        <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
         <!-- 弹出框插件开始 -->
         <!-- 遮罩层开始 -->
         <div class="mask-bg">
@@ -383,15 +411,7 @@
     </div>
     
    <script src="js/mod/list_article.js"></script>
-   <script>
-   		var tagId = $('#tag_id').val();
-   		if (tagId != '' && tagId > 0) {
-   			$("#tag_" + tagId).addClass('active');
-   		} else {
-   			$("#tag_all").addClass('active');
-   		}
-   		
-   </script>
-    <script src="js/mod/common.js"></script>
+
+   
 </body>
 </html>

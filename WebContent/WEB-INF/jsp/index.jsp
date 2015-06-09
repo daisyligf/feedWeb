@@ -53,16 +53,17 @@
         <jsp:include page="user_info.jsp" flush='true'/>
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
-        <div class="search">
+        <jsp:include page="commonSearch.jsp" flush='true'/>
+        <!--<div class="search">
             <div class="bbs-logo">
                 <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
             </div>
-            <div class="bbs-search">
+            <div class="bbs-search">-->
                <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
-               <input type="button" class="ser-but" value="" id="submit"/>
+              <!--  <input type="button" class="ser-but" value="" id="submit"/>
                 <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
             </div>
-        </div>
+        </div>-->
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
@@ -688,11 +689,9 @@
      
         </div>
         <!-- 内容结束 -->
-        <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
-        </div>
-        <!-- 底部结束 -->
+        <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
     </div>	
     
    <script src="./js/mod/index.js"></script>
