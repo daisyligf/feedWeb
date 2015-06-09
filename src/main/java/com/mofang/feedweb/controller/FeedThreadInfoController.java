@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mofang.feedweb.config.PrivilegesConfig;
 import com.mofang.feedweb.entity.CurrentUser;
 import com.mofang.feedweb.entity.FeedComment;
 import com.mofang.feedweb.entity.FeedForum;
@@ -237,17 +238,18 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	private Set<Integer> getAllPrivileges() throws Exception {
-		Set<Integer> privileges = new HashSet<Integer>();
-		Class<?> clz = Class.forName("com.mofang.feedweb.global.SysPrivilege");
-		
-        // 获取实体类的所有属性，返回Field数组  
-        Field[] fields = clz.getDeclaredFields();
-        for (int i = 0; i < fields.length; i++) {
-        	Field field = fields[i];
-        	String name = field.getName();
-        	privileges.add(field.getInt(name));
-        }
-		return privileges;
+//		Set<Integer> privileges = new HashSet<Integer>();
+//		Class<?> clz = Class.forName("com.mofang.feedweb.global.SysPrivilege");
+//		
+//        // 获取实体类的所有属性，返回Field数组  
+//        Field[] fields = clz.getDeclaredFields();
+//        for (int i = 0; i < fields.length; i++) {
+//        	Field field = fields[i];
+//        	String name = field.getName();
+//        	privileges.add(field.getInt(name));
+//        }
+//		return privileges;
+		return PrivilegesConfig.getAllPrivileges();
 	}
 
 	private List<FeedThread> replyHighest(HttpServletRequest request, long forumId) throws Exception {
