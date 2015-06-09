@@ -89,19 +89,19 @@
                     <div class="rec col-xs-6 col-md-6 col-sm-12">
                         <div class="col-xs-12 rec-con">
                             <dl class="title-red">
-                                <dt><a href="thread_info?thread_id=${subjects.threadId1} ">${subjects.threadName1} </a></dt>
+                                <dt><a target="_blank" href="thread_info?thread_id=${subjects.threadId1} ">${subjects.threadName1} </a></dt>
                                 <dd>${subjects.content1}</dd>
                             </dl>
                             <dl>
-                                <dt><a href="thread_info?thread_id=${subjects.threadId2}">${subjects.threadName2}</a></dt>
+                                <dt><a target="_blank" href="thread_info?thread_id=${subjects.threadId2}">${subjects.threadName2}</a></dt>
                                 <dd>${subjects.content2}</dd>
                             </dl>
                             <ul>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId3}">${subjects.threadName3} </a> <span class="lm">${subjects.forumNmae3} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId4}">${subjects.threadName4} </a> <span class="lm">${subjects.forumNmae4} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId5}">${subjects.threadName5} </a> <span class="lm">${subjects.forumNmae5} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId6}">${subjects.threadName6} </a> <span class="lm">${subjects.forumNmae6} </span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a href="thread_info?thread_id=${subjects.threadId7}">${subjects.threadName7} </a> <span class="lm">${subjects.forumNmae7} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId3}">${subjects.threadName3} </a> <span class="lm">${subjects.forumNmae3} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId4}">${subjects.threadName4} </a> <span class="lm">${subjects.forumNmae4} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId5}">${subjects.threadName5} </a> <span class="lm">${subjects.forumNmae5} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId6}">${subjects.threadName6} </a> <span class="lm">${subjects.forumNmae6} </span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId7}">${subjects.threadName7} </a> <span class="lm">${subjects.forumNmae7} </span></li>
                              </ul> 
                         </div>
                     </div>
