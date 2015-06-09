@@ -1,4 +1,3 @@
-
 define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 	var $ = jQuery = require("jquery");
 	/*

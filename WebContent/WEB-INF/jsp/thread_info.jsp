@@ -9,6 +9,7 @@
 <%@ page import="com.mofang.feedweb.entity.CurrentUser"%>
 <%@ page import="com.mofang.feedweb.global.SysPrivilege"%>
 <%@ page import="com.mofang.feedweb.entity.UserInfo"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -70,9 +71,44 @@
 </head>
 <body>
     <div class="page">
-      <!-- 头部开始 -->
-        <jsp:include page="user_info.jsp" flush='true'/>
-      <!-- 头部结束 -->
+    
+    <jsp:include page="user_info.jsp" flush='true'/>
+        <!-- 头部开始 -->
+       <!--  <div class="header clearfix">
+            <div class="nav clearfix">
+                <div class="nav-left">
+                    <a href="http://www.mofang.com">魔方网首页</a>
+                </div>
+                <div class="nav-right" id="topUserInfo">
+                    登陆状态
+                    top登录模板
+                    
+                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
+                    <div class="user-info">
+                        <ul class="clearfix">
+                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
+                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
+                            <li class="info">
+                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    登陆状态
+                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
+                </div> 
+            </div>
+            <div class="nav-wap clearfix">
+              <div class="nav-wap-left">
+                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
+                  <p class="nav-info">
+                    <a class="nav-info-home">首页</a>
+                    <a>个人中心</a>
+                  </p>
+              </div> 
+            </div>
+        </div>-->
+        <!-- 头部结束 -->
       <!-- 搜索开始 -->
         <div class="search">
             <div class="bbs-logo">
@@ -164,7 +200,7 @@
                     <div class="lum-list libao-list">
                        <ul>
                        	   <c:forEach var="highThread" items="${highestList }">
-                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.tid }">${highThread.subject }</a></li>
+                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.thread_id }">${highThread.subject }</a></li>
                        	   </c:forEach>
                        </ul>
                     </div>
@@ -172,7 +208,7 @@
                 </div>
             </div>
             <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }">
-            	<c:if test="${currentPage==1}">
+            	<!--<c:if test="${currentPage==1}">-->
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
@@ -184,10 +220,12 @@
                     <h2> ${feedThread.subject } 
                      <c:choose>
                         	<c:when test="${type==1 }">
-                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
+                        	<!--  <a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>-->
+                        	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
                         	</c:when>
                         	<c:otherwise>
-                        	<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
+                        	<!--<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>-->
+                        	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
                         	</c:otherwise>
                         </c:choose>
                         
@@ -242,12 +280,12 @@
                     <div class="con-con">
                     	${postList[0].htmlContent }
                     </div>
-                    <p class="look" data-tid="${feedThread.thread_id }">
+                   <p class="look" data-tid="${feedThread.thread_id }">
                         <span class="thread-zan zan-hover"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
                         <span class="thread-comment"><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                 </div>
-                </c:if>
+                <!--</c:if>-->
                 <div class="con-right2" id="conRight2">
                     <!-- 楼层回复模板1 -->
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
@@ -297,13 +335,12 @@
                                     </p>
                                 </dd>
                             </dl>
-                            <div class="con-list-reply clearfix">
+                            <div class="con-list-reply">
                                 <div class="con-list-replycon">
                                     <!--楼层回复内容-->
                                 </div>
-                                
-                                <p class="floor-reply-more">更多${feedPost.comments }条回复    <a href="javascript:;">点击加载</a></p>
                                 <div class="replay-lay-btn">回复层主</div>
+                                <p class="floor-reply-more">更多${feedPost.comments }条回复    <a href="javascript:;">点击加载</a></p>
                                 <div class="reply-textarea">
                                     <input type="hidden"  name="tid" class="tid" value="2342"/>
                                     <input type="hidden"  name="uid" class="uid" value="2342"/>
@@ -318,14 +355,49 @@
                     </div>
                     </c:forEach>
                     <!-- 分页 -->
-                    <div class="page-plug">
+                       <!-- 上一页 按钮 -->
+                <div class="page-plug">
+                        <ul class="page-pc clearfix">
+						<c:choose>
+						<c:when test="${currentPage != 1}">
+							<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
+						</c:when>
+						<c:otherwise>
+							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+						</c:otherwise>
+						</c:choose>
+						
+						<!-- 页数列表 -->
+						<c:forEach items="${pagelist}" var="item">
+						<c:choose>
+						<c:when test="${item == currentPage}">
+							<li class="active"><a href="thread_info?currentPage=${item }&thread_id=${feedThread.thread_id}&type=${type}" >${item}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="thread_info?currentPage=${item}&thread_id=${feedThread.thread_id}&type=${type}">${item}</a></li>
+						</c:otherwise>
+						</c:choose>
+						</c:forEach>
+						
+						<!-- 下一页 按钮 -->
+						<c:choose>
+						<c:when test="${currentPage != totalPages}">
+							<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
+						</c:when>
+						<c:otherwise>
+							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+						</c:otherwise>
+						</c:choose>
+                	</ul>
+                </div>
+                   <!-- <div class="page-plug">
                         <ul class="page-mobile clearfix">
                             <li class="prev"><a href="#">上一页</a></li>
                             <li class="text">5/235</li>
                             <li class="next"><a href="#">下一页</a></li>
                         </ul>
                     </div>
-
+					-->
                 </div>
                 <div class="con-right3 reply-textarea">
                     <div class="reply-textarea-info clearfix">
@@ -336,7 +408,7 @@
                             <dd>
                                 <div class="editer">
                                     <div class="editor-textarea">
-                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="http://u.mofang.com/">登录</a> | <a  class="maskReg" href="http://u.mofang.com/">立即注册</a></div>
+                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
                                     </div>
                                     <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                 </div>
@@ -418,15 +490,6 @@
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="稍后再试">
                 <input type="button" class="pop-play-ok pop-ok" value="重新发送">
-            </p>
-        </div>
-        <!--未登录-->
-        <div class="pop pop-play pop-login">
-            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
-            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
-            <p class="clearfix">
-                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
-                <input type="button" class="pop-play-ok pop-ok" value="前往登录">
             </p>
         </div>
         <!-- 成功 -->

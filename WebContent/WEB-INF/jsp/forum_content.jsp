@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page import="com.mofang.feedweb.entity.FeedForum"%>
 <%@ page import="com.mofang.feedweb.entity.HotThread"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -153,7 +154,7 @@
                     	<c:if test="${currentPage==1 }">
                     	<c:forEach var="topThread" items="${topThreadList}">
                         <dl class="clearfix">
-                            <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title"><a href="thread_info?thread_id=${topThread.thread_id }" target="_blank">${topThread.subject}
                                 <c:if test="${topThread.isTop}"><s class="icon-ding"></s></c:if>
@@ -165,7 +166,7 @@
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${topThread.user_name}</span>
-                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
                                         <span><s class="icon-look"></s>${topThread.page_view}</span>
@@ -180,7 +181,7 @@
                     	</c:if>
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
-                            <dt><a href="http://u.test.mofang.com/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }" target="_blank">${feedThread.subject}
                                 <c:if test="${feedThread.isTop}"><s class="icon-ding"></s></c:if>
@@ -192,7 +193,7 @@
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${feedThread.user_name}</span>
-                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
                                         <span><s class="icon-look"></s>${feedThread.page_view}</span>
