@@ -154,22 +154,25 @@ width:100%;
 	.con .user-info{
 		display: none;
 	}
-	
 	.con .post h2{
 		display: none;
 	}
 	.con .post{
-		padding:10px;
+		padding:0px;
+		border:0px;
+		background:#f5f5f5;
 
 	}
 	.con .post .title{
 		height:42px;
 		line-height:42px;
+		background:#fff;
+		border:0px;
 	}
 	.con .sub .submit{
 		width:107px;
-		height:33px;
-		line-height:33px;
+		height:49px;
+		line-height:49px;
 
 	}
 	/*.con .sub .code,.con .sub .code-text{
@@ -177,20 +180,33 @@ width:100%;
 	}*/
 	.con .editer{
 		margin-top:10px;
+		background:#fff;	
 	}
 	.con .post .sel{
 		margin-left: 5px;
 		padding-left:5px;
-		line-height: 39px;
+		line-height: 42px;
+		background: #fff url(../img/icon/post_input.png) 90% center no-repeat;
+		border:0px;
 	}
 
 }
 @media (max-width:540px){
+	.con{
+		padding:10px 10px 0px;
+	}
+	.search{
+		display:none;
+	}
+	
 	.con .sub .code-text{
 		width: 45%;
 	}
 	.con .sub .code {
 		width: 45%;
+	}
+	.con .sub .word-count{
+		float:none;
 	}
 	.con .sub .submit{
 		width:45%;
@@ -198,6 +214,10 @@ width:100%;
 		line-height:49px;
 		float: none;
 		margin-top: 15px;
+	}
+	
+	.con .title-type{
+		
 	}
 }
 

@@ -40,7 +40,10 @@
 
 .con .h2-con dl dd a{
 
-	display: block;
+	display:block;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	color:#333;
 	font-size:16px;
 	margin-top:8px;
@@ -142,15 +145,16 @@
 	vertical-align:middle;
 }
 .con-bottom .con-left-con dl .look span{
-	
-	margin-left: 40px;
+	display:inline-block;
+	margin-left: 5px;
+	width:70px;
 }
 
 .icon-ding{
 	display: inline-block;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/ding.png) no-repeat;
 	background-size: 100% 100%;
 }
@@ -158,8 +162,8 @@
 	display: inline-block;
 	margin:0px 5px;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/ding.png) no-repeat;
 	background-size: 100% 100%;
 }
@@ -167,8 +171,8 @@
 	display: inline-block;
 	margin:0px 5px;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/jing.png) no-repeat;
 	background-size: 100% 100%;
 }
@@ -176,8 +180,8 @@
 	display: inline-block;
 	margin:0px 5px;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/tu.png) no-repeat;
 	background-size: 100% 100%;
 }

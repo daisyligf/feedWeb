@@ -1,4 +1,3 @@
-
 .con-top-con{
 	border:1px solid #eee;
 }
@@ -163,6 +162,7 @@
 .con-bottom .con-left-con dl dd.title a{
 	font-size:18px;
 	color:#333;
+	font-weight:bold;
 }
 .con-bottom .con-left-con dl dd.title a:hover{
 	color: #ff9900;
@@ -179,24 +179,16 @@
 	vertical-align:middle;
 }
 .con-bottom .con-left-con dl .look span{
-	
-	margin-left: 40px;
-}
-
-.icon-ding{
-	display: inline-block;
-	margin-bottom:-1px;
-	width:24px;
-	height:24px;
-	background: url(../img/icon/ding.png) no-repeat;
-	background-size: 100% 100%;
+	display:inline-block;
+	margin-left: 5px;
+	width:70px;
 }
 .icon-ding{
 	display: inline-block;
 	margin:0px 5px;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/ding.png) no-repeat;
 	background-size: 100% 100%;
 }
@@ -204,8 +196,8 @@
 	display: inline-block;
 	margin:0px 5px;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/jing.png) no-repeat;
 	background-size: 100% 100%;
 }
@@ -213,8 +205,8 @@
 	display: inline-block;
 	margin:0px 5px;
 	margin-bottom:-1px;
-	width:24px;
-	height:24px;
+	width:18px;
+	height:18px;
 	background: url(../img/icon/tu.png) no-repeat;
 	background-size: 100% 100%;
 }
@@ -362,11 +354,12 @@
 }
 @media (max-width:1024px){
 	.con{
-		padding:10px;
+		padding:15px;
+		padding-top:0px;
 		box-sizing:border-box;
 	}
 	.con-bottom{
-		margin-top:10px;
+		margin-top:15px;
 	}
 	.con-top.container{
 		margin:0px;
@@ -395,6 +388,13 @@
 	}
 }
 @media (max-width:540px){
+	.con{
+		padding:10px;
+		padding-top:0px;
+	}
+	.con-bottom{
+		margin-top:10px;
+	}
 	.con-bottom .con-nav .left a{
 		font-size:12px;
 		margin:0 2.4%;
@@ -415,6 +415,10 @@
 	}
 	.con-bottom .con-left-con dl dd.title a{
 		font-size: 15px;
+		display:block;
+		overflow:hidden;
+		text-overflow: ellipsis;
+ 		white-space: nowrap;
 	}
 	.con-bottom .con-left-con dl dd{
 		font-size:13px;
@@ -424,7 +428,8 @@
 		margin-left: 10px;
 	}
 	.con-bottom .con-left-con dl .look span{
-		margin-left:10px;
+		margin-left:5px;
+		width:60px;
 	}
 	.con .con-top .con-top-con .post{
 		display: none;
@@ -457,20 +462,14 @@
 	.icon-ding {
 	  margin: 0px 3px;
 	  margin-bottom: -3px;
-	  width: 20px;
-	  height: 20px;
 	}
 	.icon-jing {
 	  margin: 0px 3px;
 	  margin-bottom: -3px;
-	  width: 20px;
-	  height: 20px;
 	}
 	.icon-tu {
 	  margin: 0px 3px;
 	  margin-bottom: -3px;
-	  width: 20px;
-	  height: 20px;
 	}
 	
 }
