@@ -285,7 +285,7 @@
                                 %><a href="javascript:;" class="list-del">删除</a> <%} %>
                                 
                                 ${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
-                                <dd>${feedPost.htmlContent }</dd>
+                                <dd class="info">${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">
                                         <span class="zan"><s class="icon-zan"></s><a href="javascript:;">${feedPost.recommends}</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">${feedPost.comments}</a></span>
@@ -407,6 +407,9 @@
                     </div>
                     
                     <p class="replay-floor"><span class="word-count">还可以输入5000字</span> <input type="button" class="reply-editer reply-submit" value="回复"></p>
+                </div>
+                <div class="con-right3 replay-ban">
+                	该帖子已被禁止回复:-D！
                 </div>
             </div>
         </div>

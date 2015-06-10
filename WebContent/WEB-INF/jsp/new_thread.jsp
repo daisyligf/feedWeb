@@ -112,8 +112,8 @@
                    		</c:choose>
                 </h2>
                 <div class="title-type clearfix">
-                    <input type="text" class="col-xs-10 title editor-title" placeholder="帖子标题不超过30个字"  value="${threadInfo.subject }">
-                    <div class="col-xs-2">
+                    <input type="text" class="col-xs-10 col-sm-9 title editor-title" placeholder="帖子标题不超过30个字"  value="${threadInfo.subject }">
+                    <div class="col-xs-2 col-sm-3">
                         <div class="sel">
                         
 <%--                               <c:forEach items=" ${tagList}" var="tag" >
