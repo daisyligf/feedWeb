@@ -37,27 +37,15 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url();
 	}
 
-	protected String getGame_info_url() {
-		return externalUrlInfo.getGame_info_url();
-	}
-
-	protected String getGift_info_url() {
+	protected String getGiftInfoUrl() {
 		return externalUrlInfo.getGift_info_url();
 	}
-
-	protected String getImage_info_url() {
-		return externalUrlInfo.getImage_info_url();
+	
+	protected String getUserInfoUrl(){
+		return externalUrlInfo.getUser_info_url();
 	}
 
-	protected String getUser_LogOut_info_url() {
-		return externalUrlInfo.getUser_info_url() + Constant.USER_LOGOUT_URL;
-	}
-
-	protected String getUser_LogIn_info_url() {
-		return externalUrlInfo.getUser_info_url() + Constant.USER_LOGIN_URL;
-	}
-
-	protected String getUser_Update_State_url() {
+	protected String getUserUpdateStateurl() {
 		return externalUrlInfo.getUser_info_url()
 				+ Constant.USER_STATE_UPDATE_URL;
 	}
@@ -227,8 +215,7 @@ public class FeedCommonController {
 		}
 	}
 
-	protected JSONObject getHttpInfoWithoutAtom(String getUrl, String param,
-			HttpServletRequest request) {
+	protected JSONObject getHttpInfoWithoutAtom(String getUrl, String param) {
 		try {
 			StringBuffer strb = new StringBuffer();
 			strb.append(getUrl);
@@ -321,26 +308,23 @@ public class FeedCommonController {
 	private Map<String, String> getEmojiMap() {
 		return EmojiUtil.getEmojiMap();
 	}
-	
-	protected String getSearchKey(
-			HttpServletRequest request) throws JSONException 
-	{
-		//搜索关键字
-			JSONObject keywordResult = getHttpInfo(
-					getFeedUrlInfo().concat(
-							Constant.HOME_SEARCH_KEYWORD_GET_URL),"" , request);
-			String searchKey = "";
-			if (null != keywordResult) {
-				int code = keywordResult.optInt("code", -1);
-				if (0 != code) {
-				} else {
-					JSONObject data = keywordResult.optJSONObject("data");
-					searchKey = data.optString("key_word", "");
-				}	
+
+	protected String getSearchKey(HttpServletRequest request)
+			throws JSONException {
+		// 搜索关键字
+		JSONObject keywordResult = getHttpInfo(
+				getFeedUrlInfo().concat(Constant.HOME_SEARCH_KEYWORD_GET_URL),
+				"", request);
+		String searchKey = "";
+		if (null != keywordResult) {
+			int code = keywordResult.optInt("code", -1);
+			if (0 != code) {
+			} else {
+				JSONObject data = keywordResult.optJSONObject("data");
+				searchKey = data.optString("key_word", "");
 			}
-		
+		}
 		return searchKey;
-		
 	}
 
 }

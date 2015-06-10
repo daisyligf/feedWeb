@@ -1,69 +1,37 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0">
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/cglib-nodep-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/httpclient-4.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/httpcore-4.3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/jackson-all-1.8.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/jackson-annotations-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/jackson-core-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/jackson-databind-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/org.json.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring-beans-3.2.3.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring-context-3.1.4.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring-core-3.2.3.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring-expression-3.2.3.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring-web-3.2.3.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/spring-webmvc-3.2.3.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/feedWeb/WebContent/WEB-INF/lib/jedis-2.1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
 		<attributes>
-			<attribute name="owner.project.facets" value="jst.web"/>
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.3.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/org.json.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.3.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jstl.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-beans-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-context-3.1.4.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-core-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-expression-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-web-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0">
-		<attributes>
-			<attribute name="owner.project.facets" value="jst.web"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpclient-4.3.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/org.json.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/httpcore-4.3.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jstl.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-beans-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-context-3.1.4.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-core-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-expression-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-web-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.3.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/cglib-nodep-3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-fileupload-1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-httpclient-3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-all-1.8.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.5.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.5.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.5.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jedis-2.1.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
-	<classpathentry kind="output" path="build/classes"/>
-</classpath>
->>>>>>> a26c915e6e27b7668d0d18370927d84f9542fd89
