@@ -26,6 +26,7 @@ import com.mofang.feedweb.entity.GameGift;
 import com.mofang.feedweb.entity.HotThread;
 import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
+import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.ForumType;
 import com.mofang.feedweb.util.SignUtil;
@@ -81,7 +82,33 @@ public class FeedForumContentController extends FeedCommonController {
 		model.put("keyword", getSearchKey(request));
 		model.put("feedForum", feedForum);
 		
+		// 关注状态
+		UserInfo userInfo = getUserInfo(request);
+		if(userInfo == null) {
+			model.put("isFollow", false);
+		}else {
+			boolean isFollow = isFollow(userInfo.getUserId(), fid, request);
+			model.put("isFollow", isFollow);
+		}
+		
 		return new ModelAndView("forum_content", model);
+	}
+	
+
+	private boolean isFollow(long userId, long forumId, HttpServletRequest request) {
+		JSONObject json = getHttpInfo(getUserInfoUrl() + Constant.USER_IS_FOLLOW_URL, "?uid=" + userId + "&area_id=" + forumId, request);
+		if(json == null) {
+			return false;
+		}
+		int code = json.optInt("code", -1);
+		if(code == 0) {
+			JSONObject data = json.optJSONObject("data");
+			int flag = data.optInt("is_follow", 0);
+			if(flag == 1) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@RequestMapping(value = "/follow.json")
@@ -120,7 +147,7 @@ public class FeedForumContentController extends FeedCommonController {
 		param.append("&appid=").append(Constant.APP_ID);
 		param.append("&sign=").append(sign);
 		
-		JSONObject json = this.getHttpInfoWithoutAtom(getGameGiftListUrl(), param.toString(), request);
+		JSONObject json = this.getHttpInfoWithoutAtom(getGameGiftListUrl(), param.toString());
 		
 		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");

@@ -174,6 +174,10 @@ public class Constant {
 	public static final String USER_STATE_UPDATE_URL = "/apis/user/update_status";
 	// 关注板块
 	public static final String FORUM_FOLLOW_URL = "/area/follow";
+	// 用户关注状态
+	public static final String USER_IS_FOLLOW_URL = "/apis/area/userisfollow";
+	
+	
 	
 	public static final String VIPER_AWARD_URL = "/user/add";
 }

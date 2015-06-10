@@ -79,9 +79,8 @@
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                    
-                    <a href="javascript:;" class="follow" data-areaid='234' data-dofollow='0'>+ 关注</a>
-                    <a href="javascript:;" class="follow followed" data-areaid='234' data-dofollow='0'>已关注</a>
+                     <c:if test="${isFollow}"><a href="javascript:;" class="follow followed" data-areaid='${feedForum.forum_id}' data-dofollow='0'>已关注</a></c:if>
+                     <c:if test="${!isFollow}"> <a href="javascript:;" class="follow" data-areaid='${feedForum.forum_id}' data-dofollow='1'>+ 关注</a></c:if>
                     <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
