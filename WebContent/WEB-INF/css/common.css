@@ -613,6 +613,13 @@
 	background-size: 100% 100%;
 
 }
+.edui-btn-toolbar .edui-btn .edui-icon-video{
+	width:25px;
+	height:25px;
+	background: url(../img/icon/icon_video.png) no-repeat;
+	background-position: 0px 0px;
+	background-size: 100% 100%;
+}
 #myEditor{
 	width:100%!important;
 	height:300px!important;
@@ -791,6 +798,9 @@
 	}
 	.editer .edui-container .edui-editor-body{
 		background:#fff;
+	}
+	.edui-btn-toolbar .edui-btn .edui-icon-video{
+		display:none;
 	}
 	
 }

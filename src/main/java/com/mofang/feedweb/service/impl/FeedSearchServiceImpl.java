@@ -75,6 +75,7 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 						// content字段截取40个字符显示
 						if (content.length() > 40) {
 							content = content.substring(0, 39);
+							content = content.concat("...");
 							objThread.put("content", content);
 						}
 					}
