@@ -642,20 +642,43 @@
 	.header .nav-wap .wap-logo{
 		width:93px;
 		height:28px;
-
 		margin:11px auto;
 	}
 	.header .nav-wap .wap-logo img{
 		width:93px;
 		height:27px;
 	}
+	.header .nav-wap .wap-nav-text{
+		width:80%;
+		height:50px;
+		line-height:50px;
+		text-align:center;
+		color:#fff;
+		font-size:20px;
+		margin:0 auto;
+	}
+	
 	.header .nav-wap .nav-wap-left{
 		position: absolute;
-		width:50px;
-		padding: 10px 15px;
+		height:20px;
+		left:15px;
+		top:15px;
+		z-index:2;
 	}
 	.header .nav-wap .nav-wap-left img{
-		height: 30px;
+		height: 20px;
+	}
+	.header .nav-wap .nav-wap-back{
+		float:left;
+		width:11px;
+		height:20px;
+		background:url(../img/icon/back_up.png) no-repeat;
+		background-size:100% 100%;
+		
+	}
+	.header .nav-wap .nav-wap-list{
+		float:left;
+		margin-left:22px;
 	}
 	.header .nav-wap .nav-info{
 		display: none;
@@ -678,8 +701,34 @@
 		font-family: "黑体";
 		
 	}
+	
 	.header .nav-wap .nav-info .nav-info-home{
 		border-bottom: 1px solid #3d4142;
+	}
+	.header .nav-wap .nav-wap-right{
+		position: absolute;
+		height:20px;
+		right:15px;
+		top:15px;
+		z-index:2;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-floor{
+		float:right;
+		color:#fff;
+		padding:4px;
+		border:3px solid #fff;
+		margin-top:-4px;
+		margin-right:23px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-comment{
+		float:right;
+		width:28px;
+		height:28px;
+		margin-top:-4px;
+		background:url(../img/icon/ask_m.png) no-repeat;
+		background-size:100% 100%;
+		text-indent:-999999px;
+		margin-right:10px;
 	}
 	/**/
 	.footer{
@@ -823,7 +872,6 @@
 	}
 	.header .nav-wap .nav-wap-left img{
 		width: auto;
-		height: 25px;
 	}
 	.header .nav-wap .nav-info{
 		top: 55px;
@@ -836,6 +884,18 @@
 	    width: 60px;
 		font-size: 14px;
 		
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-floor{
+		margin-right:15px;
+		padding:2px;
+		margin-top:-2px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-comment{
+		margin-right:0px;
+		width:24px;
+		height:24px;
+		padding:2px;
+		margin-top:-2px;
 	}
 	.search{
 		margin: 10px 10px;
