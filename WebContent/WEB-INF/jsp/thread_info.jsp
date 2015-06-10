@@ -244,6 +244,8 @@
                     </p>
                     </c:if>
                 </div>
+                
+                <c:if test="${fn:length(postList)>1 }">
                 <div class="con-right2" id="conRight2">
                     <!-- 楼层回复模板1 -->
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
@@ -314,9 +316,10 @@
                             </div>
                             
                         </div>
-                       
-                    </div>
                     </c:forEach>
+                    </div>
+                    </c:if>
+                    
                     <!-- 分页 -->
                        <!-- 上一页 按钮 -->
                		<div class="page-plug">
@@ -376,6 +379,7 @@
 						</c:choose>
                 	</ul>
                 </div>
+                 
                    <!-- <div class="page-plug">
                         <ul class="page-mobile clearfix">
                             <li class="prev"><a href="#">上一页</a></li>
@@ -384,7 +388,8 @@
                         </ul>
                     </div>
 					-->
-                </div>
+               <!--  </div> -->
+                <c:if test="${!feedThread.isClosed }">
                 <div class="con-right3 reply-textarea">
                     <div class="reply-textarea-info clearfix">
                         <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
@@ -409,6 +414,7 @@
                     
                     <p class="replay-floor"><span class="word-count">还可以输入5000字</span> <input type="button" class="reply-editer reply-submit" value="回复"></p>
                 </div>
+                </c:if>
                 <div class="con-right3 replay-ban">
                 	该帖子已被禁止回复:-D！
                 </div>
