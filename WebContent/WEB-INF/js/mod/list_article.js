@@ -23,7 +23,6 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	}
 	if(USE_TEST_DATA){
 		loginUrl = "http://u.test.mofang.com/";
-		//var getFollowUrl = "http://u.test.mofang.com/home/area/follow?area_id=54"; //关注/取消关注
 		getFollowUrl = "http://u.test.mofang.com/home/area/follow"; //关注/取消关注
 	}
 
@@ -123,6 +122,15 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	},function(){
 		$(this).find(".list").hide();
 	});
+	
+	//页面标签处理
+	var tagId = $('#tag_id').val();
+		if (tagId != '' && tagId > 0) {
+			$("#tag_" + tagId).addClass('active');
+		} else {
+			$("#tag_all").addClass('active');
+		}
+		
 });
 
 seajs.use('index');

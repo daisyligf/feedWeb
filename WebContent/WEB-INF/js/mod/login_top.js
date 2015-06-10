@@ -3,18 +3,19 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('login_top',['jquery',],function(require, exports, module) {
+define('login_top',['jquery','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
+	var c = require("config");//配置文件
 
 	window.loginStatus=false;//检查登录状态
 	var USE_LOCAL_DATA = 0;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_TEST_DATA = 0;//测试数据
 
 	var getUrl = "";//url路径示范
-	var getUserLoginStatus = "http://u.mofang.com/account/status" //获取用户的登录状态
-	var getUserInfo = "http://u.mofang.com/home/api/get_login_userinfo"; //获取用户信息
-	var getUserLogout = "http://u.mofang.com/account/logout"; //用户退出接口
+	var getUserLoginStatus = c.config.userInfoUrl+"/account/status" //获取用户的登录状态
+	var getUserInfo = c.config.userInfoUrl+"/home/api/get_login_userinfo"; //获取用户信息
+	var getUserLogout = c.config.userInfoUrl+"/account/logout"; //用户退出接口
 	var getUserNotice = "";
 	var ajaxMethod="jsonp"; 
 	if(USE_LOCAL_DATA){
@@ -25,9 +26,9 @@ define('login_top',['jquery',],function(require, exports, module) {
 		ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		getUserLoginStatus = "http://u.test.mofang.com/account/status" //获取用户的登录状态
-		getUserInfo = "http://u.test.mofang.com/home/api/get_login_userinfo"; //获取用户信息
-		getUserLogout = "http://u.test.mofang.com/account/logout"; //用户退出接口
+		getUserLoginStatus = c.config.userInfoUrl+"m/account/status" //获取用户的登录状态
+		getUserInfo = c.config.userInfoUrl+"/home/api/get_login_userinfo"; //获取用户信息
+		getUserLogout = c.config.userInfoUrl+"/account/logout"; //用户退出接口
 	}
 
 	var cLoginDom={

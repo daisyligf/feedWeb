@@ -54,6 +54,7 @@
         <property name="locations">
             <list>
                 <value>classpath:http_client_feedservice.properties</value>
+                <value>classpath:http_client_userservice.properties</value>
                	<value>classpath:config.properties</value>
                	<value>classpath:redis_master.properties</value>
                	<value>classpath:redis_slave.properties</value>

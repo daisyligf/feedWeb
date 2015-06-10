@@ -12,10 +12,11 @@ import org.springframework.util.StringUtils;
 
 import redis.clients.jedis.Jedis;
 
+import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.RedisKey;
-import com.mofang.feedweb.properties.annotation.ExternalUrlInfo;
 import com.mofang.feedweb.redis.RedisWorker;
+import com.mofang.feedweb.util.StringUtil;
 
 /***
  * 蛋碎的登录
@@ -28,7 +29,7 @@ public class UserComponent {
 	@Autowired
 	private ExternalUrlInfo externalUrlInfo;
 	@Autowired
-	private RedisCompnent redisComp;
+	private RedisComponent redisComp;
 	
 //	// 缓存cookie信息
 //	private final ThreadLocal<String> cookieCache = new ThreadLocal<String>();
@@ -37,7 +38,7 @@ public class UserComponent {
 	
 	public UserInfo getUserInfo(HttpServletRequest request) throws Exception {
 		String mcs = this.getCookie(request);
-		if(StringUtils.isEmpty(mcs)) {
+		if(StringUtil.isNullOrEmpty(mcs)) {
 			return null;
 		}
 		UserInfo userInfo = this.get(mcs);
@@ -114,7 +115,7 @@ public class UserComponent {
 			public UserInfo execute(Jedis jedis) throws Exception {
 				String key = RedisKey.COOKIE_USER_KEY_PREFIX.concat(cookie);
 				String result = jedis.get(key);
-				if(StringUtils.isEmpty(result)) {
+				if(StringUtil.isNullOrEmpty(result)) {
 					return null;
 				}
 				JSONObject json = new JSONObject(result);

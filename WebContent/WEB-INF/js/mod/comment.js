@@ -79,7 +79,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             toolbar:[
                 ' bold italic underline |',
                 'forecolor fontsize' ,
-                'link unlink | image feed-emotion',
+                'link unlink | image feed-emotion | video',
             ],
            imageScaleEnabled:false
         });
@@ -166,7 +166,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             error:function(){
                 $(".pop-warn").pop({
                     type:"confirm",
-                    msg:"帖子发布失败，请重新发送。",
+                    msg:"网络出错，请重新发送。",
                     fnCallback: function(isTrue,msg){
                         if(isTrue){
                             editorForm.submit();
@@ -182,7 +182,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 }
                 if(res && res.code==0){
                     $(".pop-post-ok").pop({
-                        msg: "发送成功",
+                        msg: "发帖成功",
                         autoTime:500
                     }); 
                     setTimeout(function(){
@@ -196,7 +196,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 }else{
                     $(".pop-warn").pop({
                         type:"confirm",
-                        msg:"帖子发布失败，请重新发送。",
+                        msg:res.message,
                         fnCallback: function(isTrue,msg){
                             if(isTrue){
                                 editorForm.submit();

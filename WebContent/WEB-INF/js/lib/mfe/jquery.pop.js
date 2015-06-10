@@ -1,4 +1,3 @@
-
 define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 	var $ = jQuery = require("jquery");
 	/*
@@ -69,25 +68,25 @@ define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 		}
 		//右上角关闭
 		$(_this).off('click','.close').on('click','.close',function(){
-			domCallBack(false);	
+			domCallBack(false,this);	
 		});
 		//取消
 		$(_this).off('click','.pop-cancel').on('click','.pop-cancel',function(){
-			domCallBack(false);
+			domCallBack(false,this);
 		});
 		//确定
 		$(_this).off('click','.pop-ok').on('click','.pop-ok',function(){
 			
-			domCallBack(true);
+			domCallBack(true,this);
 		});
 		//点击背景
 		$("body").off('click','.mask-bg').on('click','.mask-bg',function(){
 			$(_this).fadeOut(200);
 			$(".mask-bg").fadeOut(200);
-			options.fnCallback(false);
+			options.fnCallback(false,this);
 		});
 
-		function domCallBack(isTrue){
+		function domCallBack(isTrue,obj){
 			if(options.type=='confirm'){
 				options.fnCallback(isTrue);
 			}else if(options.type=='prompt'){
@@ -99,7 +98,7 @@ define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 					var msg = $(_this).find(".pop-msg").val();
 				}
 				
-				options.fnCallback(isTrue,msg);
+				options.fnCallback(isTrue,msg,obj);
 			}
 			$(_this).fadeOut(200);
 			$(".mask-bg").fadeOut(200);

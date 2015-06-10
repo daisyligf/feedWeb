@@ -32,7 +32,7 @@
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
-    <script type="text/javascript" src="./js/jquery-2.1.4.js"></script>
+    <script src="js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -88,17 +88,7 @@
         </div>-->
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
-        <div class="search">
-            <div class="bbs-logo">
-                <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
-            </div>
-            <div class="bbs-search">
-                <input type="button" class="ser-but" value="" name="search" id="submit"/>
-                <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
-                <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
-                <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
-            </div>
-        </div>
+         <jsp:include page="commonSearch.jsp" flush='true'/>
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
@@ -140,6 +130,8 @@
            <c:if test="${letterGroup !='6'}">
            		<div class="col-xs-2"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}" style=text-decoration:none>#</a></div>
            </c:if>
+           <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
+           <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
            </div>
            <div class="h2-con clearfix container">
            <!-- 内容循环开始 -->
@@ -223,20 +215,46 @@
                 </ul>
                 
 
+            <ul class="page-mobile">
+                <!-- 上一页 按钮 -->
+                
+				<c:choose>
+				<c:when test="${currentPage != 1}">
+					<li class="prev"><a href="forumList?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+				</c:otherwise>
+				</c:choose>
+				
+				 <li class="text">${currentPage}/${totalPages}</li>
+				
+				<!-- 下一页 按钮 -->
+				<c:choose>
+				<c:when test="${currentPage != totalPages}">
+					<li class="next"><a href="forumList?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+				</c:otherwise>
+				</c:choose>
+                </ul>
+
+				
             </div> 
               
            
         </div>
         <!-- 内容结束 -->
         <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
-        </div>
+        <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
         <!-- 底部结束 -->
     </div>
     
-   <script src="./js/mod/channel.js"></script>
-   <script src="js/mod/common.js"></script>
+   
+   
    
 </body>
 

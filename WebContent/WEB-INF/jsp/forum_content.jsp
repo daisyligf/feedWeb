@@ -34,13 +34,8 @@
     <link rel="stylesheet" href="css/add_list_article.css">
     <script src="js/sea.js"></script>
     <script src="js/sea-config.js"></script>
-    <script src="js/jquery-2.1.4.js"></script>
     <script src="js/bbs-config.js"></script>
-    <script type="text/javascript">
-		function search(){
-			window.location.href = 'search?keyword='+document.getElementById("keyword").value;
-		}
-    </script>
+    <script src="js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -60,44 +55,10 @@
     <div class="page">
         <!-- 头部开始 -->
         <jsp:include page="user_info.jsp" flush='true'/>
-      <!--   <div class="header clearfix">
-            <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="http://www.mofang.com">魔方网首页</a>
-                </div>
-                
-                <div class="nav-right" id="topUserInfo">
-                    登陆状态
-                    top登录模板
-                    
-                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
-                            <li class="info">
-                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    登陆状态
-                    <a href="http://u.mofang.com/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
-                </div> 
-            </div>
-            <div class="nav-wap clearfix">
-              <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
-                  <p class="nav-info">
-                    <a class="nav-info-home">首页</a>
-                    <a>个人中心</a>
-                  </p>
-              </div> 
-            </div>
-        </div>-->
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
-        <div class="search">
+         <jsp:include page="commonSearch.jsp" flush='true'/>
+       <!-- <div class="search">
             <div class="bbs-logo">
                 <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
             </div>
@@ -105,7 +66,7 @@
                 <input type="submit" class="ser-but" value="" id="submit" onclick="search()"/>
                 <input type="text" class="ser-text" value="" id="keyword" placeholder="过来搜我"/>
             </div>
-        </div>
+        </div>-->
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
@@ -118,7 +79,9 @@
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                    <a href="javascript:;" class="follow fllowed" data-areaid='234' data-dofollow='0'>+ 关注</a>
+                    
+                    <a href="javascript:;" class="follow" data-areaid='234' data-dofollow='0'>+ 关注</a>
+                    <a href="javascript:;" class="follow followed" data-areaid='234' data-dofollow='0'>已关注</a>
                     <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
@@ -203,11 +166,11 @@
                                 <c:if test="${topThread.isElite}"><s class="icon-jing"></s></c:if>
                                 <c:if test="${topThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
-                                <dd>${fn:substring(topThread.content, 0, 100)}...</dd>
+                                <dd>${fn:substring(topThread.content, 0, 40)}...</dd>
                                 <dd class="info clearfix">
                                     <p class="author">
-                                        <span>作者：${topThread.user_name}</span>
-                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                        <span>${topThread.user_name}</span>
+                                        <span class="time"><fmt:formatDate value="${topThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
                                         <span><s class="icon-look"></s>${topThread.page_view}</span>
@@ -230,11 +193,11 @@
                                 <c:if test="${feedThread.isElite}"><s class="icon-jing"></s></c:if>
                                 <c:if test="${feedThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
-                                <dd>${fn:substring(feedThread.content, 0, 100)}...</dd>
+                                <dd>${fn:substring(feedThread.content, 0, 40)}...</dd>
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>作者：${feedThread.user_name}</span>
-                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="MM-dd HH:mm"/></span>
+                                        <span class="time"><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span>
                                     </p>
                                     <p class="look">
                                         <span><s class="icon-look"></s>${feedThread.page_view}</span>
@@ -295,6 +258,32 @@
 			                    <li class="text">5/235</li>
 			                    <li class="next"><a href="#">下一页</a></li>
 			                </ul>-->
+			                
+			                <ul class="page-mobile">
+			                <!-- 上一页 按钮 -->
+			                
+							<c:choose>
+							<c:when test="${currentPage != 1}">
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">上一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
+							</c:otherwise>
+							</c:choose>
+							
+							 <li class="text">${currentPage}/${totalPages}</li>
+							
+							<!-- 下一页 按钮 -->
+							<c:choose>
+							<c:when test="${currentPage != totalPages}">
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">下一页</a></li>
+							</c:when>
+							<c:otherwise>
+								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
+							</c:otherwise>
+							</c:choose>
+			                </ul>
+			                
 			
 			            </div>
                     </div>
@@ -383,11 +372,9 @@
            <!-- 帖子列表结束 -->
         </div>
         <!-- 内容结束 -->
-        <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
-        </div>
-        <!-- 底部结束 -->
+        <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
         <!-- 弹出框插件开始 -->
         <!-- 遮罩层开始 -->
         <div class="mask-bg">
@@ -424,15 +411,7 @@
     </div>
     
    <script src="js/mod/list_article.js"></script>
-   <script>
-   		var tagId = $('#tag_id').val();
-   		if (tagId != '' && tagId > 0) {
-   			$("#tag_" + tagId).addClass('active');
-   		} else {
-   			$("#tag_all").addClass('active');
-   		}
-   		
-   </script>
-    <script src="js/mod/common.js"></script>
+
+   
 </body>
 </html>

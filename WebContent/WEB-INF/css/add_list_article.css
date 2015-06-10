@@ -39,7 +39,10 @@
 	color:#fff;
 	background:#ff9900;
 }
-
+.con .con-top .con-top-con .followed{
+	color: #ccc;
+	background: #999;
+}
 .con .con-top .con-top-con .post{
 	position: absolute;
 	right:40px;

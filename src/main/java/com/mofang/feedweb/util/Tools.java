@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONObject;
-import org.springframework.util.StringUtils;
 
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
@@ -18,7 +17,7 @@ import com.mofang.feedweb.global.GlobalObject;
 public class Tools {
 
 	public static String encodetoAtom(String uid) {
-		if (Constant.TEST_FLG && StringUtils.isEmpty(uid)) {
+		if (Constant.TEST_FLG && StringUtil.isNullOrEmpty(uid)) {
 			uid = "129707";
 		}
 		String atom = "";

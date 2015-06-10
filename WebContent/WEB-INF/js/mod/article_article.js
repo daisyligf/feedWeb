@@ -3,11 +3,12 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop'],function(require, exports, module) {
+define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','loginUserUrl'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
 	require("jquery/jquery-pop");//弹出框插件
+	require("loginUserUrl");//跳转登录路径
 	var Handlebars = require("handlebars");//handlebars模板引擎获取登录状态
 
 	var USE_LOCAL_DATA = 0;//本地数据
@@ -41,7 +42,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setTopPostUrl = "/bbs_html/statics/test/follow.json"; //置顶帖子
 		setOffTopPostUrl = "/bbs_html/statics/test/follow.json"; //取消置顶
 		setAddDigestUrl = "/bbs_html/statics/test/follow.json"; //加精
-		setOffAddPostUrl = "/bbs_html/statics/test/follow.json";//取消加精
+		setOffAddDigestUrl = "/bbs_html/statics/test/follow.json";//取消加精
 		setdeletePostUrl = "/bbs_html/statics/test/follow.json"; //删除帖子
 		setAwardUrl = "/bbs_html/statics/test/follow.json"; //奖励
 		deleteHrefUrl = "http://www.baidu.com";//删除帖子跳转的路径
@@ -58,7 +59,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setTopPostUrl = "top_thread.json"; //置顶帖子
 		setOffTopPostUrl = "cancel_top_thread.json"; //取消置顶
 		setAddDigestUrl = "elite_thread.json"; //加精
-		setOffAddPostUrl = "cancel_elite_thread.json";//取消加精
+		setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
 		setdeletePostUrl = "del_thread.json"; //删除帖子
 		setAwardUrl = "award.json"; //奖励
 		deleteHrefUrl = "forum_content?fid="+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
@@ -104,42 +105,54 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		$("body").on("click",".thread-zan",function(){
 			var _this =this;
 			var tid = $(_this).parents(".look").attr("data-tid");
-			//var uid = $(_this).parents(".con-list").attr("data-uid");
-
-			var reason = "点赞";
+			
+			
+			var reason="";
 			if(!loginStatus){
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
 				return false;
 			}
 			
+			if($(_this).hasClass('zan-hover')){
+				reason = "取消点赞";
+			}else{
+				reason = "点赞";
+			}
 			fnAjax(setPraThreadUrl,{
-				tid : tid,
-				//uid : uid
+				tid : tid
 			},function(res){
 				if(res && res.code==0){
 					var val = parseInt($(_this).find("a").html());
-					var v = $(_this).find("a").html(val+1);
+					
+					if($(_this).hasClass('zan-hover')){
+						$(_this).removeClass('zan-hover');
+						var v = $(_this).find("a").html(val-1);
+					}else{
+						$(_this).addClass('zan-hover');
+						var v = $(_this).find("a").html(val+1);
+					}
+					
 					$(".pop-post-ok").pop({
-						msg:"点赞成功",
+						msg:reason+"成功",
 						autoTime:1000
 					});
 				}else{
 					$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 				}
 			},function(res){
 				$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 			});
@@ -162,6 +175,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 					if(isTrue){
 						reason=msg;
 						//发送数据
+						
 						rewardFnAjax();
 						
 					}
@@ -390,6 +404,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		});
 		//加精/取消加精
 		$("body").on("click",".manege-great",function(){
+			
 			var _this =this;
 			var url = '';
 			if($(_this).hasClass('off-manege-great')){
@@ -413,7 +428,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				fnCallback : function(isTrue,msg){
 					if(isTrue){
 						reason=msg;
-						//发送数据
+						
 						greatFnAjax();
 						
 					}
@@ -484,14 +499,20 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	
 	function FloorManage(){
 		var countNum = 0;
+		
 		//点击获取评论数据
 		$("body").on("click",".floor-rec",function(){
+			
 			var _this  = this;
 			$(_this).hide();
 			$(_this).siblings(".floor-stop").show();
 			$(_this).parents(".con-list-right").find(".con-list-reply").show();
 			_this.pagecur=0;
 			$(_this).parents(".con-list-right").find(".con-list-replycon").html('');
+			if($(_this).find("a").html()==0){
+				$(_this).parents(".con-list-right").find(".reply-textarea").show();
+				$(_this).parents(".con-list-right").find(".replay-lay-btn").hide();
+			}
 			getFloorCommentData(_this,{
 				p : 1
 			},function(){
@@ -506,7 +527,19 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			;
 			$(_this).parents(".con-list-right").find(".con-list-reply").hide();
 		});
-		//
+		//如果有评价加载数据
+		$(".floor-rec").each(function(){
+			var _this = this;
+			if($(_this).find('a').html()>0){
+				$(_this).click();
+			}
+		});
+		//回复楼层文本框show
+		$("body").on("click",".replay-lay-btn",function(){
+			var _this  = this;
+			$(_this).hide();
+			$(_this).siblings(".reply-textarea").show();
+		});
 		//加载更多
 		$("body").on("click",".floor-reply-more",function(){
 			var _this  = this;
@@ -536,6 +569,8 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			$(_this).parents(".con-list-right").find(".uid").val(uid);
 			$(_this).parents(".con-list-right").find(".tid").val(tid);
 			$(_this).parents(".con-list-right").find(".postname").val("@" + name + "：");
+			$(_this).parents(".con-list-right").find(".reply-textarea").show();
+			$(_this).parents(".con-list-right").find(".replay-lay-btn").hide();
 			
 		});
 
@@ -546,9 +581,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
@@ -626,18 +661,25 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var pid = $(_this).parents(".con-list").attr("data-postid");
 			var uid = $(_this).parents(".con-list").attr("data-uid");
 
-			var reason = "点赞";
+			var reason = "";
 			if(!loginStatus){
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
 				return false;
+			}
+			
+			
+			if($(_this).hasClass('zan-hover')){
+				reason = "取消点赞";
+			}else{
+				reason = "点赞";
 			}
 			
 			fnAjax(setPraFloorUrl,{
@@ -646,20 +688,26 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			},function(res){
 				if(res && res.code==0){
 					var val = parseInt($(_this).find("a").html());
-					var v = $(_this).find("a").html(val+1);
+					if($(_this).hasClass('zan-hover')){
+						$(_this).removeClass('zan-hover');
+						var v = $(_this).find("a").html(val-1);
+					}else{
+						$(_this).addClass('zan-hover');
+						var v = $(_this).find("a").html(val+1);
+					}
 					$(".pop-post-ok").pop({
-						msg:"点赞成功",
+						msg:reason+"成功",
 						autoTime:1000
 					});
 				}else{
 					$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 				}
 			},function(res){
 				$(".pop-top-fail").pop({
-					msg:"点赞失败",
+					msg:reason+"失败",
 					autoTime:1000
 				});
 			});
@@ -738,6 +786,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		console.log(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".dianping-textarea").val('回复');
+		    		$(obj).parents(".con-list-right").find(".reply-textarea").hide();
+		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").show();
+					
 		    		$(".pop-post-ok").pop({
 						msg:"回复成功"
 					});

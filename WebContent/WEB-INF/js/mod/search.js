@@ -147,7 +147,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	                getPostData({
 	                	p: pageIndex
 	                });
-	                $(".page-mobile .text").html(pageIndex+'/'+total);
+	                $(".page-mobile .text").html(pageIndex+'/'+Math.ceil(total/pageNum));
 	            }
 	      });
 		});//获取帖子第一页
@@ -179,7 +179,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		    	
 		    		$("#post").html(postTemplate(res.data));	
 		    	}
-		    	$(".page-mobile .text").html(options.p+'/'+res.data.total);
+		    	$(".page-mobile .text").html(options.p+'/'+Math.ceil(res.data.total/options.pagesize));
 		    	fnCallback && fnCallback(res.data.total,options.p,options.pagesize);
 
 

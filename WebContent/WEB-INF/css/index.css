@@ -190,10 +190,18 @@
 
 	border-radius: 30px;
 }
+.con .con-top .hot-tj .hot-con span .off-package{
+	background:#ccc;
+	cursor:default;
+}
 .con .con-top .hot-tj .hot-con span .down{
 	background:#ff9900;
 	padding:4px 13px;
 	border-radius: 30px;
+}
+.con .con-top .hot-tj .hot-con span .off-down{
+	background:#ccc;
+	cursor:default;
 }
 .con .con-top .hot-tj .hot-con .num{
 	float:left;
