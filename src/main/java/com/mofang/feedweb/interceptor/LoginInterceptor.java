@@ -24,5 +24,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// response.getWriter().print(result);
 		return true;
 	}
+	
+	
 
 }
