@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class EmojiUtil {
 
-	public static Map<String, String> EMOJIMAP = new HashMap<String, String>();
+	private static final Map<String, String> EMOJIMAP = new HashMap<String, String>();
 
 	static {
 		EMOJIMAP.put("嘻哈",
