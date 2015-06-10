@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.util.StringUtil;
 
 @Controller
@@ -27,62 +28,67 @@ public class IdentifyingCodeContorller {
 
 	@RequestMapping("/checkCode")
 	public void check(@RequestParam(value = "code") String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		JSONObject json = new JSONObject();
-		String rand = (String)request.getSession().getAttribute("randCode"); 
-		if(StringUtil.isNullOrEmpty(code) || StringUtil.isNullOrEmpty(rand)) {
-			json.put("code", 1);
-		}
-		if(!StringUtil.isNullOrEmpty(code) && !StringUtil.isNullOrEmpty(rand)) {
-			code = code.toLowerCase();
-			rand = rand.toLowerCase();
-			if(rand.equals(code)) {
-				json.put("code", 0);
-			}else{
+		try {
+			JSONObject json = new JSONObject();
+			String rand = (String)request.getSession().getAttribute("randCode"); 
+			if(StringUtil.isNullOrEmpty(code) || StringUtil.isNullOrEmpty(rand)) {
 				json.put("code", 1);
 			}
+			if(!StringUtil.isNullOrEmpty(code) && !StringUtil.isNullOrEmpty(rand)) {
+				code = code.toLowerCase();
+				rand = rand.toLowerCase();
+				if(rand.equals(code)) {
+					json.put("code", 0);
+				}else{
+					json.put("code", 1);
+				}
+			}
+			response.getWriter().print(json.toString());
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at IdentifyingCodeContorller.check throw an error.", e);
 		}
-		response.getWriter().print(json.toString());
 	}
 	
 	@RequestMapping("/generageCode")
 	public void generate(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		response.setContentType("image/jpeg");
-		response.setHeader("Pragma", "No-cache");
-		response.setHeader("Cache-Control", "no-cache");
-		response.setDateHeader("Expires", 0);
-
-		BufferedImage image = new BufferedImage(WIDTH, HEIGHT,
-				BufferedImage.TYPE_INT_RGB);
-		Graphics g = image.getGraphics();
-
-		char[] rands = generateCheckCode();
-		drawBackground(g);
-		drawRands(g, rands);
-		g.dispose();
-
-		ServletOutputStream sos = null;
-		ByteArrayOutputStream bos = null;
 		try {
-			sos = response.getOutputStream();
-			bos = new ByteArrayOutputStream();
-			ImageIO.write(image, "JPEG", bos);
-			byte[] buf = bos.toByteArray();
-			response.setContentLength(buf.length);
-			sos.write(buf);
-			sos.flush();
-		} finally{
-			if(sos != null) {
-				sos.close();
+			response.setContentType("image/jpeg");
+			response.setHeader("Pragma", "No-cache");
+			response.setHeader("Cache-Control", "no-cache");
+			response.setDateHeader("Expires", 0);
+			
+			BufferedImage image = new BufferedImage(WIDTH, HEIGHT,
+					BufferedImage.TYPE_INT_RGB);
+			Graphics g = image.getGraphics();
+			
+			char[] rands = generateCheckCode();
+			drawBackground(g);
+			drawRands(g, rands);
+			g.dispose();
+			
+			ServletOutputStream sos = null;
+			ByteArrayOutputStream bos = null;
+			try {
+				sos = response.getOutputStream();
+				bos = new ByteArrayOutputStream();
+				ImageIO.write(image, "JPEG", bos);
+				byte[] buf = bos.toByteArray();
+				response.setContentLength(buf.length);
+				sos.write(buf);
+				sos.flush();
+			} finally{
+				if(sos != null) {
+					sos.close();
+				}
+				if(bos != null) {
+					bos.close();
+				}
 			}
-			if(bos != null) {
-				bos.close();
-			}
+			request.getSession().setAttribute("randCode", new String(rands));
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at IdentifyingCodeContorller.generate throw an error.", e);
 		}
-		
-		//String randomCode = new String(rands);
-		//response.getWriter().print(randomCode);
-		request.getSession().setAttribute("randCode", new String(rands));
 	}
 
 	private void drawBackground(Graphics g) {
@@ -123,7 +129,5 @@ public class IdentifyingCodeContorller {
 		}
 		return rands;
 	}
-	
-	
 
 }

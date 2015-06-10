@@ -20,6 +20,7 @@ import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.service.FeedNewThreadService;
+import com.mofang.feedweb.util.StringUtil;
 
 @Service("feedNewThreadService")
 public class FeedNewThreadServiceImpl implements FeedNewThreadService {
@@ -77,8 +78,9 @@ public class FeedNewThreadServiceImpl implements FeedNewThreadService {
 						FeedTag tag = new FeedTag();
 						tag.setTag_id(jsonFeedTag.optInt("tag_id", 0));
 						tag.setTag_name(jsonFeedTag.optString("tag_name", ""));
-
-						tagList.add(tag);
+						if(!StringUtil.isNullOrEmpty(tag.getTag_name())) {
+							tagList.add(tag);
+						}
 					}
 				}
 			}
