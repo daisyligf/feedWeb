@@ -17,8 +17,6 @@ import org.apache.commons.httpclient.methods.multipart.FilePart;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,115 +29,46 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mofang.feedweb.component.UserComponent;
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
-import com.mofang.feedweb.global.Constant;
+import com.mofang.feedweb.global.GlobalObject;
+import com.mofang.feedweb.service.FeedNewThreadService;
 import com.mofang.feedweb.util.StringUtil;
 
 @Controller
 public class FeedNewThreadContorller extends FeedCommonController {
 
 	@Autowired
-	private UserComponent userComp;
+	private FeedNewThreadService feedNewThreadService;
 	
 	@RequestMapping(value = "/newThreadInit", method = RequestMethod.GET)
 	public ModelAndView init(@RequestParam(value = "fid") long fid,HttpServletRequest request)
 			throws Exception {
-		
-		UserInfo userInfo = getUserInfo(request);
-		
 		Map<String, Object> map = new HashMap<String, Object>();
-
-		// 用户信息
-		if(userInfo != null) {
-			map.putAll(userJson("user_id=" + userInfo.getUserId(), request));
-		}else {
-			map.put("user", new ThreadUserInfo());
-		}
-		// 标签列表
-		map.putAll(tagJson("fid=" + fid, request));
-		
+		FeedThread threadinfo = new FeedThread();
+		map.put("threadInfo", threadinfo);
 		map.put("fid", fid);
-		FeedThread threadinfo = new FeedThread();
-		map.put("threadInfo", threadinfo);
-		return new ModelAndView("new_thread", map);
-	}
-
-	private Map<String, Object> userJson(String param,
-			HttpServletRequest request) {
-		Map<String, Object> map = new HashMap<String, Object>(1);
-		JSONObject userResult = getHttpInfo(getFeedUrlInfo()
-				+ Constant.USER_INFO_URL, param, request);
-		ThreadUserInfo info = new ThreadUserInfo();
-		if (userResult != null) {
-			int code = userResult.optInt("code", -1);
-			if (code == 0) {
-				JSONObject data = userResult.optJSONObject("data");
-				info.setUserId(data.optLong("user_id", 0));
-				info.setNickname(data.optString("nickname", ""));
-				info.setAvatar(data.optString("avatar", ""));
-				info.setReplies(data.optInt("replies", 0));
-				info.setThreads(data.optInt("threads", 0));
-				info.setEliteThreads(data.optInt("elite_threads", 0));
-				info.setCoin(data.optInt("coin", 0));
+		try {
+			UserInfo userInfo = getUserInfo(request);
+			// 用户信息
+			if(userInfo != null) {
+				Map<String, Object> userMap = feedNewThreadService.userMap("user_id=" + userInfo.getUserId(), request);
+				map.putAll(userMap);
+			}else {
+				map.put("user", new ThreadUserInfo());
 			}
+			// 标签列表
+			Map<String, Object> tagMap = feedNewThreadService.tagMap("fid=" + fid, request);
+			map.putAll(tagMap);
+			return new ModelAndView("new_thread", map);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedNewThreadController.init throw an error.", e);
+			map.put("user", new ThreadUserInfo());
+			map.put("tagList", new ArrayList<FeedTag>(1));
+			return new ModelAndView("new_thread", map);
 		}
-		map.put("user", info);
-		return map;
-	}
-
-	private Map<String, Object> tagJson(String param, HttpServletRequest request)
-			throws JSONException {
-		Map<String, Object> map = new HashMap<String, Object>(1);
-		JSONObject tagResult = getHttpInfo(getFeedUrlInfo()
-				+ Constant.FORUM_TAG_LIST_URL, param, request);
-		List<FeedTag> tagList = new ArrayList<FeedTag>();
-		if (tagResult != null) {
-			int code = tagResult.optInt("code", -1);
-			if (code == 0) {
-				JSONArray data = tagResult.optJSONArray("data");
-				for (int idx = 0; idx < data.length(); idx++) {
-					JSONObject jsonFeedTag = data.getJSONObject(idx);
-
-					FeedTag tag = new FeedTag();
-					tag.setTag_id(jsonFeedTag.optInt("tag_id", 0));
-					tag.setTag_name(jsonFeedTag.optString("tag_name", ""));
-
-					tagList.add(tag);
-				}
-			}
-		}
-		if(tagList.size() == 0) {
-			tagList.add(new FeedTag(0, "综合"));
-		}
-		map.put("tagList", tagList);
-		return map;
-	}
-
-	private Map<String, Object> threadInfoJson(String param,
-			HttpServletRequest request) {
-		Map<String, Object> map = new HashMap<String, Object>(1);
-		FeedThread threadinfo = new FeedThread();
-		JSONObject threadResult = getHttpInfo(getFeedUrlInfo()
-				+ Constant.THREAD_INFO_URL, param, request);
-		if (threadResult != null) {
-			int code = threadResult.optInt("code", -1);
-			if (code == 0) {
-				JSONObject data = threadResult.optJSONObject("data");
-
-				threadinfo.setThread_id(data.optLong("tid", 0));
-				threadinfo.setSubject(data.optString("subject", ""));
-				threadinfo.setHtmlContent(data.optString("html_content", ""));
-				threadinfo.setPic(data.optString("pic", ""));
-				threadinfo.setTagId(data.optInt("tag_id", 0));
-
-			}
-		}
-		map.put("threadInfo", threadinfo);
-		return map;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -147,123 +76,111 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
 			@RequestParam(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
-		UserInfo userInfo = getUserInfo(request);
-		
 		Map<String, Object> map = new HashMap<String, Object>();
-		// 帖子信息
-		map.putAll(threadInfoJson("tid=" + tid, request));
-		// 用户信息
-		if(userInfo != null) {
-			map.putAll(userJson("user_id=" + userInfo.getUserId(), request));
-		}else {
-			map.put("user", new ThreadUserInfo());
-		}
-		// 标签列表
-		map.putAll(tagJson("fid=" + fid, request));
-		
-		// 默认综合 特殊处理
-		FeedThread threadInfo = (FeedThread)map.get("threadInfo");
-		if(threadInfo != null) {
-			int tagId = threadInfo.getTagId();
-			if(tagId > 0){
-				List<FeedTag> list = (List)map.get("tagList");
-				list.add(new FeedTag(0, "综合"));
+		try {
+			UserInfo userInfo = getUserInfo(request);
+
+			// 帖子信息
+			Map<String, Object> threadInfoMap = feedNewThreadService.threadInfoMap("tid=" + tid, request);
+			map.putAll(threadInfoMap);
+			
+			// 默认综合 特殊处理
+			FeedThread threadInfo = (FeedThread)map.get("threadInfo");
+			if(threadInfo != null) {
+				int tagId = threadInfo.getTagId();
+				if(tagId > 0){
+					List<FeedTag> list = (List)map.get("tagList");
+					list.add(new FeedTag(0, "综合"));
+				}
 			}
+			map.put("fid", fid);
+			
+			// 用户信息
+			if(userInfo != null) {
+				Map<String, Object> userMap = feedNewThreadService.userMap("user_id=" + userInfo.getUserId(), request);
+				map.putAll(userMap);
+			}else {
+				map.put("user", new ThreadUserInfo());
+			}
+			// 标签列表
+			Map<String, Object> tagMap = feedNewThreadService.tagMap("fid=" + fid, request);
+			map.putAll(tagMap);
+			return new ModelAndView("new_thread", map);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedNewThreadContorller.editInit throw an error.", e);
+			map.put("user", new ThreadUserInfo());
+			map.put("tagList", new ArrayList<FeedTag>(1));
+			map.put("threadInfo", new FeedThread());
+			return new ModelAndView("new_thread", map);
 		}
-		map.put("fid", fid);
-		return new ModelAndView("new_thread", map);
+
 	}
 
 	@RequestMapping(value = { "/newThread" }, method = RequestMethod.POST)
 	public void newThread(HttpServletRequest request, HttpServletResponse response, RedirectAttributes  redirectAtt)
 			throws Exception {
-		
-//		boolean loginstatus = userComp.validate(request);
-//		System.out.println("用户登录状态 == " + loginstatus);
-		
 		String strTid = request.getParameter("tid");
 		String content = request.getParameter("content");
 		String strTagId = request.getParameter("tagId");
 		String subject = request.getParameter("subject");
 		String strFid = request.getParameter("fid");
 		
-		long tid = 0;
-		if(!StringUtil.isNullOrEmpty(strTid)) {
-			tid = Long.valueOf(strTid);
-		}
-		int tagId = 0;
-		if(!StringUtil.isNullOrEmpty(strTagId)){
-			tagId = Integer.valueOf(strTagId);
-		}
-		
-//		if(!StringUtils.isEmpty(content)) {
-//			content =  new String(content.getBytes("ISO-8859-1"), "UTF-8");
-//		}
-//		if(!StringUtils.isEmpty(subject)) {
-//			subject =  new String(subject.getBytes("ISO-8859-1"), "UTF-8");
-//		}
-		
-		
-		JSONObject obj = new JSONObject();
-		
-		//发新帖
-		if(tid == 0) {
-			JSONObject json = new JSONObject();
-			json.put("fid", strFid);
-			json.put("subject", subject);
-			json.put("content", content);
-			json.put("tag_id", tagId);
-			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json, request);
-			int code;
-			if(result != null && (code = result.optInt("code", -1)) == 0) {
-				String message = result.optString("message", "");
-				obj.put("code", code);
-				obj.put("message", message);
-			}else{
-				obj.put("code", -1);
-				obj.put("message", "保存失败");
+		try {
+			long tid = 0;
+			if(!StringUtil.isNullOrEmpty(strTid)) {
+				tid = Long.valueOf(strTid);
 			}
-//			int code = result.optInt("code", -1);
-//			//跳转到 板块内容页
-//			if(code == 0){
-//				result.put("code", 0);
-//				redirectAtt.addAttribute("fid", strFid);
-//				return new ModelAndView("redirect:/forum_content");
-//			}
-			
-			
-		//编辑
-		}else if(tid > 0){
-			long threadId = tid;
-			JSONObject json = new JSONObject();
-			json.put("tid", threadId);
-			json.put("subject", subject);
-			json.put("content", content);
-			json.put("tag_id", tagId);
-			JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json, request);
-			int code;
-			if(result != null && (code = result.optInt("code", -1)) == 0) {
-				String message = result.optString("message", "");
-				obj.put("code", code);
-				obj.put("message", message);
-			}else{
-				obj.put("code", -1);
-				obj.put("message", "保存失败");
+			int tagId = 0;
+			if(!StringUtil.isNullOrEmpty(strTagId)){
+				tagId = Integer.valueOf(strTagId);
 			}
-//			int code = result.optInt("code", -1);
-//			//跳转到 帖子详情页
-//			if(code == 0){
-//				redirectAtt.addAttribute("thread_id", strTid);
-//				return new ModelAndView("redirect:/thread_info");
-//			}
-//			
-//			message = result.optString("message", "");
+			
+			JSONObject obj = new JSONObject();
+			//发新帖
+			if(tid == 0) {
+				JSONObject json = new JSONObject();
+				json.put("fid", strFid);
+				json.put("subject", subject);
+				json.put("content", content);
+				json.put("tag_id", tagId);
+//				JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_CREATE_URL, json, request);
+//				int code;
+//				if(result != null && (code = result.optInt("code", -1)) == 0) {
+//					String message = result.optString("message", "");
+//					obj.put("code", code);
+//					obj.put("message", message);
+//				}else{
+//					obj.put("code", -1);
+//					obj.put("message", "保存失败");
+//				}
+				obj = feedNewThreadService.newThread(json, request);
+			//编辑
+			}else if(tid > 0){
+				long threadId = tid;
+				JSONObject json = new JSONObject();
+				json.put("tid", threadId);
+				json.put("subject", subject);
+				json.put("content", content);
+				json.put("tag_id", tagId);
+//				JSONObject result = postHttpInfo(getFeedUrlInfo() + Constant.THREAD_EDIT_URL, json, request);
+//				int code;
+//				if(result != null && (code = result.optInt("code", -1)) == 0) {
+//					String message = result.optString("message", "");
+//					obj.put("code", code);
+//					obj.put("message", message);
+//				}else{
+//					obj.put("code", -1);
+//					obj.put("message", "保存失败");
+//				}
+				obj = feedNewThreadService.editThread(json, request);
+			}
+			
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().print(obj.toString());
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedNewThreadController.newThread throw an error.", e);
 		}
-		
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().print(obj.toString());
-		//return null;
+
 	}
 	
 	@RequestMapping(value = "/upload" , method = RequestMethod.POST)
@@ -314,7 +231,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 				response.getWriter().print(convertJsonObj);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			GlobalObject.ERROR_LOG.error("at FeedNewThreadController.upload throw an error.", e);
 		} finally {
 			if(fileOut != null) {
 				fileOut.close();

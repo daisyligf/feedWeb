@@ -227,8 +227,7 @@ public class FeedCommonController {
 		}
 	}
 
-	protected JSONObject getHttpInfoWithoutAtom(String getUrl, String param,
-			HttpServletRequest request) {
+	protected JSONObject getHttpInfoWithoutAtom(String getUrl, String param) {
 		try {
 			StringBuffer strb = new StringBuffer();
 			strb.append(getUrl);

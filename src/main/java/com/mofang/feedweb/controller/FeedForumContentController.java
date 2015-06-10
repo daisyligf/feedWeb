@@ -120,7 +120,7 @@ public class FeedForumContentController extends FeedCommonController {
 		param.append("&appid=").append(Constant.APP_ID);
 		param.append("&sign=").append(sign);
 		
-		JSONObject json = this.getHttpInfoWithoutAtom(getGameGiftListUrl(), param.toString(), request);
+		JSONObject json = this.getHttpInfoWithoutAtom(getGameGiftListUrl(), param.toString());
 		
 		if (json != null && json.optInt("code", -1) == 0) {
 			JSONArray data = json.optJSONArray("data");
