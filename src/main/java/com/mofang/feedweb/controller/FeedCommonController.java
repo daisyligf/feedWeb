@@ -37,27 +37,15 @@ public class FeedCommonController {
 		return externalUrlInfo.getFeed_info_url();
 	}
 
-	protected String getGame_info_url() {
-		return externalUrlInfo.getGame_info_url();
-	}
-
-	protected String getGift_info_url() {
+	protected String getGiftInfoUrl() {
 		return externalUrlInfo.getGift_info_url();
 	}
-
-	protected String getImage_info_url() {
-		return externalUrlInfo.getImage_info_url();
+	
+	protected String getUserInfoUrl(){
+		return externalUrlInfo.getUser_info_url();
 	}
 
-	protected String getUser_LogOut_info_url() {
-		return externalUrlInfo.getUser_info_url() + Constant.USER_LOGOUT_URL;
-	}
-
-	protected String getUser_LogIn_info_url() {
-		return externalUrlInfo.getUser_info_url() + Constant.USER_LOGIN_URL;
-	}
-
-	protected String getUser_Update_State_url() {
+	protected String getUserUpdateStateurl() {
 		return externalUrlInfo.getUser_info_url()
 				+ Constant.USER_STATE_UPDATE_URL;
 	}
