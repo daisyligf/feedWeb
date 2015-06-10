@@ -165,7 +165,6 @@
                 </div>
             </div>
             <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }">
-            	<!--<c:if test="${currentPage==1}">-->
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
@@ -233,16 +232,18 @@
                         </c:if>
                         
                     </h2>
+                    <c:if test="${currentPage==1}">
                     <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent }
                     </div>
+                    
                    <p class="look" data-tid="${feedThread.thread_id }">
                         <span class="thread-zan zan-hover"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
                         <span class="thread-comment"><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
+                    </c:if>
                 </div>
-                <!--</c:if>-->
                 <div class="con-right2" id="conRight2">
                     <!-- 楼层回复模板1 -->
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
