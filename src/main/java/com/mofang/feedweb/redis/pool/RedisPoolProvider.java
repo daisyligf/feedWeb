@@ -1,4 +1,4 @@
-package mofang.feedweb.redis.pool;
+package com.mofang.feedweb.redis.pool;
 
 import redis.clients.jedis.JedisPool;
 

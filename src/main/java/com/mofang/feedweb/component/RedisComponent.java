@@ -2,9 +2,6 @@ package com.mofang.feedweb.component;
 
 import javax.annotation.PostConstruct;
 
-import mofang.feedweb.redis.pool.RedisPoolConfig;
-import mofang.feedweb.redis.pool.RedisPoolProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +12,8 @@ import com.mofang.feedweb.config.RedisMasterConfig;
 import com.mofang.feedweb.config.RedisSlaveConfig;
 import com.mofang.feedweb.redis.RedisExecutor;
 import com.mofang.feedweb.redis.RedisWorker;
+import com.mofang.feedweb.redis.pool.RedisPoolConfig;
+import com.mofang.feedweb.redis.pool.RedisPoolProvider;
 
 @Component
 public class RedisComponent {
