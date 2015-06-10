@@ -672,13 +672,14 @@
 		float:left;
 		width:11px;
 		height:20px;
+		margin-right:22px;
 		background:url(../img/icon/back_up.png) no-repeat;
 		background-size:100% 100%;
 		
 	}
 	.header .nav-wap .nav-wap-list{
 		float:left;
-		margin-left:22px;
+		
 	}
 	.header .nav-wap .nav-info{
 		display: none;
@@ -726,6 +727,16 @@
 		height:28px;
 		margin-top:-4px;
 		background:url(../img/icon/ask_m.png) no-repeat;
+		background-size:100% 100%;
+		text-indent:-999999px;
+		margin-right:10px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-post{
+		float:right;
+		width:22px;
+		height:22px;
+		margin-top:-2px;
+		background:url(../img/icon/m_post.png) no-repeat;
 		background-size:100% 100%;
 		text-indent:-999999px;
 		margin-right:10px;
@@ -896,6 +907,16 @@
 		height:24px;
 		padding:2px;
 		margin-top:-2px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-post{
+		margin-right:0px;
+		width:22px;
+		height:22px;
+		padding:2px;
+		margin-top:-1px;
+	}
+	.header .nav-wap .nav-wap-back {
+	  margin-right: 15px;
 	}
 	.search{
 		margin: 10px 10px;

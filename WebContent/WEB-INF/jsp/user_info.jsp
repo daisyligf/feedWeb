@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
-<%-- <!--    <script src="./js/mod/common.js"></script>
-   头部开始
-        <div class="header clearfix"> --%>
+
             <div class="nav clearfix">
                 <div class="nav-left">
                     <a target="_blank" href="http://www.mofang.com">魔方网首页</a>
@@ -27,19 +25,4 @@
                     <a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
                 </div>
             </div>
-           <%--  <div class="nav-wap clearfix">
-                <div class="nav-wap-left">
-                  <a href="javascript:;"><img src="./img/icon/nav_three.png"></a>
-                  <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
-                    <a href="<%=UserCenter.baseUrl %>">个人中心</a>
-                  </p>
-                </div>
-                  <div class="wap-logo">
-                    <img src="./img/icon/bbs_icon_wap.png"alt="">
-                  </div>
-               
-            </div>
-        </div> --%>
-        <!-- 头部结束 -->
  

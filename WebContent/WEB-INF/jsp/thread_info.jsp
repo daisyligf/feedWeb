@@ -84,8 +84,8 @@
                   </p>
                 </div>
                 <div class="nav-wap-right">
-                <a href="#" class="nav-wap-comment">评论</a>
-                	<a href="#" class="nav-wap-floor">楼主</a>
+                <a href="#conRight3" class="nav-wap-comment">评论</a>
+                <a href="#" class="nav-wap-floor">楼主</a>
                 	
                 </div>
                   <!-- <div class="wap-logo">
@@ -412,7 +412,7 @@
 					-->
                <!--  </div> -->
                 <c:if test="${!feedThread.isClosed }">
-                <div class="con-right3 reply-textarea">
+                <div class="con-right3 reply-textarea" id="conRight3">
                     <div class="reply-textarea-info clearfix">
                         <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
                         <dl>

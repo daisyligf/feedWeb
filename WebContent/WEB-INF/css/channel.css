@@ -69,7 +69,10 @@
 
 .con .h2-con dl dd a{
 
-	display: block;
+	display:block;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	color:#333;
 	font-size:16px;
 	margin-top:8px;
@@ -105,6 +108,9 @@
 	color: #333;
 }
 @media (max-width:1024px){
+	.container{
+		margin-right:-15px;
+	}
 	.con .h2-con .col-md-4{
 		padding-right:15px;
 		margin-bottom:15px;
@@ -134,13 +140,14 @@
 
 }
 @media (max-width:540px){
+	.con{
+		padding:0px 10px;
+	}
 	.con .h2{
 		font-size:20px;
-		padding:0px 10px;
 		margin:10px 0px;
 	}
 	.con .channel-list{
-		margin:0 10px;
 		margin-bottom:10px;
 	}
 	.con .h2-con .col-sm-6{
@@ -148,7 +155,7 @@
 		margin-bottom:10px;
 	}
 	.con .h2-con{
-		padding:0px 20px 0px 10px;
+		padding-right:10px;
 	}
 	.con .h2-con dl{
 		padding:8px;

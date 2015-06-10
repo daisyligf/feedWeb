@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -51,7 +52,23 @@
 <body>
     <div class="page">
         <!-- 头部开始 -->
-        <jsp:include page="user_info.jsp" flush='true'/>
+        <!-- 头部开始 -->
+        <div class="header clearfix">
+            <jsp:include page="user_info.jsp" flush='true'/>
+            <div class="nav-wap clearfix">
+                <div class="nav-wap-left">
+                  <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
+                  <p class="nav-info">
+                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
+                    <a href="<%=UserCenter.baseUrl %>">个人中心</a>
+                  </p>
+                </div>
+                 <div class="wap-logo">
+                    <img src="./img/icon/bbs_icon_wap.png"alt="">
+                  </div>
+            </div>
+        </div>
+        <!-- 头部结束 -->
         <!-- 头部结束 -->
         <!-- 搜索开始 -->
         <jsp:include page="commonSearch.jsp" flush='true'/>
