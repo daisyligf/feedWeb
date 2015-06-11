@@ -83,15 +83,15 @@
                             <!-- <div class="swipe-wrap"> -->
                                <ul class="swipe-wrap">
                                   <li>
-                                    <a href="${tickers.threadLink1} "><img src="${tickers.tickerIcon1} "alt="" /></a>
+                                    <a target="_blank" href="${tickers.threadLink1} "><img src="${tickers.tickerIcon1} "alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
                                   <li>
-                                    <a href="${tickers.threadLink2}"><img src="${tickers.tickerIcon2}"alt="" /></a>
+                                    <a target="_blank" href="${tickers.threadLink2}"><img src="${tickers.tickerIcon2}"alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
                                   <li>
-                                    <a href="${tickers.threadLink3}"><img src="${tickers.tickerIcon3}"alt="" /></a>
+                                    <a target="_blank" href="${tickers.threadLink3}"><img src="${tickers.tickerIcon3}"alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
                                </ul>
