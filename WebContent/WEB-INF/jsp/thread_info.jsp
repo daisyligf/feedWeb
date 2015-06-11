@@ -241,7 +241,7 @@
                                 %>
                                 
                                 <% if (feedThread.getIsClosed()) {%>
-                                <a href="javascript:;" class="manage-lock off-manage-lock">打开帖子</a>
+                                <a href="javascript:;" class="manage-lock off-manege-lock">打开帖子</a>
                                 <%} else {%>
 		                      	<a href="javascript:;" class="manage-lock">锁帖</a>
 		                      	<%} %>
@@ -411,8 +411,9 @@
                     </div>
 					-->
                <!--  </div> -->
-                <c:if test="${!feedThread.isClosed }">
-                <div class="con-right3 reply-textarea" id="conRight3">
+               <c:choose>
+               	<c:when test="${!feedThread.isClosed}">
+                <div class="con-right3 reply-textarea">
                     <div class="reply-textarea-info clearfix">
                         <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
                         <dl>
@@ -436,10 +437,13 @@
                     
                     <p class="replay-floor"><span class="word-count">还可以输入5000字</span> <input type="button" class="reply-editer reply-submit" value="回复"></p>
                 </div>
-                </c:if>
+                </c:when>
+                <c:otherwise>
                 <div class="con-right3 replay-ban">
                 	该帖子已被禁止回复:-D！
                 </div>
+                </c:otherwise>
+               </c:choose>
             </div>
         </div>
         <!-- 内容结束 -->
