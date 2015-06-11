@@ -54,7 +54,7 @@ define('common',['jquery','login_top','loginUserUrl'],function(require, exports,
 			return false;
 		}
 
-		window.location.href = "search?keyword="+keyword;
+		window.location.href = "search?keyword="+encodeURIComponent(keyword);
 	}
 
 	//头部登录跳转
