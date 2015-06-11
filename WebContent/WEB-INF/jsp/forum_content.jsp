@@ -65,13 +65,13 @@
                   </p>
                 </div>
                 <div class="nav-wap-right">
-                	<a href="#" class="nav-wap-post">发帖</a>
+                	<a href="newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post">发帖</a>
                 </div>
                   <!-- <div class="wap-logo">
                     帖子详情
                   </div> -->
                   <div class="wap-nav-text">
-                  	保卫萝卜
+                  	${feedForum.forum_name}
                   </div>
             </div>
         </div>
