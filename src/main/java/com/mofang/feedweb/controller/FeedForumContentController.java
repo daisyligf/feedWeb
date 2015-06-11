@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -326,7 +328,9 @@ public class FeedForumContentController extends FeedCommonController {
 		FeedThread feedThread = new FeedThread();
 		feedThread.setThread_id(obj.optLong("tid", 0));
 		feedThread.setSubject(obj.optString("subject", ""));
-		feedThread.setContent(replaceEmoji(obj.optString("content", "")));
+		String content = obj.optString("content", "");
+		String htmlContent = obj.optString("html_content", "");
+		feedThread.setContent(replaceEmoji(content));
 		feedThread.setPage_view(obj.optInt("pageview", 0));
 		feedThread.setReplies(obj.optInt("replies", 0));
 		feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
@@ -337,11 +341,16 @@ public class FeedForumContentController extends FeedCommonController {
 		feedThread.setIsModerator(obj.optBoolean("is_moderator", false));
 		
 		JSONArray pics = obj.optJSONArray("pic");
-		if (pics != null && pics.length() > 0) {
-			feedThread.setHasPic(true);
-		} else {
-			feedThread.setHasPic(false);
-		}
+//		if (pics != null && pics.length() > 0) {
+//			feedThread.setHasPic(true);
+//		} else {
+//			feedThread.setHasPic(false);
+//		}
+		
+		feedThread.setHasPic(hasPic(pics, htmlContent));
+		
+		
+		
 		JSONObject userObj = obj.optJSONObject("user");
 		if (userObj != null) {
 			feedThread.setUser_id(userObj.optLong("user_id", 0));
@@ -349,6 +358,18 @@ public class FeedForumContentController extends FeedCommonController {
 			feedThread.setAvatar(userObj.optString("avatar", ""));
 		}
 		return feedThread;
+	}
+	
+	private boolean hasPic(JSONArray pics, String htmlContent) {
+		if (pics != null && pics.length() > 0) {
+			return true;
+		} else {
+			Pattern pattern = Pattern.compile("<img.*src=(.*?)[^>]*?>");
+			Matcher matcher = pattern.matcher(htmlContent);
+			System.out.println(htmlContent);
+			System.out.println(matcher.matches());
+			return matcher.matches();
+		}
 	}
 	
 	private List<FeedThread> getThreadTopList(HttpServletRequest request, long forumId, Map<String, Object> model) throws Exception {
