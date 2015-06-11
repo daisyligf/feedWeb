@@ -86,12 +86,12 @@
                 <div class="con-top-con col-xs-12">
                     <dl>
                        <dt><img src="${feedForum.icon}" height="336" width="448" alt=""></dt>
-                       <dd class="title">${feedForum.forum_name}</dd>
+                       <dd class="title"><span class="title-text">${feedForum.forum_name}</span><c:if test="${isFollow}"><a href="javascript:;" class="follow followed" data-areaid='${feedForum.forum_id}' data-dofollow='0'>已关注</a></c:if>
+                     <c:if test="${!isFollow}"> <a href="javascript:;" class="follow" data-areaid='${feedForum.forum_id}' data-dofollow='1'>+ 关注</a></c:if></dd>
                        <dd>关注  ${feedForum.total_follows}</dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
-                     <c:if test="${isFollow}"><a href="javascript:;" class="follow followed" data-areaid='${feedForum.forum_id}' data-dofollow='0'>已关注</a></c:if>
-                     <c:if test="${!isFollow}"> <a href="javascript:;" class="follow" data-areaid='${feedForum.forum_id}' data-dofollow='1'>+ 关注</a></c:if>
+                     
                     <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
