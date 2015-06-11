@@ -109,6 +109,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 				feedThread.setIsTop(threadObj.optBoolean("is_top", false));
 				feedThread.setRecommends(threadObj.optInt("recommends", 0));
 				feedThread.setIsModerator(threadObj.optBoolean("is_moderator", false));
+				feedThread.setIsRecommend(threadObj.optBoolean("is_recommend", false));
 				
 				JSONObject forumObj = threadObj.optJSONObject("forum");
 				if (forumObj != null) {
@@ -169,7 +170,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 					feedPost.setRecommends(postObj.optInt("recommends", 0));
 					feedPost.setPosition(postObj.optInt("position", 0));
 					feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));
-					feedPost.setComments(postObj.optInt("comments", 0)); // TODO:数字取得不对
+					feedPost.setComments(postObj.optInt("comments", 0)); 
+					feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));
 					
 					JSONObject postUserJson = postObj.optJSONObject("user");
 					UserInfo postUserInfo = new UserInfo();

@@ -261,7 +261,16 @@
                     </div>
                     
                    <p class="look" data-tid="${feedThread.thread_id }">
-                        <span class="thread-zan zan-hover"><s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
+                   		<c:choose>
+                   			<c:when test="${feedThread.isRecommend}">
+                        		<span class="thread-zan zan-hover">
+                        	</c:when>
+                   			<c:otherwise>
+                   				<span class="thread-zan">
+                   			</c:otherwise>
+                   		</c:choose>
+                        
+                        <s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
                         <span class="thread-comment"><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                     </c:if>
@@ -313,7 +322,16 @@
                                 <dd class="info">${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">
-                                        <span class="zan"><s class="icon-zan"></s><a href="javascript:;">${feedPost.recommends}</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">${feedPost.comments}</a></span>
+                                        <c:choose>
+                   							<c:when test="${feedPost.isRecommend}">
+                        						<span class="zan zan-hover">
+                        					</c:when>
+                   							<c:otherwise>
+                   								<span class="zan">
+                   							</c:otherwise>
+                   						</c:choose>
+                                        
+                                        <s class="icon-zan"></s><a href="javascript:;">${feedPost.recommends}</a></span><span class="floor-stop"><s class="icon-ask reply-hide"></s>收起</span><span class="floor-rec"><s class="icon-ask"></s><a href="javascript:;">${feedPost.comments}</a></span>
                                     </p>
                                 </dd>
                             </dl>
@@ -338,9 +356,10 @@
                             </div>
                             
                         </div>
+                        </div>
                     </c:forEach>
-                    </div>
-                    </c:if>
+                    
+                   
                     
                     <!-- 分页 -->
                        <!-- 上一页 按钮 -->
@@ -376,7 +395,7 @@
 							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
 						</c:otherwise>
 						</c:choose>
-                	</ul>
+                		</ul>
                 	
                 	  <ul class="page-mobile clearfix">
 						<c:choose>
@@ -410,40 +429,41 @@
                         </ul>
                     </div>
 					-->
-               <!--  </div> -->
-               <c:choose>
-               	<c:when test="${!feedThread.isClosed}">
-                <div class="con-right3 reply-textarea">
-                    <div class="reply-textarea-info clearfix">
-                        <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
-                        <dl>
-                            <dt></dt>
-                            <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
-                            <dd>
-                                <div class="editer">
-                                    <div class="editor-textarea">
-                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
-                                    </div>
-                                    <script type="text/plain" id="myEditor" style="height:240px;"></script>
-                                </div>
-                            </dd>
-                            <form id="editor-form" data-form="post" data-tid="${feedThread.thread_id }" action="send_reply.json" method="POST">
-                                <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
-                                <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
-                                <input type="hidden" name="content"  class="editor-cont" value=""/>
-                            </form>
-                        </dl>
-                    </div>
-                    
-                    <p class="replay-floor"><span class="word-count">还可以输入5000字</span> <input type="button" class="reply-editer reply-submit" value="回复"></p>
-                </div>
-                </c:when>
-                <c:otherwise>
-                <div class="con-right3 replay-ban">
-                	该帖子已被禁止回复:-D！
-                </div>
-                </c:otherwise>
-               </c:choose>
+               </div>
+              </c:if>
+              <c:choose>
+              	<c:when test="${!feedThread.isClosed}">
+               <div class="con-right3 reply-textarea">
+                   <div class="reply-textarea-info clearfix">
+                       <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
+                       <dl>
+                           <dt></dt>
+                           <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
+                           <dd>
+                               <div class="editer">
+                                   <div class="editor-textarea">
+                                       <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
+                                   </div>
+                                   <script type="text/plain" id="myEditor" style="height:240px;"></script>
+                               </div>
+                           </dd>
+                           <form id="editor-form" data-form="post" data-tid="${feedThread.thread_id }" action="send_reply.json" method="POST">
+                               <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
+                               <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
+                               <input type="hidden" name="content"  class="editor-cont" value=""/>
+                           </form>
+                       </dl>
+                   </div>
+                   
+                   <p class="replay-floor"><span class="word-count">还可以输入5000字</span> <input type="button" class="reply-editer reply-submit" value="回复"></p>
+               </div>
+               </c:when>
+               <c:otherwise>
+               <div class="con-right3 replay-ban">
+               	该帖子已被禁止回复:-D！
+               </div>
+               </c:otherwise>
+              </c:choose>
             </div>
         </div>
         <!-- 内容结束 -->

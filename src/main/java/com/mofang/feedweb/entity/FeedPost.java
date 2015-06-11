@@ -15,6 +15,7 @@ public class FeedPost {
 	private int comments;
 	private int replies;
 	private int recommends;
+	private boolean isRecommend;
 	private Date create_time;
 	private int status;
 	private long user_id;
@@ -55,6 +56,12 @@ public class FeedPost {
 	}
 	public void setRecommends(int recommends) {
 		this.recommends = recommends;
+	}
+	public boolean getIsRecommend() {
+		return isRecommend;
+	}
+	public void setIsRecommend(boolean isRecommend) {
+		this.isRecommend = isRecommend;
 	}
 	public Date getCreate_time() {
 		return create_time;
