@@ -201,7 +201,7 @@
                             <input type="hidden" name="tid"  class="editor-tid" value="${threadInfo.thread_id }">
                             <input type="hidden" name="subject"  class="editor-title" value="${threadInfo.subject }">
                             <input type="hidden" name="tagId"  class="editor-tags" value="${threadInfo.tagId }">
-                            <input type="hidden" name="content"  class="editor-cont" value="${threadInfo.htmlContent }"/>
+                            <input type="hidden" name="content"  class="editor-cont" value=""/>
                         </form>
                     </dl>
 
