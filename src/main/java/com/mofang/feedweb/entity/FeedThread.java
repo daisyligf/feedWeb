@@ -1,7 +1,6 @@
 package com.mofang.feedweb.entity;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author ke
@@ -24,6 +23,7 @@ public class FeedThread {
 	private boolean hasPic;
 	private String last_post_time;
 	private int recommends;
+	private boolean isRecommend;
 	private int status;
 	private long user_id;
 	private String user_name;
@@ -113,6 +113,30 @@ public class FeedThread {
 
 	public void setRecommends(int recommends) {
 		this.recommends = recommends;
+	}
+	
+	public boolean getIsRecommend() {
+		return isRecommend;
+	}
+
+	public void setIsRecommend(boolean isRecommend) {
+		this.isRecommend = isRecommend;
+	}
+
+//	public void setClosed(boolean isClosed) {
+//		this.isClosed = isClosed;
+//	}
+//
+//	public void setElite(boolean isElite) {
+//		this.isElite = isElite;
+//	}
+//
+//	public void setTop(boolean isTop) {
+//		this.isTop = isTop;
+//	}
+
+	public void setModerator(boolean isModerator) {
+		this.isModerator = isModerator;
 	}
 
 	public int getStatus() {
