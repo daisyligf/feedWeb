@@ -153,9 +153,6 @@ public class Constant {
 	public static final String USER_SETPROHIBIT_URL = "/feed/v2/backend/user/setprohibit";
 	// 用户取消禁言
 	public static final String USER_CANCELPROHIBIT_URL = "/feed/v2/backend/user/cancelprohibit";
-	// 用户删除
-	// 用户恢复
-	// 用户批量恢复
 	// 检查版主申请条件
 	public static final String MODERATOR_CHECK_URL = "/feed/v2/web/moderator/check";
 	// 申请版主
