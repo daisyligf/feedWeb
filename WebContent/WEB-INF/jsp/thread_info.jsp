@@ -534,6 +534,15 @@
                     </p>
             </div>
         </div>
+        <!--未登录-->
+        <div class="pop pop-play pop-login">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="前往登录">
+            </p>
+        </div>
         <!-- 发帖失败 -->
         <div class="pop pop-play pop-warn">
             <p class="pop-play-close"><img src="./img/icon/pop_close.png" class="close"></p>

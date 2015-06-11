@@ -441,9 +441,13 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     function choice(_this){
         $(_this).next(".sel-more").find("a").unbind("click").bind("click",function(){
             var _v = $(this).html();
+            var _vtagsId = $(this).attr("data-tagsid");
             var _vshow = $(_this).html();
+            var _vshowTagsId = $(_this).attr("data-tagsid");
             $(_this).html(_v);
             $(this).html(_vshow);
+            $(_this).attr("data-tagsid",_vtagsId);
+            $(this).attr("data-tagsid",_vshowTagsId);
             $(".sel-one").removeClass('active');
             $(".sel-one").next(".sel-more").hide();
             return false;

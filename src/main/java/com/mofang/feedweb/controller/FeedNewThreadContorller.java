@@ -84,6 +84,10 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			Map<String, Object> threadInfoMap = feedNewThreadService.threadInfoMap("tid=" + tid, request);
 			map.putAll(threadInfoMap);
 			
+			// 标签列表
+			Map<String, Object> tagMap = feedNewThreadService.tagMap("fid=" + fid, request);
+			map.putAll(tagMap);
+			
 			// 默认综合 特殊处理
 			FeedThread threadInfo = (FeedThread)map.get("threadInfo");
 			if(threadInfo != null) {
@@ -102,9 +106,6 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			}else {
 				map.put("user", new ThreadUserInfo());
 			}
-			// 标签列表
-			Map<String, Object> tagMap = feedNewThreadService.tagMap("fid=" + fid, request);
-			map.putAll(tagMap);
 			return new ModelAndView("new_thread", map);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedNewThreadContorller.editInit throw an error.", e);
