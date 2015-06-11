@@ -343,7 +343,7 @@
 		                    <div class="lum-list libao-list">
 		                       <ul>
 		                           <c:forEach var="hotThread" items="${hotThreadList}">
-		                           <li><s class="black"></s><a href="#">${hotThread.subject}</a></li>
+		                           <li><s class="black"></s><a href="thread_info?thread_id=${hotThread.threadId }">${fn:substring(hotThread.subject, 0, 17)}...</a></li>
 		                           </c:forEach>
 		                       </ul>
 		                    </div>
