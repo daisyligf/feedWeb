@@ -156,16 +156,7 @@
 
 .icon-ding{
 	display: inline-block;
-	margin-bottom:-1px;
-	width:18px;
-	height:18px;
-	background: url(../img/icon/ding.png) no-repeat;
-	background-size: 100% 100%;
-}
-.icon-ding{
-	display: inline-block;
-	margin:0px 5px;
-	margin-bottom:-1px;
+	margin-bottom:-3px;
 	width:18px;
 	height:18px;
 	background: url(../img/icon/ding.png) no-repeat;
@@ -173,8 +164,7 @@
 }
 .icon-jing{
 	display: inline-block;
-	margin:0px 5px;
-	margin-bottom:-1px;
+	margin-bottom:-3px;
 	width:18px;
 	height:18px;
 	background: url(../img/icon/jing.png) no-repeat;
@@ -182,7 +172,6 @@
 }
 .icon-tu{
 	display: inline-block;
-	margin:0px 5px;
 	margin-bottom:-1px;
 	width:18px;
 	height:18px;
@@ -292,19 +281,19 @@
 	}
 	
 	.icon-ding {
-	  margin: 0px 3px;
+	  margin: 0px -3px;
 	  margin-bottom: -3px;
 	  width: 20px;
 	  height: 20px;
 	}
 	.icon-jing {
-	  margin: 0px 3px;
+	  margin: 0px -3px;
 	  margin-bottom: -3px;
 	  width: 20px;
 	  height: 20px;
 	}
 	.icon-tu {
-	  margin: 0px 3px;
+	  margin: 0px -3px;
 	  margin-bottom: -3px;
 	  width: 20px;
 	  height: 20px;
