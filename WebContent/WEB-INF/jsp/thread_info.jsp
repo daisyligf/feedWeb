@@ -85,7 +85,17 @@
                 </div>
                 <div class="nav-wap-right">
                 <a href="#conRight3" class="nav-wap-comment">评论</a>
-                <a href="#" class="nav-wap-floor">楼主</a>
+
+                <c:choose>
+                   	<c:when test="${type==1 }">
+                   	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=0" class="nav-wap-floor">全部</a>
+                   	</c:when>
+                   	<c:otherwise>
+                   	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=1" class="nav-wap-floor">楼主</a>
+                   	</c:otherwise>
+                   </c:choose>                
+                
+                
                 	
                 </div>
                   <!-- <div class="wap-logo">
