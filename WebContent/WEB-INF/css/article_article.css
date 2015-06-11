@@ -197,6 +197,7 @@
 }
 .con .look .thread-zan{
 	margin-right:25px;
+	cursor:pointer;
 }
 .con .look .thread-comment{
 	margin-right:30px;
