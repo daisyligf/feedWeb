@@ -371,8 +371,6 @@ public class FeedForumContentController extends FeedCommonController {
 		} else {
 			Pattern pattern = Pattern.compile("<img.*src=(.*?)[^>]*?>");
 			Matcher matcher = pattern.matcher(htmlContent);
-			System.out.println(htmlContent);
-			System.out.println(matcher.matches());
 			return matcher.matches();
 		}
 	}
