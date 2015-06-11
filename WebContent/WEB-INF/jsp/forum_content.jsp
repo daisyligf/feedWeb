@@ -170,7 +170,17 @@
                         <dl class="clearfix">
                             <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
                             <div class="infos">
-                                <dd class="title"><a href="thread_info?thread_id=${topThread.thread_id }" target="_blank">${topThread.subject}
+                                <dd class="title">
+                                <c:choose>
+                                	<c:when test="${topThread.isElite}">
+                                	<a href="thread_info?thread_id=${topThread.thread_id }" target="_blank" class="add-a-hover">
+                                	</c:when>
+                                	<c:otherwise>
+                                	<a href="thread_info?thread_id=${topThread.thread_id }" target="_blank" >
+                                	</c:otherwise>
+                                </c:choose>
+                                
+                                ${topThread.subject}
                                 <c:if test="${topThread.isTop}"><s class="icon-ding"></s></c:if>
                                 
                                 <c:if test="${topThread.isElite}"><s class="icon-jing"></s></c:if>
@@ -197,7 +207,17 @@
                         <dl class="clearfix">
                             <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
-                                <dd class="title"><a href="thread_info?thread_id=${feedThread.thread_id }" target="_blank">${feedThread.subject}
+                                <dd class="title">
+                                <c:choose>
+                                	<c:when test="${feedThread.isElite}">
+                                	<a href="thread_info?thread_id=${feedThread.thread_id }" target="_blank" class="add-a-hover">
+                                	</c:when>
+                                	<c:otherwise>
+                                	<a href="thread_info?thread_id=${feedThread.thread_id }" target="_blank" >
+                                	</c:otherwise>
+                                </c:choose>
+                                
+                                ${feedThread.subject}
                                 <c:if test="${feedThread.isTop}"><s class="icon-ding"></s></c:if>
                                 
                                 <c:if test="${feedThread.isElite}"><s class="icon-jing"></s></c:if>
