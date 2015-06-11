@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page import="com.mofang.feedweb.entity.ModeratorApplyCondition"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,7 +24,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>bbs申请吧主</title>
+    <title>申请吧主</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
@@ -49,43 +50,23 @@
 </head>
 <body>
     <div class="page">
-    
-    <jsp:include page="user_info.jsp" flush='true'/>
-     <!-- 头部开始 -->
-      <!--   <div class="header clearfix">
-            <div class="nav clearfix">
-                <div class="nav-left">
-                    <a href="http://www.mofang.com">魔方网首页</a>
-                </div>
-                
-               <div class="nav-right">
-                    top登录模板
-                    
-                    <a href="http://u.mofang.com/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
-                    <div class="user-info">
-                        <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="http://u.mofang.com/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="http://u.mofang.com/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
-                            <li class="info">
-                               <a href="http://u.mofang.com/home/person/index">个人信息</a><a href="http://u.mofang.com/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    登陆状态
-                    <a href="#" class="load"><img src="img/icon/load.png"></a>
-                </div> 
-            </div>
+    	<!-- 头部开始 -->
+        <div class="header clearfix">
+            <jsp:include page="user_info.jsp" flush='true'/>
             <div class="nav-wap clearfix">
-              <div class="nav-wap-left">
-                  <a href="http://www.mofang.com"><img src="img/icon/nav_three.png"></a>
+                <div class="nav-wap-left">
+                  <a href="#" class="nav-wap-back"></a>
+                  <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a class="nav-info-home">首页</a>
-                    <a>个人中心</a>
+                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
+                    <a href="<%=UserCenter.baseUrl %>">个人中心</a>
                   </p>
-              </div> 
+                </div>
+                  <div class="wap-nav-text">
+                  	申请吧主
+                  </div>
             </div>
-        </div>-->
+        </div>
         <!-- 头部结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
@@ -103,9 +84,9 @@
 	                            <div class="feed-user-infos"></div>
 	                                <form action="" class="user-apply-form">
 	                                    <input type="hidden" name="fid" id="forum_id" value="${feedForum.forum_id}"/>
-	                                    <input class="J_focus apply-text apply-user-qq" type="text" data-type="qq" id="qq" name="qq" value="请输入您的QQ号">
-	                                    <input  class="J_focus apply-text apply-user-phone" type="text" data-type="phone" id="phone" name="phone" value="请输入您的手机号">
-	                                    <textarea  class="J_focus apply-text apply-user-text" id="game_exp" name="game_exp" data-type="text">描述一下游戏经历，让我们更了解你！</textarea>
+	                                    <input class="J_focus apply-text apply-user-qq" type="text" data-type="qq" id="qq" name="qq" value="" placeholder="请输入您的QQ号">
+	                                    <input  class="J_focus apply-text apply-user-phone" type="text" data-type="phone" id="phone" name="phone" value="" placeholder="请输入您的手机号">
+	                                    <textarea  class="J_focus apply-text apply-user-text" id="game_exp" name="game_exp" data-type="text" placeholder="描述一下游戏经历，让我们更了解你！"></textarea>
 	                                    <input class="apply-user-btn" type="button" id="applyBtn" value="立即申请">
 	                                </form>
 	                            </div>
