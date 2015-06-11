@@ -23,7 +23,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>bbs搜索页</title>
+    <title>搜索页</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
@@ -109,7 +109,7 @@
                         <dt><a href="{{link_url}}"><img src="{{user.avatar}}"alt=""></a></dt>
                         <div class="infos">
                             <dd class="title">
-                                <a href="{{link_url}}">{{subject}}
+                                <a href="{{link_url}}" {{#if is_elite}}class="add-a-hover"{{/if}}>{{subject}}
 
                                     {{#isshowimg pic 0}}
                                         <s class="icon-tu"></s>

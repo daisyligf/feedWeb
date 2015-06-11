@@ -171,12 +171,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 
 		    	if(res && !res.code){
 		    		var postTemplate = Handlebars.compile($("#postTemplate").html());
-
-
-
 		    		$(".post-num span").html(res.data.total);
-					
-		    	
 		    		$("#post").html(postTemplate(res.data));	
 		    	}
 		    	$(".page-mobile .text").html(options.p+'/'+Math.ceil(res.data.total/options.pagesize));

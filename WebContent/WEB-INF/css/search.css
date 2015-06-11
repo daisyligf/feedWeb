@@ -133,6 +133,10 @@
 .con-bottom .con-left-con dl dd.title a:hover{
 	color: #ff9900;
 }
+/* 加精颜色 */
+.con-bottom .con-left-con dl dd.title a.add-a-hover{
+	color:#ff9900;
+}
 .con-bottom .con-left-con dl dd .time{
 	margin-left:20px;
 }
