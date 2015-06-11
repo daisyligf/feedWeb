@@ -33,9 +33,9 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
-					fnCallback: function(isTrue,msg){
+					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
-							window.location.href=loginUrl;
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});
