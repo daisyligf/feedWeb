@@ -322,7 +322,7 @@
              <div class="col-xs-3 con-bot-right">
                 <div class="lord-team">
                     <h2 class="lum">
-                        吧主团队 <a href="apply_check?forum_id=${feedForum.forum_id}"  target="_blank">申请吧主</a>
+                        吧主团队 <c:if test="${!is_full }"><a href="apply_check?forum_id=${feedForum.forum_id}"  target="_blank">申请吧主</a></c:if>
                     </h2>
                     <div class="lum-list">
                     	<c:forEach  var="roleInfo" items="${feedForum.roleList}">

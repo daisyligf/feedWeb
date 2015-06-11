@@ -52,7 +52,7 @@ public class FeedForumContentController extends FeedCommonController {
 		FeedForum feedForum = getFeedForumInfo(request, fid);
 		
 		// 获取该版块的吧主列表
-		List<RoleInfo> roleList= getFeedForumRoleInfoList(request, fid);
+		List<RoleInfo> roleList= getFeedForumRoleInfoList(request, fid, model);
 		feedForum.setRoleList(roleList);
 		
 		// 获取版块下的帖子列表
@@ -232,20 +232,25 @@ public class FeedForumContentController extends FeedCommonController {
 		return hotThreadList;
 	}
 	
-	private List<RoleInfo> getFeedForumRoleInfoList(HttpServletRequest request, long fid) throws Exception {
+	private List<RoleInfo> getFeedForumRoleInfoList(HttpServletRequest request, long fid, Map<String, Object> model) throws Exception {
 		String param = "fid=" + fid;
+		boolean isFull = false;
 		JSONObject json = getHttpInfo(getRoleInfoListGetUrl(), param, request);
 		List<RoleInfo> roleList = new ArrayList<RoleInfo>();
 		if (json != null && json.optInt("code", -1) == 0) {
-			JSONArray data = json.optJSONArray("data");
-			if (data != null && data.length() > 0) {
-				for (int i = 0; i < data.length(); i++) {
-					JSONObject obj = data.getJSONObject(i);
+			
+			JSONObject data = json.optJSONObject("data");
+			if (data != null) {
+				isFull = data.optBoolean("is_full", false);
+				JSONArray moderators = data.optJSONArray("moderators");
+				for (int i = 0; i < moderators.length(); i++) {
+					JSONObject obj = moderators.getJSONObject(i);
 					RoleInfo roleInfo = new RoleInfo(obj.optLong("user_id", 0), obj.optString("nickname", ""), obj.optString("avatar", ""));
 					roleList.add(roleInfo);
 				}
 			}
 		}
+		model.put("is_full", isFull);
 		return roleList;
 	}
 	
