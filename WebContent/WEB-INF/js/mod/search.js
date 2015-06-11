@@ -91,7 +91,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	function getPlateData(options,fnCallback){
 
 		var defaults = {
-			keyword : encodeURI($("#keyword").val()),
+			keyword : encodeURIComponent($("#keyword").val()),
 			p : 1,
 			pagesize : 8
 		};
@@ -156,7 +156,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	//获取帖子数据
 	function getPostData(options,fnCallback){
 		var defaults = {
-			keyword : encodeURI($("#keyword").val()),
+			keyword : encodeURIComponent($("#keyword").val()),
 			p : 1,
 			pagesize : 20
 		};
