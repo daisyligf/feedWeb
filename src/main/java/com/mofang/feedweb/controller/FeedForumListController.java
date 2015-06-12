@@ -133,7 +133,12 @@ public class FeedForumListController extends FeedCommonController {
 					info.setIcon(json.optString("icon", ""));
 					info.setTodayThreads(json.optInt("today_threads", 0));
 					info.setTotalThreads(json.optInt("total_threads", 0));
-					info.setPrefectureUrl(json.optString("prefecture_url", ""));
+					if ("null".equals(json.optString("prefecture_url", ""))) {
+						info.setPrefectureUrl("");
+					} else {
+						info.setPrefectureUrl(json.optString("prefecture_url", ""));
+					}
+					
 					info.setGiftUrl(json.optString("gift_url", ""));
 					info.setDownLoadUrl(json.optString("download_url", ""));
 					listInfo.add(info);
