@@ -12,7 +12,8 @@ seajs.config({
         'jquery/jquery-pagebar':"lib/jquery.pagebar.1.0.0.js",//分页插件
         'handlebars': "lib/handlebars.js",//模板引擎
         'swipe':"lib/swipe.js", //移动端滑动
-        'jquery/jquery-pop': "lib/mfe/jquery.pop.js" //弹出框组件
+        'jquery/jquery-pop': "lib/mfe/jquery.pop.js", //弹出框组件
+        'jquery/moveTop': "lib/mfe/jquery.movetop.js" //回到顶部
     },
     paths: {
         'mod':  base + 'mod'

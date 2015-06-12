@@ -585,7 +585,23 @@
 	line-height: 280px;
 }
 
-
+/* 回到顶部 */
+.go-top{
+	position:fixed;
+	left:50%;
+	bottom:100px;
+	width:50PX;
+	height:120px;
+	background:url(../img/icon/go_top.png) no-repeat;
+	background-size:100%;
+	display:none;
+}
+.go-top a{
+	display:block;
+	height:60px;
+	width:100%;
+	text-indent:-99999px;
+}
 
 /* 编辑框 */
 .editer .edui-container {
@@ -630,6 +646,9 @@
 }
 /*移动端响应*/
 @media (max-width:1024px){
+	.go-top{
+		display:none;
+	}
 	/**/
 	.header .nav{
 		display: none;
@@ -743,6 +762,7 @@
 		margin-right:10px;
 	}
 	/**/
+	
 	.footer{
 		text-align:center;
 	}
@@ -760,6 +780,7 @@
 		display:block;
 
 	}
+	
 	/*弹出框样式*/
 	/*确定不玩？*/
 	.pop-play{
