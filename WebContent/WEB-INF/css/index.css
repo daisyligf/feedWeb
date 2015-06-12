@@ -125,8 +125,10 @@
 }
 .con .con-top .rec li .lm{
 	float:right;
-	color:#999;
 	font-size:12px;
+}
+.con .con-top .rec li .lm a{
+	color:#999;
 }
 .con .con-top .hot-tj{
 	padding-right:20px;
