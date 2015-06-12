@@ -132,7 +132,7 @@
 			                      <a href="${forum.prefectureUrl}"  class="zq l">专区</a>
 			                      </c:if>
 			                      <c:if test="${forum.prefectureUrl == ''}">
-			                      <a href="#"  class="zq bg-grey l">专区</a>
+			                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
 			                      </c:if>
 			                   </c:if>
 			                    <c:if test="${forumType == 2}">
@@ -140,14 +140,14 @@
 			                      <a href="${forum.downLoadUrl}"  class="zq l">下载</a>
 			                      </c:if>
 			                      <c:if test="${forum.downLoadUrl == ''}">
-			                      <a href="#"  class="zq bg-grey l">下载</a>
+			                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
 			                      </c:if>
 			                   </c:if>
 			                   <c:if test="${forum.giftUrl != ''}">
 			                      <a href="${forum.giftUrl}" class="zq r">礼包</a> 
 			                   </c:if>
 			                   <c:if test="${forum.giftUrl == ''}">
-			                      <a href="#" class="zq bg-grey r">礼包</a> 
+			                      <a href="javascript:;" class="zq bg-grey r">礼包</a> 
 			                   </c:if>
 			                   </div>
 			               </div>
