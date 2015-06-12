@@ -346,15 +346,7 @@ public class FeedForumContentController extends FeedCommonController {
 		feedThread.setIsModerator(obj.optBoolean("is_moderator", false));
 		
 		JSONArray pics = obj.optJSONArray("pic");
-//		if (pics != null && pics.length() > 0) {
-//			feedThread.setHasPic(true);
-//		} else {
-//			feedThread.setHasPic(false);
-//		}
-		
 		feedThread.setHasPic(hasPic(pics, htmlContent));
-		
-		
 		
 		JSONObject userObj = obj.optJSONObject("user");
 		if (userObj != null) {
@@ -371,8 +363,16 @@ public class FeedForumContentController extends FeedCommonController {
 		} else {
 			Pattern pattern = Pattern.compile("<img.*src=(.*?)[^>]*?>");
 			Matcher matcher = pattern.matcher(htmlContent);
-			return matcher.matches();
+			return matcher.find();
 		}
+	}
+	
+	public static void main(String[] args) {
+		JSONArray pics = null;
+		String htmlContent = "<font>Bye Beijing! I had a lot of fun!</font><img src=\"http://img.t.sinajs.cn/t4/appstyle/expression/emimage/ee9098.png\" width=\"20px\" height=\"20px\" style=\"vertical-align: text-bottom; font-family: Arial, 'Microsoft YaHei'; font-size: 14px; line-height: 23px; white-space: normal; background-color: rgb(255, 255, 255);\"><img render=\"ext\" src=\"http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d9/ye_org.gif\" title=\"[耶]\" alt=\"[耶]\" type=\"face\" style=\"vertical-align: text-bottom; font-family: Arial, 'Microsoft YaHei'; font-size: 14px; line-height: 23px; white-space: normal; background-color: rgb(255, 255, 255);\"><br /><img src=\"http://ww1.sinaimg.cn/bmiddle/d374ba31jw1erk3wrh30fj20ku0rsjw0.jpg\" _src=\"http://ww1.sinaimg.cn/bmiddle/d374ba31jw1erk3wrh30fj20ku0rsjw0.jpg\"><br>";
+		FeedForumContentController demo = new FeedForumContentController();
+		System.out.println(demo.hasPic(pics, htmlContent));
+	
 	}
 	
 	private List<FeedThread> getThreadTopList(HttpServletRequest request, long forumId, Map<String, Object> model) throws Exception {
