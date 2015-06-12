@@ -6,7 +6,3 @@
  </div>
  <!-- 底部结束 -->
  
- <div class="go-top">
- 	<a href="#" class="post">发帖</a>
- 	<a href="javascript:;" class="scroll-top">顶部</a>
- </div>

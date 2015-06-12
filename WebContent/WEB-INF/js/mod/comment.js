@@ -227,7 +227,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 }
                 if(res && res.code==0){
                     $(".pop-post-ok").pop({
-                        msg: "发送成功",
+                        msg: "回复成功",
                         autoTime:500
                     });
                     setTimeout(function(){

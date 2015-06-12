@@ -472,7 +472,7 @@
                                    <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                </div>
                            </dd>
-                           <form id="editor-form" data-form="post" data-tid="${feedThread.thread_id }" action="send_reply.json" method="POST">
+                           <form id="editor-form" data-form="replayPost" data-tid="${feedThread.thread_id }" action="send_reply.json" method="POST">
                                <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
                                <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
                                <input type="hidden" name="content"  class="editor-cont" value=""/>
@@ -577,7 +577,11 @@
         </div>
         <!-- 弹出框结束 -->
     </div>
-    
+    <!-- 回到顶部  -->
+     <div class="go-top">
+	 	<a href="#" class="post">发帖</a>
+	 	<a href="javascript:;" class="scroll-top">顶部</a>
+	 </div>
     <script src="js/mod/article_article.js"></script>
     <script src="js/mod/comment.js"></script>
 </body>
