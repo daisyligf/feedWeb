@@ -163,6 +163,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 			if (posts != null && posts.length() > 0) {
 				for (int i = 0; i < posts.length(); i++) {
 					JSONObject postObj = posts.getJSONObject(i);
+					if (postObj == null)
+						continue;
 					FeedPost feedPost = new FeedPost();
 					feedPost.setPost_id(postObj.optLong("pid", 0));
 					feedPost.setContent(replaceEmoji(postObj.optString("content", "")));
@@ -177,7 +179,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 					JSONArray picArray = postObj.optJSONArray("pic");
 					if (picArray != null && picArray.length() > 0) {
 						for (int j = 0; j < picArray.length(); j++) {
-							String picString = picArray.getString(i);
+							String picString = picArray.getString(j);
 							if (!StringUtil.isNullOrEmpty(picString)) {
 								pic.add(picString);
 							}

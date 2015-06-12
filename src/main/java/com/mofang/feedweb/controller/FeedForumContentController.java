@@ -334,6 +334,9 @@ public class FeedForumContentController extends FeedCommonController {
 		feedThread.setThread_id(obj.optLong("tid", 0));
 		feedThread.setSubject(obj.optString("subject", ""));
 		String content = obj.optString("content", "");
+		if (content.length() > 40) {
+			content = content.substring(0, 40) + "...";
+		}
 		String htmlContent = obj.optString("html_content", "");
 		feedThread.setContent(replaceEmoji(content));
 		feedThread.setPage_view(obj.optInt("pageview", 0));
