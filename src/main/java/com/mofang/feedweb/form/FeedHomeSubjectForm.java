@@ -7,47 +7,53 @@ public class FeedHomeSubjectForm {
 	
 	private long threadId1;
 	private String threadName1;
+	private long forumId1;
 	private String forumNmae1;
 	private String subject1;
 	private String content1;
 	private String linkUrl1;
 	private long threadId2;
 	private String threadName2;
+	private long forumId2;
 	private String forumNmae2;
 	private String subject2;
 	private String content2;
 	private String linkUrl2;
 	private long threadId3;
 	private String threadName3;
+	private long forumId3;
 	private String forumNmae3;
 	private String subject3;
 	private String content3;
 	private String linkUrl3;
 	private long threadId4;
 	private String threadName4;
+	private long forumId4;
 	private String forumNmae4;
 	private String subject4;
 	private String content4;
 	private String linkUrl4;
 	private long threadId5;
 	private String threadName5;
+	private long forumId5;
 	private String forumNmae5;
 	private String subject5;
 	private String content5;
 	private String linkUrl5;
 	private long threadId6;
 	private String threadName6;
+	private long forumId6;
 	private String forumNmae6;
 	private String subject6;
 	private String content6;
 	private String linkUrl6;
 	private long threadId7;
 	private String threadName7;
+	private long forumId7;
 	private String forumNmae7;
 	private String subject7;
 	private String content7;
 	private String linkUrl7;
-	
 	public long getThreadId1() {
 		return threadId1;
 	}
@@ -59,6 +65,12 @@ public class FeedHomeSubjectForm {
 	}
 	public void setThreadName1(String threadName1) {
 		this.threadName1 = threadName1;
+	}
+	public long getForumId1() {
+		return forumId1;
+	}
+	public void setForumId1(long forumId1) {
+		this.forumId1 = forumId1;
 	}
 	public String getForumNmae1() {
 		return forumNmae1;
@@ -96,6 +108,12 @@ public class FeedHomeSubjectForm {
 	public void setThreadName2(String threadName2) {
 		this.threadName2 = threadName2;
 	}
+	public long getForumId2() {
+		return forumId2;
+	}
+	public void setForumId2(long forumId2) {
+		this.forumId2 = forumId2;
+	}
 	public String getForumNmae2() {
 		return forumNmae2;
 	}
@@ -131,6 +149,12 @@ public class FeedHomeSubjectForm {
 	}
 	public void setThreadName3(String threadName3) {
 		this.threadName3 = threadName3;
+	}
+	public long getForumId3() {
+		return forumId3;
+	}
+	public void setForumId3(long forumId3) {
+		this.forumId3 = forumId3;
 	}
 	public String getForumNmae3() {
 		return forumNmae3;
@@ -168,6 +192,12 @@ public class FeedHomeSubjectForm {
 	public void setThreadName4(String threadName4) {
 		this.threadName4 = threadName4;
 	}
+	public long getForumId4() {
+		return forumId4;
+	}
+	public void setForumId4(long forumId4) {
+		this.forumId4 = forumId4;
+	}
 	public String getForumNmae4() {
 		return forumNmae4;
 	}
@@ -203,6 +233,12 @@ public class FeedHomeSubjectForm {
 	}
 	public void setThreadName5(String threadName5) {
 		this.threadName5 = threadName5;
+	}
+	public long getForumId5() {
+		return forumId5;
+	}
+	public void setForumId5(long forumId5) {
+		this.forumId5 = forumId5;
 	}
 	public String getForumNmae5() {
 		return forumNmae5;
@@ -240,6 +276,12 @@ public class FeedHomeSubjectForm {
 	public void setThreadName6(String threadName6) {
 		this.threadName6 = threadName6;
 	}
+	public long getForumId6() {
+		return forumId6;
+	}
+	public void setForumId6(long forumId6) {
+		this.forumId6 = forumId6;
+	}
 	public String getForumNmae6() {
 		return forumNmae6;
 	}
@@ -276,6 +318,12 @@ public class FeedHomeSubjectForm {
 	public void setThreadName7(String threadName7) {
 		this.threadName7 = threadName7;
 	}
+	public long getForumId7() {
+		return forumId7;
+	}
+	public void setForumId7(long forumId7) {
+		this.forumId7 = forumId7;
+	}
 	public String getForumNmae7() {
 		return forumNmae7;
 	}
@@ -300,7 +348,6 @@ public class FeedHomeSubjectForm {
 	public void setLinkUrl7(String linkUrl7) {
 		this.linkUrl7 = linkUrl7;
 	}
-	
 	
 
 
