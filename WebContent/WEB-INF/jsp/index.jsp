@@ -114,11 +114,11 @@
                                 <dd>${subjects.content2}</dd>
                             </dl>
                             <ul>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId3}">${subjects.threadName3} </a> <span class="lm"><a href="#">${subjects.forumNmae3} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId4}">${subjects.threadName4} </a> <span class="lm"><a href="#">${subjects.forumNmae4} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId5}">${subjects.threadName5} </a> <span class="lm"><a href="#">${subjects.forumNmae5} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId6}">${subjects.threadName6} </a> <span class="lm"><a href="#">${subjects.forumNmae6} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId7}">${subjects.threadName7} </a> <span class="lm"><a href="#">${subjects.forumNmae7} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId3}">${subjects.threadName3} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId3}">${subjects.forumNmae3} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId4}">${subjects.threadName4} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId4}">${subjects.forumNmae4} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId5}">${subjects.threadName5} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId5}">${subjects.forumNmae5} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId6}">${subjects.threadName6} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId6}">${subjects.forumNmae6} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId7}">${subjects.threadName7} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId7}">${subjects.forumNmae7} </a></span></li>
                              </ul> 
                         </div>
                     </div>
