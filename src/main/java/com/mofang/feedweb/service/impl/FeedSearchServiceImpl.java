@@ -13,6 +13,7 @@ import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.service.FeedSearchService;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.Tools;
 
 /**
  * 
@@ -82,6 +83,10 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 					long threadId = objThread.optLong("tid", 0l);
 					objThread.put("link_url", "thread_info?thread_id="
 							+ threadId);
+					
+					JSONArray pics = objThread.optJSONArray("pic");
+					String htmlContent = objThread.optString("html_content", "");
+					objThread.put("is_pic", Tools.hasPic(pics, htmlContent));
 				}
 			}
 			return result;
