@@ -116,6 +116,8 @@
                 <div class="nav-left col-xs-6">
                     <a href="index">论坛首页</a> > <a href="forum_content?fid=${feedForum.forum_id }">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
+                
+                <c:if test="${totalPages > 1 }">
                 <div class="page-plug col-xs-6">
                 <ul class="page-pc">
                 <!-- 上一页 按钮 -->
@@ -168,6 +170,7 @@
                 </ul>-->
 
             </div>
+            </c:if>
             </div>
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
@@ -189,7 +192,11 @@
                     <div class="lum-list libao-list">
                        <ul>
                        	   <c:forEach var="highThread" items="${highestList }">
-                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.thread_id }">${highThread.subject }</a></li>
+                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.thread_id }">${fn:substring(highThread.subject, 0, 16)}
+                       	   <c:if test="${fn:length(highThread.subject) > 16}">
+                       	   ...
+                       	   </c:if>
+                       	   </a></li>
                        	   </c:forEach>
                        </ul>
                     </div>
@@ -373,6 +380,7 @@
                     
                     <!-- 分页 -->
                        <!-- 上一页 按钮 -->
+                    <c:if test="${totalPages > 1 }">
                		<div class="page-plug">
                         <ul class="page-pc clearfix">
 						<c:choose>
@@ -430,6 +438,7 @@
 						</c:choose>
                 	</ul>
                 </div>
+                </c:if>
                  
                    <!-- <div class="page-plug">
                         <ul class="page-mobile clearfix">
