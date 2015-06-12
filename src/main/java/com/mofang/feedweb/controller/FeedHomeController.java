@@ -166,6 +166,7 @@ public class FeedHomeController extends FeedCommonController {
 							subjectForm.setContent1(jsonThreadsTitle.optString("content",""));
 						}
 						subjectForm.setLinkUrl1(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId1(jsonThreadsTitle.optLong("forum_id",0));
 						subjectForm.setForumNmae1(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 1) {
 						subjectForm.setThreadId2(jsonThreadsTitle.optLong("thread_id",0));
@@ -180,6 +181,7 @@ public class FeedHomeController extends FeedCommonController {
 							subjectForm.setContent2(jsonThreadsTitle.optString("content",""));
 						}
 						subjectForm.setLinkUrl2(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId2(jsonThreadsTitle.optLong("forum_id",0));
 						subjectForm.setForumNmae2(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 2) {
 						subjectForm.setThreadId3(jsonThreadsTitle.optLong("thread_id",0));
@@ -194,6 +196,7 @@ public class FeedHomeController extends FeedCommonController {
 							subjectForm.setContent3(jsonThreadsTitle.optString("content",""));
 						}
 						subjectForm.setLinkUrl3(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId3(jsonThreadsTitle.optLong("forum_id",0));
 						subjectForm.setForumNmae3(jsonThreadsTitle.optString("forum_name",""));
 					} else if (i == 3) {
 						subjectForm.setThreadId4(jsonThreadsTitle.optLong("thread_id",0));
@@ -208,6 +211,7 @@ public class FeedHomeController extends FeedCommonController {
 							subjectForm.setContent4(jsonThreadsTitle.optString("content",""));
 						}
 						subjectForm.setLinkUrl4(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId4(jsonThreadsTitle.optLong("forum_id",0));
 						if (jsonThreadsTitle.optString("forum_name","").length() > 10) {
 							subjectForm.setForumNmae4(jsonThreadsTitle.optString("forum_name","").substring(0, 10));
 						} else {
@@ -226,6 +230,7 @@ public class FeedHomeController extends FeedCommonController {
 							subjectForm.setContent5(jsonThreadsTitle.optString("content",""));
 						}
 						subjectForm.setLinkUrl5(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId5(jsonThreadsTitle.optLong("forum_id",0));
 						if (jsonThreadsTitle.optString("forum_name","").length() > 10) {
 							subjectForm.setForumNmae5(jsonThreadsTitle.optString("forum_name","").substring(0, 10));
 						} else {
@@ -244,6 +249,7 @@ public class FeedHomeController extends FeedCommonController {
 							subjectForm.setContent6(jsonThreadsTitle.optString("content",""));
 						}
 						subjectForm.setLinkUrl6(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId6(jsonThreadsTitle.optLong("forum_id",0));
 						if (jsonThreadsTitle.optString("forum_name","").length() > 10) {
 							subjectForm.setForumNmae6(jsonThreadsTitle.optString("forum_name","").substring(0, 10));
 						} else {
@@ -261,7 +267,8 @@ public class FeedHomeController extends FeedCommonController {
 						} else {
 							subjectForm.setContent7(jsonThreadsTitle.optString("content",""));
 						}
-						subjectForm.setLinkUrl6(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setLinkUrl7(jsonThreadsTitle.optString("link_url",""));
+						subjectForm.setForumId7(jsonThreadsTitle.optLong("forum_id",0));
 						if (jsonThreadsTitle.optString("forum_name","").length() > 10) {
 							subjectForm.setForumNmae7(jsonThreadsTitle.optString("forum_name","").substring(0, 10));
 						} else {

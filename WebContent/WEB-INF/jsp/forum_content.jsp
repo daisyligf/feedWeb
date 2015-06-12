@@ -223,7 +223,11 @@
                                 <c:if test="${feedThread.isElite}"><s class="icon-jing"></s></c:if>
                                 <c:if test="${feedThread.hasPic}"><s class="icon-tu"></s></c:if>
                                 </a></dd>
-                                <dd>${fn:substring(feedThread.content, 0, 40)}...</dd>
+                                <dd>${fn:substring(feedThread.content, 0, 40)}
+                                <c:if test="${fn:length(feedThread.content) > 40}">
+                       	   		...
+                       	  		</c:if>
+                                </dd>
                                 <dd class="info clearfix">
                                     <p class="author">
                                         <span>${feedThread.user_name}</span>
@@ -238,6 +242,7 @@
                             
                         </dl>
                        </c:forEach>
+                       <c:if test="${totalPages > 1 }">
                        <div class="page-plug">
 			                <ul class="page-pc">
 			                <!-- 上一页 按钮 -->
@@ -316,6 +321,8 @@
 			                
 			
 			            </div>
+			            </c:if>
+			            
                     </div>
                 </div>
              </div>
@@ -343,7 +350,11 @@
 		                    <div class="lum-list libao-list">
 		                       <ul>
 		                           <c:forEach var="hotThread" items="${hotThreadList}">
-		                           <li><s class="black"></s><a href="thread_info?thread_id=${hotThread.threadId }">${fn:substring(hotThread.subject, 0, 17)}...</a></li>
+		                           <li><s class="black"></s><a href="thread_info?thread_id=${hotThread.threadId }">${fn:substring(hotThread.subject, 0, 16)}
+		                           <c:if test="${fn:length(hotThread.subject) > 16}">
+                       	   			...
+                       	   		   </c:if>
+		                           </a></li>
 		                           </c:forEach>
 		                       </ul>
 		                    </div>
