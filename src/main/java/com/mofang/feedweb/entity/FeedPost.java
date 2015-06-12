@@ -26,6 +26,7 @@ public class FeedPost {
 	private String htmlContent;
 	private UserInfo postUserInfo;
 	private List<FeedComment> commentList;
+	private List<String> pic;
 	
 	public long getPost_id() {
 		return post_id;
@@ -131,6 +132,11 @@ public class FeedPost {
 	public void setCommentList(List<FeedComment> commentList) {
 		this.commentList = commentList;
 	}
-	
+	public List<String> getPic() {
+		return pic;
+	}
+	public void setPic(List<String> pic) {
+		this.pic = pic;
+	}
 	
 }

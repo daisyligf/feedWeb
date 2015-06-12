@@ -275,6 +275,12 @@
                     <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent }
+                    	
+                    	<c:if test="${fn:length(postList[0].pic) > 0 }">
+                    		<c:forEach var="pic" items="${postList[0].pic }">
+                    			<img src="${pic }"/>
+                    		</c:forEach>
+                    	</c:if>
                     </div>
                     
                    <p class="look" data-tid="${feedThread.thread_id }">

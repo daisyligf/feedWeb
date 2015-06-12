@@ -13,6 +13,7 @@ import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.service.FeedSearchService;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.Tools;
 
 /**
  * 
@@ -43,6 +44,15 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 					JSONObject objForum = jsonArr.getJSONObject(idx);
 					long fid = objForum.optLong("fid", 0l);
 					objForum.put("link_url", "forum_content?fid=" + fid);
+					
+					String prefectureUrl = objForum.optString("prefecture_url", "");
+					if(StringUtil.isNullOrEmpty(prefectureUrl) || prefectureUrl.equals("null")) {
+						objForum.put("prefecture_url", "null");
+					}
+					String giftUrl = objForum.optString("gift_url", "");
+					if(StringUtil.isNullOrEmpty(giftUrl) || giftUrl.equals("null")) {
+						objForum.put("gift_url", "null");
+					}
 				}
 			}
 			return result;
@@ -82,6 +92,10 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 					long threadId = objThread.optLong("tid", 0l);
 					objThread.put("link_url", "thread_info?thread_id="
 							+ threadId);
+					
+					JSONArray pics = objThread.optJSONArray("pic");
+					String htmlContent = objThread.optString("html_content", "");
+					objThread.put("is_pic", Tools.hasPic(pics, htmlContent));
 				}
 			}
 			return result;

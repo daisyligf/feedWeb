@@ -173,6 +173,18 @@ public class FeedThreadInfoController extends FeedCommonController {
 					feedPost.setComments(postObj.optInt("comments", 0)); 
 					feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));
 					
+					List<String> pic = new ArrayList<String>();
+					JSONArray picArray = postObj.optJSONArray("pic");
+					if (picArray != null && picArray.length() > 0) {
+						for (int j = 0; j < picArray.length(); j++) {
+							String picString = picArray.getString(i);
+							if (!StringUtil.isNullOrEmpty(picString)) {
+								pic.add(picString);
+							}
+						}
+					}
+					feedPost.setPic(pic);
+					
 					JSONObject postUserJson = postObj.optJSONObject("user");
 					UserInfo postUserInfo = new UserInfo();
 					if (postUserJson != null && postUserJson.length() > 0) {

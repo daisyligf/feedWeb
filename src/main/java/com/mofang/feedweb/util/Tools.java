@@ -5,10 +5,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mofang.feedweb.global.Constant;
@@ -122,4 +125,14 @@ public class Tools {
 		return atom;
 	}
 
+	public static boolean hasPic(JSONArray pics, String htmlContent) {
+		if (pics != null && pics.length() > 0) {
+			return true;
+		} else {
+			Pattern pattern = Pattern.compile("<img.*src=(.*?)[^>]*?>");
+			Matcher matcher = pattern.matcher(htmlContent);
+			return matcher.find();
+		}
+	}
+	
 }

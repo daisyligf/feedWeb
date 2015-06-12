@@ -115,7 +115,13 @@
             <div class="con-bottom clearfix">
              <div class="col-xs-12 bg-white">
 
-                                    <!-- <s class="icon-ding"></s><s class="icon-jing"></s><s class="icon-tu"></s> -->
+                                    <!-- <s class="icon-ding">
+                                    {{#isshowimg pic 0}}
+                                        <s class="icon-tu"></s>
+                                    {{else}}
+
+                                    {{/isshowimg}}
+                                    </s><s class="icon-jing"></s><s class="icon-tu"></s> -->
                 <!-- 帖子模板 -->
                 <script id="postTemplate" type="text/x-handlebars-template">
                     {{#each threads}}
@@ -125,11 +131,9 @@
                             <dd class="title">
                                 <a href="{{link_url}}" {{#if is_elite}}class="add-a-hover"{{/if}}>{{subject}}
 
-                                    {{#isshowimg pic 0}}
+                                    {{#if is_pic}}
                                         <s class="icon-tu"></s>
-                                    {{else}}
-
-                                    {{/isshowimg}}
+                                    {{/if}}
                                     {{#if is_top}}
                                         <s class="icon-ding"></s>
                                     {{/if}}
