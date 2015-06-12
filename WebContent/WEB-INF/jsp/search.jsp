@@ -86,7 +86,21 @@
                        <dd>帖子  {{threads}}</dd>
                    </dl>
                    <div class="h2-con-bot">
-                      <a href="{{prefecture_url}}"  class="zq">专区</a><a href="{{gift_url}}">礼包</a> 
+		{{#if prefecture_url}}
+          {{#isUrlTrue prefecture_url 0}}
+           <a href="javascript:;"  class="zq bg-grey l">专区</a>
+          {{else}}
+            <a href="{{prefecture_url}}"  class="zq l">专区</a>
+          {{/isUrlTrue}}
+        {{/if}}
+
+		{{#if gift_url}}
+          {{#isUrlTrue gift_url 0}}
+           <a href="javascript:;" class="bg-grey r">礼包</a>
+          {{else}}
+            <a href="{{gift_url}}" class="r">礼包</a>
+          {{/isUrlTrue}}
+        {{/if}}    
                    </div>
                 </div>
                 {{/each}} 

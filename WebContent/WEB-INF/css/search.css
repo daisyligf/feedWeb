@@ -70,7 +70,16 @@
 .con .h2-con .h2-con-bot .zq{
 	border-right: 1px solid #eee;
 }
-
+.con .h2-con .h2-con-bot a.bg-grey{
+	
+	background:#eee;
+}
+.con .h2-con .h2-con-bot a.bg-grey:hover{
+	color:#999;
+	text-decoration:none;
+	cursor:default;
+	background:#eee;
+}
 
 .con-bottom {
 	margin-top: 20px;

@@ -56,6 +56,18 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		}
 		
     });
+	Handlebars.registerHelper("isUrlTrue",function(v1,v2,options){
+		alert(v1);
+		if(v1=="null" || v1==null || v1==""){
+            //满足添加继续执行
+            return options.fn(this);
+          }else{
+        	  alert('ok');
+            //不满足条件执行{{else}}部分
+            return options.inverse(this);
+          }
+		
+    });
 	getPlate();//板块
 	
 	function getPlate(){
