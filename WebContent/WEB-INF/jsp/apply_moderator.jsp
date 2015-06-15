@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
+<%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page import="com.mofang.feedweb.entity.ModeratorApplyCondition"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -25,13 +26,15 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>申请吧主</title>
-    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/apply.css">
     <link rel="stylesheet" href="css/add_list_article.css">
-    <script src="js/sea.js"></script>
-    <script src="js/sea-config.js"></script>
+    <script src="./js/sea.js"></script>
+    <script src="./js/sea-config.js"></script>
+    <script src="./js/bbs-config.js"></script>
+    <script src="js/mod/common.js"></script>
     
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
@@ -55,15 +58,14 @@
             <jsp:include page="user_info.jsp" flush='true'/>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
-                  <a href="#" class="nav-wap-back"></a>
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
                     <a href="<%=UserCenter.baseUrl %>">个人中心</a>
                   </p>
                 </div>
-                  <div class="wap-nav-text">
-                  	申请吧主
+                 <div class="wap-logo">
+                    <img src="./img/icon/bbs_icon_wap.png"alt="">
                   </div>
             </div>
         </div>
@@ -145,38 +147,27 @@
             </div>
         </div>
         <!-- 内容结束 -->
-        <!-- 底部开始 -->
-        <div class="footer cleafix">
-            <p>© 2015 魔方网 MOFANG.COM 皖ICP备13001602号-1</p>
+         <!-- footer开始 -->
+		<jsp:include page="footer.jsp" flush='true'/>
+		<!-- footer结束 -->
+		<!-- 弹出框插件开始 -->
+        <!-- 遮罩层开始 -->
+        <div class="mask-bg">
+            
         </div>
-        <!-- 底部结束 -->
+        <!-- 遮罩层结束 -->
+        <!-- 成功 -->
+        <div class="pop pop-post-ok">   
+            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+        </div>
+        <!-- 失败 -->
+        <div class="pop pop-top-fail">
+            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+        </div>
+        <!-- 弹出框插件结束 -->
+		<script src="./js/mod/apply_lord.js"></script>
     </div>
 </body>
-<script src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript">
-$('#applyBtn').click(function() {
-	var forumId = $('#forum_id').val();
-	var qq = $('#qq').val();
-	var phone = $('#phone').val();
-	var gameExp = $('#game_exp').val();
-	
-	$.ajax({
-		url:'apply',
-		type:'POST',
-		dataType:'json',
-		data:{'forum_id':forumId, 'qq':qq, 'phone':phone, 'game_exp':gameExp},
-		success:function(data){
-			if (data != null && data.code == 0) {
-				alert('申请成功！');
-				location.href="forum_content?fid="+forumId;
-			} else {
-				alert('申请失败！');
-				return;
-			}
-		}
-	});
-});
-</script>
 </html>
 
 
