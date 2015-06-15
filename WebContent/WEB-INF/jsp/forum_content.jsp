@@ -65,7 +65,7 @@
                   </p>
                 </div>
                 <div class="nav-wap-right">
-                	<a href="newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post">发帖</a>
+                	<a target="_blank"  href="newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post">发帖</a>
                 </div>
                   <!-- <div class="wap-logo">
                     帖子详情
