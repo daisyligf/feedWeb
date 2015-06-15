@@ -92,7 +92,7 @@
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                      
-                    <a href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
+                    <a target="_blank" href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->
