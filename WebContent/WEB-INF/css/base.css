@@ -12,7 +12,6 @@ ol,ul{ list-style:none;}
 fieldset,img{ border:0 none;}
 :focus { outline:0;}
 a{ text-decoration:none;}
-a:hover { text-decoration:underline;}
 /* 高亮选中 */
 ::-moz-selection {background:#08c;color:#fff;}
 ::selection {background:#08c;color:#fff;}
