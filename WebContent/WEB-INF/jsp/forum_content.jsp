@@ -332,8 +332,8 @@
                     <div class="lum-list">
                     	<c:forEach  var="roleInfo" items="${feedForum.roleList}">
                     		<dl>
-                            	<dt><a href="#"><img src="${roleInfo.icon}" alt=""></a></dt>
-                            	<dd><a href="#">${roleInfo.roleName}</a></dd>
+                            	<dt><a href="<%=UserCenter.baseUrl %>/home/person/index" target="_blank"><img src="${roleInfo.icon}" alt=""></a></dt>
+                            	<dd><a href="<%=UserCenter.baseUrl %>/home/person/index" target="_blank">${roleInfo.roleName}</a></dd>
                         	</dl> 
                     	</c:forEach>
                     </div>
