@@ -47,116 +47,116 @@ public class Constant {
 	// 帖子详情页
 	// 楼层列表
 
-	public static final String THREAD_POSTLIST_GET_URL = "/feed/v2/web/post/list";
+	public static final String THREAD_POSTLIST_GET_URL = "/feed/v3/web/post/list";
 	// 楼层评论列表
 
-	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v2/web/comment/list";
+	public static final String THREAD_COMMENTLIST_GET_URL = "/feed/v3/web/comment/list";
 	// 新增楼层
 
-	public static final String POST_CREATE_URL = "/feed/v2/web/post/add";
+	public static final String POST_CREATE_URL = "/feed/v3/web/post/add";
 	// 回复指定楼层
 
-	public static final String POST_REPLY_URL = "/feed/v2/web/comment/add";
+	public static final String POST_REPLY_URL = "/feed/v3/web/comment/add";
 	
 	// 帖子管理-删除
-	public static final String THREAD_DELETE_URL = "/feed/v2/web/thread/delete";
+	public static final String THREAD_DELETE_URL = "/feed/v3/web/thread/delete";
 	
 	// 帖子管理-加精
-	public static final String THREAD_SETELITE_URL = "/feed/v2/web/thread/setelite";
+	public static final String THREAD_SETELITE_URL = "/feed/v3/web/thread/setelite";
 
 	// 帖子管理-取消加精
-	public static final String THREAD_CANCELELITE_URL = "/feed/v2/web/thread/cancelelite";
+	public static final String THREAD_CANCELELITE_URL = "/feed/v3/web/thread/cancelelite";
 	
 	// 帖子管理-置顶
-	public static final String THREAD_SETTOP_URL = "/feed/v2/web/thread/settop";
+	public static final String THREAD_SETTOP_URL = "/feed/v3/web/thread/settop";
 	
 	// 帖子管理-取消置顶
-	public static final String THREAD_CANCELTOP_URL = "/feed/v2/web/thread/canceltop";
+	public static final String THREAD_CANCELTOP_URL = "/feed/v3/web/thread/canceltop";
 	
 	// 帖子管理-锁帖
-	public static final String THREAD_CLOSE_URL = "/feed/v2/web/thread/close";
+	public static final String THREAD_CLOSE_URL = "/feed/v3/web/thread/close";
 	// 帖子管理-取消锁帖
 
-	public static final String THREAD_OPEN_URL = "/feed/v2/web/thread/open";
+	public static final String THREAD_OPEN_URL = "/feed/v3/web/thread/open";
 	// 楼层删除
-	public static final String POST_DELETE_URL = "/feed/v2/web/post/delete";
+	public static final String POST_DELETE_URL = "/feed/v3/web/post/delete";
 	
 	// 帖子点赞
-	public static final String THREAD_RECOMMEND_URL = "/feed/v2/web/thread/recommend";
+	public static final String THREAD_RECOMMEND_URL = "/feed/v3/web/thread/recommend";
 	
 	// 楼层点赞
-	public static final String POST_COMMEND_URL = "/feed/v2/web/post/recommend";
+	public static final String POST_COMMEND_URL = "/feed/v3/web/post/recommend";
 	// 最热推荐
 
-	public static final String HOST_RECOMMEND_URL = "/feed/v2/web/floor/hotRecommend";
+	public static final String HOST_RECOMMEND_URL = "/feed/v3/web/floor/hotRecommend";
 
 	// 板块内容页
 	// 帖子列表
-	public static final String LIST_THREAD_GET_URL = "/feed/v2/web/thread/list";
+	public static final String LIST_THREAD_GET_URL = "/feed/v3/web/thread/list";
 	
 	// 置顶帖子列表（版块下）
-	public static final String THREAD_TOP_LIST_URL = "/feed/v2/web/thread/toplist";
+	public static final String THREAD_TOP_LIST_URL = "/feed/v3/web/thread/toplist";
 	
 	// 板块信息
-	public static final String FORUM_INFO_GET_URL = "/feed/v2/web/forum/info";
+	public static final String FORUM_INFO_GET_URL = "/feed/v3/web/forum/info";
 	
 	// 吧主信息
-	public static final String LIST_MODERATOR_GET_URL = "/feed/v2/web/moderator/list";
+	public static final String LIST_MODERATOR_GET_URL = "/feed/v3/web/moderator/list";
 	
 	// 搜索页
 	// 板块搜索
-	public static final String LIST_FORUM_SEARCH_URL = "/feed/v2/web/forum/search";
+	public static final String LIST_FORUM_SEARCH_URL = "/feed/v3/web/forum/search";
 	// 帖子搜索
-	public static final String LIST_THREAD_SEARCH_URL = "/feed/v2/web/thread/search";
+	public static final String LIST_THREAD_SEARCH_URL = "/feed/v3/web/thread/search";
 
 	// 发帖页
 	// 发帖
-	public static final String THREAD_CREATE_URL = "/feed/v2/web/thread/add";
+	public static final String THREAD_CREATE_URL = "/feed/v3/web/thread/add";
 	// 楼主信息
-	public static final String THREAD_MODERATOR_INFO_URL = "/feed/v2/web/user/info";
+	public static final String THREAD_MODERATOR_INFO_URL = "/feed/v3/web/user/info";
 	// 版块标签
-	public static final String FORUM_TAG_LIST_URL = "/feed/v2/web/forum/taglist"; 
+	public static final String FORUM_TAG_LIST_URL = "/feed/v3/web/forum/taglist"; 
 	// 帖子详情
-	public static final String THREAD_INFO_URL = "/feed/v2/web/thread/info"; 
+	public static final String THREAD_INFO_URL = "/feed/v3/web/thread/info"; 
 	// 帖子-编辑更新
-	public static final String THREAD_EDIT_URL = "/feed/v2/web/thread/edit";
+	public static final String THREAD_EDIT_URL = "/feed/v3/web/thread/edit";
 	// 回复最高的7条帖子
-	public static final String REPLY_HIGHEST_URL = "/feed/v2/web/threads/replyHighest";
+	public static final String REPLY_HIGHEST_URL = "/feed/v3/web/threads/replyHighest";
 
 	// 板块列表页
 	// 板块列表
-	public static final String LIST_FORUM_GET_URL = "/feed/v2/web/forum/listbyletter";
+	public static final String LIST_FORUM_GET_URL = "/feed/v3/web/forum/listbyletter";
 
 	// 首页
 	// 轮播海报
-	public static final String TICKER_INFO_GET_URL = "/feed/v2/web/home/ticker";
+	public static final String TICKER_INFO_GET_URL = "/feed/v3/web/home/ticker";
 	// 首页头条
-	public static final String SUBJECT_INFO_GET_URL = "/feed/v2/web/home/threads";
+	public static final String SUBJECT_INFO_GET_URL = "/feed/v3/web/home/threads";
 	// 热游排行榜
-	public static final String HOT_FOURM_RANK_GET_URL = "/feed/v2/web/home/hotForumRank";
+	public static final String HOT_FOURM_RANK_GET_URL = "/feed/v3/web/home/hotForumRank";
 	// 新游排行榜
 
-	public static final String RECOMMEND_GAME_RANK_GET_URL = "/feed/v2/web/home/recommendGameRank";
+	public static final String RECOMMEND_GAME_RANK_GET_URL = "/feed/v3/web/home/recommendGameRank";
 	// 热游列表
-	public static final String LIST_HOT_FOURM_GET_URL = "/feed/v2/web/home/hotForumList";
+	public static final String LIST_HOT_FOURM_GET_URL = "/feed/v3/web/home/hotForumList";
 	// 新游列表
-	public static final String LIST_RECOMMENDGAME_GET_URL = "/feed/v2/web/home/recommendGameList";
+	public static final String LIST_RECOMMENDGAME_GET_URL = "/feed/v3/web/home/recommendGameList";
 	// 综合专区
-	public static final String PREFECTURE_INFO_GET_URL = "/feed/v2/web/home/prefecture";
+	public static final String PREFECTURE_INFO_GET_URL = "/feed/v3/web/home/prefecture";
 	// 搜索关键字
-	public static final String HOME_SEARCH_KEYWORD_GET_URL = "/feed/v2/web/home/keyworkd";
+	public static final String HOME_SEARCH_KEYWORD_GET_URL = "/feed/v3/web/home/keyworkd";
 
 	// 普通用户
 	// 用户详情
-	public static final String USER_INFO_URL = "/feed/v2/web/user/info";
+	public static final String USER_INFO_URL = "/feed/v3/web/user/info";
 	// 用户禁言
-	public static final String USER_SETPROHIBIT_URL = "/feed/v2/backend/user/setprohibit";
+	public static final String USER_SETPROHIBIT_URL = "/feed/v3/backend/user/setprohibit";
 	// 用户取消禁言
-	public static final String USER_CANCELPROHIBIT_URL = "/feed/v2/backend/user/cancelprohibit";
+	public static final String USER_CANCELPROHIBIT_URL = "/feed/v3/backend/user/cancelprohibit";
 	// 检查版主申请条件
-	public static final String MODERATOR_CHECK_URL = "/feed/v2/web/moderator/check";
+	public static final String MODERATOR_CHECK_URL = "/feed/v3/web/moderator/check";
 	// 申请版主
-	public static final String MODERATOR_APPLY_URL = "/feed/v2/web/moderator/apply";
+	public static final String MODERATOR_APPLY_URL = "/feed/v3/web/moderator/apply";
 
 	// 外部接口
 	// 用户logout
