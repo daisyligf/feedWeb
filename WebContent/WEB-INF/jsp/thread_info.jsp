@@ -579,7 +579,7 @@
     </div>
     <!-- 回到顶部  -->
      <div class="go-top">
-	 	<a href="#" class="post">发帖</a>
+	 	<a href="newThreadInit?fid=${feedForum.forum_id }" class="post">发帖</a>
 	 	<a href="javascript:;" class="scroll-top">顶部</a>
 	 </div>
     <script src="js/mod/article_article.js"></script>
