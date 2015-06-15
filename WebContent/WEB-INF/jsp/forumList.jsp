@@ -73,7 +73,12 @@
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
+        	<c:if test="${forumType=='1'}">
            <div class="h2">热门游戏</div>
+           </c:if>
+          <c:if test="${forumType=='2'}">
+           <div class="h2">新游推荐</div>
+           </c:if>
            <div class="channel-list">
            <c:if test="${letterGroup=='1'}">
            		<div class="col-xs-2 active" ><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}" style=text-decoration:none>ABCDE</a></div>
