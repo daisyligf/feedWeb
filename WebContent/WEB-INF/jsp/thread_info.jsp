@@ -460,7 +460,18 @@
               	<c:when test="${!feedThread.isClosed}">
                <div class="con-right3 reply-textarea">
                    <div class="reply-textarea-info clearfix">
-                       <p class="reply-head"><a href="#"><img src="${loginUser.avatar }" alt=""></a></p>
+                       <p class="reply-head">
+                       <c:choose>
+                       	<c:when test="${loginUser.avatar == null}">
+                       	<a href="#"><img src="img/default.png" alt="">
+                       	</a>
+                       	</c:when>
+                       	<c:otherwise>
+                       	<a href="#"><img src="${loginUser.avatar }" alt="">
+                       	</a>
+                       	</c:otherwise>
+                       </c:choose>
+                       </p>
                        <dl>
                            <dt></dt>
                            <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
