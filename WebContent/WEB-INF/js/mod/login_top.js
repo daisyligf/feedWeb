@@ -16,7 +16,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 	var getUserLoginStatus = c.config.userInfoUrl+"/account/status" //获取用户的登录状态
 	var getUserInfo = c.config.userInfoUrl+"/home/api/get_login_userinfo"; //获取用户信息
 	var getUserLogout = c.config.userInfoUrl+"/account/logout"; //用户退出接口
-	var getUserNotice = "";
+	var getUserNotice = c.config.userInfoUrl + "/message/unread_notify";
 	var ajaxMethod="jsonp"; 
 	if(USE_LOCAL_DATA){
 		getUserLoginStatus = "/bbs_html/statics/test/get_user.json" //获取用户的登录状态
@@ -135,6 +135,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 
 	//消息通知
 	function getNotice(){
+		console.log('xxx:'+getUserNotice);
 		$.ajax({
 		    url:getUserNotice,
 		    type:"GET",
