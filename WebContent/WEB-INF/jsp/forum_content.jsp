@@ -337,7 +337,7 @@
                         	</dl> 
                     	</c:forEach>
                     	
-                    	<p class="no-lord">本吧暂未吧主，我去<a href="#">申请</a></p>
+                    	<p class="no-lord">版主空缺，前往<a href="apply_check?forum_id=${feedForum.forum_id}"  target="_blank">申请</a></p>
                     </div>
                     
                 </div>
