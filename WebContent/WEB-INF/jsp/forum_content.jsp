@@ -336,8 +336,9 @@
                             	<dd><a href="<%=UserCenter.baseUrl %>/home/person/index" target="_blank">${roleInfo.roleName}</a></dd>
                         	</dl> 
                     	</c:forEach>
-                    	
+                    	<c:if test="${fn:length(feedForum.roleList) <= 0}">
                     	<p class="no-lord">版主空缺，前往<a href="apply_check?forum_id=${feedForum.forum_id}"  target="_blank">申请</a></p>
+                    	</c:if>
                     </div>
                     
                 </div>
