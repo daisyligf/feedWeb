@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.ModeratorApplyCondition;
+import com.mofang.feedweb.global.GlobalObject;
 
 /**
  * 
@@ -29,53 +30,50 @@ public class FeedApplyModeratorController extends FeedCommonController {
 	@RequestMapping(value = "/apply_check", method = RequestMethod.GET)
 	public ModelAndView applyCheck(HttpServletRequest request, @RequestParam("forum_id") long forumId) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
-		
-		ModeratorApplyCondition condition = moderatorCheck(request, forumId);
-		
-		FeedForum feedForum = getFeedForumInfo(request, forumId);
-		model.put("moderatorApplyCondition", condition);
-		model.put("feedForum", feedForum);
-		
-		return new ModelAndView("apply_moderator", model);
+		try {
+			ModeratorApplyCondition condition = moderatorCheck(request, forumId);
+			
+			FeedForum feedForum = getFeedForumInfo(request, forumId);
+			model.put("moderatorApplyCondition", condition);
+			model.put("feedForum", feedForum);
+			
+			return new ModelAndView("apply_moderator", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedApplyModeratorController.applyCheck throw an error.", e);
+			return new ModelAndView("apply_moderator", model);
+		}
 	}
 	
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
 	public String apply(HttpServletRequest request, HttpServletResponse response, @RequestParam("forum_id") long forumId, 
 			@RequestParam("qq") String qq, @RequestParam("phone") String mobile, 
 			@RequestParam("game_exp") String gameExp) throws Exception {
-		JSONObject json = moderatorApply(request, forumId, qq, mobile);
+		try {
+			JSONObject json = moderatorApply(request, forumId, qq, mobile);
+			
+			response.setContentType("text/html; charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print(json);
+			out.flush();
+			out.close();
+			return null;
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedApplyModeratorController.apply throw an error.", e);
+			return null;
+		}
 		
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
 		
 	}
 	
 	private ModeratorApplyCondition moderatorCheck(HttpServletRequest request, long forumId) {
 		String param = "fid=" + forumId;
 		
-		JSONObject json = getHttpInfo(getModeratorCheckUrl(), param, request);
+		getHttpInfo(getModeratorCheckUrl(), param, request);
 		
 		ModeratorApplyCondition condition = new ModeratorApplyCondition();
-//		if (json != null && json.optInt("code", -1) == 0) {
-//			JSONObject data = json.optJSONObject("data");
-//			if (data == null || data.length() == 0) {
-//				return condition;
-//			}
-//			
-//			condition.setIsPass(data.optBoolean("is_pass", false));
-//			condition.setIsFollowOk(data.optBoolean("is_follow_ok", false));
-//			condition.setIsThreadsOk(data.optBoolean("is_threads_ok", false));
-//			condition.setIsIntervalOk(data.optBoolean("is_interval_ok", false));
-//			condition.setIsElitecountOk(data.optBoolean("is_elitecount_ok", false));
-//			
-//			return condition;
-//		}
 		
 		condition.setIsPass(true);
 		condition.setIsFollowOk(true);
@@ -86,15 +84,22 @@ public class FeedApplyModeratorController extends FeedCommonController {
 	}
 	
 	private JSONObject moderatorApply(HttpServletRequest request, long forumId, String qq, String mobile) throws Exception {
-		JSONObject postData = new JSONObject();
-		postData.put("fid", forumId);
-		postData.put("qq", qq);
-		postData.put("mobile", mobile);
 		
-		JSONObject json = postHttpInfo(getModeratorApplyUrl(), postData, request);
-		if (json != null && json.optInt("code", -1) == 0) {
-			return json.optJSONObject("data");
+		try {
+			JSONObject postData = new JSONObject();
+			postData.put("fid", forumId);
+			postData.put("qq", qq);
+			postData.put("mobile", mobile);
+			
+			JSONObject json = postHttpInfo(getModeratorApplyUrl(), postData, request);
+			if (json != null && json.optInt("code", -1) == 0) {
+				return json.optJSONObject("data");
+			}
+			return new JSONObject();
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedApplyModeratorController.moderatorApply throw an error.", e);
+			return new JSONObject();
 		}
-		return new JSONObject();
 	}
 }
