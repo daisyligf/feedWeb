@@ -445,15 +445,7 @@
                 	</ul>
                 </div>
                 </c:if>
-                 
-                   <!-- <div class="page-plug">
-                        <ul class="page-mobile clearfix">
-                            <li class="prev"><a href="#">上一页</a></li>
-                            <li class="text">5/235</li>
-                            <li class="next"><a href="#">下一页</a></li>
-                        </ul>
-                    </div>
-					-->
+
                </div>
               </c:if>
               <c:choose>

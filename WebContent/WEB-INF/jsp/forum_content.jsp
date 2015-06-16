@@ -336,6 +336,8 @@
                             	<dd><a href="<%=UserCenter.baseUrl %>/home/person/index" target="_blank">${roleInfo.roleName}</a></dd>
                         	</dl> 
                     	</c:forEach>
+                    	
+                    	<p class="no-lord">本吧暂未吧主，我去<a href="#">申请</a></p>
                     </div>
                     
                 </div>

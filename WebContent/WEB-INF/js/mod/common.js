@@ -31,8 +31,7 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 
 	});
 	
-	//search 头部搜索
-	search();
+	
 	function search(){
 		$("#keyword").keydown(function(ev) {
 			if(ev.which == 13){
@@ -59,32 +58,31 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 		window.location.href = "search?keyword="+encodeURIComponent(keyword);
 	}
 
-	//头部登录跳转
-	if($(".header .load").length>0){
-		$(".header .load").loginUserUrl();
-	}
+	
 	
 	//编辑框登录跳转
-	if($(".maskLogin").length>0){
+	$(function(){
 		$(".maskLogin").loginUserUrl();
 		$(".maskReg").loginUserUrl();
-	}
+		//头部登录跳转
+		$(".header .load").loginUserUrl();
+		//search 头部搜索
+		search();
+		//侧边栏回到顶部
+		fnRightNav();
+	});
 	
-	//侧边栏回到顶部
-	fnRightNav();
+	
+	
 	function fnRightNav(){
 		$(document).scroll(function(){
 			showHide();
 		});
 		$(document).resize(function(){
-			
 			showHide();
-			
 		});
 		$(document).load(function(){
 			showHide();
-			
-			
 		});
 		$(".scroll-top").click(function(){
 			$(".go-top").moveTop();
