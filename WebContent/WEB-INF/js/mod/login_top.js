@@ -135,7 +135,6 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 
 	//消息通知
 	function getNotice(){
-		console.log('xxx:'+getUserNotice);
 		$.ajax({
 		    url:getUserNotice,
 		    type:"GET",
