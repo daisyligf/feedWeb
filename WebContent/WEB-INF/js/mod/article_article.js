@@ -476,7 +476,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			
 		});
 
-		//回复楼层
+		//回复帖子
 		$(".con-right3 .reply-textarea").click(function(){
 			var tid = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
@@ -647,7 +647,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				}else{
 					$(".pop-top-fail").pop({
 						msg:"删除失败",
-					autoTime:1000
+						autoTime:1000
 					});
 				}
 			},function(res){
@@ -793,19 +793,22 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").show();
 					
 		    		$(".pop-post-ok").pop({
-						msg:"回复成功"
+						msg:"回复成功",
+						autoTime:1000
 					});
 
 		    	}else{
 		    		$(".pop-top-fail").pop({
-						msg:"回复失败"
+						msg:"回复失败",
+						autoTime:1000
 					});
 		    	}
 
 		    },
 		    error: function() {
 		    	$(".pop-top-fail").pop({
-					msg:"回复失败"
+					msg:"回复失败",
+					autoTime:1000
 				});
 		    },
 		    complete: function(){
