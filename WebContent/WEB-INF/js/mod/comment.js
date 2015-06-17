@@ -164,6 +164,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
             },
             error:function(){
+            	
                 $(".pop-warn").pop({
                     type:"confirm",
                     msg:"网络出错，请重新发送。",
@@ -234,7 +235,6 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         window.location.reload();
                     },600);
                 }else{
-                    alert();
                     $(".pop-top-fail").pop({
                         msg: "回复失败",
                         autoTime:500
