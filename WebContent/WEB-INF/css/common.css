@@ -91,6 +91,7 @@
 	width:240px;
 	z-index:5;
 	display:none;
+	overflow:hidden;
 }
 .header .nav .user-info .zuji{
 	margin-top:20px;
@@ -644,6 +645,13 @@
 }
 .edui-dialog-video-body{
 	width:95%!important;
+}
+.emoji{
+	width: 20px !important;
+	height: 20px !important;
+	vertical-align: middle !important;
+	margin: 0 2px !important;
+	display: inline !important;
 }
 /*移动端响应*/
 @media (max-width:1024px){

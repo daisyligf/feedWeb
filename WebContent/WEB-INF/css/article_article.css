@@ -307,6 +307,9 @@
 	margin-left: 25px;
 	color:#96c5e9;
 }
+.con .con-right2 .floor-reply-more{
+	display:none;
+}
 .con .con-right2 .replay-lay-btn{
 	float:right;
 	width: 100px;

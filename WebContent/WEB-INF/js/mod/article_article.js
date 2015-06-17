@@ -319,6 +319,10 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 							$(_this).addClass('off-manege-lock');
 							$(_this).html("取消锁帖");
 						}
+						
+						setTimeout(function(){
+							window.location.reload();
+						},1000);
 					}else{
 						$(".pop-top-fail").pop({
 							msg:$(_this).html()+'失败'
@@ -487,7 +491,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				pic : pic
 			},function(res){
 				if(res && res.code==0){
-					window.reload();
+					window.location.reload();
 				}
 			},function(){
 
@@ -555,7 +559,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		});
 
 		//回复楼层效果js
-		placeholder(".dianping-textarea","回复");
+		//placeholder(".dianping-textarea","回复");
 
 		/***点击回复楼层***/
 		$("body").on("click",".dianping",function(){
@@ -596,8 +600,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			var postid = $(_this).parents(".con-list").attr("data-postid");
 			var content = $(_this).parents(".reply-textarea").find(".dianping-textarea").val();
 			var postname = $(_this).parents(".reply-textarea").find(".postname").val();
-			if($.trim(content) == "回复" || $.trim(content)==postname){
-				
+			if($.trim(content) == ""){
 				$(".pop-top-fail").pop({
 					msg:"回复不能为空",
 					autoTime:500
@@ -751,9 +754,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		var curtotal = res.data.total-options.p*options.pagesize;
 		    		
 		    		if(curtotal<=0){
-		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("");
+		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("").hide();
 		    		}else{
-		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("更多"+curtotal+"条回复    <a href='javascript:;''>点击加载</a>");
+		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("更多"+curtotal+"条回复    <a href='javascript:;''>点击加载</a>").show();
 		    		}
 		    		
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data.comments));

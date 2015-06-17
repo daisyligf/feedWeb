@@ -373,7 +373,7 @@
                                     <input type="hidden"  name="tid" class="tid" value="2342"/>
                                     <input type="hidden"  name="uid" class="uid" value="2342"/>
                                     <input type="hidden"  name="postname" class="postname" value="2342"/>
-                                    <textarea name="" class="dianping-textarea" cols="30" rows="10">回复</textarea>
+                                    <textarea name="" class="dianping-textarea" cols="30" rows="10" placeholder="回复"></textarea>
                                     <p class="replay-floor"><span class="replay-count">还可以输入140字</span> <input type="button" class="reply-btn" value="回复"></p>
                                 </div>
                             </div>
