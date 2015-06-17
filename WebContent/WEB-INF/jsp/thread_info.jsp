@@ -175,8 +175,8 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="#"><img src="${threadUserInfo.avatar}" alt=""></a></dt>
-                        <dd><a href='#'>${threadUserInfo.nickname}</a></dd>
+                        <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank"><img src="${threadUserInfo.avatar}" alt=""></a></dt>
+                        <dd><a href='<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}' target="_blank">${threadUserInfo.nickname}</a></dd>
                         <dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>
                     </dl>
                     <ul class="clearfix">
@@ -272,7 +272,7 @@
                         
                     </h2>
                     <c:if test="${currentPage==1}">
-                    <h3>楼主  <a href="#">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
+                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent }
                     	
@@ -341,7 +341,7 @@
                                 if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
                                 %><a href="javascript:;" class="list-del">删除</a> <%} %>
                                 
-                                ${feedPost.position }楼  <a href="#">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
+                                ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
                                 <dd class="info">${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
                                     <p class="look">
@@ -466,7 +466,7 @@
                        	</a>
                        	</c:when>
                        	<c:otherwise>
-                       	<a href="#"><img src="${loginUser.avatar }" alt="">
+                       	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${loginUser.userId}" target="_blank"><img src="${loginUser.avatar }" alt="">
                        	</a>
                        	</c:otherwise>
                        </c:choose>
