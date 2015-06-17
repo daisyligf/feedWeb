@@ -228,6 +228,9 @@
 	color:#999;
 	float:right;
 }
+.con-bottom .con-bot-right .lum a:hover{
+	color:#ff9900;
+}
 .con-bottom .con-bot-right .lum-list{
 	padding:20px;
 	box-sizing:border-box;

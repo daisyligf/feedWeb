@@ -62,7 +62,6 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    	dofollow:$(_this).attr('data-dofollow')
 			    },
 			    success: function(res) {
-			    	console.log(res.code);
 			    	if(res && !res.code){
 			    		if($(_this).attr('data-dofollow')==0){
 			    			$(_this).attr('data-dofollow',1);
@@ -72,13 +71,17 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    		$(".pop-post-ok").pop({
 			    			msg : msgSuc
 			    		});
-
+			    		var num = parseInt($(".follow-num").html());
 			    		if($(_this).hasClass('followed')){
 			    			$(_this).removeClass('followed');
 			    			$(_this).html("+ 关注");
+			    			num--;
+			    			$(".follow-num").html(num);
 			    		}else{
 			    			$(_this).addClass('followed');
 			    			$(_this).html("已关注");
+			    			num++;
+			    			$(".follow-num").html(num);
 			    		}
 			    	}else if(res && res.code==969){
 			    		$(".pop-warn").pop({
