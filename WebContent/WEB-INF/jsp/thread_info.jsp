@@ -203,7 +203,7 @@
                     
                 </div>
             </div>
-            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }">
+            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }" data-isclosed="${feedThread.isClosed}">
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
@@ -358,12 +358,19 @@
                                     </p>
                                 </dd>
                             </dl>
-                            <c:if test="${feedPost.comments > 0}">
-                            <div class="con-list-reply clearfix" style="display: block;">
-                            </c:if>
-                            <c:if test="${feedPost.comments == 0}">
-                            <div class="con-list-reply clearfix">
-                            </c:if>
+	                            <c:choose>
+	                            	<c:when test="${feedThread.isClosed == true }">
+	                            	<div class="con-list-reply clearfix">
+	                            	</c:when>
+	                            	<c:otherwise>
+	                            	<c:if test="${feedPost.comments > 0}">
+	                            	<div class="con-list-reply clearfix" style="display: block;">
+	                            	</c:if>
+	                            	<c:if test="${feedPost.comments == 0}">
+	                            	<div class="con-list-reply clearfix">
+	                            	</c:if>
+	                            	</c:otherwise>
+	                            </c:choose>
                                 <div class="con-list-replycon">
                                     <!--楼层回复内容-->
                                 </div>
@@ -522,7 +529,7 @@
                             <span>不喜欢这个帖子</span>
                             <span>烦这个帖子</span>
                             <span>鄙视这个帖子</span>
-                        </div>
+                        </div>	
                     </div>
     
                     <textarea name="" class="pop-msg"></textarea>
