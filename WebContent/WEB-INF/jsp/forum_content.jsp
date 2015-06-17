@@ -98,7 +98,7 @@
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                      
-                    <a target="_blank" href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
+                    <a target="_blank" data-href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" class="post" id="post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->

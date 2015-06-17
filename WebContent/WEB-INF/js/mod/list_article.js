@@ -13,16 +13,13 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	var USE_LOCAL_DATA = 0;//本地数据
 	var USE_TEST_DATA = 1;//测试数据
 
-	var loginUrl = "http://u.mofang.com/";//登录跳转路径
 	var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
 	var ajaxMethod="jsonp";
 	if(USE_LOCAL_DATA){
 		getFollowUrl='/bbs_html/statics/test/follow.json';
-		loginUrl='/';
 		var ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		loginUrl = "http://u.test.mofang.com/";
 		getFollowUrl = "http://u.test.mofang.com/home/area/follow"; //关注/取消关注
 	}
 
@@ -128,11 +125,36 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	
 	//页面标签处理
 	var tagId = $('#tag_id').val();
-		if (tagId != '' && tagId > 0) {
-			$("#tag_" + tagId).addClass('active');
-		} else {
-			$("#tag_all").addClass('active');
-		}
+	if (tagId != '' && tagId > 0) {
+		$("#tag_" + tagId).addClass('active');
+	} else {
+		$("#tag_all").addClass('active');
+	}
+	//发帖按钮处理
+	
+	postUrl();
+	function postUrl(){
+		$("#post").click(function(){
+			var _this = this;
+			var url = $(_this).attr("data-href");
+			if(!loginStatus){
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg,obj){
+						if(isTrue){
+							window.location.href=$(obj).loginUserUrl(url);
+						}
+					}
+				});
+				return false;
+			}
+			
+		});
+		
+		
+	}
+	
 		
 });
 
