@@ -11,7 +11,14 @@ table{ border-collapse:collapse;border-spacing:0;}
 ol,ul{ list-style:none;}
 fieldset,img{ border:0 none;}
 :focus { outline:0;}
-a{ text-decoration:none;}
+a{ 
+	color:#333;
+	text-decoration:none;
+}
+a:hover {
+	color: #ff9900;
+	text-decoration:none;
+}
 /* 高亮选中 */
 ::-moz-selection {background:#08c;color:#fff;}
 ::selection {background:#08c;color:#fff;}

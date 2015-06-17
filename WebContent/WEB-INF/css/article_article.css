@@ -36,9 +36,6 @@
 .con .user-info dl dd{
 	margin-top:20px;
 }
-.con .user-info dl dd a{
-	color:#333;
-}
 .con .user-info dl dd.money{
 	margin-top:13px;
 	font-size:14px;
@@ -97,9 +94,6 @@
 	font-size:14px;
 	line-height: 30px;
 
-}
-.con .libao-list li a{
-	color:#333;
 }
 .con .libao-list li .black{
 	display: inline-block;

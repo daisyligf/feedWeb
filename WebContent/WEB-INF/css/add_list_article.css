@@ -165,11 +165,7 @@
 }
 .con-bottom .con-left-con dl dd.title a{
 	font-size:18px;
-	color:#333;
 	font-weight:bold;
-}
-.con-bottom .con-left-con dl dd.title a:hover{
-	color: #ff9900;
 }
 /* 加精颜色 */
 .con-bottom .con-left-con dl dd.title a.add-a-hover{
@@ -257,6 +253,9 @@
 	color:#999;
 	font-size:14px;
 }
+.con-bottom .con-bot-right .lum-list dl a:hover{
+	color:#ff9900;
+}
 .con-bottom .con-bot-right .lum-list .no-lord{
 	text-align:center;
 	padding:50px 0px;
@@ -285,9 +284,6 @@
 	line-height: 30px;
 
 }
-.con-bottom .con-bot-right .libao-list li a{
-	color:#333;
-}
 .con-bottom .con-bot-right .libao-list li .black{
 	display: inline-block;
 	vertical-align: middle;
@@ -305,13 +301,9 @@
 .con-bot-right .hot-tj .rec-list{
 	padding: 0 !important;
 }
-.con-bot-right .hot-tj .rec-list a{
-	color:#fff;
-}
 .con-bot-right  .hot-tj .rec-list .title{
 	line-height: 40px;
 	float:left;
-	color:#333;
 }
 .con-bot-right  .hot-tj .rec-list a img{
 	float:left;

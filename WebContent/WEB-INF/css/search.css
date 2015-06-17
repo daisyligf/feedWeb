@@ -39,12 +39,10 @@
 }
 
 .con .h2-con dl dd a{
-
 	display:block;
 	overflow:hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	color:#333;
 	font-size:16px;
 	margin-top:8px;
 	margin-bottom: 12px;
@@ -137,10 +135,6 @@
 }
 .con-bottom .con-left-con dl dd.title a{
 	font-size:18px;
-	color:#333;
-}
-.con-bottom .con-left-con dl dd.title a:hover{
-	color: #ff9900;
 }
 /* 加精颜色 */
 .con-bottom .con-left-con dl dd.title a.add-a-hover{

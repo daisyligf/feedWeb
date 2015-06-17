@@ -111,7 +111,6 @@
 }
 .con .con-top .rec ul li a{
 	float:left;
-	color: #333;
 }
 .con .con-top .rec li .icon-black-splot{
 	float:left;
@@ -166,12 +165,10 @@
 	
 }
 .con .con-top .hot-tj .hot-con a{
-	color:#fff;
 }
 .con .con-top .hot-tj .hot-con .title{
 	line-height: 40px;
 	float:left;
-	color:#333;
 }
 .con .con-top .hot-tj .hot-con a img{
 	float:left;
@@ -276,9 +273,7 @@
 	color: #96c5e9;
 }
 .con .h2-con dl dd a{
-
 	display: block;
-	color:#333;
 	overflow:hidden;
 	text-overflow: ellipsis;
   	white-space: nowrap;
