@@ -7,6 +7,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<% 
+	String contextPath = request.getContextPath();  
+	String headerReferer  =request.getHeader("Referer");  
+	String basePath = headerReferer.substring(0,headerReferer.indexOf(contextPath)+contextPath.length()+1);
+	
+%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -92,7 +98,7 @@
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                      
-                    <a target="_blank" href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
+                    <a target="_blank" href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->
