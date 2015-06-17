@@ -13,8 +13,8 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	var USE_TEST_DATA = 1;//测试数据
 
 		
-	var getPlateUrl = "" //获取搜索板块数据
-	var getPostUrl = "" //获取搜索帖子数据
+	var getPlateUrl = "searchForum"; //获取搜索板块数据
+	var getPostUrl = "searchThread"; //获取搜索帖子数据
 	var ajaxMethod="json";
 	if(USE_LOCAL_DATA){
 		getPlateUrl='/bbs_html/statics/test/ser_plate.json';

@@ -13,20 +13,20 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 	var USE_TEST_DATA = 0;//测试数据
 
 	var getUrl = "";//url路径示范
-	var getUserLoginStatus = c.config.userInfoUrl+"/account/status" //获取用户的登录状态
+	var getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
 	var getUserInfo = c.config.userInfoUrl+"/home/api/get_login_userinfo"; //获取用户信息
 	var getUserLogout = c.config.userInfoUrl+"/account/logout"; //用户退出接口
 	var getUserNotice = c.config.userInfoUrl + "/message/unread_notify";
 	var ajaxMethod="jsonp"; 
 	if(USE_LOCAL_DATA){
-		getUserLoginStatus = "/bbs_html/statics/test/get_user.json" //获取用户的登录状态
+		getUserLoginStatus = "/bbs_html/statics/test/get_user.json"; //获取用户的登录状态
 		getUserInfo = "/bbs_html/statics/test/get_user.json"; //获取用户信息
 		getUserLogout = "/bbs_html/statics/test/get_user.json"; //用户退出接口
 		getUserNotice = "/bbs_html/statics/test/get_user_notice.json"
 		ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		getUserLoginStatus = c.config.userInfoUrl+"m/account/status" //获取用户的登录状态
+		getUserLoginStatus = c.config.userInfoUrl+"m/account/status"; //获取用户的登录状态
 		getUserInfo = c.config.userInfoUrl+"/home/api/get_login_userinfo"; //获取用户信息
 		getUserLogout = c.config.userInfoUrl+"/account/logout"; //用户退出接口
 	}
