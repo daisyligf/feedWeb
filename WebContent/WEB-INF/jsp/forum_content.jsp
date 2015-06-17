@@ -168,7 +168,7 @@
                     	<c:if test="${currentPage==1 }">
                     	<c:forEach var="topThread" items="${topThreadList}">
                         <dl class="clearfix">
-                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${topThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${topThread.user_id}" target="_blank"><img src="${topThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title">
                                 <c:choose>
@@ -205,7 +205,7 @@
                     	</c:if>
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
-                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user_id}"><img src="${feedThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedThread.user_id}" target="_blank"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title">
                                 <c:choose>
@@ -332,8 +332,8 @@
                     <div class="lum-list">
                     	<c:forEach  var="roleInfo" items="${feedForum.roleList}">
                     		<dl>
-                            	<dt><a href="<%=UserCenter.baseUrl %>/home/person/index" target="_blank"><img src="${roleInfo.icon}" alt=""></a></dt>
-                            	<dd><a href="<%=UserCenter.baseUrl %>/home/person/index" target="_blank">${roleInfo.roleName}</a></dd>
+                            	<dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${roleInfo.roleId}" target="_blank"><img src="${roleInfo.icon}" alt=""></a></dt>
+                            	<dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${roleInfo.roleId}" target="_blank">${roleInfo.roleName}</a></dd>
                         	</dl> 
                     	</c:forEach>
                     	<c:if test="${fn:length(feedForum.roleList) <= 0}">
