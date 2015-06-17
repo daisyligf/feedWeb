@@ -507,6 +507,15 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		//点击获取评论数据
 		$("body").on("click",".floor-rec",function(){
 			
+			var isClose = $("#getPostData").attr("data-isclosed");
+			
+			if(isClose=="true" || isClose==true){
+				$(".pop-top-fail").pop({
+					msg:"帖子已关闭",
+					autoTime:1000
+				});
+				return false;
+			}
 			var _this  = this;
 			$(_this).hide();
 			$(_this).siblings(".floor-stop").show();
@@ -535,7 +544,12 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		$(".floor-rec").each(function(){
 			var _this = this;
 			if($(_this).find('a').html()>0){
-				$(_this).click();
+				var isClose = $("#getPostData").attr("data-isclosed");
+				
+				if(isClose=="false" || isClose==false){
+					$(_this).click();
+				}
+				
 			}
 		});
 		//回复楼层文本框show
