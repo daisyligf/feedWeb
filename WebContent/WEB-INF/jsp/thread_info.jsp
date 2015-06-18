@@ -207,7 +207,8 @@
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
-                            <img src="img/img1.jpg" alt="">
+                        <!--<dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>-->   
+                         <img src="${threadUserInfo.avatar}" alt="">
                         </dt>
                         <dd class="author-name">${threadUserInfo.nickname}</dd>
                         <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span></dd>
