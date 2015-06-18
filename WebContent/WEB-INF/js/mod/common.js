@@ -70,10 +70,12 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 		search();
 		//侧边栏回到顶部
 		fnRightNav();
+		//M版a标签的替换
+		replaceA()
 	});
 	
 	
-	
+	//侧边栏回到顶部
 	function fnRightNav(){
 		$(document).scroll(function(){
 			showHide();
@@ -87,8 +89,6 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 		$(".scroll-top").click(function(){
 			$(".go-top").moveTop();
 		});
-		
-		
 		
 		function showHide(){
 			if($(document).width()<1024){
@@ -105,6 +105,14 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 			$(".go-top").css({
 				"margin-left":$(".con").width()/2+'px'
 			});
+		}
+	}
+	//M版a标签的替换
+	function replaceA(){
+		var winW = $(window).width();
+		
+		if(winW<=1080){
+			$("a").attr("target","_self");
 		}
 	}
 	

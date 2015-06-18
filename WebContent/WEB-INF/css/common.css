@@ -153,17 +153,21 @@
 	float:right;
 	height:48px;
 	width:70%;
+	border: 0 none transparent;
+  border-radius: 0!important;
+  -webkit-appearance: none;
 	text-indent:20px;
 	font-size: 16px;
 	border:1px solid #eee;
 }
 .search .bbs-search .ser-but{
 	float:right;
-	border:0px;
 	width:80px;
 	height:50px;
-	background: url(../img/icon/search_btn.png) no-repeat;
-	background-size:100% 100%;
+	border: 0 none transparent;
+  border-radius: 0!important;
+  -webkit-appearance: none;
+	background: url(../img/icon/search_btn.png) no-repeat center center;
 	cursor:pointer;
 }
 
@@ -573,19 +577,7 @@
 	filter:alpha(opacity=60);
 	display: none;
 }
-.editor-textarea{
-	position: relative;
-}
-.textmask{
-	width: 715px;
-	height: 280px;
-	position: absolute;
-	z-index: 9991;
-	padding: 6px 12px;
-	text-align: center;
-	display: none;
-	line-height: 280px;
-}
+
 
 /* 回到顶部 */
 .go-top{
@@ -606,6 +598,25 @@
 }
 
 /* 编辑框 */
+.editer{
+}
+.editer .editor-textarea{
+	width:100%;
+}
+.editor-textarea{
+	position: relative;
+}
+.textmask{
+	width: 100%;
+	height: 360px;
+	position: absolute;
+	z-index: 9991;
+	padding: 6px 12px;
+	text-align: center;
+	display: none;
+	line-height:360px;
+	box-sizing: border-box;
+}
 .editer .edui-container {
     _margin-bottom:5px;
     width:100% !important;
@@ -655,6 +666,7 @@
 }
 /*移动端响应*/
 @media (max-width:1024px){
+	
 	.go-top{
 		display:none;
 	}
@@ -714,8 +726,8 @@
 		display: none;
 		position: absolute;
 		z-index: 20;
-		top: 60px;
-		left: 20px;
+		top: 35px;
+		left: -15px;
 		padding: 10px 20px;
 		opacity:.8;
 		filter: alpha(opacity = 80);
@@ -789,7 +801,9 @@
 		display:block;
 
 	}
-	
+	.textmask{
+		height:360px;
+	}
 	/*弹出框样式*/
 	/*确定不玩？*/
 	.pop-play{
@@ -840,12 +854,14 @@
 	}
 	/*发帖成功*/
 	.pop-post-ok{
-		width: 27%;
+		box-sizing: border-box;
+		width: 30%;
+		margin-left: -15%;
 		height: 70px;
 		line-height: 70px;
 		margin-top: -35px;
 		max-width: 240px;
-		margin-left: -13.5%;
+		
 		padding: 0 15px;
 	}
 	.pop-post-ok img{
@@ -853,12 +869,13 @@
 	}
 	/*置顶失败*/
 	.pop-top-fail{
-		width: 27%;
+		box-sizing: border-box;
+		width: 30%;
+		margin-left: -15%;
 		height: 70px;
 		line-height: 70px;
 		margin-top: -35px;
 		max-width: 240px;
-		margin-left: -13.5%;
 		padding: 0 15px;
 	}
 	.pop-top-fail img{
@@ -916,8 +933,8 @@
 		width: auto;
 	}
 	.header .nav-wap .nav-info{
-		top: 55px;
-		left: 15px;
+		top: 35px;
+		left: -15px;
 		padding: 5px 15px;
 
 	}
@@ -974,6 +991,10 @@
 		margin-top:10px;
 		margin-bottom:30px;
 	}
+	.textmask{
+		height:225px;
+		line-height:225px;
+	}
 	/*弹出框样式*/
 	/*确定不玩？*/
 	.pop-play{
@@ -1023,8 +1044,8 @@
 	}
 	/*发帖成功*/
 	.pop-post-ok{
-		width: 40%;
-		margin-left: -20%;
+		width: 60%;
+		margin-left: -30%;
 		padding: 0 10px;
 		font-size: 16px;
 	}
@@ -1034,8 +1055,8 @@
 	}
 	/*置顶失败*/
 	.pop-top-fail{
-		width: 40%;
-		margin-left: -20%;
+		width: 60%;
+		margin-left: -30%;
 		padding: 0 10px;
 		font-size: 16px;
 	}

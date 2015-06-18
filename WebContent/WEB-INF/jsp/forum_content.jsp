@@ -7,6 +7,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<% 
+	String contextPath = request.getContextPath();  
+	String headerReferer  =request.getHeader("Referer");  
+	String basePath = headerReferer.substring(0,headerReferer.indexOf(contextPath)+contextPath.length()+1);
+	
+%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -60,12 +66,12 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
-                    <a href="<%=UserCenter.baseUrl %>">个人中心</a>
+                    <a href="http://bbs.mofang.com" class="nav-info-home">论坛首页</a>
+                    <a href="http://www.mofang.com">魔方首页</a>
                   </p>
                 </div>
                 <div class="nav-wap-right">
-                	<a target="_blank"  href="newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post">发帖</a>
+                	<a target="_blank"  href="newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post get-post">发帖</a>
                 </div>
                   <!-- <div class="wap-logo">
                     帖子详情
@@ -88,11 +94,11 @@
                        <dt><img src="${feedForum.icon}" height="336" width="448" alt=""></dt>
                        <dd class="title"><span class="title-text">${feedForum.forum_name}</span><c:if test="${isFollow}"><a href="javascript:;" class="follow followed" data-areaid='${feedForum.forum_id}' data-dofollow='0'>已关注</a></c:if>
                      <c:if test="${!isFollow}"> <a href="javascript:;" class="follow" data-areaid='${feedForum.forum_id}' data-dofollow='1'>+ 关注</a></c:if></dd>
-                       <dd>关注  ${feedForum.total_follows}</dd>
+                       <dd>关注  <span class="follow-num">${feedForum.total_follows}</span></dd>
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                      
-                    <a target="_blank" href="newThreadInit?fid=${feedForum.forum_id}" class="post">发帖</a>
+                    <a target="_blank" data-href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" class="post get-post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->

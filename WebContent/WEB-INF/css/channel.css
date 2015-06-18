@@ -68,12 +68,10 @@
 }
 
 .con .h2-con dl dd a{
-
 	display:block;
 	overflow:hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	color:#333;
 	font-size:16px;
 	margin-top:8px;
 	margin-bottom: 12px;

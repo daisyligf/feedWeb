@@ -76,7 +76,7 @@
             <jsp:include page="user_info.jsp" flush='true'/>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
-                  <a href="#" class="nav-wap-back"></a>
+                  <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
@@ -209,8 +209,8 @@
                         <dt class="author-img">
                             <img src="img/img1.jpg" alt="">
                         </dt>
-                        <dd class="author-name">但岁先生</dd>
-                        <dd class="author-detail"><b>楼主</b><span>05-14</span><span> 15:10</span></dd>
+                        <dd class="author-name">${threadUserInfo.nickname}</dd>
+                        <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
                      <c:choose>

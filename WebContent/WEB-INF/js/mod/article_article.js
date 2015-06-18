@@ -15,20 +15,20 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var USE_TEST_DATA = 1;//测试数据
 
 	
-	var getFloorComUrl = ""; //获取楼层评论数据
-	var setAddPostUrl = "";//回复帖子接口
-	var setReplyPostUrl = ""; //回复楼层数据
-	var setDelFloorUrl = ""; //删除楼层接口
-	var setPraThreadUrl = ""; // 点赞帖子接口
-	var setPraFloorUrl = ""; //点赞楼层接口
-	var setLockPostUrl = ""; //锁帖
-	var setOffLockPostUrl = ""; //取消锁帖
-	var setTopPostUrl = ""; //置顶帖子
-	var setOffTopPostUrl = ""; //取消置顶
-	var setAddDigestUrl = ""; //加精
-	var setOffAddDigestUrl = "";//取消加精
-	var setdeletePostUrl = ""; //删除帖子
-	var setAwardUrl = ""; //奖励
+	var getFloorComUrl = "comment_list.json"; //获取楼层评论数据
+	var setAddPostUrl = "send_reply.json";//回复帖子接口
+	var setReplyPostUrl = "reply_post.json"; //回复楼层数据
+	var setDelFloorUrl = "del_floor.json"; //删除楼层接口
+	var setPraThreadUrl = "recommend_thread.json"; // 点赞帖子接口
+	var setPraFloorUrl = "recommend_floor.json"; //点赞楼层接口
+	var setLockPostUrl = "close_thread.json"; //锁帖
+	var setOffLockPostUrl = "open_thread.json"; //取消锁帖
+	var setTopPostUrl = "top_thread.json"; //置顶帖子
+	var setOffTopPostUrl = "cancel_top_thread.json"; //取消置顶
+	var setAddDigestUrl = "elite_thread.json"; //加精
+	var setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
+	var setdeletePostUrl = "del_thread.json"; //删除帖子
+	var setAwardUrl = "award.json"; //奖励
 	var deleteHrefUrl = "forum_content?fid"+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
 
 	var ajaxMethod="json";

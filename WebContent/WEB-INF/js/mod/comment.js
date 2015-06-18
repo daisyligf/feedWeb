@@ -18,12 +18,12 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     var USE_LOCAL_DATA = 0;//本地数据
     var USE_TEST_DATA = 1;//测试数据
 
-    var getUrl = "";//url路径示范
+    //var getUrl = "";//url路径示范
     var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
     var getCheckCode = "checkCode";//验证码校验
     var codeUrl = "generageCode";//验证码url
-    var postUrl = "";//发帖
-    var relayPostUrl = "";//回复帖子
+    //var postUrl = "";//发帖
+    //var relayPostUrl = "";//回复帖子
 
     if($("#editor-form .editor-fid").length>0){
         var localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//发帖成功，跳转的路径
