@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +27,12 @@ import com.mofang.feedweb.global.GlobalObject;
  */
 @Controller
 public class FeedApplyModeratorController extends FeedCommonController {
+	
+	@Value("${usercenter_url}")
+	private String userCenterUrl;
 
 	@RequestMapping(value = "/apply_check", method = RequestMethod.GET)
-	public ModelAndView applyCheck(HttpServletRequest request, @RequestParam("forum_id") long forumId) throws Exception {
+	public ModelAndView applyCheck(HttpServletRequest request, HttpServletResponse response, @RequestParam("forum_id") long forumId) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		try {
 			ModeratorApplyCondition condition = moderatorCheck(request, forumId);
@@ -36,6 +40,11 @@ public class FeedApplyModeratorController extends FeedCommonController {
 			FeedForum feedForum = getFeedForumInfo(request, forumId);
 			model.put("moderatorApplyCondition", condition);
 			model.put("feedForum", feedForum);
+			
+			if (!validate(request)) {
+				response.sendRedirect(userCenterUrl + "/home/account/index");
+				return null;
+			}
 			
 			return new ModelAndView("apply_moderator", model);
 		} catch (Exception e) {
@@ -71,15 +80,20 @@ public class FeedApplyModeratorController extends FeedCommonController {
 	private ModeratorApplyCondition moderatorCheck(HttpServletRequest request, long forumId) {
 		String param = "fid=" + forumId;
 		
-		getHttpInfo(getModeratorCheckUrl(), param, request);
+		JSONObject checkJson = getHttpInfo(getModeratorCheckUrl(), param, request);
 		
 		ModeratorApplyCondition condition = new ModeratorApplyCondition();
+		if (checkJson != null) {
+			JSONObject data = checkJson.optJSONObject("data");
+			if (data != null) {
+				condition.setIsPass(data.optBoolean("is_pass", false));
+				condition.setIsFollowOk(data.optBoolean("is_follow_ok", false));
+				condition.setIsThreadsOk(data.optBoolean("is_threads_ok", false));
+				condition.setIsIntervalOk(data.optBoolean("is_interval_ok", false));
+				condition.setIsElitecountOk(data.optBoolean("is_elitecount_ok", false));
+			}
+		}
 		
-		condition.setIsPass(true);
-		condition.setIsFollowOk(true);
-		condition.setIsThreadsOk(true);
-		condition.setIsIntervalOk(true);
-		condition.setIsElitecountOk(true);
 		return condition;
 	}
 	
