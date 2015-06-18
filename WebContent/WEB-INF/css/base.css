@@ -19,6 +19,22 @@ a:hover {
 	color: #ff9900;
 	text-decoration:none;
 }
+
+input {-webkit-appearance:none; /*去除input默认样式*/}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input{-webkit-appearance:none;}
+input:focus{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-user-modify:read-write-plaintext-only;
+}
+textarea {
+    resize: none;
+}
+input:focus, textarea:focus {
+    outline: none;
+}
 /* 高亮选中 */
 ::-moz-selection {background:#08c;color:#fff;}
 ::selection {background:#08c;color:#fff;}
