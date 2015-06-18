@@ -573,19 +573,7 @@
 	filter:alpha(opacity=60);
 	display: none;
 }
-.editor-textarea{
-	position: relative;
-}
-.textmask{
-	width: 715px;
-	height: 280px;
-	position: absolute;
-	z-index: 9991;
-	padding: 6px 12px;
-	text-align: center;
-	display: none;
-	line-height: 280px;
-}
+
 
 /* 回到顶部 */
 .go-top{
@@ -606,6 +594,25 @@
 }
 
 /* 编辑框 */
+.editer{
+}
+.editer .editor-textarea{
+	width:100%;
+}
+.editor-textarea{
+	position: relative;
+}
+.textmask{
+	width: 100%;
+	height: 360px;
+	position: absolute;
+	z-index: 9991;
+	padding: 6px 12px;
+	text-align: center;
+	display: none;
+	line-height:360px;
+	box-sizing: border-box;
+}
 .editer .edui-container {
     _margin-bottom:5px;
     width:100% !important;
@@ -655,6 +662,7 @@
 }
 /*移动端响应*/
 @media (max-width:1024px){
+	
 	.go-top{
 		display:none;
 	}
@@ -789,7 +797,9 @@
 		display:block;
 
 	}
-	
+	.textmask{
+		height:360px;
+	}
 	/*弹出框样式*/
 	/*确定不玩？*/
 	.pop-play{
@@ -916,8 +926,8 @@
 		width: auto;
 	}
 	.header .nav-wap .nav-info{
-		top: 55px;
-		left: 15px;
+		top: 35px;
+		left: -15px;
 		padding: 5px 15px;
 
 	}
@@ -973,6 +983,10 @@
 		padding: 0;
 		margin-top:10px;
 		margin-bottom:30px;
+	}
+	.textmask{
+		height:225px;
+		line-height:225px;
 	}
 	/*弹出框样式*/
 	/*确定不玩？*/

@@ -134,7 +134,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	
 	postUrl();
 	function postUrl(){
-		$("#post").click(function(){
+		$(".get-post").click(function(){
 			var _this = this;
 			var url = $(_this).attr("data-href");
 			if(!loginStatus){
