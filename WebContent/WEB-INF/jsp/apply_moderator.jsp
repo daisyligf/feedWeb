@@ -99,12 +99,12 @@
 	                            <div class="apply-hd-main">
 	                                <h3 class="apply-hd-error-title"> 对不起，你还不满足吧主申请条件!  </h3>
 	                                <p class="apply-line"></p>
-	                                <div class="apply-status-list">
+	                                <!-- <div class="apply-status-list">
 	                                    <ul>
 	                                        <li class="no-meet">您还没有登录,请登录后再试!</li>
 	                                    </ul>
 	                                    
-	                                </div>
+	                                </div> -->
 	                            </div>
 	                           
 	                            <div class="apply-hd-show">
