@@ -210,7 +210,7 @@
                             <img src="img/img1.jpg" alt="">
                         </dt>
                         <dd class="author-name">${threadUserInfo.nickname}</dd>
-                        <dd class="author-detail"><b>楼主</b><span>${feedThread.create_time}</span></dd>
+                        <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
                      <c:choose>
