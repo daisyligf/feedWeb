@@ -56,7 +56,7 @@
             <jsp:include page="user_info.jsp" flush='true'/>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
-                  <a href="#" class="nav-wap-back"></a>
+                  <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
                   <p class="nav-info">
                     <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
                     <a href="<%=UserCenter.baseUrl %>">个人中心</a>
