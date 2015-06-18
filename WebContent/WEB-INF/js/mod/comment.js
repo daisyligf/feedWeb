@@ -52,7 +52,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
 
     var uploader, um, wordCount=5000, isCode=false;
-
+    var isLock=false;//防止多次点击
     var loginBtn = $("#login"),
         reply = $(".reply-submit"),
         editorTit = $(".editor-title"),
@@ -107,12 +107,20 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
         });
     }
-
+    
     reply.on("click",function (){
-       if(loginStatus) {
+       if(loginStatus){
              checkEditor();
        } else {
-            window.location.href="http://u.test.mofang.com/home/account/index";
+    	   $(".pop-login").pop({
+				type:"confirm",
+				msg:"请登录后继续操作",
+				fnCallback: function(isTrue,msg,obj){
+					if(isTrue){
+						window.location.href=$(obj).loginUserUrl();
+					}
+				}
+			});
             return false;
        }
      })
@@ -161,7 +169,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
        //发帖回调
         var optionsPost = {
             beforeSubmit:function(){
-
+            	isLock=true;
             },
             error:function(){
             	
@@ -175,16 +183,27 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     }
                 });
                 //变换验证码
-                fnChangeCode(); 
+                fnChangeCode();
+                isLock=false;
             },
             success: function(res) {
                 if(typeof res=='string'){
                     res=$.parseJSON(res);
                 }
+                
                 if(res && res.code==0){
+                	
                     $(".pop-post-ok").pop({
                         msg: "发帖成功",
-                        autoTime:500
+                        autoTime:500,
+                        fnCallback: function(isTrue,msg){
+                        	isLock=true;
+                        	if(editorForm.attr("data-tid")==0){
+                                window.location.href=localPlateUrl;
+                            }else{
+                                window.location.href=localPostUrl;  
+                            }
+            			}
                     }); 
                     setTimeout(function(){
                         if(editorForm.attr("data-tid")==0){
@@ -193,7 +212,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                             window.location.href=localPostUrl;  
                         }
                         
-                    },600); 
+                    },500); 
                 }else{
                     $(".pop-warn").pop({
                         type:"confirm",
@@ -208,39 +227,48 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     //变换验证码
                     fnChangeCode(); 
                 }
+                isLock=false;
                   
-            } 
+            }
         };
         //回复帖子回调
         var optionsReplayPost = {
             beforeSubmit:function(){
-
+            	isLock=true;
             },
             error:function(){
                $(".pop-top-fail").pop({
                     msg: "回复失败",
                     autoTime:500
                 }); 
+               isLock=false;
             },
             success:function(res) {
+            	
                 if(typeof res=='string'){
                     res=$.parseJSON(res);
                 }
                 if(res && res.code==0){
+                	
                     $(".pop-post-ok").pop({
                         msg: "回复成功",
-                        autoTime:500
+                        autoTime:500,
+                        fnCallback: function(isTrue,msg){
+                        	isLock=true;
+                        	window.location.reload();
+            			}
                     });
                     setTimeout(function(){
                         window.location.reload();
-                    },600);
+                    },500);
                 }else{
                     $(".pop-top-fail").pop({
                         msg: "回复失败",
                         autoTime:500
                     });
                 }
-            } 
+                isLock=false;
+            }
         };
         //回复帖子
         if(editorForm.attr('data-form')=='replayPost'){
@@ -284,6 +312,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                             //变换验证码
                             fnChangeCode(); 
                         }
+                        isLock=false;
                     },
                     error: function() {
                         $(".pop-top-fail").pop({
@@ -291,11 +320,13 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                             autoTime:500
                         });
                         //变换验证码
-                        fnChangeCode(); 
+                        fnChangeCode();
+                        isLock=false;
                     }
                 });
                 return false;
             }
+           
             // 将options传给ajaxForm
             editorForm.submit();
             return false;
@@ -313,7 +344,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     }//}}}
     /**内容检查**/
     function checkEditor (status) {
-
+    	
          if(editorTit.length) {
             if($.trim(editorTit.val()) == "" || editorTit.val() == "请填写标题，限30字以内") {
                 $(".pop-top-fail").pop({
@@ -348,7 +379,9 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         }
         var umContText =  $.trim(um.getContent());//获取内容
         editorCont = filterSpan(umContText);
-            
+        if(isLock){
+    		return false;
+    	}
         formSubmit();
         
     }

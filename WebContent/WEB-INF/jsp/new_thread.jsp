@@ -227,7 +227,15 @@
             
         </div>
         <!-- 遮罩层结束 -->
-        
+        <!--未登录-->
+        <div class="pop pop-play pop-login">
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-word pop-msg">未登录？</p>
+            <p class="clearfix">
+                <input type="button" class="pop-play-cancel pop-cancel" value="取消">
+                <input type="button" class="pop-play-ok pop-ok" value="前往登录">
+            </p>
+        </div>
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
             <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>

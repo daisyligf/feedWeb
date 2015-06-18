@@ -244,6 +244,9 @@
 .con .con-right2 .list-right-dl dd.info{
 	margin-bottom:15px;
 }
+.con .con-right2 .list-right-dl dd.info img{
+	max-width:80%;
+}
 .con .con-right2 .look{
 	margin-right:0px;
 	margin-bottom:0px;
