@@ -209,8 +209,8 @@
                         <dt class="author-img">
                             <img src="img/img1.jpg" alt="">
                         </dt>
-                        <dd class="author-name">但岁先生</dd>
-                        <dd class="author-detail"><b>楼主</b><span>05-14</span><span> 15:10</span></dd>
+                        <dd class="author-name">${threadUserInfo.nickname}</dd>
+                        <dd class="author-detail"><b>楼主</b><span>${feedThread.create_time}</span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
                      <c:choose>
