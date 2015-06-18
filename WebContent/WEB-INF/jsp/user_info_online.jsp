@@ -31,8 +31,8 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
-                    <a href="http://u.mofang.com">个人中心</a>
+                    <a href="http://bbs.mofang.com" class="nav-info-home">论坛首页</a>
+                    <a href="http://www.mofang.com">魔方首页</a>
                   </p>
                 </div>
                   <div class="wap-logo">

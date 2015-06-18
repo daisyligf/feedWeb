@@ -57,8 +57,8 @@
                   <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
-                    <a href="<%=UserCenter.baseUrl %>">个人中心</a>
+                    <a href="http://bbs.mofang.com" class="nav-info-home">论坛首页</a>
+                    <a href="http://www.mofang.com">魔方首页</a>
                   </p>
                 </div>
                   <div class="wap-nav-text">
