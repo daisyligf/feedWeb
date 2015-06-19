@@ -126,7 +126,7 @@
                 <div class="col-xs-3 col-md-12 col-sm-12 hot-tj">
                     <div class="col-xs-12 hot-tj-con">
                         <div class="hot-nav">
-                            <a href="javascript:;" class="active">热门板块</a>
+                            <a href="javascript:;" class="active">热门版块</a>
                             <a href="javascript:;" class="">新游推荐</a>
                         </div>
                         <div id="hotNewTab" style="overflow:hidden;">

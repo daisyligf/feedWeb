@@ -370,7 +370,7 @@
 		                <div class="lord-team hot-tj">
 		                    <!-- <div class="col-xs-12 hot-tj-con"> -->
 		                        <h2 class="lum">
-		                            热门游戏
+		                            热门版块
 		                        </h2>
 		                       
 		                        <div class="lum-list rec-list">
