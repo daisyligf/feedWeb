@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -59,8 +60,8 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">论坛首页</a>
-                    <a href="http://www.mofang.com">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
                   </p>
                 </div>
                  <div class="wap-logo">
@@ -126,7 +127,7 @@
                 <div class="col-xs-3 col-md-12 col-sm-12 hot-tj">
                     <div class="col-xs-12 hot-tj-con">
                         <div class="hot-nav">
-                            <a href="javascript:;" class="active">热门板块</a>
+                            <a href="javascript:;" class="active">热门版块</a>
                             <a href="javascript:;" class="">新游推荐</a>
                         </div>
                         <div id="hotNewTab" style="overflow:hidden;">

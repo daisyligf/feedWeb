@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -58,8 +59,8 @@
                 <div class="nav-wap-left">
                   <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">论坛首页</a>
-                    <a href="http://www.mofang.com">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
                   </p>
                 </div>
                   <div class="wap-nav-text">
