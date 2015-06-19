@@ -48,11 +48,12 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 	function searchJumpUrl(){
 
 		var keyword = $.trim($("#keyword").val());
+		var defKeyword = $.trim($("#keyword").attr("data-default"));
 		$("#keyword").css({
 			border:'1px solid #eee'
 		});
 		if(keyword==''){
-			return false;
+			keyword = defKeyword;
 		}
 
 		window.location.href = "search?keyword="+encodeURIComponent(keyword);

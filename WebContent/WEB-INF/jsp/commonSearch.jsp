@@ -8,7 +8,7 @@
        <div class="bbs-search">
           <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->
           <input type="button" class="ser-but" value="" id="submit"/>
-           <input type="text" class="ser-text" value="${keyword }" id="keyword" placeholder="过来搜我"/>
+           <input type="text" class="ser-text" value="" id="keyword" data-default='${keyword }' placeholder="${keyword }"/>
        </div>
    </div>
    <!-- 搜索结束 -->
