@@ -7,19 +7,19 @@
  * @date 2015-6-1
  */
 
-define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'],function(require, exports, module) {
+define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form','config'],function(require, exports, module) {
 
     //var login = require("mf/login");
     var $ = require("jquery"),
         _h = require("handlebars");  
     require("jquery/jquery-pop");//弹出框插件
     require("jquery/jquery-form");//jquery表单ajax提交插件
-
+    var c = require("config");
     var USE_LOCAL_DATA = 0;//本地数据
-    var USE_TEST_DATA = 1;//测试数据
+    var USE_TEST_DATA = 0;//测试数据
 
     //var getUrl = "";//url路径示范
-    var getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+    var getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
     var getCheckCode = "checkCode";//验证码校验
     var codeUrl = "generageCode";//验证码url
     //var postUrl = "";//发帖
@@ -30,10 +30,9 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         var localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//编辑帖子成功，跳转的路径
     }
     
-
-    var ajaxMethod="json"; 
+    var ajaxMethod="jsonp"; 
     if(USE_LOCAL_DATA){
-        getUserLoginStatus = "http://u.mofang.com/account/status"; //获取用户的登录状态
+        getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
     	//getUserLoginStatus = "loginStatus";
         getCheckCode = "checkCode";
         postUrl = "newThread";//发帖
@@ -47,10 +46,8 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         ajaxMethod="json";
     }
     if(USE_TEST_DATA){
-        getUserLoginStatus = "http://u.test.mofang.com/account/status"; //获取用户的登录状态
-    }   
-
-
+        getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
+    }
     var uploader, um, wordCount=5000, isCode=false;
     var isLock=false;//防止多次点击
     var loginBtn = $("#login"),
@@ -72,7 +69,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         editorCont = "",
         feedFlag = 0;
 
-
+    
     /**实例化编辑器**/
     function editorInit () {//{{{
         um = UM.getEditor('myEditor',{
@@ -299,7 +296,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     data:{
                     	code: $(".code-text").val()
                     },
-                    dataType:ajaxMethod,
+                    dataType:'json',
                     success: function(res) {
                         if(res && !res.code){
                             editorForm.submit();
@@ -490,7 +487,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         $(".sel-one").removeClass('active');
         $(".sel-one").next(".sel-more").hide();
     });
-
+   
     $(function () {
         $.ajax({
             url:getUserLoginStatus,
@@ -504,16 +501,12 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 }else{
                     window.loginStatus=false;
                 }
-                
+                editorInit();
             },
             error: function() {
-                
-            },
-            complete: function(){
-                editorInit();
+            	editorInit();
             }
         });
-       
         // 初始化表情盒子
         //$('.emotion').qqFace({
             //id: 'facebox',
