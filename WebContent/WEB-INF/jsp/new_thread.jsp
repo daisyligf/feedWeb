@@ -6,14 +6,6 @@
 <%@ page language="java" import="com.mofang.feedweb.entity.FeedTag"%>
 <%@ page language="java" import="com.mofang.feedweb.entity.FeedThread"%>
 <%@ page language="java" import="java.util.*"%>
-<%  
-	String path=application.getRealPath(request.getRequestURI());  
-	String realPath = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/newThreadInit";
-	if(request.getQueryString()!=null) {   
-		realPath+="?"+request.getQueryString();           
-	} 
-	//String realPath = request.getHeader("Referer");
-%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
