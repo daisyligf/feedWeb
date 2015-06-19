@@ -329,7 +329,7 @@
 	border-radius: 50%;
 
 }
-.con .reply-textarea-info p img{
+.con .reply-textarea-info p.replay-head img{
 	width: 60px;
 	height: 60px;
 }

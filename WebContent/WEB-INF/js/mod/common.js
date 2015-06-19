@@ -106,6 +106,25 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 				"margin-left":$(".con").width()/2+'px'
 			});
 		}
+		//侧边发帖按钮处理
+		//发帖按钮处理
+		$(".get-post").click(function(){
+			var _this = this;
+			var url = $(_this).attr("data-href");
+			if(!loginStatus){
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg,obj){
+						if(isTrue){
+							window.location.href=$(obj).loginUserUrl(url);
+						}
+					}
+				});
+				return false;
+			}
+			
+		});
 	}
 	//M版a标签的替换
 	function replaceA(){

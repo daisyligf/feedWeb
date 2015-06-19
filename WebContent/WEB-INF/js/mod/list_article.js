@@ -131,7 +131,6 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 		$("#tag_all").addClass('active');
 	}
 	//发帖按钮处理
-	
 	postUrl();
 	function postUrl(){
 		$(".get-post").click(function(){
