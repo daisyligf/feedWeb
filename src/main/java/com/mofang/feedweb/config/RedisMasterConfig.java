@@ -5,17 +5,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RedisMasterConfig {
-	@Value("#{configProperties['host']}")
+	@Value("#{configProperties['master.host']}")
 	private String host;
-	@Value("#{configProperties['port']}")
+	@Value("#{configProperties['master.port']}")
 	private String port;
-	@Value("#{configProperties['timeout']}")
+	@Value("#{configProperties['master.timeout']}")
 	private String timeout;
-	@Value("#{configProperties['maxActive']}")
+	@Value("#{configProperties['master.maxActive']}")
 	private String maxActive;
-	@Value("#{configProperties['maxIdle']}")
+	@Value("#{configProperties['master.maxIdle']}")
 	private String maxIdle;
-	@Value("#{configProperties['testOnBorrow']}")
+	@Value("#{configProperties['master.testOnBorrow']}")
 	private String testOnBorrow;
 	public String getHost() {
 		return host;

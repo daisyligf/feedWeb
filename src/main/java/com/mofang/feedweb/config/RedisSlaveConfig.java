@@ -5,18 +5,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RedisSlaveConfig {
-	@Value("#{configProperties['host']}")
+	@Value("#{configProperties['slave.host']}")
 	private String host;
-	@Value("#{configProperties['port']}")
+	@Value("#{configProperties['slave.port']}")
 	private String port;
-	@Value("#{configProperties['timeout']}")
+	@Value("#{configProperties['slave.timeout']}")
 	private String timeout;
-	@Value("#{configProperties['maxActive']}")
+	@Value("#{configProperties['slave.maxActive']}")
 	private String maxActive;
-	@Value("#{configProperties['maxIdle']}")
+	@Value("#{configProperties['slave.maxIdle']}")
 	private String maxIdle;
-	@Value("#{configProperties['testOnBorrow']}")
+	@Value("#{configProperties['slave.testOnBorrow']}")
 	private String testOnBorrow;
+	
 	public String getHost() {
 		return host;
 	}
