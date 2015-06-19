@@ -15,7 +15,7 @@
                     <div class="user-info">
                         <ul class="clearfix">
                             <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
-                            <li class="zuji"><a href="<%=UserCenter.baseUrl %>/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="<%=UserCenter.baseUrl %>/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="http://u.test.mofang.com/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
+                            <li class="zuji"><a href="<%=UserCenter.baseUrl %>/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="<%=UserCenter.baseUrl %>/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="<%=UserCenter.baseUrl %>/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
                             <li class="info">
                                <a href="<%=UserCenter.baseUrl %>/home/person/index">个人信息</a><a href="<%=UserCenter.baseUrl %>/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
                             </li>
