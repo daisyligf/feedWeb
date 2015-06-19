@@ -13,6 +13,7 @@ import redis.clients.jedis.Jedis;
 
 import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.RedisKey;
 import com.mofang.feedweb.redis.RedisWorker;
 import com.mofang.feedweb.util.StringUtil;
@@ -85,6 +86,7 @@ public class UserComponent {
 	}
 	
 	private boolean isExist(final String cookie) throws Exception {
+		GlobalObject.INFO_LOG.info("redis---------------------------isExist");
 		RedisWorker<Boolean> worker = new RedisWorker<Boolean>() {
 			@Override
 			public Boolean execute(Jedis jedis) throws Exception {
@@ -97,6 +99,7 @@ public class UserComponent {
 	}
 	
 	private boolean save(final String cookie,final String userInfo) throws Exception {
+		GlobalObject.INFO_LOG.info("redis---------------------------save");
 		RedisWorker<Boolean> worker = new RedisWorker<Boolean>() {
 			@Override
 			public Boolean execute(Jedis jedis) throws Exception {
@@ -109,6 +112,7 @@ public class UserComponent {
 	}
 	
 	public UserInfo get(final String cookie) throws Exception {
+		GlobalObject.INFO_LOG.info("redis---------------------------get");
 		RedisWorker<UserInfo> worker = new RedisWorker<UserInfo>() {
 			@Override
 			public UserInfo execute(Jedis jedis) throws Exception {

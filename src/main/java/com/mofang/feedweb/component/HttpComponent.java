@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mofang.feedweb.config.AbstractHttpClientInfo;
 import com.mofang.feedweb.config.FeedHttpClientInfo;
 import com.mofang.feedweb.config.UserHttpClientInfo;
 import com.mofang.feedweb.entity.UserInfo;
@@ -35,12 +34,29 @@ public class HttpComponent {
 
 	@PostConstruct
 	public void init() {
-		feedHttpClient = getHttpProvider(feedHttClientInfo).getHttpClient();
-		userHttpClient = getHttpProvider(userHttpClientInfo).getHttpClient();
+		feedHttpClient = getFeedHttpProvider(feedHttClientInfo).getHttpClient();
+		userHttpClient = getUserHttpProvider(userHttpClientInfo).getHttpClient();
 	}
 
-	protected HttpClientProvider getHttpProvider(
-			AbstractHttpClientInfo clientInfo) {
+	protected HttpClientProvider getFeedHttpProvider(
+			FeedHttpClientInfo clientInfo) {
+		HttpClientConfig config = new HttpClientConfig();
+		config.setHost(clientInfo.getHost());
+		config.setPort(clientInfo.getPort());
+		config.setMaxTotal(clientInfo.getMaxTotal());
+		config.setCharset(clientInfo.getCharset());
+		config.setConnTimeout(clientInfo.getConnTimeout());
+		config.setSocketTimeout(clientInfo.getSocketTimeout());
+		config.setDefaultKeepAliveTimeout(clientInfo.getKeepAliveTimeout());
+		config.setCheckIdleInitialDelay(clientInfo.getCheckIdleInitialDelay());
+		config.setCheckIdlePeriod(clientInfo.getCheckIdlePeriod());
+		config.setCloseIdleTimeout(clientInfo.getCloseIdleTimeout());
+		HttpClientProvider provider = new HttpClientProvider(config);
+		return provider;
+	}
+	
+	protected HttpClientProvider getUserHttpProvider(
+			UserHttpClientInfo clientInfo) {
 		HttpClientConfig config = new HttpClientConfig();
 		config.setHost(clientInfo.getHost());
 		config.setPort(clientInfo.getPort());

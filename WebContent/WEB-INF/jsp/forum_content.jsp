@@ -9,9 +9,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <% 
-	String contextPath = request.getContextPath();  
-	String headerReferer  =request.getHeader("Referer");  
-	String basePath = headerReferer.substring(0,headerReferer.indexOf(contextPath)+contextPath.length()+1);
+	String basePath="";
+	try{
+		String contextPath = request.getContextPath();  
+		String headerReferer  =request.getHeader("Referer");  
+		basePath = headerReferer.substring(0,headerReferer.indexOf(contextPath)+contextPath.length()+1);
+	}catch(Exception e) {
+		
+	}
 	
 %>
 <!DOCTYPE html>
