@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
-<%@ page import="com.mofang.feedweb.global.UserCenter"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page import="com.mofang.feedweb.entity.ModeratorApplyCondition"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -60,7 +60,7 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">首页</a>
                     <a href="<%=UserCenter.baseUrl %>">个人中心</a>
                   </p>
                 </div>

@@ -4,6 +4,7 @@
 <%@ page import="com.mofang.feedweb.entity.FeedForum"%>
 <%@ page import="com.mofang.feedweb.entity.HotThread"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -66,8 +67,8 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="http://bbs.mofang.com" class="nav-info-home">论坛首页</a>
-                    <a href="http://www.mofang.com">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
                   </p>
                 </div>
                 <div class="nav-wap-right">
