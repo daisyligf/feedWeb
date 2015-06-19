@@ -8,17 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<% 
-	String basePath="";
-	try{
-		String contextPath = request.getContextPath();  
-		String headerReferer  =request.getHeader("Referer");  
-		basePath = headerReferer.substring(0,headerReferer.indexOf(contextPath)+contextPath.length()+1);
-	}catch(Exception e) {
-		
-	}
-	
-%>
+
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -77,7 +67,7 @@
                   </p>
                 </div>
                 <div class="nav-wap-right">
-                	<a target="_blank"  href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post get-post">发帖</a>
+                	<a target="_blank"  href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post get-post">发帖</a>
                 </div>
                   <!-- <div class="wap-logo">
                     帖子详情
@@ -104,7 +94,7 @@
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                      
-                    <a target="_blank" data-href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" href="<%=basePath%>newThreadInit?fid=${feedForum.forum_id}" class="post get-post">发帖</a>
+                    <a target="_blank" data-href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" class="post get-post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->
