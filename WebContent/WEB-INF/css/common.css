@@ -48,6 +48,9 @@
 .header .nav .nav-left a{
 	color:#fff;
 }
+.header .nav .nav-left a.old-bbs{
+	margin-left:20px;
+}
 .header .nav .nav-right{
 	position:relative;
 	float:right;
