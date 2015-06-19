@@ -25,6 +25,7 @@ import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.Game;
 import com.mofang.feedweb.entity.GameGift;
+import com.mofang.feedweb.entity.HotForumRank;
 import com.mofang.feedweb.entity.HotThread;
 import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
@@ -69,7 +70,7 @@ public class FeedForumContentController extends FeedCommonController {
 				model.put("hotThreadList", hotThreadList);
 				
 				// 新游推荐
-				List<NewGame> newGameList = getNewGameList(request);
+				List<HotForumRank> newGameList = getNewGameList(request);
 				model.put("newGameList", newGameList);
 				
 			} else { // else 获取该版块关联的游戏信息和礼包发号
@@ -202,27 +203,26 @@ public class FeedForumContentController extends FeedCommonController {
 		return game;
 	}
 
-	private List<NewGame> getNewGameList(HttpServletRequest request)
+	private List<HotForumRank> getNewGameList(HttpServletRequest request)
 			throws JSONException {
 		
-		List<NewGame> newGameList = new ArrayList<NewGame>();
+		List<HotForumRank> newGameList = new ArrayList<HotForumRank>();
 		
 		try {
 			
-			JSONObject json = getHttpInfo(getRecommendGameRankUrl(), "", request);
+			JSONObject json = getHttpInfo(getFeedUrlInfo().concat(Constant.HOT_FOURM_RANK_GET_URL), "", request);
 			
 			if (json != null && json.optInt("code", -1) == 0) {
 				JSONArray data = json.optJSONArray("data");
-				
+				HotForumRank newGame = null;
 				if (data != null && data.length() > 0) {
 					for (int i = 0; i < data.length(); i++) {
 						JSONObject obj = data.getJSONObject(i);
-						NewGame newGame = new NewGame();
-						newGame.setForumId(obj.optLong("forum_id", 0));
-						newGame.setForumName(obj.optString("forum_name", ""));
+						newGame = new HotForumRank();
+						newGame.setForum_id(obj.optLong("forum_id", 0));
+						newGame.setForum_name(obj.optString("forum_name", ""));
 						newGame.setIcon(obj.optString("icon", ""));
-						newGame.setDownloadUrl(obj.optString("download_url"));
-						newGame.setGiftUrl(obj.optString("gift_url", ""));
+						newGame.setUp_down(obj.optInt("up_down"));
 						
 						newGameList.add(newGame);
 					}

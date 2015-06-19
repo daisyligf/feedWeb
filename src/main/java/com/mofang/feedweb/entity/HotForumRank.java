@@ -9,6 +9,7 @@ public class HotForumRank {
 
 	private long forum_id;
 	private String forum_name;
+	private String icon;
 	private int up_down;
 	private String link_url;
 
@@ -42,5 +43,13 @@ public class HotForumRank {
 
 	public void setLink_url(String link_url) {
 		this.link_url = link_url;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 }
