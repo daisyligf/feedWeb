@@ -379,10 +379,10 @@
 		                            	<c:forEach var="newGame" items="${newGameList}">
 		                           		<li class="clearfix"><span class="num num-color">0${i}</span><a href="forum_content?fid=${newGame.forum_id}" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
 		                           		<span class="rank">
-		                                     <c:if test="${newGame.up_down==0}">
+		                                     <c:if test="${newGame.up_down==1}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${newGame.up_down==1}">
+		                                    <c:if test="${newGame.up_down==0}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
 		                                    <c:if test="${newGame.up_down==2}">
