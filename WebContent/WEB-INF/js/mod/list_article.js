@@ -135,14 +135,33 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	function postUrl(){
 		$(".get-post").click(function(){
 			var _this = this;
+			
 			var url = $(_this).attr("data-href");
 			if(!loginStatus){
+				
 				$(".pop-login").pop({
 					type:"confirm",
 					msg:"请登录后继续操作",
 					fnCallback: function(isTrue,msg,obj){
 						if(isTrue){
 							window.location.href=$(obj).loginUserUrl(url);
+						}
+					}
+				});
+				return false;
+			}
+			
+		});
+		$(".apply-mod").click(function(){
+			var _this = this;
+			
+			if(!loginStatus){
+				$(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg,obj){
+						if(isTrue){
+							window.location.href=$(obj).loginUserUrl();
 						}
 					}
 				});

@@ -790,17 +790,23 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	}
 
 	//回复楼层
+	var isreplyFloorLock=false;
 	function replyFloorPost(obj,options){
+		
 		$.ajax({
 		    url:setReplyPostUrl,
 		    type:"POST",
 		    dataType:ajaxMethod,
 		    data:options,
+		    beforeSend:function(){
+		    	if(isreplyFloorLock){
+		    		return false;
+		    	}
+		    	isreplyFloorLock=true;
+		    },
 		    success: function(res) {
 		    	if(res && !res.code){
 		    		var floorCommentTemplate = Handlebars.compile($("#floorCommentTemplate2").html());
-
-		    		console.log(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data));
 		    		$(obj).parents(".con-list-right").find(".dianping-textarea").val('回复');
 		    		$(obj).parents(".con-list-right").find(".reply-textarea").hide();
@@ -826,7 +832,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				});
 		    },
 		    complete: function(){
-		    	
+		    	isreplyFloorLock=false;
 		    }
 		});
 	}
@@ -872,6 +878,25 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
         });
     }
 
+	//侧边发帖按钮处理
+	//发帖按钮处理
+	$(".get-post").click(function(){
+		var _this = this;
+		var url = $(_this).attr("data-href");
+		if(!loginStatus){
+			$(".pop-login").pop({
+				type:"confirm",
+				msg:"请登录后继续操作",
+				fnCallback: function(isTrue,msg,obj){
+					if(isTrue){
+						window.location.href=$(obj).loginUserUrl(url);
+					}
+				}
+			});
+			return false;
+		}
+		
+	});
 
 });
 

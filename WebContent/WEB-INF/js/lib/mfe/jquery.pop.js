@@ -26,7 +26,6 @@ define('jquery/jquery-pop', ['jquery'], function(require, exports, module) {
 		}
 		var options = $.extend(true, defaults, data);
 		var _this = this;
-
 		switch(options.type){
 			case 'alert':
 				$(".mask-bg").fadeIn(200);
