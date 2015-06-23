@@ -811,7 +811,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		
 		    		$(obj).parents(".con-list-right").find(".reply-textarea").hide();
 		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").show();
-		    		$(obj).parents(".con-list-right").find(".floor-rec .icon-ask").html(res.data.post.comments);
+		    		$(obj).parents(".con-list-right").find(".floor-rec a").html(res.data.post.comments);
 		    		$(".pop-post-ok").pop({
 						msg:"回复成功",
 						autoTime:1000
