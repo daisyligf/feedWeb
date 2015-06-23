@@ -12,25 +12,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mofang.feedweb.component.RedisComponent;
+import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.GlobalObject;
+import com.mofang.feedweb.util.RedisUtil;
 import com.mofang.feedweb.util.StringUtil;
 
 @Controller
-public class IdentifyingCodeContorller {
+public class IdentifyingCodeContorller extends FeedCommonController{
 
 	private static int WIDTH = 65;// 设置图片的宽度
 
 	private static int HEIGHT = 22;// 设置图片的高度
+	
+	@Autowired
+	private RedisComponent redisComp;
 
 	@RequestMapping("/checkCode")
 	public void check(@RequestParam(value = "code") String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try {
 			JSONObject json = new JSONObject();
-			String rand = (String)request.getSession().getAttribute("randCode"); 
+			//String rand = (String)request.getSession().getAttribute("randCode");
+			UserInfo userInfo = getUserInfo(request);
+			if(userInfo == null) {
+				json.put("code", 1);
+				response.getWriter().print(json.toString());
+				return;
+			}
+			String rand = RedisUtil.get(redisComp, String.valueOf(userInfo.getUserId()));
 			if(StringUtil.isNullOrEmpty(code) || StringUtil.isNullOrEmpty(rand)) {
 				json.put("code", 1);
 			}
@@ -85,7 +99,11 @@ public class IdentifyingCodeContorller {
 					bos.close();
 				}
 			}
-			request.getSession().setAttribute("randCode", new String(rands));
+			//request.getSession().setAttribute("randCode", new String(rands));
+			UserInfo userInfo = getUserInfo(request);
+			if(userInfo != null) {
+				RedisUtil.set(redisComp, String.valueOf(userInfo.getUserId()), new String(rands));
+			}
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at IdentifyingCodeContorller.generate throw an error.", e);
 		}
