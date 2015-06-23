@@ -12,7 +12,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var Handlebars = require("handlebars");//handlebars模板引擎获取登录状态
 
 	var USE_LOCAL_DATA = 0;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_TEST_DATA = 0;//测试数据
 
 	
 	var getFloorComUrl = "comment_list.json"; //获取楼层评论数据

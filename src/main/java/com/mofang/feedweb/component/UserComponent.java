@@ -13,6 +13,7 @@ import redis.clients.jedis.Jedis;
 
 import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.RedisKey;
 import com.mofang.feedweb.redis.RedisWorker;
 import com.mofang.feedweb.util.StringUtil;

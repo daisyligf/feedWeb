@@ -10,7 +10,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
 	var USE_LOCAL_DATA = 0;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_TEST_DATA = 0;//测试数据
 
 		
 	var getPlateUrl = "searchForum"; //获取搜索板块数据

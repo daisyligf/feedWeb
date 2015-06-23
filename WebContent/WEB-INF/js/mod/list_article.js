@@ -11,7 +11,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	var Handlebars = require("handlebars");//handlebars模板引擎
 
 	var USE_LOCAL_DATA = 0;//本地数据
-	var USE_TEST_DATA = 1;//测试数据
+	var USE_TEST_DATA = 0;//测试数据
 
 	var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
 	var ajaxMethod="jsonp";

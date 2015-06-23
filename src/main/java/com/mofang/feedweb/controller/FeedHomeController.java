@@ -30,11 +30,11 @@ public class FeedHomeController extends FeedCommonController {
 	// home主页初期信息显示
 	@RequestMapping(value = "/index",method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request) throws Exception {
-		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try{
 			model.put("keyword", getSearchKey(request));
+			
 			//大小标题
 			model.put("tickers", getHomeTickers(request));
 			//大小标题
@@ -252,7 +252,6 @@ public class FeedHomeController extends FeedCommonController {
 					}
 				}
 			}
-			
 			return subjectForm;
 			
 		} catch (JSONException e) {
