@@ -27,7 +27,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>bbs列表页</title>
-    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/channel.css">
@@ -165,6 +165,7 @@
           <!--  <div class="load-more">
               <a href="#">加载更多</a>
            </div>-->
+           <c:if test="${totalPages > 1 }">
             <div class="page-plug">
                 <ul class="page-pc">
                 <!-- 上一页 按钮 -->
@@ -229,7 +230,7 @@
 
 				
             </div> 
-              
+             </c:if>
            
         </div>
         <!-- 内容结束 -->
