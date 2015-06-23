@@ -808,10 +808,10 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    	if(res && !res.code){
 		    		var floorCommentTemplate = Handlebars.compile($("#floorCommentTemplate2").html());
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data));
-		    		$(obj).parents(".con-list-right").find(".dianping-textarea").val('回复');
+		    		
 		    		$(obj).parents(".con-list-right").find(".reply-textarea").hide();
 		    		$(obj).parents(".con-list-right").find(".replay-lay-btn").show();
-					
+		    		$(obj).parents(".con-list-right").find(".floor-rec .icon-ask").html(res.data.post.comments);
 		    		$(".pop-post-ok").pop({
 						msg:"回复成功",
 						autoTime:1000
