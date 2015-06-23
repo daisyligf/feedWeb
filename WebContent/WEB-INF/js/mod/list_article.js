@@ -9,18 +9,20 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	require("jquery/jquery-pagebar");//分页插件
 	require("jquery/jquery-pop");//弹出框插件
 	var Handlebars = require("handlebars");//handlebars模板引擎
-
+	var c = require("config");
 	var USE_LOCAL_DATA = 0;//本地数据
 	var USE_TEST_DATA = 0;//测试数据
 
-	var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
+	//var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
+	var getFollowUrl = c.config.userInfoUrl + "/home/area/follow"; //关注/取消关注
+	
 	var ajaxMethod="jsonp";
 	if(USE_LOCAL_DATA){
 		getFollowUrl='/bbs_html/statics/test/follow.json';
 		var ajaxMethod="json";
 	}
 	if(USE_TEST_DATA){
-		getFollowUrl = "http://u.test.mofang.com/home/area/follow"; //关注/取消关注
+		getFollowUrl = c.config.userInfoUrl + "/home/area/follow"; //关注/取消关注
 	}
 
 	getPlateInfo();
