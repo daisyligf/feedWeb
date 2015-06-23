@@ -200,10 +200,11 @@
 }
 .page-plug .page-pc li{
 	display: inline-block;
+	float:left;
 	font-size:14px;
 	border:1px solid #eee;
 	cursor: pointer;
-	margin-left:3px;
+	margin-left:10px;
 }
 .page-plug .page-pc li a{
 	display:block;
