@@ -122,7 +122,13 @@ public class FeedThreadInfoController extends FeedCommonController {
 					if (forumObj != null) {
 						forumId = forumObj.optLong("fid", 0);
 						feedForum.setForum_id(forumId);
-						feedForum.setForum_name(forumObj.optString("name", ""));
+						String forumName = forumObj.optString("name", "");
+						if (forumName.length() > 30) {
+							feedForum.setForum_name(forumName.substring(0, 30));
+						} else {
+							feedForum.setForum_name(forumName);
+						}
+						
 					}
 					
 					JSONObject userObj = threadObj.optJSONObject("user");
