@@ -79,17 +79,19 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 
 	                }else{
 	                    //当前页大于第一页
-	                    /*$('<a>首页</a> ').attr('class',_this.pageNameCssName)
-	                    .bind("click", function(){
-	                        _this.onClickPage(1);
-	                    })
-	                    .appendTo(pagebar);*/
+	                   
+	                    
 	                    $('<li class="prev"><a>上一页</a></li>')
 	                    .bind("click", function(){
 	                        _this.onClickPage(_this.currentPage-1);
 	                    })
 	                    .appendTo(pagebar);
 
+	                    $('<li><a>首页</a></li> ').attr('class',_this.pageNameCssName)
+	                    .bind("click", function(){
+	                        _this.onClickPage(1);
+	                    }).appendTo(pagebar);
+	                    
 	                    //移动端上一页
 	                    $(".page-mobile .prev").unbind("click").bind("click",function(){
 	                    	_this.onClickPage(_this.currentPage-1);
@@ -142,6 +144,10 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    $('<span>尾页</span> ').attr('class',_this.pageNameCssName)
 	                    .appendTo(pagebar);*/
 	                } else {
+	                	 $('<li><a>尾页</a></li> ').bind("click", function(){
+		                        _this.onClickPage(parseInt(_this.totalpage));
+		                    }).appendTo(pagebar);
+	                	 
 	                    $('<li class="next"><a>下一页</a></li> ')
 	                    .bind("click", function(){
 	                        _this.onClickPage(parseInt(_this.currentPage)+1);
@@ -151,6 +157,8 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    $(".page-mobile .next").unbind("click").bind("click",function(){
 	                    	_this.onClickPage(_this.currentPage+1);
 	                    });
+	                    
+	                   
 	                }
 
 	               /* $('<li><a>&nbsp;&nbsp;</a></li>')
