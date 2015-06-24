@@ -260,10 +260,30 @@
 							<c:forEach items="${pagelist}" var="item">
 							<c:choose>
 							<c:when test="${item == currentPage}">
-								<li class="active"><a href="forum_content?currentPage=${item }&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >${item}</a></li>
+								<c:if test="${item == 0}">
+								<li class="active"><a href="forum_content?currentPage=1&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >首页</a></li>
+								</c:if>
+								<c:if test="${item == -1}">
+								<li class="active"><a href="forum_content?currentPage=${totalPages}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >尾页</a></li>
+								</c:if>
+								<c:if test="${item != 0}">
+					  				<c:if test="${item != -1}">
+									<li class="active"><a href="forum_content?currentPage=${item }&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >${item}</a></li>
+									</c:if>
+								</c:if>
 							</c:when>
 							<c:otherwise>
-								<li><a href="forum_content?currentPage=${item}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">${item}</a></li>
+								<c:if test="${item == 0}">
+								<li><a href="forum_content?currentPage=1&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">首页</a></li>
+								</c:if>
+								<c:if test="${item == -1}">
+								<li><a href="forum_content?currentPage=${totalPages}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">尾页</a></li>
+								</c:if>
+								<c:if test="${item != 0}">
+					  				<c:if test="${item != -1}">
+									<li><a href="forum_content?currentPage=${item}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">${item}</a></li>
+									</c:if>
+								</c:if>
 							</c:otherwise>
 							</c:choose>
 							</c:forEach>
