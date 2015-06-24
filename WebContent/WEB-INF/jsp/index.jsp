@@ -417,7 +417,7 @@
                       	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
                     <c:if  test="${hotForum.hotGiftUrl4 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl4} r">礼包</a> 
+                      	<a target="_blank"  href="${hotForum.hotGiftUrl4}" class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
