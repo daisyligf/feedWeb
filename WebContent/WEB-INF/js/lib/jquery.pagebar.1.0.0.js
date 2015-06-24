@@ -61,8 +61,8 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                }
 
 	                // 分页
-	                var front_block = parseInt(_this.currentPage) - 5;// 当前页码前面一截
-	                var back_block = parseInt(_this.currentPage) + 5;// 当前页码后面一截
+	                var front_block = parseInt(_this.currentPage) - 2;// 当前页码前面一截
+	                var back_block = parseInt(_this.currentPage) + 2;// 当前页码后面一截
 
 	                /*$('<span>共</span><span id=“total_count”>'+ _this.totalNum +'</span><span>条</span>')
 	                .appendTo(pagebar);*/
