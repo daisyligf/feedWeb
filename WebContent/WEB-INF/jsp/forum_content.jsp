@@ -29,7 +29,17 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <c:if test="${feedForum.forum_id >= 10}">
+    <c:if test="${feedForum.forum_id <= 13}">
+    <title>${feedForum.forum_name}-魔方论坛</title>
+    </c:if>
+    </c:if>
+    <c:if test="${feedForum.forum_id < 10}">
     <title>${feedForum.forum_name}官方合作论坛</title>
+    </c:if>
+     <c:if test="${feedForum.forum_id > 13}">
+    <title>${feedForum.forum_name}官方合作论坛</title>
+    </c:if>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
