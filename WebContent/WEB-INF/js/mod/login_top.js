@@ -137,7 +137,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 	function getNotice(){
 		$.ajax({
 		    url:getUserNotice,
-		    type:"POST",
+		    type:"GET",
 		    dataType:'json',
 		    data:{
 		    },
