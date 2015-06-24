@@ -163,6 +163,7 @@
 	padding:30px;
 	font-size: 14px;
 	line-height:20px;
+	word-break:break-all;
 }
  .con .con-right1 .con-con img{
 	max-width:80%;
@@ -243,6 +244,7 @@
 }
 .con .con-right2 .list-right-dl dd.info{
 	margin-bottom:15px;
+	word-break:break-all;
 }
 .con .con-right2 .list-right-dl dd.info img{
 	max-width:80%;
