@@ -204,7 +204,7 @@
                     
                 </div>
             </div>
-            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id} " data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }" data-isclosed="${feedThread.isClosed}">
+            <div class="col-xs-9 col-md-12" id="getPostData" data-tid="${feedThread.thread_id}" data-uid="${threadUserInfo.userId }" data-fid="${feedForum.forum_id }" data-isclosed="${feedThread.isClosed}">
                 <div class="con-right1 clearfix">
                     <dl class="con-author clearfix">
                         <dt class="author-img">
