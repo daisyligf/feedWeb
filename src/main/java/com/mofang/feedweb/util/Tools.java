@@ -124,9 +124,18 @@ public class Tools {
 			tempBack_block = back_block;
 		if (front_block > 1)
 			tempFront_block = front_block;
-
+		
+		//把首页加入页表
+		if (front_block > 1) {
+			pageArr.add(0);
+		}
 		for (int i = tempFront_block; i <= tempBack_block; i++) {
 			pageArr.add(i);
+		}
+		
+		//把尾页加入列表
+		if (back_block < totalPage) {
+			pageArr.add(-1);
 		}
 		return pageArr;
 	}

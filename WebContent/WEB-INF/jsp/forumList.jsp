@@ -183,10 +183,30 @@
 				<c:forEach items="${pagelist}" var="item">
 				<c:choose>
 				<c:when test="${item == currentPage}">
-					<li class="active"><a href="forumList?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+				    <c:if test="${item == 0}">
+					<li class="active"><a href="forumList?currentPage=1&forumType=${forumType}&letterGroup=${letterGroup}" >首页</a></li>
+					</c:if>
+					<c:if test="${item == -1}">
+					<li class="active"><a href="forumList?currentPage=${totalPages}&forumType=${forumType}&letterGroup=${letterGroup}" >尾页</a></li>
+					</c:if>
+					<c:if test="${item != 0}">
+					  	<c:if test="${item != -1}">
+						<li class="active"><a href="forumList?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+						</c:if>
+					</c:if>
 				</c:when>
 				<c:otherwise>
-					<li><a href="forumList?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+					<c:if test="${item == 0}">
+					<li><a href="forumList?currentPage=1&forumType=${forumType}&letterGroup=${letterGroup}">首页</a></li>
+					</c:if>
+					<c:if test="${item == -1}">
+					<li><a href="forumList?currentPage=${totalPages}&forumType=${forumType}&letterGroup=${letterGroup}">尾页</a></li>
+					</c:if>
+					<c:if test="${item != 0}">
+					  	<c:if test="${item != -1}">
+						<li><a href="forumList?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+						</c:if>
+					</c:if>
 				</c:otherwise>
 				</c:choose>
 				</c:forEach>
