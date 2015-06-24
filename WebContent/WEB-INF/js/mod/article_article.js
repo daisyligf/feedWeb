@@ -29,7 +29,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
 	var setdeletePostUrl = "del_thread.json"; //删除帖子
 	var setAwardUrl = "award.json"; //奖励
-	var deleteHrefUrl = "forum_content?fid"+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
+	var deleteHrefUrl = "forum_content?fid="+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
 
 	var ajaxMethod="json";
 	if(USE_LOCAL_DATA){
