@@ -127,7 +127,7 @@
 					<c:forEach items="${listInfo}" var="forum" varStatus="vs">						
 			               <div class="col-xs-3 col-md-4  col-sm-6">
 			                   <dl class="clearfix">
-			                       <dt><a href="forum_content?fid=${forum.forumId}"><img src="${forum.icon} " alt=""></a></dt>
+			                       <dt><a href="forum_content?fid=${forum.forumId}"><img src="${forum.icon}" alt=""></a></dt>
 			                       <dd><a href="forum_content?fid=${forum.forumId}">${forum.forumName}</a></dd>
 			                       <dd>今日  <b class="update">${forum.todayThreads}</b></dd>
 			                       <dd>帖子  ${forum.totalThreads}</dd>

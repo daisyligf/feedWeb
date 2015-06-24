@@ -84,7 +84,7 @@
                             <!-- <div class="swipe-wrap"> -->
                                <ul class="swipe-wrap">
                                   <li>
-                                    <a target="_blank" href="${tickers.threadLink1} "><img src="${tickers.tickerIcon1} "alt="" /></a>
+                                    <a target="_blank" href="${tickers.threadLink1}"><img src="${tickers.tickerIcon1}"alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
                                   <li>
@@ -107,7 +107,7 @@
                     <div class="rec col-xs-6 col-md-6 col-sm-12">
                         <div class="col-xs-12 rec-con">
                             <dl class="title-red">
-                                <dt><a target="_blank" href="thread_info?thread_id=${subjects.threadId1} ">${subjects.threadName1} </a></dt>
+                                <dt><a target="_blank" href="thread_info?thread_id=${subjects.threadId1}">${subjects.threadName1} </a></dt>
                                 <dd>${subjects.content1}</dd>
                             </dl>
                             <dl>
@@ -134,7 +134,7 @@
                             <div class="hot-con swipe-wrap">
                                 
                                 <ul>
-                                    <li class="clearfix"><span class="num num-color">01</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId1}" class="title"><img src="${hotRank.icon1} " alt="">${hotRank.forumName1} </a>
+                                    <li class="clearfix"><span class="num num-color">01</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId1}" class="title"><img src="${hotRank.icon1}" alt="">${hotRank.forumName1} </a>
 	                                    <span class="rank">
 		                                     <c:if test="${hotRank.upDown1==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -147,7 +147,7 @@
 		                                    </c:if>
 		                                </span>
                                     </li>
-                                    <li class="clearfix"><span class="num num-color">02</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId2}" class="title"><img src="${hotRank.icon2} " alt="">${hotRank.forumName2}</a>
+                                    <li class="clearfix"><span class="num num-color">02</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId2}" class="title"><img src="${hotRank.icon2}" alt="">${hotRank.forumName2}</a>
                                     <span class="rank">
                                      		<c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -160,7 +160,7 @@
 		                                    </c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><span class="num num-color">03</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId3}" class="title"><img src="${hotRank.icon3} " alt="">${hotRank.forumName3}</a>
+                                    <li class="clearfix"><span class="num num-color">03</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId3}" class="title"><img src="${hotRank.icon3}" alt="">${hotRank.forumName3}</a>
                                     	<span class="rank">
                                     		<c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -173,7 +173,7 @@
 		                                    </c:if>
                                     	</span>
                                     </li>
-                                    <li class="clearfix"><span class="num">04</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId4}" class="title"><img src="${hotRank.icon4} " alt="">${hotRank.forumName4}</a>
+                                    <li class="clearfix"><span class="num">04</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId4}" class="title"><img src="${hotRank.icon4}" alt="">${hotRank.forumName4}</a>
                                     	<span class="rank">
                                     	    <c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -186,7 +186,7 @@
 		                                    </c:if>
                                     	</span>
                                     </li>
-                                    <li class="clearfix"><span class="num">05</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId5}" class="title"><img src="${hotRank.icon5} " alt="">${hotRank.forumName5}</a>
+                                    <li class="clearfix"><span class="num">05</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId5}" class="title"><img src="${hotRank.icon5}" alt="">${hotRank.forumName5}</a>
                                     	<span class="rank">
                                     	    <c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -297,7 +297,7 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a target="_blank"  href="forum_content?fid=${officalForum.forumId1}"><img src="${officalForum.icon1} " alt=""></a></dt>
+                       <dt><a target="_blank"  href="forum_content?fid=${officalForum.forumId1}"><img src="${officalForum.icon1}" alt=""></a></dt>
                        <dd><a target="_blank"  href="forum_content?fid=${officalForum.forumId1}">${officalForum.forumName1}</a></dd>
                        <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
                        <dd>帖子  ${officalForum.totalThreads1}</dd>
