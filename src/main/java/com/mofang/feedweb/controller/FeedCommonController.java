@@ -33,6 +33,10 @@ public class FeedCommonController {
 	@Autowired
 	private HttpComponent httpComp;
 
+	protected String getUserNoticeUrl() {
+		return externalUrlInfo.getUser_notice_url();
+	}
+	
 	protected String getFeedUrlInfo() {
 		return externalUrlInfo.getFeed_info_url();
 	}
@@ -325,6 +329,31 @@ public class FeedCommonController {
 			}
 		}
 		return searchKey;
+	}
+	
+	protected JSONObject getUserNotice(HttpServletRequest request)
+			throws JSONException {
+		
+		try {
+			UserInfo userInfo = this.getUserInfo(request);
+			if (userInfo == null) {
+				return null;
+			}
+			String userId = String.valueOf(userInfo.getUserId());
+			
+			//用户信息
+			JSONObject postData = new JSONObject();
+			postData.put("act", "pull_notify_unread");
+			postData.put("uid", userId);
+			
+			JSONObject json = postHttpInfo(getUserNoticeUrl().concat(Constant.USER_NOTICE_URL), postData, request);
+			
+			return json;
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG
+			.error("FeedCommonController.getUserNotice", e);
+			return null;
+		}
 	}
 
 }

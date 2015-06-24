@@ -21,6 +21,8 @@ public class ExternalUrlInfo {
 	private String user_loginstatus_url;
 	@Value("${viper_info_url}")
 	private String viper_info_url;
+	@Value("${user_notice_url}")
+	private String user_notice_url;
 
 	public String getFeed_info_url() {
 		return feed_info_url;
@@ -84,6 +86,14 @@ public class ExternalUrlInfo {
 
 	public String getViper_info_url() {
 		return viper_info_url;
+	}
+
+	public String getUser_notice_url() {
+		return user_notice_url;
+	}
+
+	public void setUser_notice_url(String user_notice_url) {
+		this.user_notice_url = user_notice_url;
 	}
 
 }
