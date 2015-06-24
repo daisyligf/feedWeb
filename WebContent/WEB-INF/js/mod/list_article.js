@@ -3,7 +3,7 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop'],function(require, exports, module) {
+define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
