@@ -348,12 +348,8 @@ public class FeedCommonController {
 			postData.put("act", "pull_notify_unread");
 			postData.put("uid", userId);
 			
-			GlobalObject.INFO_LOG
-			.info("FeedCommonController.getUserNotice postjson"+postData);
 			
 			JSONObject json = postHttpInfo(getUserNoticeUrl().concat(Constant.USER_NOTICE_URL), postData, request);
-			GlobalObject.INFO_LOG
-			.info("FeedCommonController.getUserNotice returnjson:"+json);
 			
 			return json;
 		} catch (Exception e) {
