@@ -34,7 +34,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>帖子详情页</title>
+    <title>${feedThread.subject}-${feedForum.forum_name}-魔方论坛</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/base.css">
 

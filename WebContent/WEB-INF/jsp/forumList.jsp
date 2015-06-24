@@ -26,7 +26,12 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>bbs列表页</title>
+    <c:if test="${forumType=='1'}">
+    <title>热门游戏-魔方论坛</title>
+    </c:if>
+    <c:if test="${forumType=='2'}">
+    <title>新游推荐-魔方论坛</title>
+    </c:if>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">

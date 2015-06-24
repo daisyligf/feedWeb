@@ -29,7 +29,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>版块内容页</title>
+    <title>${feedForum.forum_name}官方合作论坛</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
