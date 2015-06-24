@@ -31,7 +31,7 @@ public class FeedUserNoticeMessageController extends FeedCommonController {
 	
 	
 	//页面头部用户信息
-	@RequestMapping(value = "/getUserNotice",method = RequestMethod.POST)
+	@RequestMapping(value = "/getUserNotice",method = RequestMethod.GET)
 	public String getUserNotice(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		try {
