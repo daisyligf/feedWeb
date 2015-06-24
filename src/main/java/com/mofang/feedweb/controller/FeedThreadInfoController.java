@@ -261,7 +261,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 			
 			model.put("currentPage", page);
 			model.put("totalPages", Tools.editTotalPageNumber(total));
-			model.put("pagelist", Tools.editPageNumber(total, page,Constant.PAGE_SIZE));
+			model.put("pagelist", Tools.editPageNumber(total, page,Constant.PAGE_SIZE, 2));
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.(void)getThreadInfo throw an error.", e);
 		}

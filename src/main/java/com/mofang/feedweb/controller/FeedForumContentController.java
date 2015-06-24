@@ -365,7 +365,7 @@ public class FeedForumContentController extends FeedCommonController {
 			model.put("tag_id", tagId);
 			model.put("currentPage", p);
 			model.put("totalPages", Tools.editTotalPageNumber(total));
-			model.put("pagelist", Tools.editPageNumber(total, p,Constant.PAGE_SIZE));
+			model.put("pagelist", Tools.editPageNumber(total, p,Constant.PAGE_SIZE, 2));
 			
 			return threadList;
 		} catch (Exception e) {
