@@ -4,7 +4,7 @@
  * @date 2015-05-15
  */
 define('ad',['jquery'],function(require, exports, module) {
-
+	var $ = jQuery = require("jquery");//jquery库
 	//展示百度广告
     function A(id,eid){
         if($("#"+eid).length){
