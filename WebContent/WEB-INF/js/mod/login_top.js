@@ -175,7 +175,6 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 	function init(){
 		showUserStart();//开始进行登录检查
 		getNotice();//消息通知
-		getNotice();
 		setInterval(function(){
 			getNotice();
 		},60*1000);
