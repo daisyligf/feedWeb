@@ -319,6 +319,10 @@
                         <span class="thread-comment"><a href="#conRight3"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                     </c:if>
+                    <!-- 广告位（新版不加）  -->
+                    <!-- <div class="BD_AD_ad1 clearfix" id="BD_AD_ad1">
+                    	
+                    </div> -->
                 </div>
                 
                 <c:if test="${fn:length(postList)>1 }">

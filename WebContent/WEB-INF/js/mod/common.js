@@ -3,14 +3,14 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(require, exports, module) {
+define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	var login_top = require("login_top");
 	
 	require("loginUserUrl");//跳转登录路径
 	require("jquery/moveTop");//回到顶部
-
+	require("ad");//广告展示
 	//移动端顶部效果
 	$(".header .nav-wap-left a").on("touchstart",function(){
 
@@ -117,6 +117,9 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop'],function(
 			$("a").attr("target","_self");
 		}
 	}
+	
+	
+	//
 	
 		
 });

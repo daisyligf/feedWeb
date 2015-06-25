@@ -400,7 +400,13 @@
 font {
     white-space: normal!important
 }
-
+/* 广告位 */
+.BD_AD_ad1{
+	width:100%;
+}
+.BD_AD_ad1 img{
+	width:100%!important;
+}
 @media (max-width:1024px){
 	.search{
 		display:none;
