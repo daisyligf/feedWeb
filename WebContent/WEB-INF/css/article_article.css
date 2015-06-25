@@ -396,6 +396,11 @@
 	padding:100px 0px;
 	color:#ccc;
 }
+
+font {
+    white-space: normal!important
+}
+
 @media (max-width:1024px){
 	.search{
 		display:none;
