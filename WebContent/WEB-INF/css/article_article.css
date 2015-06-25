@@ -166,7 +166,7 @@
 	word-break:break-all;
 }
  .con .con-right1 .con-con img{
-	max-width:80%;
+	max-width: 80%!important;
 } 
 .con .look{
 	float:right;
@@ -247,7 +247,7 @@
 	word-break:break-all;
 }
 .con .con-right2 .list-right-dl dd.info img{
-	max-width:80%;
+	max-width: 80%!important;
 }
 .con .con-right2 .look{
 	margin-right:0px;
