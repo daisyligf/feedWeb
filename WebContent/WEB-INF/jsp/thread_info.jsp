@@ -316,7 +316,7 @@
                    		</c:choose>
                         
                         <s class="icon-zan"></s><a href="javascript:;">${feedThread.recommends }</a></span>
-                        <span class="thread-comment"><a href="#conRight2"><s class="icon-ask"></s>${feedThread.replies }</a></span>
+                        <span class="thread-comment"><a href="#conRight3"><s class="icon-ask"></s>${feedThread.replies }</a></span>
                     </p>
                     </c:if>
                 </div>
@@ -499,7 +499,7 @@
               </c:if>
               <c:choose>
               	<c:when test="${!feedThread.isClosed}">
-               <div class="con-right3 reply-textarea">
+               <div class="con-right3 reply-textarea"  id="conRight3">
                    <div class="reply-textarea-info clearfix">
                        <p class="reply-head">
                        <c:choose>
