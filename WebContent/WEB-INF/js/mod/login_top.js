@@ -152,12 +152,10 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    			if(res.data.reply.unread_count>0){
 		    				$(".header .zj").find(".icon-red").show();
 		    			}
-		    			if(res.data.sys_message.unread_count>0){
+		    			if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0){
 		    				$(".header .msg").find(".icon-red").show();
 		    			}
-		    			if(res.data.recommend.unread_count>0){
-		    				$(".header .libao").find(".icon-red").show();
-		    			}
+		    			
 		    		}else{
 		    			$("#userName").find(".icon-red").hide();
 		    			$(".header .zuji").find(".icon-red").hide();
