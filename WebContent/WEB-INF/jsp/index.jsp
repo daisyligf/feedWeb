@@ -162,39 +162,39 @@
                                     </li>
                                     <li class="clearfix"><span class="num num-color">03</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId3}" class="title"><img src="${hotRank.icon3}" alt="">${hotRank.forumName3}</a>
                                     	<span class="rank">
-                                    		<c:if test="${hotRank.upDown2==1}">
+                                    		<c:if test="${hotRank.upDown3==1}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2==0}">
+		                                    <c:if test="${hotRank.upDown3==0}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2==2}">
+		                                    <c:if test="${hotRank.upDown3==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     	</span>
                                     </li>
                                     <li class="clearfix"><span class="num">04</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId4}" class="title"><img src="${hotRank.icon4}" alt="">${hotRank.forumName4}</a>
                                     	<span class="rank">
-                                    	    <c:if test="${hotRank.upDown2==1}">
+                                    	    <c:if test="${hotRank.upDown4==1}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2==0}">
+		                                    <c:if test="${hotRank.upDown4==0}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2==2}">
+		                                    <c:if test="${hotRank.upDown4==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     	</span>
                                     </li>
                                     <li class="clearfix"><span class="num">05</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId5}" class="title"><img src="${hotRank.icon5}" alt="">${hotRank.forumName5}</a>
                                     	<span class="rank">
-                                    	    <c:if test="${hotRank.upDown2==1}">
+                                    	    <c:if test="${hotRank.upDown5==1}">
 		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2==0}">
+		                                    <c:if test="${hotRank.upDown5==0}">
 		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
-		                                    <c:if test="${hotRank.upDown2==2}">
+		                                    <c:if test="${hotRank.upDown5==2}">
 		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
                                     	</span>
