@@ -325,7 +325,7 @@
                     </div> -->
                 </div>
                 
-                <c:if test="${fn:length(postList)>=1 }">
+                <c:if test="${(fn:length(postList) > 1 and currentPage == 1) or (fn:length(postList) >= 1 and currentPage >= 2)}">
                 <div class="con-right2" id="conRight2">
                     <!-- 楼层回复模板1 -->
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
