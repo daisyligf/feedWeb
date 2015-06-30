@@ -23,7 +23,7 @@
                     </div>
                     
                     <!-- 登陆状态 -->
-                    <a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" target="_blank"><img src="./img/icon/load.png"></a>
+                    <a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="./img/icon/load.png"></a>
                 </div>
             </div>
  
