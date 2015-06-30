@@ -20,11 +20,6 @@ a:hover {
 	text-decoration:none;
 }
 
-input {-webkit-appearance:none; /*去除input默认样式*/}
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-input{-webkit-appearance:none;}
 input:focus{
     -webkit-tap-highlight-color:rgba(0,0,0,0);
     -webkit-user-modify:read-write-plaintext-only;
