@@ -178,7 +178,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 					//楼主本人可以编辑，删除自己的帖子，并且可以删除自己回复的楼层。
 					UserInfo userinfo = userComp.getUserInfo(request);
 					if (null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == threadUserInfo.getUserId()) {
-						privileges.add(SysPrivilege.ELITE_THREAD);
+						privileges.add(SysPrivilege.EDIT_THREAD);
 						privileges.add(SysPrivilege.DEL_THREAD);
 						privileges.add(SysPrivilege.DEL_FLOOR);
 					}
