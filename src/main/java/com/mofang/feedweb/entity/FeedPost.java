@@ -20,6 +20,7 @@ public class FeedPost {
 	private int status;
 	private int level;
 	private long user_id;
+	private boolean currentUserFlg = false;
 	private String user_name;
 	private long forum_id;
 	private long thread_id;
@@ -144,6 +145,12 @@ public class FeedPost {
 	}
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	public boolean isCurrentUserFlg() {
+		return currentUserFlg;
+	}
+	public void setCurrentUserFlg(boolean currentUserFlg) {
+		this.currentUserFlg = currentUserFlg;
 	}
 	
 }
