@@ -148,7 +148,7 @@ width:100%;
 }
 .con .title-type{
 	position: relative;
-	z-index:1100;
+	z-index:1000;
 }
 @media (max-width:1024px){	
 	.con .user-info{
