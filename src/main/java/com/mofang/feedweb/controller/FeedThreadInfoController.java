@@ -180,7 +180,12 @@ public class FeedThreadInfoController extends FeedCommonController {
 					if (null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == threadUserInfo.getUserId()) {
 						privileges.add(SysPrivilege.EDIT_THREAD);
 						privileges.add(SysPrivilege.DEL_THREAD);
-						privileges.add(SysPrivilege.DEL_FLOOR);
+						//privileges.add(SysPrivilege.DEL_FLOOR);
+					}
+					
+					//用户可以删除自己回复的楼层
+					if (null != userinfo) {
+						currentUser.setCurrentUserId(userinfo.getUserId());
 					}
 					currentUser.setPrivileges(privileges);
 				}
@@ -221,7 +226,10 @@ public class FeedThreadInfoController extends FeedCommonController {
 							postUserInfo.setNickname(postUserJson.optString("nickname", ""));
 							postUserInfo.setAvatar(postUserJson.optString("avatar", ""));
 						}
-						
+						if (0 != currentUser.getCurrentUserId() && 
+								postUserInfo.getUserId() == currentUser.getCurrentUserId()) {
+							feedPost.setCurrentUserFlg(true);
+						}
 						feedPost.setPostUserInfo(postUserInfo);
 						
 						List<FeedComment> commentList = new ArrayList<FeedComment>();
