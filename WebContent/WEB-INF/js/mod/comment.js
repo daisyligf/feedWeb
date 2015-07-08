@@ -453,7 +453,10 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     $(".sel-one").click(function(){
         var _this = this;
         showList(_this);
-        choice(_this)
+        choice(_this);
+        $(".con .title-type").css({
+        	'z-index':"1100"
+        });
         return false;
     });
     function showList(_this){
@@ -480,12 +483,18 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             $(this).attr("data-tagsid",_vshowTagsId);
             $(".sel-one").removeClass('active');
             $(".sel-one").next(".sel-more").hide();
+            $(".con .title-type").css({
+            	'z-index':"1000"
+            });
             return false;
         });
     }
     $(document).click(function(){
         $(".sel-one").removeClass('active');
         $(".sel-one").next(".sel-more").hide();
+        $(".con .title-type").css({
+        	'z-index':"1000"
+        });
     });
    
     $(function () {
