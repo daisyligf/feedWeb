@@ -358,7 +358,9 @@
                     <c:forEach var="feedPost" begin="${start }" items="${postList }">
                     <div class="con-list" data-postid="${feedPost.post_id }" data-uid="1234" data-page='1'>
                         <p class="con-list-left">
-                            <img src="${feedPost.postUserInfo.avatar }" alt="">
+                        	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">
+                            	<img src="${feedPost.postUserInfo.avatar }" alt="">
+                            </a>
                         </p>
                         <div class="con-list-right">
                             <dl class="list-right-dl">
