@@ -46,6 +46,7 @@ public class FeedNewThreadServiceImpl implements FeedNewThreadService {
 					info.setNickname(data.optString("nickname", ""));
 					info.setAvatar(data.optString("avatar", ""));
 					info.setReplies(data.optInt("replies", 0));
+					info.setLevel(data.optInt("level", 0));
 					info.setThreads(data.optInt("threads", 0));
 					info.setEliteThreads(data.optInt("elite_threads", 0));
 					info.setCoin(data.optInt("coin", 0));
