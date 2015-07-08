@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mofang.feedweb.component.UserComponent;
 import com.mofang.feedweb.config.PrivilegesConfig;
 import com.mofang.feedweb.entity.CurrentUser;
 import com.mofang.feedweb.entity.FeedComment;
@@ -30,6 +32,7 @@ import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
+import com.mofang.feedweb.global.SysPrivilege;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
 
@@ -41,6 +44,8 @@ import com.mofang.feedweb.util.Tools;
  */
 @Controller
 public class FeedThreadInfoController extends FeedCommonController {
+	@Autowired
+	private UserComponent userComp;
 	
 	@RequestMapping(value = "/thread_info", method = RequestMethod.GET)
 	public ModelAndView getThreadInfo(HttpServletRequest request, @RequestParam("thread_id") long threadId) throws Exception {
@@ -137,6 +142,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 						threadUserInfo.setNickname(userObj.optString("nickname", ""));
 						threadUserInfo.setAvatar(userObj.optString("avatar", ""));
 						threadUserInfo.setCoin(userObj.optInt("coin", 0));
+						threadUserInfo.setLevel(userObj.optInt("level", 0));
 						threadUserInfo.setThreads(userObj.optInt("threads", 0));
 						threadUserInfo.setReplies(userObj.optInt("replies", 0));
 						threadUserInfo.setEliteThreads(userObj.optInt("eliteThreads", 0));
@@ -169,6 +175,13 @@ public class FeedThreadInfoController extends FeedCommonController {
 						}
 					}
 					
+					//楼主本人可以编辑，删除自己的帖子，并且可以删除自己回复的楼层。
+					UserInfo userinfo = userComp.getUserInfo(request);
+					if (null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == threadUserInfo.getUserId()) {
+						privileges.add(SysPrivilege.ELITE_THREAD);
+						privileges.add(SysPrivilege.DEL_THREAD);
+						privileges.add(SysPrivilege.DEL_FLOOR);
+					}
 					currentUser.setPrivileges(privileges);
 				}
 				
@@ -184,6 +197,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 						feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));
 						feedPost.setRecommends(postObj.optInt("recommends", 0));
 						feedPost.setPosition(postObj.optInt("position", 0));
+						feedPost.setLevel(postObj.optInt("level", 0));
 						feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));
 						feedPost.setComments(postObj.optInt("comments", 0)); 
 						feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));
