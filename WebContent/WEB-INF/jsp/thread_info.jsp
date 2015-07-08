@@ -367,8 +367,11 @@
                                 <dt><% 
                                 CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
                                 if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
-                                %><a href="javascript:;" class="list-del">删除</a> <%} %>
-                                
+                                %><a href="javascript:;" class="list-del">删除</a> <%} else {%>
+                                <c:if test="${feedPost.currentUserFlg == true}">
+                                <a href="javascript:;" class="list-del">删除</a> 
+                                </c:if>
+                                <%} %>
                                 ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
                                 <dd class="info">${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
