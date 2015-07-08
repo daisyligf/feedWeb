@@ -170,7 +170,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             },
             error:function(){
             	
-                $(".pop-warn").pop({
+                $(".pop-top-fail").pop({
                     type:"confirm",
                     msg:"网络出错，请重新发送。",
                     fnCallback: function(isTrue,msg){
@@ -211,7 +211,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         
                     },500); 
                 }else{
-                    $(".pop-warn").pop({
+                    $(".pop-top-fail").pop({
                         type:"confirm",
                         msg:res.message,
                         fnCallback: function(isTrue,msg){
