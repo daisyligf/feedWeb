@@ -18,6 +18,7 @@ public class FeedPost {
 	private boolean isRecommend;
 	private Date create_time;
 	private int status;
+	private int level;
 	private long user_id;
 	private String user_name;
 	private long forum_id;
@@ -137,6 +138,12 @@ public class FeedPost {
 	}
 	public void setPic(List<String> pic) {
 		this.pic = pic;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	
 }
