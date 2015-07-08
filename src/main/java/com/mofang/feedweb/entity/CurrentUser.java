@@ -13,6 +13,8 @@ public class CurrentUser {
 	
 	private boolean isAdmin = false;
 	
+	private long currentUserId = 0;
+	
 	private Set<Integer> privileges = new HashSet<Integer>();
 
 	public boolean getIsModerator() {
@@ -37,6 +39,14 @@ public class CurrentUser {
 
 	public void setPrivileges(Set<Integer> privileges) {
 		this.privileges = privileges;
+	}
+
+	public long getCurrentUserId() {
+		return currentUserId;
+	}
+
+	public void setCurrentUserId(long currentUserId) {
+		this.currentUserId = currentUserId;
 	}
 	
 	
