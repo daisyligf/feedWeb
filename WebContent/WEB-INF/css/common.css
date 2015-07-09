@@ -66,9 +66,15 @@
 	padding-right:20px;
 	display: none;
 }
+.header .nav .nav-right .no-login{
+	color:#fff;
+	padding-right:5px;
+	line-height:52px;
+}
 .header .nav .nav-right .load{
 	height: 50px;
 	line-height: 50px;
+	margin-right:12px;
 }
 .header .nav .nav-right .load img{
 	float:left;
@@ -84,6 +90,9 @@
 	width:37px;
 	height:37px;
 	border-radius: 50%;
+}
+.header .nav .nav-right .no-login a:hover{
+	color:#ff9900;
 }
 .header .nav .user-info{
 	position: absolute;
