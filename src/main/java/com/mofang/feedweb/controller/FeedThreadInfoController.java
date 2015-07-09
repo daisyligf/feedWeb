@@ -1,6 +1,8 @@
 package com.mofang.feedweb.controller;
 
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -115,7 +117,20 @@ public class FeedThreadInfoController extends FeedCommonController {
 					feedThread.setContent(replaceEmoji(content));
 					feedThread.setPage_view(threadObj.optInt("pageview", 0));
 					feedThread.setReplies(threadObj.optInt("replies", 0));
-					feedThread.setCreate_time(new Date(threadObj.optLong("create_time", 0)));
+					
+					Date createTime = new Date(threadObj.optLong("create_time", 0));
+					feedThread.setCreate_time(createTime);
+					
+					DateFormat dateFormat = new SimpleDateFormat("yyyy");
+					String year = dateFormat.format(createTime);
+					String thisYear = dateFormat.format(new Date());
+					
+					if (year.equals(thisYear)) {
+						feedThread.setFormat("MM-dd HH:mm");
+					} else {
+						feedThread.setFormat("yyyy-MM-dd HH:mm");
+					}
+					
 					feedThread.setIsClosed(threadObj.optBoolean("is_closed", false));
 					feedThread.setIsElite(threadObj.optBoolean("is_elite", false));
 					feedThread.setIsTop(threadObj.optBoolean("is_top", false));
@@ -203,7 +218,20 @@ public class FeedThreadInfoController extends FeedCommonController {
 						feedPost.setRecommends(postObj.optInt("recommends", 0));
 						feedPost.setPosition(postObj.optInt("position", 0));
 						feedPost.setLevel(postObj.optInt("level", 0));
-						feedPost.setCreate_time(new Date(postObj.optLong("create_time", 0)));
+						
+						Date createTime = new Date(postObj.optLong("create_time", 0));
+						feedPost.setCreate_time(createTime);
+						
+						DateFormat dateFormat = new SimpleDateFormat("yyyy");
+						String year = dateFormat.format(createTime);
+						String thisYear = dateFormat.format(new Date());
+						
+						if (year.equals(thisYear)) {
+							feedPost.setFormat("MM-dd HH:mm");
+						} else {
+							feedPost.setFormat("yyyy-MM-dd HH:mm");
+						}
+						
 						feedPost.setComments(postObj.optInt("comments", 0)); 
 						feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));
 						

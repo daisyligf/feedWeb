@@ -1,6 +1,8 @@
 package com.mofang.feedweb.controller;
 
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,7 +29,6 @@ import com.mofang.feedweb.entity.Game;
 import com.mofang.feedweb.entity.GameGift;
 import com.mofang.feedweb.entity.HotForumRank;
 import com.mofang.feedweb.entity.HotThread;
-import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
@@ -388,7 +389,20 @@ public class FeedForumContentController extends FeedCommonController {
 		feedThread.setContent(replaceEmoji(content));
 		feedThread.setPage_view(obj.optInt("pageview", 0));
 		feedThread.setReplies(obj.optInt("replies", 0));
-		feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
+		
+		Date createTime = new Date(obj.optLong("create_time", 0));
+		feedThread.setCreate_time(createTime);
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy");
+		String year = dateFormat.format(createTime);
+		String thisYear = dateFormat.format(new Date());
+		
+		if (year.equals(thisYear)) {
+			feedThread.setFormat("MM-dd HH:mm");
+		} else {
+			feedThread.setFormat("yyyy-MM-dd HH:mm");
+		}
+		
 		feedThread.setIsClosed(obj.optBoolean("is_closed", false));
 		feedThread.setIsElite(obj.optBoolean("is_elite", false));
 		feedThread.setIsTop(obj.optBoolean("is_top", false));

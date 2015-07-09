@@ -232,7 +232,7 @@
                          <img src="${threadUserInfo.avatar}" alt="">
                         </dt>
                         <dd class="author-name">${threadUserInfo.nickname}</dd>
-                        <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span></dd>
+                        <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format }"/></span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
                      <c:choose>
@@ -385,7 +385,7 @@
                                 <%} %>
                                 
                                
-                                ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
+                                ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format }"/></dt>
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>
                                 <c:forEach var="pic" items="${feedPost.pic }">

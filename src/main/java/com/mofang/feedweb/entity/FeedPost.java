@@ -17,6 +17,7 @@ public class FeedPost {
 	private int recommends;
 	private boolean isRecommend;
 	private Date create_time;
+	private String format;
 	private int status;
 	private int level;
 	private long user_id;
@@ -71,6 +72,13 @@ public class FeedPost {
 	}
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
+	}
+	
+	public String getFormat() {
+		return format;
+	}
+	public void setFormat(String format) {
+		this.format = format;
 	}
 	public int getStatus() {
 		return status;
