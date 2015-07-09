@@ -36,6 +36,7 @@ import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.SysPrivilege;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.TimeUtil;
 import com.mofang.feedweb.util.Tools;
 
 /**
@@ -121,15 +122,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 					Date createTime = new Date(threadObj.optLong("create_time", 0));
 					feedThread.setCreate_time(createTime);
 					
-					DateFormat dateFormat = new SimpleDateFormat("yyyy");
-					String year = dateFormat.format(createTime);
-					String thisYear = dateFormat.format(new Date());
-					
-					if (year.equals(thisYear)) {
-						feedThread.setFormat("MM-dd HH:mm");
-					} else {
-						feedThread.setFormat("yyyy-MM-dd HH:mm");
-					}
+					feedThread.setFormat(TimeUtil.getFormat(createTime));
 					
 					feedThread.setIsClosed(threadObj.optBoolean("is_closed", false));
 					feedThread.setIsElite(threadObj.optBoolean("is_elite", false));
@@ -222,15 +215,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 						Date createTime = new Date(postObj.optLong("create_time", 0));
 						feedPost.setCreate_time(createTime);
 						
-						DateFormat dateFormat = new SimpleDateFormat("yyyy");
-						String year = dateFormat.format(createTime);
-						String thisYear = dateFormat.format(new Date());
-						
-						if (year.equals(thisYear)) {
-							feedPost.setFormat("MM-dd HH:mm");
-						} else {
-							feedPost.setFormat("yyyy-MM-dd HH:mm");
-						}
+						feedPost.setFormat(TimeUtil.getFormat(createTime));
 						
 						feedPost.setComments(postObj.optInt("comments", 0)); 
 						feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));

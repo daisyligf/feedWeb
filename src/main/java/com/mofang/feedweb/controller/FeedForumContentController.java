@@ -36,6 +36,7 @@ import com.mofang.feedweb.global.ForumType;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.util.SignUtil;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.TimeUtil;
 import com.mofang.feedweb.util.Tools;
 
 /**
@@ -393,15 +394,7 @@ public class FeedForumContentController extends FeedCommonController {
 		Date createTime = new Date(obj.optLong("create_time", 0));
 		feedThread.setCreate_time(createTime);
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy");
-		String year = dateFormat.format(createTime);
-		String thisYear = dateFormat.format(new Date());
-		
-		if (year.equals(thisYear)) {
-			feedThread.setFormat("MM-dd HH:mm");
-		} else {
-			feedThread.setFormat("yyyy-MM-dd HH:mm");
-		}
+		feedThread.setFormat(TimeUtil.getFormat(createTime));
 		
 		feedThread.setIsClosed(obj.optBoolean("is_closed", false));
 		feedThread.setIsElite(obj.optBoolean("is_elite", false));

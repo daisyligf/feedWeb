@@ -294,7 +294,7 @@
                         
                     </h2>
                     <c:if test="${currentPage==1}">
-                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
+                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format}"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent } 
                     	
