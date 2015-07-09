@@ -232,7 +232,7 @@
                          <img src="${threadUserInfo.avatar}" alt="">
                         </dt>
                         <dd class="author-name">${threadUserInfo.nickname}</dd>
-                        <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></span></dd>
+                        <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format }"/></span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
                      <c:choose>
@@ -294,7 +294,7 @@
                         
                     </h2>
                     <c:if test="${currentPage==1}">
-                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
+                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format}"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent } 
                     	
@@ -385,8 +385,8 @@
 		                        </div>
                                 </c:if>
                                 <%} %>
-                               
                                 <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.1</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
+
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>
                                 <c:forEach var="pic" items="${feedPost.pic }">
@@ -614,7 +614,7 @@
             <h2 class="clearfix">
                 <span>
                     <img src="./img/icon/pop_close.png" class="close">
-                </span>帖子管理操作
+                </span>帖子/楼层管理操作
             </h2>
             <div class="post-delete-reason">
                 <p  class="post-delete-sure pop-title">奖励原因</p>

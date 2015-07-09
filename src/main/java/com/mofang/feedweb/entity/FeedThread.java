@@ -15,6 +15,7 @@ public class FeedThread {
 	private int page_view;
 	private int replies;
 	private Date create_time;
+	private String format;
 	private int shareTimes;
 	private boolean isClosed;
 	private boolean isElite;
@@ -81,6 +82,14 @@ public class FeedThread {
 
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
+	}
+	
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
 	}
 
 	public int getShareTimes() {

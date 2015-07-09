@@ -1,6 +1,8 @@
 package com.mofang.feedweb.controller;
 
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,14 +30,16 @@ import com.mofang.feedweb.entity.Game;
 import com.mofang.feedweb.entity.GameGift;
 import com.mofang.feedweb.entity.HotForumRank;
 import com.mofang.feedweb.entity.HotThread;
-import com.mofang.feedweb.entity.NewGame;
 import com.mofang.feedweb.entity.RoleInfo;
+import com.mofang.feedweb.entity.SignInfo;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.ForumType;
 import com.mofang.feedweb.global.GlobalObject;
+import com.mofang.feedweb.service.FeedSignInService;
 import com.mofang.feedweb.util.SignUtil;
 import com.mofang.feedweb.util.StringUtil;
+import com.mofang.feedweb.util.TimeUtil;
 import com.mofang.feedweb.util.Tools;
 
 /**
@@ -46,11 +51,26 @@ import com.mofang.feedweb.util.Tools;
 @Controller
 public class FeedForumContentController extends FeedCommonController {
 	
+	@Autowired
+	FeedSignInService feedSignInService;
+	
 	@RequestMapping(value = "/forum_content", method = RequestMethod.GET)
 	public ModelAndView forumContent(HttpServletRequest request, @RequestParam("fid") long fid) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
+			//获取当前用户的签到状态
+			JSONObject json = feedSignInService.getSignInstate(request);
+			SignInfo signInfo = new SignInfo();
+			if (null != json && 0 == json.optInt("code")) {
+				JSONObject data = json.optJSONObject("data");
+				signInfo.setIs_sign_in(data.optBoolean("is_sign_in", false));
+				signInfo.setDays(data.optInt("days", 0));
+				signInfo.setRank(data.optInt("rank", 0));
+				signInfo.setTotalMember(data.optInt("totalMember", 0));
+			}
+			model.put("signInfo", signInfo);
+			
 			// 获取版块信息
 			FeedForum feedForum = getFeedForumInfo(request, fid);
 			
@@ -388,7 +408,12 @@ public class FeedForumContentController extends FeedCommonController {
 		feedThread.setContent(replaceEmoji(content));
 		feedThread.setPage_view(obj.optInt("pageview", 0));
 		feedThread.setReplies(obj.optInt("replies", 0));
-		feedThread.setCreate_time(new Date(obj.optLong("create_time", 0)));
+		
+		Date createTime = new Date(obj.optLong("create_time", 0));
+		feedThread.setCreate_time(createTime);
+		
+		feedThread.setFormat(TimeUtil.getFormat(createTime));
+		
 		feedThread.setIsClosed(obj.optBoolean("is_closed", false));
 		feedThread.setIsElite(obj.optBoolean("is_elite", false));
 		feedThread.setIsTop(obj.optBoolean("is_top", false));

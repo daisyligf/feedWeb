@@ -38,6 +38,9 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 	@RequestMapping("/checkCode")
 	public void check(@RequestParam(value = "code") String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try {
+			if(!StringUtil.isNullOrEmpty(code)) {
+				code = code.trim();
+			}
 			JSONObject json = new JSONObject();
 			UserInfo userInfo = getUserInfo(request);
 			if(userInfo == null) {

@@ -1,5 +1,6 @@
 package com.mofang.feedweb.util;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,5 +13,15 @@ public class TimeUtil {
 		return format.format(new Date(time));
 	}
 	
-	
+	public static String getFormat(Date date) {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy");
+		String year = dateFormat.format(date);
+		String thisYear = dateFormat.format(new Date());
+		
+		if (year.equals(thisYear)) {
+			return "MM-dd HH:mm";
+		} else {
+			return "yyyy-MM-dd HH:mm";
+		}
+	}
 }
