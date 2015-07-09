@@ -23,7 +23,11 @@
                     </div>
                     
                     <!-- 登陆状态 -->
-                    <a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="./img/icon/load.png"></a>
+                    <div class="no-login">
+                    	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="./img/icon/load.png"></a>
+                    	<a href="<%=UserCenter.baseUrl %>/home/account/index">登录</a> / <a href="<%=UserCenter.baseUrl %>/home/account/index">注册</a>
+                    </div>
+                    
                 </div>
             </div>
  
