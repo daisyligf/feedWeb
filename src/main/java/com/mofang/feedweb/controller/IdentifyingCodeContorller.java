@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mofang.feedweb.component.RedisComponent;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.GlobalObject;
+import com.mofang.feedweb.util.LogConsole;
 import com.mofang.feedweb.util.RedisUtil;
 import com.mofang.feedweb.util.StringUtil;
 
@@ -41,7 +42,9 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 			if(userInfo == null) {
 				json.put("code", 1);
 				json.put("message", "登录超时,请重新登录");
-				response.getWriter().print(json.toString());
+				String result = json.toString();
+				LogConsole.log(result);
+				response.getWriter().print(result);
 				return;
 			}
 			String rand = RedisUtil.get(redisComp, String.valueOf(userInfo.getUserId()));
@@ -59,7 +62,12 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 					json.put("message", "验证码错误");
 				}
 			}
-			response.getWriter().print(json.toString());
+			String result = json.toString();
+			StringBuilder sb = new StringBuilder();
+			sb.append("userId=").append(userInfo.getUserId()).append(",").append("code=").
+			append(code).append(",rand=").append(rand).append(result);
+			LogConsole.log(sb.toString());
+			response.getWriter().print(result);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at IdentifyingCodeContorller.check throw an error.", e);
 		}
