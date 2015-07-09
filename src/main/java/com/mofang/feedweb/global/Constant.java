@@ -176,7 +176,10 @@ public class Constant {
 	//用户头部即时信息
 	public static final String USER_NOTICE_URL = "/chatservice";
 	
-	
-	
 	public static final String VIPER_AWARD_URL = "/user/add";
+	
+	//获取签到状态
+	public static final String GET_SIGNINSTATE_URL = "/feed/v3/web/user/isSignIned";
+	//签到
+	public static final String ADD_SIGNIN_URL = "/feed/v3/web/user/signIn";
 }
