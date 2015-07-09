@@ -240,7 +240,7 @@
 				</c:otherwise>
 				</c:choose>
 				
-				 <li class="text">${currentPage}/${totalPages}</li>
+				 <li class="text"><input type="text" class="wap-page-text" pattern="[0-9]*" value="${currentPage}/${totalPages}"/></li>
 				
 				<!-- 下一页 按钮 -->
 				<c:choose>

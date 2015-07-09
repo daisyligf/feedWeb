@@ -95,9 +95,9 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	function postManage(){
 		//帖子管理效果
 		$(".manage").hover(function(ev){
-			$(".manage-more").stop().slideDown(200);
+			$(this).find(".manage-more").stop().slideDown(200);
 		},function(){
-			$(".manage-more").stop().slideUp(200);
+			$(this).find(".manage-more").stop().slideUp(200);
 		});
 		
 		
@@ -165,7 +165,6 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			
 			var tid = $("#getPostData").attr("data-tid");
 			var uid = $("#getPostData").attr("data-uid");
-			var coin = $(_this).find(".reward-icon").val();
 			var reason = "";
 
 			$(".pop-post-reward").pop({
@@ -195,7 +194,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 							msg:$(_this).html()+"成功",
 							autoTime:1000
 						});
-
+						$(".pop-post-reward").find(".reward-icon").val("");
 					}else{
 						$(".pop-top-fail").pop({
 							msg:$(_this).html()+'失败'
@@ -635,7 +634,12 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				content : content
 			});
 		});
-
+		//帖子管理效果
+		$(".floor-manage").hover(function(ev){
+			$(this).find(".manage-more").stop().slideDown(200);
+		},function(){
+			$(this).find(".manage-more").stop().slideUp(200);
+		});
 		//楼层删除
 		$("body").on("click",".list-del",function(){
 			var _this =this;
@@ -671,6 +675,53 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 				});
 			});
 
+		});
+		//楼层奖励
+		$("body").on("click",".floor-manage-reward",function(){
+			var _this =this;
+			
+			var uid = $(_this).parents(".con-list").attr("data-uid");
+			var reason = "";
+
+			$(".pop-post-reward").pop({
+				type : 'prompt',
+				title : $(_this).html()+'魔币及原因',
+				fnCallback : function(isTrue,msg){
+					if(isTrue){
+						reason=msg;
+						//发送数据
+						
+						rewardFnAjax();
+						
+					}
+				}
+			});
+
+			function rewardFnAjax(){
+
+				fnAjax(setAwardUrl,{
+					uid : uid,
+					coin : $(".pop-post-reward").find(".reward-icon").val(),
+					reason : reason
+				},function(res){
+					if(res && res.code==0){
+						$(".pop-post-ok").pop({
+							msg:$(_this).html()+"成功",
+							autoTime:1000
+						});
+						$(".pop-post-reward").find(".reward-icon").val("");
+					}else{
+						$(".pop-top-fail").pop({
+							msg:$(_this).html()+'失败'
+						});
+					}
+				},function(res){
+					$(".pop-top-fail").pop({
+						msg:$(_this).html()+'失败'
+					});
+				});
+			}
+			
 		});
 		//楼层点赞
 		$("body").on("click",".zan",function(){

@@ -240,11 +240,21 @@
 	color:#999999;
 }
 .page-plug .page-mobile li.text{
-	
-	text-align: center;
-	line-height: 32px;
-	width:100%;
+text-align: center;
+  line-height: 32px;
+  width: 100px;
+  margin: 0 auto;
+  float: none;
+  
 
+}
+.page-plug .page-mobile li.text input{
+	width:100%;
+	text-align:center;
+	border:0px;
+	color:#999999;
+	font-size:14px;
+	padding: 5px;
 }
 .page-plug .page-mobile li.prev{
 	position: absolute;
@@ -589,8 +599,8 @@
 	left:50%;
 	bottom:100px;
 	width:50PX;
-	height:120px;
-	background:url(../img/icon/go_top.png) no-repeat;
+	height:180px;
+	background:url(../img/icon/go_top.png) no-repeat 0px bottom;
 	background-size:100%;
 	display:none;
 }
@@ -599,6 +609,18 @@
 	height:60px;
 	width:100%;
 	text-indent:-99999px;
+}
+.go-top a.quick-reply{
+	overflow:hidden;
+	text-indent: 0px;
+	background: #fff;
+	font-size: 15px;
+	letter-spacing: 2px;
+	line-height: 17px;
+	color: #999;
+	padding: 12px 8px;
+	width: 34px;
+	height: 36px;
 }
 
 /* 编辑框 */
@@ -803,6 +825,7 @@
 	}
 	.page-plug .page-mobile {
 		display:block;
+		overflow:hidden;
 
 	}
 	.textmask{

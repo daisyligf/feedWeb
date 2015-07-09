@@ -9,10 +9,6 @@
 	max-height:336px;
 	overflow: hidden;
 }
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
- }
 .con .con-top .box{
 	min-height: 336px;
 }
@@ -61,7 +57,7 @@
 	background: #fff;
 	transition:.2s ease all;
 }
-.con .con-top .box ol li.active{
+.con .con-top .box ol li.swiper-pagination-bullet-active{
 	width:20px;
 	background: #ff9900;
 }

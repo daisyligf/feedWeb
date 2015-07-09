@@ -155,11 +155,23 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    			if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0){
 		    				$(".header .msg").find(".icon-red").show();
 		    			}
-		    			
+		    			var docTitle = '[新消息] '+document.title;
+		    			var isShow = false;
+		    			setInterval(function(){
+		    				if(!isShow){
+		    					document.title=docTitle;
+		    				}else{
+		    					document.title='.';
+		    				}
+		    				
+		    				isShow=!isShow;
+		    			},1000);
 		    		}else{
 		    			$("#userName").find(".icon-red").hide();
 		    			$(".header .zuji").find(".icon-red").hide();
 		    		}
+		    		
+		    		
 
 		    	}
 		    },

@@ -119,7 +119,35 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad'],func
 	}
 	
 	
-	//
+	//后台分页处理
+	wapBbsPage();
+	 function wapBbsPage(){
+		 $(".page-mobile").on("focus",".wap-page-text",function(){
+			 var oldV = $(this).val();
+			 $(this).val('');
+			 $(this).attr("data-value",oldV);
+			 $(this).css({
+         		"border":"1px solid #eee"
+         	});
+		 });
+		 $(".page-mobile").on("blur",".wap-page-text",function(){
+			 	$(this).css({
+			 		"border":"0px solid #eee"
+				});
+				var v = $.trim($(this).val());
+					v = parseInt(v);
+				var reg = /^\d*$/;
+				
+				if(!reg.test(v)){
+					$(this).val($(this).attr("data-value"));
+					return;
+				}
+				var url = $(".page-mobile").find('.prev a').attr("href") || $(".page-mobile").find('.next a').attr("href");
+				url = url.replace(/currentPage\=\d*/ig,'currentPage='+v);
+				window.location.href=url;  
+			
+		 });
+	 }
 	
 		
 });

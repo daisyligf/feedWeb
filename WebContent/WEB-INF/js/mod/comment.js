@@ -106,21 +106,37 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     }
     
     reply.on("click",function (){
-       if(loginStatus){
-             checkEditor();
-       } else {
-    	   $(".pop-login").pop({
-				type:"confirm",
-				msg:"请登录后继续操作",
-				fnCallback: function(isTrue,msg,obj){
-					if(isTrue){
-						window.location.href=$(obj).loginUserUrl();
+    	subForm();
+     });
+    
+    var keydownTimer=false;
+    $(document).on("keydown",function(ev){
+    	if(ev.which==13 && ev.ctrlKey){
+    		
+    		clearTimeout(keydownTimer);
+    		keydownTimer = setTimeout(function(){
+    			subForm();	
+    		},200);
+    		return false;
+    		
+    	}
+    })
+    function subForm(){
+    	if(loginStatus){
+            checkEditor();
+	      } else {
+	   	   $(".pop-login").pop({
+					type:"confirm",
+					msg:"请登录后继续操作",
+					fnCallback: function(isTrue,msg,obj){
+						if(isTrue){
+							window.location.href=$(obj).loginUserUrl();
+						}
 					}
-				}
-			});
-            return false;
-       }
-     })
+				});
+	           return false;
+	      }
+    }
     /* 
      * @param tpl 模板字符串
      * @param data 数据对象
@@ -170,7 +186,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             },
             error:function(){
             	
-                $(".pop-warn").pop({
+                $(".pop-top-fail").pop({
                     type:"confirm",
                     msg:"网络出错，请重新发送。",
                     fnCallback: function(isTrue,msg){
@@ -211,7 +227,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         
                     },500); 
                 }else{
-                    $(".pop-warn").pop({
+                    $(".pop-top-fail").pop({
                         type:"confirm",
                         msg:res.message,
                         fnCallback: function(isTrue,msg){

@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
@@ -80,28 +81,31 @@
             <div class="con-top container clearfix">
                 <div class="col-xs-9 col-md-12 col-sm-12">
                     <div class="col-xs-6 col-md-6 col-sm-12">
-                         <div class="box clearfix" id="imgBox">
-                            <!-- <div class="swipe-wrap"> -->
-                               <ul class="swipe-wrap">
-                                  <li>
+                         <div class="box img-box clearfix" id="imgBox">
+                               <ul class="swipe-wrap swiper-wrapper">
+                                  <li class="swiper-slide">
                                     <a target="_blank" href="${tickers.threadLink1}"><img src="${tickers.tickerIcon1}"alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
-                                  <li>
+                                  <li class="swiper-slide">
                                     <a target="_blank" href="${tickers.threadLink2}"><img src="${tickers.tickerIcon2}"alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
-                                  <li>
+                                  <li class="swiper-slide">
                                     <a target="_blank" href="${tickers.threadLink3}"><img src="${tickers.tickerIcon3}"alt="" /></a>
                                     <b class="swipe-wrap-info" ></b>
                                   </li>
                                </ul>
-                               <ol>
-                                   <li class="active"></li>
-                                   <li></li>
-                                   <li></li>
-                               </ol>
-                            <!--  </div> -->
+                               <!-- Add Pagination -->
+						        <ol class="swiper-pagination-index">
+	                                   <li class="active"></li>
+	                                   <li></li>
+	                                   <li></li>
+	                               </ol>
+						        <!-- Add Navigation -->
+						        <div class="swiper-button-prev"></div>
+						        <div class="swiper-button-next"></div>
+                               
                          </div>
                     </div>
                     <div class="rec col-xs-6 col-md-6 col-sm-12">

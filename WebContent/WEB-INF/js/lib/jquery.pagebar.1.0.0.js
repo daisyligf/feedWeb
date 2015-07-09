@@ -83,6 +83,7 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    
 	                    $('<li class="prev"><a>上一页</a></li>')
 	                    .bind("click", function(){
+	                    	
 	                        _this.onClickPage(_this.currentPage-1);
 	                    })
 	                    .appendTo(pagebar);
@@ -94,7 +95,8 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    
 	                    //移动端上一页
 	                    $(".page-mobile .prev").unbind("click").bind("click",function(){
-	                    	_this.onClickPage(_this.currentPage-1);
+	                    	_this.currentPage--;
+	                    	_this.onClickPage(_this.currentPage);
 	                    });
 
 	                }
@@ -134,6 +136,28 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    	})(i);
 	                        
 	                    }
+	                    ////移动端页面
+	                    $(".page-mobile .text input").unbind("focus").bind("focus",function(){
+	                    	
+	                    	$(this).attr("data-value",$(this).val());
+	                    	$(this).val("");
+	                    	$(this).css({
+	                    		"border":"1px solid #eee"
+	                    	});
+	                    });
+	                    $(".page-mobile .text input").unbind("blur").bind("blur",function(){
+	                    	$(this).css({
+	                    		"border":"0px solid #eee"
+	                    	});
+	                    	var v = $.trim($(this).val());
+	                    	var reg = /^[0-9]$/;
+	                    	if(!reg.test(v)){
+	                    		$(this).val($(this).attr("data-value"));
+	                    		return;
+	                    	}
+	                    	_this.currentPage=$(this).val();
+	                    	_this.onClickPage(_this.currentPage);
+	                    });
 	                }
 
 	                // 下一页, 尾页  处理
@@ -155,7 +179,8 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    .appendTo(pagebar);
 	                    //移动端下一页
 	                    $(".page-mobile .next").unbind("click").bind("click",function(){
-	                    	_this.onClickPage(_this.currentPage+1);
+	                    	_this.currentPage++;
+	                    	_this.onClickPage(_this.currentPage);
 	                    });
 	                    
 	                   

@@ -205,7 +205,7 @@
 
                     <ul class="page-mobile">
                         <li class="prev"><a href="javascript:;">上一页</a></li>
-                        <li class="text">5/235</li>
+                        <li class="text"><input type="text" pattern="[0-9]*" value="0/0"/></li>
                         <li class="next"><a href="javascript:;">下一页</a></li>
                     </ul>
                 </div>

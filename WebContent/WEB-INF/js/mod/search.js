@@ -152,12 +152,14 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	            currentPageNumberCssName: 'active',
 	            //点击页码action
 	            onClickPage: function(pageIndex){
-
+	            	
+	            	console.log(pageIndex);
 	           	   $.fn.setCurrentPage(this, pageIndex);
+	           	   
 	                getPostData({
 	                	p: pageIndex
 	                });
-	                $(".page-mobile .text").html(pageIndex+'/'+Math.ceil(total/pageNum));
+	                $(".page-mobile .text").find("input").val(pageIndex+'/'+Math.ceil(total/pageNum));
 	            }
 	      });
 		});//获取帖子第一页
@@ -184,7 +186,8 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		    		$(".post-num span").html(res.data.total);
 		    		$("#post").html(postTemplate(res.data));	
 		    	}
-		    	$(".page-mobile .text").html(options.p+'/'+Math.ceil(res.data.total/options.pagesize));
+		    	
+		    	$(".page-mobile .text").find("input").val(options.p+'/'+Math.ceil(res.data.total/options.pagesize));
 		    	fnCallback && fnCallback(res.data.total,options.p,options.pagesize);
 
 

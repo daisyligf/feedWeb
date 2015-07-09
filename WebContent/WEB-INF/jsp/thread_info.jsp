@@ -356,7 +356,7 @@
                     	</c:otherwise>
                     </c:choose>
                     <c:forEach var="feedPost" begin="${start }" items="${postList }">
-                    <div class="con-list" data-postid="${feedPost.post_id }" data-uid="1234" data-page='1'>
+                    <div class="con-list" data-postid="${feedPost.post_id }" data-uid="${feedPost.postUserInfo.userId}" data-page='1'>
                         <p class="con-list-left">
                             <img src="${feedPost.postUserInfo.avatar }" alt="">
                         </p>
@@ -366,7 +366,7 @@
                                 CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
                                 if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
                                 %><a href="javascript:;" class="list-del">删除</a> <%} %>
-                                
+                                 
                                 ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
                                 <dd class="info">${feedPost.htmlContent }</dd>
                                 <dd class="clearfix">
@@ -484,7 +484,7 @@
 						</c:otherwise>
 						</c:choose>
 						
-						<li class="text">${currentPage}/${totalPages}</li>
+						<li class="text"><input type="text" class="wap-page-text" pattern="[0-9]*" value="${currentPage}/${totalPages}"/></li>
 						
 						<!-- 下一页 按钮 -->
 						<c:choose>
@@ -635,6 +635,7 @@
     </div>
     <!-- 回到顶部  -->
      <div class="go-top">
+     	<a href="#conRight3" class="quick-reply">快速回复</a>
 	 	<a href="newThreadInit?fid=${feedForum.forum_id }" data-href="" class="post get-post">发帖</a>
 	 	<a href="javascript:;" class="scroll-top">顶部</a>
 	 </div>
