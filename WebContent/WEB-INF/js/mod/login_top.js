@@ -33,7 +33,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 
 	var cLoginDom={
 		showDom:".head",//显示用户名div
-		hideDom:".load",//隐藏用户名div
+		hideDom:".no-login",//隐藏用户名div
 		userInfo:"user-info"//用户信息
 	}
 
