@@ -436,7 +436,8 @@
 }
 
 font {
-    white-space: normal!important
+    white-space: normal!important;
+    font-family:'微软雅黑',YaHei,tahoma,Helvetica,"Hiragino Sans GB",Arial,"\5b8b\4f53",sans-serif!important;
 }
 /* 广告位 */
 .BD_AD_ad1{

@@ -296,7 +296,7 @@
                     <c:if test="${currentPage==1}">
                     <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></h3>
                     <div class="con-con">
-                    	${postList[0].htmlContent }
+                    	${postList[0].htmlContent } 
                     	
                     	<c:if test="${fn:length(postList[0].pic) > 0 }">
                     		<c:forEach var="pic" items="${postList[0].pic }">
@@ -358,17 +358,27 @@
                     <c:forEach var="feedPost" begin="${start }" items="${postList }">
                     <div class="con-list" data-postid="${feedPost.post_id }" data-uid="${feedPost.postUserInfo.userId}" data-page='1'>
                         <p class="con-list-left">
-                            <img src="${feedPost.postUserInfo.avatar }" alt="">
+                        	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">
+                            	<img src="${feedPost.postUserInfo.avatar }" alt="">
+                            </a>
                         </p>
                         <div class="con-list-right">
                             <dl class="list-right-dl">
                                 <dt><% 
                                 CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
                                 if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
-                                %><a href="javascript:;" class="list-del">删除</a> <%} %>
-                                 
+                                %><a href="javascript:;" class="list-del">删除</a> <%} else {%>
+                                <c:if test="${feedPost.currentUserFlg == true}">
+                                <a href="javascript:;" class="list-del">删除</a> 
+                                </c:if>
+                                <%} %>
                                 ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
-                                <dd class="info">${feedPost.htmlContent }</dd>
+                                <dd class="info">${feedPost.htmlContent }
+                                <br/>
+                                <c:forEach var="pic" items="${feedPost.pic }">
+                                	<img src="${pic }"/>
+                                </c:forEach>
+                                </dd>
                                 <dd class="clearfix">
                                     <p class="look">
                                         <c:choose>

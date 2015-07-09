@@ -221,7 +221,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 				JSONObject convertJsonObj = new JSONObject();
 				convertJsonObj.put("originalName", fileName);
 				convertJsonObj.put("name", fileName);
-				convertJsonObj.put("url", url);
+				convertJsonObj.put("url", url + "/700bbs.wp");
 				convertJsonObj.put("size", file.getBytes().length);
 				String type = fileName.substring(fileName.lastIndexOf("."));
 				convertJsonObj.put("type", type);

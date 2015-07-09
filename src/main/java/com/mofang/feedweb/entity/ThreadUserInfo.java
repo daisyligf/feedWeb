@@ -9,6 +9,7 @@ public class ThreadUserInfo {
 	private String nickname;
 	private String avatar;
 	private int coin;
+	private int level;
 	private int replies;
 	private int threads;
 	private int eliteThreads;
@@ -67,6 +68,14 @@ public class ThreadUserInfo {
 
 	public void setEliteThreads(int eliteThreads) {
 		this.eliteThreads = eliteThreads;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 }
