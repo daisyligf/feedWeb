@@ -151,9 +151,9 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    			$("#userName").find(".icon-red").show();
 		    				
 
-		    			if(res.data.reply.unread_count>0){
-		    				$(".header .zj").find(".icon-red").show();
-		    			}
+//		    			if(res.data.reply.unread_count>0){
+//		    				$(".header .zj").find(".icon-red").show();
+//		    			}
 		    			if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0){
 		    				$(".header .msg").find(".icon-red").show();
 		    			}
