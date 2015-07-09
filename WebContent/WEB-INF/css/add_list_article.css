@@ -211,7 +211,56 @@
 	background: url(../img/icon/tu.png) no-repeat;
 	background-size: 100% 100%;
 }
-
+.con-bottom .con-bot-right .sign{
+	width:100%;
+	border:1px solid #eee;
+	margin-bottom:20px;
+	height:68px;
+	background:#fff;
+}
+.con-bottom .con-bot-right .sign .sign-l,.con-bottom .con-bot-right .sign .sign-r{
+	width:50%;
+}
+.con-bottom .con-bot-right .sign .sign-l .sign-btn{
+	font-size:24px;
+	background:#1ebdff;
+	color:#fff;
+	line-height:68px;
+	width:100%;
+	display:block;
+	text-align:center;
+}
+.con-bottom .con-bot-right .sign .sign-r p{
+	margin-left:25px;
+	margin-top:13px;
+}
+.con-bottom .con-bot-right .sign .sign-r .sign-rank{
+	font-size:16px;
+}
+.con-bottom .con-bot-right .sign .sign-rank span{
+	color:#ff9900;
+}
+.con-bottom .con-bot-right .sign .sign-off{
+	font-size:20px;
+	color:#fff;
+	width:100%;
+	height:55px;
+	padding-top:13px;
+	display:block;
+	text-align:center;
+	background:#bfcad7;
+	
+}
+.con-bottom .con-bot-right .sign .sign-off span{
+	display:block;
+	font-size:14px;
+	margin-top:10px;
+}
+.con-bottom .con-bot-right .sign .sign-r .sign-off-num{
+	margin-top:10px;
+	font-size:14px;
+	color:#999999;
+}
 .con-bottom .con-bot-right .lord-team{
 	background: #fff;
 	border:1px solid #eee;

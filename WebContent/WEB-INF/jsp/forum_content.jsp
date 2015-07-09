@@ -357,6 +357,19 @@
                 </div>
              </div>
              <div class="col-xs-3 con-bot-right">
+             	<div class="sign">
+             		<div class="sign-l l">
+             			<a href="javascript:;" class="sign-btn show">签到</a>
+             			<a href="javascript:;" class="sign-off hide">已签到
+             				<span>连续0天</span>
+             			</a>
+             			
+             		</div>
+             		<div class="sign-r r">
+             			<p class="sign-rank">第<span>0</span>名</p>
+             			<p class="sign-off-num">已签0人</p>
+             		</div>
+             	</div>
                 <div class="lord-team">
                     <h2 class="lum">
                         版主团队 <c:if test="${!is_full }"><a href="apply_check?forum_id=${feedForum.forum_id}" class="apply-mod" target="_blank">申请版主</a></c:if>

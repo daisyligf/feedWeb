@@ -196,7 +196,7 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank"><img src="${threadUserInfo.avatar}" alt=""></a></dt>
+                        <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" class="user-info-icon" target="_blank"><img src="${threadUserInfo.avatar}" alt=""><span class="grade">Lv.1</span></a></dt>
                         <dd><a href='<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}' target="_blank">${threadUserInfo.nickname}</a></dd>
                         <dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>
                     </dl>
@@ -364,7 +364,9 @@
                         </p>
                         <div class="con-list-right">
                             <dl class="list-right-dl">
-                                <dt><% 
+                                <dt>
+                                	 <p class="floor-num">${feedPost.position }楼</p>
+                                <% 
                                 CurrentUser currentUser = (CurrentUser) request.getAttribute("currentUser");
                                 if (currentUser.getPrivileges().contains(SysPrivilege.DEL_FLOOR)) {
                                 %> 
@@ -383,9 +385,8 @@
 		                        </div>
                                 </c:if>
                                 <%} %>
-                                
                                
-                                ${feedPost.position }楼  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a>    发表于  <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
+                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.1</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>
                                 <c:forEach var="pic" items="${feedPost.pic }">

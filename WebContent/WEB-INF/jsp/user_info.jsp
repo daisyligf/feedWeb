@@ -14,7 +14,7 @@
                     <a href="<%=UserCenter.baseUrl %>/home/person/index" class="head" id="userName"><img src="" alt="" id="userImg" /><s class="icon-red"></s><s class="icon-red"></s></a>
                     <div class="user-info">
                         <ul class="clearfix">
-                            <li class="header-money" id="userMoney"><s class="icon-money"></s></li>
+                            <li class="header-money"><span id="userMoney"><s class="icon-money"></s></span><!-- <span id="level" class="grade">Lv.1</span> --></li>
                             <li class="zuji"><a href="<%=UserCenter.baseUrl %>/home/footprints/games" class="zj">足迹<s class="icon-red"></s></a><a href="<%=UserCenter.baseUrl %>/home/message/reply" class="msg">消息<s class="icon-red"></s></a><a href="<%=UserCenter.baseUrl %>/home/package/index" class="libao">礼包库<s class="icon-red"></s></a></li>
                             <li class="info">
                                <a href="<%=UserCenter.baseUrl %>/home/person/index">个人信息</a><a href="<%=UserCenter.baseUrl %>/home/setting/info">设置</a><a href="javascript:;" class="out" id="logout">退出</a> 
@@ -25,7 +25,7 @@
                     <!-- 登陆状态 -->
                     <div class="no-login">
                     	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="./img/icon/load.png"></a>
-                    	<a href="<%=UserCenter.baseUrl %>/home/account/index">登录</a> / <a href="<%=UserCenter.baseUrl %>/home/account/index">注册</a>
+                    	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="no-login-login">登录</a> / <a href="<%=UserCenter.baseUrl %>/home/account/index" class="no-login-reg">注册</a>
                     </div>
                     
                 </div>

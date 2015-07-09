@@ -28,6 +28,23 @@
 	margin-top:30px;
 	margin-bottom: 20px;
 }
+.con .user-info dl dt{
+	height:120px;
+}
+.con .user-info dl .user-info-icon{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 120px;
+	height: 120px;
+}
+
+.con .user-info dl .user-info-icon .grade{
+	position:absolute;
+	right:4px;
+	bottom:0px;
+	padding:5px 10px;
+}
 .con .user-info dl dt img{
 	width:120px;
 	height:120px;
@@ -231,6 +248,14 @@
 	font-size:14px;
 	padding-top:10px;
 	margin-bottom: 10px;
+	color:#999;
+}
+.con .con-right2 .list-right-dl dt .grade{
+	padding:2px 7px;
+	font-size:12px;
+	margin:0px 18px 0px 7px;
+	position: relative;
+  top: -2px;
 }
 .con .con-right2 .manage-more{
 	display:none;
@@ -272,6 +297,11 @@
 .con .con-right2 .floor-manage{
 
 	background: url(../img/icon/post_input.png) 95% center no-repeat;	
+}
+.con .con-right2 .floor-num{
+	float:right;
+	margin-left:20px;
+	color:#999;
 }
 .con .con-right2  a{
 	color: #7fafd4;

@@ -100,7 +100,7 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="#"><img src="${user.avatar }" alt=""></a></dt>
+                        <dt><a href="#" class="user-info-icon"><img src="${user.avatar }" alt="" class="user-info-icon"><span class="grade">Lv.1</span></a></dt>
                         <dd><a href='#'>${user.nickname }</a></dd>
                         <dd class="money"><s class="icon-money"></s>${user.coin }</dd>
                     </dl>

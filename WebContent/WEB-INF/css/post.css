@@ -16,6 +16,22 @@
 	margin-top:30px;
 	margin-bottom: 20px;
 }
+.con .user-info dl dt{
+	height: 120px;
+}
+.con .user-info dl .user-info-icon{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+  height: 120px;
+}
+.con .user-info dl .user-info-icon .grade {
+  position: absolute;
+  right: 4px;
+  bottom: 0px;
+  padding: 5px 10px;
+}
 .con .user-info dl dt img{
 	width:120px;
 	height:120px;

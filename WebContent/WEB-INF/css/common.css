@@ -21,7 +21,16 @@
 	background-size:100% 100%;
 	display: none;
 }
-
+/* 等级 */
+.grade{
+	background:#00c5e8;
+	color:#fff;
+	font-size:14px;
+	font-family:Arial;
+	padding:4px 5px;
+	font-weight:bold;
+	border-radius:3px;
+}
 .header{
 	height:50px;
 	background: #333333;
@@ -90,6 +99,12 @@
 	width:37px;
 	height:37px;
 	border-radius: 50%;
+	-webkit-transition:.3s ease all;
+	transition:.3s ease all;
+}
+.header .nav .nav-right .head img:hover{
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
 }
 .header .nav .nav-right .no-login a:hover{
 	color:#ff9900;
@@ -148,6 +163,13 @@
 }
 .header .nav .header-money{
 	color:#fff;
+}
+.header .nav .header-money .grade{
+	position:relative;
+	padding:2px 5px;
+	margin-left:10px;
+	font-size:12px;
+	top:-2px;
 }
 .search{
 	max-width:1228px;

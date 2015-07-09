@@ -86,6 +86,9 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 			    		$("#userName").append(res.data.nickname);
 			    		//魔币
 			    		$("#userMoney").append(res.data.coin);
+			    		//等级
+			    		res.data.level = res.data.level || 0;
+			    		$("#level").html("Lv."+res.data.level);
 		    			$("#topUserInfo").hover(function(){
 		    				$(".header .user-info").stop().slideDown(200);
 		    				
