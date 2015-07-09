@@ -120,7 +120,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     		return false;
     		
     	}
-    })
+    });
     function subForm(){
     	if(loginStatus){
             checkEditor();

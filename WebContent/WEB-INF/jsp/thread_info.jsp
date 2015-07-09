@@ -613,7 +613,7 @@
             <h2 class="clearfix">
                 <span>
                     <img src="./img/icon/pop_close.png" class="close">
-                </span>帖子管理操作
+                </span>帖子/楼层管理操作
             </h2>
             <div class="post-delete-reason">
                 <p  class="post-delete-sure pop-title">奖励原因</p>
