@@ -37,16 +37,17 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 	public void check(@RequestParam(value = "code") String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try {
 			JSONObject json = new JSONObject();
-			//String rand = (String)request.getSession().getAttribute("randCode");
 			UserInfo userInfo = getUserInfo(request);
 			if(userInfo == null) {
 				json.put("code", 1);
+				json.put("message", "登录超时,请重新登录");
 				response.getWriter().print(json.toString());
 				return;
 			}
 			String rand = RedisUtil.get(redisComp, String.valueOf(userInfo.getUserId()));
 			if(StringUtil.isNullOrEmpty(code) || StringUtil.isNullOrEmpty(rand)) {
 				json.put("code", 1);
+				json.put("message", "验证码错误");
 			}
 			if(!StringUtil.isNullOrEmpty(code) && !StringUtil.isNullOrEmpty(rand)) {
 				code = code.toLowerCase();
@@ -55,6 +56,7 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 					json.put("code", 0);
 				}else{
 					json.put("code", 1);
+					json.put("message", "验证码错误");
 				}
 			}
 			response.getWriter().print(json.toString());

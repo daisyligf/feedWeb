@@ -302,7 +302,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                             editorForm.submit();
                         }else{
                             $(".pop-top-fail").pop({
-                                msg: "验证码错误",
+                                msg: res.message,
                                 autoTime:500
                             });
 
