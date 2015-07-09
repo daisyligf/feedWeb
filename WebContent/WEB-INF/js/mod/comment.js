@@ -306,11 +306,12 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             }
             //验证码
             if(codeText.length){
+            	var codeVal = $.trim($(".code-text").val());
                 $.ajax({
                     url:getCheckCode,
                     type:"GET",
                     data:{
-                    	code: $(".code-text").val()
+                    	code: codeVal
                     },
                     dataType:'json',
                     success: function(res) {
