@@ -22,6 +22,7 @@ import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.util.LogConsole;
 import com.mofang.feedweb.util.RedisUtil;
+import com.mofang.feedweb.util.RenderUtil;
 import com.mofang.feedweb.util.StringUtil;
 
 @Controller
@@ -44,7 +45,7 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 				json.put("message", "登录超时,请重新登录");
 				String result = json.toString();
 				LogConsole.log(result);
-				response.getWriter().print(result);
+				RenderUtil.render(response, result);
 				return;
 			}
 			String rand = RedisUtil.get(redisComp, String.valueOf(userInfo.getUserId()));
@@ -67,7 +68,7 @@ public class IdentifyingCodeContorller extends FeedCommonController{
 			sb.append("userId=").append(userInfo.getUserId()).append(",").append("code=").
 			append(code).append(",rand=").append(rand).append(result);
 			LogConsole.log(sb.toString());
-			response.getWriter().print(result);
+			RenderUtil.render(response, result);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at IdentifyingCodeContorller.check throw an error.", e);
 		}
