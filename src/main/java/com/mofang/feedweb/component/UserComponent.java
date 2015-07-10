@@ -45,6 +45,11 @@ public class UserComponent {
 			String userName = data.optString("nickname", "");
 			long userId = data.optLong("uid", 0l);
 			String avatar = data.optString("avatar", "");
+			int status = data.optInt("status", 0);
+
+			if (status != 0) {
+				return null;
+			}
 
 			UserInfo newUserInfo = new UserInfo();
 			newUserInfo.setUserId(userId);
@@ -55,6 +60,8 @@ public class UserComponent {
 			userJson.put("uid", userId);
 			userJson.put("avatar", avatar);
 			userJson.put("nickname", userName);
+
+			// redis缓存
 			save(mcs, userJson.toString());
 		}
 		return userInfo;

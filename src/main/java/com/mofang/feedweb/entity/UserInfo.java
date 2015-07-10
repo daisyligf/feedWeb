@@ -61,5 +61,5 @@ public class UserInfo {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
+
 }
