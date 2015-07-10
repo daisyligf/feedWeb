@@ -301,34 +301,42 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a target="_blank"  href="forum_content?fid=${officalForum.forumId1}"><img src="${officalForum.icon1}" alt=""></a></dt>
-                       <dd><a target="_blank"  href="forum_content?fid=${officalForum.forumId1}">${officalForum.forumName1}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads1}</dd>
+                       <a target="_blank" href="forum_content?fid=${officalForum.forumId1}">
+	                       <dt><img src="${officalForum.icon1}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName1}</span></dd>
+	                       <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
+	                       <dd>帖子  ${officalForum.totalThreads1}</dd>
+                       </a>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a target="_blank"  href="forum_content?fid=${officalForum.forumId2}"><img src="${officalForum.icon2}" alt=""></a></dt>
-                       <dd><a target="_blank"  href="forum_content?fid=${officalForum.forumId2}">${officalForum.forumName2}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads2}</dd>
+                       <a target="_blank" href="forum_content?fid=${officalForum.forumId2}">
+	                       <dt><img src="${officalForum.icon2}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName2}</span></dd>
+	                       <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
+	                       <dd>帖子  ${officalForum.totalThreads2}</dd>
+                       </a>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a target="_blank"  href="forum_content?fid=${officalForum.forumId3}"><img src="${officalForum.icon3}" alt=""></a></dt>
-                       <dd><a target="_blank"  href="forum_content?fid=${officalForum.forumId3}">${officalForum.forumName3}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads3}</dd>
+                   	   <a target="_blank" href="forum_content?fid=${officalForum.forumId3}">
+	                       <dt><img src="${officalForum.icon3}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName3}</span></dd>
+	                       <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
+	                       <dd>帖子  ${officalForum.totalThreads3}</dd>
+                       </a>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a target="_blank"  href="forum_content?fid=${officalForum.forumId4}"><img src="${officalForum.icon4}" alt=""></a></dt>
-                       <dd><a target="_blank"  href="forum_content?fid=${officalForum.forumId4}">${officalForum.forumName4}</a></dd>
-                       <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
-                       <dd>帖子  ${officalForum.totalThreads4}</dd>
+                   	   <a target="_blank" href="forum_content?fid=${officalForum.forumId4}">
+	                       <dt><img src="${officalForum.icon4}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName4}</span></dd>
+	                       <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
+	                       <dd>帖子  ${officalForum.totalThreads4}</dd>
+                       </a>
                    </dl>
                </div>
                
@@ -564,7 +572,7 @@
                    </div>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
+                   <dl class="clearfixf">
                        <dt><a target="_blank"  href="forum_content?fid=${recommendForum.forumId3}"><img src="${recommendForum.icon3}" alt=""></a></dt>
                        <dd><a target="_blank"  href="forum_content?fid=${recommendForum.forumId3}">${recommendForum.forumName3}</a></dd>
                        <dd>今日  <b>${recommendForum.todayThreads3}</b></dd>
