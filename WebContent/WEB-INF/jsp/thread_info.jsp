@@ -196,7 +196,7 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" class="user-info-icon" target="_blank"><img src="${threadUserInfo.avatar}" alt=""><span class="grade">Lv.1</span></a></dt>
+                        <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" class="user-info-icon" target="_blank"><img src="${threadUserInfo.avatar}" alt=""><span class="grade">Lv.${threadUserInfo.level}</span></a></dt>
                         <dd><a href='<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}' target="_blank">${threadUserInfo.nickname}</a></dd>
                         <dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>
                     </dl>
@@ -294,7 +294,7 @@
                         
                     </h2>
                     <c:if test="${currentPage==1}">
-                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>  发表于  <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format}"/></h3>
+                    <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>    <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format}"/></h3>
                     <div class="con-con">
                     	${postList[0].htmlContent } 
                     	
@@ -385,7 +385,7 @@
 		                        </div>
                                 </c:if>
                                 <%} %>
-                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.1</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
+                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.${feedPost.postUserInfo.level}</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format}"/></dt>
 
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>

@@ -15,7 +15,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 
 	//var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
 	var getFollowUrl = c.config.userInfoUrl + "/home/area/follow"; //关注/取消关注
-	var getSignUrl = "http://192.168.105.210:8081/feedweb/index";//签到
+	var getSignUrl = "addSignIn";//签到
 	var ajaxMethod="jsonp";
 	if(USE_LOCAL_DATA){
 		getFollowUrl='/bbs_html/statics/test/follow.json';
@@ -187,17 +187,8 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    dataType:'json',
 			    data:{},
 			    success: function(res) {
-			    	res={
-			    		code:0,
-			    		message:"成功",
-			    		data:{
-			    			"is_sign_in":true,
-			    			"days":10,
-			    			"rank":100,
-			    			"totalMember":1000
-			    		}
-			    	};
-			    	if(res && !res.code){
+			    	
+			    	if(res && 0 == res.code){
 			    		$(".pop-post-ok").pop({
 			    			msg : "签到成功"
 			    		});
@@ -206,6 +197,16 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    		$(".sign-off span").html("连续"+res.data.days+"天");
 			    		$(".sign-rank span").html(res.data.rank);
 			    		$(".sign-off-num").html("已签"+res.data.totalMember+"人");
+			    	}else if(res && res.code==999){
+			    		$(".pop-login").pop({
+							type:"confirm",
+							msg:"请登录后继续操作",
+							fnCallback: function(isTrue,msg,obj){
+								if(isTrue){
+									window.location.href=$(obj).loginUserUrl();
+								}
+							}
+						});
 			    	}else{
 			    		$(".pop-top-fail").pop({
 			    			msg : res.message

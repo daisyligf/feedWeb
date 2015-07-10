@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mofang.feedweb.component.UserComponent;
+import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.service.FeedSignInService;
 
@@ -15,6 +18,8 @@ import com.mofang.feedweb.service.FeedSignInService;
 public class FeedSignInController extends FeedCommonController{
 	@Autowired
 	FeedSignInService feedSignInService;
+	@Autowired
+	private UserComponent userComp;
 	
 	@RequestMapping(value = "/getSignInState")
 	public void getSignInState(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -35,9 +40,13 @@ public class FeedSignInController extends FeedCommonController{
 	public void addSignIn(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		try {
-			
-			JSONObject json = feedSignInService.addSignIn(request);
-			
+			JSONObject json = new JSONObject();
+			UserInfo userinfo = userComp.getUserInfo(request);
+			if (null != userinfo && 0 != userinfo.getUserId()) {
+				json = feedSignInService.addSignIn(request);
+			} else {
+				json.put("code", Constant.ERR_LOGIN_CODE);
+			}
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(json.toString());
 			

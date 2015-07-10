@@ -93,10 +93,12 @@
                 {{#each list}}
                 <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <dt><a href="{{link_url}}"><img src="{{icon}}" alt=""></a></dt>
-                       <dd><a href="{{link_url}}">{{name}}</a></dd>
+					   <a href="{{link_url}}">
+                       <dt><img src="{{icon}}" alt=""></dt>
+                       <dd><span>{{name}}</span></dd>
                        <dd>今日  {{today_threads}}</dd>
                        <dd>帖子  {{threads}}</dd>
+					   </a>
                    </dl>
                    <div class="h2-con-bot">
 		{{#if prefecture_url}}

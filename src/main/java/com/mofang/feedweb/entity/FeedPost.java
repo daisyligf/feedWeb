@@ -19,7 +19,6 @@ public class FeedPost {
 	private Date create_time;
 	private String format;
 	private int status;
-	private int level;
 	private long user_id;
 	private boolean currentUserFlg = false;
 	private String user_name;
@@ -147,12 +146,6 @@ public class FeedPost {
 	}
 	public void setPic(List<String> pic) {
 		this.pic = pic;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
 	}
 	public boolean isCurrentUserFlg() {
 		return currentUserFlg;
