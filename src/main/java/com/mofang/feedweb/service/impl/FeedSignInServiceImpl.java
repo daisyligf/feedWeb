@@ -11,6 +11,7 @@ import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.service.FeedSignInService;
+import com.mofang.feedweb.util.LogConsole;
 
 @Service("feedSignInService")
 public class FeedSignInServiceImpl implements FeedSignInService{
@@ -44,6 +45,7 @@ public class FeedSignInServiceImpl implements FeedSignInService{
 		try {
 			JSONObject result = httpComp.postHttpInfo(externalUrlInfo.getFeed_info_url()
 					+ Constant.ADD_SIGNIN_URL, new JSONObject(), request);
+			
 			if (result == null) {
 				return new JSONObject();
 			}

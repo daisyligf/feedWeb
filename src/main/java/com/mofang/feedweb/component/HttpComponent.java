@@ -15,6 +15,7 @@ import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.http.HttpClientConfig;
 import com.mofang.feedweb.http.HttpClientProvider;
 import com.mofang.feedweb.http.HttpClientSender;
+import com.mofang.feedweb.util.LogConsole;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.Tools;
 
@@ -167,12 +168,14 @@ public class HttpComponent {
 			HttpServletRequest request) {
 		try {
 			UserInfo userInfo = userComp.getUserInfo(request);
+			LogConsole.log("userInfo:"+ userInfo);
 			if (userInfo == null) {
 				return null;
 			}
 			String userId = String.valueOf(userInfo.getUserId());
 			String atom = Tools.encodetoAtom(userId);
 			String result = post(postUrl + "?" + atom, postData.toString());
+			LogConsole.log("postUrl"+ postUrl + "?" + atom);
 			if (StringUtil.isNullOrEmpty(result))
 				return null;
 			return new JSONObject(result);

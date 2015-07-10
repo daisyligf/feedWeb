@@ -43,6 +43,9 @@ public class Constant {
 	public static final String SECRET = "4c49d0ba2ab71d69d31a2353347fa7ac";
 
 	public static final boolean TEST_FLG = true;
+	
+	//未登录error code
+	public static final int ERR_LOGIN_CODE = 999;
 
 	// 帖子详情页
 	// 楼层列表

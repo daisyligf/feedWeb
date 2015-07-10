@@ -9,6 +9,8 @@ public class UserInfo {
 
 	private long userId;
 	
+	private int level;
+	
 	private String nickname;
 	
 	private String avatar;
@@ -51,5 +53,13 @@ public class UserInfo {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 }
