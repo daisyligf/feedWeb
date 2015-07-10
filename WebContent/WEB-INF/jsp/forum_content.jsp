@@ -359,15 +359,21 @@
              <div class="col-xs-3 con-bot-right">
              	<div class="sign">
              		<div class="sign-l l">
-             			<a href="javascript:;" class="sign-btn show">签到</a>
-             			<a href="javascript:;" class="sign-off hide">已签到
-             				<span>连续0天</span>
+             			<c:if test="${signInfo.is_sign_in == true}">
+             				<a href="javascript:;" class="sign-btn hide">签到</a>
+             				<a href="javascript:;" class="sign-off show">已签到
+             			</c:if>
+             			<c:if test="${signInfo.is_sign_in == false}">
+             				<a href="javascript:;" class="sign-btn show">签到</a>
+             				<a href="javascript:;" class="sign-off hide">已签到
+             			</c:if>
+             				<span>连续${signInfo.days}天</span>
              			</a>
              			
              		</div>
              		<div class="sign-r r">
-             			<p class="sign-rank">第<span>0</span>名</p>
-             			<p class="sign-off-num">已签0人</p>
+             			<p class="sign-rank">第<span>${signInfo.rank}</span>名</p>
+             			<p class="sign-off-num">已签${signInfo.totalMember}人</p>
              		</div>
              	</div>
                 <div class="lord-team">
