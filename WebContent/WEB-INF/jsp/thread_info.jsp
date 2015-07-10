@@ -385,7 +385,7 @@
 		                        </div>
                                 </c:if>
                                 <%} %>
-                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.1</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="yyyy-MM-dd HH:mm"/></dt>
+                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.${feedPost.level}</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format}"/></dt>
 
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>
