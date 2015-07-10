@@ -188,7 +188,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    data:{},
 			    success: function(res) {
 			    	
-			    	if(res && !res.code){
+			    	if(null != res && res.data.is_sign_in){
 			    		$(".pop-post-ok").pop({
 			    			msg : "签到成功"
 			    		});
