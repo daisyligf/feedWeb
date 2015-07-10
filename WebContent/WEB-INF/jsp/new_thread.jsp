@@ -100,8 +100,8 @@
             <div class="col-xs-3 user-info-out">
                 <div class="user-info">
                    <dl>
-                        <dt><a href="#" class="user-info-icon"><img src="${user.avatar }" alt="" class="user-info-icon"><span class="grade">Lv.1</span></a></dt>
-                        <dd><a href='#'>${user.nickname }</a></dd>
+                        <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user.userId}" class="user-info-icon" target="_blank"><img src="${user.avatar }" alt="" class="user-info-icon"><span class="grade">Lv.${user.level}</span></a></dt>
+                        <dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${user.userId}" target="_blank">${user.nickname }</a></dd>
                         <dd class="money"><s class="icon-money"></s>${user.coin }</dd>
                     </dl>
                     <ul class="clearfix">
