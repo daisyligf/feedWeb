@@ -45,7 +45,7 @@ public class UserComponent {
 			String userName = data.optString("nickname", "");
 			long userId = data.optLong("uid", 0l);
 			String avatar = data.optString("avatar", "");
-			int status = data.optInt("status", 0);
+			int status = data.optInt("status", -1);
 
 			if (status != 0) {
 				return null;
