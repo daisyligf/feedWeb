@@ -188,7 +188,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    data:{},
 			    success: function(res) {
 			    	
-			    	if(null != res && 0 == res.code){
+			    	if(res && 0 == res.code){
 			    		$(".pop-post-ok").pop({
 			    			msg : "签到成功"
 			    		});
@@ -197,6 +197,16 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    		$(".sign-off span").html("连续"+res.data.days+"天");
 			    		$(".sign-rank span").html(res.data.rank);
 			    		$(".sign-off-num").html("已签"+res.data.totalMember+"人");
+			    	}else if(res && res.code==999){
+			    		$(".pop-login").pop({
+							type:"confirm",
+							msg:"请登录后继续操作",
+							fnCallback: function(isTrue,msg,obj){
+								if(isTrue){
+									window.location.href=$(obj).loginUserUrl();
+								}
+							}
+						});
 			    	}else{
 			    		$(".pop-top-fail").pop({
 			    			msg : res.message
