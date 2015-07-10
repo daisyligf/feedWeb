@@ -69,6 +69,7 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad'],func
 		$(".header .load").loginUserUrl();
 		$(".header .no-login-login").loginUserUrl();
 		$(".header .no-login-reg").loginUserUrl();
+		$(".header .wap-load").loginUserUrl();
 		//search 头部搜索
 		search();
 		//侧边栏回到顶部

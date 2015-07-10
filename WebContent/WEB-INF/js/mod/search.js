@@ -47,7 +47,14 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		var minutes = time.getMinutes();
 		var seconds = time.getSeconds();
 
-		var str = to2(year)+'-'+to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes)+':'+to2(seconds);
+		
+		var nowDate = new Date();
+		var nowYear = nowDate.getFullYear();
+		if(nowYear==year){
+			var str = to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes)+':'+to2(seconds);
+		}else{
+			var str = to2(year)+'-'+to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes)+':'+to2(seconds);
+		}
 		
 		return str;
 
@@ -115,7 +122,6 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		    success: function(res) {
 		    	if(res && !res.code){
 		    		var plateTemplate = Handlebars.compile($("#plateTemplate").html());
-
 		    		$(".plate-num span").html(res.data.total);
 		    		if(res.data.total<options.pagesize){
 		    				$("#plateMore").remove();

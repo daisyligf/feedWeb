@@ -65,9 +65,13 @@
                     <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
                   </p>
                 </div>
-                 <div class="wap-logo">
+                <div class="wap-logo">
                     <img src="./img/icon/bbs_icon_wap.png"alt="">
-                  </div>
+                </div>
+                <div class="nav-wap-right">
+                  <a href="<%=UserCenter.baseUrl %>/home/account/index" class="wap-load" ><img src="./img/icon/load.png"></a>
+                  <a href="<%=UserCenter.baseUrl %>/home/person/index" class="wap-head"><img src="./img/icon/load.png" /></a>
+                </div>
             </div>
         </div>
         <!-- 头部结束 -->

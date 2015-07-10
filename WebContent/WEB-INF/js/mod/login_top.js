@@ -94,7 +94,12 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    				
 		    			}, function() {
 		    				$(".header .user-info").stop().slideUp(200);
-		    			});		
+		    			});	
+		    			
+		    			//wap头像
+		    			$(".nav-wap .wap-head img").attr("src",res.data.avatar);
+		    			$(".nav-wap .wap-head").show();
+		    			$(".nav-wap .wap-load").hide();
 			    	}
 			    },
 			    error: function() {

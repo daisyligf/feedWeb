@@ -56,11 +56,11 @@
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
                   <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
-                  <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
+                  <%-- <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
                     <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
-                  </p>
+                  </p> --%>
                 </div>
                   <div class="wap-nav-text">
                   	搜索

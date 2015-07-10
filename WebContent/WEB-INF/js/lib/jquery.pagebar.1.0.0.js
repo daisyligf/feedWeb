@@ -150,7 +150,9 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                    		"border":"0px solid #eee"
 	                    	});
 	                    	var v = $.trim($(this).val());
-	                    	var reg = /^[0-9]$/;
+	                    		v = parseInt(v);
+	                    	var reg = /^[0-9]*$/;
+	                    	
 	                    	if(!reg.test(v)){
 	                    		$(this).val($(this).attr("data-value"));
 	                    		return;

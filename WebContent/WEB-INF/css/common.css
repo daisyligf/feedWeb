@@ -46,7 +46,14 @@
 	margin:0 auto;
 	display: none;
 }
-
+.header .nav-wap .wap-head{
+	display:none;
+}
+.header .nav-wap .wap-head img{
+	width:30px;
+	height:30px;
+	margin-top:-5px;
+}
 /**/
 .header .nav .nav-left{
 	float:left;
@@ -630,7 +637,7 @@ text-align: center;
 	left:50%;
 	bottom:100px;
 	width:50PX;
-	height:180px;
+	height:193px;
 	background:url(../img/icon/go_top.png) no-repeat 0px bottom;
 	background-size:100%;
 	display:none;
@@ -639,21 +646,26 @@ text-align: center;
 	display:block;
 	height:60px;
 	width:100%;
+	border:1px solid #e9e9e9;
 	text-indent:-99999px;
+	box-sizing:border-box;
 }
-.go-top a.quick-reply{
-	overflow:hidden;
-	text-indent: 0px;
-	background: #fff;
-	font-size: 15px;
-	letter-spacing: 2px;
-	line-height: 17px;
-	color: #999;
-	padding: 12px 8px;
-	width: 34px;
-	height: 36px;
+.go-top a.quick-reply:hover{
+	background:url(../img/icon/go_top_hover.png) no-repeat;
+	background-position:0px 0px;
+	border:1px solid #ff9900;
 }
-
+.go-top a.get-post{
+	margin-bottom:13px;	
+}
+.go-top a.get-post:hover{
+	background:url(../img/icon/go_top_hover.png) no-repeat;
+	background-position:0px -60px;
+	border:1px solid #ff9900;
+}
+.go-top a.scroll-top{
+	
+}
 /* 编辑框 */
 .editer{
 }
