@@ -210,7 +210,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 						feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));
 						feedPost.setRecommends(postObj.optInt("recommends", 0));
 						feedPost.setPosition(postObj.optInt("position", 0));
-						feedPost.setLevel(postObj.optInt("level", 0));
+						
 						
 						Date createTime = new Date(postObj.optLong("create_time", 0));
 						feedPost.setCreate_time(createTime);
@@ -238,6 +238,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 							postUserInfo.setUserId(postUserJson.optLong("user_id", 0));
 							postUserInfo.setNickname(postUserJson.optString("nickname", ""));
 							postUserInfo.setAvatar(postUserJson.optString("avatar", ""));
+							postUserInfo.setLevel(postUserJson.optInt("level", 0));
 						}
 						if (0 != currentUser.getCurrentUserId() && 
 								postUserInfo.getUserId() == currentUser.getCurrentUserId()) {
