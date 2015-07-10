@@ -76,6 +76,19 @@
 	margin-top:8px;
 	margin-bottom: 12px;
 }
+.con .h2-con dl dd span{
+	display: block;
+	overflow:hidden;
+	text-overflow: ellipsis;
+  	white-space: nowrap;
+	font-size:16px;
+	margin-top:8px;
+	margin-bottom: 12px;
+	color:#333;
+}
+.con .h2-con dl dd span:hover{
+	color:#ff9900;
+}
 .con .h2-con .h2-con-bot{
 	height:40px;
 	line-height:40px;
@@ -174,7 +187,7 @@
 		height:45px;
 		border-radius: 10px;
 	}
-	.con .h2-con dl dd a{
+	.con .h2-con dl dd span{
 		margin-top:4px;
 		margin-bottom: 5px;
 		font-size:14px;
