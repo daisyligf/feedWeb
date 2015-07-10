@@ -304,7 +304,12 @@
                        <a target="_blank" href="forum_content?fid=${officalForum.forumId1}">
 	                       <dt><img src="${officalForum.icon1}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName1}</span></dd>
-	                       <dd>今日  <b>${officalForum.todayThreads1}</b></dd>
+	                       <c:if test="${officalForum.todayThreads1 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads1}</b></dd>
+	                       </c:if>
+	                       <c:if test="${officalForum.todayThreads1 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads1}</b></dd>
+	                       </c:if>
 	                       <dd>帖子  ${officalForum.totalThreads1}</dd>
                        </a>
                    </dl>
@@ -314,7 +319,12 @@
                        <a target="_blank" href="forum_content?fid=${officalForum.forumId2}">
 	                       <dt><img src="${officalForum.icon2}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName2}</span></dd>
-	                       <dd>今日  <b>${officalForum.todayThreads2}</b></dd>
+	                       <c:if test="${officalForum.todayThreads2 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads2}</b></dd>
+	                       </c:if>
+	                       <c:if test="${officalForum.todayThreads2 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads2}</b></dd>
+	                       </c:if>
 	                       <dd>帖子  ${officalForum.totalThreads2}</dd>
                        </a>
                    </dl>
@@ -324,7 +334,12 @@
                    	   <a target="_blank" href="forum_content?fid=${officalForum.forumId3}">
 	                       <dt><img src="${officalForum.icon3}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName3}</span></dd>
-	                       <dd>今日  <b>${officalForum.todayThreads3}</b></dd>
+	                       <c:if test="${officalForum.todayThreads3 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads3}</b></dd>
+	                       </c:if>
+	                       <c:if test="${officalForum.todayThreads3 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads3}</b></dd>
+	                       </c:if>
 	                       <dd>帖子  ${officalForum.totalThreads3}</dd>
                        </a>
                    </dl>
@@ -334,7 +349,12 @@
                    	   <a target="_blank" href="forum_content?fid=${officalForum.forumId4}">
 	                       <dt><img src="${officalForum.icon4}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName4}</span></dd>
-	                       <dd>今日  <b>${officalForum.todayThreads4}</b></dd>
+	                       <c:if test="${officalForum.todayThreads4 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads4}</b></dd>
+	                       </c:if>
+	                        <c:if test="${officalForum.todayThreads4 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads4}</b></dd>
+	                       </c:if>
 	                       <dd>帖子  ${officalForum.totalThreads4}</dd>
                        </a>
                    </dl>
