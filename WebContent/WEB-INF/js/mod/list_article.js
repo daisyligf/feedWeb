@@ -187,16 +187,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 			    dataType:'json',
 			    data:{},
 			    success: function(res) {
-			    	res={
-			    		code:0,
-			    		message:"成功",
-			    		data:{
-			    			"is_sign_in":true,
-			    			"days":10,
-			    			"rank":100,
-			    			"totalMember":1000
-			    		}
-			    	};
+			    	
 			    	if(res && !res.code){
 			    		$(".pop-post-ok").pop({
 			    			msg : "签到成功"
