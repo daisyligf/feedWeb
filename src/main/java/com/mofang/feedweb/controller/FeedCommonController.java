@@ -308,12 +308,13 @@ public class FeedCommonController {
 	protected String replaceEmoji(String content) {
 		// 替换app表情
 		Map<String, String> emojiMapApp = EmojiUtil.getEmojiMapApp();
+		
 		for (String key : emojiMapApp.keySet()) {
 			String value = emojiMapApp.get(key);
 			content = content.replace("\\\\" + key, "<img src=" + value
 					+ " alt=" + value + " class='emoji'>");
 		}
-
+		
 		return content;
 	}
 
