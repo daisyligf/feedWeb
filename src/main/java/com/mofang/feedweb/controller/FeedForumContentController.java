@@ -74,6 +74,9 @@ public class FeedForumContentController extends FeedCommonController {
 			// 获取版块信息
 			FeedForum feedForum = getFeedForumInfo(request, fid);
 			
+			if (feedForum.getCode() == Constant.FORUM_NOT_EXISTS) {
+				return new ModelAndView("redirect:error");
+			}
 			// 获取该版块的吧主列表
 			List<RoleInfo> roleList= getFeedForumRoleInfoList(request, fid, model);
 			feedForum.setRoleList(roleList);

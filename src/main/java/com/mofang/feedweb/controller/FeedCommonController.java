@@ -262,47 +262,55 @@ public class FeedCommonController {
 		JSONObject json = getHttpInfo(getForumInfoGetUrl(), param, request);
 
 		FeedForum feedForum = new FeedForum();
-		if (json != null && json.optInt("code", -1) == 0) {
-			JSONObject forum = json.optJSONObject("data");
-
-			feedForum.setForum_id(forum.optLong("fid", 0));
-			feedForum.setForum_name(forum.optString("name", ""));
-			feedForum.setName_spell(forum.optString("name_spell", ""));
-			feedForum.setIcon(forum.optString("icon", ""));
-			feedForum.setType(forum.optInt("type", -1));
-			feedForum.setGameId(forum.optInt("game_id", 0));
-			feedForum.setTotal_threads(forum.optInt("threads", 0));
-			feedForum
-					.setYesterday_threads(forum.optInt("yesterday_threads", 0));
-			feedForum.setTotal_follows(forum.optInt("follows", 0));
-			feedForum.setYestoday_follows(forum.optInt("yesterday_follows", 0));
-			feedForum.setCreate_time(new Date(forum.optLong("create_time", 0)));
-
-			JSONArray tags = forum.optJSONArray("tags");
-			List<FeedTag> tagList = new ArrayList<FeedTag>();
-			if (tags != null && tags.length() > 0) {
-				FeedTag feedTag = null;
-
-				for (int i = 0; i < tags.length(); i++) {
-
-					JSONObject tagJson = tags.getJSONObject(i);
-					feedTag = new FeedTag(tagJson.optInt("tag_id", 0),
-							tagJson.optString("tag_name", ""));
-					tagList.add(feedTag);
-				}
+		if (json != null ) {
+			
+			feedForum.setCode(json.optInt("code", -1));
+			if (json.optInt("code", -1) == 601) {
+				return feedForum;
 			}
-			feedForum.setTags(tagList);
+			
+			if (json.optInt("code", -1) == 0) {
+				JSONObject forum = json.optJSONObject("data");
+				
+				feedForum.setForum_id(forum.optLong("fid", 0));
+				feedForum.setForum_name(forum.optString("name", ""));
+				feedForum.setName_spell(forum.optString("name_spell", ""));
+				feedForum.setIcon(forum.optString("icon", ""));
+				feedForum.setType(forum.optInt("type", -1));
+				feedForum.setGameId(forum.optInt("game_id", 0));
+				feedForum.setTotal_threads(forum.optInt("threads", 0));
+				feedForum
+						.setYesterday_threads(forum.optInt("yesterday_threads", 0));
+				feedForum.setTotal_follows(forum.optInt("follows", 0));
+				feedForum.setYestoday_follows(forum.optInt("yesterday_follows", 0));
+				feedForum.setCreate_time(new Date(forum.optLong("create_time", 0)));
+	
+				JSONArray tags = forum.optJSONArray("tags");
+				List<FeedTag> tagList = new ArrayList<FeedTag>();
+				if (tags != null && tags.length() > 0) {
+					FeedTag feedTag = null;
+	
+					for (int i = 0; i < tags.length(); i++) {
+	
+						JSONObject tagJson = tags.getJSONObject(i);
+						feedTag = new FeedTag(tagJson.optInt("tag_id", 0),
+								tagJson.optString("tag_name", ""));
+						tagList.add(feedTag);
+					}
+				}
+				feedForum.setTags(tagList);
+			}
 		}
 
 		return feedForum;
 	}
 
 	protected String replaceEmoji(String content) {
-		Map<String, String> emojiMap = getEmojiMap();
-
-		for (String key : emojiMap.keySet()) {
-			String value = emojiMap.get(key);
-			content = content.replace("[" + key + "]", "<img src=" + value
+		// 替换app表情
+		Map<String, String> emojiMapApp = EmojiUtil.getEmojiMapApp();
+		for (String key : emojiMapApp.keySet()) {
+			String value = emojiMapApp.get(key);
+			content = content.replace("\\\\" + key, "<img src=" + value
 					+ " alt=" + value + " class='emoji'>");
 		}
 
@@ -310,7 +318,7 @@ public class FeedCommonController {
 	}
 
 	private Map<String, String> getEmojiMap() {
-		return EmojiUtil.getEmojiMap();
+		return EmojiUtil.getEmojiMapWeb();
 	}
 
 	protected String getSearchKey(HttpServletRequest request)
