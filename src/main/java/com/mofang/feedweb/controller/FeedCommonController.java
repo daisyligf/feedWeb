@@ -298,6 +298,7 @@ public class FeedCommonController {
 	}
 
 	protected String replaceEmoji(String content) {
+		// 替换web表情
 		Map<String, String> emojiMap = getEmojiMap();
 
 		for (String key : emojiMap.keySet()) {
@@ -305,12 +306,21 @@ public class FeedCommonController {
 			content = content.replace("[" + key + "]", "<img src=" + value
 					+ " alt=" + value + " class='emoji'>");
 		}
-
+		
+		// 替换app表情
+		Map<String, String> emojiMapApp = EmojiUtil.getEmojiMapApp();
+		
+		for (String key : emojiMapApp.keySet()) {
+			String value = emojiMapApp.get(key);
+			content = content.replace("\\" + key, "<img src=" + value
+					+ " alt=" + value + " class='emoji'>");
+		}
+		
 		return content;
 	}
 
 	private Map<String, String> getEmojiMap() {
-		return EmojiUtil.getEmojiMap();
+		return EmojiUtil.getEmojiMapWeb();
 	}
 
 	protected String getSearchKey(HttpServletRequest request)
