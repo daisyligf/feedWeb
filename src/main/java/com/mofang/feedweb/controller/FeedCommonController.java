@@ -312,7 +312,7 @@ public class FeedCommonController {
 		
 		for (String key : emojiMapApp.keySet()) {
 			String value = emojiMapApp.get(key);
-			content = content.replace("\\" + key, "<img src=" + value
+			content = content.replace("\\\\" + key, "<img src=" + value
 					+ " alt=" + value + " class='emoji'>");
 		}
 		
