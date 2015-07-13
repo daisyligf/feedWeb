@@ -23,6 +23,8 @@ public class FeedErrorController extends FeedCommonController{
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		try {
+			//搜索关键词
+			model.put("keyword", getSearchKey(request));
 			//官方版块
 			model.put("officalForum", getHomeOfficalForum(request));
 			return new ModelAndView("error", model);

@@ -8,7 +8,8 @@ import java.util.List;
  *
  */
 public class FeedForum {
-
+	
+	private int code;
 	private long forum_id;
 	private String forum_name;
 	private String name_spell;
@@ -149,6 +150,12 @@ public class FeedForum {
 	}
 	public void setRoleList(List<RoleInfo> roleList) {
 		this.roleList = roleList;
+	}
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
 	}
 }
 

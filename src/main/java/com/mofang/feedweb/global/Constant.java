@@ -45,7 +45,11 @@ public class Constant {
 	public static final boolean TEST_FLG = true;
 	
 	//未登录error code
-	public static final int ERR_LOGIN_CODE = 999;
+	public static final int USER_NOT_LOGIN = 999;
+	public static final int ERROR = -1;
+	public static final int SUCCESS = 601;
+	public static final int FORUM_NOT_EXISTS = 601;
+	public static final int THREAD_NOT_EXISTS = 602;
 
 	// 帖子详情页
 	// 楼层列表
