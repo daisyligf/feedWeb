@@ -650,7 +650,7 @@ text-align: center;
 	text-indent:-99999px;
 	box-sizing:border-box;
 }
-.go-top a.quick-reply:hover{
+.go-top a.quick-reply{
 	background:url(../img/icon/go_top_hover.png) no-repeat;
 	background-position:0px 0px;
 	border:1px solid #ff9900;
@@ -658,11 +658,11 @@ text-align: center;
 .go-top a.get-post{
 	margin-bottom:13px;	
 }
-.go-top a.get-post:hover{
+/* .go-top a.get-post:hover{
 	background:url(../img/icon/go_top_hover.png) no-repeat;
 	background-position:0px -60px;
 	border:1px solid #ff9900;
-}
+} */
 .go-top a.scroll-top{
 	
 }

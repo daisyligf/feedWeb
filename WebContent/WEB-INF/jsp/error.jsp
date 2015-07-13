@@ -26,16 +26,11 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <c:if test="${forumType=='1'}">
-    <title>热门游戏-魔方论坛</title>
-    </c:if>
-    <c:if test="${forumType=='2'}">
     <title>新游推荐-魔方论坛</title>
-    </c:if>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/channel.css">
+    <link rel="stylesheet" href="./css/error.css">
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
@@ -77,8 +72,59 @@
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
-        	
-           
+        	<div class="err-msg clearfix">
+        		<dl>
+        			<dt><img src="./img/icon/err_warn.png"/></dt>
+        			<dd class="title">页面已经被删除</dd>
+        			<dd>对不起，您访问的页面已经被删除，<span id="countDown">5</span>秒后将自动跳转到 <a href="/">论坛首页</a></dd>
+        		</dl>
+        	</div>
+           	<!--  热门游戏社区开始 -->
+           <div class="h2">热门游戏社区</div>
+           <div class="h2-con clearfix container">
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <a target="_blank" href="forum_content?fid=10">
+	                       <dt><img src="http://pic1.mofang.com/304/993/c672375d0069c0b46ae80a343de4f6a17c985dee.png" alt=""></dt>
+	                       <dd><span>社区活动</span></dd>
+	                       		<dd>今日  <b class="update">722</b></dd>
+	                       <dd>帖子  270</dd>
+                       </a>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                       <a target="_blank" href="forum_content?fid=11">
+	                       <dt><img src="http://pic0.mofang.com/214/289/d105a231148375e0e99e209be5655816108fc400.png" alt=""></dt>
+	                       <dd><span>魔方推游</span></dd>
+	                       		<dd>今日  <b class="update">37</b></dd>
+	                       <dd>帖子  10492</dd>
+                       </a>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                   	   <a target="_blank" href="forum_content?fid=12">
+	                       <dt><img src="http://pic2.mofang.com/340/444/989655c70d58047d1c77543cabc15e5311a03110.png" alt=""></dt>
+	                       <dd><span>灌水闲聊</span></dd>
+	                       		<dd>今日  <b class="update">35</b></dd>
+	                       <dd>帖子  3303</dd>
+                       </a>
+                   </dl>
+               </div>
+               <div class="col-xs-3 col-md-4  col-sm-6">
+                   <dl class="clearfix">
+                   	   <a target="_blank" href="forum_content?fid=13">
+	                       <dt><img src="http://pic1.mofang.com/275/938/e80462efabaa7f8dc85760c304ee77b2d5f71ff5.png" alt=""></dt>
+	                       <dd><span>问题反馈</span></dd>
+	                       		<dd>今日  <b>0</b></dd>
+	                       <dd>帖子  67</dd>
+                       </a>
+                   </dl>
+               </div>
+               
+           </div>
+           <!-- 热门游戏社区结束 -->
         </div>
         <!-- 内容结束 -->
         <!-- 底部开始 -->
@@ -87,6 +133,26 @@
 		<!-- footer结束 -->
         <!-- 底部结束 -->
     </div>
+    <script>
+    	(function(){
+    		window.onload=function(){
+        		var oCountDown = document.getElementById("countDown");
+        		var n=5;
+        		var timer=null;
+        		
+        		timer=setInterval(function(){
+        			
+        			oCountDown.innerHTML=n;
+        			n--;
+        			if(n<0){
+        				clearInterval(timer);	
+        				window.location.href="/";
+        			}
+        		},1000);
+        	};
+    	})();
+    	
+    </script>
 </body>
 
 </html>
