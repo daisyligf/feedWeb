@@ -33,7 +33,7 @@ define('index',['jquery','swipe','swiper'],function(require, exports, module) {
 		// var aSlide = document.get
 		//这个插件用的是原生的对象
 		var ImgTabs = new Swiper(oBox,{
-			autoplay:4000,
+			autoplay:40000,
 			speed:200,
 			pagination: '.swiper-pagination-index',
 	        paginationClickable: true,
