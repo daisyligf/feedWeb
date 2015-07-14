@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 public class ExternalUrlInfo {
 	@Value("#{configProperties['feed_info_url']}")
 	private String feed_info_url;
+	@Value("#{configProperties['task_info_url']}")
+	private String task_info_url;
 	@Value("#{configProperties['image_info_url']}")
 	private String image_info_url;
 	@Value("#{configProperties['user_info_url']}")
@@ -94,6 +96,14 @@ public class ExternalUrlInfo {
 
 	public void setUser_notice_url(String user_notice_url) {
 		this.user_notice_url = user_notice_url;
+	}
+
+	public String getTask_info_url() {
+		return task_info_url;
+	}
+
+	public void setTask_info_url(String task_info_url) {
+		this.task_info_url = task_info_url;
 	}
 
 }
