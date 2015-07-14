@@ -268,9 +268,9 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         autoTime:500,
                         fnCallback: function(isTrue,msg){
                         	isLock=true;
-                        	
+                        	//console.log($(".eidter").attr("data-maxurl"));
                         	if($(".editer").length != 0){
-                        		window.location.href=$(".eidter").attr("data-maxurl");
+                        		window.location.href=$(".editer").attr("data-maxurl");
                         	}else{
                         		window.location.reload();
                         	}
@@ -278,7 +278,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     });
                     setTimeout(function(){
                     	if($(".editer").length != 0){
-                    		window.location.href=$(".eidter").attr("data-maxurl");
+                    		window.location.href=$(".editer").attr("data-maxurl");
                     	}else{
                     		window.location.reload();
                     	}
