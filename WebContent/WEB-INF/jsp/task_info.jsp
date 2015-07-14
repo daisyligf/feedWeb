@@ -93,10 +93,14 @@
 			                  <td>完成进度</td>
 			                </tr>
 			                <tr>
-			                  <td class="grey">上传发帖</td>
+			                  <td class="grey">注册送大礼</td>
+			                  <td class="orange">+20</td>
+			                  <td class="grey">已完成</td>
+			                </tr>
+			                <tr>
+			                  <td class="grey">上传头像</td>
 			                  <td class="orange">+2</td>
 			                  <td class="grey">已完成</td>
-			                  
 			                </tr>
 			                 <tr>
 			                  <td class="grey">首次发帖</td>
@@ -104,7 +108,7 @@
 			                  <td class="orange">未完成</td>
 			                </tr>
 			                 <tr>
-			                  <td class="grey">首次回应</td>
+			                  <td class="grey">首次回帖</td>
 			                  <td class="orange">+1</td>
 			                  <td class="orange">未完成</td>
 			                </tr>
@@ -113,11 +117,7 @@
 			                  <td class="orange">+1</td>
 			                  <td class="orange">未完成</td>
 			                </tr>
-			                 <tr>
-			                  <td class="grey">首次关注</td>
-			                  <td class="orange">+2</td>
-			                  <td class="orange">未完成</td>
-			                </tr>
+			              
 			              </tbody>
 		            </table>
 		           <p><!-- 注：连续签到，每日累计增加获赠1魔币，最多10魔币封顶； 出现断签，每日累计获赠魔币数失效，重新累计。 --></p>
