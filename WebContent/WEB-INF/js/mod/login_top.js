@@ -210,7 +210,6 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 					},1000);
 				}
 			}else{
-				
 					clearInterval(newsTimer);
 					document.title=curTitle;
 				
