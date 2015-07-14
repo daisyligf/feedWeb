@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ page import="com.mofang.feedweb.global.CommonUrl"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -26,13 +27,11 @@
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/swiper.min.css">
     <link rel="stylesheet" href="./css/task_level.css">
     <script src="./js/sea.js"></script>
     <script src="./js/sea-config.js"></script>
     <script src="./js/bbs-config.js"></script>
     <script src="js/mod/common.js"></script>
-    
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -78,312 +77,79 @@
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
-        	<div class="con-nav"><a href="#" class="active">经验等级</a><a href="#">魔币</a></div>
+        	<div class="con-nav"><a href="level_info">经验等级</a><a href="task_info" class="active">魔币</a></div>
             <div class="con-bottom">
-            	<h2>等级</h2>
-            	<div class="level-pic clearfix">
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.1</dt>
-            				<dd>1经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.2</dt>
-            				<dd>10经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.3</dt>
-            				<dd>30经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.4</dt>
-            				<dd>50经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.5</dt>
-            				<dd>100经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line level-line-right">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.10</dt>
-            				<dd>4000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.9</dt>
-            				<dd>2000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.8</dt>
-            				<dd>1000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.7</dt>
-            				<dd>5000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.6</dt>
-            				<dd>200经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line level-line-left">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.11</dt>
-            				<dd>8000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.12</dt>
-            				<dd>14000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.13</dt>
-            				<dd>26000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.14</dt>
-            				<dd>50000经验</dd>
-            			</dl>
-            		</div>
-            		<div class="level-line">
-            			<div class="level-line-con"></div>
-            		</div>
-            		<div class="level-list">
-            			<dl>
-            				<dt class="circle">LV.15</dt>
-            				<dd>100000经验</dd>
-            			</dl>
-            		</div>
-            		
+            	<h2 class="get-mobi">什么是魔币</h2>
+            	<div class="h2-con get-mobi">
+            		魔币是由魔方社区发放一种虚拟货币，可在游戏社区中获得并使用，可通过游戏宝和礼包发号中心兑换相应的实物奖品。
             	</div>
-            	<div class="level-pic level-wap swiper-container clearfix">
-            		<div class="swiper-wrapper">
-           				<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.1</dt>
-	            				<dd>1经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.2</dt>
-	            				<dd>10经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.3</dt>
-	            				<dd>30经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.4</dt>
-	            				<dd>50经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.5</dt>
-	            				<dd>100经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.6</dt>
-	            				<dd>200经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.7</dt>
-	            				<dd>5000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.8</dt>
-	            				<dd>1000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.9</dt>
-	            				<dd>2000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.10</dt>
-	            				<dd>4000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.11</dt>
-	            				<dd>8000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.12</dt>
-	            				<dd>14000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.13</dt>
-	            				<dd>26000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.14</dt>
-	            				<dd>50000经验</dd>
-	            			</dl>
-	            		</div>
-	            		<div class="level-line swiper-slide">
-	            			<div class="level-line-con"></div>
-	            		</div>
-	            		<div class="level-list swiper-slide">
-	            			<dl>
-	            				<dt class="circle">LV.15</dt>
-	            				<dd>100000经验</dd>
-	            			</dl>
-	            		</div>
-            		</div>
-            		 <!-- Add Scroll Bar -->
-		        	<div class="swiper-scrollbar"></div>
-		            		
-            	</div>
-            	<h2>获取经验</h2>
+            	<h2 class="">怎样获取魔币</h2>
             	<div class="h2-con">
-            		<h3>1.签到任务</h3>
-	            		<table class="table  table-bordered table-condensed">
+            		<h3>1.首次任务</h3>
+	            		<table class="table table-bordered">
 			              <tbody>
 			                <tr>
-			                  <td>连续签到</td>
-			                  <td class="grey">1天</td>
-			                  <td class="grey">2天</td>
-			                  <td class="grey">...</td>
-			                  <td class="grey">10天</td>
-			                  <td class="grey">11天</td>
-			                  <td class="grey">...</td>
+			                  <td>任务</td>
+			                  <td>奖励魔币</td>
+			                  <td>完成进度</td>
 			                </tr>
 			                <tr>
-			                  <td>奖励魔币</td>
-			                  <td class="orange">+1</td>
-			                  <td class="orange">+2</td>
-			                  <td class="orange">...</td>
-			                  <td class="orange">+10</td>
-			                  <td class="orange">+10</td>
-			                  <td class="orange">+10</td>
+			                  <td class="grey">注册送大礼</td>
+			                  <td class="orange">+20</td>
+			                  <c:if test="${taskInfo.registFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                   <c:if test="${taskInfo.registFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
 			                </tr>
+			                <tr>
+			                  <td class="grey">上传头像</td>
+			                  <td class="orange">+2</td>
+			                  <c:if test="${taskInfo.avatarUploadFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                   <c:if test="${taskInfo.avatarUploadFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
+			                </tr>
+			                 <tr>
+			                  <td class="grey">首次发帖</td>
+			                  <td class="orange">+3</td>
+			                  <c:if test="${taskInfo.firstNewThreadFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                   <c:if test="${taskInfo.firstNewThreadFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
+			                </tr>
+			                 <tr>
+			                  <td class="grey">首次回帖</td>
+			                  <td class="orange">+1</td>
+			                  <c:if test="${taskInfo.firstReplyFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                  <c:if test="${taskInfo.firstReplyFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
+			                </tr>
+			                 <tr>
+			                  <td class="grey">首次点赞</td>
+			                  <td class="orange">+1</td>
+			                  <c:if test="${taskInfo.firstRecommendFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                  <c:if test="${taskInfo.firstRecommendFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
+			                </tr>
+			              
 			              </tbody>
 		            </table>
-		           <p><span>注：</span>连续签到，每日累计增加获赠1魔币，最多10魔币封顶； 出现断签，每日累计获赠魔币数失效，重新累计。</p>
+		           <p><!-- 注：连续签到，每日累计增加获赠1魔币，最多10魔币封顶； 出现断签，每日累计获赠魔币数失效，重新累计。 --></p>
 		           <h3>2.日常任务</h3>
-	            		<table class="table  table-bordered table-condensed">
-			              <tbody>
+	            		<table class="table table-bordered">
+			               <tbody>
 			                <tr>
 			                  <td></td>
 			                  <td>方法</td>
@@ -423,36 +189,8 @@
 			              </tbody>
 		            </table>
 		           <p><span>注：</span>日常任务每日可完成一次，多次完成不会累加奖励。</p>
-		           <h3>3.优质帖子</h3>
-	            		<table class="table  table-bordered table-condensed">
-			              <tbody>
-			                <tr>
-			                  <td>回帖量</td>
-			                  <td>奖励经验</td>
-			                </tr>
-			                <tr>
-			                  <td class="grey">1-10</td>
-			                  <td class="orange">+2</td>
-			                </tr>
-			                 <tr>
-			                  <td class="grey">10-30</td>
-			                  <td class="orange">+4</td>
-			                </tr>
-			                 <tr>
-			                  <td class="grey">30-50</td>
-			                  <td class="orange">+6</td>
-			                </tr>
-			                 <tr>
-			                  <td class="grey">50-100</td>
-			                  <td class="orange">+10</td>
-			                </tr>
-			                 <tr>
-			                  <td class="grey">100以上</td>
-			                  <td class="orange">经验暴击</td>
-			                </tr>
-			              </tbody>
-		            </table>
-		           <p><span>注：</span>发布优质的帖子，获取额外经验加成，回复越多，奖励越多。</p>
+		           <h3>3.精华奖励</h3>
+		           <p>如果你发的帖子被版主或管理员设置为精华，将获得20甚至更多的魔币奖励。</p>
             	</div>
             </div>
      
@@ -463,7 +201,7 @@
 		<!-- footer结束 -->
     </div>	
     
-  <script src="./js/mod/task_level.js"></script>
+   <!-- <script src="./js/mod/task_level.js"></script> -->
    
    
 </body>

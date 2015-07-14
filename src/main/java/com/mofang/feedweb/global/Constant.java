@@ -189,4 +189,7 @@ public class Constant {
 	public static final String GET_SIGNINSTATE_URL = "/feed/v3/web/user/isSignIned";
 	//签到
 	public static final String ADD_SIGNIN_URL = "/feed/v3/web/user/signIn";
+	
+	//任务列表
+	public static final String TASK_LIST_URL = "/task/list";
 }
