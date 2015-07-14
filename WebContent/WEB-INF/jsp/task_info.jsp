@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ page import="com.mofang.feedweb.global.UserCenter"%>
 <%@ page import="com.mofang.feedweb.global.CommonUrl"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -95,27 +96,52 @@
 			                <tr>
 			                  <td class="grey">注册送大礼</td>
 			                  <td class="orange">+20</td>
+			                  <c:if test="${taskInfo.registFlg == true}">
 			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                   <c:if test="${taskInfo.registFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
 			                </tr>
 			                <tr>
 			                  <td class="grey">上传头像</td>
 			                  <td class="orange">+2</td>
+			                  <c:if test="${taskInfo.avatarUploadFlg == true}">
 			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                   <c:if test="${taskInfo.avatarUploadFlg == false}">
+			                  <td class="orange">未完成</td>
+			                  </c:if>
 			                </tr>
 			                 <tr>
 			                  <td class="grey">首次发帖</td>
 			                  <td class="orange">+3</td>
+			                  <c:if test="${taskInfo.firstNewThreadFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                   <c:if test="${taskInfo.firstNewThreadFlg == false}">
 			                  <td class="orange">未完成</td>
+			                  </c:if>
 			                </tr>
 			                 <tr>
 			                  <td class="grey">首次回帖</td>
 			                  <td class="orange">+1</td>
+			                  <c:if test="${taskInfo.firstReplyFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                  <c:if test="${taskInfo.firstReplyFlg == false}">
 			                  <td class="orange">未完成</td>
+			                  </c:if>
 			                </tr>
 			                 <tr>
 			                  <td class="grey">首次点赞</td>
 			                  <td class="orange">+1</td>
+			                  <c:if test="${taskInfo.firstRecommendFlg == true}">
+			                  <td class="grey">已完成</td>
+			                  </c:if>
+			                  <c:if test="${taskInfo.firstRecommendFlg == false}">
 			                  <td class="orange">未完成</td>
+			                  </c:if>
 			                </tr>
 			              
 			              </tbody>
