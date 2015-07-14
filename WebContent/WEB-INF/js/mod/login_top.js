@@ -143,7 +143,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 
 	//消息通知
 	function getNotice(){
-		var timer=null;
+		var newsTimer=null;
 		var curTitle = document.title;
 		$.ajax({
 		    url:getUserNotice,
@@ -167,7 +167,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    			}
 		    			var docTitle = '[新消息] '+document.title;
 		    			var isShow = false;
-		    			timer = setInterval(function(){
+		    			newsTimer = setInterval(function(){
 		    				if(!isShow){
 		    					document.title=docTitle;
 		    				}else{
@@ -177,7 +177,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    				isShow=!isShow;
 		    			},1000);
 		    		}else{
-		    			clearInterval(timer);
+		    			clearInterval(newsTimer);
 		    			document.title=curTitle;
 		    			$("#userName").find(".icon-red").hide();
 		    			$(".header .zuji").find(".icon-red").hide();

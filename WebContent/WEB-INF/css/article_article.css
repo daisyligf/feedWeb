@@ -517,6 +517,13 @@ font {
 		color: #7fafd4;
 		font-size: 18px;
 	}
+	.con .con-right1 .con-author .author-name .grade {
+	  padding: 2px 7px;
+	  font-size: 12px;
+	  margin: 0px 18px 0px 7px;
+	  position: relative;
+	  top: -2px;
+	}
 	.con .con-right1 .con-author .author-detail b{
 		font-size: 15px;
 		font-weight: normal;

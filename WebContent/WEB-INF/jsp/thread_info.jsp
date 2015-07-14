@@ -229,9 +229,9 @@
                     <dl class="con-author clearfix">
                         <dt class="author-img">
                         <!--<dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>-->   
-                         <img src="${threadUserInfo.avatar}" alt="">
+                         <a href="#"><img src="${threadUserInfo.avatar}" alt=""></a>
                         </dt>
-                        <dd class="author-name">${threadUserInfo.nickname}</dd>
+                        <dd class="author-name"><a href="#">${threadUserInfo.nickname}</a><a href="#"><span class="grade">Lv.0</span></a></dd>
                         <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format }"/></span></dd>
                     </dl>
                     <h2> ${feedThread.subject } 
@@ -385,7 +385,7 @@
 		                        </div>
                                 </c:if>
                                 <%} %>
-                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><span class="grade">Lv.${feedPost.postUserInfo.level}</span>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format}"/></dt>
+                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><a href="#"><span class="grade">Lv.${feedPost.postUserInfo.level}</span></a>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format}"/></dt>
 
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>

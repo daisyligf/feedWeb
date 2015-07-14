@@ -180,14 +180,12 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 	fnSign();
 	function fnSign(){
 		$(".sign-btn").click(function(){
-			
 			$.ajax({
 			    url:getSignUrl,
 			    type:"GET",
 			    dataType:'json',
 			    data:{},
 			    success: function(res) {
-			    	
 			    	if(res && 0 == res.code){
 			    		$(".pop-post-ok").pop({
 			    			msg : "签到成功"
