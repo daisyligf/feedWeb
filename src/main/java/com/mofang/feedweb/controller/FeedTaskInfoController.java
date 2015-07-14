@@ -12,13 +12,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mofang.feedweb.global.GlobalObject;
 
 @Controller
-public class FeedTaskInfoController {
+public class FeedTaskInfoController extends FeedCommonController{
 
 	@RequestMapping(value = "/task_info")
 	public ModelAndView  taskInfo(HttpServletRequest request) throws Exception {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		try {
+			//搜索关键词
+			model.put("keyword", getSearchKey(request));
 			return new ModelAndView("task_info", model);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("FeedLevelInfoController.error throw an error.", e);
