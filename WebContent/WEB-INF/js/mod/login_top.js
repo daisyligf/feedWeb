@@ -3,11 +3,11 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('login_top',['jquery','config'],function(require, exports, module) {
+define('login_top',['jquery','pagevisibility','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	var c = require("config");//配置文件
-
+	var pagevisibility = require("pagevisibility");//检测当前屏幕是否显示
 	window.loginStatus=false;//检查登录状态
 	var USE_LOCAL_DATA = 0;//本地数据
 	var USE_TEST_DATA = 0;//测试数据
@@ -87,13 +87,23 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 			    		//魔币
 			    		$("#userMoney").append(res.data.coin);
 			    		//等级
-			    		res.data.level = res.data.level || 0;
 			    		$("#level").html("Lv."+res.data.level);
+			    		//经验值
+			    		$(".header-task .task-text").html("经验值 "+res.data.gained_exp+"/"+res.data.upgrade_exp);
+			    		
+			    		var taskW = $(".header-task").width();
+			    		var scale = res.data.gained_exp/res.data.upgrade_exp;
+			    		taskW = Math.ceil(taskW*scale);
+			    		$(".header-task .task-info").width(taskW+'px');
 		    			$("#topUserInfo").hover(function(){
+		    				$(".level-img").addClass("level-img-move");
+		    				$(".level-text").addClass("level-text-move");
 		    				$(".header .user-info").stop().slideDown(200);
 		    				
 		    			}, function() {
 		    				$(".header .user-info").stop().slideUp(200);
+		    				$(".level-img").removeClass("level-img-move");
+		    				$(".level-text").removeClass("level-text-move");
 		    			});	
 		    			
 		    			//wap头像
@@ -145,6 +155,7 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 	function getNotice(){
 		var newsTimer=null;
 		var curTitle = document.title;
+		var isNews = false;
 		$.ajax({
 		    url:getUserNotice,
 		    type:"GET",
@@ -157,35 +168,21 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 		    		if(res.data.sys_message.unread_count>0 || res.data.reply.unread_count>0 || res.data.recommend.unread_count>0){
 		    			
 		    			$("#userName").find(".icon-red").show();
-		    				
-
 //		    			if(res.data.reply.unread_count>0){
 //		    				$(".header .zj").find(".icon-red").show();
 //		    			}
 		    			if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0){
 		    				$(".header .msg").find(".icon-red").show();
 		    			}
-		    			var docTitle = '[新消息] '+document.title;
-		    			var isShow = false;
-		    			newsTimer = setInterval(function(){
-		    				if(!isShow){
-		    					document.title=docTitle;
-		    				}else{
-		    					document.title='.';
-		    				}
-		    				
-		    				isShow=!isShow;
-		    			},1000);
+		    			isNews=true;
 		    		}else{
-		    			clearInterval(newsTimer);
-		    			document.title=curTitle;
+		    			isNews=false;
 		    			$("#userName").find(".icon-red").hide();
 		    			$(".header .zuji").find(".icon-red").hide();
 		    		}
-		    		
-		    		
-
+		    		news();
 		    	}
+		    	
 		    },
 		    error: function() {
 		    	
@@ -194,6 +191,35 @@ define('login_top',['jquery','config'],function(require, exports, module) {
 
 		    }
 		});
+		
+		//新消息提醒
+		
+		function news(){
+			var docTitle = '[新消息] '+document.title;
+			if(!pagevisibility.hidden){
+				if(isNews){
+					var isShow = false;
+					newsTimer = setInterval(function(){
+						if(!isShow){
+							document.title=docTitle;
+						}else{
+							document.title='.';
+						}
+						
+						isShow=!isShow;
+					},1000);
+				}
+			}else{
+				if(!isNews){
+					clearInterval(newsTimer);
+					document.title=curTitle;
+				}
+				
+			}
+		}
+		
+		
+		
 	}
 	//启动函数
 	function init(){

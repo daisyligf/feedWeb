@@ -268,11 +268,20 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         autoTime:500,
                         fnCallback: function(isTrue,msg){
                         	isLock=true;
-                        	window.location.reload();
+                        	
+                        	if($(".editer") && $(".eidter").attr("data-maxurl")){
+                        		window.location.href=$(".eidter").attr("data-maxurl");
+                        	}else{
+                        		window.location.reload();
+                        	}
             			}
                     });
                     setTimeout(function(){
-                        window.location.reload();
+                    	if($(".editer") && $(".eidter").attr("data-maxurl")){
+                    		window.location.href=$(".eidter").attr("data-maxurl");
+                    	}else{
+                    		window.location.reload();
+                    	}
                     },500);
                 }else{
                     $(".pop-top-fail").pop({

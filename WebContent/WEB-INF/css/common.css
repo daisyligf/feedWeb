@@ -53,6 +53,7 @@
 	width:30px;
 	height:30px;
 	margin-top:-5px;
+	border-radius:50%;
 }
 /**/
 .header .nav .nav-left{
@@ -74,6 +75,7 @@
 }
 .header .nav .nav-right a{
 	color:#fff;
+	
 }
 .header .nav .nav-right .head{
 	
@@ -81,6 +83,9 @@
 	line-height: 50px;
 	padding-right:20px;
 	display: none;
+}
+.header .nav .nav-right .head a{
+	float:left;
 }
 .header .nav .nav-right .no-login{
 	color:#fff;
@@ -99,19 +104,91 @@
 	width:20px;
 	height:21px;
 }
+.header .nav .nav-right .head .level-img{
+	position:relative;
+	z-index:20;
+	display:block;
+	width:37px;
+	height:37px;
+    margin-top: 6px;
+    margin-right: 10px;
+    -webkit-transition:0.5s ease all;
+	transition:0.5s ease all; 
+}
+.header .nav .nav-right .head .level-text{
+	position:relative;
+	width:100px;
+	text-align:center;
+	display:block;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	z-index:21;
+	 -webkit-transition:0.5s ease all;
+	transition:0.5s ease all;
+}
+.header .nav .nav-right .head .level-text .icon-red{
+	right:6px;
+	top:15px;
+}
+.header .nav .nav-right .head .level-img-move{
+	transform:translate(7px,46px);
+	-webkit-transform:-webkit-translate(7px,46px);
+}
+.header .nav .nav-right .head .level-img-move img{
+	transform:scale(1.9);
+	-webkit-transform:scale(1.9);
+}
+.header .nav .nav-right .head .level-text-move{
+	transform:translate(-72px,94px);
+	-webkit-transform:-webkit-translate(-72px,94px);
+}
+.header .nav .nav-right .head .level-img .grade{
+	display:none;
+	position:absolute;
+	z-index:2;
+	right:-24px;
+	bottom:-17px;
+	line-height:12px;
+	font-size:12px;
+}
+.header .nav .nav-right .head .level-img-move .grade{
+	display:block;
+}
+.header .nav .nav-right .header-task{
+	margin-top:10px;
+	width:235px;
+	height:18px;
+	line-height:18px;
+	background:#828282;
+	border-radius:9px;
+	position:relative;
+	color:#fff;
+	text-align:center;
+}
+.header .nav .nav-right .header-task .task-info{
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:100%;
+	border-radius:9px;
+	background:#ff9900;
+} 
+.header .nav .nav-right .header-task .task-text{
+	position:absolute;
+	left:0px;
+	font-size:12px;
+	width:100%;
+	z-index:10;
+	text-align:center;
+}
 .header .nav .nav-right .head img{
-	float:left;
-	margin-top:6px;
-	margin-right:10px;
+	
 	width:37px;
 	height:37px;
 	border-radius: 50%;
-	-webkit-transition:.3s ease all;
-	transition:.3s ease all;
-}
-.header .nav .nav-right .head img:hover{
-	-webkit-transform:scale(1.2);
-	transform:scale(1.2);
+	 -webkit-transition:0.5s ease all;
+	transition:0.5s ease all;
 }
 .header .nav .nav-right .no-login a:hover{
 	color:#ff9900;
@@ -169,7 +246,9 @@
 	border:0px;
 }
 .header .nav .header-money{
+	margin-top:65px;
 	color:#fff;
+	text-align:center;
 }
 .header .nav .header-money .grade{
 	position:relative;

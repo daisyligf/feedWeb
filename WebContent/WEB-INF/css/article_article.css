@@ -560,6 +560,9 @@ font {
 	.con .con-right2 .con-list-reply dd{
 		margin-left: 0px;
 	}
+	.con .con-right2 div.floor-manage{
+		display:none;
+	}
 	.user-info-out{
 		display: none;
 	}
