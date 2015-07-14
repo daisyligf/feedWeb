@@ -269,7 +269,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         fnCallback: function(isTrue,msg){
                         	isLock=true;
                         	
-                        	if($(".editer") && $(".eidter").attr("data-maxurl")){
+                        	if($(".editer").length != 0){
                         		window.location.href=$(".eidter").attr("data-maxurl");
                         	}else{
                         		window.location.reload();
@@ -277,7 +277,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             			}
                     });
                     setTimeout(function(){
-                    	if($(".editer") && $(".eidter").attr("data-maxurl")){
+                    	if($(".editer").length != 0){
                     		window.location.href=$(".eidter").attr("data-maxurl");
                     	}else{
                     		window.location.reload();
