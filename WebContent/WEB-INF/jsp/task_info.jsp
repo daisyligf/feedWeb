@@ -76,7 +76,7 @@
         <!-- 搜索结束 -->
         <!-- 内容开始 -->
         <div class="con clearfix">
-        	<div class="con-nav"><a href="task_info">经验等级</a><a href="level_info" class="active">魔币</a></div>
+        	<div class="con-nav"><a href="level_info">经验等级</a><a href="task_info" class="active">魔币</a></div>
             <div class="con-bottom">
             	<h2 class="get-mobi">什么是魔币</h2>
             	<div class="h2-con get-mobi">
