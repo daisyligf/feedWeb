@@ -210,10 +210,9 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 					},1000);
 				}
 			}else{
-				if(!isNews){
+				
 					clearInterval(newsTimer);
 					document.title=curTitle;
-				}
 				
 			}
 		}
