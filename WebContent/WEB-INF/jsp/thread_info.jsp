@@ -331,8 +331,8 @@
                     <script id="floorCommentTemplate" type="text/x-handlebars-template">
                         {{#each this}}
                         <dl class="clearfix">
-                            <dt><a href="{{url}}"><img src="{{avatar}}" alt=""></a></dt>
-                            <dd><a href="{{url}}">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.useId}}"><img src="{{avatar}}" alt=""></a></dt>
+                            <dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.useId}}">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
                             <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
                         </dl>
                         {{/each}} 
@@ -341,8 +341,8 @@
                     <script id="floorCommentTemplate2" type="text/x-handlebars-template">
                         
                         <dl class="clearfix">
-                            <dt><a href="{{url}}"><img src="{{user.avatar}}" alt=""></a></dt>
-                            <dd><a href="{{url}}">{{user.nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
+                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.useId}}"><img src="{{user.avatar}}" alt=""></a></dt>
+                            <dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.useId}}">{{user.nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
                             <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{user.nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
                         </dl>
                     </script>
@@ -545,7 +545,7 @@
                            <dt></dt>
                            <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
                            <dd>
-                               <div class="editer">
+                               <div class="editer" data-maxurl="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}">
                                    <div class="editor-textarea">
                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
                                    </div>
