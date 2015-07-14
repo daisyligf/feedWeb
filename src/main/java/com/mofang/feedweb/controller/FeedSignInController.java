@@ -45,7 +45,7 @@ public class FeedSignInController extends FeedCommonController{
 			if (null != userinfo && 0 != userinfo.getUserId()) {
 				json = feedSignInService.addSignIn(request);
 			} else {
-				json.put("code", Constant.ERR_LOGIN_CODE);
+				json.put("code", Constant.USER_NOT_LOGIN);
 			}
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(json.toString());

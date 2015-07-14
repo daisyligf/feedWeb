@@ -55,8 +55,10 @@ public class FeedThreadInfoController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
-			getThreadInfo(request, threadId, model);
-			
+			int code = getThreadInfo(request, threadId, model);
+			if (code == Constant.THREAD_NOT_EXISTS) {
+				return new ModelAndView("redirect:error");
+			}
 			UserInfo loginUser = getUserInfo(request);
 			model.put("loginUser", loginUser);
 			model.put("keyword", getSearchKey(request));
@@ -67,7 +69,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 		}
 	}
 	
-	private void getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
+	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
 		
 		try {
 			StringBuilder param = new StringBuilder();
@@ -106,182 +108,188 @@ public class FeedThreadInfoController extends FeedCommonController {
 			CurrentUser currentUser = new CurrentUser();
 			List<FeedPost> postList = new ArrayList<FeedPost>();
 			
-			if (json != null && json.optInt("code", -1) == 0) {
-				JSONObject data = json.optJSONObject("data");
-				total = data.optInt("total", 0);
-				JSONObject threadObj = data.optJSONObject("thread");
-				if (threadObj != null) {
-					feedThread.setThread_id(threadObj.optLong("tid", 0));
-					feedThread.setSubject(threadObj.optString("subject", ""));
+			if (json != null ) {
+				
+				if (json.optInt("code", -1) == 602) {
+					return Constant.THREAD_NOT_EXISTS;
+				}
+				
+				if (json.optInt("code", -1) == 0) {
+					JSONObject data = json.optJSONObject("data");
+					total = data.optInt("total", 0);
+					JSONObject threadObj = data.optJSONObject("thread");
+					if (threadObj != null) {
+						feedThread.setThread_id(threadObj.optLong("tid", 0));
+						feedThread.setSubject(threadObj.optString("subject", ""));
+						
+						String content = threadObj.optString("content", "");
+						feedThread.setContent(replaceEmoji(content));
+						feedThread.setPage_view(threadObj.optInt("pageview", 0));
+						feedThread.setReplies(threadObj.optInt("replies", 0));
+						
+						Date createTime = new Date(threadObj.optLong("create_time", 0));
+						feedThread.setCreate_time(createTime);
+						
+						feedThread.setFormat(TimeUtil.getFormat(createTime));
+						
+						feedThread.setIsClosed(threadObj.optBoolean("is_closed", false));
+						feedThread.setIsElite(threadObj.optBoolean("is_elite", false));
+						feedThread.setIsTop(threadObj.optBoolean("is_top", false));
+						feedThread.setRecommends(threadObj.optInt("recommends", 0));
+						feedThread.setIsModerator(threadObj.optBoolean("is_moderator", false));
+						feedThread.setIsRecommend(threadObj.optBoolean("is_recommend", false));
+						
+						JSONObject forumObj = threadObj.optJSONObject("forum");
+						if (forumObj != null) {
+							forumId = forumObj.optLong("fid", 0);
+							feedForum.setForum_id(forumId);
+							String forumName = forumObj.optString("name", "");
+							if (forumName.length() > 30) {
+								feedForum.setForum_name(forumName.substring(0, 30));
+							} else {
+								feedForum.setForum_name(forumName);
+							}
+							
+						}
+						
+						JSONObject userObj = threadObj.optJSONObject("user");
+						if (userObj != null) {
+							threadUserInfo.setUserId(userObj.optLong("user_id", 0));
+							threadUserInfo.setNickname(userObj.optString("nickname", ""));
+							threadUserInfo.setAvatar(userObj.optString("avatar", ""));
+							threadUserInfo.setCoin(userObj.optInt("coin", 0));
+							threadUserInfo.setLevel(userObj.optInt("level", 0));
+							threadUserInfo.setThreads(userObj.optInt("threads", 0));
+							threadUserInfo.setReplies(userObj.optInt("replies", 0));
+							threadUserInfo.setEliteThreads(userObj.optInt("eliteThreads", 0));
+						}
+					}
 					
-					String content = threadObj.optString("content", "");
-					feedThread.setContent(replaceEmoji(content));
-					feedThread.setPage_view(threadObj.optInt("pageview", 0));
-					feedThread.setReplies(threadObj.optInt("replies", 0));
+					JSONObject currentUserObj = data.optJSONObject("current_user");
+		//			System.out.println("currentUserObj:" + currentUserObj);
 					
-					Date createTime = new Date(threadObj.optLong("create_time", 0));
-					feedThread.setCreate_time(createTime);
-					
-					feedThread.setFormat(TimeUtil.getFormat(createTime));
-					
-					feedThread.setIsClosed(threadObj.optBoolean("is_closed", false));
-					feedThread.setIsElite(threadObj.optBoolean("is_elite", false));
-					feedThread.setIsTop(threadObj.optBoolean("is_top", false));
-					feedThread.setRecommends(threadObj.optInt("recommends", 0));
-					feedThread.setIsModerator(threadObj.optBoolean("is_moderator", false));
-					feedThread.setIsRecommend(threadObj.optBoolean("is_recommend", false));
-					
-					JSONObject forumObj = threadObj.optJSONObject("forum");
-					if (forumObj != null) {
-						forumId = forumObj.optLong("fid", 0);
-						feedForum.setForum_id(forumId);
-						String forumName = forumObj.optString("name", "");
-						if (forumName.length() > 30) {
-							feedForum.setForum_name(forumName.substring(0, 30));
+					if (currentUserObj != null) {
+						currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
+						boolean isAdmin = currentUserObj.optBoolean("is_admin", false);
+						currentUser.setIsAdmin(isAdmin);
+						
+						Set<Integer> privileges = new HashSet<Integer>();
+						
+						if (isAdmin) {
+							privileges = getAllPrivileges();
 						} else {
-							feedForum.setForum_name(forumName);
-						}
-						
-					}
-					
-					JSONObject userObj = threadObj.optJSONObject("user");
-					if (userObj != null) {
-						threadUserInfo.setUserId(userObj.optLong("user_id", 0));
-						threadUserInfo.setNickname(userObj.optString("nickname", ""));
-						threadUserInfo.setAvatar(userObj.optString("avatar", ""));
-						threadUserInfo.setCoin(userObj.optInt("coin", 0));
-						threadUserInfo.setLevel(userObj.optInt("level", 0));
-						threadUserInfo.setThreads(userObj.optInt("threads", 0));
-						threadUserInfo.setReplies(userObj.optInt("replies", 0));
-						threadUserInfo.setEliteThreads(userObj.optInt("eliteThreads", 0));
-					}
-				}
-				
-				JSONObject currentUserObj = data.optJSONObject("current_user");
-	//			System.out.println("currentUserObj:" + currentUserObj);
-				
-				if (currentUserObj != null) {
-					currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
-					boolean isAdmin = currentUserObj.optBoolean("is_admin", false);
-					currentUser.setIsAdmin(isAdmin);
-					
-					Set<Integer> privileges = new HashSet<Integer>();
-					
-					if (isAdmin) {
-						privileges = getAllPrivileges();
-					} else {
-						JSONArray privilegesArray = currentUserObj.optJSONArray("privileges");
-						if (privilegesArray != null && privilegesArray.length() > 0) {
-							for (int i = 0; i < privilegesArray.length(); i++) {
-								
-								int privilege = privilegesArray.optInt(i, 0);
-								if (privilege > 0) {
-									privileges.add(privilege);
+							JSONArray privilegesArray = currentUserObj.optJSONArray("privileges");
+							if (privilegesArray != null && privilegesArray.length() > 0) {
+								for (int i = 0; i < privilegesArray.length(); i++) {
 									
+									int privilege = privilegesArray.optInt(i, 0);
+									if (privilege > 0) {
+										privileges.add(privilege);
+										
+									}
 								}
 							}
 						}
+						
+						//楼主本人可以编辑，删除自己的帖子，并且可以删除自己回复的楼层。
+						UserInfo userinfo = userComp.getUserInfo(request);
+						if (null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == threadUserInfo.getUserId()) {
+							privileges.add(SysPrivilege.EDIT_THREAD);
+							privileges.add(SysPrivilege.DEL_THREAD);
+							//privileges.add(SysPrivilege.DEL_FLOOR);
+						}
+						
+						//用户可以删除自己回复的楼层
+						if (null != userinfo) {
+							currentUser.setCurrentUserId(userinfo.getUserId());
+						}
+						currentUser.setPrivileges(privileges);
 					}
 					
-					//楼主本人可以编辑，删除自己的帖子，并且可以删除自己回复的楼层。
-					UserInfo userinfo = userComp.getUserInfo(request);
-					if (null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == threadUserInfo.getUserId()) {
-						privileges.add(SysPrivilege.EDIT_THREAD);
-						privileges.add(SysPrivilege.DEL_THREAD);
-						//privileges.add(SysPrivilege.DEL_FLOOR);
-					}
-					
-					//用户可以删除自己回复的楼层
-					if (null != userinfo) {
-						currentUser.setCurrentUserId(userinfo.getUserId());
-					}
-					currentUser.setPrivileges(privileges);
-				}
-				
-				JSONArray posts = data.optJSONArray("posts");
-				if (posts != null && posts.length() > 0) {
-					for (int i = 0; i < posts.length(); i++) {
-						JSONObject postObj = posts.getJSONObject(i);
-						if (postObj == null)
-							continue;
-						FeedPost feedPost = new FeedPost();
-						feedPost.setPost_id(postObj.optLong("pid", 0));
-						feedPost.setContent(replaceEmoji(postObj.optString("content", "")));
-						feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));
-						feedPost.setRecommends(postObj.optInt("recommends", 0));
-						feedPost.setPosition(postObj.optInt("position", 0));
-						
-						
-						Date createTime = new Date(postObj.optLong("create_time", 0));
-						feedPost.setCreate_time(createTime);
-						
-						feedPost.setFormat(TimeUtil.getFormat(createTime));
-						
-						feedPost.setComments(postObj.optInt("comments", 0)); 
-						feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));
-						
-						List<String> pic = new ArrayList<String>();
-						JSONArray picArray = postObj.optJSONArray("pic");
-						if (picArray != null && picArray.length() > 0) {
-							for (int j = 0; j < picArray.length(); j++) {
-								String picString = picArray.getString(j);
-								if (!StringUtil.isNullOrEmpty(picString)) {
-									pic.add(picString);
+					JSONArray posts = data.optJSONArray("posts");
+					if (posts != null && posts.length() > 0) {
+						for (int i = 0; i < posts.length(); i++) {
+							JSONObject postObj = posts.getJSONObject(i);
+							if (postObj == null)
+								continue;
+							FeedPost feedPost = new FeedPost();
+							feedPost.setPost_id(postObj.optLong("pid", 0));
+							feedPost.setContent(replaceEmoji(postObj.optString("content", "")));
+							feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));
+							feedPost.setRecommends(postObj.optInt("recommends", 0));
+							feedPost.setPosition(postObj.optInt("position", 0));
+							
+							
+							Date createTime = new Date(postObj.optLong("create_time", 0));
+							feedPost.setCreate_time(createTime);
+							
+							feedPost.setFormat(TimeUtil.getFormat(createTime));
+							
+							feedPost.setComments(postObj.optInt("comments", 0)); 
+							feedPost.setIsRecommend(postObj.optBoolean("is_recommend", false));
+							
+							List<String> pic = new ArrayList<String>();
+							JSONArray picArray = postObj.optJSONArray("pic");
+							if (picArray != null && picArray.length() > 0) {
+								for (int j = 0; j < picArray.length(); j++) {
+									String picString = picArray.getString(j);
+									if (!StringUtil.isNullOrEmpty(picString)) {
+										pic.add(picString);
+									}
 								}
 							}
-						}
-						feedPost.setPic(pic);
-						
-						JSONObject postUserJson = postObj.optJSONObject("user");
-						UserInfo postUserInfo = new UserInfo();
-						if (postUserJson != null && postUserJson.length() > 0) {
-							postUserInfo.setUserId(postUserJson.optLong("user_id", 0));
-							postUserInfo.setNickname(postUserJson.optString("nickname", ""));
-							postUserInfo.setAvatar(postUserJson.optString("avatar", ""));
-							postUserInfo.setLevel(postUserJson.optInt("level", 0));
-						}
-						if (0 != currentUser.getCurrentUserId() && 
-								postUserInfo.getUserId() == currentUser.getCurrentUserId()) {
-							feedPost.setCurrentUserFlg(true);
-						}
-						feedPost.setPostUserInfo(postUserInfo);
-						
-						List<FeedComment> commentList = new ArrayList<FeedComment>();
-						
-						JSONArray comments = postObj.optJSONArray("comments");
-						if (comments != null && comments.length() > 0) {
-							for (int j = 0; j < comments.length(); j++) {
-								FeedComment comment = new FeedComment();
-								
-								JSONObject commentObj = comments.getJSONObject(j);
-								comment.setComment_id(commentObj.optLong("cid", 0));
-								comment.setContent(commentObj.optString("content", ""));
-								comment.setCreate_time(new Date(commentObj.optLong("create_time", 0)));
-								
-								JSONObject commentUserObj = commentObj.optJSONObject("user");
-								long commentUserId = 0;
-								String commentNickname = "";
-								String commentAvatar = "";
-								if (commentUserObj != null) {
+							feedPost.setPic(pic);
+							
+							JSONObject postUserJson = postObj.optJSONObject("user");
+							UserInfo postUserInfo = new UserInfo();
+							if (postUserJson != null && postUserJson.length() > 0) {
+								postUserInfo.setUserId(postUserJson.optLong("user_id", 0));
+								postUserInfo.setNickname(postUserJson.optString("nickname", ""));
+								postUserInfo.setAvatar(postUserJson.optString("avatar", ""));
+								postUserInfo.setLevel(postUserJson.optInt("level", 0));
+							}
+							if (0 != currentUser.getCurrentUserId() && 
+									postUserInfo.getUserId() == currentUser.getCurrentUserId()) {
+								feedPost.setCurrentUserFlg(true);
+							}
+							feedPost.setPostUserInfo(postUserInfo);
+							
+							List<FeedComment> commentList = new ArrayList<FeedComment>();
+							
+							JSONArray comments = postObj.optJSONArray("comments");
+							if (comments != null && comments.length() > 0) {
+								for (int j = 0; j < comments.length(); j++) {
+									FeedComment comment = new FeedComment();
 									
-									commentUserId = commentUserObj.optLong("user_id", 0);
-									commentNickname = commentUserObj.optString("nickname", "");
-									commentAvatar = commentUserObj.optString("avatar", "");
+									JSONObject commentObj = comments.getJSONObject(j);
+									comment.setComment_id(commentObj.optLong("cid", 0));
+									comment.setContent(commentObj.optString("content", ""));
+									comment.setCreate_time(new Date(commentObj.optLong("create_time", 0)));
+									
+									JSONObject commentUserObj = commentObj.optJSONObject("user");
+									long commentUserId = 0;
+									String commentNickname = "";
+									String commentAvatar = "";
+									if (commentUserObj != null) {
+										
+										commentUserId = commentUserObj.optLong("user_id", 0);
+										commentNickname = commentUserObj.optString("nickname", "");
+										commentAvatar = commentUserObj.optString("avatar", "");
+									}
+									
+									UserInfo userInfo = new UserInfo(commentUserId, commentNickname, commentAvatar);
+									
+									comment.setUserInfo(userInfo);
+									commentList.add(comment);
 								}
-								
-								UserInfo userInfo = new UserInfo(commentUserId, commentNickname, commentAvatar);
-								
-								comment.setUserInfo(userInfo);
-								commentList.add(comment);
 							}
+							
+							
+							feedPost.setCommentList(commentList);
+							postList.add(feedPost);
 						}
-						
-						
-						feedPost.setCommentList(commentList);
-						postList.add(feedPost);
 					}
 				}
-				
 			}
 			
 			List<FeedThread> highestList = replyHighest(request, forumId);
@@ -298,8 +306,10 @@ public class FeedThreadInfoController extends FeedCommonController {
 			model.put("currentPage", page);
 			model.put("totalPages", Tools.editTotalPageNumber(total));
 			model.put("pagelist", Tools.editPageNumber(total, page,Constant.PAGE_SIZE, 2));
+			return Constant.SUCCESS;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.(void)getThreadInfo throw an error.", e);
+			return Constant.ERROR;
 		}
 		
 	}

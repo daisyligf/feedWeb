@@ -76,7 +76,7 @@
         		<dl>
         			<dt><img src="./img/icon/err_warn.png"/></dt>
         			<dd class="title">页面已经被删除</dd>
-        			<dd>对不起，您访问的页面已经被删除，<span id="countDown">5</span>秒后将自动跳转到 <a href="/">论坛首页</a></dd>
+        			<dd>对不起，您访问的页面已经被删除，<span id="countDown">5</span>秒后将自动跳转到 <a href="/index">论坛首页</a></dd>
         		</dl>
         	</div>
            	<!--  热门游戏社区开始 -->
@@ -84,41 +84,61 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <a target="_blank" href="forum_content?fid=10">
-	                       <dt><img src="http://pic1.mofang.com/304/993/c672375d0069c0b46ae80a343de4f6a17c985dee.png" alt=""></dt>
-	                       <dd><span>社区活动</span></dd>
-	                       		<dd>今日  <b class="update">722</b></dd>
-	                       <dd>帖子  270</dd>
+                         <a target="_blank" href="forum_content?fid=${officalForum.forumId1}">
+	                       <dt><img src="${officalForum.icon1}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName1}</span></dd>
+	                       <c:if test="${officalForum.todayThreads1 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads1}</b></dd>
+	                       </c:if>
+	                       <c:if test="${officalForum.todayThreads1 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads1}</b></dd>
+	                       </c:if>
+	                       <dd>帖子  ${officalForum.totalThreads1}</dd>
                        </a>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <a target="_blank" href="forum_content?fid=11">
-	                       <dt><img src="http://pic0.mofang.com/214/289/d105a231148375e0e99e209be5655816108fc400.png" alt=""></dt>
-	                       <dd><span>魔方推游</span></dd>
-	                       		<dd>今日  <b class="update">37</b></dd>
-	                       <dd>帖子  10492</dd>
+                       <a target="_blank" href="forum_content?fid=${officalForum.forumId2}">
+	                       <dt><img src="${officalForum.icon2}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName2}</span></dd>
+	                       <c:if test="${officalForum.todayThreads2 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads2}</b></dd>
+	                       </c:if>
+	                       <c:if test="${officalForum.todayThreads2 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads2}</b></dd>
+	                       </c:if>
+	                       <dd>帖子  ${officalForum.totalThreads2}</dd>
                        </a>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   	   <a target="_blank" href="forum_content?fid=12">
-	                       <dt><img src="http://pic2.mofang.com/340/444/989655c70d58047d1c77543cabc15e5311a03110.png" alt=""></dt>
-	                       <dd><span>灌水闲聊</span></dd>
-	                       		<dd>今日  <b class="update">35</b></dd>
-	                       <dd>帖子  3303</dd>
+                   	   <a target="_blank" href="forum_content?fid=${officalForum.forumId3}">
+	                       <dt><img src="${officalForum.icon3}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName3}</span></dd>
+	                       <c:if test="${officalForum.todayThreads3 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads3}</b></dd>
+	                       </c:if>
+	                       <c:if test="${officalForum.todayThreads3 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads3}</b></dd>
+	                       </c:if>
+	                       <dd>帖子  ${officalForum.totalThreads3}</dd>
                        </a>
                    </dl>
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   	   <a target="_blank" href="forum_content?fid=13">
-	                       <dt><img src="http://pic1.mofang.com/275/938/e80462efabaa7f8dc85760c304ee77b2d5f71ff5.png" alt=""></dt>
-	                       <dd><span>问题反馈</span></dd>
-	                       		<dd>今日  <b>0</b></dd>
-	                       <dd>帖子  67</dd>
+                   	    <a target="_blank" href="forum_content?fid=${officalForum.forumId4}">
+	                       <dt><img src="${officalForum.icon4}" alt=""></dt>
+	                       <dd><span>${officalForum.forumName4}</span></dd>
+	                       <c:if test="${officalForum.todayThreads4 > 0}">
+	                       		<dd>今日  <b class="update">${officalForum.todayThreads4}</b></dd>
+	                       </c:if>
+	                        <c:if test="${officalForum.todayThreads4 == 0}">
+	                       		<dd>今日  <b>${officalForum.todayThreads4}</b></dd>
+	                       </c:if>
+	                       <dd>帖子  ${officalForum.totalThreads4}</dd>
                        </a>
                    </dl>
                </div>
@@ -146,7 +166,7 @@
         			n--;
         			if(n<0){
         				clearInterval(timer);	
-        				window.location.href="/";
+        				window.location.href="<%=CommonUrl.bbsHomeUrl %>";
         			}
         		},1000);
         	};
