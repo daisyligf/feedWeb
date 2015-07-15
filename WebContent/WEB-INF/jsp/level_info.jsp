@@ -370,7 +370,7 @@
 			                  <td class="grey">...</td>
 			                </tr>
 			                <tr>
-			                  <td>奖励魔币</td>
+			                  <td>奖励经验</td>
 			                  <td class="orange">+1</td>
 			                  <td class="orange">+2</td>
 			                  <td class="orange">...</td>
@@ -380,7 +380,7 @@
 			                </tr>
 			              </tbody>
 		            </table>
-		           <p><span>注：</span>连续签到，每日累计增加获赠1魔币，最多10魔币封顶； 出现断签，每日累计获赠魔币数失效，重新累计。</p>
+		           <p><span>注：</span>连续签到，每日累计增加获赠1经验，最多10经验封顶； 出现断签，每日累计获赠经验数失效，重新累计。</p>
 		           <h3>2.日常任务</h3>
 	            		<table class="table  table-bordered table-condensed">
 			              <tbody>
