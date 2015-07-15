@@ -101,7 +101,7 @@ UM.plugins['feed-emotion'] = function () {
     for(var x in mofang_face_map2){
     	listDemon.push({
             icon:mofang_face_map2[x],
-            labFace : '\\\\'+ x
+            labFace : '\\'+ x
         });
     }
     if(init) {
