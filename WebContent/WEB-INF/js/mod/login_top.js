@@ -89,10 +89,10 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 			    		//等级
 			    		$("#level").html("Lv."+res.data.level);
 			    		//经验值
-			    		$(".header-task .task-text").html("经验值 "+res.data.gained_exp+"/"+res.data.upgrade_exp);
+			    		$(".header-task .task-text").html("经验值 "+res.data.exp+"/"+res.data.upgrade_exp);
 			    		
 			    		var taskW = $(".header-task").width();
-			    		var scale = res.data.gained_exp/res.data.upgrade_exp;
+			    		var scale = res.data.exp/res.data.upgrade_exp;
 			    		taskW = Math.ceil(taskW*scale);
 			    		$(".header-task .task-info").width(taskW+'px');
 		    			$("#topUserInfo").hover(function(){
