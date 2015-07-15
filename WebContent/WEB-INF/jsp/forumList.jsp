@@ -135,7 +135,12 @@
 			                   	   <a href="forum_content?fid=${forum.forumId}">
 				                       <dt><img src="${forum.icon}" alt=""></dt>
 				                       <dd><span>${forum.forumName}</span></dd>
+				                       <c:if test="${forum.todayThreads > 0}">
 				                       <dd>今日  <b class="update">${forum.todayThreads}</b></dd>
+				                       </c:if>
+				                       <c:if test="${forum.todayThreads == 0}">
+				                       <dd>今日  <b>${forum.todayThreads}</b></dd>
+				                       </c:if>
 				                       <dd>帖子  ${forum.totalThreads}</dd>
 			                       </a>
 			                   </dl>
