@@ -14,7 +14,8 @@ seajs.config({
         'swipe':"lib/swipe.js", //移动端滑动
         'swiper':"lib/swiper.js",//移动端滑块（比上一个强大）
         'jquery/jquery-pop': "lib/mfe/jquery.pop.js", //弹出框组件
-        'jquery/moveTop': "lib/mfe/jquery.movetop.js" //回到顶部
+        'jquery/moveTop': "lib/mfe/jquery.movetop.js", //回到顶部
+        'pagevisibility':"lib/mfe/pagevisibility.js"//检测当前页面是否显示
     },
     paths: {
         'mod':  base + 'mod'

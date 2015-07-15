@@ -1,7 +1,5 @@
 package com.mofang.feedweb.form;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  * @author ke

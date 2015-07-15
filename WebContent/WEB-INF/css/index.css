@@ -320,6 +320,32 @@
 	background:#eee;
 }
 
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev{
+	width:36px!important;
+	height:68px!important;
+	margin-top:-34px!important;
+	background:url(../img/icon/icon-slides.png) no-repeat!important;
+	
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next{
+	width:36px!important;
+	height:68px!important;
+	margin-top:-34px!important;
+	background:url(../img/icon/icon-slides.png) no-repeat!important;
+}
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
+	opacity:0!important;
+	filter:alpha(opacity==0)!important;
+}
+
+.swiper-button-next{
+	right:0px!important;
+	background-position:-44px 0px!important;
+}
+.swiper-button-prev{
+	left:0px!important;
+}
 /*移动端响应*/
 @media (max-width:1024px){
 	.container{
@@ -379,6 +405,7 @@
 		display: none;
 	}
 }
+
 @media (max-width:540px){
 	body{
 		backgroud:red;
