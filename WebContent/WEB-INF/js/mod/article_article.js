@@ -948,6 +948,32 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		}
 		
 	});
+	
+	//限制视频
+	videoAuto();
+	function videoAuto(){
+		var winW = $(window).width();
+		
+		var vW = $("embed").width();
+		var vH = $("embed").height();
+		var scale = vW/vH;
+		if(winW<1080){
+			$("embed").width("100%");
+			var curW = $("embed").width();
+			var curH = parseInt(curW/scale);
+			$("embed").height(curH);
+		}
+		
+		$(window).resize(function(){
+			$("embed").width("100%");
+			var curW = $("embed").width();
+			var curH = parseInt(curW/scale);
+			$("embed").height(curH);
+		});
+		
+	}
+	
+	
 
 });
 
