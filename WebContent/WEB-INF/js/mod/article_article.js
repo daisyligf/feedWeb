@@ -979,8 +979,11 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	}
 //	//定位
 	function fnTopReply(){
-		var sTop = $("#replayUserFloorLast").offset().top;
-		$(window).scrollTop(sTop);
+		if($("#replayUserFloorLast").length>0){
+			var sTop = $("#replayUserFloorLast").offset().top;
+			$(window).scrollTop(sTop);
+		}
+		
 	}
 	fnTopReply();
 	
