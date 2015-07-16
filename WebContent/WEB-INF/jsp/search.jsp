@@ -96,7 +96,7 @@
 					   <a href="{{link_url}}">
                        <dt><img src="{{icon}}" alt=""></dt>
                        <dd><span>{{name}}</span></dd>
-                       <dd>今日  {{today_threads}}</dd>
+                       <dd>今日 {{#if today_threads}} <b class="update">{{today_threads}}</b> {{else}} <b>{{today_threads}}</b> {{/if}}</dd>
                        <dd>帖子  {{threads}}</dd>
 					   </a>
                    </dl>
