@@ -467,6 +467,7 @@
 
 font {
     white-space: normal!important;
+   	line-height:1em;
     font-family:'微软雅黑',YaHei,tahoma,Helvetica,"Hiragino Sans GB",Arial,"\5b8b\4f53",sans-serif!important;
 }
 /* 广告位 */
