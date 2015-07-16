@@ -201,8 +201,8 @@
                         <dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>
                     </dl>
                     <ul class="clearfix">
-                        <li class="col-xs-4"><span>${threadUserInfo.threads}</span>帖子</li>
-                        <li class="col-xs-4"><span>${threadUserInfo.replies}</span>回复</li>
+                        <li class="col-xs-4"><span><a href="<%=UserCenter.baseUrl %>/home/public/mythreads?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.threads}</a></span>帖子</li>
+                        <li class="col-xs-4"><span><a href="<%=UserCenter.baseUrl %>/home/public/myreply?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.replies}</a></span>回复</li>
                         <li class="col-xs-4 no-line"><span>${threadUserInfo.eliteThreads}</span>精华</li>
                     </ul> 
                 </div>
