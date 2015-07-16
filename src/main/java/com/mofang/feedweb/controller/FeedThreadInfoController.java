@@ -101,7 +101,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 			JSONObject json = getHttpInfo(getPostListUrl(), param.toString(), request);
 			
 			int total = 0;
-	
+			int totalPage = 0;
 			FeedThread feedThread = new FeedThread();
 			FeedForum feedForum = new FeedForum();
 			ThreadUserInfo threadUserInfo = new ThreadUserInfo();
@@ -117,6 +117,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 				if (json.optInt("code", -1) == 0) {
 					JSONObject data = json.optJSONObject("data");
 					total = data.optInt("total", 0);
+					
+					totalPage = Tools.editTotalPageNumber(total);
+					
 					JSONObject threadObj = data.optJSONObject("thread");
 					if (threadObj != null) {
 						feedThread.setThread_id(threadObj.optLong("tid", 0));
@@ -213,6 +216,11 @@ public class FeedThreadInfoController extends FeedCommonController {
 							if (postObj == null)
 								continue;
 							FeedPost feedPost = new FeedPost();
+							
+							if (totalPage == page && i == posts.length() - 1) {
+								feedPost.setLastPositionFlg(true);	
+							}
+							
 							feedPost.setPost_id(postObj.optLong("pid", 0));
 							feedPost.setContent(replaceEmoji(postObj.optString("content", "")));
 							feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));

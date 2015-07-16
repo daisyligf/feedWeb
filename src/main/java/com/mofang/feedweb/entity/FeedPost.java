@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 public class FeedPost {
-
+	
 	private long post_id;
 	private String post_name;
 	private int position;
@@ -29,6 +29,7 @@ public class FeedPost {
 	private UserInfo postUserInfo;
 	private List<FeedComment> commentList;
 	private List<String> pic;
+	private boolean lastPositionFlg = false;
 	
 	public long getPost_id() {
 		return post_id;
@@ -152,6 +153,12 @@ public class FeedPost {
 	}
 	public void setCurrentUserFlg(boolean currentUserFlg) {
 		this.currentUserFlg = currentUserFlg;
+	}
+	public boolean isLastPositionFlg() {
+		return lastPositionFlg;
+	}
+	public void setLastPositionFlg(boolean lastPositionFlg) {
+		this.lastPositionFlg = lastPositionFlg;
 	}
 	
 }
