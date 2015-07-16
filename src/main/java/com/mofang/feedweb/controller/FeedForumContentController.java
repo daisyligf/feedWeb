@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mofang.feedweb.component.UserComponent;
 import com.mofang.feedweb.entity.FeedForum;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.Game;
@@ -48,6 +49,9 @@ import com.mofang.feedweb.util.Tools;
  */
 @Controller
 public class FeedForumContentController extends FeedCommonController {
+	
+	@Autowired
+	private UserComponent userComp;
 	
 	@Autowired
 	FeedSignInService feedSignInService;
@@ -291,7 +295,12 @@ public class FeedForumContentController extends FeedCommonController {
 			String param = "fid=" + fid;
 			boolean isFull = false;
 			JSONObject json = getHttpInfo(getRoleInfoListGetUrl(), param, request);
-			
+			UserInfo userinfo = userComp.getUserInfo(request);
+			long userId = 0;
+			boolean moderatorflg = false;
+			if (null != userinfo && 0 != userinfo.getUserId()) {
+				userId =  userinfo.getUserId();
+			}
 			if (json != null && json.optInt("code", -1) == 0) {
 				
 				JSONObject data = json.optJSONObject("data");
@@ -301,11 +310,15 @@ public class FeedForumContentController extends FeedCommonController {
 					for (int i = 0; i < moderators.length(); i++) {
 						JSONObject obj = moderators.getJSONObject(i);
 						RoleInfo roleInfo = new RoleInfo(obj.optLong("user_id", 0), obj.optString("nickname", ""), obj.optString("avatar", ""));
+						if (0 != userId && userId == obj.optLong("user_id", 0)) {
+							moderatorflg = true;
+						}
 						roleList.add(roleInfo);
 					}
 				}
 			}
 			model.put("is_full", isFull);
+			model.put("moderatorflg", moderatorflg);
 			return roleList;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
