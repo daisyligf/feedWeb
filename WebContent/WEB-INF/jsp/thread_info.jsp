@@ -356,7 +356,7 @@
                     	</c:otherwise>
                     </c:choose>
                     <c:forEach var="feedPost" begin="${start }" items="${postList }">
-                    <div class="con-list" data-postid="${feedPost.post_id }" data-uid="${feedPost.postUserInfo.userId}" data-page='1'>
+                    <div class="con-list" data-postid="${feedPost.post_id }" data-uid="${feedPost.postUserInfo.userId}" data-lastposition="${feedPost.lastPositionFlg}"  data-page='1'>
                         <p class="con-list-left">
                         	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">
                             	<img src="${feedPost.postUserInfo.avatar }" alt="">
