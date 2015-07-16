@@ -200,7 +200,7 @@
 	background: #333;
 	padding:20px;
 	width:240px;
-	z-index:5;
+	z-index:10000;
 	display:none;
 	overflow:hidden;
 }
@@ -807,6 +807,13 @@ text-align: center;
 .emoji{
 	width: 20px !important;
 	height: 20px !important;
+	vertical-align: middle !important;
+	margin: 0 2px !important;
+	display: inline !important;
+}
+.emoji_demon{
+	width: 72px !important;
+	height: 52px !important;
 	vertical-align: middle !important;
 	margin: 0 2px !important;
 	display: inline !important;

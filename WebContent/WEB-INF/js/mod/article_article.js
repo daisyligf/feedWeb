@@ -958,19 +958,24 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		var vH = $("embed").height();
 		var scale = vW/vH;
 		if(winW<1080){
-			$("embed").width("100%");
-			var curW = $("embed").width();
-			var curH = parseInt(curW/scale);
-			$("embed").height(curH);
+			autoW();
 		}
 		
 		$(window).resize(function(){
-			$("embed").width("100%");
-			var curW = $("embed").width();
-			var curH = parseInt(curW/scale);
-			$("embed").height(curH);
+			autoW();
 		});
 		
+		function autoW(){
+			if(winW<1080){
+				$("embed").width("99.5%");
+				var curW = $("embed").width();
+				var curH = parseInt(curW/scale);
+				$("embed").height(curH);
+			}else{
+				$("embed").width(vW);
+				$("embed").height(vH);
+			}
+		}
 	}
 	
 	
