@@ -268,6 +268,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                  	var reUrl = maxUrl.replace(/currentPage\=[0-9]*/ig,function(word){
                  		return "currentPage="+res.totalPages;
                  	});
+                 	
                     $(".pop-post-ok").pop({
                         msg: "回复成功",
                         autoTime:500,
@@ -275,7 +276,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                         	isLock=true;
                         	
                         	if($(".editer").length != 0){
-                        		window.location.href=reUrl;
+                        		location.href=reUrl;
                         	}else{
                         		window.location.reload();
                         	}
@@ -283,11 +284,11 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     });
                     setTimeout(function(){
                     	if($(".editer").length != 0){
-                    		window.location.href=reUrl;
+                    		location.href=reUrl;
                     	}else{
                     		window.location.reload();
                     	}
-                    },500);
+                    },600);
                 }else{
                     $(".pop-top-fail").pop({
                         msg: "回复失败",
