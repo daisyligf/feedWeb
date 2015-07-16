@@ -378,7 +378,11 @@
              	</div>
                 <div class="lord-team">
                     <h2 class="lum">
-                        版主团队 <c:if test="${!is_full }"><a href="apply_check?forum_id=${feedForum.forum_id}" class="apply-mod" target="_blank">申请版主</a></c:if>
+                        版主团队 <c:if test="${!is_full }">
+                        <c:if test="${moderatorflg == false}">
+                        <a href="apply_check?forum_id=${feedForum.forum_id}" class="apply-mod" target="_blank">申请版主</a>
+                        </c:if>
+                        </c:if>
                     </h2>
                     <div class="lum-list">
                     	<c:forEach  var="roleInfo" items="${feedForum.roleList}">
