@@ -35,6 +35,7 @@ import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.SysPrivilege;
+import com.mofang.feedweb.util.LogConsole;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.TimeUtil;
 import com.mofang.feedweb.util.Tools;
@@ -404,14 +405,25 @@ public class FeedThreadInfoController extends FeedCommonController {
 			postData.put("content", content);
 			
 			JSONObject json = postHttpInfo(getReplyPostUrl(), postData, request);
+			int total = 0;
+			if (null != json && 0 == json.optInt("code")) {
+				total = json.optJSONObject("data").optInt("total");
+			}
+			JSONObject returnJson = new JSONObject();
+			if (null != json) {
+				returnJson.put("code", json.optInt("code"));
+				returnJson.put("message", json.optInt("message"));
+			}
+			
+			returnJson.put("totalPages", Tools.editTotalPageNumber(total));
 			
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter out = response.getWriter();
-			out.print(json);
+			out.print(returnJson);
 			out.flush();
 			out.close();
-			
+			LogConsole.log("returnJdon:" + returnJson);
 			return null;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.replyPost throw an error.", e);
