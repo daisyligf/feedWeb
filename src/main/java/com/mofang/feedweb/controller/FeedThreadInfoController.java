@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -647,7 +648,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "award.json")
-	public String award(@RequestParam("uid") long uid, @RequestParam("coin") int coin, 
+	public String award(@RequestParam("uid") long uid, @RequestParam("coin") int coin, @RequestParam("reason") String reason,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			JSONObject postData = new JSONObject();
@@ -658,6 +659,35 @@ public class FeedThreadInfoController extends FeedCommonController {
 			postData.put("reward", awardJson);
 			
 			JSONObject json = postHttpInfo(getViperAwardUrl(), postData, request);
+			
+			//奖励成功后推送消息
+			if (null != json && 0 == json.optInt("code")) {
+				UserInfo userInfo = getUserInfo(request);
+				String title = "您被" + userInfo.getNickname() + "奖励" + coin + "魔币";
+				String detail = "您被" + userInfo.getNickname() + "奖励" + coin + "魔币，理由：" + reason;
+				//用户信息
+				JSONObject postDataAward = new JSONObject();
+				postDataAward.put("act", "push_sys_msg");
+				postDataAward.put("uid_list", Arrays.asList(uid));
+				postDataAward.put("is_show_notify", true);
+				postDataAward.put("click_act", "");
+				
+				JSONObject msgJson = new JSONObject();
+				msgJson.put("msg_type", 1);
+				msgJson.put("msg_category", "post_award");
+				
+				JSONObject contentJson = new JSONObject();
+				contentJson.put("title", title);
+				contentJson.put("detail", detail);
+				contentJson.put("icon", "");
+				
+				msgJson.put("content", contentJson);
+				postDataAward.put("msg", msgJson);
+				
+				postHttpInfo(getUserNoticeUrl().concat(Constant.USER_NOTICE_URL), postDataAward, request);
+				
+				LogConsole.log("postDataAward:" + postDataAward);
+			}
 			
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
