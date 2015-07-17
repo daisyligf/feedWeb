@@ -491,6 +491,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			},function(res){
 				if(res && res.code==0){
 					window.location.reload();
+					fnTopReply();
 				}
 			},function(){
 
@@ -985,7 +986,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		}
 		
 	}
-	fnTopReply();
+	//fnTopReply();
 	
 	
 	
