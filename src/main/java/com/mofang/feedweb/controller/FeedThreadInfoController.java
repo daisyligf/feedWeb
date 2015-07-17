@@ -74,6 +74,12 @@ public class FeedThreadInfoController extends FeedCommonController {
 	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
 		
 		try {
+			//判断是否是回帖的状况
+			boolean replyFlg = false;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
+				replyFlg = true;
+			}
+			
 			StringBuilder param = new StringBuilder();
 			param.append("tid=").append(threadId);
 			long forumId = 0;
@@ -219,7 +225,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 								continue;
 							FeedPost feedPost = new FeedPost();
 							
-							if (totalPage == page && i == posts.length() - 1) {
+							if (replyFlg && totalPage == page && i == posts.length() - 1) {
 								feedPost.setLastPositionFlg(true);	
 							}
 							
