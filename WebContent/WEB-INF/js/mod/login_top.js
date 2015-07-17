@@ -166,15 +166,15 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		    	if(res && res.code==0){
 
 		    		//if(res.data.sys_message.unread_count>0 || res.data.reply.unread_count>0 || res.data.recommend.unread_count>0){
-		    		if(res.data.sys_message.unread_count>0){
-				    			
+		    		if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
+				    	
 		    			$("#userName").find(".icon-red").show();
 //		    			if(res.data.reply.unread_count>0){
 //		    				$(".header .zj").find(".icon-red").show();
 //		    			}
-		    			if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
+		    			//if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
 		    				$(".header .msg").find(".icon-red").show();
-		    			}
+		    			//}
 		    			var docTitle = '[新消息] '+curTitle;
 		    			document.title=docTitle;
 		    			isNews=true;
