@@ -491,7 +491,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			},function(res){
 				if(res && res.code==0){
 					window.location.reload();
-					fnTopReply();
+					
 				}
 			},function(){
 
@@ -978,7 +978,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 			}
 		}
 	}
-//	//定位
+	//定位
 	function fnTopReply(){
 		if($("#replayUserFloorLast").length>0){
 			var sTop = $("#replayUserFloorLast").offset().top;
@@ -986,7 +986,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		}
 		
 	}
-	//fnTopReply();
+	fnTopReply();
 	
 	
 	
