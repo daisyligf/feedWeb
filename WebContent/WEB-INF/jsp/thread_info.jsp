@@ -550,7 +550,7 @@
                            <dt></dt>
                            <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
                            <dd>
-                               <div class="editer" data-maxurl="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}">
+                               <div class="editer" data-maxurl="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}&replyflg=true">
                                    <div class="editor-textarea">
                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
                                    </div>
