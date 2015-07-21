@@ -5,7 +5,7 @@
             <div class="nav clearfix">
                 <div class="nav-left">
                     <a target="_blank" href="http://www.mofang.com">魔方网首页</a>
-                    <a href="http://bbs.mofang.com" class="old-bbs">返回旧版</a>
+                    <!--  <a href="http://bbs.mofang.com" class="old-bbs">返回旧版</a>-->
                 </div>
                 <div class="nav-right" id="topUserInfo">
                     <!-- 登陆状态 -->
