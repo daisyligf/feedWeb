@@ -41,10 +41,10 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 				int threadId = Integer.valueOf(ids[1]);
 				if (threadId > 938054) {
 					threadId = threadId + 50000;
-					response.sendRedirect(CommonUrl.bbsHomeUrl + "/thread_info?thread_id=" + threadId);
-					LogConsole.log("老版帖子RedirectURL:" + CommonUrl.bbsHomeUrl + "/thread_info?thread_id=" + threadId);
-					return false;
 				}
+				response.sendRedirect(CommonUrl.bbsHomeUrl + "/thread_info?thread_id=" + threadId);
+				LogConsole.log("老版帖子RedirectURL:" + CommonUrl.bbsHomeUrl + "/thread_info?thread_id=" + threadId);
+				return false;
 			}
 		}
 		
