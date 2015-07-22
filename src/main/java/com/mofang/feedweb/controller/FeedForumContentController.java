@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,14 +53,17 @@ public class FeedForumContentController extends FeedCommonController {
 	
 	@Autowired
 	private UserComponent userComp;
-	
 	@Autowired
-	FeedSignInService feedSignInService;
+	private FeedSignInService feedSignInService;
 	
-	@RequestMapping(value = "/forum_content", method = RequestMethod.GET)
-	public ModelAndView forumContent(HttpServletRequest request, @RequestParam("fid") long fid) throws Exception {
+	@RequestMapping(value = "/forum_content/{fid}/{type}/{timeType}/{currentPage}/{tag_id}.htm", method = RequestMethod.GET)
+	public ModelAndView forumContent(HttpServletRequest request, 
+					@PathVariable(value = "fid") long fid,
+					@PathVariable(value = "type") String type,
+					@PathVariable(value = "timeType") String timeType,
+					@PathVariable(value = "currentPage") String currentPage,
+					@PathVariable(value = "tag_id") String tagId) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
-		
 		try {
 			//获取当前用户的签到状态
 			JSONObject json = feedSignInService.getSignInstate(request);
@@ -79,17 +83,17 @@ public class FeedForumContentController extends FeedCommonController {
 			if (feedForum.getCode() == Constant.FORUM_NOT_EXISTS) {
 				return new ModelAndView("redirect:error");
 			}
+			
 			// 获取该版块的吧主列表
 			List<RoleInfo> roleList= getFeedForumRoleInfoList(request, fid, model);
 			feedForum.setRoleList(roleList);
 			
 			// 获取版块下的帖子列表
-			List<FeedThread> threadList = getThreadList(request, fid, model);
-	//		model.put("threadList", threadList);
+			getThreadList(request, fid, type, timeType, currentPage, tagId,  model);
 			
 			// if 是官方版块，获取头条列表和新游推荐
-			int type = feedForum.getType();
-			if (type == ForumType.OFFICIAL) {
+			int forumType = feedForum.getType();
+			if (forumType == ForumType.OFFICIAL) {
 				//头条列表
 				List<HotThread> hotThreadList = getHotThreads(request);
 				model.put("hotThreadList", hotThreadList);
@@ -120,7 +124,6 @@ public class FeedForumContentController extends FeedCommonController {
 				boolean isFollow = isFollow(userInfo.getUserId(), fid, request);
 				model.put("isFollow", isFollow);
 			}
-			
 			return new ModelAndView("forum_content", model);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
@@ -327,27 +330,28 @@ public class FeedForumContentController extends FeedCommonController {
 		}
 	}
 	
-	private List<FeedThread> getThreadList(HttpServletRequest request, long fid, Map<String, Object> model) throws Exception {
+	private List<FeedThread> getThreadList(HttpServletRequest request, long fid, String typeString, String timeTypeString, 
+			String pString, String tagIdString, Map<String, Object> model) throws Exception {
 		
 		List<FeedThread> threadList = new ArrayList<FeedThread>();
 		
 		try {
 			int total = 0;
 			int threadType = 0; // 0表示普通，1表示精华
-			String typeString = request.getParameter("type");
+			//String typeString = request.getParameter("type");
 			if (typeString != null && StringUtil.isInteger(typeString)) {
 				threadType = Integer.parseInt(typeString);
 			}
 			
 			int timeType = 0; // 0表示按回复时间排序、1表示按发帖时间排序
 			
-			String timeTypeString = request.getParameter("timeType");
+			//String timeTypeString = request.getParameter("timeType");
 			if (timeTypeString != null && StringUtil.isInteger(timeTypeString)) {
 				timeType = Integer.parseInt(timeTypeString);
 			}
 			
 			int p = 1;
-			String pString = request.getParameter("currentPage");
+			//String pString = request.getParameter("currentPage");
 			if (pString != null && StringUtil.isInteger(pString)) {
 				p = Integer.parseInt(pString);
 			}
@@ -370,7 +374,7 @@ public class FeedForumContentController extends FeedCommonController {
 			paramBuilder.append("&size=").append(pageSize);
 			
 			int tagId = 0;
-			String tagIdString = request.getParameter("tag_id");
+			//String tagIdString = request.getParameter("tag_id");
 			if (tagIdString != null && StringUtil.isInteger(tagIdString)) {
 				tagId = Integer.parseInt(tagIdString);
 				paramBuilder.append("&tagid=").append(tagId);
@@ -400,7 +404,6 @@ public class FeedForumContentController extends FeedCommonController {
 			model.put("currentPage", p);
 			model.put("totalPages", Tools.editTotalPageNumber(total));
 			model.put("pagelist", Tools.editPageNumber(total, p,Constant.PAGE_SIZE, 2));
-			
 			return threadList;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
