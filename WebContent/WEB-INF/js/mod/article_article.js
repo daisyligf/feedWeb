@@ -29,7 +29,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 	var setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
 	var setdeletePostUrl = "del_thread.json"; //删除帖子
 	var setAwardUrl = "award.json"; //奖励
-	var deleteHrefUrl = "forum_content/"+$("#getPostData").attr("data-fid") + "/0/0/1/0.html";//删除帖子跳转的路径
+	var deleteHrefUrl = "forum/"+$("#getPostData").attr("data-fid") + "/0/0/1/0.html";//删除帖子跳转的路径
 
 	var ajaxMethod="json";
 	if(USE_LOCAL_DATA){
@@ -62,7 +62,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
 		setdeletePostUrl = "del_thread.json"; //删除帖子
 		setAwardUrl = "award.json"; //奖励
-		deleteHrefUrl = "forum_content/"+$("#getPostData").attr("data-fid") + "/0/0/1/0.html";//删除帖子跳转的路径
+		deleteHrefUrl = "forum/"+$("#getPostData").attr("data-fid") + "/0/0/1/0.html";//删除帖子跳转的路径
 	}
 
 	//注册一个handlebarsjs方法

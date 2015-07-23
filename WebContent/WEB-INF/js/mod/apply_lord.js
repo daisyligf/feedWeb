@@ -59,7 +59,7 @@ define('apply_lord',['jquery','jquery/jquery-pop'],function(require, exports, mo
                         autoTime:500
                     }); 
                     setTimeout(function(){
-                    	location.href="forum_content/" + forumId + "/0/0/1/0.html";  
+                    	location.href="forum/" + forumId + "/0/0/1/0.html";  
                     },600); 
                 }else{
                 	$(".pop-top-fail").pop({
