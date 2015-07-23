@@ -56,7 +56,7 @@ public class FeedForumContentController extends FeedCommonController {
 	@Autowired
 	private FeedSignInService feedSignInService;
 	
-	@RequestMapping(value = "/forum_content/{fid}/{type}/{timeType}/{currentPage}/{tag_id}.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/forum/{fid}/{type}/{timeType}/{currentPage}/{tag_id}.html", method = RequestMethod.GET)
 	public ModelAndView forumContent(HttpServletRequest request, 
 					@PathVariable(value = "fid") long fid,
 					@PathVariable(value = "type") String type,
