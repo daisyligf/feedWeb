@@ -84,7 +84,7 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                         <a target="_blank" href="forum_content?fid=${officalForum.forumId1}">
+                         <a target="_blank" href="forum_content/${officalForum.forumId1}/0/0/1/0.html">
 	                       <dt><img src="${officalForum.icon1}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName1}</span></dd>
 	                       <c:if test="${officalForum.todayThreads1 > 0}">
@@ -99,7 +99,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <a target="_blank" href="forum_content?fid=${officalForum.forumId2}">
+                       <a target="_blank" href="forum_content/${officalForum.forumId2}/0/0/1/0.html">
 	                       <dt><img src="${officalForum.icon2}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName2}</span></dd>
 	                       <c:if test="${officalForum.todayThreads2 > 0}">
@@ -114,7 +114,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   	   <a target="_blank" href="forum_content?fid=${officalForum.forumId3}">
+                   	   <a target="_blank" href="forum_content/${officalForum.forumId3}/0/0/1/0.html">
 	                       <dt><img src="${officalForum.icon3}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName3}</span></dd>
 	                       <c:if test="${officalForum.todayThreads3 > 0}">
@@ -129,7 +129,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   	    <a target="_blank" href="forum_content?fid=${officalForum.forumId4}">
+                   	    <a target="_blank" href="forum_content/${officalForum.forumId4}/0/0/1/0.html">
 	                       <dt><img src="${officalForum.icon4}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName4}</span></dd>
 	                       <c:if test="${officalForum.todayThreads4 > 0}">
