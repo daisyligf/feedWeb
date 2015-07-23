@@ -386,12 +386,29 @@ public class FeedThreadInfoController extends FeedCommonController {
 			param.append("&page=").append(p);
 			param.append("&size=").append(pageSize);
 			
-			JSONObject json = getHttpInfo(getCommentListUrl(), param.toString(), request);
+			JSONObject result = getHttpInfo(getCommentListUrl(), param.toString(), request);
+			
+			if (result != null) {
+				JSONObject data = result.optJSONObject("data");
+				JSONArray comments = data.optJSONArray("comments");
+				
+				if (comments != null && comments.length() > 0) {
+					for (int i = 0; i < comments.length(); i++) {
+						JSONObject commentObj = comments.getJSONObject(i);
+						String content = replaceEmoji(commentObj.optString("content", ""));
+						commentObj.put("content", content);
+						comments.put(i, commentObj);
+					}
+				}
+				
+				data.put("comments", comments);
+				result.put("data", data);
+			}
 			
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter out = response.getWriter();
-			out.print(json);
+			out.print(result);
 			out.flush();
 			out.close();
 			
