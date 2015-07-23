@@ -110,18 +110,18 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 			if (StringUtil.isLong(ids[0])) {
 				if (ids.length == 1) {
 					long forumId = Long.valueOf(ids[0]);
-					response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/1/0.html");
-					LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/1/0.html");
+					response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum_content?fid=" + forumId);
+					LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum_content?fid=" + forumId);
 					return false;
 				} else if (ids.length == 2) {
 					long forumId = Long.valueOf(ids[0]);
 					if (StringUtil.isInteger(ids[1])) {
 						int currentPage = Integer.valueOf(ids[1]);
-						response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/" + currentPage + "/0.html");
-						LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/" + currentPage + "/0.html");
+						response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum_content?currentPage=" + currentPage + "&fid=" + forumId + "&type=0&timeType=0&tag_id=0");
+						LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum_content?currentPage=" + currentPage + "&fid=" + forumId + "&type=0&timeType=0&tag_id=0");
 					} else {
-						response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/1/0.html");
-						LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/1/0.html");
+						response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum_content?fid=" + forumId);
+						LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum_content?fid=" + forumId);
 					}
 					
 					return false;
