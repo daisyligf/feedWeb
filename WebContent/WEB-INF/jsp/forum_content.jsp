@@ -40,14 +40,14 @@
      <c:if test="${feedForum.forum_id > 13}">
     <title>${feedForum.forum_name}官方合作论坛</title>
     </c:if>
-    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl %>/img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="<%=CommonUrl.baseUrl %>/css/base.css">
-    <link rel="stylesheet" href="<%=CommonUrl.baseUrl %>/css/common.css">
-    <link rel="stylesheet" href="<%=CommonUrl.baseUrl %>/css/add_list_article.css">
-    <script src="<%=CommonUrl.baseUrl %>/js/sea.js"></script>
-    <script src="<%=CommonUrl.baseUrl %>/js/sea-config.js"></script>
-    <script src="<%=CommonUrl.baseUrl %>/js/bbs-config.js"></script>
-    <script src="<%=CommonUrl.baseUrl %>/js/mod/common.js"></script>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/add_list_article.css">
+    <script src="js/sea.js"></script>
+    <script src="js/sea-config.js"></script>
+    <script src="js/bbs-config.js"></script>
+    <script src="js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -70,7 +70,7 @@
             <jsp:include page="user_info.jsp" flush='true'/>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
-                  <a href="javascript:;" class="nav-wap-list"><img src="<%=CommonUrl.baseUrl %>/img/icon/nav_three.png"></a>
+                  <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
                     <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
                     <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
@@ -114,9 +114,9 @@
                 <div class="con-bot-left">
                     <div class="con-nav">
                         <div class="left">
-                            <a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/0.htm" id="tag_all">综合</a>
+                            <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}" id="tag_all">综合</a>
                             <c:forEach var="tag" items="${feedForum.tags}">
-                            	<a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id }.htm">${tag.tag_name}</a>
+                            	<a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag.tag_id}" id="tag_${tag.tag_id }">${tag.tag_name}</a>
                             </c:forEach>
                             <input type="hidden" id="tag_id" value="${tag_id }"/>
                         </div>
@@ -128,14 +128,14 @@
                                 <c:if test="${type==0 }">
                                 <p>全部</p>
                                 <p class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/1/${timeType}/${currentPage}/${tag_id }.htm">精华</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=1&timeType=${timeType}&tag_id=${tag_id}">精华</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${type ==1 }">
                                 <p>精华</p>
                                 <p class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/0/${timeType}/${currentPage}/${tag_id }.htm">全部</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=0&timeType=${timeType}&tag_id=${tag_id}">全部</a>
                                 </p>
                                 </c:if>
                                 
@@ -155,14 +155,14 @@
                                 <c:if test="${timeType==0 }">
                                 <p id="reply_time">回复时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/1/${currentPage}/${tag_id }.htm">发帖时间</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=1&tag_id=${tag_id}">发帖时间</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${timeType==1 }">
                                 <p id="reply_time">发帖时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type }/0/${currentPage}/${tag_id }.htm">回复时间</a>
+                                    <a href="forum_content?currentPage=${currentPage}&fid=${feedForum.forum_id}&type=${type }&timeType=0&tag_id=${tag_id}">回复时间</a>
                                 </p>
                                 </c:if>
                                
@@ -259,7 +259,7 @@
 			                
 							<c:choose>
 							<c:when test="${currentPage != 1}">
-								<li class="prev"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${currentPage-1}/${tag_id }.htm">上一页</a></li>
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">上一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -271,27 +271,27 @@
 							<c:choose>
 							<c:when test="${item == currentPage}">
 								<c:if test="${item == 0}">
-								<li class="active"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/1/${tag_id }.htm" >首页</a></li>
+								<li class="active"><a href="forum_content?currentPage=1&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >首页</a></li>
 								</c:if>
 								<c:if test="${item == -1}">
-								<li class="active"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${totalPages}/${tag_id }.htm" >尾页</a></li>
+								<li class="active"><a href="forum_content?currentPage=${totalPages}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >尾页</a></li>
 								</c:if>
 								<c:if test="${item != 0}">
 					  				<c:if test="${item != -1}">
-									<li class="active"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${item}/${tag_id }.htm" >${item}</a></li>
+									<li class="active"><a href="forum_content?currentPage=${item }&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }" >${item}</a></li>
 									</c:if>
 								</c:if>
 							</c:when>
 							<c:otherwise>
 								<c:if test="${item == 0}">
-								<li><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/1/${tag_id }.htm">首页</a></li>
+								<li><a href="forum_content?currentPage=1&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">首页</a></li>
 								</c:if>
 								<c:if test="${item == -1}">
-								<li><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${totalPages}/${tag_id }.htm">尾页</a></li>
+								<li><a href="forum_content?currentPage=${totalPages}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">尾页</a></li>
 								</c:if>
 								<c:if test="${item != 0}">
 					  				<c:if test="${item != -1}">
-									<li><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${item}/${tag_id }.htm">${item}</a></li>
+									<li><a href="forum_content?currentPage=${item}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">${item}</a></li>
 									</c:if>
 								</c:if>
 							</c:otherwise>
@@ -301,7 +301,7 @@
 							<!-- 下一页 按钮 -->
 							<c:choose>
 							<c:when test="${currentPage != totalPages}">
-								<li class="next"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.htm">下一页</a></li>
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">下一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -329,7 +329,7 @@
 			                
 							<c:choose>
 							<c:when test="${currentPage != 1}">
-								<li class="prev"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${currentPage-1}/${tag_id }.htm">上一页</a></li>
+								<li class="prev"><a href="forum_content?currentPage=${currentPage-1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">上一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -341,7 +341,7 @@
 							<!-- 下一页 按钮 -->
 							<c:choose>
 							<c:when test="${currentPage != totalPages}">
-								<li class="next"><a href="<%=CommonUrl.baseUrl %>/forum_content/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.htm">下一页</a></li>
+								<li class="next"><a href="forum_content?currentPage=${currentPage+1}&fid=${feedForum.forum_id}&type=${type}&timeType=${timeType}&tag_id=${tag_id }">下一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -427,20 +427,20 @@
 		                            	<c:set var="i" value="1"/>
 		                            	<c:forEach var="newGame" items="${newGameList}">
 		                            	<c:if test="${i <= 3}">
-		                           		<li class="clearfix"><span class="num num-color">0${i}</span><a href="forum_content/${newGame.forum_id}/0/0/1/0.htm" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
+		                           		<li class="clearfix"><span class="num num-color">0${i}</span><a href="forum_content?fid=${newGame.forum_id}" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
 		                           		</c:if>
 		                           		<c:if test="${i >= 4}">
-		                           		<li class="clearfix"><span class="num">0${i}</span><a href="forum_content/${newGame.forum_id}/0/0/1/0.htm" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
+		                           		<li class="clearfix"><span class="num">0${i}</span><a href="forum_content?fid=${newGame.forum_id}" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
 		                           		</c:if>
 		                           		<span class="rank">
 		                                     <c:if test="${newGame.up_down==1}">
-		                                    	<img src="<%=CommonUrl.baseUrl %>/img/icon/up.png">
+		                                    	<img src="./img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${newGame.up_down==0}">
-		                                    	<img src="<%=CommonUrl.baseUrl %>/img/icon/down.png">
+		                                    	<img src="./img/icon/down.png">
 		                                    </c:if>
 		                                    <c:if test="${newGame.up_down==2}">
-		                                    	<img src="<%=CommonUrl.baseUrl %>/img/icon/level.png">
+		                                    	<img src="./img/icon/level.png">
 		                                    </c:if>
 		                                </span>
 		                                </li>
@@ -497,7 +497,7 @@
         <!-- 遮罩层结束 -->
         <!-- 确定不玩？弹出框开始 -->
         <div class="pop pop-play pop-warn">
-            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl %>/img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -506,7 +506,7 @@
         </div>
         <!--未登录-->
         <div class="pop pop-play pop-login">
-            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl %>/img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -524,7 +524,7 @@
         <!-- 弹出框插件结束 -->
     </div>
     
-   <script src="<%=CommonUrl.baseUrl %>/js/mod/list_article.js"></script>
+   <script src="js/mod/list_article.js"></script>
 
    
 </body>
