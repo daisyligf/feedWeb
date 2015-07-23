@@ -26,7 +26,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     //var relayPostUrl = "";//回复帖子
 
     if($("#editor-form .editor-fid").length>0){
-        var localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//发帖成功，跳转的路径
+        var localPlateUrl = "forum_content/"+$("#editor-form .editor-fid").val() + "/0/0/1/0.html";//发帖成功，跳转的路径
         var localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//编辑帖子成功，跳转的路径
     }
     
@@ -40,7 +40,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         
         if($("#editor-form .editor-fid").length>0){
             localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//发帖成功，跳转的路径
-            localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//编辑帖子成功，跳转的路径
+            localPlateUrl = "forum_content/"+$("#editor-form .editor-fid").val() + "/0/0/1/0.html";//编辑帖子成功，跳转的路径
         }
 
         ajaxMethod="json";
