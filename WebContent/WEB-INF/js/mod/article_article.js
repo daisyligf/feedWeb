@@ -824,7 +824,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		}else{
 		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("更多"+curtotal+"条回复    <a href='javascript:;''>点击加载</a>").show();
 		    		}
-		    		
+		    		console.log(floorCommentTemplate(res.data.comments));
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data.comments));
 		    	}
 		    	fnCallback && fnCallback();
