@@ -263,7 +263,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 									
 									JSONObject commentObj = comments.getJSONObject(j);
 									comment.setComment_id(commentObj.optLong("cid", 0));
-									comment.setContent(commentObj.optString("content", ""));
+									comment.setContent(replaceEmoji(commentObj.optString("content", "")));
 									comment.setCreate_time(new Date(commentObj.optLong("create_time", 0)));
 									
 									JSONObject commentUserObj = commentObj.optJSONObject("user");
