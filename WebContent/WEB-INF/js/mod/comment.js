@@ -254,23 +254,29 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     msg: "回复失败",
                     autoTime:500
                 }); 
+               
                isLock=false;
             },
             success:function(res) {
-            	
                 if(typeof res=='string'){
                     res=$.parseJSON(res);
                 }
+               
+            	
                 if(res && res.code==0){
-                	
+                	var maxUrl = $(".editer").attr("data-maxurl");
+                 	var reUrl = maxUrl.replace(/currentPage\=[0-9]*/ig,function(word){
+                 		return "currentPage="+res.totalPages;
+                 	});
+                 	
                     $(".pop-post-ok").pop({
                         msg: "回复成功",
                         autoTime:500,
                         fnCallback: function(isTrue,msg){
                         	isLock=true;
-                        	//console.log($(".eidter").attr("data-maxurl"));
+                        	
                         	if($(".editer").length != 0){
-                        		window.location.href=$(".editer").attr("data-maxurl");
+                        		location.href=reUrl;
                         	}else{
                         		window.location.reload();
                         	}
@@ -278,11 +284,11 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                     });
                     setTimeout(function(){
                     	if($(".editer").length != 0){
-                    		window.location.href=$(".editer").attr("data-maxurl");
+                    		location.href=reUrl;
                     	}else{
                     		window.location.reload();
                     	}
-                    },500);
+                    },600);
                 }else{
                     $(".pop-top-fail").pop({
                         msg: "回复失败",

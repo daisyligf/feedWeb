@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,6 +36,7 @@ import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.SysPrivilege;
+import com.mofang.feedweb.util.LogConsole;
 import com.mofang.feedweb.util.StringUtil;
 import com.mofang.feedweb.util.TimeUtil;
 import com.mofang.feedweb.util.Tools;
@@ -72,6 +74,12 @@ public class FeedThreadInfoController extends FeedCommonController {
 	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
 		
 		try {
+			//判断是否是回帖的状况
+			boolean replyFlg = false;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
+				replyFlg = true;
+			}
+			
 			StringBuilder param = new StringBuilder();
 			param.append("tid=").append(threadId);
 			long forumId = 0;
@@ -101,7 +109,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 			JSONObject json = getHttpInfo(getPostListUrl(), param.toString(), request);
 			
 			int total = 0;
-	
+			int totalPage = 0;
 			FeedThread feedThread = new FeedThread();
 			FeedForum feedForum = new FeedForum();
 			ThreadUserInfo threadUserInfo = new ThreadUserInfo();
@@ -117,6 +125,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 				if (json.optInt("code", -1) == 0) {
 					JSONObject data = json.optJSONObject("data");
 					total = data.optInt("total", 0);
+					
+					totalPage = Tools.editTotalPageNumber(total);
+					
 					JSONObject threadObj = data.optJSONObject("thread");
 					if (threadObj != null) {
 						feedThread.setThread_id(threadObj.optLong("tid", 0));
@@ -213,6 +224,11 @@ public class FeedThreadInfoController extends FeedCommonController {
 							if (postObj == null)
 								continue;
 							FeedPost feedPost = new FeedPost();
+							
+							if (replyFlg && totalPage == page && i == posts.length() - 1) {
+								feedPost.setLastPositionFlg(true);	
+							}
+							
 							feedPost.setPost_id(postObj.optLong("pid", 0));
 							feedPost.setContent(replaceEmoji(postObj.optString("content", "")));
 							feedPost.setHtmlContent(replaceEmoji(postObj.optString("html_content", "")));
@@ -403,7 +419,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 			out.print(json);
 			out.flush();
 			out.close();
-			
 			return null;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.replyPost throw an error.", e);
@@ -639,7 +654,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "award.json")
-	public String award(@RequestParam("uid") long uid, @RequestParam("coin") int coin, 
+	public String award(@RequestParam("uid") long uid, @RequestParam("coin") int coin, @RequestParam("reason") String reason,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			JSONObject postData = new JSONObject();
@@ -650,6 +665,35 @@ public class FeedThreadInfoController extends FeedCommonController {
 			postData.put("reward", awardJson);
 			
 			JSONObject json = postHttpInfo(getViperAwardUrl(), postData, request);
+			
+			//奖励成功后推送消息
+			if (null != json && 0 == json.optInt("code")) {
+				UserInfo userInfo = getUserInfo(request);
+				String title = "您被" + userInfo.getNickname() + "奖励" + coin + "魔币";
+				String detail = "您被" + userInfo.getNickname() + "奖励" + coin + "魔币，理由：" + reason;
+				//用户信息
+				JSONObject postDataAward = new JSONObject();
+				postDataAward.put("act", "push_sys_msg");
+				postDataAward.put("uid_list", Arrays.asList(uid));
+				postDataAward.put("is_show_notify", true);
+				postDataAward.put("click_act", "");
+				
+				JSONObject msgJson = new JSONObject();
+				msgJson.put("msg_type", 1);
+				msgJson.put("msg_category", "post_award");
+				
+				JSONObject contentJson = new JSONObject();
+				contentJson.put("title", title);
+				contentJson.put("detail", detail);
+				contentJson.put("icon", "");
+				
+				msgJson.put("content", contentJson);
+				postDataAward.put("msg", msgJson);
+				
+				postHttpInfo(getUserNoticeUrl().concat(Constant.USER_NOTICE_URL), postDataAward, request);
+				
+				LogConsole.log("postDataAward:" + postDataAward);
+			}
 			
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
@@ -701,12 +745,25 @@ public class FeedThreadInfoController extends FeedCommonController {
 			
 			JSONObject json = postHttpInfo(getSendReplyUrl(), postData, request);
 			
+			int total = 0;
+			if (null != json && 0 == json.optInt("code")) {
+				total = json.optJSONObject("data").optInt("total");
+			}
+			JSONObject returnJson = new JSONObject();
+			if (null != json) {
+				returnJson.put("code", json.optInt("code"));
+				returnJson.put("message", json.optInt("message"));
+			}
+			
+			returnJson.put("totalPages", Tools.editTotalPageNumber(total));
+			
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter out = response.getWriter();
-			out.print(json);
+			out.print(returnJson);
 			out.flush();
 			out.close();
+			LogConsole.log("returnJdon:" + returnJson);
 			return null;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.sendReply throw an error.", e);

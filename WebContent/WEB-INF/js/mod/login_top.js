@@ -36,7 +36,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		hideDom:".no-login",//隐藏用户名div
 		userInfo:"user-info"//用户信息
 	}
-
+	var curTitle = document.title;//头部新消息
 
 	
 	//显示登录状态
@@ -154,7 +154,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 	//消息通知
 	function getNotice(){
 		var newsTimer=null;
-		var curTitle = document.title;
+		
 		var isNews = false;
 		$.ajax({
 		    url:getUserNotice,
@@ -166,15 +166,15 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		    	if(res && res.code==0){
 
 		    		//if(res.data.sys_message.unread_count>0 || res.data.reply.unread_count>0 || res.data.recommend.unread_count>0){
-		    		if(res.data.sys_message.unread_count>0){
-				    			
+		    		if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
+				    	
 		    			$("#userName").find(".icon-red").show();
 //		    			if(res.data.reply.unread_count>0){
 //		    				$(".header .zj").find(".icon-red").show();
 //		    			}
-		    			if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0){
+		    			//if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
 		    				$(".header .msg").find(".icon-red").show();
-		    			}
+		    			//}
 		    			var docTitle = '[新消息] '+curTitle;
 		    			document.title=docTitle;
 		    			isNews=true;

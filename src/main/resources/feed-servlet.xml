@@ -76,6 +76,9 @@
 	        <bean class="com.mofang.feedweb.interceptor.LoginInterceptor"/>  
 	    </mvc:interceptor>  
 	</mvc:interceptors>   -->
+	<mvc:interceptors>  
+    	<bean class="com.mofang.feedweb.interceptor.UrlRedirectInterceptor"/>  
+    </mvc:interceptors> 
 
     
 </beans>
