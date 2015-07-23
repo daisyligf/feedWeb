@@ -332,7 +332,7 @@
                         {{#each this}}
                         <dl class="clearfix">
                             <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.user_id}}" target="_blank"><img src="{{avatar}}" alt=""></a></dt>
-                            <dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.user_id}}" target="_blank">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{content}}</dd>
+                            <dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid={{user.user_id}}" target="_blank">{{nickname}}:</a>&nbsp;&nbsp;&nbsp; {{{content}}}</dd>
                             <dd class="autor">{{timeformat create_time}}        <a href="javascript:;" class="dianping" data-name="{{nickname}}" data-uid="{{uid}}" data-tid="{{tid}}">回复</a></dd>
                         </dl>
                         {{/each}} 

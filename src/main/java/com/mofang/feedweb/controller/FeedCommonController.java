@@ -310,8 +310,8 @@ public class FeedCommonController {
 
 		for (String key : emojiMap.keySet()) {
 			String value = emojiMap.get(key);
-			content = content.replace("[" + key + "]", "<img src=" + value
-					+ " alt=" + value + " class='emoji'>");
+			content = content.replace("[" + key + "]", "<img src=\"" + value
+					+ "\" alt=" + value + " class='emoji'>");
 		}
 		
 		// 替换app表情
@@ -319,8 +319,8 @@ public class FeedCommonController {
 		
 		for (String key : emojiMapApp.keySet()) {
 			String value = emojiMapApp.get(key);
-			content = content.replace("\\" + key, "<img src=" + value
-					+ " alt=" + value + " class='emoji_demon'>");
+			content = content.replace("\\" + key, "<img src=\"" + value
+					+ "\" alt=\"" + value + "\" class='emoji_demon'>");
 		}
 		
 		return content;
