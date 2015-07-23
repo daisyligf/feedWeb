@@ -91,14 +91,14 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 			String[] ids = strRight.split("-");
 			if (ids.length == 1) {
 				int forumId = Integer.valueOf(ids[0]);
-				response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum_content?fid=" + forumId);
-				LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum_content?fid=" + forumId);
+				response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/1/0.html");
+				LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/1/0.html");
 				return false;
 			} else if (ids.length == 2) {
 				int forumId = Integer.valueOf(ids[0]);
 				int currentPage = Integer.valueOf(ids[1]);
-				response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum_content?currentPage=" + currentPage + "&fid=" + forumId + "&type=0&timeType=0&tag_id=0");
-				LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum_content?currentPage=" + currentPage + "&fid=" + forumId + "&type=0&timeType=0&tag_id=0");
+				response.sendRedirect(CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/" + currentPage + "/0.html");
+				LogConsole.log("老版版块RedirectURL:" + CommonUrl.bbsHomeUrl + "/forum/" + forumId + "/0/0/" + currentPage + "/0.html");
 				return false;
 			}
 		}
