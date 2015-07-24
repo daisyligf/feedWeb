@@ -515,11 +515,11 @@
         </div>
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">
-            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
         </div>
         <!-- 弹出框插件结束 -->
     </div>
