@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
 
             <div class="nav clearfix">
@@ -30,7 +31,7 @@
                     
                     <!-- 登陆状态 -->
                     <div class="no-login">
-                    	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="./img/icon/load.png"></a>
+                    	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="<%=CommonUrl.baseUrl%>/img/icon/load.png"></a>
                     	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="no-login-login">登录</a> | <a href="<%=UserCenter.baseUrl %>/home/account/index" class="no-login-reg">注册</a>
                     </div>
                     
