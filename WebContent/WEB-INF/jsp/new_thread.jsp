@@ -202,7 +202,7 @@
                 <div class="sub clearfix">
                     <input type="text" class="code-text">
                    <!--  <img src="http://u.mofang.com/captcha/captcha" alt="" class="code"> -->
-					<img src="generageCode" alt="" class="code">
+					<img src="<%=CommonUrl.baseUrl%>/generageCode" alt="" class="code">
                     <input type="button" class="submit reply-submit" value="发表帖子">
                     <span class="word-count">还可以输入5000字</span>
                 </div>
