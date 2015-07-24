@@ -20,7 +20,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
     //var getUrl = "";//url路径示范
     var getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
-    var getCheckCode = "checkCode";//验证码校验
+    var getCheckCode = c.config.baseUrl + "/checkCode";//验证码校验
     var codeUrl = c.config.baseUrl + "/generageCode";//验证码url
     //var postUrl = "";//发帖
     //var relayPostUrl = "";//回复帖子
