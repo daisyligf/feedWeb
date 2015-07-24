@@ -367,7 +367,7 @@
            </div>
            <!-- 综合专区结束 -->
            <!-- 热门游戏开始 -->
-           <div class="h2">热门游戏 <a target="_blank" href="forumList?forumType=1">更多 ></a></div>
+           <div class="h2">热门游戏 <a target="_blank" href="<%=CommonUrl.baseUrl %>/forumList/1/1/1.html">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
@@ -605,7 +605,7 @@
            </div>
            <!-- 热门游戏结束 -->
           	<!-- 新游推荐开始 -->
-           <div class="h2">新游推荐 <a target="_blank" href="forumList?forumType=2">更多 ></a></div>
+           <div class="h2">新游推荐 <a target="_blank" href="<%=CommonUrl.baseUrl %>/forumList/1/2/1.html">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">

@@ -32,14 +32,14 @@
     <c:if test="${forumType=='2'}">
     <title>新游推荐-魔方论坛</title>
     </c:if>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/channel.css">
-    <script src="./js/sea.js"></script>
-    <script src="./js/sea-config.js"></script>
-    <script src="./js/bbs-config.js"></script>
-    <script src="js/mod/common.js"></script>
+    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/common.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/channel.css">
+    <script src="<%=CommonUrl.baseUrl%>/js/sea.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/sea-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/bbs-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="./js/loader/dd_belatedpng.js"></script>
@@ -64,8 +64,8 @@
                 <div class="nav-wap-left">
                   <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
                   <p class="nav-info">
-                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
-                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl%>">魔方首页</a>
                   </p>
                 </div>
                   <div class="wap-nav-text">
@@ -87,43 +87,43 @@
            </c:if>
            <div class="channel-list">
            <c:if test="${letterGroup=='1'}">
-           		<div class="col-xs-2 active" ><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}" style=text-decoration:none>ABCDE</a></div>
+           		<div class="col-xs-2 active" ><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/1.html" style=text-decoration:none>ABCDE</a></div>
            </c:if>  
            <c:if test="${letterGroup !='1'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=1&currentPage=1&forumType=${forumType}" style=text-decoration:none>ABCDE</a></div>
+           		<div class="col-xs-2"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/1.html" style=text-decoration:none>ABCDE</a></div>
            </c:if>
            <c:if test="${letterGroup =='2'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}" style=text-decoration:none>FGHIJ</a></div>
+           		<div class="col-xs-2 active"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/2.html" style=text-decoration:none>FGHIJ</a></div>
            </c:if>
            <c:if test="${letterGroup !='2'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=2&currentPage=1&forumType=${forumType}" style=text-decoration:none>FGHIJ</a></div>
+           		<div class="col-xs-2"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/2.html" style=text-decoration:none>FGHIJ</a></div>
            </c:if>
            <c:if test="${letterGroup =='3'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}" style=text-decoration:none>KLMNO</a></div>
+           		<div class="col-xs-2 active"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/3.html" style=text-decoration:none>KLMNO</a></div>
            </c:if>
            <c:if test="${letterGroup !='3'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=3&currentPage=1&forumType=${forumType}" style=text-decoration:none>KLMNO</a></div>
+           		<div class="col-xs-2"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/3.html" style=text-decoration:none>KLMNO</a></div>
            </c:if>
            <c:if test="${letterGroup =='4'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}" style=text-decoration:none>PQRST</a></div>
+           		<div class="col-xs-2 active"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/4.html" style=text-decoration:none>PQRST</a></div>
            </c:if>   
             <c:if test="${letterGroup !='4'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=4&currentPage=1&forumType=${forumType}" style=text-decoration:none>PQRST</a></div>
+           		<div class="col-xs-2"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/4.html" style=text-decoration:none>PQRST</a></div>
            </c:if>   
            <c:if test="${letterGroup =='5'}">
-           		<div class="col-xs-2 active"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}" style=text-decoration:none>WXYZ</a></div>
+           		<div class="col-xs-2 active"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/5.html" style=text-decoration:none>WXYZ</a></div>
            </c:if>
             <c:if test="${letterGroup !='5'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=5&currentPage=1&forumType=${forumType}" style=text-decoration:none>WXYZ</a></div>
+           		<div class="col-xs-2"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/5.html" style=text-decoration:none>WXYZ</a></div>
            </c:if>
            <c:if test="${letterGroup =='6'}">
-               <div class="col-xs-2 active"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}" style=text-decoration:none>#</a></div>
+               <div class="col-xs-2 active"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/6.html" style=text-decoration:none>#</a></div>
            </c:if>
            <c:if test="${letterGroup !='6'}">
-           		<div class="col-xs-2"><a href="forumList?letterGroup=6&currentPage=1&forumType=${forumType}" style=text-decoration:none>#</a></div>
+           		<div class="col-xs-2"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/6.html" style=text-decoration:none>#</a></div>
            </c:if>
-           <input type="hidden" id="forumType"   name="forumType" value="${forumType }">
-           <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup }">
+           <input type="hidden" id="forumType"   name="forumType" value="${forumType}">
+           <input type="hidden" id="letterGroup"   name="letterGroup" value="${letterGroup}">
            </div>
            <div class="h2-con clearfix container">
            <!-- 内容循环开始 -->
@@ -132,7 +132,7 @@
 					<c:forEach items="${listInfo}" var="forum" varStatus="vs">						
 			               <div class="col-xs-3 col-md-4  col-sm-6">
 			                   <dl class="clearfix">
-			                   	   <a href="forum/${forum.forumId}/0/0/1/0.html">
+			                   	   <a href="<%=CommonUrl.baseUrl%>/forum/${forum.forumId}/0/0/1/0.html">
 				                       <dt><img src="${forum.icon}" alt=""></dt>
 				                       <dd><span>${forum.forumName}</span></dd>
 				                       <c:if test="${forum.todayThreads > 0}">
@@ -184,7 +184,7 @@
                 
 				<c:choose>
 				<c:when test="${currentPage != 1}">
-					<li class="prev"><a href="forumList?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+					<li class="prev"><a href="<%=CommonUrl.baseUrl%>/forumList/${currentPage-1}/${forumType}/${letterGroup}.html">上一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -196,27 +196,27 @@
 				<c:choose>
 				<c:when test="${item == currentPage}">
 				    <c:if test="${item == 0}">
-					<li class="active"><a href="forumList?currentPage=1&forumType=${forumType}&letterGroup=${letterGroup}" >首页</a></li>
+					<li class="active"><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/${letterGroup}.html" >首页</a></li>
 					</c:if>
 					<c:if test="${item == -1}">
-					<li class="active"><a href="forumList?currentPage=${totalPages}&forumType=${forumType}&letterGroup=${letterGroup}" >尾页</a></li>
+					<li class="active"><a href="<%=CommonUrl.baseUrl%>/forumList/${totalPages}/${forumType}/${letterGroup}.html" >尾页</a></li>
 					</c:if>
 					<c:if test="${item != 0}">
 					  	<c:if test="${item != -1}">
-						<li class="active"><a href="forumList?currentPage=${item }&forumType=${forumType}&letterGroup=${letterGroup}" >${item}</a></li>
+						<li class="active"><a href="<%=CommonUrl.baseUrl%>/forumList/${item}/${forumType}/${letterGroup}.html" >${item}</a></li>
 						</c:if>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${item == 0}">
-					<li><a href="forumList?currentPage=1&forumType=${forumType}&letterGroup=${letterGroup}">首页</a></li>
+					<li><a href="<%=CommonUrl.baseUrl%>/forumList/1/${forumType}/${letterGroup}.html">首页</a></li>
 					</c:if>
 					<c:if test="${item == -1}">
-					<li><a href="forumList?currentPage=${totalPages}&forumType=${forumType}&letterGroup=${letterGroup}">尾页</a></li>
+					<li><a href="<%=CommonUrl.baseUrl%>forumList/${totalPages}/${forumType}/${letterGroup}.html">尾页</a></li>
 					</c:if>
 					<c:if test="${item != 0}">
 					  	<c:if test="${item != -1}">
-						<li><a href="forumList?currentPage=${item}&forumType=${forumType}&letterGroup=${letterGroup}">${item}</a></li>
+						<li><a href="<%=CommonUrl.baseUrl%>/forumList/${item}/${forumType}/${letterGroup}.html">${item}</a></li>
 						</c:if>
 					</c:if>
 				</c:otherwise>
@@ -226,7 +226,7 @@
 				<!-- 下一页 按钮 -->
 				<c:choose>
 				<c:when test="${currentPage != totalPages}">
-					<li class="next"><a href="forumList?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+					<li class="next"><a href="<%=CommonUrl.baseUrl%>/forumList/${currentPage+1}/${forumType}/${letterGroup}.html">下一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -240,7 +240,7 @@
                 
 				<c:choose>
 				<c:when test="${currentPage != 1}">
-					<li class="prev"><a href="forumList?currentPage=${currentPage-1}&forumType=${forumType}&letterGroup=${letterGroup}">上一页</a></li>
+					<li class="prev"><a href="<%=CommonUrl.baseUrl%>/forumList/${currentPage-1}/${forumType}/${letterGroup}.html">上一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -252,7 +252,7 @@
 				<!-- 下一页 按钮 -->
 				<c:choose>
 				<c:when test="${currentPage != totalPages}">
-					<li class="next"><a href="forumList?currentPage=${currentPage+1}&forumType=${forumType}&letterGroup=${letterGroup}">下一页</a></li>
+					<li class="next"><a href="<%=CommonUrl.baseUrl%>/forumList/${currentPage+1}/${forumType}/${letterGroup}.html">下一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
