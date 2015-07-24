@@ -427,10 +427,10 @@
 		                            	<c:set var="i" value="1"/>
 		                            	<c:forEach var="newGame" items="${newGameList}">
 		                            	<c:if test="${i <= 3}">
-		                           		<li class="clearfix"><span class="num num-color">0${i}</span><a href="forum/${newGame.forum_id}/0/0/1/0.html" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
+		                           		<li class="clearfix"><span class="num num-color">0${i}</span><a href="<%=CommonUrl.baseUrl%>/forum/${newGame.forum_id}/0/0/1/0.html" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
 		                           		</c:if>
 		                           		<c:if test="${i >= 4}">
-		                           		<li class="clearfix"><span class="num">0${i}</span><a href="forum/${newGame.forum_id}/0/0/1/0.html" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
+		                           		<li class="clearfix"><span class="num">0${i}</span><a href="<%=CommonUrl.baseUrl%>/forum/${newGame.forum_id}/0/0/1/0.html" class="title"><img src="${newGame.icon}" alt="">${newGame.forum_name}</a>
 		                           		</c:if>
 		                           		<span class="rank">
 		                                     <c:if test="${newGame.up_down==1}">
