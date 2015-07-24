@@ -17,7 +17,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 
 	
 	var getFloorComUrl = c.config.baseUrl + "/comment_list.json"; //获取楼层评论数据
-	var setAddPostUrl = "send_reply.json";//回复帖子接口
+	var setAddPostUrl = c.config.baseUrl + "/send_reply.json";//回复帖子接口
 	var setReplyPostUrl = "reply_post.json"; //回复楼层数据
 	var setDelFloorUrl = "del_floor.json"; //删除楼层接口
 	var setPraThreadUrl = "recommend_thread.json"; // 点赞帖子接口
