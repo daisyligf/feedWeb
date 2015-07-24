@@ -89,10 +89,10 @@
 
                 <c:choose>
                    	<c:when test="${type==1 }">
-                   	<a href="thread/${feedThread.thread_id}/1/0/0.html" class="nav-wap-floor">全部</a>
+                   	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/0/0.html" class="nav-wap-floor">全部</a>
                    	</c:when>
                    	<c:otherwise>
-                   	<a href="thread/${feedThread.thread_id}/1/1/0.html" class="nav-wap-floor">楼主</a>
+                   	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/1/0.html" class="nav-wap-floor">楼主</a>
                    	</c:otherwise>
                    </c:choose>                
                 
@@ -137,27 +137,27 @@
 				<c:choose>
 				<c:when test="${item == currentPage}">
 					<c:if test="${item == 0}">
-					<li class="active"><a href="thread/${feedThread.thread_id}/1/${type}/0.html" >首页</a></li>
+					<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html" >首页</a></li>
 					</c:if>
 					<c:if test="${item == -1}">
-					<li class="active"><a href="thread/${feedThread.thread_id}/${totalPages}/${type}/0.html" >尾页</a></li>
+					<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html" >尾页</a></li>
 					</c:if>
 					<c:if test="${item != 0}">
 					  	<c:if test="${item != -1}">
-						<li class="active"><a href="thread/${feedThread.thread_id}/${item}/${type}/0.html" >${item}</a></li>
+						<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html" >${item}</a></li>
 						</c:if>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 				<c:if test="${item == 0}">
-					<li><a href="thread/${feedThread.thread_id}/1/${type}/0.html">首页</a></li>
+					<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html">首页</a></li>
 				</c:if>
 				<c:if test="${item == -1}">
-					<li><a href="thread/${feedThread.thread_id}/${totalPages}/${type}/0.html">尾页</a></li>
+					<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html">尾页</a></li>
 				</c:if>
 				<c:if test="${item != 0}">
 					<c:if test="${item != -1}">
-						<li><a href="thread/${feedThread.thread_id}/${item}/${type}/0.html">${item}</a></li>
+						<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html">${item}</a></li>
 					</c:if>
 				</c:if>
 				</c:otherwise>
@@ -167,7 +167,7 @@
 				<!-- 下一页 按钮 -->
 				<c:choose>
 				<c:when test="${currentPage != totalPages}">
-					<li class="next"><a href="thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
+					<li class="next"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -213,7 +213,7 @@
                     <div class="lum-list libao-list">
                        <ul>
                        	   <c:forEach var="highThread" items="${highestList }">
-                       	   <li><s class="black"></s><a href="thread/${highThread.thread_id}/1/0/0.html">${fn:substring(highThread.subject, 0, 16)}
+                       	   <li><s class="black"></s><a href="<%=CommonUrl.baseUrl%>/thread/${highThread.thread_id}/1/0/0.html">${fn:substring(highThread.subject, 0, 16)}
                        	   <c:if test="${fn:length(highThread.subject) > 16}">
                        	   ...
                        	   </c:if>
@@ -238,11 +238,11 @@
                      <c:choose>
                         	<c:when test="${type==1 }">
                         	<!--  <a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>-->
-                        	<a href="thread/${feedThread.thread_id}/1/0/0.html" class="landord">全部</a>
+                        	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/0/0.html" class="landord">全部</a>
                         	</c:when>
                         	<c:otherwise>
                         	<!--<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>-->
-                        	<a href="thread/${feedThread.thread_id}/1/1/0.html" class="landord">只看楼主</a>
+                        	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/1/0.html" class="landord">只看楼主</a>
                         	</c:otherwise>
                         </c:choose>
                         
@@ -453,7 +453,7 @@
                         <ul class="page-pc clearfix">
 						<c:choose>
 						<c:when test="${currentPage != 1}">
-							<li class="prev"><a href="thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
+							<li class="prev"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -465,27 +465,27 @@
 						<c:choose>
 						<c:when test="${item == currentPage}">
 						 <c:if test="${item == 0}">
-							<li class="active"><a href="thread/${feedThread.thread_id}/1/${type}/0.html" >首页</a></li>
+							<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html" >首页</a></li>
 						</c:if>
 						 <c:if test="${item == -1}">
-							<li class="active"><a href="thread/${feedThread.thread_id}/${totalPages}/${type}/0.html" >尾页</a></li>
+							<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html" >尾页</a></li>
 						</c:if>
 						 <c:if test="${item != 0}">
 						 	<c:if test="${item != -1}">
-							<li class="active"><a href="thread/${feedThread.thread_id}/${item}/${type}/0.html" >${item}</a></li>
+							<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html" >${item}</a></li>
 							</c:if>
 						</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${item == 0}">
-								<li><a href="thread/${feedThread.thread_id}/1/${type}/0.html">首页</a></li>
+								<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html">首页</a></li>
 							</c:if>
 							<c:if test="${item == -1}">
-								<li><a href="thread/${feedThread.thread_id}/${totalPages}/${type}/0.html">尾页</a></li>
+								<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html">尾页</a></li>
 							</c:if>
 							<c:if test="${item != 0}">
 								<c:if test="${item != -1}">
-									<li><a href="thread/${feedThread.thread_id}/${item}/${type}/0.html">${item}</a></li>
+									<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html">${item}</a></li>
 								</c:if>
 							</c:if>
 						</c:otherwise>
@@ -495,7 +495,7 @@
 						<!-- 下一页 按钮 -->
 						<c:choose>
 						<c:when test="${currentPage != totalPages}">
-							<li class="next"><a href="thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
+							<li class="next"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -506,7 +506,7 @@
                 	  <ul class="page-mobile clearfix">
 						<c:choose>
 						<c:when test="${currentPage != 1}">
-							<li class="prev"><a href="thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
+							<li class="prev"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -518,7 +518,7 @@
 						<!-- 下一页 按钮 -->
 						<c:choose>
 						<c:when test="${currentPage != totalPages}">
-							<li class="next"><a href="thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
+							<li class="next"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -550,7 +550,7 @@
                            <dt></dt>
                            <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
                            <dd>
-                               <div class="editer" data-maxurl="thread/${feedThread.thread_id}/${totalPages}/${type}/1.html">
+                               <div class="editer" data-maxurl="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/1.html">
                                    <div class="editor-textarea">
                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
                                    </div>
