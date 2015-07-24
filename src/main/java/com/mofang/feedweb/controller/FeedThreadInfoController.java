@@ -53,7 +53,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 	@Autowired
 	private UserComponent userComp;
 	
-	@RequestMapping(value = "/thread/{threadId}/{currPage}/{typeString}/{replyflg}.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/thread/{threadId}/{currentPage}/{type}/{replyflg}.html", method = RequestMethod.GET)
 	public ModelAndView getThreadInfo(HttpServletRequest request,
 			@PathVariable(value = "threadId") long threadId,
 			@PathVariable(value = "currentPage") int currPage,
