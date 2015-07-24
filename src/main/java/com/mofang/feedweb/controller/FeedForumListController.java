@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,27 +26,30 @@ public class FeedForumListController extends FeedCommonController {
 	
 	
 	//版块列表
-	@RequestMapping(value = "/forumList")
-	public ModelAndView forumList(HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/forumList/{currentPage}/{forumType}/{letterGroup}.html")
+	public ModelAndView forumList(HttpServletRequest request,
+			@PathVariable(value = "currentPage") int currentPage,
+			@PathVariable(value = "forumType") int forumType,
+			@PathVariable(value = "letterGroup") int letterGroup) throws Exception {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
-			int letterGroup = 1;
-			if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
-				letterGroup = Integer.valueOf(request.getParameter("letterGroup"));
-			}
-			
-			int currentPage = 1;
-			if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
-				currentPage = Integer.valueOf(
-						Tools.replaceBlank(request.getParameter("currentPage")));
-			}
-			int forumType = 1;//热门游戏  ：1  新游推荐 ：2
-			if (!StringUtil.isNullOrEmpty(request.getParameter("forumType"))) {
-				forumType = Integer.valueOf(
-						Tools.replaceBlank(request.getParameter("forumType")));
-			}
+//			int letterGroup = 1;
+//			if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
+//				letterGroup = Integer.valueOf(request.getParameter("letterGroup"));
+//			}
+//			
+//			int currentPage = 1;
+//			if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
+//				currentPage = Integer.valueOf(
+//						Tools.replaceBlank(request.getParameter("currentPage")));
+//			}
+//			int forumType = 1;//热门游戏  ：1  新游推荐 ：2
+//			if (!StringUtil.isNullOrEmpty(request.getParameter("forumType"))) {
+//				forumType = Integer.valueOf(
+//						Tools.replaceBlank(request.getParameter("forumType")));
+//			}
 			
 			//获取版块list
 			String getLetterGroup = "";
