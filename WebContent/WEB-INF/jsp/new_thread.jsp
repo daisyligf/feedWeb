@@ -189,7 +189,7 @@
                                 <script type="text/plain" id="myEditor" style="height:240px;">${threadInfo.htmlContent }</script>
                             </div>
                         </dd>
-                        <form id="editor-form" data-form="post" data-tid="${threadInfo.thread_id }" action="newThread" method="post" ENCTYPE="multipart/form-data">
+                        <form id="editor-form" data-form="post" data-tid="${threadInfo.thread_id }" action="<%=CommonUrl.baseUrl%>/newThread" method="post" ENCTYPE="multipart/form-data">
                             <input type="hidden" name="fid" class="editor-fid" value="${fid }"/>
                             <input type="hidden" name="tid"  class="editor-tid" value="${threadInfo.thread_id }">
                             <input type="hidden" name="subject"  class="editor-title" value="${threadInfo.subject }">
