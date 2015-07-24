@@ -3,19 +3,20 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','loginUserUrl'],function(require, exports, module) {
+define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','loginUserUrl','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
 	require("jquery/jquery-pop");//弹出框插件
 	require("loginUserUrl");//跳转登录路径
 	var Handlebars = require("handlebars");//handlebars模板引擎获取登录状态
+	var c = require("config");
 
 	var USE_LOCAL_DATA = 0;//本地数据
 	var USE_TEST_DATA = 0;//测试数据
 
 	
-	var getFloorComUrl = "comment_list.json"; //获取楼层评论数据
+	var getFloorComUrl = c.config.baseUrl + "/comment_list.json"; //获取楼层评论数据
 	var setAddPostUrl = "send_reply.json";//回复帖子接口
 	var setReplyPostUrl = "reply_post.json"; //回复楼层数据
 	var setDelFloorUrl = "del_floor.json"; //删除楼层接口
