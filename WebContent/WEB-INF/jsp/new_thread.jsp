@@ -91,7 +91,7 @@
         <!-- 搜索开始 -->
          <div class="search">
         <div class="bbs-logo">
-           <a href="index"><img src="<%=CommonUrl.baseUrl%>/img/icon/bbs_icon.png" alt=""></a>
+           <a href="<%=CommonUrl.baseUrl%>/index"><img src="<%=CommonUrl.baseUrl%>/img/icon/bbs_icon.png" alt=""></a>
         </div>
         </div>
         <!-- 搜索结束 -->
