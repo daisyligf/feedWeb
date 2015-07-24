@@ -5,7 +5,8 @@
  */
 define('config',['jquery'],function(require, exports, module) {
 	var config = {
-			"userInfoUrl":"http://u.mofang.com"
+			"userInfoUrl":"http://u.mofang.com",
+            "baseUrl":"http://bbs.mofang.com"
 	}
 	
 	exports.config = config;
