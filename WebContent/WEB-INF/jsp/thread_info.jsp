@@ -35,25 +35,25 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>${feedThread.subject}-${feedForum.forum_name}-魔方论坛</title>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
 
-    <link rel="stylesheet" href="js/editor/css/umeditor.css">
-    <link rel="stylesheet" href="js/editor/css/fixeditor.css">
-    <link rel="stylesheet" href="js/editor/emotion.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/css/umeditor.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/css/fixeditor.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/emotion.css">
 
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/article_article.css">
-    <script src="js/sea.js"></script>
-    <script src="js/sea-config.js"></script>
-    <script src="js/bbs-config.js"></script>
-    <script src="js/mod/common.js"></script>
-    <script src="js/editor/js/jquery.min.js"></script>
-    <script src="js/editor/js/umeditor.config.js"></script>
-    <script src="js/editor/js/umeditor.js"></script>
-    <script src="js/editor/lang/zh-cn/zh-cn.js"></script>
-    <script src="js/editor/btn.js"></script>
-    <script src="js/editor/feed-emotion.js"></script>
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/common.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/article_article.css">
+    <script src="<%=CommonUrl.baseUrl%>/js/sea.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/sea-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/bbs-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/common.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/jquery.min.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/umeditor.config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/umeditor.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/lang/zh-cn/zh-cn.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/btn.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/feed-emotion.js"></script>
     
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
@@ -78,10 +78,10 @@
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
                   <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
-                  <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
+                  <a href="javascript:;" class="nav-wap-list"><img src="<%=CommonUrl.baseUrl%>/img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
-                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl%>">魔方首页</a>
                   </p>
                 </div>
                 <div class="nav-wap-right">
@@ -300,7 +300,7 @@
                     	
                     	<c:if test="${fn:length(postList[0].pic) > 0 }">
                     		<c:forEach var="pic" items="${postList[0].pic }">
-                    			<img src="${pic }"/>
+                    			<img src="${pic}"/>
                     		</c:forEach>
                     	</c:if>
                     </div>
@@ -364,7 +364,7 @@
                     </c:if>
                         <p class="con-list-left">
                         	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">
-                            	<img src="${feedPost.postUserInfo.avatar }" alt="">
+                            	<img src="${feedPost.postUserInfo.avatar}" alt="">
                             </a>
                         </p>
                         <div class="con-list-right">
@@ -395,7 +395,7 @@
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>
                                 <c:forEach var="pic" items="${feedPost.pic }">
-                                	<img src="${pic }"/>
+                                	<img src="${pic}"/>
                                 </c:forEach>
                                 </dd>
                                 <dd class="clearfix">
@@ -537,11 +537,11 @@
                        <p class="reply-head">
                        <c:choose>
                        	<c:when test="${loginUser.avatar == null}">
-                       	<a href="#"><img src="img/default.png" alt="">
+                       	<a href="#"><img src="<%=CommonUrl.baseUrl%>/img/default.png" alt="">
                        	</a>
                        	</c:when>
                        	<c:otherwise>
-                       	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${loginUser.userId}" target="_blank"><img src="${loginUser.avatar }" alt="">
+                       	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${loginUser.userId}" target="_blank"><img src="${loginUser.avatar}" alt="">
                        	</a>
                        	</c:otherwise>
                        </c:choose>
@@ -593,7 +593,7 @@
         <div class="pop pop-post-delete">
             <h2 class="clearfix">
                 <span>
-                    <img src="./img/icon/pop_close.png" class="close">
+                    <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close">
                 </span>帖子管理操作
             </h2>
             <div class="post-delete-reason">
@@ -618,7 +618,7 @@
         <div class="pop pop-post-reward">
             <h2 class="clearfix">
                 <span>
-                    <img src="./img/icon/pop_close.png" class="close">
+                    <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close">
                 </span>帖子/楼层管理操作
             </h2>
             <div class="post-delete-reason">
@@ -636,7 +636,7 @@
         </div>
         <!--未登录-->
         <div class="pop pop-play pop-login">
-            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">未登录？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -645,7 +645,7 @@
         </div>
         <!-- 发帖失败 -->
         <div class="pop pop-play pop-warn">
-            <p class="pop-play-close"><img src="./img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="稍后再试">
@@ -654,11 +654,11 @@
         </div>
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="./img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">
-            <img src="./img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
         </div>
         <!-- 弹出框结束 -->
     </div>
@@ -669,7 +669,7 @@
 	 	<a href="javascript:;" class="scroll-top">顶部</a>
 	 </div>
 	
-    <script src="js/mod/article_article.js"></script>
-    <script src="js/mod/comment.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/article_article.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/comment.js"></script>
 </body>
 </html>

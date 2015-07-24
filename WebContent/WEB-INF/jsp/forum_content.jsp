@@ -40,14 +40,14 @@
      <c:if test="${feedForum.forum_id > 13}">
     <title>${feedForum.forum_name}官方合作论坛</title>
     </c:if>
-    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl %>/img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="<%=CommonUrl.baseUrl %>/css/base.css">
-    <link rel="stylesheet" href="<%=CommonUrl.baseUrl %>/css/common.css">
-    <link rel="stylesheet" href="<%=CommonUrl.baseUrl %>/css/add_list_article.css">
-    <script src="<%=CommonUrl.baseUrl %>/js/sea.js"></script>
-    <script src="<%=CommonUrl.baseUrl %>/js/sea-config.js"></script>
-    <script src="<%=CommonUrl.baseUrl %>/js/bbs-config.js"></script>
-    <script src="<%=CommonUrl.baseUrl %>/js/mod/common.js"></script>
+    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/common.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/add_list_article.css">
+    <script src="<%=CommonUrl.baseUrl%>/js/sea.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/sea-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/bbs-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/common.js"></script>
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
         <script src="js/loader/dd_belatedpng.js"></script>
@@ -70,14 +70,14 @@
             <jsp:include page="user_info.jsp" flush='true'/>
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
-                  <a href="javascript:;" class="nav-wap-list"><img src="<%=CommonUrl.baseUrl %>/img/icon/nav_three.png"></a>
+                  <a href="javascript:;" class="nav-wap-list"><img src="<%=CommonUrl.baseUrl%>/img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
-                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl%>">魔方首页</a>
                   </p>
                 </div>
                 <div class="nav-wap-right">
-                	<a target="_blank"  href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post get-post">发帖</a>
+                	<a target="_blank"  href="<%=CommonUrl.bbsHomeUrl%>/newThreadInit?fid=${feedForum.forum_id}" class="nav-wap-post get-post">发帖</a>
                 </div>
                   <!-- <div class="wap-logo">
                     帖子详情
@@ -104,7 +104,7 @@
                        <dd>帖子  ${feedForum.total_threads}</dd>
                     </dl>
                      
-                    <a target="_blank" data-href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" class="post get-post">发帖</a>
+                    <a target="_blank" data-href="<%=CommonUrl.bbsHomeUrl%>/newThreadInit?fid=${feedForum.forum_id}" href="<%=CommonUrl.bbsHomeUrl %>/newThreadInit?fid=${feedForum.forum_id}" class="post get-post">发帖</a>
                 </div>
             </div>
            <!-- 第一块内容top结束 -->
@@ -114,9 +114,9 @@
                 <div class="con-bot-left">
                     <div class="con-nav">
                         <div class="left">
-                            <a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/0.html" id="tag_all">综合</a>
+                            <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/0.html" id="tag_all">综合</a>
                             <c:forEach var="tag" items="${feedForum.tags}">
-                            	<a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id }.html">${tag.tag_name}</a>
+                            	<a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id }.html">${tag.tag_name}</a>
                             </c:forEach>
                             <input type="hidden" id="tag_id" value="${tag_id }"/>
                         </div>
@@ -128,14 +128,14 @@
                                 <c:if test="${type==0 }">
                                 <p>全部</p>
                                 <p class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/1/${timeType}/${currentPage}/${tag_id }.html">精华</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/1/${timeType}/${currentPage}/${tag_id }.html">精华</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${type ==1 }">
                                 <p>精华</p>
                                 <p class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/0/${timeType}/${currentPage}/${tag_id }.html">全部</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/0/${timeType}/${currentPage}/${tag_id }.html">全部</a>
                                 </p>
                                 </c:if>
                                 
@@ -155,14 +155,14 @@
                                 <c:if test="${timeType==0 }">
                                 <p id="reply_time">回复时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/1/${currentPage}/${tag_id }.html">发帖时间</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/1/${currentPage}/${tag_id }.html">发帖时间</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${timeType==1 }">
                                 <p id="reply_time">发帖时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type }/0/${currentPage}/${tag_id }.html">回复时间</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type }/0/${currentPage}/${tag_id }.html">回复时间</a>
                                 </p>
                                 </c:if>
                                
@@ -180,7 +180,7 @@
                     	<c:if test="${currentPage==1 }">
                     	<c:forEach var="topThread" items="${topThreadList}">
                         <dl class="clearfix">
-                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${topThread.user_id}" target="_blank"><img src="${topThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl%>/home/public/info?to_uid=${topThread.user_id}" target="_blank"><img src="${topThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title">
                                 <c:choose>
@@ -217,7 +217,7 @@
                     	</c:if>
                     	<c:forEach var="feedThread" items="${threadList}">
                         <dl class="clearfix">
-                            <dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedThread.user_id}" target="_blank"><img src="${feedThread.avatar}"alt=""></a></dt>
+                            <dt><a href="<%=UserCenter.baseUrl%>/home/public/info?to_uid=${feedThread.user_id}" target="_blank"><img src="${feedThread.avatar}"alt=""></a></dt>
                             <div class="infos">
                                 <dd class="title">
                                 <c:choose>
@@ -259,7 +259,7 @@
 			                
 							<c:choose>
 							<c:when test="${currentPage != 1}">
-								<li class="prev"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage-1}/${tag_id}.html">上一页</a></li>
+								<li class="prev"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage-1}/${tag_id}.html">上一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -271,27 +271,27 @@
 							<c:choose>
 							<c:when test="${item == currentPage}">
 								<c:if test="${item == 0}">
-								<li class="active"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/1/${tag_id}.html" >首页</a></li>
+								<li class="active"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/1/${tag_id}.html" >首页</a></li>
 								</c:if>
 								<c:if test="${item == -1}">
-								<li class="active"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${totalPages}/${tag_id}.html" >尾页</a></li>
+								<li class="active"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${totalPages}/${tag_id}.html" >尾页</a></li>
 								</c:if>
 								<c:if test="${item != 0}">
 					  				<c:if test="${item != -1}">
-									<li class="active"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${item}/${tag_id}.html" >${item}</a></li>
+									<li class="active"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${item}/${tag_id}.html" >${item}</a></li>
 									</c:if>
 								</c:if>
 							</c:when>
 							<c:otherwise>
 								<c:if test="${item == 0}">
-								<li><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/1/${tag_id}.html">首页</a></li>
+								<li><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/1/${tag_id}.html">首页</a></li>
 								</c:if>
 								<c:if test="${item == -1}">
-								<li><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${totalPages}/${tag_id}.html">尾页</a></li>
+								<li><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${totalPages}/${tag_id}.html">尾页</a></li>
 								</c:if>
 								<c:if test="${item != 0}">
 					  				<c:if test="${item != -1}">
-									<li><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${item}/${tag_id}.html">${item}</a></li>
+									<li><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${item}/${tag_id}.html">${item}</a></li>
 									</c:if>
 								</c:if>
 							</c:otherwise>
@@ -301,7 +301,7 @@
 							<!-- 下一页 按钮 -->
 							<c:choose>
 							<c:when test="${currentPage != totalPages}">
-								<li class="next"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.html">下一页</a></li>
+								<li class="next"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.html">下一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -329,7 +329,7 @@
 			                
 							<c:choose>
 							<c:when test="${currentPage != 1}">
-								<li class="prev"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage-1}/${tag_id }.html">上一页</a></li>
+								<li class="prev"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage-1}/${tag_id }.html">上一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -341,7 +341,7 @@
 							<!-- 下一页 按钮 -->
 							<c:choose>
 							<c:when test="${currentPage != totalPages}">
-								<li class="next"><a href="<%=CommonUrl.baseUrl %>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.html">下一页</a></li>
+								<li class="next"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.html">下一页</a></li>
 							</c:when>
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -387,8 +387,8 @@
                     <div class="lum-list">
                     	<c:forEach  var="roleInfo" items="${feedForum.roleList}">
                     		<dl>
-                            	<dt><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${roleInfo.roleId}" target="_blank"><img src="${roleInfo.icon}" alt=""></a></dt>
-                            	<dd><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${roleInfo.roleId}" target="_blank">${roleInfo.roleName}</a></dd>
+                            	<dt><a href="<%=UserCenter.baseUrl%>/home/public/info?to_uid=${roleInfo.roleId}" target="_blank"><img src="${roleInfo.icon}" alt=""></a></dt>
+                            	<dd><a href="<%=UserCenter.baseUrl%>/home/public/info?to_uid=${roleInfo.roleId}" target="_blank">${roleInfo.roleName}</a></dd>
                         	</dl> 
                     	</c:forEach>
                     	<c:if test="${fn:length(feedForum.roleList) <= 0}">
@@ -434,13 +434,13 @@
 		                           		</c:if>
 		                           		<span class="rank">
 		                                     <c:if test="${newGame.up_down==1}">
-		                                    	<img src="<%=CommonUrl.baseUrl %>/img/icon/up.png">
+		                                    	<img src="<%=CommonUrl.baseUrl%>/img/icon/up.png">
 		                                    </c:if>
 		                                    <c:if test="${newGame.up_down==0}">
-		                                    	<img src="<%=CommonUrl.baseUrl %>/img/icon/down.png">
+		                                    	<img src="<%=CommonUrl.baseUrl%>/img/icon/down.png">
 		                                    </c:if>
 		                                    <c:if test="${newGame.up_down==2}">
-		                                    	<img src="<%=CommonUrl.baseUrl %>/img/icon/level.png">
+		                                    	<img src="<%=CommonUrl.baseUrl%>/img/icon/level.png">
 		                                    </c:if>
 		                                </span>
 		                                </li>
@@ -497,7 +497,7 @@
         <!-- 遮罩层结束 -->
         <!-- 确定不玩？弹出框开始 -->
         <div class="pop pop-play pop-warn">
-            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl %>/img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -506,7 +506,7 @@
         </div>
         <!--未登录-->
         <div class="pop pop-play pop-login">
-            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl %>/img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -524,7 +524,7 @@
         <!-- 弹出框插件结束 -->
     </div>
     
-   <script src="<%=CommonUrl.baseUrl %>/js/mod/list_article.js"></script>
+   <script src="<%=CommonUrl.baseUrl%>/js/mod/list_article.js"></script>
 
    
 </body>
