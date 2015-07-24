@@ -46,8 +46,8 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 					if (threadId > 938054) {
 						threadId = threadId + 50000;
 					}
-					response.sendRedirect(CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
-					LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
+					response.sendRedirect(CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
+					LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
 					return false;
 					
 				} else if (ids.length > 2) {// [/p/352-888833-2.html]带版块ID和页码
@@ -58,11 +58,11 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 					
 					if (StringUtil.isInteger(ids[2])) {
 						int currentPage = Integer.valueOf(ids[2]);
-						response.sendRedirect(CommonUrl.baseUrl + "/thread_info?currentPage=" + currentPage + "&thread_id=" + threadId + "&type=0");
-						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread_info?currentPage=" + currentPage + "&thread_id=" + threadId + "&type=0");
+						response.sendRedirect(CommonUrl.baseUrl + "/thread/" + threadId + "/" + currentPage + "/0/0.html");
+						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread/" + threadId + "/" + currentPage + "/0/0.html");
 					} else {
-						response.sendRedirect(CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
-						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
+						response.sendRedirect(CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
+						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
 					}
 					return false;
 				}
@@ -80,8 +80,8 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 					if (threadId > 938054) {
 						threadId = threadId + 50000;
 					}
-					response.sendRedirect(CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
-					LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
+					response.sendRedirect(CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
+					LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
 					return false;
 				} else if (ids.length == 2) {// [/t/35222-2.html]带页码
 					long threadId = Long.valueOf(ids[0]);
@@ -90,11 +90,11 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 					}
 					if (StringUtil.isInteger(ids[1])) {
 						int currentPage = Integer.valueOf(ids[1]);
-						response.sendRedirect(CommonUrl.baseUrl + "/thread_info?currentPage=" + currentPage + "&thread_id=" + threadId + "&type=0");
-						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread_info?currentPage=" + currentPage + "&thread_id=" + threadId + "&type=0");
+						response.sendRedirect(CommonUrl.baseUrl + "/thread/" + threadId + "/" + currentPage + "/0/0.html");
+						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread/" + threadId + "/" + currentPage + "/0/0.html");
 					} else {
-						response.sendRedirect(CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
-						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread_info?thread_id=" + threadId);
+						response.sendRedirect(CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
+						LogConsole.log("帖子RedirectURL:" + CommonUrl.baseUrl + "/thread/" + threadId + "/1/0/0.html");
 					}
 					return false;
 				}
