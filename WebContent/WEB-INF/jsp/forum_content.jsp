@@ -185,10 +185,10 @@
                                 <dd class="title">
                                 <c:choose>
                                 	<c:when test="${topThread.isElite}">
-                                	<a href="thread/${topThread.thread_id}/1/0/0.html" target="_blank" class="add-a-hover">
+                                	<a href="<%=CommonUrl.baseUrl%>/thread/${topThread.thread_id}/1/0/0.html" target="_blank" class="add-a-hover">
                                 	</c:when>
                                 	<c:otherwise>
-                                	<a href="thread/${topThread.thread_id}/1/0/0.html" target="_blank" >
+                                	<a href="<%=CommonUrl.baseUrl%>/thread/${topThread.thread_id}/1/0/0.html" target="_blank" >
                                 	</c:otherwise>
                                 </c:choose>
                                 
@@ -222,10 +222,10 @@
                                 <dd class="title">
                                 <c:choose>
                                 	<c:when test="${feedThread.isElite}">
-                                	<a href="thread/${feedThread.thread_id}/1/0/0.html" target="_blank" class="add-a-hover">
+                                	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/0/0.html" target="_blank" class="add-a-hover">
                                 	</c:when>
                                 	<c:otherwise>
-                                	<a href="thread_/${feedThread.thread_id}/1/0/0.html" target="_blank" >
+                                	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/0/0.html" target="_blank" >
                                 	</c:otherwise>
                                 </c:choose>
                                 
@@ -406,7 +406,7 @@
 		                    <div class="lum-list libao-list">
 		                       <ul>
 		                           <c:forEach var="hotThread" items="${hotThreadList}">
-		                           <li><s class="black"></s><a href="thread/${hotThread.threadId}/1/0/0.html">${fn:substring(hotThread.subject, 0, 16)}
+		                           <li><s class="black"></s><a href="<%=CommonUrl.baseUrl%>/thread/${hotThread.threadId}/1/0/0.html">${fn:substring(hotThread.subject, 0, 16)}
 		                           <c:if test="${fn:length(hotThread.subject) > 16}">
                        	   			...
                        	   		   </c:if>
