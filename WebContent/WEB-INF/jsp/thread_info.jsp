@@ -665,7 +665,7 @@
     <!-- 回到顶部  -->
      <div class="go-top">
      	<a href="#conRight3" class="quick-reply">快速回复</a>
-	 	<a href="newThreadInit?fid=${feedForum.forum_id }" data-href="" class="post get-post">发帖</a>
+	 	<a href="<%=CommonUrl.baseUrl%>/newThreadInit/${feedForum.forum_id}.html" data-href="" class="post get-post">发帖</a>
 	 	<a href="javascript:;" class="scroll-top">顶部</a>
 	 </div>
 	
