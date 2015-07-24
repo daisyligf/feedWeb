@@ -70,7 +70,7 @@ public class UrlRedirectInterceptor extends HandlerInterceptorAdapter{
 		}
 		//不带版块ID的帖子页面
 		if (uri.indexOf("/t/") != -1 ) {
-			LogConsole.log("/t/:老版版块urL:" + uri);
+			LogConsole.log("/t/:老版帖子urL:" + uri);
 			int index = uri.indexOf("/t/");
 			String strRight = uri.substring(index + 3, uri.length() - 5);
 			String[] ids = strRight.split("-");
