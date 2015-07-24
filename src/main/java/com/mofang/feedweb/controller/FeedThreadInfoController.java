@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,12 +53,17 @@ public class FeedThreadInfoController extends FeedCommonController {
 	@Autowired
 	private UserComponent userComp;
 	
-	@RequestMapping(value = "/thread_info", method = RequestMethod.GET)
-	public ModelAndView getThreadInfo(HttpServletRequest request, @RequestParam("thread_id") long threadId) throws Exception {
+	@RequestMapping(value = "/thread/{threadId}/{currPage}/{typeString}/{replyflg}.html", method = RequestMethod.GET)
+	public ModelAndView getThreadInfo(HttpServletRequest request,
+			@PathVariable(value = "threadId") long threadId,
+			@PathVariable(value = "currentPage") int currPage,
+			@PathVariable(value = "type") int type,
+			@PathVariable(value = "replyflg") int replyflg) throws Exception {
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
-			int code = getThreadInfo(request, threadId, model);
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
 			if (code == Constant.THREAD_NOT_EXISTS) {
 				return new ModelAndView("redirect:error");
 			}
@@ -71,23 +77,23 @@ public class FeedThreadInfoController extends FeedCommonController {
 		}
 	}
 	
-	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
+	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model, int replyflg, int page, int type) throws Exception {
 		
 		try {
 			//判断是否是回帖的状况
-			boolean replyFlg = false;
-			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
-				replyFlg = true;
-			}
+//			int replyFlg = 0;
+//			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
+//				replyFlg = Integer.valueOf(request.getParameter("replyflg"));
+//			}
 			
 			StringBuilder param = new StringBuilder();
 			param.append("tid=").append(threadId);
 			long forumId = 0;
-			String currPage = request.getParameter("currentPage");
-			int page = 1;
-			if (currPage != null && StringUtil.isInteger(currPage)) {
-				page = Integer.parseInt(currPage);
-			}
+//			String currPage = request.getParameter("currentPage");
+//			int page = 1;
+//			if (currPage != null && StringUtil.isInteger(currPage)) {
+//				page = Integer.parseInt(currPage);
+//			}
 			
 			param.append("&page=").append(page);
 			
@@ -99,11 +105,11 @@ public class FeedThreadInfoController extends FeedCommonController {
 			}
 			param.append("&size=").append(size);
 			
-			int type = 0;
-			String typeString = request.getParameter("type");
-			if (typeString != null && StringUtil.isInteger(typeString)) {
-				type = Integer.parseInt(typeString);
-			}
+//			int type = 0;
+//			String typeString = request.getParameter("type");
+//			if (typeString != null && StringUtil.isInteger(typeString)) {
+//				type = Integer.parseInt(typeString);
+//			}
 			param.append("&type=").append(type);
 			
 			JSONObject json = getHttpInfo(getPostListUrl(), param.toString(), request);
@@ -225,7 +231,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 								continue;
 							FeedPost feedPost = new FeedPost();
 							
-							if (replyFlg && totalPage == page && i == posts.length() - 1) {
+							if (replyflg == 1 && totalPage == page && i == posts.length() - 1) {
 								feedPost.setLastPositionFlg(true);	
 							}
 							
