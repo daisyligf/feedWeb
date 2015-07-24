@@ -116,7 +116,12 @@
                         <div class="left">
                             <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/0.html" id="tag_all">综合</a>
                             <c:forEach var="tag" items="${feedForum.tags}">
-                            	<a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id }.html">${tag.tag_name}</a>
+                            	<c:if test="${tag.tag_id == tag_id}">
+                            		<a class="active" href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id }.html">${tag.tag_name}</a>
+                            	</c:if>
+                            	<c:if test="${tag.tag_id != tag_id}">
+                            		<a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id }.html">${tag.tag_name}</a>
+                            	</c:if>
                             </c:forEach>
                             <input type="hidden" id="tag_id" value="${tag_id }"/>
                         </div>
