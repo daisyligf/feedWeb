@@ -812,7 +812,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/${recommendForum.forumId8}/0/0/1/0.html">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl%>/forum/${recommendForum.forumId8}/0/0/1/0.html">
                        <dt><img src="${recommendForum.icon8}" alt=""></dt>
                        <dd><span>${recommendForum.forumName8}</span></dd>
                        <c:if test="${recommendForum.todayThreads8 > 0}">
