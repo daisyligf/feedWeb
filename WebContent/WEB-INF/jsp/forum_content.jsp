@@ -385,7 +385,7 @@
                     <h2 class="lum">
                         版主团队 <c:if test="${!is_full }">
                         <c:if test="${moderatorflg == false}">
-                        <a href="apply_check?forum_id=${feedForum.forum_id}" class="apply-mod" target="_blank">申请版主</a>
+                        <a href="<%=CommonUrl.baseUrl%>/apply_check?forum_id=${feedForum.forum_id}" class="apply-mod" target="_blank">申请版主</a>
                         </c:if>
                         </c:if>
                     </h2>
@@ -397,7 +397,7 @@
                         	</dl> 
                     	</c:forEach>
                     	<c:if test="${fn:length(feedForum.roleList) <= 0}">
-                    	<p class="no-lord">版主空缺，前往<a href="apply_check?forum_id=${feedForum.forum_id}" class="apply-mod"  target="_blank">申请</a></p>
+                    	<p class="no-lord">版主空缺，前往<a href="<%=CommonUrl.baseUrl%>/apply_check?forum_id=${feedForum.forum_id}" class="apply-mod"  target="_blank">申请</a></p>
                     	</c:if>
                     </div>
                     
