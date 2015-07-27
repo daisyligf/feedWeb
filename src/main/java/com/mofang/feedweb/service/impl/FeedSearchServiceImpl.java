@@ -90,8 +90,7 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 						}
 					}
 					long threadId = objThread.optLong("tid", 0l);
-					objThread.put("link_url", "thread_info?thread_id="
-							+ threadId);
+					objThread.put("link_url", "thread/" + threadId);
 					
 					JSONArray pics = objThread.optJSONArray("pic");
 					String htmlContent = objThread.optString("html_content", "");
