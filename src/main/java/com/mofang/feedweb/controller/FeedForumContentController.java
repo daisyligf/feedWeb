@@ -33,6 +33,7 @@ import com.mofang.feedweb.entity.HotThread;
 import com.mofang.feedweb.entity.RoleInfo;
 import com.mofang.feedweb.entity.SignInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.CommonUrl;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.ForumType;
 import com.mofang.feedweb.global.GlobalObject;
@@ -73,7 +74,7 @@ public class FeedForumContentController extends FeedCommonController {
 			
 			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
 			if (code == 602) {
-				return new ModelAndView("redirect:error");
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 			return new ModelAndView("forum_content", model);
 		} catch (Exception e) {
@@ -96,7 +97,7 @@ public class FeedForumContentController extends FeedCommonController {
 			String tagId = "0";
 			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
 			if (code == 602) {
-				return new ModelAndView("redirect:error");
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 			return new ModelAndView("forum_content", model);
 		} catch (Exception e) {
@@ -119,7 +120,7 @@ public class FeedForumContentController extends FeedCommonController {
 			String tagId = "0";
 			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
 			if (code == 602) {
-				return new ModelAndView("redirect:error");
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 			return new ModelAndView("forum_content", model);
 		} catch (Exception e) {

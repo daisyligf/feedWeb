@@ -34,6 +34,7 @@ import com.mofang.feedweb.entity.FeedPost;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.CommonUrl;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.SysPrivilege;
@@ -90,7 +91,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 			
 			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
 			if (code == Constant.THREAD_NOT_EXISTS) {
-				return new ModelAndView("redirect:error");
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 		
 			return new ModelAndView("thread_info", model);
@@ -113,7 +114,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 			
 			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
 			if (code == Constant.THREAD_NOT_EXISTS) {
-				return new ModelAndView("redirect:error");
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 		
 			return new ModelAndView("thread_info", model);

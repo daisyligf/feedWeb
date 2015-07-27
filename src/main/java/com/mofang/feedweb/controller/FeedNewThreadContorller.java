@@ -73,9 +73,9 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@RequestMapping(value = { "/editThreadInit" })
-	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
-			@RequestParam(value = "tid") long tid, HttpServletRequest request,
+	@RequestMapping(value = { "/editThreadInit/{fid}/{tid}.html" })
+	public ModelAndView editInit(@PathVariable(value = "fid") long fid,
+			@PathVariable(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
