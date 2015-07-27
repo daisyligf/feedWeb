@@ -130,6 +130,41 @@ public class FeedForumContentController extends FeedCommonController {
 		} 
 	}
 	
+	//路径方式4
+	@RequestMapping({"/forum_content"})
+	public ModelAndView forumContentUrl4(HttpServletRequest request, 
+			@RequestParam("fid") long fid) throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		try {
+			String currentPage = "1";
+			if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
+				currentPage = String.valueOf(request.getParameter("currentPage"));
+			}
+			String type = "0";
+			if (!StringUtil.isNullOrEmpty(request.getParameter("type"))) {
+				type = String.valueOf(request.getParameter("type"));
+			}
+			String timeType = "0";
+			if (!StringUtil.isNullOrEmpty(request.getParameter("timeType"))) {
+				timeType = String.valueOf(request.getParameter("timeType"));
+			}
+			String tagId = "0";
+			if (!StringUtil.isNullOrEmpty(request.getParameter("tag_id"))) {
+				tagId = String.valueOf(request.getParameter("tag_id"));
+			}
+			
+			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
+			if (code == Constant.FORUM_NOT_EXISTS) {
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
+			}
+			return new ModelAndView("forum_content", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+				"at FeedForumContentController.forumContentUrl4 throw an error.", e);
+			return new ModelAndView("forum_content", model);
+		} 
+	}
+	
 	//版块内容处理
 	public int forumContent(HttpServletRequest request, 
 				long fid,

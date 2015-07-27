@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.entity.ForumListInfo;
@@ -25,6 +26,7 @@ import com.mofang.feedweb.util.Tools;
 public class FeedForumListController extends FeedCommonController {
 	
 	
+	//路径方式1
 	@RequestMapping(value = "/forumList/{currentPage}/{forumType}/{letterGroup}.html")
 	public ModelAndView forumListUrl1(HttpServletRequest request,
 			@PathVariable(value = "currentPage") int currentPage,
@@ -37,11 +39,12 @@ public class FeedForumListController extends FeedCommonController {
 			return new ModelAndView("forumList", model);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
-					"at FeedForumListController.forumList throw an error.", e);
+					"at FeedForumListController.forumListUrl1 throw an error.", e);
 			return new ModelAndView("forumList", model);
 		}
 
 	}
+	//路径方式2
 	@RequestMapping(value = "/forumList/{forumType}.html")
 	public ModelAndView forumListUrl2(HttpServletRequest request,
 			@PathVariable(value = "forumType") int forumType) throws Exception {
@@ -53,7 +56,30 @@ public class FeedForumListController extends FeedCommonController {
 			return new ModelAndView("forumList", model);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
-					"at FeedForumListController.forumList throw an error.", e);
+					"at FeedForumListController.forumListUrl2 throw an error.", e);
+			return new ModelAndView("forumList", model);
+		}
+		
+	}
+	//路径方式3
+	@RequestMapping(value = "/forumList")
+	public ModelAndView forumListUrl3(HttpServletRequest request,
+			@RequestParam(value = "forumType") int forumType) throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		try {
+			int currentPage = 1;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
+				currentPage = Integer.valueOf(request.getParameter("currentPage"));
+			}
+			int letterGroup = 1;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
+				letterGroup = Integer.valueOf(request.getParameter("letterGroup"));
+			}
+			forumList(request, currentPage, forumType, letterGroup, model);
+			return new ModelAndView("forumList", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedForumListController.forumListUrl3 throw an error.", e);
 			return new ModelAndView("forumList", model);
 		}
 		
