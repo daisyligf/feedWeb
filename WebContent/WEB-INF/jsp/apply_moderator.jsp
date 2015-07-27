@@ -81,7 +81,7 @@
                         <c:choose>
 	                        <c:when test="${moderatorApplyCondition.isPass}">
 	                        <div class="apply-hd-main">
-	                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="forum/${feedForum.forum_id}/0/0/1/0.html" class="apply-link" target="_blank">${feedForum.forum_name }</a> 吧主</span></h3>
+	                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="forum/${feedForum.forum_id}.html" class="apply-link" target="_blank">${feedForum.forum_name }</a> 吧主</span></h3>
 	                            <div class="feed-user-apply-form">
 	                            <div class="feed-user-infos"></div>
 	                                <form action="" class="user-apply-form">

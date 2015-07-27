@@ -115,7 +115,7 @@
         <div class="con clearfix">
             <div class="nav clearfix">
                 <div class="nav-left col-xs-6">
-                    <a href="<%=CommonUrl.baseUrl%>/index">论坛首页</a> > <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/0/0/1/0.html">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
+                    <a href="<%=CommonUrl.baseUrl%>/index">论坛首页</a> > <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}.html">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
                 
                 <c:if test="${totalPages > 1 }">
@@ -213,7 +213,7 @@
                     <div class="lum-list libao-list">
                        <ul>
                        	   <c:forEach var="highThread" items="${highestList }">
-                       	   <li><s class="black"></s><a href="<%=CommonUrl.baseUrl%>/thread/${highThread.thread_id}/1/0/0.html">${fn:substring(highThread.subject, 0, 16)}
+                       	   <li><s class="black"></s><a href="<%=CommonUrl.baseUrl%>/thread/${highThread.thread_id}.html">${fn:substring(highThread.subject, 0, 16)}
                        	   <c:if test="${fn:length(highThread.subject) > 16}">
                        	   ...
                        	   </c:if>

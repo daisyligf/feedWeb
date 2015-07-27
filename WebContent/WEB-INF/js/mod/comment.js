@@ -26,8 +26,8 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     //var relayPostUrl = "";//回复帖子
 
     if($("#editor-form .editor-fid").length>0){
-        var localPlateUrl = c.config.baseUrl + "/forum/"+$("#editor-form .editor-fid").val() + "/0/0/1/0.html";//发帖成功，跳转的路径
-        var localPostUrl = c.config.baseUrl + "/thread/"+$("#editor-form .editor-tid").val() + "/1/0/0.html";//编辑帖子成功，跳转的路径
+        var localPlateUrl = c.config.baseUrl + "/forum/"+$("#editor-form .editor-fid").val() + ".html";//发帖成功，跳转的路径
+        var localPostUrl = c.config.baseUrl + "/thread/"+$("#editor-form .editor-tid").val() + ".html";//编辑帖子成功，跳转的路径
     }
     
     var ajaxMethod="jsonp"; 
@@ -39,8 +39,8 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         relayPostUrl = "/bbs_html/statics/test/follow.json";//回复帖子
         
         if($("#editor-form .editor-fid").length>0){
-            localPostUrl = c.config.baseUrl + "/thread/"+$("#editor-form .editor-tid").val() + "/1/0/0.html";//发帖成功，跳转的路径
-            localPlateUrl = c.config.baseUrl + "/forum/"+$("#editor-form .editor-fid").val() + "/0/0/1/0.html";//编辑帖子成功，跳转的路径
+            localPostUrl = c.config.baseUrl + "/thread/"+$("#editor-form .editor-tid").val() + ".html";//发帖成功，跳转的路径
+            localPlateUrl = c.config.baseUrl + "/forum/"+$("#editor-form .editor-fid").val() + ".html";//编辑帖子成功，跳转的路径
         }
 
         ajaxMethod="json";

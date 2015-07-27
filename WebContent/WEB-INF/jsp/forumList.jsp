@@ -132,7 +132,7 @@
 					<c:forEach items="${listInfo}" var="forum" varStatus="vs">						
 			               <div class="col-xs-3 col-md-4  col-sm-6">
 			                   <dl class="clearfix">
-			                   	   <a href="<%=CommonUrl.baseUrl%>/forum/${forum.forumId}/0/0/1/0.html">
+			                   	   <a href="<%=CommonUrl.baseUrl%>/forum/${forum.forumId}.html">
 				                       <dt><img src="${forum.icon}" alt=""></dt>
 				                       <dd><span>${forum.forumName}</span></dd>
 				                       <c:if test="${forum.todayThreads > 0}">

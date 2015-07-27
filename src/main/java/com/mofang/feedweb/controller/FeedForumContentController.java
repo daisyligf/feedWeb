@@ -48,6 +48,7 @@ import com.mofang.feedweb.util.Tools;
  * 版块内容页（即帖子列表页）
  *
  */
+
 @Controller
 public class FeedForumContentController extends FeedCommonController {
 	
@@ -56,14 +57,88 @@ public class FeedForumContentController extends FeedCommonController {
 	@Autowired
 	private FeedSignInService feedSignInService;
 	
-	@RequestMapping(value = "/forum/{fid}/{type}/{timeType}/{currentPage}/{tag_id}.html", method = RequestMethod.GET)
-	public ModelAndView forumContent(HttpServletRequest request, 
+	//路径方式1
+	@RequestMapping({"/forum/{fid}/{type}/{timeType}/{currentPage}/{tag_id}.html"})
+	public ModelAndView forumContentUrl1(HttpServletRequest request, 
 					@PathVariable(value = "fid") long fid,
 					@PathVariable(value = "type") String type,
 					@PathVariable(value = "timeType") String timeType,
 					@PathVariable(value = "currentPage") String currentPage,
-					@PathVariable(value = "tag_id") String tagId) throws Exception {
+					@PathVariable(value = "tag_id") String tagId
+					) throws Exception {
+		
 		Map<String, Object> model = new HashMap<String, Object>();
+		
+		try {
+			
+			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
+			if (code == 602) {
+				return new ModelAndView("redirect:error");
+			}
+			return new ModelAndView("forum_content", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedForumContentController.forumContentUrl1 throw an error.", e);
+			return new ModelAndView("forum_content", model);
+		} 
+	}
+	
+	//路径方式2
+	@RequestMapping({"/forum/{fid}.html"})
+	public ModelAndView forumContentUrl2(HttpServletRequest request, 
+			@PathVariable(value = "fid") long fid
+			) throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		try {
+			String type = "0";
+			String timeType = "0";
+			String currentPage = "1";
+			String tagId = "0";
+			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
+			if (code == 602) {
+				return new ModelAndView("redirect:error");
+			}
+			return new ModelAndView("forum_content", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+				"at FeedForumContentController.forumContentUrl2 throw an error.", e);
+			return new ModelAndView("forum_content", model);
+		} 
+	}
+	
+	//路径方式3
+	@RequestMapping({"/forum/{fid}/{currentPage}.html"})
+	public ModelAndView forumContentUrl3(HttpServletRequest request, 
+			@PathVariable(value = "fid") long fid,
+			@PathVariable(value = "currentPage") String currentPage
+			) throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		try {
+			String type = "0";
+			String timeType = "0";
+			String tagId = "0";
+			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
+			if (code == 602) {
+				return new ModelAndView("redirect:error");
+			}
+			return new ModelAndView("forum_content", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+				"at FeedForumContentController.forumContentUrl3 throw an error.", e);
+			return new ModelAndView("forum_content", model);
+		} 
+	}
+	
+	//版块内容处理
+	public int forumContent(HttpServletRequest request, 
+				long fid,
+				String type,
+				String timeType,
+				String currentPage,
+				String tagId,
+				Map<String, Object> model
+				) throws Exception {
+		
 		try {
 			//获取当前用户的签到状态
 			JSONObject json = feedSignInService.getSignInstate(request);
@@ -81,7 +156,7 @@ public class FeedForumContentController extends FeedCommonController {
 			FeedForum feedForum = getFeedForumInfo(request, fid);
 			
 			if (feedForum.getCode() == Constant.FORUM_NOT_EXISTS) {
-				return new ModelAndView("redirect:error");
+				return Constant.FORUM_NOT_EXISTS;
 			}
 			
 			// 获取该版块的吧主列表
@@ -124,15 +199,13 @@ public class FeedForumContentController extends FeedCommonController {
 				boolean isFollow = isFollow(userInfo.getUserId(), fid, request);
 				model.put("isFollow", isFollow);
 			}
-			return new ModelAndView("forum_content", model);
+			return Constant.SUCCESS;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
 					"at FeedForumContentController.forumContent throw an error.", e);
-			return new ModelAndView("forum_content", model);
+			return Constant.ERROR;
 		} 
-	}
-	
-
+			}
 	private boolean isFollow(long userId, long forumId, HttpServletRequest request) {
 		
 		JSONObject json = getHttpInfo(getUserInfoUrl() + Constant.USER_IS_FOLLOW_URL, "?uid=" + userId + "&area_id=" + forumId, request);

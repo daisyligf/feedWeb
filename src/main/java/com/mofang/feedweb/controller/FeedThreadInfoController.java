@@ -54,7 +54,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 	private UserComponent userComp;
 	
 	@RequestMapping(value = "/thread/{threadId}/{currentPage}/{type}/{replyflg}.html", method = RequestMethod.GET)
-	public ModelAndView getThreadInfo(HttpServletRequest request,
+	public ModelAndView getThreadInfoUrl1(HttpServletRequest request,
 			@PathVariable(value = "threadId") long threadId,
 			@PathVariable(value = "currentPage") int currPage,
 			@PathVariable(value = "type") int type,
@@ -63,16 +63,62 @@ public class FeedThreadInfoController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
+			
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
+			
+			if (code == Constant.THREAD_NOT_EXISTS) {
+				return new ModelAndView("redirect:error");
+			}
+			return new ModelAndView("thread_info", model);
+			
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl1 throw an error.", e);
+			return new ModelAndView("thread_info", model);
+		}
+	}
+	
+	@RequestMapping(value = "/thread/{threadId}/{currentPage}.html", method = RequestMethod.GET)
+	public ModelAndView getThreadInfoUrl2(HttpServletRequest request,
+			@PathVariable(value = "threadId") long threadId,
+			@PathVariable(value = "currentPage") int currPage) throws Exception {
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		try {
+			int type = 0;
+			int replyflg = 0;
+			
 			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
 			if (code == Constant.THREAD_NOT_EXISTS) {
 				return new ModelAndView("redirect:error");
 			}
-			UserInfo loginUser = getUserInfo(request);
-			model.put("loginUser", loginUser);
-			model.put("keyword", getSearchKey(request));
+		
 			return new ModelAndView("thread_info", model);
 		} catch (Exception e) {
-			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfo throw an error.", e);
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl2 throw an error.", e);
+			return new ModelAndView("thread_info", model);
+		}
+	}
+	
+	@RequestMapping(value = "/thread/{threadId}.html", method = RequestMethod.GET)
+	public ModelAndView getThreadInfoUrl3(HttpServletRequest request,
+			@PathVariable(value = "threadId") long threadId) throws Exception {
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		try {
+			int currPage = 1;
+			int type = 0;
+			int replyflg = 0;
+			
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
+			if (code == Constant.THREAD_NOT_EXISTS) {
+				return new ModelAndView("redirect:error");
+			}
+		
+			return new ModelAndView("thread_info", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl3 throw an error.", e);
 			return new ModelAndView("thread_info", model);
 		}
 	}
@@ -85,6 +131,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 //			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
 //				replyFlg = Integer.valueOf(request.getParameter("replyflg"));
 //			}
+			UserInfo loginUser = getUserInfo(request);
+			model.put("loginUser", loginUser);
+			model.put("keyword", getSearchKey(request));
 			
 			StringBuilder param = new StringBuilder();
 			param.append("tid=").append(threadId);

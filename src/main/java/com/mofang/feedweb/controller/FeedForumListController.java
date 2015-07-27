@@ -25,31 +25,47 @@ import com.mofang.feedweb.util.Tools;
 public class FeedForumListController extends FeedCommonController {
 	
 	
-	//版块列表
 	@RequestMapping(value = "/forumList/{currentPage}/{forumType}/{letterGroup}.html")
-	public ModelAndView forumList(HttpServletRequest request,
+	public ModelAndView forumListUrl1(HttpServletRequest request,
 			@PathVariable(value = "currentPage") int currentPage,
 			@PathVariable(value = "forumType") int forumType,
 			@PathVariable(value = "letterGroup") int letterGroup) throws Exception {
-		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
-//			int letterGroup = 1;
-//			if (!StringUtil.isNullOrEmpty(request.getParameter("letterGroup"))) {
-//				letterGroup = Integer.valueOf(request.getParameter("letterGroup"));
-//			}
-//			
-//			int currentPage = 1;
-//			if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
-//				currentPage = Integer.valueOf(
-//						Tools.replaceBlank(request.getParameter("currentPage")));
-//			}
-//			int forumType = 1;//热门游戏  ：1  新游推荐 ：2
-//			if (!StringUtil.isNullOrEmpty(request.getParameter("forumType"))) {
-//				forumType = Integer.valueOf(
-//						Tools.replaceBlank(request.getParameter("forumType")));
-//			}
+			forumList(request, currentPage, forumType, letterGroup, model);
+			return new ModelAndView("forumList", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedForumListController.forumList throw an error.", e);
+			return new ModelAndView("forumList", model);
+		}
+
+	}
+	@RequestMapping(value = "/forumList/{forumType}.html")
+	public ModelAndView forumListUrl2(HttpServletRequest request,
+			@PathVariable(value = "forumType") int forumType) throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		try {
+			int currentPage = 1;
+			int letterGroup = 1;
+			forumList(request, currentPage, forumType, letterGroup, model);
+			return new ModelAndView("forumList", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error(
+					"at FeedForumListController.forumList throw an error.", e);
+			return new ModelAndView("forumList", model);
+		}
+		
+	}
+	//版块列表
+	public void forumList(HttpServletRequest request,
+			int currentPage,
+			int forumType,
+			int letterGroup,
+			Map<String, Object> model) throws Exception {
+		
+		try {
 			
 			//获取版块list
 			String getLetterGroup = "";
@@ -80,11 +96,9 @@ public class FeedForumListController extends FeedCommonController {
 			model.put("forumType", forumType);
 			model.put("keyword", getSearchKey(request));
 			
-			return new ModelAndView("forumList", model);
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error(
 					"at FeedForumListController.forumList throw an error.", e);
-			return new ModelAndView("forumList", model);
 		}
 
 	}
