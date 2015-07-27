@@ -254,7 +254,7 @@
                             	FeedThread feedThread = (FeedThread) request.getAttribute("feedThread");
                                 if (currentUser.getPrivileges().contains(SysPrivilege.EDIT_THREAD)) {
                                 %>
-		                      	<a href="editThreadInit?fid=${feedForum.forum_id }&tid=${feedThread.thread_id}" target="_blank">编辑</a><% } %>
+		                      	<a href="<%=CommonUrl.baseUrl%>/editThreadInit?fid=${feedForum.forum_id }&tid=${feedThread.thread_id}" target="_blank">编辑</a><% } %>
 		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.DEL_THREAD)) {
                                 %>
 		                      	<a href="javascript:;" class="manage-delete">删除</a><% } %>
