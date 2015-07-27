@@ -73,7 +73,7 @@ public class FeedForumContentController extends FeedCommonController {
 		try {
 			
 			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
-			if (code == 602) {
+			if (code == Constant.FORUM_NOT_EXISTS) {
 				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 			return new ModelAndView("forum_content", model);
@@ -96,7 +96,7 @@ public class FeedForumContentController extends FeedCommonController {
 			String currentPage = "1";
 			String tagId = "0";
 			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
-			if (code == 602) {
+			if (code == Constant.FORUM_NOT_EXISTS) {
 				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 			return new ModelAndView("forum_content", model);
@@ -119,7 +119,7 @@ public class FeedForumContentController extends FeedCommonController {
 			String timeType = "0";
 			String tagId = "0";
 			int code = forumContent(request, fid, type, timeType, currentPage, tagId, model);
-			if (code == 602) {
+			if (code == Constant.FORUM_NOT_EXISTS) {
 				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
 			}
 			return new ModelAndView("forum_content", model);
