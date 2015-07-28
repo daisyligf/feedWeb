@@ -72,12 +72,14 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     
     /**实例化编辑器**/
     function editorInit () {//{{{
+    	
         um = UM.getEditor('myEditor',{
             toolbar:[
                 ' bold italic underline |',
                 'forecolor fontsize' ,
                 'link unlink | image feed-emotion | video',
             ],
+           imageUrl: c.config.baseUrl + "/upload",
            imageScaleEnabled:false
         });
 
