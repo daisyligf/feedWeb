@@ -127,7 +127,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		    		if(res.data.total<options.pagesize){
 		    				$("#plateMore").remove();
 		    		}
-		    		$("#plate").append(plateTemplate(res.data));
+		    		$("#plate").html(plateTemplate(res.data));
 		    	}
 		    	fnCallback && fnCallback();
 		    },
