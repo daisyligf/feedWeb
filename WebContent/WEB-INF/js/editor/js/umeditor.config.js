@@ -136,7 +136,7 @@
         UMEDITOR_HOME_URL : URL
 
         //图片上传配置区
-        ,imageUrl: "http://bbs.mofang.com/upload"
+        ,imageUrl: "upload"
         /*imageUrl:"/index.php/upload/image2"*/
         //,imageUrl:URL+"php/imageUp.php"             //图片上传提交地址
        // ,imagePath:URL + "php/"                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
