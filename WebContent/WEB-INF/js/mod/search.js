@@ -51,9 +51,9 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		var nowDate = new Date();
 		var nowYear = nowDate.getFullYear();
 		if(nowYear==year){
-			var str = to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes)+':'+to2(seconds);
+			var str = to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes);
 		}else{
-			var str = to2(year)+'-'+to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes)+':'+to2(seconds);
+			var str = to2(year)+'-'+to2(month)+'-'+to2(date)+' '+to2(hours)+':'+to2(minutes);
 		}
 		
 		return str;
