@@ -11,5 +11,17 @@
  		document.write(unescape("%3Cspan id='cnzz_stat_icon_1000370935'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1000370935' type='text/javascript'%3E%3C/script%3E"));
  	</script>
  </div>
+  <!-- baidu统计代码 -->
+  <div class="baidu" style="display:none">
+ 	<script>
+		var _hmt = _hmt || [];
+		(function() {
+  			var hm = document.createElement("script");
+  				hm.src = "//hm.baidu.com/hm.js?c010118fc9ccb89ca3c38b4808b4dd4e";
+ 			var s = document.getElementsByTagName("script")[0]; 
+  				s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+ </div>
  <!-- 底部结束 -->
  
