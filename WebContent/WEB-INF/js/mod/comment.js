@@ -111,15 +111,18 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     
     var keydownTimer=false;
     $(document).on("keydown",function(ev){
-    	if(ev.which==13 && ev.ctrlKey){
-    		
-    		clearTimeout(keydownTimer);
-    		keydownTimer = setTimeout(function(){
-    			subForm();	
-    		},200);
-    		return false;
-    		
+    	if(um.isFocus()){
+    		if(ev.which==13 && ev.ctrlKey){
+        		
+        		clearTimeout(keydownTimer);
+        		keydownTimer = setTimeout(function(){
+        			subForm();	
+        		},200);
+        		return false;
+        		
+        	}
     	}
+    	
     });
     function subForm(){
     	if(loginStatus){
