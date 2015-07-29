@@ -13,15 +13,15 @@
  </div>
   <!-- baidu统计代码 -->
   <div class="baidu" style="display:none">
- 	<script>
+	<script>
 		var _hmt = _hmt || [];
 		(function() {
   			var hm = document.createElement("script");
-  				hm.src = "//hm.baidu.com/hm.js?c010118fc9ccb89ca3c38b4808b4dd4e";
- 			var s = document.getElementsByTagName("script")[0]; 
+  				hm.src = "//hm.baidu.com/hm.js?b5fe97c9be553611eaa9d4aa4f803f71";
+  			var s = document.getElementsByTagName("script")[0]; 
   				s.parentNode.insertBefore(hm, s);
 		})();
-	</script>
+</script>
  </div>
  <!-- 底部结束 -->
  
