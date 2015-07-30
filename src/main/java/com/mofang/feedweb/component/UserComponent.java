@@ -1,14 +1,19 @@
 package com.mofang.feedweb.component;
 
 import java.net.URLDecoder;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import redis.clients.jedis.Jedis;
+
 import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.RedisKey;
 import com.mofang.feedweb.redis.RedisWorker;
 import com.mofang.feedweb.util.StringUtil;
@@ -47,14 +52,15 @@ public class UserComponent {
 			String avatar = data.optString("avatar", "");
 			int status = data.optInt("status", -1);
 
+			GlobalObject.INFO_LOG.info("at UserComponent.getUserInfo. mcs: " + mcs + ", userId: " + userId);
 			if (status != 0) {
 				return null;
 			}
 
-			UserInfo newUserInfo = new UserInfo();
-			newUserInfo.setUserId(userId);
-			newUserInfo.setAvatar(avatar);
-			newUserInfo.setNickname(userName);
+//			userInfo = new UserInfo();
+//			userInfo.setUserId(userId);
+//			userInfo.setAvatar(avatar);
+//			userInfo.setNickname(userName);
 
 			JSONObject userJson = new JSONObject();
 			userJson.put("uid", userId);
