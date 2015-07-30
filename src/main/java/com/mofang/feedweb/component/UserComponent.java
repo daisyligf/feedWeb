@@ -57,10 +57,10 @@ public class UserComponent {
 				return null;
 			}
 
-			userInfo = new UserInfo();
-			userInfo.setUserId(userId);
-			userInfo.setAvatar(avatar);
-			userInfo.setNickname(userName);
+//			userInfo = new UserInfo();
+//			userInfo.setUserId(userId);
+//			userInfo.setAvatar(avatar);
+//			userInfo.setNickname(userName);
 
 			JSONObject userJson = new JSONObject();
 			userJson.put("uid", userId);
