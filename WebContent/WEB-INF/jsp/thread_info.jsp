@@ -125,7 +125,7 @@
                 
 				<c:choose>
 				<c:when test="${currentPage != 1}">
-					<li class="prev"><a href="thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
+					<li class="prev"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
