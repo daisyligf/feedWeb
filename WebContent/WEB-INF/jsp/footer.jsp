@@ -13,7 +13,7 @@
  </div>
   <!-- baidu统计代码 -->
   <div class="baidu" style="display:none">
-	<script>
+	<script type="text/javascript">
 		var _hmt = _hmt || [];
 		(function() {
   			var hm = document.createElement("script");
