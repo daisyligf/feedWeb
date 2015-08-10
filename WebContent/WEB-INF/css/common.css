@@ -300,10 +300,22 @@
 }
 
 .footer{
+	width:100%;
+	background:#28282A;
+}
+.footer-con{
 	padding: 20px 0;
 	max-width: 1228px;
 	margin: 0 auto;
 	color: #aaa;
+	line-height:30px;
+}
+.footer-con .link {
+	color:#555;
+}
+.footer-con .link a{display:inline-block;color:#555;margin-right:20px;}
+.footer-con .link a:hover{
+	 color: #FD9814;
 }
 .page-plug {
 	position: relative;
@@ -939,9 +951,11 @@ text-align: center;
 		margin-right:10px;
 	}
 	/**/
-	
-	.footer{
-		text-align:center;
+	.footer-con{
+		margin-left:10px;
+	}
+	.footer-con .beian{
+		/* text-align:center; */
 	}
 	.con{
 		padding: 0 15px;
@@ -1143,11 +1157,7 @@ text-align: center;
 	  width: 19px;
 	  height: 18px;
 	 }
-	.footer{
-		padding: 0;
-		margin-top:10px;
-		margin-bottom:30px;
-	}
+	
 	.textmask{
 		height:225px;
 		line-height:225px;
