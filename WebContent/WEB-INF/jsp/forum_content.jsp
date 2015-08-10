@@ -27,18 +27,16 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
+
+    <c:if test="${feedForum.forum_id >= 10 and feedForum.forum_id <= 13}">
+    <title>${feedForum.forum_name}-魔方论坛</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <c:if test="${feedForum.forum_id >= 10}">
-    <c:if test="${feedForum.forum_id <= 13}">
-    <title>${feedForum.forum_name}-魔方论坛</title>
     </c:if>
-    </c:if>
-    <c:if test="${feedForum.forum_id < 10}">
+    <c:if test="${feedForum.forum_id < 10 or feedForum.forum_id > 13}">
     <title>${feedForum.forum_name}官方合作论坛</title>
-    </c:if>
-     <c:if test="${feedForum.forum_id > 13}">
-    <title>${feedForum.forum_name}官方合作论坛</title>
+    <meta name="keywords" content="${feedForum.forum_name}，${feedForum.forum_name}论坛，${feedForum.forum_name}礼包，${feedForum.forum_name}手游论坛，${feedForum.forum_name}攻略">
+    <meta name="description" content="${feedForum.forum_name}官方合作论坛，游戏玩家分享交流社区，${feedForum.forum_name}官方合作活动社区">
     </c:if>
     <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">

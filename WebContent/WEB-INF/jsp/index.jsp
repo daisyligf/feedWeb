@@ -24,9 +24,9 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <title>魔方论坛-手机游戏玩家分享讨论基地</title>
+    <meta name="keywords" content="游戏论坛,手游论坛,安卓游戏论坛,iphone游戏论坛,魔方网论坛">
+    <meta name="description" content="魔方网手游论坛致力于打造国内第一手游论坛,推荐最新的安卓游戏,iPhone游戏,是手游玩家分享游戏攻略的基地,还有丰厚的游戏礼包和游戏周边领取活动，欢迎广大手游玩家来魔方网论坛交流游戏心得体验.">
+    <title>魔方论坛_手游游戏论坛_安卓iPhone游戏论坛_魔方网手游游戏玩家分享社区</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
