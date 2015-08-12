@@ -25,6 +25,10 @@ public class ExternalUrlInfo {
 	private String viper_info_url;
 	@Value("${user_notice_url}")
 	private String user_notice_url;
+	@Value("${forum_statistics_id}")
+	private long forum_statistics_id;
+	@Value("${forum_statistics_url}")
+	private String forum_statistics_url;
 
 	public String getFeed_info_url() {
 		return feed_info_url;
@@ -104,6 +108,22 @@ public class ExternalUrlInfo {
 
 	public void setTask_info_url(String task_info_url) {
 		this.task_info_url = task_info_url;
+	}
+
+	public String getForum_statistics_url() {
+		return forum_statistics_url;
+	}
+
+	public void setForum_statistics_url(String forum_statistics_url) {
+		this.forum_statistics_url = forum_statistics_url;
+	}
+
+	public long getForum_statistics_id() {
+		return forum_statistics_id;
+	}
+
+	public void setForum_statistics_id(long forum_statistics_id) {
+		this.forum_statistics_id = forum_statistics_id;
 	}
 
 }

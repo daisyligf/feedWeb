@@ -176,6 +176,9 @@ public class FeedForumContentController extends FeedCommonController {
 				) throws Exception {
 		
 		try {
+			//获取单个版块统计信息
+			model.put("statisticsInfo", getStatisticsInfo());
+			
 			//获取当前用户的签到状态
 			JSONObject json = feedSignInService.getSignInstate(request);
 			SignInfo signInfo = new SignInfo();

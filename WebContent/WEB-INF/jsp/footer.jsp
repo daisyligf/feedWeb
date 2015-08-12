@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <!-- 底部开始 -->
  <div class="footer cleafix">
  	 <div class="footer-con">
@@ -27,5 +28,12 @@
 		})();
 </script>
  </div>
+ <!--单独版块的统计代码  -->
+ <c:if test="${statisticsInfo.forum_statistics_id > 0 and feedForum.forum_id == statisticsInfo.forum_statistics_id}">
+ 	<div class="forumStatistics" style="display:none">
+ 		${statisticsInfo.forum_statistics_url}
+ 	</div>
+ </c:if>
+ 
  <!-- 底部结束 -->
  
