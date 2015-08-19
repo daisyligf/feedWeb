@@ -43,7 +43,7 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 				for (int idx = 0; idx < jsonArr.length(); idx++) {
 					JSONObject objForum = jsonArr.getJSONObject(idx);
 					long fid = objForum.optLong("fid", 0l);
-					objForum.put("link_url", "forum_content?fid=" + fid);
+					objForum.put("link_url", "forum/" + fid + ".html");
 					
 					String prefectureUrl = objForum.optString("prefecture_url", "");
 					if(StringUtil.isNullOrEmpty(prefectureUrl) || prefectureUrl.equals("null")) {
@@ -90,8 +90,7 @@ public class FeedSearchServiceImpl implements FeedSearchService {
 						}
 					}
 					long threadId = objThread.optLong("tid", 0l);
-					objThread.put("link_url", "thread_info?thread_id="
-							+ threadId);
+					objThread.put("link_url", "thread/" + threadId + ".html");
 					
 					JSONArray pics = objThread.optJSONArray("pic");
 					String htmlContent = objThread.optString("html_content", "");

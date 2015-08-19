@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
    <!-- 搜索开始 -->
    <div class="search">
        <div class="bbs-logo">
-           <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
+           <a href="<%=CommonUrl.baseUrl%>/index"><img src="<%=CommonUrl.baseUrl%>/img/icon/bbs_icon.png" alt=""></a>
        </div>
        <div class="bbs-search">
           <!--   <input type="submit" class="ser-but" value="" id="submit"/>-->

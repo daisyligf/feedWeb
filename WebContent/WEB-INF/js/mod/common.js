@@ -3,10 +3,11 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad'],function(require, exports, module) {
+define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	var login_top = require("login_top");
+	var c = require("config");
 	
 	require("loginUserUrl");//跳转登录路径
 	require("jquery/moveTop");//回到顶部
@@ -56,7 +57,7 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad'],func
 			keyword = defKeyword;
 		}
 
-		window.location.href = "search?keyword="+encodeURIComponent(keyword);
+		window.location.href = c.config.baseUrl + "/search?keyword="+encodeURIComponent(keyword);
 	}
 
 	

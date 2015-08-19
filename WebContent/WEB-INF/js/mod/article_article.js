@@ -3,33 +3,34 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','loginUserUrl'],function(require, exports, module) {
+define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop','loginUserUrl','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pagebar");//分页插件
 	require("jquery/jquery-pop");//弹出框插件
 	require("loginUserUrl");//跳转登录路径
 	var Handlebars = require("handlebars");//handlebars模板引擎获取登录状态
+	var c = require("config");
 
 	var USE_LOCAL_DATA = 0;//本地数据
 	var USE_TEST_DATA = 0;//测试数据
 
 	
-	var getFloorComUrl = "comment_list.json"; //获取楼层评论数据
-	var setAddPostUrl = "send_reply.json";//回复帖子接口
-	var setReplyPostUrl = "reply_post.json"; //回复楼层数据
-	var setDelFloorUrl = "del_floor.json"; //删除楼层接口
-	var setPraThreadUrl = "recommend_thread.json"; // 点赞帖子接口
-	var setPraFloorUrl = "recommend_floor.json"; //点赞楼层接口
-	var setLockPostUrl = "close_thread.json"; //锁帖
-	var setOffLockPostUrl = "open_thread.json"; //取消锁帖
-	var setTopPostUrl = "top_thread.json"; //置顶帖子
-	var setOffTopPostUrl = "cancel_top_thread.json"; //取消置顶
-	var setAddDigestUrl = "elite_thread.json"; //加精
-	var setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
-	var setdeletePostUrl = "del_thread.json"; //删除帖子
-	var setAwardUrl = "award.json"; //奖励
-	var deleteHrefUrl = "forum_content?fid="+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
+	var getFloorComUrl = c.config.baseUrl + "/comment_list.json"; //获取楼层评论数据
+	var setAddPostUrl = c.config.baseUrl + "/send_reply.json";//回复帖子接口
+	var setReplyPostUrl = c.config.baseUrl + "/reply_post.json"; //回复楼层数据
+	var setDelFloorUrl = c.config.baseUrl + "/del_floor.json"; //删除楼层接口
+	var setPraThreadUrl = c.config.baseUrl + "/recommend_thread.json"; // 点赞帖子接口
+	var setPraFloorUrl = c.config.baseUrl + "/recommend_floor.json"; //点赞楼层接口
+	var setLockPostUrl = c.config.baseUrl + "/close_thread.json"; //锁帖
+	var setOffLockPostUrl = c.config.baseUrl + "/open_thread.json"; //取消锁帖
+	var setTopPostUrl = c.config.baseUrl + "/top_thread.json"; //置顶帖子
+	var setOffTopPostUrl = c.config.baseUrl + "/cancel_top_thread.json"; //取消置顶
+	var setAddDigestUrl = c.config.baseUrl + "/elite_thread.json"; //加精
+	var setOffAddDigestUrl = c.config.baseUrl + "/cancel_elite_thread.json";//取消加精
+	var setdeletePostUrl = c.config.baseUrl + "/del_thread.json"; //删除帖子
+	var setAwardUrl = c.config.baseUrl + "/award.json"; //奖励
+	var deleteHrefUrl = c.config.baseUrl + "/forum/"+$("#getPostData").attr("data-fid") + ".html";//删除帖子跳转的路径
 
 	var ajaxMethod="json";
 	if(USE_LOCAL_DATA){
@@ -62,7 +63,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		setOffAddDigestUrl = "cancel_elite_thread.json";//取消加精
 		setdeletePostUrl = "del_thread.json"; //删除帖子
 		setAwardUrl = "award.json"; //奖励
-		deleteHrefUrl = "forum_content?fid="+$("#getPostData").attr("data-fid");//删除帖子跳转的路径
+		deleteHrefUrl = c.config.baseUrl + "/forum/"+$("#getPostData").attr("data-fid") + ".html";//删除帖子跳转的路径
 	}
 
 	//注册一个handlebarsjs方法
@@ -831,7 +832,7 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    		}else{
 		    			$(obj).parents(".con-list-right").find(".floor-reply-more").html("更多"+curtotal+"条回复    <a href='javascript:;''>点击加载</a>").show();
 		    		}
-		    		//console.log(floorCommentTemplate(res.data.comments));
+		    		
 		    		$(obj).parents(".con-list-right").find(".con-list-replycon").append(floorCommentTemplate(res.data.comments));
 		    	}
 		    	fnCallback && fnCallback();

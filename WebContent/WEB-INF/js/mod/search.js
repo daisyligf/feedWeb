@@ -85,9 +85,10 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 					$("#plate .col-xs-3").show();
 					$(_this).html("收起").addClass("stop").removeClass('plate-more');
 				}else{
+					var total = $(".plate-num span").html();
 					getPlateData({
-						p:2,
-						pagesize:''
+						p:1,
+						pagesize:total
 					},function(){
 						isLoad = true;
 						$(_this).html("收起").addClass("stop").removeClass('plate-more');
@@ -126,7 +127,7 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 		    		if(res.data.total<options.pagesize){
 		    				$("#plateMore").remove();
 		    		}
-		    		$("#plate").append(plateTemplate(res.data));
+		    		$("#plate").html(plateTemplate(res.data));
 		    	}
 		    	fnCallback && fnCallback();
 		    },

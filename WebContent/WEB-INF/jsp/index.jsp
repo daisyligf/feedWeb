@@ -24,9 +24,9 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <title>魔方论坛-手机游戏玩家分享讨论基地</title>
+    <meta name="keywords" content="游戏论坛,手游论坛,安卓游戏论坛,iphone游戏论坛,魔方网论坛">
+    <meta name="description" content="魔方网手游论坛致力于打造国内第一手游论坛,推荐最新的安卓游戏,iPhone游戏,是手游玩家分享游戏攻略的基地,还有丰厚的游戏礼包和游戏周边领取活动，欢迎广大手游玩家来魔方网论坛交流游戏心得体验.">
+    <title>魔方论坛_手游游戏论坛_安卓iPhone游戏论坛_魔方网手游游戏玩家分享社区</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/common.css">
@@ -61,8 +61,15 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
-                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl%>">魔方首页</a>
+                    <a href="<%=CommonUrl.mNewsUrl%>">新闻</a>
+                    <a href="<%=CommonUrl.mVideosUrl%>">视频</a>
+                    <a href="<%=CommonUrl.mTopicsUrl%>">专区</a>
+                    <a href="<%=CommonUrl.mChangyeUrl%>">产业</a>
+                    <a href="<%=CommonUrl.mGameUrl%>">游戏库</a>
+                    <a href="<%=CommonUrl.mCsUrl%>">厂商库</a>
+                    <a href="<%=CommonUrl.mAppUrl%>">app</a>
                   </p>
                 </div>
                 <div class="wap-logo">
@@ -115,19 +122,19 @@
                     <div class="rec col-xs-6 col-md-6 col-sm-12">
                         <div class="col-xs-12 rec-con">
                             <dl class="title-red">
-                                <dt><a target="_blank" href="thread_info?thread_id=${subjects.threadId1}">${subjects.threadName1} </a></dt>
+                                <dt><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId1}.html">${subjects.threadName1} </a></dt>
                                 <dd>${subjects.content1}</dd>
                             </dl>
                             <dl>
-                                <dt><a target="_blank" href="thread_info?thread_id=${subjects.threadId2}">${subjects.threadName2}</a></dt>
+                                <dt><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId2}.html">${subjects.threadName2}</a></dt>
                                 <dd>${subjects.content2}</dd>
                             </dl>
                             <ul>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId3}">${subjects.threadName3} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId3}">${subjects.forumNmae3} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId4}">${subjects.threadName4} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId4}">${subjects.forumNmae4} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId5}">${subjects.threadName5} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId5}">${subjects.forumNmae5} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId6}">${subjects.threadName6} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId6}">${subjects.forumNmae6} </a></span></li>
-                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="thread_info?thread_id=${subjects.threadId7}">${subjects.threadName7} </a> <span class="lm"><a target="_blank" href="forum_content?fid=${subjects.forumId7}">${subjects.forumNmae7} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId3}.html">${subjects.threadName3} </a> <span class="lm"><a target="_blank" href="<%=CommonUrl.baseUrl%>/forum/${subjects.forumId3}.html">${subjects.forumNmae3} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId4}.html">${subjects.threadName4} </a> <span class="lm"><a target="_blank" href="<%=CommonUrl.baseUrl%>/forum/${subjects.forumId4}.html">${subjects.forumNmae4} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId5}.html">${subjects.threadName5} </a> <span class="lm"><a target="_blank" href="<%=CommonUrl.baseUrl%>/forum/${subjects.forumId5}.html">${subjects.forumNmae5} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId6}.html">${subjects.threadName6} </a> <span class="lm"><a target="_blank" href="<%=CommonUrl.baseUrl%>/forum/${subjects.forumId6}.html">${subjects.forumNmae6} </a></span></li>
+                                 <li class="clearfix"><span class="icon-black-splot"></span><a target="_blank" href="<%=CommonUrl.baseUrl%>/thread/${subjects.threadId7}.html">${subjects.threadName7} </a> <span class="lm"><a target="_blank" href="<%=CommonUrl.baseUrl%>/forum/${subjects.forumId7}.html">${subjects.forumNmae7} </a></span></li>
                              </ul> 
                         </div>
                     </div>
@@ -142,7 +149,7 @@
                             <div class="hot-con swipe-wrap">
                                 
                                 <ul>
-                                    <li class="clearfix"><span class="num num-color">01</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId1}" class="title"><img src="${hotRank.icon1}" alt="">${hotRank.forumName1} </a>
+                                    <li class="clearfix"><span class="num num-color">01</span><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotRank.forumId1}.html" class="title"><img src="${hotRank.icon1}" alt="">${hotRank.forumName1} </a>
 	                                    <span class="rank">
 		                                     <c:if test="${hotRank.upDown1==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -155,7 +162,7 @@
 		                                    </c:if>
 		                                </span>
                                     </li>
-                                    <li class="clearfix"><span class="num num-color">02</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId2}" class="title"><img src="${hotRank.icon2}" alt="">${hotRank.forumName2}</a>
+                                    <li class="clearfix"><span class="num num-color">02</span><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotRank.forumId2}.html" class="title"><img src="${hotRank.icon2}" alt="">${hotRank.forumName2}</a>
                                     <span class="rank">
                                      		<c:if test="${hotRank.upDown2==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -168,7 +175,7 @@
 		                                    </c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><span class="num num-color">03</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId3}" class="title"><img src="${hotRank.icon3}" alt="">${hotRank.forumName3}</a>
+                                    <li class="clearfix"><span class="num num-color">03</span><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotRank.forumId3}.html" class="title"><img src="${hotRank.icon3}" alt="">${hotRank.forumName3}</a>
                                     	<span class="rank">
                                     		<c:if test="${hotRank.upDown3==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -181,7 +188,7 @@
 		                                    </c:if>
                                     	</span>
                                     </li>
-                                    <li class="clearfix"><span class="num">04</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId4}" class="title"><img src="${hotRank.icon4}" alt="">${hotRank.forumName4}</a>
+                                    <li class="clearfix"><span class="num">04</span><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotRank.forumId4}.html" class="title"><img src="${hotRank.icon4}" alt="">${hotRank.forumName4}</a>
                                     	<span class="rank">
                                     	    <c:if test="${hotRank.upDown4==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -194,7 +201,7 @@
 		                                    </c:if>
                                     	</span>
                                     </li>
-                                    <li class="clearfix"><span class="num">05</span><a target="_blank"  href="forum_content?fid=${hotRank.forumId5}" class="title"><img src="${hotRank.icon5}" alt="">${hotRank.forumName5}</a>
+                                    <li class="clearfix"><span class="num">05</span><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotRank.forumId5}.html" class="title"><img src="${hotRank.icon5}" alt="">${hotRank.forumName5}</a>
                                     	<span class="rank">
                                     	    <c:if test="${hotRank.upDown5==1}">
 		                                    	<img src="./img/icon/up.png">
@@ -209,7 +216,7 @@
                                     </li>
                                 </ul>
                                 <ul>
-                                    <li class="clearfix"><a target="_blank"  href="forum_content?fid=${recommendRank.forumId1}" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a>
+                                    <li class="clearfix"><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendRank.forumId1}.html" class="title"><img src="${recommendRank.icon1}" alt="">${recommendRank.forumName1}</a>
                                     <span>
                                         <c:if test="${recommendRank.giftUrl1 == ''}">
                                     	<a class="package off-package" href="javascript:;">礼包</a>
@@ -225,7 +232,7 @@
                                     	</c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><a target="_blank"  href="forum_content?fid=${recommendRank.forumId2}" class="title"><img src="${recommendRank.icon2}" alt="">${recommendRank.forumName2}</a>
+                                    <li class="clearfix"><a target="_blank"  href="<%=CommonUrl.baseUrl%>/forum/${recommendRank.forumId2}.html" class="title"><img src="${recommendRank.icon2}" alt="">${recommendRank.forumName2}</a>
                                     <span>
                                        <c:if test="${recommendRank.giftUrl2 == ''}">
                                     	<a class="package off-package" href="javascript:;">礼包</a> 
@@ -241,7 +248,7 @@
                                     	</c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><a target="_blank"  href="forum_content?fid=${recommendRank.forumId3}" class="title"><img src="${recommendRank.icon3}" alt="">${recommendRank.forumName3}</a>
+                                    <li class="clearfix"><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendRank.forumId3}.html" class="title"><img src="${recommendRank.icon3}" alt="">${recommendRank.forumName3}</a>
                                     <span>
                                     <c:if test="${recommendRank.giftUrl3 == ''}">
                                     	<a class="package off-package" href="javascript:;">礼包</a> 
@@ -257,7 +264,7 @@
                                     </c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><a target="_blank"  href="forum_content?fid=${recommendRank.forumId4}" class="title"><img src="${recommendRank.icon4}" alt="">${recommendRank.forumName4}</a>
+                                    <li class="clearfix"><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendRank.forumId4}.html" class="title"><img src="${recommendRank.icon4}" alt="">${recommendRank.forumName4}</a>
                                     <span>
                                     	<c:if test="${recommendRank.giftUrl4 == ''}">
                                     	<a class="package off-package" href="javascript:;">礼包</a>
@@ -273,7 +280,7 @@
                                     	</c:if>
                                     </span>
                                     </li>
-                                    <li class="clearfix"><a target="_blank"  href="forum_content?fid=${recommendRank.forumId5}" class="title"><img src="${recommendRank.icon5}" alt="">${recommendRank.forumName5}</a>
+                                    <li class="clearfix"><a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendRank.forumId5}.html" class="title"><img src="${recommendRank.icon5}" alt="">${recommendRank.forumName5}</a>
                                     <span>
                                        	<c:if test="${recommendRank.giftUrl5 == ''}">
                                     	<a class="package off-package" href="javascript:;">礼包</a>
@@ -305,7 +312,7 @@
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <a target="_blank" href="forum_content?fid=${officalForum.forumId1}">
+                       <a target="_blank" href="<%=CommonUrl.baseUrl %>/forum/${officalForum.forumId1}.html">
 	                       <dt><img src="${officalForum.icon1}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName1}</span></dd>
 	                       <c:if test="${officalForum.todayThreads1 > 0}">
@@ -320,7 +327,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                       <a target="_blank" href="forum_content?fid=${officalForum.forumId2}">
+                       <a target="_blank" href="<%=CommonUrl.baseUrl%>/forum/${officalForum.forumId2}.html">
 	                       <dt><img src="${officalForum.icon2}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName2}</span></dd>
 	                       <c:if test="${officalForum.todayThreads2 > 0}">
@@ -335,7 +342,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   	   <a target="_blank" href="forum_content?fid=${officalForum.forumId3}">
+                   	   <a target="_blank" href="<%=CommonUrl.baseUrl %>/forum/${officalForum.forumId3}.html">
 	                       <dt><img src="${officalForum.icon3}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName3}</span></dd>
 	                       <c:if test="${officalForum.todayThreads3 > 0}">
@@ -350,7 +357,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   	   <a target="_blank" href="forum_content?fid=${officalForum.forumId4}">
+                   	   <a target="_blank" href="<%=CommonUrl.baseUrl %>/forum/${officalForum.forumId4}.html">
 	                       <dt><img src="${officalForum.icon4}" alt=""></dt>
 	                       <dd><span>${officalForum.forumName4}</span></dd>
 	                       <c:if test="${officalForum.todayThreads4 > 0}">
@@ -367,11 +374,11 @@
            </div>
            <!-- 综合专区结束 -->
            <!-- 热门游戏开始 -->
-           <div class="h2">热门游戏 <a target="_blank" href="forumList?forumType=1">更多 ></a></div>
+           <div class="h2">热门游戏 <a target="_blank" href="<%=CommonUrl.baseUrl %>/forumList/1.html">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId1}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId1}.html">
                        <dt><img src="${hotForum.hotIcon1}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName1}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads1 > 0}">
@@ -400,7 +407,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId2}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId2}.html">
                        <dt><img src="${hotForum.hotIcon2}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName2}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads2 > 0}">
@@ -429,7 +436,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId3}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId3}.html">
                        <dt><img src="${hotForum.hotIcon3}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName3}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads3 > 0}">
@@ -458,7 +465,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId4}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId4}.html">
                        <dt><img src="${hotForum.hotIcon4}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName4}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads4 > 0}">
@@ -487,7 +494,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId5}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId5}.html">
                        <dt><img src="${hotForum.hotIcon5}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName5}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads5 > 0}">
@@ -516,7 +523,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId6}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId6}.html">
                        <dt><img src="${hotForum.hotIcon6}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName6}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads6 > 0}">
@@ -545,7 +552,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId7}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId7}.html">
                        <dt><img src="${hotForum.hotIcon7}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName7}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads7 > 0}">
@@ -574,7 +581,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${hotForum.hotForumId8}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId8}.html">
                        <dt><img src="${hotForum.hotIcon8}" alt=""></dt>
                        <dd><span>${hotForum.hotForumName8}</span></dd>
                        <c:if test="${hotForum.hotTodayThreads8 > 0}">
@@ -605,11 +612,11 @@
            </div>
            <!-- 热门游戏结束 -->
           	<!-- 新游推荐开始 -->
-           <div class="h2">新游推荐 <a target="_blank" href="forumList?forumType=2">更多 ></a></div>
+           <div class="h2">新游推荐 <a target="_blank" href="<%=CommonUrl.baseUrl %>/forumList/2.html">更多 ></a></div>
            <div class="h2-con clearfix container">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId1}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId1}.html">
                        <dt><img src="${recommendForum.icon1}" alt=""></dt>
                        <dd><span>${recommendForum.forumName1}</span></dd>
                        <c:if test="${recommendForum.todayThreads1 > 0}">
@@ -638,7 +645,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId2}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId2}.html">
                        <dt><img src="${recommendForum.icon2}" alt=""></dt>
                        <dd><span>${recommendForum.forumName2}</span></dd>
                        <c:if test="${recommendForum.todayThreads2 > 0}">
@@ -667,7 +674,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfixf">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId3}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId3}.html">
                        <dt><img src="${recommendForum.icon3}" alt=""></dt>
                        <dd><span>${recommendForum.forumName3}</span></dd>
                        <c:if test="${recommendForum.todayThreads3 > 0}">
@@ -696,7 +703,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId4}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId4}.html">
                        <dt><img src="${recommendForum.icon4}" alt=""></dt>
                        <dd><span>${recommendForum.forumName4}</span></dd>
                        <c:if test="${recommendForum.todayThreads4 > 0}">
@@ -725,7 +732,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId5}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId5}.html">
                        <dt><img src="${recommendForum.icon5}" alt=""></dt>
                        <dd><span>${recommendForum.forumName5}</span></dd>
                        <c:if test="${recommendForum.todayThreads5 > 0}">
@@ -754,7 +761,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId6}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId6}.html">
                        <dt><img src="${recommendForum.icon6}" alt=""></dt>
                        <dd><span>${recommendForum.forumName6}</span></dd>
                        <c:if test="${recommendForum.todayThreads6 > 0}">
@@ -783,7 +790,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId7}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId7}.html">
                        <dt><img src="${recommendForum.icon7}" alt=""></dt>
                        <dd><span>${recommendForum.forumName7}</span></dd>
                        <c:if test="${recommendForum.todayThreads7 > 0}">
@@ -812,7 +819,7 @@
                </div>
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="forum_content?fid=${recommendForum.forumId8}">
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl%>/forum/${recommendForum.forumId8}.html">
                        <dt><img src="${recommendForum.icon8}" alt=""></dt>
                        <dd><span>${recommendForum.forumName8}</span></dd>
                        <c:if test="${recommendForum.todayThreads8 > 0}">

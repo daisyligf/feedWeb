@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <!-- 底部开始 -->
  <div class="footer cleafix">
  	 <div class="footer-con">
@@ -8,7 +9,6 @@
  	 </div>
      
  </div>
- 
  <!-- cnzz统计代码 -->
  <div class="cnzz" style="display:none">
  	<script type="text/javascript">
@@ -16,5 +16,24 @@
  		document.write(unescape("%3Cspan id='cnzz_stat_icon_1000370935'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1000370935' type='text/javascript'%3E%3C/script%3E"));
  	</script>
  </div>
+  <!-- baidu统计代码 -->
+  <div class="baidu" style="display:none">
+	<script type="text/javascript">
+		var _hmt = _hmt || [];
+		(function() {
+  			var hm = document.createElement("script");
+  				hm.src = "//hm.baidu.com/hm.js?b5fe97c9be553611eaa9d4aa4f803f71";
+  			var s = document.getElementsByTagName("script")[0]; 
+  				s.parentNode.insertBefore(hm, s);
+		})();
+</script>
+ </div>
+ <!--单独版块的统计代码  -->
+ <c:if test="${statisticsInfo.forum_statistics_id > 0 and feedForum.forum_id == statisticsInfo.forum_statistics_id}">
+ 	<div class="forumStatistics" style="display:none">
+ 		${statisticsInfo.forum_statistics_url}
+ 	</div>
+ </c:if>
+ 
  <!-- 底部结束 -->
  

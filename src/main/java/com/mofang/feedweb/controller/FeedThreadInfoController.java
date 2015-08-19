@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,7 @@ import com.mofang.feedweb.entity.FeedPost;
 import com.mofang.feedweb.entity.FeedThread;
 import com.mofang.feedweb.entity.ThreadUserInfo;
 import com.mofang.feedweb.entity.UserInfo;
+import com.mofang.feedweb.global.CommonUrl;
 import com.mofang.feedweb.global.Constant;
 import com.mofang.feedweb.global.GlobalObject;
 import com.mofang.feedweb.global.SysPrivilege;
@@ -52,42 +54,137 @@ public class FeedThreadInfoController extends FeedCommonController {
 	@Autowired
 	private UserComponent userComp;
 	
-	@RequestMapping(value = "/thread_info", method = RequestMethod.GET)
-	public ModelAndView getThreadInfo(HttpServletRequest request, @RequestParam("thread_id") long threadId) throws Exception {
+	//路径方式1
+	@RequestMapping(value = "/thread/{threadId}/{currentPage}/{type}/{replyflg}.html", method = RequestMethod.GET)
+	public ModelAndView getThreadInfoUrl1(HttpServletRequest request,
+			@PathVariable(value = "threadId") long threadId,
+			@PathVariable(value = "currentPage") int currPage,
+			@PathVariable(value = "type") int type,
+			@PathVariable(value = "replyflg") int replyflg) throws Exception {
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
-			int code = getThreadInfo(request, threadId, model);
+			
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
+			
 			if (code == Constant.THREAD_NOT_EXISTS) {
 				return new ModelAndView("redirect:error");
 			}
-			UserInfo loginUser = getUserInfo(request);
-			model.put("loginUser", loginUser);
-			model.put("keyword", getSearchKey(request));
 			return new ModelAndView("thread_info", model);
+			
 		} catch (Exception e) {
-			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfo throw an error.", e);
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl1 throw an error.", e);
 			return new ModelAndView("thread_info", model);
 		}
 	}
 	
-	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model) throws Exception {
+	//路径方式2
+	@RequestMapping(value = "/thread/{threadId}/{currentPage}.html", method = RequestMethod.GET)
+	public ModelAndView getThreadInfoUrl2(HttpServletRequest request,
+			@PathVariable(value = "threadId") long threadId,
+			@PathVariable(value = "currentPage") int currPage) throws Exception {
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		try {
+			int type = 0;
+			int replyflg = 0;
+			
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
+			if (code == Constant.THREAD_NOT_EXISTS) {
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
+			}
+		
+			return new ModelAndView("thread_info", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl2 throw an error.", e);
+			return new ModelAndView("thread_info", model);
+		}
+	}
+	
+	//路径方式3
+	@RequestMapping(value = "/thread/{threadId}.html", method = RequestMethod.GET)
+	public ModelAndView getThreadInfoUrl3(HttpServletRequest request,
+			@PathVariable(value = "threadId") long threadId) throws Exception {
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		try {
+			int currPage = 1;
+			int type = 0;
+			int replyflg = 0;
+			
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
+			if (code == Constant.THREAD_NOT_EXISTS) {
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
+			}
+		
+			return new ModelAndView("thread_info", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl3 throw an error.", e);
+			return new ModelAndView("thread_info", model);
+		}
+	}
+	
+	//路径方式4
+	@RequestMapping(value = "/thread_info", method = RequestMethod.GET)
+	public ModelAndView getThreadInfoUrl4(HttpServletRequest request,
+			@RequestParam(value = "thread_id") long threadId) throws Exception {
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		try {
+			
+			int currPage = 1;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("currentPage"))) {
+				currPage = Integer.valueOf(request.getParameter("currentPage"));
+			}
+			int type = 0;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("type"))) {
+				type = Integer.valueOf(request.getParameter("type"));
+			}
+			int replyflg = 0;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
+				replyflg = Integer.valueOf(request.getParameter("replyflg"));
+			}
+			
+			int code = getThreadInfo(request, threadId, model, replyflg, currPage, type);
+			if (code == Constant.THREAD_NOT_EXISTS) {
+				return new ModelAndView("redirect:" + CommonUrl.baseUrl + "/error");
+			}
+		
+			return new ModelAndView("thread_info", model);
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.getThreadInfoUrl4 throw an error.", e);
+			return new ModelAndView("thread_info", model);
+		}
+	}
+	
+	private int getThreadInfo(HttpServletRequest request, long threadId, Map<String, Object> model, int replyflg, int page, int type) throws Exception {
 		
 		try {
 			//判断是否是回帖的状况
-			boolean replyFlg = false;
-			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
-				replyFlg = true;
-			}
+//			int replyFlg = 0;
+//			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
+//				replyFlg = Integer.valueOf(request.getParameter("replyflg"));
+//			}
+			
+			//获取单个版块统计信息
+			model.put("statisticsInfo", getStatisticsInfo());
+			
+			UserInfo loginUser = getUserInfo(request);
+			model.put("loginUser", loginUser);
+			model.put("keyword", getSearchKey(request));
 			
 			StringBuilder param = new StringBuilder();
 			param.append("tid=").append(threadId);
 			long forumId = 0;
-			String currPage = request.getParameter("currentPage");
-			int page = 1;
-			if (currPage != null && StringUtil.isInteger(currPage)) {
-				page = Integer.parseInt(currPage);
-			}
+//			String currPage = request.getParameter("currentPage");
+//			int page = 1;
+//			if (currPage != null && StringUtil.isInteger(currPage)) {
+//				page = Integer.parseInt(currPage);
+//			}
 			
 			param.append("&page=").append(page);
 			
@@ -99,11 +196,11 @@ public class FeedThreadInfoController extends FeedCommonController {
 			}
 			param.append("&size=").append(size);
 			
-			int type = 0;
-			String typeString = request.getParameter("type");
-			if (typeString != null && StringUtil.isInteger(typeString)) {
-				type = Integer.parseInt(typeString);
-			}
+//			int type = 0;
+//			String typeString = request.getParameter("type");
+//			if (typeString != null && StringUtil.isInteger(typeString)) {
+//				type = Integer.parseInt(typeString);
+//			}
 			param.append("&type=").append(type);
 			
 			JSONObject json = getHttpInfo(getPostListUrl(), param.toString(), request);
@@ -225,7 +322,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 								continue;
 							FeedPost feedPost = new FeedPost();
 							
-							if (replyFlg && totalPage == page && i == posts.length() - 1) {
+							if (replyflg == 1 && totalPage == page && i == posts.length() - 1) {
 								feedPost.setLastPositionFlg(true);	
 							}
 							

@@ -275,7 +275,7 @@
 	            		<div class="level-list swiper-slide">
 	            			<dl>
 	            				<dt class="circle">LV.7</dt>
-	            				<dd>5000经验</dd>
+	            				<dd>500经验</dd>
 	            			</dl>
 	            		</div>
 	            		<div class="level-line swiper-slide">

@@ -15,7 +15,7 @@ define('index',['jquery','handlebars','jquery/jquery-pagebar','jquery/jquery-pop
 
 	//var getFollowUrl = "http://u.mofang.com/home/area/follow"; //关注/取消关注
 	var getFollowUrl = c.config.userInfoUrl + "/home/area/follow"; //关注/取消关注
-	var getSignUrl = "addSignIn";//签到
+	var getSignUrl = c.config.baseUrl + "/addSignIn";//签到
 	var ajaxMethod="jsonp";
 	if(USE_LOCAL_DATA){
 		getFollowUrl='/bbs_html/statics/test/follow.json';
