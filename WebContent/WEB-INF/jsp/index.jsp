@@ -61,8 +61,15 @@
                 <div class="nav-wap-left">
                   <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
-                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl%>">魔方首页</a>
+                    <a href="<%=CommonUrl.mNewsUrl%>">新闻</a>
+                    <a href="<%=CommonUrl.mVideosUrl%>">视频</a>
+                    <a href="<%=CommonUrl.mTopicsUrl%>">专区</a>
+                    <a href="<%=CommonUrl.mChangyeUrl%>">产业</a>
+                    <a href="<%=CommonUrl.mGameUrl%>">游戏库</a>
+                    <a href="<%=CommonUrl.mCsUrl%>">厂商库</a>
+                    <a href="<%=CommonUrl.mAppUrl%>">app</a>
                   </p>
                 </div>
                 <div class="wap-logo">
