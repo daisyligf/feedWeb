@@ -115,7 +115,7 @@
         <div class="con clearfix">
             <div class="nav clearfix">
                 <div class="nav-left col-xs-6">
-                    <a href="<%=CommonUrl.baseUrl%>/index">论坛首页</a> > <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}.html">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>">论坛首页</a> > <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}.html">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
                 
                 <c:if test="${totalPages > 1 }">

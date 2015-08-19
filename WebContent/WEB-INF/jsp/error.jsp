@@ -76,7 +76,7 @@
         		<dl>
         			<dt><img src="./img/icon/err_warn.png"/></dt>
         			<dd class="title">页面已经被删除</dd>
-        			<dd>对不起，您访问的页面已经被删除，<span id="countDown">5</span>秒后将自动跳转到 <a href="/index">论坛首页</a></dd>
+        			<dd>对不起，您访问的页面已经被删除，<span id="countDown">5</span>秒后将自动跳转到 <a href="<%=CommonUrl.bbsHomeUrl%>">论坛首页</a></dd>
         		</dl>
         	</div>
            	<!--  热门游戏社区开始 -->
