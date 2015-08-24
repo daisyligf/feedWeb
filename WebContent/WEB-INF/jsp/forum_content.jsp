@@ -115,10 +115,10 @@
                             <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/0.html" id="tag_all">综合</a>
                             <c:forEach var="tag" items="${feedForum.tags}">
                             	<c:if test="${tag.tag_id == tag_id}">
-                            		<a class="active" href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id}.html">${tag.tag_name}</a>
+                            		<a class="active" href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/1/${tag.tag_id}.html">${tag.tag_name}</a>
                             	</c:if>
                             	<c:if test="${tag.tag_id != tag_id}">
-                            		<a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage}/${tag.tag_id}.html">${tag.tag_name}</a>
+                            		<a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/1/${tag.tag_id}.html">${tag.tag_name}</a>
                             	</c:if>
                             </c:forEach>
                             <input type="hidden" id="tag_id" value="${tag_id }"/>
@@ -131,14 +131,14 @@
                                 <c:if test="${type==0 }">
                                 <p>全部</p>
                                 <p class="list">
-                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/1/${timeType}/${currentPage}/${tag_id}.html">精华</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/1/${timeType}/1/${tag_id}.html">精华</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${type ==1 }">
                                 <p>精华</p>
                                 <p class="list">
-                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/0/${timeType}/${currentPage}/${tag_id}.html">全部</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/0/${timeType}/1/${tag_id}.html">全部</a>
                                 </p>
                                 </c:if>
                                 
@@ -158,14 +158,14 @@
                                 <c:if test="${timeType==0 }">
                                 <p id="reply_time">回复时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/1/${currentPage}/${tag_id}.html">发帖时间</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/1/1/${tag_id}.html">发帖时间</a>
                                 </p>
                                 </c:if>
                                 
                                 <c:if test="${timeType==1 }">
                                 <p id="reply_time">发帖时间</p>
                                 <p id="create_time" class="list">
-                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type }/0/${currentPage}/${tag_id}.html">回复时间</a>
+                                    <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/0/1/${tag_id}.html">回复时间</a>
                                 </p>
                                 </c:if>
                                
