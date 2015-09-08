@@ -234,7 +234,7 @@
                         <dd class="author-name"><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}">${threadUserInfo.nickname}</a><a href="level_info"><span class="grade">Lv.${threadUserInfo.level}</span></a></dd>
                         <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format }"/></span></dd>
                     </dl>
-                    <h2> ${feedThread.subject } 
+                    <h1> ${feedThread.subject } 
                      <c:choose>
                         	<c:when test="${type==1 }">
                         	<!--  <a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>-->
@@ -292,7 +292,7 @@
                         </div>
                         </c:if>
                         
-                    </h2>
+                    </h1>
                     <c:if test="${currentPage==1}">
                     <h3>楼主  <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}" target="_blank">${threadUserInfo.nickname}</a>    <fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format}"/></h3>
                     <div class="con-con">
