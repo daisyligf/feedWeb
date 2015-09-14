@@ -494,7 +494,7 @@ font {
 	.con .con-right1 .con-author{
 		display: block;
 	}
-	.con .con-right1 h2 div.manage{
+	.con .con-right1 h1 div.manage{
 
 		display: none;	
 	}
@@ -537,7 +537,7 @@ font {
 		padding-left: 0px;
 		border-bottom: 0px;
 	}
-	.con .con-right1 h2 a,.con .con-right1 h3,.con .con-right1 h2 .manage-more{
+	.con .con-right1 h1 a,.con .con-right1 h3,.con .con-right1 h1 .manage-more{
 		display: none;
 	}
 	.con .look .thread-comment{
