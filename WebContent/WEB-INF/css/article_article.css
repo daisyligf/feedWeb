@@ -128,7 +128,7 @@
 .con .con-right1 .con-author{
 	display: none;
 }
-.con .con-right1 h2{
+.con .con-right1 h1{
 	position: relative;
 	font-size:18px;
 	color:#333;
@@ -136,7 +136,7 @@
 	padding-left:30px;
 	border-bottom: 1px solid #eee;
 }
-.con .con-right1 h2 .manage-more{
+.con .con-right1 h1 .manage-more{
 	position: absolute;
 	padding: 0px 0px 10px 10px;
 	right: 105px;
@@ -146,11 +146,11 @@
 	background-color: #fff;
 	display: none;
 }
-.con .con-right1 h2 .manage-more a{
+.con .con-right1 h1 .manage-more a{
 	display: block;
 	float: none;
 }
-.con .con-right1 h2 a,.con .con-right1 h2 div.manage{
+.con .con-right1 h1 a,.con .con-right1 h2 div.manage{
 	float:right;
 	margin-top:10px;
 	margin-right:10px;
@@ -162,7 +162,7 @@
 	height:28px;
 	line-height:28px;
 }
-.con .con-right1 h2 div.manage{
+.con .con-right1 h1 div.manage{
 
 	background: url(../img/icon/post_input.png) 95% center no-repeat;	
 }
