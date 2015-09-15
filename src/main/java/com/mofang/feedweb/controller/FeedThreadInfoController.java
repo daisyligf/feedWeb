@@ -590,12 +590,14 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "recommend_floor.json", method = RequestMethod.POST)
-	public String recommendFloor(@RequestParam("pid") long pid, 
+	public String recommendFloor(@RequestParam("pid") long pid, @RequestParam("uid") long uid, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		try {
 			JSONObject postData = new JSONObject();
 			postData.put("pid", pid);
+			//楼层点赞（被点赞的用户ID）
+			postData.put("uid", uid);
 			
 			JSONObject json = postHttpInfo(getRecommendFloorUrl(), postData, request);
 			
