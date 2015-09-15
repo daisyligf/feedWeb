@@ -597,7 +597,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 			JSONObject postData = new JSONObject();
 			postData.put("pid", pid);
 			//楼层点赞（被点赞的用户ID）
-			postData.put("uid", uid);
+			postData.put("recommenduid", uid);
 			
 			JSONObject json = postHttpInfo(getRecommendFloorUrl(), postData, request);
 			
