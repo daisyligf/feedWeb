@@ -854,7 +854,7 @@
         </div>
         <!-- 内容结束 -->
         <!-- footer开始 -->
-		<jsp:include page="footer.jsp" flush='true'/>
+        <jsp:include page="footer_link.jsp" flush='true'/>
 		<!-- footer结束 -->
     </div>	
     
