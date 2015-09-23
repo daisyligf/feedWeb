@@ -1,0 +1,58 @@
+/*主页底部友情链接*/
+.footer-link{
+    background: #333333;
+    color:#fff;
+    overflow: hidden;
+}
+.footer-link-con{
+    width:1228px;
+    margin:0px auto 27px;
+}
+.footer-link-con .link-tit{
+    line-height: 86px;
+    font-size:22px;
+}
+.footer-link-con .link-list-a a{
+    color:#888888;
+    font-size:14px;
+    display: inline-block;
+    margin:0px 23px 12px 0px;
+}
+.footer-link-con .link-list-a a:hover{
+    color:#ff9900;
+}
+@media (max-width:1024px){
+	.footer-link{
+		display:none;
+	}
+}
+@media (max-width:1228px){
+	.footer-link-con{
+		 width:1160px;
+		 margin:0px 0 27px;
+	}
+}
+@media (max-width:1160px){
+	.footer-link-con{
+		 width:1060px;
+		 margin:0px 0 27px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
