@@ -1,3 +1,7 @@
+.DS_Store
+*.classpath
+*.gitignore
+*.prefs
+.tern-project
 /bin
 .classpath
-.DS_Store

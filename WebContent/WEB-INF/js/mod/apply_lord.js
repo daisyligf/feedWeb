@@ -3,13 +3,14 @@
  * @author xukuikui
  * @date 2015-05-15
  */
-define('apply_lord',['jquery','jquery/jquery-pop'],function(require, exports, module) {
+define('apply_lord',['jquery','jquery/jquery-pop','config'],function(require, exports, module) {
 
 	var $ = jQuery = require("jquery");//jquery库
 	require("jquery/jquery-pop");//弹出框
 
 	var USE_LOCAL_DATA = 0;//本地数据
 	var USE_TEST_DATA = 0;//测试数据
+	var c = require("config");
 
 		
 	var getApplyUrl = "apply" //申请吧主
@@ -59,7 +60,7 @@ define('apply_lord',['jquery','jquery/jquery-pop'],function(require, exports, mo
                         autoTime:500
                     }); 
                     setTimeout(function(){
-                    	location.href="forum_content?fid="+forumId;  
+                    	location.href= c.config.baseUrl + "/forum/" + forumId + ".html";  
                     },600); 
                 }else{
                 	$(".pop-top-fail").pop({

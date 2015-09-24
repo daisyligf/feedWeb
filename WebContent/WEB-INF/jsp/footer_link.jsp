@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="stylesheet" href="./css/footer_link.css">
     <div class="footer-link">
     <div class="footer-link-con">
@@ -104,17 +106,17 @@
 	       
 	    	<div class="footer-nav-list clearfix">
 	    		<dl>
-	    			<dt><a target="_blank" href="http://www.mofang.com/">魔方网</a></dt>
-	    			<dd><a target="_blank" href="http://www.mofang.com/about/index">关于魔方</a></dd>
-	    			<dd><a target="_blank" href="http://www.mofang.com/about/join">加入魔方</a></dd>
-	    			<dd><a target="_blank" href="http://www.mofang.com/about/contact">广告合作</a></dd>
+	    			<dt><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>">魔方网</a></dt>
+	    			<dd><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>/about/index">关于魔方</a></dd>
+	    			<dd><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>/about/join">加入魔方</a></dd>
+	    			<dd><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>/about/contact">广告合作</a></dd>
 	    		</dl>
 	    		<dl>
 	    			<dt><a target="_blank" href="javascript:void(0);">游戏资讯</a></dt>
-	    			<dd><a target="_blank" href="http://www.mofang.com/news/">游戏新闻</a></dd>
-	    			<dd><a target="_blank" href="http://www.mofang.com/pingce_www/">新游评测</a></dd>
+	    			<dd><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>/news/">游戏新闻</a></dd>
+	    			<dd><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>/pingce_www/">新游评测</a></dd>
 	    			<dd><a target="_blank" href="http://game.mofang.com">游戏库</a></dd>
-	    			<dd><a target="_blank" href="http://newbbs.mofang.com/index">手游论坛</a></dd>
+	    			<dd><a target="_blank" href="<%=CommonUrl.bbsHomeUrl%>">手游论坛</a></dd>
 	
 	    		</dl>
 	    		<dl>
@@ -183,4 +185,23 @@
  		document.write(unescape("%3Cspan id='cnzz_stat_icon_1000370935'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1000370935' type='text/javascript'%3E%3C/script%3E"));
  	</script>
  </div>
+   <!-- baidu统计代码 -->
+  <div class="baidu" style="display:none">
+	<script type="text/javascript">
+		var _hmt = _hmt || [];
+		(function() {
+  			var hm = document.createElement("script");
+  				hm.src = "//hm.baidu.com/hm.js?b5fe97c9be553611eaa9d4aa4f803f71";
+  			var s = document.getElementsByTagName("script")[0]; 
+  				s.parentNode.insertBefore(hm, s);
+		})();
+</script>
+ </div>
+ <!--单独版块的统计代码  -->
+ <c:if test="${statisticsInfo.forum_statistics_id > 0 and feedForum.forum_id == statisticsInfo.forum_statistics_id}">
+ 	<div class="forumStatistics" style="display:none">
+ 		${statisticsInfo.forum_statistics_url}
+ 	</div>
+ </c:if>
+ 
  <!-- 底部结束 -->

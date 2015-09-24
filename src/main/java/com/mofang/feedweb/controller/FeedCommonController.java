@@ -16,6 +16,7 @@ import com.mofang.feedweb.component.HttpComponent;
 import com.mofang.feedweb.component.UserComponent;
 import com.mofang.feedweb.config.ExternalUrlInfo;
 import com.mofang.feedweb.entity.FeedForum;
+import com.mofang.feedweb.entity.FeedForumStatisticsInfo;
 import com.mofang.feedweb.entity.FeedTag;
 import com.mofang.feedweb.entity.UserInfo;
 import com.mofang.feedweb.global.Constant;
@@ -374,6 +375,21 @@ public class FeedCommonController {
 			.error("FeedCommonController.getUserNotice", e);
 			return null;
 		}
+	}
+	
+	protected FeedForumStatisticsInfo getStatisticsInfo() throws Exception {
+		try {
+			FeedForumStatisticsInfo statisticsInfo = new FeedForumStatisticsInfo();
+			statisticsInfo.setForum_statistics_id(externalUrlInfo.getForum_statistics_id());
+			statisticsInfo.setForum_statistics_url(externalUrlInfo.getForum_statistics_url());
+			
+			return statisticsInfo;
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG
+			.error("FeedCommonController.getStatisticsInfo", e);
+			return null;
+		}
+		
 	}
 
 }

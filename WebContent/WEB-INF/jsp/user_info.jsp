@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ page import="com.mofang.feedweb.global.UserCenter"%>
 
             <div class="nav clearfix">
                 <div class="nav-left">
-                    <a target="_blank" href="http://www.mofang.com">魔方网首页</a>
+                    <a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>">魔方网首页</a>
                     <!--  <a href="http://bbs.mofang.com" class="old-bbs">返回旧版</a>-->
                     <div class="nav-left-list">
-                    	<a target="_blank" href="http://www.mofang.com/news/">新闻</a> 
+                    	<a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>/news/">新闻</a> 
    						<a target="_blank" href="http://v.mofang.com/">视频</a> 
    						<a target="_blank" href="http://c.mofang.com/">产业</a> 
    						<a target="_blank" href="http://game.mofang.com/">游戏库</a> 
-   						<a target="_blank" href="http://bbs.mofang.com/">论坛</a> 
+   						<a target="_blank" href="<%=CommonUrl.bbsHomeUrl%>">论坛</a> 
    						<a target="_blank" href="http://fahao.mofang.com/">发号</a> 
    						<a target="_blank" href="http://v.mofang.com/tx/">腾讯游戏</a> 
                     </div>
@@ -39,7 +40,7 @@
                     
                     <!-- 登陆状态 -->
                     <div class="no-login">
-                    	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="./img/icon/load.png"></a>
+                    	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="load" ><img src="<%=CommonUrl.baseUrl%>/img/icon/load.png"></a>
                     	<a href="<%=UserCenter.baseUrl %>/home/account/index" class="no-login-login">登录</a> | <a href="<%=UserCenter.baseUrl %>/home/account/index" class="no-login-reg">注册</a>
                     </div>
                     

@@ -86,6 +86,7 @@ public class FeedSearchController extends FeedCommonController {
 	@RequestMapping(value = "/searchForum", method = RequestMethod.GET)
 	public void searchForum(@RequestParam(value = "keyword") String keyword,
 			@RequestParam(value = "p", required = false) int p,
+			@RequestParam(value = "pagesize", required = false) int pagesize,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		if (StringUtil.isNullOrEmpty(keyword)) {
@@ -103,7 +104,8 @@ public class FeedSearchController extends FeedCommonController {
 		try {
 			StringBuilder requestParam = new StringBuilder();
 			requestParam.append("page=").append(p).append("&");
-			requestParam.append("size=8&");
+			//requestParam.append("size=8&");
+			requestParam.append("size=").append(pagesize).append("&");
 			requestParam.append("keyword=").append(keyword);
 			JSONObject json = feedSearchService.searchForum(
 					requestParam.toString(), request);

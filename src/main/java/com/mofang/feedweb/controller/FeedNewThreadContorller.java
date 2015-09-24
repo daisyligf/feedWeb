@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,8 +44,8 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	@Autowired
 	private FeedNewThreadService feedNewThreadService;
 	
-	@RequestMapping(value = "/newThreadInit", method = RequestMethod.GET)
-	public ModelAndView init(@RequestParam(value = "fid") long fid,HttpServletRequest request)
+	@RequestMapping(value = "/newThreadInit/{fid}.html", method = RequestMethod.GET)
+	public ModelAndView init(@PathVariable(value = "fid") long fid, HttpServletRequest request)
 			throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		FeedThread threadinfo = new FeedThread();
@@ -72,9 +73,9 @@ public class FeedNewThreadContorller extends FeedCommonController {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@RequestMapping(value = { "/editThreadInit" })
-	public ModelAndView editInit(@RequestParam(value = "fid") long fid,
-			@RequestParam(value = "tid") long tid, HttpServletRequest request,
+	@RequestMapping(value = { "/editThreadInit/{fid}/{tid}.html" })
+	public ModelAndView editInit(@PathVariable(value = "fid") long fid,
+			@PathVariable(value = "tid") long tid, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {

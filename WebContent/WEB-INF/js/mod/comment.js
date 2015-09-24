@@ -20,14 +20,14 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
     //var getUrl = "";//url路径示范
     var getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
-    var getCheckCode = "checkCode";//验证码校验
-    var codeUrl = "generageCode";//验证码url
+    var getCheckCode = c.config.baseUrl + "/checkCode";//验证码校验
+    var codeUrl = c.config.baseUrl + "/generageCode";//验证码url
     //var postUrl = "";//发帖
     //var relayPostUrl = "";//回复帖子
 
     if($("#editor-form .editor-fid").length>0){
-        var localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//发帖成功，跳转的路径
-        var localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//编辑帖子成功，跳转的路径
+        var localPlateUrl = c.config.baseUrl + "/forum/"+$("#editor-form .editor-fid").val() + ".html";//发帖成功，跳转的路径
+        var localPostUrl = c.config.baseUrl + "/thread/"+$("#editor-form .editor-tid").val() + ".html";//编辑帖子成功，跳转的路径
     }
     
     var ajaxMethod="jsonp"; 
@@ -39,8 +39,8 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         relayPostUrl = "/bbs_html/statics/test/follow.json";//回复帖子
         
         if($("#editor-form .editor-fid").length>0){
-            localPostUrl = "thread_info?thread_id="+$("#editor-form .editor-tid").val();//发帖成功，跳转的路径
-            localPlateUrl = "forum_content?fid="+$("#editor-form .editor-fid").val();//编辑帖子成功，跳转的路径
+            localPostUrl = c.config.baseUrl + "/thread/"+$("#editor-form .editor-tid").val() + ".html";//发帖成功，跳转的路径
+            localPlateUrl = c.config.baseUrl + "/forum/"+$("#editor-form .editor-fid").val() + ".html";//编辑帖子成功，跳转的路径
         }
 
         ajaxMethod="json";
@@ -72,12 +72,14 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
     
     /**实例化编辑器**/
     function editorInit () {//{{{
+    	
         um = UM.getEditor('myEditor',{
             toolbar:[
                 ' bold italic underline |',
                 'forecolor fontsize' ,
                 'link unlink | image feed-emotion | video',
             ],
+           imageUrl: c.config.baseUrl + "/upload",
            imageScaleEnabled:false
         });
 
@@ -122,7 +124,6 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
         		
         	}
     	}
-    	
     });
     function subForm(){
     	if(loginStatus){

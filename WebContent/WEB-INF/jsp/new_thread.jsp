@@ -27,19 +27,19 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>发帖-魔方论坛</title>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
 
-    <link rel="stylesheet" href="js/editor/css/umeditor.css">
-    <link rel="stylesheet" href="js/editor/css/fixeditor.css">
-    <link rel="stylesheet" href="js/editor/emotion.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/css/umeditor.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/css/fixeditor.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/emotion.css">
 
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/post.css">
-    <script src="js/sea.js"></script>
-    <script src="js/sea-config.js"></script>
-    <script src="js/bbs-config.js"></script>
-    <script src="js/mod/common.js"></script>
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/common.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/post.css">
+    <script src="<%=CommonUrl.baseUrl%>/js/sea.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/sea-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/bbs-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/common.js"></script>
 
 
     <!--{* IE6 png 图像处理 *}-->
@@ -57,12 +57,12 @@
     <![endif]-->
    
     
-    <script src="js/editor/js/jquery.min.js"></script>
-    <script src="js/editor/js/umeditor.config.js"></script>
-    <script src="js/editor/js/umeditor.js"></script>
-    <script src="js/editor/lang/zh-cn/zh-cn.js"></script>
-    <script src="js/editor/btn.js"></script>
-    <script src="js/editor/feed-emotion.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/jquery.min.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/umeditor.config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/umeditor.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/lang/zh-cn/zh-cn.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/btn.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/feed-emotion.js"></script>
     
 </head>
 <body>
@@ -91,7 +91,7 @@
         <!-- 搜索开始 -->
          <div class="search">
         <div class="bbs-logo">
-           <a href="index"><img src="./img/icon/bbs_icon.png" alt=""></a>
+           <a href="<%=CommonUrl.bbsHomeUrl%>"><img src="<%=CommonUrl.baseUrl%>/img/icon/bbs_icon.png" alt=""></a>
         </div>
         </div>
         <!-- 搜索结束 -->
@@ -189,7 +189,7 @@
                                 <script type="text/plain" id="myEditor" style="height:240px;">${threadInfo.htmlContent }</script>
                             </div>
                         </dd>
-                        <form id="editor-form" data-form="post" data-tid="${threadInfo.thread_id }" action="newThread" method="post" ENCTYPE="multipart/form-data">
+                        <form id="editor-form" data-form="post" data-tid="${threadInfo.thread_id }" action="<%=CommonUrl.baseUrl%>/newThread" method="post" ENCTYPE="multipart/form-data">
                             <input type="hidden" name="fid" class="editor-fid" value="${fid }"/>
                             <input type="hidden" name="tid"  class="editor-tid" value="${threadInfo.thread_id }">
                             <input type="hidden" name="subject"  class="editor-title" value="${threadInfo.subject }">
@@ -202,7 +202,7 @@
                 <div class="sub clearfix">
                     <input type="text" class="code-text">
                    <!--  <img src="http://u.mofang.com/captcha/captcha" alt="" class="code"> -->
-					<img src="generageCode" alt="" class="code">
+					<img src="<%=CommonUrl.baseUrl%>/generageCode" alt="" class="code">
                     <input type="button" class="submit reply-submit" value="发表帖子">
                     <span class="word-count">还可以输入5000字</span>
                 </div>
@@ -222,7 +222,7 @@
         <!-- 遮罩层结束 -->
         <!--未登录-->
         <div class="pop pop-play pop-login">
-            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">未登录？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -231,15 +231,15 @@
         </div>
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">
-            <img src="img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
         </div>
         <!-- 弹出框结束 -->
     </div>
-   <script src="js/mod/comment.js"></script>
+   <script src="<%=CommonUrl.baseUrl%>/js/mod/comment.js"></script>
    
 </body>
 </html>

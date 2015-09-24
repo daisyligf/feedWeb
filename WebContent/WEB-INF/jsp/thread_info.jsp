@@ -35,25 +35,25 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>${feedThread.subject}-${feedForum.forum_name}-魔方论坛</title>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
 
-    <link rel="stylesheet" href="js/editor/css/umeditor.css">
-    <link rel="stylesheet" href="js/editor/css/fixeditor.css">
-    <link rel="stylesheet" href="js/editor/emotion.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/css/umeditor.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/css/fixeditor.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/js/editor/emotion.css">
 
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/article_article.css">
-    <script src="js/sea.js"></script>
-    <script src="js/sea-config.js"></script>
-    <script src="js/bbs-config.js"></script>
-    <script src="js/mod/common.js"></script>
-    <script src="js/editor/js/jquery.min.js"></script>
-    <script src="js/editor/js/umeditor.config.js"></script>
-    <script src="js/editor/js/umeditor.js"></script>
-    <script src="js/editor/lang/zh-cn/zh-cn.js"></script>
-    <script src="js/editor/btn.js"></script>
-    <script src="js/editor/feed-emotion.js"></script>
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/common.css">
+    <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/article_article.css">
+    <script src="<%=CommonUrl.baseUrl%>/js/sea.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/sea-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/bbs-config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/common.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/jquery.min.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/umeditor.config.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/js/umeditor.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/lang/zh-cn/zh-cn.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/btn.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/editor/feed-emotion.js"></script>
     
     <!--{* IE6 png 图像处理 *}-->
     <!--[if IE 6]>
@@ -78,10 +78,10 @@
             <div class="nav-wap clearfix">
                 <div class="nav-wap-left">
                   <a href="<%=request.getHeader("Referer") %>" class="nav-wap-back"></a>
-                  <a href="javascript:;" class="nav-wap-list"><img src="./img/icon/nav_three.png"></a>
+                  <a href="javascript:;" class="nav-wap-list"><img src="<%=CommonUrl.baseUrl%>/img/icon/nav_three.png"></a>
                   <p class="nav-info">
-                    <a href="<%=CommonUrl.bbsHomeUrl %>" class="nav-info-home">论坛首页</a>
-                    <a href="<%=CommonUrl.mofangHomeUrl %>">魔方首页</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>" class="nav-info-home">论坛首页</a>
+                    <a href="<%=CommonUrl.mofangHomeUrl%>">魔方首页</a>
                   </p>
                 </div>
                 <div class="nav-wap-right">
@@ -89,10 +89,10 @@
 
                 <c:choose>
                    	<c:when test="${type==1 }">
-                   	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=0" class="nav-wap-floor">全部</a>
+                   	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/0/0.html" class="nav-wap-floor">全部</a>
                    	</c:when>
                    	<c:otherwise>
-                   	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=1" class="nav-wap-floor">楼主</a>
+                   	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/1/0.html" class="nav-wap-floor">楼主</a>
                    	</c:otherwise>
                    </c:choose>                
                 
@@ -115,7 +115,7 @@
         <div class="con clearfix">
             <div class="nav clearfix">
                 <div class="nav-left col-xs-6">
-                    <a href="index">论坛首页</a> > <a href="forum_content?fid=${feedForum.forum_id }">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
+                    <a href="<%=CommonUrl.bbsHomeUrl%>">论坛首页</a> > <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}.html">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
                 </div>
                 
                 <c:if test="${totalPages > 1 }">
@@ -125,7 +125,7 @@
                 
 				<c:choose>
 				<c:when test="${currentPage != 1}">
-					<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
+					<li class="prev"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -137,27 +137,27 @@
 				<c:choose>
 				<c:when test="${item == currentPage}">
 					<c:if test="${item == 0}">
-					<li class="active"><a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=${type}" >首页</a></li>
+					<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html" >首页</a></li>
 					</c:if>
 					<c:if test="${item == -1}">
-					<li class="active"><a href="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}" >尾页</a></li>
+					<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html" >尾页</a></li>
 					</c:if>
 					<c:if test="${item != 0}">
 					  	<c:if test="${item != -1}">
-						<li class="active"><a href="thread_info?currentPage=${item}&thread_id=${feedThread.thread_id}&type=${type}" >${item}</a></li>
+						<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html" >${item}</a></li>
 						</c:if>
 					</c:if>
 				</c:when>
 				<c:otherwise>
 				<c:if test="${item == 0}">
-					<li><a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=${type}">首页</a></li>
+					<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html">首页</a></li>
 				</c:if>
 				<c:if test="${item == -1}">
-					<li><a href="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}">尾页</a></li>
+					<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html">尾页</a></li>
 				</c:if>
 				<c:if test="${item != 0}">
 					<c:if test="${item != -1}">
-						<li><a href="thread_info?currentPage=${item}&thread_id=${feedThread.thread_id}&type=${type}">${item}</a></li>
+						<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html">${item}</a></li>
 					</c:if>
 				</c:if>
 				</c:otherwise>
@@ -167,7 +167,7 @@
 				<!-- 下一页 按钮 -->
 				<c:choose>
 				<c:when test="${currentPage != totalPages}">
-					<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
+					<li class="next"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -213,7 +213,7 @@
                     <div class="lum-list libao-list">
                        <ul>
                        	   <c:forEach var="highThread" items="${highestList }">
-                       	   <li><s class="black"></s><a href="thread_info?thread_id=${highThread.thread_id }">${fn:substring(highThread.subject, 0, 16)}
+                       	   <li><s class="black"></s><a href="<%=CommonUrl.baseUrl%>/thread/${highThread.thread_id}.html">${fn:substring(highThread.subject, 0, 16)}
                        	   <c:if test="${fn:length(highThread.subject) > 16}">
                        	   ...
                        	   </c:if>
@@ -231,18 +231,18 @@
                         <!--<dd class="money"><s class="icon-money"></s>${threadUserInfo.coin}</dd>-->   
                          <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}"><img src="${threadUserInfo.avatar}" alt=""></a>
                         </dt>
-                        <dd class="author-name"><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}">${threadUserInfo.nickname}</a><a href="level_info"><span class="grade">Lv.${threadUserInfo.level}</span></a></dd>
+                        <dd class="author-name"><a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${threadUserInfo.userId}">${threadUserInfo.nickname}</a><a href="<%=CommonUrl.baseUrl%>/level_info"><span class="grade">Lv.${threadUserInfo.level}</span></a></dd>
                         <dd class="author-detail"><b>楼主</b><span><fmt:formatDate value="${feedThread.create_time}" type="both" pattern="${feedThread.format }"/></span></dd>
                     </dl>
                     <h1> ${feedThread.subject } 
                      <c:choose>
                         	<c:when test="${type==1 }">
                         	<!--  <a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>-->
-                        	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=0" class="landord">全部</a>
+                        	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/0/0.html" class="landord">全部</a>
                         	</c:when>
                         	<c:otherwise>
                         	<!--<a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>-->
-                        	<a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=1" class="landord">只看楼主</a>
+                        	<a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/1/0.html" class="landord">只看楼主</a>
                         	</c:otherwise>
                         </c:choose>
                         
@@ -254,7 +254,7 @@
                             	FeedThread feedThread = (FeedThread) request.getAttribute("feedThread");
                                 if (currentUser.getPrivileges().contains(SysPrivilege.EDIT_THREAD)) {
                                 %>
-		                      	<a href="editThreadInit?fid=${feedForum.forum_id }&tid=${feedThread.thread_id}" target="_blank">编辑</a><% } %>
+		                      	<a href="<%=CommonUrl.baseUrl%>/editThreadInit/${feedForum.forum_id }/${feedThread.thread_id}.html" target="_blank">编辑</a><% } %>
 		                      	<% if (currentUser.getPrivileges().contains(SysPrivilege.DEL_THREAD)) {
                                 %>
 		                      	<a href="javascript:;" class="manage-delete">删除</a><% } %>
@@ -300,7 +300,7 @@
                     	
                     	<c:if test="${fn:length(postList[0].pic) > 0 }">
                     		<c:forEach var="pic" items="${postList[0].pic }">
-                    			<img src="${pic }"/>
+                    			<img src="${pic}"/>
                     		</c:forEach>
                     	</c:if>
                     </div>
@@ -364,7 +364,7 @@
                     </c:if>
                         <p class="con-list-left">
                         	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">
-                            	<img src="${feedPost.postUserInfo.avatar }" alt="">
+                            	<img src="${feedPost.postUserInfo.avatar}" alt="">
                             </a>
                         </p>
                         <div class="con-list-right">
@@ -390,12 +390,12 @@
 		                        </div>
                                 </c:if>
                                 <%} %>
-                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><a href="level_info"><span class="grade">Lv.${feedPost.postUserInfo.level}</span></a>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format}"/></dt>
+                                <a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${feedPost.postUserInfo.userId}" target="_blank">${feedPost.postUserInfo.nickname }</a><a href="<%=CommonUrl.baseUrl%>/level_info"><span class="grade">Lv.${feedPost.postUserInfo.level}</span></a>    <fmt:formatDate value="${feedPost.create_time}" type="both" pattern="${feedPost.format}"/></dt>
 
                                 <dd class="info">${feedPost.htmlContent }
                                 <br/>
                                 <c:forEach var="pic" items="${feedPost.pic }">
-                                	<img src="${pic }"/>
+                                	<img src="${pic}"/>
                                 </c:forEach>
                                 </dd>
                                 <dd class="clearfix">
@@ -453,7 +453,7 @@
                         <ul class="page-pc clearfix">
 						<c:choose>
 						<c:when test="${currentPage != 1}">
-							<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
+							<li class="prev"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -465,27 +465,27 @@
 						<c:choose>
 						<c:when test="${item == currentPage}">
 						 <c:if test="${item == 0}">
-							<li class="active"><a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=${type}" >首页</a></li>
+							<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html" >首页</a></li>
 						</c:if>
 						 <c:if test="${item == -1}">
-							<li class="active"><a href="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}" >尾页</a></li>
+							<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html" >尾页</a></li>
 						</c:if>
 						 <c:if test="${item != 0}">
 						 	<c:if test="${item != -1}">
-							<li class="active"><a href="thread_info?currentPage=${item }&thread_id=${feedThread.thread_id}&type=${type}" >${item}</a></li>
+							<li class="active"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html" >${item}</a></li>
 							</c:if>
 						</c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${item == 0}">
-								<li><a href="thread_info?currentPage=1&thread_id=${feedThread.thread_id}&type=${type}">首页</a></li>
+								<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/1/${type}/0.html">首页</a></li>
 							</c:if>
 							<c:if test="${item == -1}">
-								<li><a href="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}">尾页</a></li>
+								<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/0.html">尾页</a></li>
 							</c:if>
 							<c:if test="${item != 0}">
 								<c:if test="${item != -1}">
-									<li><a href="thread_info?currentPage=${item}&thread_id=${feedThread.thread_id}&type=${type}">${item}</a></li>
+									<li><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${item}/${type}/0.html">${item}</a></li>
 								</c:if>
 							</c:if>
 						</c:otherwise>
@@ -495,7 +495,7 @@
 						<!-- 下一页 按钮 -->
 						<c:choose>
 						<c:when test="${currentPage != totalPages}">
-							<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
+							<li class="next"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -506,7 +506,7 @@
                 	  <ul class="page-mobile clearfix">
 						<c:choose>
 						<c:when test="${currentPage != 1}">
-							<li class="prev"><a href="thread_info?currentPage=${currentPage-1}&thread_id=${feedThread.thread_id}&type=${type}">上一页</a></li>
+							<li class="prev"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage-1}/${type}/0.html">上一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="prev" disabled="true" ><a ></a></li>--><!-- 为了要那个灰掉的button -->
@@ -518,7 +518,7 @@
 						<!-- 下一页 按钮 -->
 						<c:choose>
 						<c:when test="${currentPage != totalPages}">
-							<li class="next"><a href="thread_info?currentPage=${currentPage+1}&thread_id=${feedThread.thread_id}&type=${type}">下一页</a></li>
+							<li class="next"><a href="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${currentPage+1}/${type}/0.html">下一页</a></li>
 						</c:when>
 						<c:otherwise>
 							<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
@@ -537,11 +537,11 @@
                        <p class="reply-head">
                        <c:choose>
                        	<c:when test="${loginUser.avatar == null}">
-                       	<a href="#"><img src="img/default.png" alt="">
+                       	<a href="#"><img src="<%=CommonUrl.baseUrl%>/img/default.png" alt="">
                        	</a>
                        	</c:when>
                        	<c:otherwise>
-                       	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${loginUser.userId}" target="_blank"><img src="${loginUser.avatar }" alt="">
+                       	<a href="<%=UserCenter.baseUrl %>/home/public/info?to_uid=${loginUser.userId}" target="_blank"><img src="${loginUser.avatar}" alt="">
                        	</a>
                        	</c:otherwise>
                        </c:choose>
@@ -550,14 +550,14 @@
                            <dt></dt>
                            <dd><textarea name="" id="" cols="30" rows="10" class="editor-cont"></textarea></dd>
                            <dd>
-                               <div class="editer" data-maxurl="thread_info?currentPage=${totalPages}&thread_id=${feedThread.thread_id}&type=${type}&replyflg=true">
+                               <div class="editer" data-maxurl="<%=CommonUrl.baseUrl%>/thread/${feedThread.thread_id}/${totalPages}/${type}/1.html">
                                    <div class="editor-textarea">
                                        <div class="textmask">您需要登录后才可以发帖 <a class="maskLogin" href="<%=UserCenter.baseUrl %>">登录</a> | <a  class="maskReg" href="<%=UserCenter.baseUrl %>">立即注册</a></div>
                                    </div>
                                    <script type="text/plain" id="myEditor" style="height:240px;"></script>
                                </div>
                            </dd>
-                           <form id="editor-form" data-form="replayPost" data-tid="${feedThread.thread_id }" action="send_reply.json" method="POST">
+                           <form id="editor-form" data-form="replayPost" data-tid="${feedThread.thread_id }" action="<%=CommonUrl.baseUrl%>/send_reply.json" method="POST">
                                <input type="hidden" name="fid" class="editor-fid" value="${feedForum.forum_id }"/>
                                <input type="hidden" name="tid"  class="editor-tid" value="${feedThread.thread_id }">
                                <input type="hidden" name="content"  class="editor-cont" value=""/>
@@ -593,7 +593,7 @@
         <div class="pop pop-post-delete">
             <h2 class="clearfix">
                 <span>
-                    <img src="./img/icon/pop_close.png" class="close">
+                    <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close">
                 </span>帖子管理操作
             </h2>
             <div class="post-delete-reason">
@@ -618,7 +618,7 @@
         <div class="pop pop-post-reward">
             <h2 class="clearfix">
                 <span>
-                    <img src="./img/icon/pop_close.png" class="close">
+                    <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close">
                 </span>帖子/楼层管理操作
             </h2>
             <div class="post-delete-reason">
@@ -636,7 +636,7 @@
         </div>
         <!--未登录-->
         <div class="pop pop-play pop-login">
-            <p class="pop-play-close"><img src="img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">未登录？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="取消">
@@ -645,7 +645,7 @@
         </div>
         <!-- 发帖失败 -->
         <div class="pop pop-play pop-warn">
-            <p class="pop-play-close"><img src="./img/icon/pop_close.png" class="close"></p>
+            <p class="pop-play-close"><img src="<%=CommonUrl.baseUrl%>/img/icon/pop_close.png" class="close"></p>
             <p class="pop-play-word pop-msg">突破经典的飞行射击类精品手机游戏。继承了经典飞机大战简单爽快的操作体验，玩法更多样。这么好玩的游戏，确定不玩吗？</p>
             <p class="clearfix">
                 <input type="button" class="pop-play-cancel pop-cancel" value="稍后再试">
@@ -654,22 +654,22 @@
         </div>
         <!-- 成功 -->
         <div class="pop pop-post-ok">   
-            <img src="./img/icon/pop_ok.png"><span class="pop-msg">成功</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_ok.png"><span class="pop-msg">成功</span>
         </div>
         <!-- 失败 -->
         <div class="pop pop-top-fail">
-            <img src="./img/icon/pop_fail.png"><span class="pop-msg">失败</span>
+            <img src="<%=CommonUrl.baseUrl%>/img/icon/pop_fail.png"><span class="pop-msg">失败</span>
         </div>
         <!-- 弹出框结束 -->
     </div>
     <!-- 回到顶部  -->
      <div class="go-top">
      	<a href="#conRight3" class="quick-reply">快速回复</a>
-	 	<a href="newThreadInit?fid=${feedForum.forum_id }" data-href="" class="post get-post">发帖</a>
+	 	<a href="<%=CommonUrl.baseUrl%>/newThreadInit/${feedForum.forum_id}.html" data-href="" class="post get-post">发帖</a>
 	 	<a href="javascript:;" class="scroll-top">顶部</a>
 	 </div>
 	
-    <script src="js/mod/article_article.js"></script>
-    <script src="js/mod/comment.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/article_article.js"></script>
+    <script src="<%=CommonUrl.baseUrl%>/js/mod/comment.js"></script>
 </body>
 </html>

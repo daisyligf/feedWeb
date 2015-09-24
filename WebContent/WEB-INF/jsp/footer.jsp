@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mofang.feedweb.global.CommonUrl"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <!-- 底部开始 -->
  <div class="footer cleafix">
  	
  	 <div class="footer-con">
 	 	 <div class="footer-nav clearfix width-1280">	
 	        <div class="footer-crumbs">
-	              <a target="_blank" href="http://www.mofang.com/">魔方网</a> <span></span> <a target="_blank" href="javascript:void(0);">论坛</a>
+	              <a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>">魔方网</a> <span></span> <a target="_blank" href="<%=CommonUrl.bbsHomeUrl%>">论坛</a>
 	    	</div>
 	    	<div class="footer-nav-list clearfix">
 	    		<dl>
-	    			<dt><a target="_blank" href="http://www.mofang.com/">魔方网</a></dt>
+	    			<dt><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>">魔方网</a></dt>
 	    			<dd><a target="_blank" href="http://www.mofang.com/about/index">关于魔方</a></dd>
 	    			<dd><a target="_blank" href="http://www.mofang.com/about/join">加入魔方</a></dd>
 	    			<dd><a target="_blank" href="http://www.mofang.com/about/contact">广告合作</a></dd>
@@ -54,7 +56,7 @@
 	
 	    		</dl>
 	    		<dl class="last-dl">
-	    			<dt><a target="_blank" href="javascript:void(0);"><img src="./img/footer_logo.png" alt=""></a></dt>
+	    			<dt><a target="_blank" href="javascript:void(0);"><img src="<%=CommonUrl.baseUrl%>/img/footer_logo.png" alt=""></a></dt>
 	    			<dd><a target="_blank" href="javascript:;">关注魔方网，一起发现好游戏！</a></dd>
 	
 	    		</dl>
@@ -79,9 +81,6 @@
  	 </div>
      
  </div>
- 
- 
- 
  <!-- cnzz统计代码 -->
  <div class="cnzz" style="display:none">
  	<script type="text/javascript">
@@ -89,5 +88,24 @@
  		document.write(unescape("%3Cspan id='cnzz_stat_icon_1000370935'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1000370935' type='text/javascript'%3E%3C/script%3E"));
  	</script>
  </div>
+  <!-- baidu统计代码 -->
+  <div class="baidu" style="display:none">
+	<script type="text/javascript">
+		var _hmt = _hmt || [];
+		(function() {
+  			var hm = document.createElement("script");
+  				hm.src = "//hm.baidu.com/hm.js?b5fe97c9be553611eaa9d4aa4f803f71";
+  			var s = document.getElementsByTagName("script")[0]; 
+  				s.parentNode.insertBefore(hm, s);
+		})();
+</script>
+ </div>
+ <!--单独版块的统计代码  -->
+ <c:if test="${statisticsInfo.forum_statistics_id > 0 and feedForum.forum_id == statisticsInfo.forum_statistics_id}">
+ 	<div class="forumStatistics" style="display:none">
+ 		${statisticsInfo.forum_statistics_url}
+ 	</div>
+ </c:if>
+ 
  <!-- 底部结束 -->
  
