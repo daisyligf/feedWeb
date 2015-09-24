@@ -75,9 +75,12 @@ public class HttpComponent {
 
 	public String get(String requestUrl) {
 		StringBuilder strLog = new StringBuilder();
-		strLog.append("request url: " + requestUrl + " ");
+		strLog.append("request url: " + requestUrl + " | ");
 		try {
+			long startTime = System.currentTimeMillis();
 			String result = HttpClientSender.get(feedHttpClient, requestUrl);
+			long endTime = System.currentTimeMillis();
+			strLog.append("request time: " + (endTime - startTime) + " | ");
 			strLog.append("response data: " + ((null == result) ? "" : result)
 					+ " ");
 			GlobalObject.INFO_LOG.info(strLog.toString());
@@ -90,11 +93,14 @@ public class HttpComponent {
 
 	public String post(String requestUrl, String postData) {
 		StringBuilder strLog = new StringBuilder();
-		strLog.append("request url: " + requestUrl + " ");
-		strLog.append("request data: " + postData + " ");
+		strLog.append("request url: " + requestUrl + " | ");
+		strLog.append("request data: " + postData + " | ");
 		try {
+			long startTime = System.currentTimeMillis();
 			String result = HttpClientSender.post(feedHttpClient, requestUrl,
 					postData);
+			long endTime = System.currentTimeMillis();
+			strLog.append("request time: " + (endTime - startTime) + " | ");
 			strLog.append("response data: " + ((null == result) ? "" : result)
 					+ " ");
 			GlobalObject.INFO_LOG.info(strLog.toString());
@@ -107,9 +113,12 @@ public class HttpComponent {
 
 	public String getUser(String requestUrl) {
 		StringBuilder strLog = new StringBuilder();
-		strLog.append("request url: " + requestUrl + " ");
+		strLog.append("request url: " + requestUrl + " | ");
 		try {
+			long startTime = System.currentTimeMillis();
 			String result = HttpClientSender.get(userHttpClient, requestUrl);
+			long endTime = System.currentTimeMillis();
+			strLog.append("request time: " + (endTime - startTime) + " | ");
 			strLog.append("response data: " + ((null == result) ? "" : result)
 					+ " ");
 			GlobalObject.INFO_LOG.info(strLog.toString());
