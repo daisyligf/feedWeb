@@ -3,102 +3,16 @@
 <%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="stylesheet" href="./css/footer_link.css">
+    <script src="./js/mod/footer_link.js"></script>
     <div class="footer-link">
-    <div class="footer-link-con">
-        <p class="link-tit">友情链接</p>
-        <div class="link-list-a">
-            <a href="http://games.qq.com" target="_blank">腾讯游戏</a>
-            <a href="http://games.sina.com.cn" target="_blank">新浪游戏</a>
-            <a href="http://game.china.com" target="_blank">中华网游戏</a>
-            <a href="http://www.appchina.com" target="_blank">应用汇</a>
-            <a href="http://www.uuu9.com" target="_blank">游久网</a>
-            <a href="http://games.enet.com.cn/" target="_blank">eNet游戏先锋</a>
-            <a href="http://www.18touch.com/" target="_blank">手游媒体</a>
-            <a href="http://www.ewoka.com" target="_blank">E蜗卡</a>
-            <a href="http://www.pipaw.com/" target="_blank">琵琶网</a>
-            <a href="http://games.ifeng.com/" target="_blank">凤凰网游戏</a>
-            <a href="http://www.benshouji.com" target="_blank">手机网游</a>
-            <a href="http://www.ftxgame.com/" target="_blank">范特西篮球经理</a>
-            <a href="http://www.kaifu.com" target="_blank">开服网</a>
-            <a href="http://www.jiaoyimao.com/" target="_blank">手机游戏交易</a>
-            <a href="http://game.91.com/# " target="_blank">91手游网</a>
-            <a href="http://jiajia.mofang.com/" target="_blank">加加</a>
-            <a href="http://www.72g.com/" target="_blank">72G手机游戏</a>
-            <a href="http://www.996.com/" target="_blank">996手游网</a>
-            <a href="http://game.51wan.com/" target="_blank">51wan网页游戏</a>
-            <a href="http://www.5399.com" target="_blank">5399网页游戏</a>
-            <a href="http://www.5253.com/" target="_blank">5253手游网</a>
-            <a href="http://www.4399.cn/" target="_blank">4399手机游戏</a>
-            <a href="http://chinajoy.mofang.com/" target="_blank">chinajoy游戏展会</a>
-            <a href="http://www.win7zhijia.cn/" target="_blank">win7系统下载</a>
-            <a href="http://www.jcku.com/" target="_blank">单机游戏下载</a>
-            <a href="http://www.kaopu001.com/" target="_blank">安卓模拟器</a>
-            <a href="http://www.anfan.com/" target="_blank">手游大全</a>
-            <a href="http://www.5399.com/" target="_blank"> 网页游戏</a>
-            <a href="http://www.86wan.com/" target="_blank">86wan网页游戏</a>
-            <a href="http://www.15w.com/" target="_blank">电子竞技</a>
-            <a href="http://sns.eeyy.com" target="_blank">网页游戏</a>
-            <a href="http://www.moyoyo.com/" target="_blank">手游交易</a>
-            <a href="http://www.woyewan.com/" target="_blank">手机游戏</a>
-            <a href="http://www.77l.com/" target="_blank">齐齐乐手机游戏</a>
-            <a href="http://game.mofang.com" target="_blank">手机游戏下载</a>
-            <a href="http://www.apk8.com/" target="_blank">apk游戏下载</a>
-            <a href="http://www.joyme.com/" target="_blank">着迷网</a>
-            <a href="http://www.shuaji.net/" target="_blank">刷机</a>
-            <a href="http://www.play.cn/" target="_blank">爱游戏</a>
-            <a href="http://pc.kuai8.com/" target="_blank">好玩的单机游戏</a>
-            <a href="http://www.ahgame.com/" target="_blank">安游在线</a>
-            <a href="http://apk.zhuannet.com/" target="_blank">安卓游戏下载</a>
-            <a href="http://www.haote.com" target="_blank">好特下载</a>
-            <a href="http://www.fpwap.com/" target="_blank">飞鹏网</a>
-            <a href="http://www.9669.com/" target="_blank">9669手游网</a>
-            <a href="http://www.game773.com/" target="_blank">小游戏大全</a>
-            <a href="http://www.bianwanjia.com/ " target="_blank">手机游戏</a>
-            <a href="http://www.shouji56.com/" target="_blank">56手机游戏</a>
-            <a href="http://manhua.dmzj.com/" target="_blank">动漫之家漫画网</a>
-            <a href="http://www.96u.com/" target="_blank">好玩的手游</a>
-            <a href="http://sj.xiaopi.com/" target="_blank">小皮手游网</a>
-            <a href="http://u.360.cn/" target="_blank">360手游网</a>
-            <a href="http://www.gao7.com/" target="_blank">手机游戏</a>
-            <a href="http://www.xxzhushou.cn" target="_blank">叉叉助手</a>
-            <a href="http://www.96u.com" target="_blank">好玩的手机网游</a>
-            <a href="http://www.demaxiya.com" target="_blank">lol小智</a>
-            <a href="http://www.uc129.com" target="_blank">红色警戒</a>
-            <a href="http://www.anzow.com" target="_blank">安卓软件园</a>
-            <a href="http://www.dangbei.com" target="_blank">安卓电视软件</a>
-            <a href="http://kf.07073.com" target="_blank">网页游戏开服表</a>
-            <a href="http://www.acgcp.com/" target="_blank">萌CP</a>
-            <a href="http://www.3kk.com" target="_blank">橙光游戏</a>
-            <a href="http://www.pangxiekeji.com" target="_blank">螃蟹科技</a>
-            <a href="http://soft.aizhan.com " target="_blank">爱站软件下载</a>
-            <a href="http://www.8721.com" target="_blank">8721手游之家</a>
-            <a href="http://www.muzisoft.com " target="_blank">刷机包</a>
-            <a href="http://www.yoyojie.com " target="_blank">YOYO手游网</a>
-            <a href="http://www.gamehome.tv" target="_blank">电玩之家</a>
-            <a href="http://app.3987.com" target="_blank">统一手机站</a>
-            <a href="http://www.25az.com " target="_blank">安卓游戏下载</a>
-            <a href="http://www.mz6.net" target="_blank">魅族溜</a>
-            <a href="http://app.tongbu.com/" target="_blank">iPhone游戏</a>
-            <a href="http://www.51saier.cn" target="_blank">浅蓝游戏网</a>
-            <a href="http://iphone.18183.com" target="_blank">iphone游戏</a>
-            <a href="http://www.kuaiyong.com" target="_blank">快用</a>
-            <a href="http://www.anruan.com" target="_blank">安卓软件</a>
-            <a href="http://www.ooqiu.com" target="_blank">全球电竞网</a>
-            <a href="http://www.97973.com" target="_blank">97973手游网</a>
-            <a href="http://bbs.houdao.com " target="_blank">猴岛论坛</a>
-            <a href="http://www.eoemarket.com" target="_blank">优亿市场安卓软件</a>
-            <a href="http://www.abab.com" target="_blank">ABAB小游戏</a>
-            <a href="http://www.sjapk.com" target="_blank">卓乐网</a>
-            <a href="http://www.diyiapp.com" target="_blank">手机游戏 </a>
-            <a href="http://www.7723.cn" target="_blank">7723手机游戏</a>
-            <a href="http://www.yiwan.com" target="_blank">易玩网</a>
-            <a href="http://www.497.com" target="_blank">497电玩</a>
-            <a href="http://www.shouji56.com" target="_blank">56手机游戏</a>
-            <a href="http://sg.zplay.cn/main.html" target="_blank">曙光之战官网</a>
-            <a href="http://www.zuiben.com" target="_blank"> 手机软件下载</a>
-        </div>
-    </div>  
-</div>	 <!-- 底部开始 -->
+	    <div class="footer-link-con">
+	        <p class="link-tit">友情链接</p>
+	        <div class="link-list-a">
+	            
+	        </div>
+	    </div>  
+	</div>	 
+	<!-- 底部开始 -->
  <div class="footer cleafix">
  	
  	 <div class="footer-con">

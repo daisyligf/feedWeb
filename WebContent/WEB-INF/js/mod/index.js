@@ -74,8 +74,23 @@ define('index',['jquery','swipe','swiper'],function(require, exports, module) {
 			});
 		});
 	}
-
 	
+	//友情链接
+	getLink();
+	function getLink(){
+		$.ajax({
+			url:"http://www.mofang.com/api_v2.php?op=mofang&file=friends&action=friend&page=1&typeid=716",
+			type:"get",
+			dataType:"jsonp",
+			success:function(res){
+				if(res && !res.code){
+					for(var i = 0; i < res.data.length; i++){
+						$(".link-list-a").append('<a target="_blank" href="'+res.data[i].url+'">'+res.data[i].name+'</a>');
+					}
+				}
+			}
+		});
+	}
 	   
 });
 
