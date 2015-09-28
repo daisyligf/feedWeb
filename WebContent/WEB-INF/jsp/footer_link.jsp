@@ -3,7 +3,6 @@
 <%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="stylesheet" href="./css/footer_link.css">
-    <script src="./js/mod/footer_link.js"></script>
     <div class="footer-link">
 	    <div class="footer-link-con">
 	        <p class="link-tit">友情链接</p>

@@ -16,7 +16,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 	var getUserLoginStatus = c.config.userInfoUrl+"/account/status"; //获取用户的登录状态
 	var getUserInfo = c.config.userInfoUrl+"/home/api/get_login_userinfo"; //获取用户信息
 	var getUserLogout = c.config.userInfoUrl+"/account/logout"; //用户退出接口
-	var getUserNotice = c.config.baseUrl + "/getUserNotice";
+	var getUserNotice = c.config.userInfoUrl + "/pull_notify_unread.php";
 	var ajaxMethod="jsonp"; 
 	if(USE_LOCAL_DATA){
 		getUserLoginStatus = "/bbs_html/statics/test/get_user.json"; //获取用户的登录状态
@@ -159,7 +159,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		$.ajax({
 		    url:getUserNotice,
 		    type:"GET",
-		    dataType:'json',
+		    dataType:ajaxMethod,
 		    data:{
 		    },
 		    success: function(res) {
