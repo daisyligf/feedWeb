@@ -169,7 +169,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 //			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
 //				replyFlg = Integer.valueOf(request.getParameter("replyflg"));
 //			}
-			
+			//foot部分链接
+			request.setAttribute("linkflg", "1");
 			//获取单个版块统计信息
 			model.put("statisticsInfo", getStatisticsInfo());
 			

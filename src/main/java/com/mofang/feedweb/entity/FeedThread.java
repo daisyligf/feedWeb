@@ -1,6 +1,7 @@
 package com.mofang.feedweb.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author ke
@@ -32,7 +33,7 @@ public class FeedThread {
 
 	private long forum_id;
 	private String forum_name;
-	private String pic;
+	private List<String> pic;
 	private String content;
 	private int tagId;
 	
@@ -232,14 +233,6 @@ public class FeedThread {
 		this.htmlContent = htmlContent;
 	}
 
-	public String getPic() {
-		return pic;
-	}
-
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
-
 	public String getIcon() {
 		return icon;
 	}
@@ -254,6 +247,14 @@ public class FeedThread {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public List<String> getPic() {
+		return pic;
+	}
+
+	public void setPic(List<String> pic) {
+		this.pic = pic;
 	}
 
 }

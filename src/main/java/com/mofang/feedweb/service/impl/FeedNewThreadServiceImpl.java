@@ -108,12 +108,27 @@ public class FeedNewThreadServiceImpl implements FeedNewThreadService {
 			if (threadResult != null) {
 				int code = threadResult.optInt("code", -1);
 				if (code == 0) {
+					StringBuilder strPic = new StringBuilder(); 
 					JSONObject data = threadResult.optJSONObject("data");
 
 					threadinfo.setThread_id(data.optLong("tid", 0));
 					threadinfo.setSubject(data.optString("subject", ""));
-					threadinfo.setHtmlContent(data.optString("html_content", ""));
-					threadinfo.setPic(data.optString("pic", ""));
+					strPic.append(data.optString("html_content", ""));
+					
+					//List<String> pic = new ArrayList<String>();
+					JSONArray picArray = data.optJSONArray("pic");
+					if (picArray != null && picArray.length() > 0) {
+						for (int j = 0; j < picArray.length(); j++) {
+							String picString = picArray.getString(j);
+							if (!StringUtil.isNullOrEmpty(picString)) {
+								strPic.append("<br/>");
+								strPic.append("<img src=\"" + picString + "\"/>");
+								//pic.add(picString);
+							}
+						}
+					}
+					threadinfo.setHtmlContent(strPic.toString());
+					//threadinfo.setPic(data.optString("pic", ""));
 					threadinfo.setTagId(data.optInt("tag_id", 0));
 
 				}

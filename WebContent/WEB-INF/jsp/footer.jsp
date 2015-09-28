@@ -2,14 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mofang.feedweb.global.CommonUrl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String str = "";
+try {
+	Object obj = request.getAttribute("linkflg");
+ if (null != obj) {
+	 str = String.valueOf(obj);
+ };
+} catch (Exception e) {
+}
+ %>
  <!-- 底部开始 -->
  <div class="footer cleafix">
  	
  	 <div class="footer-con">
 	 	 <div class="footer-nav clearfix width-1280">	
+	 	  <% if (str.equals("1")) {%>
 	        <div class="footer-crumbs">
-	              <a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>">魔方网</a> <span></span> <a target="_blank" href="<%=CommonUrl.bbsHomeUrl%>">论坛</a>
+	              <c:if test="${feedThread.subject != null }"> 
+	        	  <a href="<%=CommonUrl.bbsHomeUrl%>">论坛首页</a> > <a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}.html">${feedForum.forum_name }</a> > <a href="javascript:;" class="end">${feedThread.subject }</a>
+				  </c:if>
+				   <c:if test="${feedThread.subject == null and feedForum.forum_name != ''}"> 
+	        	  <a href="<%=CommonUrl.bbsHomeUrl%>">论坛首页</a> > <a href="javascript:;" class="end">${feedForum.forum_name }</a>
+				  </c:if> 
 	    	</div>
+	    	<% }%>
 	    	<div class="footer-nav-list clearfix">
 	    		<dl>
 	    			<dt><a target="_blank" href="<%=CommonUrl.mofangHomeUrl%>">魔方网</a></dt>

@@ -60,7 +60,7 @@ public class FeedForumContentController extends FeedCommonController {
 	
 	//路径方式1
 	@RequestMapping({"/forum/{fid}/{type}/{timeType}/{currentPage}/{tag_id}.html"})
-	public ModelAndView forumContentUrl1(HttpServletRequest request, 
+	public ModelAndView forumContentUrl1(HttpServletRequest request,
 					@PathVariable(value = "fid") long fid,
 					@PathVariable(value = "type") String type,
 					@PathVariable(value = "timeType") String timeType,
@@ -86,7 +86,7 @@ public class FeedForumContentController extends FeedCommonController {
 	
 	//路径方式2
 	@RequestMapping({"/forum/{fid}.html"})
-	public ModelAndView forumContentUrl2(HttpServletRequest request, 
+	public ModelAndView forumContentUrl2(HttpServletRequest request,
 			@PathVariable(value = "fid") long fid
 			) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -109,7 +109,7 @@ public class FeedForumContentController extends FeedCommonController {
 	
 	//路径方式3
 	@RequestMapping({"/forum/{fid}/{currentPage}.html"})
-	public ModelAndView forumContentUrl3(HttpServletRequest request, 
+	public ModelAndView forumContentUrl3(HttpServletRequest request,
 			@PathVariable(value = "fid") long fid,
 			@PathVariable(value = "currentPage") String currentPage
 			) throws Exception {
@@ -132,7 +132,7 @@ public class FeedForumContentController extends FeedCommonController {
 	
 	//路径方式4
 	@RequestMapping({"/forum_content"})
-	public ModelAndView forumContentUrl4(HttpServletRequest request, 
+	public ModelAndView forumContentUrl4(HttpServletRequest request,
 			@RequestParam("fid") long fid) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		try {
@@ -166,7 +166,7 @@ public class FeedForumContentController extends FeedCommonController {
 	}
 	
 	//版块内容处理
-	public int forumContent(HttpServletRequest request, 
+	public int forumContent(HttpServletRequest request,
 				long fid,
 				String type,
 				String timeType,
@@ -176,6 +176,8 @@ public class FeedForumContentController extends FeedCommonController {
 				) throws Exception {
 		
 		try {
+			//foot部分链接
+			request.setAttribute("linkflg", "1");
 			//获取单个版块统计信息
 			model.put("statisticsInfo", getStatisticsInfo());
 			
