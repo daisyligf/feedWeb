@@ -7,7 +7,9 @@
 	    <div class="footer-link-con">
 	        <p class="link-tit">友情链接</p>
 	        <div class="link-list-a">
-	            
+	        	<c:forEach var="link" items="${linkInfo}">
+	            <a target="_blank" href="${link.linkUrl}">${link.linkName}</a>
+	          </c:forEach>
 	        </div>
 	    </div>  
 	</div>	 
