@@ -36,9 +36,11 @@ public class FeedHomeController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try{
+			//友情链接
 			model.put("linkInfo", getLinkUrl(request));
+			//检索关键字
 			model.put("keyword", getSearchKey(request));
-			//大小标题
+			//海报
 			model.put("tickers", getHomeTickers(request));
 			//大小标题
 			model.put("subjects", getHomeSubjects(request));
