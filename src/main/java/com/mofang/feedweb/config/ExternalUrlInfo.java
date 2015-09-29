@@ -29,6 +29,8 @@ public class ExternalUrlInfo {
 	private long forum_statistics_id;
 	@Value("${forum_statistics_url}")
 	private String forum_statistics_url;
+	@Value("${friendly_link_url}")
+	private String friendly_link_url;
 
 	public String getFeed_info_url() {
 		return feed_info_url;
@@ -124,6 +126,14 @@ public class ExternalUrlInfo {
 
 	public void setForum_statistics_id(long forum_statistics_id) {
 		this.forum_statistics_id = forum_statistics_id;
+	}
+
+	public String getFriendly_link_url() {
+		return friendly_link_url;
+	}
+
+	public void setFriendly_link_url(String friendly_link_url) {
+		this.friendly_link_url = friendly_link_url;
 	}
 
 }
