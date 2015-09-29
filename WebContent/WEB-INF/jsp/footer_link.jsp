@@ -8,7 +8,11 @@
 	    <div class="footer-link-con">
 	        <p class="link-tit">友情链接</p>
 	        <div class="link-list-a">
-	            
+	            <a target="_blank" href="http://bbs.9669.com">手游论坛 </a>
+	            <a target="_blank" href="http://game.ali213.net/">游侠netshow论坛</a>
+	            <a target="_blank" href="http://bbs.haimawan.com/">海马玩论坛</a>
+	            <a target="_blank" href="http://www.haimawan.com/">海马玩</a>
+	            <a target="_blank" href="http://bbs.ptbus.com/">口袋巴士</a>
 	        </div>
 	    </div>  
 	</div>	 
