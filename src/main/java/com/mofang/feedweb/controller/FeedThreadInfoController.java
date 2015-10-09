@@ -270,7 +270,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 							threadUserInfo.setLevel(userObj.optInt("level", 0));
 							threadUserInfo.setThreads(userObj.optInt("threads", 0));
 							threadUserInfo.setReplies(userObj.optInt("replies", 0));
-							threadUserInfo.setEliteThreads(userObj.optInt("eliteThreads", 0));
+							threadUserInfo.setEliteThreads(userObj.optInt("elite_threads", 0));
 						}
 					}
 					
