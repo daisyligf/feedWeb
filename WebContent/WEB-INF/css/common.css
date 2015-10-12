@@ -393,6 +393,15 @@
 .page-plug .page-pc li.next a:hover{
 	background:#999 url(../img/icon/page_r_hover.png) no-repeat center center;
 }
+
+.page-plug .page-pc li.jump-text input{
+	width:40px;
+	height:30px;
+	line-height:30px;
+	border:0px;
+	text-align:center;
+}
+
 .page-plug .page-mobile {
 
 	display:none;
@@ -879,6 +888,7 @@ text-align: center;
 		margin:0 auto;
 		display: block;
 		position:relative;
+		z-index:20;
 	}
 	.header .nav-wap .wap-logo{
 		width:93px;

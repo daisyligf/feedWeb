@@ -143,33 +143,45 @@ define('search',['jquery','handlebars','jquery/jquery-pagebar'],function(require
 	//帖子
 	getPost();
 	function getPost(){
-		getPostData({},function(total,page,pageNum){
-
-			$.fn.jpagebar({ 
-	            renderTo: $("#pagePc"),
-	            //总数
-	            totalNum: total,
-	            //总页码
-	            totalpage: Math.ceil(total/pageNum),
-	            //当前页码
-	            currentPage:page,
-	            //分页条样式
-	            pagebarCssName:'page-pc',
-	            //当前选中页码样式
-	            currentPageNumberCssName: 'active',
-	            //点击页码action
-	            onClickPage: function(pageIndex){
-	            	
-	            	console.log(pageIndex);
-	           	   $.fn.setCurrentPage(this, pageIndex);
-	           	   
-	                getPostData({
-	                	p: pageIndex
-	                });
-	                $(".page-mobile .text").find("input").val(pageIndex+'/'+Math.ceil(total/pageNum));
-	            }
-	      });
-		});//获取帖子第一页
+		
+		function pagebar(curPage){
+			getPostData({
+				p:curPage
+			},function(total,page,pageNum){
+				$.fn.jpagebar({ 
+		            renderTo: $("#pagePc"),
+		            //总数
+		            totalNum: total,
+		            //总页码
+		            totalpage: Math.ceil(total/pageNum),
+		            //当前页码
+		            currentPage:page,
+		            //分页条样式
+		            pagebarCssName:'page-pc',
+		            //当前选中页码样式
+		            currentPageNumberCssName: 'active',
+		            //点击页码action
+		            onClickPage: function(pageIndex){
+		           	    $.fn.setCurrentPage(this, pageIndex);
+		                getPostData({
+		                	p: pageIndex
+		                });
+		                $(".page-mobile .text").find("input").val(pageIndex+'/'+Math.ceil(total/pageNum));
+		            }
+		        });
+			});
+		}
+		pagebar();//获取帖子第一页
+		$("body").on("click",".jump-page-btn",function(){
+			var toPage = $(".jump-text input").val() || 1;
+			toPage = $.trim(toPage);
+			toPage = parseInt(toPage);
+			var reg = /^\d*$/;
+			if(!reg.test(toPage)){
+				return;
+			}
+			pagebar(toPage);
+		});
 	}
 	
 	//获取帖子数据

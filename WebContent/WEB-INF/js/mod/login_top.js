@@ -83,7 +83,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 			    		//头像
 			    		$("#userImg").attr("src",res.data.avatar);
 			    		//昵称
-			    		$("#userName").append(res.data.nickname);
+			    		$("#userName").prepend(res.data.nickname);
 			    		//魔币
 			    		$("#userMoney").append(res.data.coin);
 			    		//等级
@@ -164,17 +164,10 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		    },
 		    success: function(res) {
 		    	if(res && res.code==0){
-
-		    		//if(res.data.sys_message.unread_count>0 || res.data.reply.unread_count>0 || res.data.recommend.unread_count>0){
 		    		if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
 				    	
 		    			$("#userName").find(".icon-red").show();
-//		    			if(res.data.reply.unread_count>0){
-//		    				$(".header .zj").find(".icon-red").show();
-//		    			}
-		    			//if(res.data.sys_message.unread_count>0 || res.data.recommend.unread_count>0 || res.data.reply.unread_count>0){
-		    				$(".header .msg").find(".icon-red").show();
-		    			//}
+		    			$(".header .msg").find(".icon-red").show();
 		    			var docTitle = '[新消息] '+curTitle;
 		    			document.title=docTitle;
 		    			isNews=true;
