@@ -19,12 +19,7 @@ define('index',['jquery','swipe','swiper'],function(require, exports, module) {
 	if(USE_TEST_DATA){
 		getUrl='';
 	}
-
-
-
-	
-	
-	fnImgSlider()
+	fnImgSlider();
 	function fnImgSlider(){
 		//图片切换
 
@@ -33,10 +28,12 @@ define('index',['jquery','swipe','swiper'],function(require, exports, module) {
 		// var aSlide = document.get
 		//这个插件用的是原生的对象
 		var ImgTabs = new Swiper(oBox,{
-			autoplay:40000,
-			speed:200,
+			autoplay:5000,
+			loop:true,
 			pagination: '.swiper-pagination-index',
-	        paginationClickable: true,
+			updateOnImagesReady:false,
+        	paginationClickable: true,
+        	grabCursor: true,
 	        paginationBulletRender: function (index, className) {
 	            return '<li class="' + className + '"></li>';
 	        },

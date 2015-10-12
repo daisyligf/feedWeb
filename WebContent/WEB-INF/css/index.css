@@ -427,6 +427,8 @@
 		min-height: 0px;
 	}
 	.con .con-top .box img{
+		width:100%;
+		height:auto;
 		min-height: 0px;
 	}
 	.con .con-top .rec{
