@@ -184,6 +184,8 @@
 }
  .con .con-right1 .con-con img{
 	max-width: 80%!important;
+	margin:20px 0px;
+	text-indent:2em;
 } 
 .con .look{
 	float:right;

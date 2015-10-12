@@ -124,8 +124,8 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad','conf
 	
 	
 	//后台分页处理
-	wapBbsPage();
-	 function wapBbsPage(){
+	bbsPage();
+	 function bbsPage(){
 		 $(".page-mobile").on("focus",".wap-page-text",function(){
 			 var oldV = $(this).val();
 			 $(this).val('');
@@ -134,26 +134,54 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad','conf
          		"border":"1px solid #eee"
          	});
 		 });
+		 //移动
 		 $(".page-mobile").on("blur",".wap-page-text",function(){
-			 	$(this).css({
-			 		"border":"0px solid #eee"
-				});
-				var v = $.trim($(this).val());
-					v = parseInt(v);
-				var reg = /^\d*$/;
-				
-				if(!reg.test(v)){
-					$(this).val($(this).attr("data-value"));
-					return;
-				}
-				var url = $(".page-mobile").find('.prev a').attr("href") || $(".page-mobile").find('.next a').attr("href");
-				url = url.replace(/[0-9]\/[0-9]\.html/ig,function(str){
-					var arrUrl = str.split('/');
-					return v+'/'+arrUrl[1];
-				});
-				window.location.href=url;  
+			 	jumpPage(this,$(this).val());
 			
 		 });
+		 $(".page-mobile").on("keydown",".wap-page-text",function(e){
+			 	if(e.which==13){
+			 		jumpPage(this,$(this).val());
+			 	}
+		 });
+		 //pc
+		 $("body").on("click",".jump-page-btn",function(){
+			var toPage = $(".jump-text input").val() || 1;
+			jumpPage(this,toPage);
+		 });
+		 $('.jump-text').bind('keydown',function(e){
+			 console.log(e.which);
+			if(e.which==13){
+				var toPage = $(".jump-text input").val() || 1;
+				jumpPage(this,toPage);
+		 	}
+		 });
+		 function jumpPage(_this,jumpP){
+			 $(_this).css({
+		 		"border":"0px solid #eee"
+			});
+			var v = $.trim(jumpP);
+				v = parseInt(v);
+			var reg = /^\d*$/;
+			
+			if(!reg.test(v)){
+				$(_this).val($(_this).attr("data-value"));
+				return;
+			}
+			var url = $(".page-mobile").find('.prev a').attr("href") || $(".page-mobile").find('.next a').attr("href");
+			var reg = /(\d+\/)+\d+\.html$/gi;
+			url = url.replace(reg,function(str){
+				var arrUrl = str.split('/');
+				if(arrUrl.length==4){
+					arrUrl[1]=v;
+					return arrUrl.join('/');
+				}else if(arrUrl.length==5){
+					arrUrl[3]=v;
+					return arrUrl.join('/');
+				}
+			});
+			window.location.href=url;  
+		 }
 	 }
 	
 		

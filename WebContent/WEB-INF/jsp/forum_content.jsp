@@ -306,27 +306,14 @@
 							<c:when test="${currentPage != totalPages}">
 								<li class="next"><a href="<%=CommonUrl.baseUrl%>/forum/${feedForum.forum_id}/${type}/${timeType}/${currentPage+1}/${tag_id }.html">下一页</a></li>
 							</c:when>
+							
 							<c:otherwise>
 								<!--  <li class="next" disabled="true"><a >下一页</a></li>-->
 							</c:otherwise>
 							</c:choose>
+							<!-- 页码跳转 -->
+							<li class="jump-text"><input type="text" /></li><li class="jump-page-btn"><a href="javascript:;">跳转</a></li>
 			                </ul>
-			                
-			                
-			                <!--
-			                <li class="prev"><a href="#">上一页</a></li>
-			                <li><a href="#">1</a></li>
-			                <li><a href="#">2</a></li>
-			                <li class="active"><a href="javascript:;">3</a></li>
-			                <li><a href="#">4</a></li>
-			                <li class="next"><a href="#">下一页</a></li>
-			                </ul>
-			                <ul class="page-mobile">
-			                    <li class="prev"><a href="#">上一页</a></li>
-			                    <li class="text">5/235</li>
-			                    <li class="next"><a href="#">下一页</a></li>
-			                </ul>-->
-			                
 			                <ul class="page-mobile">
 			                <!-- 上一页 按钮 -->
 			                

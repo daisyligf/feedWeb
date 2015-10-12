@@ -179,6 +179,7 @@ define('jquery/jquery-pagebar', ['jquery'], function(require, exports, module) {
 	                        _this.onClickPage(parseInt(_this.currentPage)+1);
 	                    })
 	                    .appendTo(pagebar);
+	                    $('<li class="jump-text"><input type="text" /></li><li class="jump-page-btn"><a href="javascript:;">跳转</a></li>').appendTo(pagebar);
 	                    //移动端下一页
 	                    $(".page-mobile .next").unbind("click").bind("click",function(){
 	                    	_this.currentPage++;
