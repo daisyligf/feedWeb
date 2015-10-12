@@ -146,13 +146,13 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad','conf
 		 });
 		 //pc
 		 $("body").on("click",".jump-page-btn",function(){
-			var toPage = $(".jump-text input").val() || 1;
+			 var toPage = $(this).siblings(".jump-text").find("input").val();
 			jumpPage(this,toPage);
 		 });
 		 $('.jump-text').bind('keydown',function(e){
 			 console.log(e.which);
 			if(e.which==13){
-				var toPage = $(".jump-text input").val() || 1;
+				var toPage = $(this).find("input").val();
 				jumpPage(this,toPage);
 		 	}
 		 });
