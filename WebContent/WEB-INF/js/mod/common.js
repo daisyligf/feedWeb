@@ -147,7 +147,10 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad','conf
 					return;
 				}
 				var url = $(".page-mobile").find('.prev a').attr("href") || $(".page-mobile").find('.next a').attr("href");
-				url = url.replace(/currentPage\=\d*/ig,'currentPage='+v);
+				url = url.replace(/[0-9]\/[0-9]\.html/ig,function(str){
+					var arrUrl = str.split('/');
+					return v+'/'+arrUrl[1];
+				});
 				window.location.href=url;  
 			
 		 });
