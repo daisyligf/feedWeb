@@ -79,6 +79,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 'forecolor fontsize' ,
                 'link unlink | image feed-emotion | video',
             ],
+            pasteplain:true,
            imageUrl: c.config.baseUrl + "/upload",
            imageScaleEnabled:false
         });
