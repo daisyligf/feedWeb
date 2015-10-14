@@ -1,6 +1,8 @@
 package com.mofang.feedweb.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mofang.feedweb.entity.FeedHomeLinkUrl;
 import com.mofang.feedweb.form.FeedForumOfficalForm;
 import com.mofang.feedweb.form.FeedHomeHotForumRankForm;
 import com.mofang.feedweb.form.FeedHomeListHotForumForm;
@@ -33,9 +36,11 @@ public class FeedHomeController extends FeedCommonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try{
+			//友情链接
+			model.put("linkInfo", getLinkUrl(request));
+			//检索关键字
 			model.put("keyword", getSearchKey(request));
-			
-			//大小标题
+			//海报
 			model.put("tickers", getHomeTickers(request));
 			//大小标题
 			model.put("subjects", getHomeSubjects(request));
@@ -61,6 +66,34 @@ public class FeedHomeController extends FeedCommonController {
 
 	}
 	
+	private List<FeedHomeLinkUrl> getLinkUrl(HttpServletRequest request) throws JSONException {
+		
+		List<FeedHomeLinkUrl> list= new ArrayList<FeedHomeLinkUrl>();
+		
+		JSONObject result = getHttpInfo(getLinkUrl(), "" , request);
+		
+		if (null != result) {
+			int code = result.optInt("code", -1);
+			if (0 == code) {
+				JSONArray data = result.optJSONArray("data");
+				FeedHomeLinkUrl linkurl = null;
+				JSONObject json = null;
+				if (null != data) {
+					for (int i=0; i<data.length(); i++) {
+						json = data.getJSONObject(i);
+						linkurl = new FeedHomeLinkUrl();
+						linkurl.setLinkUrl(json.optString("url", ""));
+						linkurl.setLinkName(json.optString("name", ""));
+						list.add(linkurl);
+					}
+				}
+			}
+			
+		}
+		
+		return list;
+		
+	}
 	private FeedHomeTickerForm getHomeTickers(
 			HttpServletRequest request) throws JSONException {
 		

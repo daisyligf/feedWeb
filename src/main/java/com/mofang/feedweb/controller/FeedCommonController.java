@@ -34,6 +34,9 @@ public class FeedCommonController {
 	@Autowired
 	private HttpComponent httpComp;
 
+	protected String getLinkUrl() {
+		return externalUrlInfo.getFriendly_link_url();
+	}
 	protected String getUserNoticeUrl() {
 		return externalUrlInfo.getUser_notice_url();
 	}

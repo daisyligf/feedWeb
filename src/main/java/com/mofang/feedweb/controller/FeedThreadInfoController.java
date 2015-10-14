@@ -169,7 +169,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 //			if (!StringUtil.isNullOrEmpty(request.getParameter("replyflg"))) {
 //				replyFlg = Integer.valueOf(request.getParameter("replyflg"));
 //			}
-			
+			//foot部分链接
+			request.setAttribute("linkflg", "1");
 			//获取单个版块统计信息
 			model.put("statisticsInfo", getStatisticsInfo());
 			
@@ -269,7 +270,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 							threadUserInfo.setLevel(userObj.optInt("level", 0));
 							threadUserInfo.setThreads(userObj.optInt("threads", 0));
 							threadUserInfo.setReplies(userObj.optInt("replies", 0));
-							threadUserInfo.setEliteThreads(userObj.optInt("eliteThreads", 0));
+							threadUserInfo.setEliteThreads(userObj.optInt("elite_threads", 0));
 						}
 					}
 					
