@@ -71,8 +71,7 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
 
     
     /**实例化编辑器**/
-    function editorInit () {//{{{
-    	
+    function editorInit () {//{{{	
         um = UM.getEditor('myEditor',{
             toolbar:[
                 ' bold italic underline |',
@@ -80,8 +79,10 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
                 'link unlink | image feed-emotion | video',
             ],
             pasteplain:true,
-           imageUrl: c.config.baseUrl + "/upload",
-           imageScaleEnabled:false
+            imageUrl: c.config.baseUrl + "/upload",
+            imageScaleEnabled:false,
+            enableAutoSave:true,
+            saveInterval:1000
         });
 
         //登录判断 | video
@@ -95,17 +96,20 @@ define("comment",["jquery",'handlebars','jquery/jquery-pop','jquery/jquery-form'
             textMask.show();
             um.setDisabled();
         }
-        um.addListener( 'selectionchange', function( editor ) {
-             
+        um.addListener( 'selectionchange', function( editor ) { 
              wordCount = 5000-um.getContentLength(true);
              if(wordCount<0){
                 $(".word-count").html("已超出"+Math.abs(wordCount)+"字");
              }else{
                 $(".word-count").html("还可以输入"+wordCount+"字");
              }
-             
-
         });
+        //判断是否有内容，如果false说明是发帖，如果true说明是编辑帖子
+        if(!um.hasContents()){
+            var feedCon = um.execCommand("getlocaldata");
+            console.log(feedCon);
+        }
+
     }
     
     reply.on("click",function (){
