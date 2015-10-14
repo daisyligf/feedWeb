@@ -838,10 +838,12 @@ define('article_article',['jquery','handlebars','jquery/jquery-pagebar','jquery/
 		    	fnCallback && fnCallback();
 		    },
 		    error: function() {
-		    	$(".pop-top-fail").pop({
-					msg:"加载失败",
-					autoTime:1000
-				});
+		    	if(options.p>1){
+			    	$(".pop-top-fail").pop({
+						msg:"加载失败",
+						autoTime:1000
+					});
+		    	}
 		    },
 		    complete: function(){
 		    	

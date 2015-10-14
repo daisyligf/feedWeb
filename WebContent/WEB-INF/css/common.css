@@ -365,7 +365,7 @@
 	display: inline-block;
 	float:left;
 	font-size:14px;
-	border:1px solid #eee;
+	border:1px solid #eee!important;
 	cursor: pointer;
 	margin-left:4px;
 }
@@ -395,10 +395,11 @@
 }
 
 .page-plug .page-pc li.jump-text input{
-	width:40px;
-	height:30px;
-	line-height:30px;
+	width:35px;
+	height:18px;
+	padding:6px 5px;
 	border:0px;
+	font-size:15px;
 	text-align:center;
 }
 
