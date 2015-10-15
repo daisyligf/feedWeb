@@ -13,14 +13,14 @@ define('common',['jquery','login_top','loginUserUrl','jquery/moveTop','ad','conf
 	require("jquery/moveTop");//回到顶部
 	require("ad");//广告展示
 	//移动端顶部效果
-	$(".header .nav-wap-left a").on("touchstart",function(){
+	$(".header .nav-wap-left a").on("click",function(){
 
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
-			$(".header .nav-info").fadeOut(200);
+			$(".header .nav-info").hide();
 		}else{
 			$(this).addClass('active');
-			$(".header .nav-info").fadeIn(200);
+			$(".header .nav-info").show();
 		}
 	});
 	//消息
