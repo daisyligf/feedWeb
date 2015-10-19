@@ -42,7 +42,7 @@ public class Constant {
 	public static final String APP_ID = "20007";
 	public static final String SECRET = "4c49d0ba2ab71d69d31a2353347fa7ac";
 
-	public static final boolean TEST_FLG = true;
+	public static final boolean TEST_FLG = false;
 	
 	//未登录error code
 	public static final int USER_NOT_LOGIN = 999;
