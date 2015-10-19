@@ -90,7 +90,8 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 			    		$("#level").html("Lv."+res.data.level);
 			    		//经验值
 			    		$(".header-task .task-text").html("经验值 "+res.data.exp+"/"+res.data.upgrade_exp);
-			    		
+			    		//消息通知
+			    		getNotice(res.data.uid);
 			    		var taskW = $(".header-task").width();
 			    		var scale = res.data.exp/res.data.upgrade_exp;
 			    		taskW = Math.ceil(taskW*scale);
@@ -152,7 +153,8 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 	}
 
 	//消息通知
-	function getNotice(){
+	function getNotice(id){
+		var _uid = id;
 		var newsTimer=null;
 		
 		var isNews = false;
@@ -161,6 +163,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		    type:"GET",
 		    dataType:ajaxMethod,
 		    data:{
+		    	uid:_uid
 		    },
 		    success: function(res) {
 		    	if(res && res.code==0){
@@ -174,7 +177,7 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 		    		}else{
 		    			isNews=false;
 		    			$("#userName").find(".icon-red").hide();
-		    			$(".header .zuji").find(".icon-red").hide();
+		    			$(".header .msg").find(".icon-red").hide();
 		    			document.title=curTitle;
 		    		}
 		    		//news();
@@ -219,10 +222,10 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 	//启动函数
 	function init(){
 		showUserStart();//开始进行登录检查
-		getNotice();//消息通知
-		setInterval(function(){
-			getNotice();
-		},60*1000);
+//		getNotice();//消息通知
+//		setInterval(function(){
+//			getNotice();
+//		},60*1000);
 	}
 	init();
 	if (typeof module != "undefined" && module.exports) {
