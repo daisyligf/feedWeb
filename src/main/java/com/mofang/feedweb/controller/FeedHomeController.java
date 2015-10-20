@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mofang.feedweb.entity.FeedHomeLinkUrl;
+import com.mofang.feedweb.entity.FeedHomeListHotForum;
+import com.mofang.feedweb.entity.FeedHomeListRecommendGame;
 import com.mofang.feedweb.form.FeedForumOfficalForm;
 import com.mofang.feedweb.form.FeedHomeHotForumRankForm;
-import com.mofang.feedweb.form.FeedHomeListHotForumForm;
 import com.mofang.feedweb.form.FeedHomeListRecommendGameForm;
 import com.mofang.feedweb.form.FeedHomeRecommendGameRankForm;
 import com.mofang.feedweb.form.FeedHomeSubjectForm;
@@ -49,9 +50,9 @@ public class FeedHomeController extends FeedCommonController {
 			//新游推荐榜单
 			model.put("recommendRank", getHomeRecommendRank(request));
 			//热游版块
-			model.put("hotForum", getHomeListHotForum(request));
+			model.put("hotForumList", getHomeListHotForum(request));
 			//新游版块
-			model.put("recommendForum", getHomeListRecommendForum(request));
+			model.put("recommendForumList", getHomeListRecommendForum(request));
 			//官方版块
 			model.put("officalForum", getHomeOfficalForum(request));
 			
@@ -469,10 +470,10 @@ public class FeedHomeController extends FeedCommonController {
 		
 	}
 	
-	private FeedHomeListHotForumForm getHomeListHotForum(HttpServletRequest request)
+	private List<FeedHomeListHotForum> getHomeListHotForum(HttpServletRequest request)
 			throws JSONException {
 		
-		FeedHomeListHotForumForm objHotGame = new FeedHomeListHotForumForm();
+		List<FeedHomeListHotForum> list = new ArrayList<FeedHomeListHotForum>();
 		try {
 			//热门游戏版块list
 			JSONObject listHotGameResult = getHttpInfo(
@@ -481,129 +482,45 @@ public class FeedHomeController extends FeedCommonController {
 			if (null != listHotGameResult) {
 				
 				int code = listHotGameResult.optInt("code", -1);
-				if(0 != code) {
-				} else {
+				if(0 == code) {
 					
 					JSONArray data = listHotGameResult.optJSONArray("data");
 					JSONObject jsonHotGame = null;
+					FeedHomeListHotForum objHotGame = null;
 					for(int i=0; i<data.length(); i++)
 					{
 						jsonHotGame = data.getJSONObject(i);
-						if (i == 0) {
-							objHotGame.setHotForumId1(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName1(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName1(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon1(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads1(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads1(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl1(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl1(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 1) {
-							objHotGame.setHotForumId2(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName2(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName2(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon2(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads2(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads2(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl2(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl2(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 2) {
-							objHotGame.setHotForumId3(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName3(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName3(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon3(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads3(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads3(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl3(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl3(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 3) {
-							objHotGame.setHotForumId4(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName4(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName4(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon4(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads4(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads4(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl4(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl4(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 4) {
-							objHotGame.setHotForumId5(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName5(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName5(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon5(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads5(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads5(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl5(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl5(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 5) {
-							objHotGame.setHotForumId6(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName6(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName6(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon6(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads6(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads6(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl6(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl6(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 6) {
-							objHotGame.setHotForumId7(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName7(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName7(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon7(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads7(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads7(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl7(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl7(jsonHotGame.optString("gift_url", ""));
-						} else if (i == 7) {
-							objHotGame.setHotForumId8(jsonHotGame.optLong("forum_id", 0));
-							if (jsonHotGame.optString("forum_name", "").length() > 8) {
-								objHotGame.setHotForumName8(jsonHotGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								objHotGame.setHotForumName8(jsonHotGame.optString("forum_name", ""));
-							}
-							objHotGame.setHotIcon8(jsonHotGame.optString("icon", ""));
-							objHotGame.setHotTodayThreads8(jsonHotGame.optInt("today_threads", 0));
-							objHotGame.setHotTotalThreads8(jsonHotGame.optInt("total_threads",0));
-							objHotGame.setHotPrefectureUrl8(jsonHotGame.optString("prefecture_url", ""));
-							objHotGame.setHotGiftUrl8(jsonHotGame.optString("gift_url", ""));
+						objHotGame = new FeedHomeListHotForum();
+						objHotGame.setHotForumId(jsonHotGame.optLong("forum_id", 0));
+						if (jsonHotGame.optString("forum_name", "").length() > 8) {
+							objHotGame.setHotForumName(jsonHotGame.optString("forum_name", "").substring(0, 8));
+						} else {
+							objHotGame.setHotForumName(jsonHotGame.optString("forum_name", ""));
 						}
+						objHotGame.setHotIcon(jsonHotGame.optString("icon", ""));
+						objHotGame.setHotTodayThreads(jsonHotGame.optInt("today_threads", 0));
+						objHotGame.setHotTotalThreads(jsonHotGame.optInt("total_threads",0));
+						objHotGame.setHotPrefectureUrl(jsonHotGame.optString("prefecture_url", ""));
+						objHotGame.setHotGiftUrl(jsonHotGame.optString("gift_url", ""));
+						list.add(objHotGame);
 					}
 					
 				}
 			}
-			return objHotGame;
+			return list;
 			
 		} catch (JSONException e) {
 			GlobalObject.ERROR_LOG.error(
 					"at FeedHomeController.getHomeListHotForum throw an error.", e);
-			return objHotGame;
+			return list;
 		}
 		
 	}
 	
-	private FeedHomeListRecommendGameForm getHomeListRecommendForum(
+	private List<FeedHomeListRecommendGame> getHomeListRecommendForum(
 			HttpServletRequest request) throws JSONException {
 		
-		FeedHomeListRecommendGameForm form = new FeedHomeListRecommendGameForm();
+		List<FeedHomeListRecommendGame> list = new ArrayList<FeedHomeListRecommendGame>();
 		
 		try {
 			JSONObject listRecommendGameResult = getHttpInfo(
@@ -612,120 +529,36 @@ public class FeedHomeController extends FeedCommonController {
 			if (null != listRecommendGameResult) {
 				
 				int code = listRecommendGameResult.optInt("code", -1);
-				if(0 != code) {
-				} else {
+				if(0 == code) {
 					
 					JSONArray data = listRecommendGameResult.optJSONArray("data");
 					JSONObject jsonGame = null;
+					FeedHomeListRecommendGame form = null;
 					for(int i=0; i<data.length(); i++)
 					{
 						jsonGame = data.getJSONObject(i);
-						if (i == 0) {
-							form.setForumId1(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName1(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName1(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon1(jsonGame.optString("icon", ""));
-							form.setTodayThreads1(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads1(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl1(jsonGame.optString("download_url", ""));
-							form.setGiftUrl1(jsonGame.optString("gift_url", ""));
-						} else if (i == 1) {
-							form.setForumId2(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName2(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName2(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon2(jsonGame.optString("icon", ""));
-							form.setTodayThreads2(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads2(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl2(jsonGame.optString("download_url", ""));
-							form.setGiftUrl2(jsonGame.optString("gift_url", ""));
-						} else if (i == 2) {
-							form.setForumId3(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName3(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName3(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon3(jsonGame.optString("icon", ""));
-							form.setTodayThreads3(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads3(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl3(jsonGame.optString("download_url", ""));
-							form.setGiftUrl3(jsonGame.optString("gift_url", ""));
-						} else if (i == 3) {
-							form.setForumId4(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName4(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName4(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon4(jsonGame.optString("icon", ""));
-							form.setTodayThreads4(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads4(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl4(jsonGame.optString("download_url", ""));
-							form.setGiftUrl4(jsonGame.optString("gift_url", ""));
-						} else if (i == 4) {
-							form.setForumId5(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName5(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName5(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon5(jsonGame.optString("icon", ""));
-							form.setTodayThreads5(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads5(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl5(jsonGame.optString("download_url", ""));
-							form.setGiftUrl5(jsonGame.optString("gift_url", ""));
-						} else if (i == 5) {
-							form.setForumId6(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName6(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName6(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon6(jsonGame.optString("icon", ""));
-							form.setTodayThreads6(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads6(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl6(jsonGame.optString("download_url", ""));
-							form.setGiftUrl6(jsonGame.optString("gift_url", ""));
-						} else if (i == 6) {
-							form.setForumId7(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName7(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName7(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon7(jsonGame.optString("icon", ""));
-							form.setTodayThreads7(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads7(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl7(jsonGame.optString("download_url", ""));
-							form.setGiftUrl7(jsonGame.optString("gift_url", ""));
-						} else if (i == 7) {
-							form.setForumId8(jsonGame.optLong("forum_id", 0));
-							if (jsonGame.optString("forum_name", "").length() > 8) {
-								form.setForumName8(jsonGame.optString("forum_name", "").substring(0, 8));
-							} else {
-								form.setForumName8(jsonGame.optString("forum_name", ""));
-							}
-							form.setIcon8(jsonGame.optString("icon", ""));
-							form.setTodayThreads8(jsonGame.optInt("today_threads", 0));
-							form.setTotalThreads8(jsonGame.optInt("total_threads", 0));
-							form.setDownloadUrl8(jsonGame.optString("download_url", ""));
-							form.setGiftUrl8(jsonGame.optString("gift_url", ""));
+						form = new FeedHomeListRecommendGame();
+						form.setForumId(jsonGame.optLong("forum_id", 0));
+						if (jsonGame.optString("forum_name", "").length() > 8) {
+							form.setForumName(jsonGame.optString("forum_name", "").substring(0, 8));
+						} else {
+							form.setForumName(jsonGame.optString("forum_name", ""));
 						}
+						form.setIcon(jsonGame.optString("icon", ""));
+						form.setTodayThreads(jsonGame.optInt("today_threads", 0));
+						form.setTotalThreads(jsonGame.optInt("total_threads", 0));
+						form.setDownloadUrl(jsonGame.optString("download_url", ""));
+						form.setGiftUrl(jsonGame.optString("gift_url", ""));
+						list.add(form);
 					}
 				}
 				
 			} 
-			return form;
+			return list;
 		} catch (JSONException e) {
 			GlobalObject.ERROR_LOG.error(
 					"at FeedHomeController.getHomeListRecommendForum throw an error.", e);
-			return form;
+			return list;
 		}
 		
 	}

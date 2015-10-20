@@ -376,477 +376,73 @@
            <!-- 热门游戏开始 -->
            <div class="h2">热门游戏 <a target="_blank" href="<%=CommonUrl.baseUrl %>/forumList/1.html">更多 ></a></div>
            <div class="h2-con clearfix container">
+           <c:forEach var="hotForum" items="${hotForumList}">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId1}.html">
-                       <dt><img src="${hotForum.hotIcon1}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName1}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads1 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads1} </b></dd>
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId}.html">
+                       <dt><img src="${hotForum.hotIcon}" alt=""></dt>
+                       <dd><span>${hotForum.hotForumName}</span></dd>
+                       <c:if test="${hotForum.hotTodayThreads > 0}">
+                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads} </b></dd>
                        </c:if>
-                       <c:if test="${hotForum.hotTodayThreads1 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads1} </b></dd>
+                       <c:if test="${hotForum.hotTodayThreads == 0}">
+                       		<dd>今日  <b>${hotForum.hotTodayThreads} </b></dd>
                        </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads1}</dd>
+                       <dd>帖子  ${hotForum.hotTotalThreads}</dd>
                     </a>
                    </dl>
                    <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl1==''}">
+                    <c:if  test="${hotForum.hotPrefectureUrl==''}">
                       <a href="javascript:;"  class="zq bg-grey l">专区</a>
                     </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl1 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl1}"  class="zq l">专区</a>
+                    <c:if  test="${hotForum.hotPrefectureUrl != ''}">
+                      <a target="_blank"  href="${hotForum.hotPrefectureUrl}"  class="zq l">专区</a>
                     </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl1==''}">
+                    <c:if  test="${hotForum.hotGiftUrl==''}">
                       	<a href="javascript:;" class="zq bg-grey r">礼包</a> 
                     </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl1 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl1}"  class="zq r">礼包</a> 
+                    <c:if  test="${hotForum.hotGiftUrl != ''}">
+                      	<a target="_blank"  href="${hotForum.hotGiftUrl}"  class="zq r">礼包</a> 
                     </c:if>
                    </div>
                </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId2}.html">
-                       <dt><img src="${hotForum.hotIcon2}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName2}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads2 > 0}">
-                      		<dd>今日  <b class="update">${hotForum.hotTodayThreads2}</b></dd>
-                       </c:if>
-                       <c:if test="${hotForum.hotTodayThreads2 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads2}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads2}</dd>
-                    </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl2==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl2 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl2}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl2==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl2 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl2}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId3}.html">
-                       <dt><img src="${hotForum.hotIcon3}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName3}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads3 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads3}</b></dd>
-                       </c:if>
-                       <c:if test="${hotForum.hotTodayThreads3 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads3}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads3}</dd>
-                    </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                     <c:if  test="${hotForum.hotPrefectureUrl3==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl3 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl3}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl3==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl3 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl3}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId4}.html">
-                       <dt><img src="${hotForum.hotIcon4}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName4}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads4 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads4}</b></dd>
-                       </c:if>
-                       <c:if test="${hotForum.hotTodayThreads4 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads4}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads4}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl4==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl4 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl4}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl4==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl4 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl4}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId5}.html">
-                       <dt><img src="${hotForum.hotIcon5}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName5}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads5 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads5}</b></dd>
-                       </c:if>
-                        <c:if test="${hotForum.hotTodayThreads5 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads5}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads5}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl5==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl5 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl5}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl5==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl5 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl5}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId6}.html">
-                       <dt><img src="${hotForum.hotIcon6}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName6}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads6 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads6}</b></dd>
-                       </c:if>
-                        <c:if test="${hotForum.hotTodayThreads6 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads6}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads6}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl6==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl6 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl6}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl6==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl6 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl6}"  class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId7}.html">
-                       <dt><img src="${hotForum.hotIcon7}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName7}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads7 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads7}</b></dd>
-                       </c:if>
-                        <c:if test="${hotForum.hotTodayThreads7 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads7}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads7}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl7==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl7 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl7}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl7==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl7 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl7}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${hotForum.hotForumId8}.html">
-                       <dt><img src="${hotForum.hotIcon8}" alt=""></dt>
-                       <dd><span>${hotForum.hotForumName8}</span></dd>
-                       <c:if test="${hotForum.hotTodayThreads8 > 0}">
-                       		<dd>今日  <b class="update">${hotForum.hotTodayThreads8}</b></dd>
-                       </c:if>
-                        <c:if test="${hotForum.hotTodayThreads8 == 0}">
-                       		<dd>今日  <b>${hotForum.hotTodayThreads8}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${hotForum.hotTotalThreads8}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${hotForum.hotPrefectureUrl8==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotPrefectureUrl8 != ''}">
-                      <a target="_blank"  href="${hotForum.hotPrefectureUrl8}"  class="zq l">专区</a>
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl8==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${hotForum.hotGiftUrl8 != ''}">
-                      	<a target="_blank"  href="${hotForum.hotGiftUrl8}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-
+              </c:forEach>
            </div>
            <!-- 热门游戏结束 -->
           	<!-- 新游推荐开始 -->
            <div class="h2">新游推荐 <a target="_blank" href="<%=CommonUrl.baseUrl %>/forumList/2.html">更多 ></a></div>
            <div class="h2-con clearfix container">
+           <c:forEach var="recommendForum" items="${recommendForumList}">
                <div class="col-xs-3 col-md-4  col-sm-6">
                    <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId1}.html">
-                       <dt><img src="${recommendForum.icon1}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName1}</span></dd>
-                       <c:if test="${recommendForum.todayThreads1 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads1}</b></dd>
+                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId}.html">
+                       <dt><img src="${recommendForum.icon}" alt=""></dt>
+                       <dd><span>${recommendForum.forumName}</span></dd>
+                       <c:if test="${recommendForum.todayThreads > 0}">
+                       		<dd>今日  <b class="update">${recommendForum.todayThreads}</b></dd>
                        </c:if>
-                       <c:if test="${recommendForum.todayThreads1 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads1}</b></dd>
+                       <c:if test="${recommendForum.todayThreads == 0}">
+                       		<dd>今日  <b>${recommendForum.todayThreads}</b></dd>
                        </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads1}</dd>
+                       <dd>帖子  ${recommendForum.totalThreads}</dd>
                    </a>
                    </dl>
                    <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl1==''}">
+                    <c:if  test="${recommendForum.downloadUrl==''}">
                       <a href="javascript:;"  class="zq bg-grey l">下载</a>
                     </c:if>
-                    <c:if  test="${recommendForum.downloadUrl1 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl1}"  class="zq l">下载</a>
+                    <c:if  test="${recommendForum.downloadUrl != ''}">
+                      <a target="_blank"  href="${recommendForum.downloadUrl}"  class="zq l">下载</a>
                     </c:if>
-                    <c:if  test="${recommendForum.giftUrl1==''}">
+                    <c:if  test="${recommendForum.giftUrl==''}">
                       	<a href="javascript:;" class="bg-grey r">礼包</a> 
                     </c:if>
-                    <c:if  test="${recommendForum.giftUrl1 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl1}" class="zq r">礼包</a> 
+                    <c:if  test="${recommendForum.giftUrl != ''}">
+                      	<a target="_blank"  href="${recommendForum.giftUrl}" class="zq r">礼包</a> 
                     </c:if> 
                    </div>
                </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId2}.html">
-                       <dt><img src="${recommendForum.icon2}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName2}</span></dd>
-                       <c:if test="${recommendForum.todayThreads2 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads2}</b></dd>
-                       </c:if>
-                       <c:if test="${recommendForum.todayThreads2 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads2}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads2}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl2==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl2 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl2}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl2==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl2 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl2}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfixf">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId3}.html">
-                       <dt><img src="${recommendForum.icon3}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName3}</span></dd>
-                       <c:if test="${recommendForum.todayThreads3 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads3}</b></dd>
-                       </c:if>
-                        <c:if test="${recommendForum.todayThreads3 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads3}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads3}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl3==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl3 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl3}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl3==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl3 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl3}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId4}.html">
-                       <dt><img src="${recommendForum.icon4}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName4}</span></dd>
-                       <c:if test="${recommendForum.todayThreads4 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads4}</b></dd>
-                       </c:if>
-                       <c:if test="${recommendForum.todayThreads4 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads4}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads4}</dd>
-                    </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl4==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl4 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl4}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl4==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl4 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl4}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId5}.html">
-                       <dt><img src="${recommendForum.icon5}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName5}</span></dd>
-                       <c:if test="${recommendForum.todayThreads5 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads5}</b></dd>
-                       </c:if>
-                       <c:if test="${recommendForum.todayThreads5 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads5}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads5}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl5==''}">
-                      <a href="javascript:;"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl5 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl5}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl5==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl5 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl5}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId6}.html">
-                       <dt><img src="${recommendForum.icon6}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName6}</span></dd>
-                       <c:if test="${recommendForum.todayThreads6 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads6}</b></dd>
-                       </c:if>
-                       <c:if test="${recommendForum.todayThreads6 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads6}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads6}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl6==''}">
-                      <a href="#"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl6 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl6}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl6==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl6 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl6}" class="zq r">礼包</a> 
-                    </c:if> 
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl %>/forum/${recommendForum.forumId7}.html">
-                       <dt><img src="${recommendForum.icon7}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName7}</span></dd>
-                       <c:if test="${recommendForum.todayThreads7 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads7}</b></dd>
-                       </c:if>
-                       <c:if test="${recommendForum.todayThreads7 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads7}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads7}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl7==''}">
-                      <a href="#"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl7 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl7}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl7==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl7 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl7}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               <div class="col-xs-3 col-md-4  col-sm-6">
-                   <dl class="clearfix">
-                   <a target="_blank"  href="<%=CommonUrl.baseUrl%>/forum/${recommendForum.forumId8}.html">
-                       <dt><img src="${recommendForum.icon8}" alt=""></dt>
-                       <dd><span>${recommendForum.forumName8}</span></dd>
-                       <c:if test="${recommendForum.todayThreads8 > 0}">
-                       		<dd>今日  <b class="update">${recommendForum.todayThreads8}</b></dd>
-                       </c:if>
-                       <c:if test="${recommendForum.todayThreads8 == 0}">
-                       		<dd>今日  <b>${recommendForum.todayThreads8}</b></dd>
-                       </c:if>
-                       <dd>帖子  ${recommendForum.totalThreads8}</dd>
-                   </a>
-                   </dl>
-                   <div class="h2-con-bot">
-                    <c:if  test="${recommendForum.downloadUrl8==''}">
-                      <a href="#"  class="zq bg-grey l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.downloadUrl8 != ''}">
-                      <a target="_blank"  href="${recommendForum.downloadUrl8}"  class="zq l">下载</a>
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl8==''}">
-                      	<a href="javascript:;" class="bg-grey r">礼包</a> 
-                    </c:if>
-                    <c:if  test="${recommendForum.giftUrl8 != ''}">
-                      	<a target="_blank"  href="${recommendForum.giftUrl8}" class="zq r">礼包</a> 
-                    </c:if>
-                   </div>
-               </div>
-               
+               </c:forEach>
            </div>
            <!-- 新游推荐结束 -->
            
