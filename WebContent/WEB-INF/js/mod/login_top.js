@@ -92,6 +92,9 @@ define('login_top',['jquery','pagevisibility','config'],function(require, export
 			    		$(".header-task .task-text").html("经验值 "+res.data.exp+"/"+res.data.upgrade_exp);
 			    		//消息通知
 			    		getNotice(res.data.uid);
+			    		setInterval(function(){
+			    			getNotice();
+			    		},60*1000);
 			    		var taskW = $(".header-task").width();
 			    		var scale = res.data.exp/res.data.upgrade_exp;
 			    		taskW = Math.ceil(taskW*scale);
