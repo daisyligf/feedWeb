@@ -252,8 +252,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 						if (forumObj != null) {
 							forumId = forumObj.optLong("fid", 0);
 							feedForum.setForum_id(forumId);
-							String forumName = forumObj.optString("name", "");
-							String gameName = forumObj.optString("game_name", "");
+							String forumName = forumObj.optString("name", "").trim();
+							String gameName = forumObj.optString("game_name", "").trim();
 							if (gameName.length() > 0) {
 								feedForum.setGameName(gameName);
 							} else {
