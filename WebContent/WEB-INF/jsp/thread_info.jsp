@@ -32,7 +32,7 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="${feedForum.gameName},${feedForum.gameName},魔方论坛">
+    <meta name="keywords" content="${feedForum.gameName},魔方论坛">
    	<meta name="description" content="${feedThread.content_sub100}。更多${feedForum.gameName}的精彩内容，请关注魔方${feedForum.gameName}论坛(版块)。">
     <title>${feedThread.subject}_${feedForum.gameName}论坛(版块)_魔方论坛: 最懂你的手机游戏社区</title>
     <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
