@@ -17,6 +17,10 @@ public class Game {
 	
 	private String comment;
 	
+	private String tags;
+	
+	private String description;
+	
 	public Game(){}
 	
 	public Game(int id) {
@@ -62,6 +66,22 @@ public class Game {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

@@ -85,6 +85,10 @@ public class FeedCommonController {
 	protected String getGameInfoUrl() {
 		return externalUrlInfo.getGame_info_url() + Constant.GAME_INFO_URL;
 	}
+	
+	protected String getGameInfoIdsUrl() {
+		return externalUrlInfo.getGame_info_url() + Constant.GAME_INFOIDS_URL;
+	}
 
 	protected String getGameGiftListUrl() {
 		return externalUrlInfo.getGift_info_url() + Constant.GIFT_LIST_URL;

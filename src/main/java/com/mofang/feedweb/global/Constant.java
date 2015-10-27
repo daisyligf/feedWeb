@@ -174,6 +174,8 @@ public class Constant {
 	public static final String GIFT_LIST_URL = "/api/v1/gift/list";
 	// 游戏介绍内容
 	public static final String GAME_INFO_URL = "/api/web/getgameinfo";
+	// 游戏介绍内容
+	public static final String GAME_INFOIDS_URL = "/api/web/getgameinfobyids";
 	// 普通用户冻结 解冻
 	public static final String USER_STATE_UPDATE_URL = "/apis/user/update_status";
 	// 关注板块
