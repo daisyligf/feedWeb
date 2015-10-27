@@ -222,9 +222,7 @@ public class FeedForumContentController extends FeedCommonController {
 				// 游戏信息
 				int gameId = feedForum.getGameId();
 				Game game = getGameInfo(request, gameId);
-				Game gameInfo = getGameInfoIds(request, gameId);
 				model.put("game", game);
-				model.put("gameInfo", gameInfo);
 				// 礼包发号
 				List<GameGift> giftList = getGiftList(request, gameId);
 				model.put("giftList", giftList);
@@ -330,46 +328,22 @@ public class FeedForumContentController extends FeedCommonController {
 	}
 	
 	private Game getGameInfo(HttpServletRequest request, int gameId) {
+		
+		Game game = new Game(gameId);
 		String param = "id=" + gameId;
 		JSONObject json = getHttpInfo(getGameInfoUrl(), param, request);
 		
-		Game game = new Game(gameId);
 		if (json != null && json.optInt("code", -1) == 0) {
 			JSONObject obj = json.optJSONObject("data");
 			game.setName(obj.optString("name", ""));
 			game.setIcon(obj.optString("icon", ""));
 			game.setUrl(obj.optString("url", ""));
 			game.setComment(obj.optString("comment", ""));
+			
+			game.setGameTag(obj.optString("gameTag", ""));
 		}
 		
 		return game;
-	}
-	
-	private Game getGameInfoIds(HttpServletRequest request, int gameId) throws JSONException{
-		String param = "ids=" + gameId;
-		Game game = new Game(gameId);
-		try {
-			JSONObject json = getHttpInfo(getGameInfoIdsUrl(), param, request);
-			
-			
-			if (json != null && json.optInt("code", -1) == 0) {
-				JSONArray data = json.optJSONArray("data");
-				if (null != data) {
-					JSONObject obj = data.getJSONObject(0);
-					game.setName(obj.optString("name", ""));
-					game.setDescription(obj.optString("description", ""));
-					game.setTags(obj.optString("tags", ""));
-				}
-				
-			}
-			
-			return game;
-		} catch (JSONException e) {
-			GlobalObject.ERROR_LOG.error(
-					"at FeedForumContentController.getGameInfoIds throw an error.", e);
-			return game;
-		}
-		
 	}
 
 	private List<HotForumRank> getNewGameList(HttpServletRequest request)

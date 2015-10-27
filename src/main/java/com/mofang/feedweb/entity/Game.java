@@ -21,6 +21,8 @@ public class Game {
 	
 	private String description;
 	
+	private String gameTag;
+	
 	public Game(){}
 	
 	public Game(int id) {
@@ -82,6 +84,14 @@ public class Game {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getGameTag() {
+		return gameTag;
+	}
+
+	public void setGameTag(String gameTag) {
+		this.gameTag = gameTag;
 	}
 	
 }

@@ -29,14 +29,31 @@
     <meta name="format-detection" content="telephone=no" />
 
     <c:if test="${feedForum.forum_id >= 10 and feedForum.forum_id <= 13}">
-    <title>${feedForum.forum_name}-魔方论坛</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <c:if test="${feedForum.forum_id == 10}">
+	    <title>福利集中营_实物活动 - 魔方网手游游戏玩家分享社区</title>
+	    <meta name="keywords" content="实物活动,手游活动,福利活动,魔方活动,游戏宝活动">
+	    <meta name="description" content="福利集中营是手游媒体第一门户魔方网的活动中心，包含了超多丰富的手游实物奖励活动，礼包，游戏虚拟道具等，是手游玩家最喜爱的活动集中营！要福利，就来魔方论坛吧！">
+    </c:if>
+     <c:if test="${feedForum.forum_id == 11}">
+	    <title>萌宅大本营_日系娱乐专区 - 魔方网手游游戏玩家分享社区</title>
+	    <meta name="keywords" content="日本手游,无节操资讯,动漫,奇葩,Cosplay">
+	    <meta name="description" content="萌宅大本营是手游媒体第一门户魔方网的日系娱乐专区，每天提供最新鲜最有趣的宅文化内容，动漫、萌妹、无节操盘点和新奇小玩意，想知道时下最流行的话题，就来魔方论坛吧！">
+    </c:if>
+     <c:if test="${feedForum.forum_id == 12}">
+	    <title>八卦闲聊_聊天灌水 - 魔方网手游游戏玩家分享社区</title>
+	    <meta name="keywords" content="八卦闲聊,生活感悟,谈天说地,心情分享,聊天,灌水">
+	    <meta name="description" content="八卦闲聊是手游媒体第一门户魔方网的聊天灌水区，在这里你可以和坛友们分享你的游戏心情、生活感悟、你喜欢的美食、音乐以及所有发生在你身边的趣事！想认识更多朋友一起愉快的聊天，就来魔方论坛吧！">
+    </c:if>
+     <c:if test="${feedForum.forum_id == 13}">
+	    <title>报告老板_官方公告 - 魔方网手游游戏玩家分享社区</title>
+	    <meta name="keywords" content="报告老板,事务管理,官方公告,魔方网论坛">
+	    <meta name="description" content="报告老板是手游媒体第一门户魔方网的公告发布区，所有重要的公告都会第一时间发布在这里，欢迎玩家们提出各种问题和建议。要生活更有趣，就来魔方论坛吧！">
+    </c:if>
     </c:if>
     <c:if test="${feedForum.forum_id < 10 or feedForum.forum_id > 13}">
-    <title>${feedForum.forum_name}官方合作论坛</title>
-    <meta name="keywords" content="${feedForum.forum_name}，${feedForum.forum_name}论坛，${feedForum.forum_name}礼包，${feedForum.forum_name}手游论坛，${feedForum.forum_name}攻略">
-    <meta name="description" content="${feedForum.forum_name}官方合作论坛，游戏玩家分享交流社区，${feedForum.forum_name}官方合作活动社区">
+    <title>${game.name}论坛_${game.name}攻略_${game.name}礼包_魔方论坛: 最懂你的手机游戏社区</title>
+    <meta name="keywords" content="${game.name}论坛,${game.name}攻略礼包,${game.gameTag},魔方论坛,手机游戏社区">
+    <meta name="description" content="${game.comment}.魔方网${game.name}论坛为广大玩家提供高玩分享的最新${game.name}攻略、${game.name}礼包，定期举办发放${game.name}周边的各种活动，欢迎组团来魔方网手机游戏论坛交流在游戏中遇到的问题。">
     </c:if>
     <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
