@@ -232,6 +232,11 @@ public class FeedThreadInfoController extends FeedCommonController {
 						feedThread.setSubject(threadObj.optString("subject", ""));
 						
 						String content = threadObj.optString("content", "");
+						if (content.length() > 100) {
+							feedThread.setContent_sub100(content.substring(0, 100));
+						} else {
+							feedThread.setContent_sub100(content);
+						}
 						feedThread.setContent(replaceEmoji(content));
 						feedThread.setPage_view(threadObj.optInt("pageview", 0));
 						feedThread.setReplies(threadObj.optInt("replies", 0));
@@ -253,6 +258,12 @@ public class FeedThreadInfoController extends FeedCommonController {
 							forumId = forumObj.optLong("fid", 0);
 							feedForum.setForum_id(forumId);
 							String forumName = forumObj.optString("name", "");
+							String gameName = forumObj.optString("game_name", "");
+							if (gameName.length() > 0) {
+								feedForum.setGameName(gameName);
+							} else {
+								feedForum.setGameName(forumName);
+							}
 							if (forumName.length() > 30) {
 								feedForum.setForum_name(forumName.substring(0, 30));
 							} else {

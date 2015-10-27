@@ -35,6 +35,7 @@ public class FeedThread {
 	private String forum_name;
 	private List<String> pic;
 	private String content;
+	private String content_sub100;
 	private int tagId;
 	
 	public int getTagId() {
@@ -255,6 +256,14 @@ public class FeedThread {
 
 	public void setPic(List<String> pic) {
 		this.pic = pic;
+	}
+
+	public String getContent_sub100() {
+		return content_sub100;
+	}
+
+	public void setContent_sub100(String content_sub100) {
+		this.content_sub100 = content_sub100;
 	}
 
 }

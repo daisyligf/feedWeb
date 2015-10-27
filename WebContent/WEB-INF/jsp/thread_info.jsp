@@ -32,8 +32,8 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="${feedForum.game_name},魔方论坛">
+    <meta name="description" content="${feedThread.content_sub100}">
     <title>${feedThread.subject}-${feedForum.forum_name}-魔方论坛</title>
     <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">

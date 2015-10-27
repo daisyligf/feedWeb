@@ -16,6 +16,7 @@ public class FeedForum {
 	private String icon;
 	private int type;
 	private int gameId;
+	private String gameName;
 	private int total_threads;
 	private int today_threads;
 	private int yesterday_threads;
@@ -156,6 +157,12 @@ public class FeedForum {
 	}
 	public void setCode(int code) {
 		this.code = code;
+	}
+	public String getGameName() {
+		return gameName;
+	}
+	public void setGameName(String gameName) {
+		this.gameName = gameName;
 	}
 }
 
