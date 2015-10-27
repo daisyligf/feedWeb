@@ -232,11 +232,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 						feedThread.setSubject(threadObj.optString("subject", ""));
 						
 						String content = threadObj.optString("content", "");
-						if (content.length() > 100) {
-							feedThread.setContent_sub100(content.substring(0, 100));
-						} else {
-							feedThread.setContent_sub100(content);
-						}
 						feedThread.setContent(replaceEmoji(content));
 						feedThread.setPage_view(threadObj.optInt("pageview", 0));
 						feedThread.setReplies(threadObj.optInt("replies", 0));
@@ -416,7 +411,14 @@ public class FeedThreadInfoController extends FeedCommonController {
 					}
 				}
 			}
-			
+			String content_sub100 = "";
+			if (postList.size() > 0 ) {
+				content_sub100 = replaceEmoji(postList.get(0).getContent());
+				if (content_sub100.length() > 100) {
+					content_sub100 = content_sub100.substring(0, 100);
+				}
+			}
+			feedThread.setContent_sub100(content_sub100);
 			List<FeedThread> highestList = replyHighest(request, forumId);
 			
 			model.put("total", total);
