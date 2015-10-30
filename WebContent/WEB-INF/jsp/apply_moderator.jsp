@@ -75,71 +75,52 @@
             <div class="feed-box clearfix">
                 <div class="feed-user-apply">
                     <!--header-->
-                    <div class="feed-user-apply-hd clearfix">
-                        <!-- {if $noApplyReason == null} -->
-                        <!--申请-->
-                        <c:choose>
-	                        <c:when test="${moderatorApplyCondition.isPass}">
-	                        <div class="apply-hd-main">
-	                            <h3 class="apply-hd-title">立即申请 <span class="apply-title-item">您在在申请 <a href="forum/${feedForum.forum_id}.html" class="apply-link" target="_blank">${feedForum.forum_name }</a> 吧主</span></h3>
-	                            <div class="feed-user-apply-form">
-	                            <div class="feed-user-infos"></div>
-	                                <form action="" class="user-apply-form">
-	                                    <input type="hidden" name="fid" id="forum_id" value="${feedForum.forum_id}"/>
-	                                    <input class="J_focus apply-text apply-user-qq" type="text" data-type="qq" id="qq" name="qq" value="" placeholder="请输入您的QQ号">
-	                                    <input  class="J_focus apply-text apply-user-phone" type="text" data-type="phone" id="phone" name="phone" value="" placeholder="请输入您的手机号">
-	                                    <textarea  class="J_focus apply-text apply-user-text" id="game_exp" name="game_exp" data-type="text" placeholder="描述一下游戏经历，让我们更了解你！"></textarea>
-	                                    <input class="apply-user-btn" type="button" id="applyBtn" value="立即申请">
-	                                </form>
-	                            </div>
-	                        </div>
-	                        </c:when>
-	                        <c:otherwise>
-	                        <div class="apply-hd-main-error clearfix">
-	                            <div class="apply-hd-main">
-	                                <h3 class="apply-hd-error-title"> 对不起，你还不满足吧主申请条件!  </h3>
-	                                <p class="apply-line"></p>
-	                                <!-- <div class="apply-status-list">
-	                                    <ul>
-	                                        <li class="no-meet">您还没有登录,请登录后再试!</li>
-	                                    </ul>
-	                                    
-	                                </div> -->
-	                            </div>
-	                           
-	                            <div class="apply-hd-show">
-	                                <img src="img/apply.jpg" alt="">
-	                            </div>
-	                        </div>
-	                        </c:otherwise>
-                        </c:choose>
-
-                    </div>
+                   
                     <!--header end -->
                     <!--bd-->
                     <div class="feed-user-apply-bd">
                         <dl>
-                            <dt>做吧主有什么好处？</dt>
+                            <dt>听说你想申请版主是吗？请联系QQ：54800674！</dt>
+                            <dt>那就仔细阅读一下应聘者须知吧。</dt>
+                            <dt>应聘者须知</dt>
                             <dd>
-                                <p><span>1.吧主工资：</span>见习吧主实习一个月，工资150魔钻，转正后300魔钻。</p>
-                                <p><span>2.吧主荣耀：</span>你的身份、你的帖子和回复都将是其他玩家关注的焦点。“哇，你就是吧主SAMA吧，求大腿啊</p>
-                                <p><span>3.吧主福利：</span>可以更快地获得手机网游资讯，更快拿到激活码比其他人更快体验游戏。对于表现出众的你，我们偶尔还会有一点点的小惊喜在等着你哟！</p>
+                                <p>1.有稳定的时间，能够经常去到所负责的游戏版面巡视。</p>
+                                <p>2.有一定的游戏知识与游戏见解，能帮助玩家解答疑难的并能够与玩家进行良性讨论 。</p>
+                                <p>3.有较大的责任心，能够带动起良好的版面舆论气氛，有足够的耐心与版面玩家互相讨论。</p>
+                                <p>4.如会使用office办公软件，有一定的文字功底，会写游戏攻略者将会优先考虑。</p>
+                                <p>5.思维活跃，服从管理安排，服从团队制度。（我行我素，不团结、不服从上级者请勿报名）</p>
+                                <p>6.论坛等级5级，论坛发帖量超过100贴，近2个月内无任何论坛处分 。</p>
+                                <p>7.论坛核心版友，发表过帖子较多，帖子排版好的优先考虑</p>
                             </dd>
-                            <dt> 主要工作 </dt>
+                            <dt> 已经看完了吗？觉得怎么样。如果可以的话就继续往下看吧！ </dt>
+                            <dt> 实习版主的职责 </dt>
                             <dd>
-                                <p>1.参与：每天都要在说吧发布一些相关的内容主题帖哦！</p>
-                                <p>2.管理：对一些不符合吧规的帖子根据吧规进行操作，要保持论坛说吧简洁美观。</p>
+                                <p>1.参与：每天都要在论坛里发布一些相关的内容主题帖哦！</p>
+                                <p>2.管理：对一些不符合版规的帖子根据版规进行操作，要保持论坛简洁美观。</p>
                                 <p>　　　　要对大部分帖子进行回复，符合要求的给予“加分、加亮、置顶、精华”等操作。</p>
-                                <p>3.互动：在负责区域说吧内与玩家进行互动，第一时间服务于玩家！</p>
-                                <p>3.分享：如果你是游戏高手，那么你要在相关的说吧发表你的游戏看法。</p>
-                                <p>　　　　如果你喜欢被抱大腿的感觉，可以把自己负责说吧分享给更多的玩家。</p>
+                                <p>3.互动：在负责区域论坛内与玩家进行互动，第一时间服务于玩家！</p>
+                                <p>3.分享：如果你是游戏高手，那么你要在相关的论坛发表你的游戏看法。</p>
+                                <p>　　　　如果你喜欢被抱大腿的感觉，可以把自己负责论坛分享给更多的玩家。</p>
                             </dd>
-                            <dt> 魔币和魔钻的用途 </dt>
+                            <dt> 如果你觉得以上你都符合的话，那么恭喜你了你成为我们的实习版主了。 </dt>
+                            <dt> 实习版主的福利待遇 </dt>
                             <dd>
-                                <p>1.在发号中心兑换独家礼包。</p>
-                                <p>2.论坛功能消费</p>
-                                <p>3.魔钻可以在特定活动中兑换点卡、Q币等。</p>
+                                <p>1.版主工资：实习版主实习期每月30Q币。</p>
+                                <p>2.版主荣耀：你的身份、你的帖子和回复都将是其他玩家关注的焦点。“哇，你就是版主SAMA吧，求大腿啊！</p>
+                                <p>3.版主福利：可以更快地获得手机网游资讯，更快拿到激活码比其他人更快体验游戏。对于表现出众的你，我们偶尔还会有一点点的小惊喜在等着你哟！</p>
                             </dd>
+                            <dt> 看完是不是奇怪呢，为什么会是实习的呢。这个自然就是需要对你考核转正的！ </dt>
+                            <dt> 实习版主转正考核： </dt>
+                            <dd>
+                                <p>1.必须满足在任时间一个月以上。</p>
+                                <p>2.必须通过见习版主培训所有内容。</p>
+                                <p>3.见习期间不得被会员投诉。</p>
+                                <p>4.见习期间发帖量必须满足总版主发布的工作任务数。</p>
+                                <p>5.见习期间无重大过失。</p>
+                                <p>6.申请转正前需完成见习工作期间心得。</p>
+                            </dd>
+                            <dt> 偷偷的告诉你，实习期转正待遇从优哦！ </dt>
+                            <dt> 这下你都了解了吧，那么就加油了哦！ </dt>
                         </dl>
                     </div>
                     <!--bd end-->
