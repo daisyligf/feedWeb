@@ -24,14 +24,14 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <c:if test="${forumType=='1'}">
+      <c:if test="${forumType=='1'}">
     <title>热门游戏-魔方论坛</title>
     </c:if>
     <c:if test="${forumType=='2'}">
     <title>新游推荐-魔方论坛</title>
     </c:if>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
     <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/common.css">

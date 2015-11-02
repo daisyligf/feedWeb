@@ -23,9 +23,9 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
+    <title>申请吧主</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>申请吧主</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">

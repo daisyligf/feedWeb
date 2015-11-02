@@ -24,9 +24,9 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <!--  phone numer select -->
     <meta name="format-detection" content="telephone=no" />
+    <title>发帖-魔方论坛</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>发帖-魔方论坛</title>
     <link rel="shortcut icon" href="<%=CommonUrl.baseUrl%>/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="<%=CommonUrl.baseUrl%>/css/base.css">
 
