@@ -40,7 +40,7 @@ public class uploadFileTool extends HttpServlet {
       if(!file.isEmpty()){
     	  String to = request.getParameter("to");
     	  int index = to.lastIndexOf("/");
-    	  String filePath = to.substring(0, index+1);
+    	  String filePath = to.substring(0, index);
     	  
         try {
         	  File newFile = new File(filePath);
@@ -49,8 +49,7 @@ public class uploadFileTool extends HttpServlet {
 			  }
 				
 	          //定义输出流 将文件保存在D盘    file.getOriginalFilename()为获得文件的名字 
-	          //FileOutputStream os = new FileOutputStream(filePath + file.getOriginalFilename());
-	        	FileOutputStream os = new FileOutputStream(filePath + file.getOriginalFilename());
+	          FileOutputStream os = new FileOutputStream(filePath + "/" + file.getOriginalFilename());
 	          InputStream in = file.getInputStream();
 	          int b = 0;
 	          while((b=in.read())!=-1){ //读取文件 
