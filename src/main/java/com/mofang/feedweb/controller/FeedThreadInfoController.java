@@ -784,16 +784,38 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "award.json")
-	public String award(@RequestParam("uid") long uid, @RequestParam("coin") int coin, @RequestParam("reason") String reason,
+	public String award(@RequestParam("tid") long tid, @RequestParam("uid") long uid, @RequestParam("coin") int coin, @RequestParam("reason") String reason,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
+			
+			StringBuilder param = new StringBuilder();
+			param.append("tid=").append(tid);
+			
+			JSONObject objJson = getHttpInfo(getPostListUrl(), param.toString(), request);
+			boolean is_moderator = false;
+			boolean is_admin = false;
+			if (null != objJson) {
+				if (objJson.optInt("code", -1) == 0) {
+					JSONObject data = objJson.optJSONObject("data");
+					JSONObject currentUserObj = data.optJSONObject("current_user");
+					if (currentUserObj != null) {
+						is_moderator = currentUserObj.optBoolean("is_moderator", false);
+						is_admin = currentUserObj.optBoolean("is_admin", false);
+						
+					}
+					
+				}
+			}
+			
 			JSONObject postData = new JSONObject();
 			postData.put("uid", uid);
+			postData.put("is_moderator", is_moderator == true ? 1 : 0);
+			postData.put("is_admin", is_admin == true ? 1 : 0);
 			
 			JSONObject awardJson = new JSONObject();
 			awardJson.put("coin", coin);
 			postData.put("reward", awardJson);
-			
+			GlobalObject.INFO_LOG.info("FeedThreadInfoController.award postdata" + postData);
 			JSONObject json = postHttpInfo(getViperAwardUrl(), postData, request);
 			
 			//奖励成功后推送消息
