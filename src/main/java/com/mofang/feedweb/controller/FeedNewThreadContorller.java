@@ -210,6 +210,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 			filePost.setRequestEntity(new MultipartRequestEntity(parts, filePost.getParams()));
 			client.getHttpConnectionManager().getParams().setConnectionTimeout(5000);
 		    int status = client.executeMethod(filePost);
+		    GlobalObject.INFO_LOG.info("at FeedNewThreadContorller.upload : status" + status);
 			if (status == HttpStatus.SC_OK) {
 				String body = filePost.getResponseBodyAsString();
 				JSONObject obj = new JSONObject(body);
@@ -231,6 +232,7 @@ public class FeedNewThreadContorller extends FeedCommonController {
 				response.setContentType("text/html; charset=UTF-8");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().print(convertJsonObj);
+				GlobalObject.INFO_LOG.info("at FeedNewThreadContorller.upload : convertJsonObj" + convertJsonObj);
 			}
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedNewThreadController.upload throw an error.", e);
