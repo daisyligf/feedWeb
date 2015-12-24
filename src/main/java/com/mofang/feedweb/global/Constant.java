@@ -61,6 +61,9 @@ public class Constant {
 	// 新增楼层
 
 	public static final String POST_CREATE_URL = "/feed/v3/web/post/add";
+	// 编辑楼层
+
+	public static final String POST_EDIT_URL = "/feed/v3/web/post/edit";
 	// 回复指定楼层
 
 	public static final String POST_REPLY_URL = "/feed/v3/web/comment/add";
