@@ -923,6 +923,35 @@ public class FeedThreadInfoController extends FeedCommonController {
 		}
 	}
 	
-	
+	@RequestMapping(value = "edit_post.json")
+	public ModelAndView editPost(@RequestParam("pid") long postId, @RequestParam("content") String content, HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		
+		try {
+			JSONObject postData = new JSONObject();
+			postData.put("pid", postId);
+			postData.put("content", content);
+			
+			JSONObject json = postHttpInfo(getEditPostUrl(), postData, request);
+			
+			JSONObject returnJson = new JSONObject();
+			if (null != json) {
+				returnJson.put("code", json.optInt("code"));
+				returnJson.put("message", json.optInt("message"));
+			}
+			
+			response.setContentType("text/html; charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print(returnJson);
+			out.flush();
+			out.close();
+			LogConsole.log("returnJdon:" + returnJson);
+			return null;
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.editPost throw an error.", e);
+			return null;
+		}
+	}
 	
 }

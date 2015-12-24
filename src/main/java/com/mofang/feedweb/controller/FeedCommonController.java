@@ -177,6 +177,10 @@ public class FeedCommonController {
 	protected String getSendReplyUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_CREATE_URL;
 	}
+	
+	protected String getEditPostUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.POST_EDIT_URL;
+	}
 
 	protected String getThreadDeleteUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.THREAD_DELETE_URL;
