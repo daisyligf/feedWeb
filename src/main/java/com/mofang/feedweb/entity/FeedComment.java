@@ -18,6 +18,7 @@ public class FeedComment {
 	private long thread_id;
 	private long post_id;
 	private UserInfo userInfo;
+	private boolean deleteFlg;
 	
 	public long getComment_id() {
 		return comment_id;
@@ -78,6 +79,12 @@ public class FeedComment {
 	}
 	public void setUserInfo(UserInfo userInfo) {
 		this.userInfo = userInfo;
+	}
+	public boolean isDeleteFlg() {
+		return deleteFlg;
+	}
+	public void setDeleteFlg(boolean deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 	
 }
