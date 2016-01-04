@@ -17,6 +17,7 @@ public class FeedPost {
 	private int recommends;
 	private boolean isRecommend;
 	private Date create_time;
+	private Date update_time;
 	private String format;
 	private int status;
 	private long user_id;
@@ -159,6 +160,12 @@ public class FeedPost {
 	}
 	public void setLastPositionFlg(boolean lastPositionFlg) {
 		this.lastPositionFlg = lastPositionFlg;
+	}
+	public Date getUpdate_time() {
+		return update_time;
+	}
+	public void setUpdate_time(Date update_time) {
+		this.update_time = update_time;
 	}
 	
 }

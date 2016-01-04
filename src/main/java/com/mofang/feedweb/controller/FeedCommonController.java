@@ -133,6 +133,10 @@ public class FeedCommonController {
 	protected String getDelFloorUrl() {
 		return externalUrlInfo.getFeed_info_url() + Constant.POST_DELETE_URL;
 	}
+	
+	protected String getDelCommentUrl() {
+		return externalUrlInfo.getFeed_info_url() + Constant.COMMENT_DELETE_URL;
+	}
 
 	protected String getRecommendThreadUrl() {
 		return externalUrlInfo.getFeed_info_url()

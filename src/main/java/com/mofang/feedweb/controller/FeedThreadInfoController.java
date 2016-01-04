@@ -342,7 +342,8 @@ public class FeedThreadInfoController extends FeedCommonController {
 							
 							Date createTime = new Date(postObj.optLong("create_time", 0));
 							feedPost.setCreate_time(createTime);
-							
+							Date updateTime = new Date(postObj.optLong("update_time", 0));
+							feedPost.setUpdate_time(updateTime);
 							feedPost.setFormat(TimeUtil.getFormat(createTime));
 							
 							feedPost.setComments(postObj.optInt("comments", 0)); 
@@ -575,6 +576,31 @@ public class FeedThreadInfoController extends FeedCommonController {
 			return null;
 		} catch (Exception e) {
 			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.delFloor throw an error.", e);
+			return null;
+		}
+	}
+	
+	@RequestMapping(value = "del_comment.json")
+	public String delComment(@RequestParam("cid") long cid, @RequestParam("reason") String reason, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		try {
+			JSONObject postData = new JSONObject();
+			postData.put("cid", cid);
+			postData.put("reason", reason);
+			
+			JSONObject json = postHttpInfo(getDelCommentUrl(), postData, request);
+			
+			response.setContentType("text/html; charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print(json);
+			out.flush();
+			out.close();
+			
+			return null;
+		} catch (Exception e) {
+			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.delComment throw an error.", e);
 			return null;
 		}
 	}
