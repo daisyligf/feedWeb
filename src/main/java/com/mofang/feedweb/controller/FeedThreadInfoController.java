@@ -937,8 +937,10 @@ public class FeedThreadInfoController extends FeedCommonController {
 				JSONObject json = postHttpInfo(getSendReplyUrl(), postData, request);
 				
 				int total = 0;
+				long post_id = 0;
 				if (null != json && 0 == json.optInt("code")) {
 					total = json.optJSONObject("data").optInt("total");
+					post_id = json.optJSONObject("data").optLong("post_id");
 				}
 				
 				if (null != json) {
@@ -947,6 +949,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 				}
 				
 				returnJson.put("totalPages", Tools.editTotalPageNumber(total));
+				returnJson.put("currentPostId", post_id);
 			}
 			else if (pid > 0) {
 				//编辑楼层
