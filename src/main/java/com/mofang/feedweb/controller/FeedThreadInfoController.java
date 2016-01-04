@@ -913,28 +913,53 @@ public class FeedThreadInfoController extends FeedCommonController {
 	}
 	
 	@RequestMapping(value = "send_reply.json")
-	public ModelAndView sendReply(@RequestParam("tid") long threadId, @RequestParam("content") String content, HttpServletRequest request, 
+	public ModelAndView sendReply(@RequestParam("content") String content, HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 		
 		try {
+			long tid = 0;
+			long pid = 0;
+			if (!StringUtil.isNullOrEmpty(request.getParameter("tid"))) {
+				tid = Long.valueOf(request.getParameter("tid"));
+			}
+			if (!StringUtil.isNullOrEmpty(request.getParameter("pid"))) {
+				pid = Long.valueOf(request.getParameter("pid"));
+			}
+			
+			
 			JSONObject postData = new JSONObject();
-			postData.put("tid", threadId);
-			postData.put("content", content);
-			
-			JSONObject json = postHttpInfo(getSendReplyUrl(), postData, request);
-			
-			int total = 0;
-			if (null != json && 0 == json.optInt("code")) {
-				total = json.optJSONObject("data").optInt("total");
-			}
 			JSONObject returnJson = new JSONObject();
-			if (null != json) {
-				returnJson.put("code", json.optInt("code"));
-				returnJson.put("message", json.optInt("message"));
+			//回复楼层
+			if (tid > 0) {
+				postData.put("tid", tid);
+				postData.put("content", content);
+				
+				JSONObject json = postHttpInfo(getSendReplyUrl(), postData, request);
+				
+				int total = 0;
+				if (null != json && 0 == json.optInt("code")) {
+					total = json.optJSONObject("data").optInt("total");
+				}
+				
+				if (null != json) {
+					returnJson.put("code", json.optInt("code"));
+					returnJson.put("message", json.optInt("message"));
+				}
+				
+				returnJson.put("totalPages", Tools.editTotalPageNumber(total));
 			}
-			
-			returnJson.put("totalPages", Tools.editTotalPageNumber(total));
-			
+			else if (pid > 0) {
+				//编辑楼层
+				postData.put("pid", pid);
+				postData.put("content", content);
+				
+				JSONObject json = postHttpInfo(getEditPostUrl(), postData, request);
+				
+				if (null != json) {
+					returnJson.put("code", json.optInt("code"));
+					returnJson.put("message", json.optInt("message"));
+				}
+			}
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			PrintWriter out = response.getWriter();
@@ -949,35 +974,35 @@ public class FeedThreadInfoController extends FeedCommonController {
 		}
 	}
 	
-	@RequestMapping(value = "edit_post.json")
-	public ModelAndView editPost(@RequestParam("pid") long postId, @RequestParam("content") String content, HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		
-		try {
-			JSONObject postData = new JSONObject();
-			postData.put("pid", postId);
-			postData.put("content", content);
-			
-			JSONObject json = postHttpInfo(getEditPostUrl(), postData, request);
-			
-			JSONObject returnJson = new JSONObject();
-			if (null != json) {
-				returnJson.put("code", json.optInt("code"));
-				returnJson.put("message", json.optInt("message"));
-			}
-			
-			response.setContentType("text/html; charset=UTF-8");
-			response.setCharacterEncoding("UTF-8");
-			PrintWriter out = response.getWriter();
-			out.print(returnJson);
-			out.flush();
-			out.close();
-			LogConsole.log("returnJdon:" + returnJson);
-			return null;
-		} catch (Exception e) {
-			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.editPost throw an error.", e);
-			return null;
-		}
-	}
+//	@RequestMapping(value = "edit_post.json")
+//	public ModelAndView editPost(@RequestParam("pid") long postId, @RequestParam("content") String content, HttpServletRequest request, 
+//			HttpServletResponse response) throws Exception {
+//		
+//		try {
+//			JSONObject postData = new JSONObject();
+//			postData.put("pid", postId);
+//			postData.put("content", content);
+//			
+//			JSONObject json = postHttpInfo(getEditPostUrl(), postData, request);
+//			
+//			JSONObject returnJson = new JSONObject();
+//			if (null != json) {
+//				returnJson.put("code", json.optInt("code"));
+//				returnJson.put("message", json.optInt("message"));
+//			}
+//			
+//			response.setContentType("text/html; charset=UTF-8");
+//			response.setCharacterEncoding("UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.print(returnJson);
+//			out.flush();
+//			out.close();
+//			LogConsole.log("returnJdon:" + returnJson);
+//			return null;
+//		} catch (Exception e) {
+//			GlobalObject.ERROR_LOG.error("at FeedThreadInfoController.editPost throw an error.", e);
+//			return null;
+//		}
+//	}
 	
 }
