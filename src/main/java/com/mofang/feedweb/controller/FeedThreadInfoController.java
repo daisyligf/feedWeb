@@ -283,6 +283,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 					JSONObject currentUserObj = data.optJSONObject("current_user");
 		//			System.out.println("currentUserObj:" + currentUserObj);
 					
+					UserInfo userinfo = userComp.getUserInfo(request);
 					if (currentUserObj != null) {
 						currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
 						boolean isAdmin = currentUserObj.optBoolean("is_admin", false);
@@ -307,7 +308,7 @@ public class FeedThreadInfoController extends FeedCommonController {
 						}
 						
 						//楼主本人可以编辑，删除自己的帖子，并且可以删除自己回复的楼层。
-						UserInfo userinfo = userComp.getUserInfo(request);
+						
 						if (null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == threadUserInfo.getUserId()) {
 							privileges.add(SysPrivilege.EDIT_THREAD);
 							privileges.add(SysPrivilege.DEL_THREAD);
@@ -401,6 +402,13 @@ public class FeedThreadInfoController extends FeedCommonController {
 									UserInfo userInfo = new UserInfo(commentUserId, commentNickname, commentAvatar);
 									
 									comment.setUserInfo(userInfo);
+									//评论的删除区分
+									if ((currentUser.getPrivileges().size() > 0 && currentUser.getPrivileges().contains(SysPrivilege.DEL_COMMENT)) ||
+											(null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == userInfo.getUserId())) {
+										comment.setDeleteFlg(true);
+									} else {
+										comment.setDeleteFlg(false);
+									}
 									commentList.add(comment);
 								}
 							}
@@ -930,7 +938,18 @@ public class FeedThreadInfoController extends FeedCommonController {
 			JSONObject postData = new JSONObject();
 			JSONObject returnJson = new JSONObject();
 			//回复楼层
-			if (tid > 0) {
+			if (pid > 0) {
+					//编辑楼层
+					postData.put("pid", pid);
+					postData.put("content", content);
+					
+					JSONObject json = postHttpInfo(getEditPostUrl(), postData, request);
+					
+					if (null != json) {
+						returnJson.put("code", json.optInt("code"));
+						returnJson.put("message", json.optInt("message"));
+					}
+			} else {
 				postData.put("tid", tid);
 				postData.put("content", content);
 				
@@ -950,18 +969,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 				
 				returnJson.put("totalPages", Tools.editTotalPageNumber(total));
 				returnJson.put("currentPostId", post_id);
-			}
-			else if (pid > 0) {
-				//编辑楼层
-				postData.put("pid", pid);
-				postData.put("content", content);
-				
-				JSONObject json = postHttpInfo(getEditPostUrl(), postData, request);
-				
-				if (null != json) {
-					returnJson.put("code", json.optInt("code"));
-					returnJson.put("message", json.optInt("message"));
-				}
 			}
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
