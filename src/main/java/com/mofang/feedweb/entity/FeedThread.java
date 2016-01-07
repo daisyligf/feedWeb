@@ -16,6 +16,7 @@ public class FeedThread {
 	private int page_view;
 	private int replies;
 	private Date create_time;
+	private Date update_time;
 	private String format;
 	private int shareTimes;
 	private boolean isClosed;
@@ -264,6 +265,14 @@ public class FeedThread {
 
 	public void setContent_sub100(String content_sub100) {
 		this.content_sub100 = content_sub100;
+	}
+
+	public Date getUpdate_time() {
+		return update_time;
+	}
+
+	public void setUpdate_time(Date update_time) {
+		this.update_time = update_time;
 	}
 
 }
