@@ -238,8 +238,10 @@ public class FeedThreadInfoController extends FeedCommonController {
 						
 						Date createTime = new Date(threadObj.optLong("create_time", 0));
 						feedThread.setCreate_time(createTime);
-						
 						feedThread.setFormat(TimeUtil.getFormat(createTime));
+						
+						Date updateTime = new Date(threadObj.optLong("update_time", 0));
+						feedThread.setUpdate_time(updateTime);
 						
 						feedThread.setIsClosed(threadObj.optBoolean("is_closed", false));
 						feedThread.setIsElite(threadObj.optBoolean("is_elite", false));
