@@ -402,13 +402,6 @@ public class FeedThreadInfoController extends FeedCommonController {
 									UserInfo userInfo = new UserInfo(commentUserId, commentNickname, commentAvatar);
 									
 									comment.setUserInfo(userInfo);
-									//评论的删除区分
-									if ((currentUser.getPrivileges().size() > 0 && currentUser.getPrivileges().contains(SysPrivilege.DEL_COMMENT)) ||
-											(null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == userInfo.getUserId())) {
-										comment.setDeleteFlg(true);
-									} else {
-										comment.setDeleteFlg(false);
-									}
 									commentList.add(comment);
 								}
 							}
@@ -501,6 +494,9 @@ public class FeedThreadInfoController extends FeedCommonController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		try {
+			
+			CurrentUser currentUser = new CurrentUser();
+			
 			StringBuilder param = new StringBuilder();
 			param.append("pid=").append(pid);
 			param.append("&page=").append(p);
@@ -512,11 +508,47 @@ public class FeedThreadInfoController extends FeedCommonController {
 				JSONObject data = result.optJSONObject("data");
 				JSONArray comments = data.optJSONArray("comments");
 				
+				JSONObject currentUserObj = data.optJSONObject("current_user");
+				UserInfo userinfo = userComp.getUserInfo(request);
+				if (currentUserObj != null) {
+					currentUser.setIsModerator(currentUserObj.optBoolean("is_moderator", false));
+					boolean isAdmin = currentUserObj.optBoolean("is_admin", false);
+					currentUser.setIsAdmin(isAdmin);
+					
+					Set<Integer> privileges = new HashSet<Integer>();
+					
+					if (isAdmin) {
+						privileges = getAllPrivileges();
+					} else {
+						JSONArray privilegesArray = currentUserObj.optJSONArray("privileges");
+						if (privilegesArray != null && privilegesArray.length() > 0) {
+							for (int i = 0; i < privilegesArray.length(); i++) {
+								
+								int privilege = privilegesArray.optInt(i, 0);
+								if (privilege > 0) {
+									privileges.add(privilege);
+									
+								}
+							}
+						}
+					}
+					
+					currentUser.setPrivileges(privileges);
+				}
 				if (comments != null && comments.length() > 0) {
 					for (int i = 0; i < comments.length(); i++) {
 						JSONObject commentObj = comments.getJSONObject(i);
 						String content = replaceEmoji(commentObj.optString("content", ""));
 						commentObj.put("content", content);
+						
+						long user_id = commentObj.optJSONObject("user").optLong("user_id", 0L);
+						//评论的删除区分
+						if ((currentUser.getPrivileges().size() > 0 && currentUser.getPrivileges().contains(SysPrivilege.DEL_COMMENT)) ||
+								(null != userinfo && 0 != userinfo.getUserId() && userinfo.getUserId() == user_id)) {
+							commentObj.put("deleteFlg", true);
+						} else {
+							commentObj.put("deleteFlg", false);
+						}
 						comments.put(i, commentObj);
 					}
 				}
