@@ -92,7 +92,7 @@ public class Constant {
 	public static final String POST_DELETE_URL = "/feed/v3/web/post/delete";
 	
 	// 评论删除
-	public static final String COMMENT_DELETE_URL = "feed/v3/web/comment/delete";
+	public static final String COMMENT_DELETE_URL = "/feed/v3/web/comment/delete";
 	
 	// 帖子点赞
 	public static final String THREAD_RECOMMEND_URL = "/feed/v3/web/thread/recommend";
