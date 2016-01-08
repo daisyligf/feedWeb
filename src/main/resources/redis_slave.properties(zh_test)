@@ -1,0 +1,6 @@
+slave.host=192.168.1.61
+slave.port=6379
+slave.timeout=2000000
+slave.maxActive=1000
+slave.maxIdle=10
+slave.testOnBorrow=True

@@ -1,0 +1,27 @@
+feed_info_url=http://192.168.1.61:8099
+task_info_url=http://192.168.1.185:4001
+image_info_url=http://api.test.mofang.com
+user_info_url=http://u.test.mofang.com
+gift_info_url=http://fahao.test.mofang.com
+game_info_url=http://game.test.mofang.com
+upload_img_url=http://api.mofang.com/mcss/v1/upload
+user_loginstatus_url=http://u.test.mofang.com/apis/user/get_userinfo
+viper_info_url=http://192.168.1.185:8066/viper
+usercenter_url=http://u.test.mofang.com
+bbs_home_url=http://bbs1.test.mofang.com
+mofang_home_url=http://www.test.mofang.com
+user_notice_url=http://192.168.1.185:2002
+base_url=http://bbs1.test.mofang.com
+
+m_news_url=http://m.mofang.com/wapv6_news/
+m_videos_url=http://m.mofang.com/wapv6_videos/
+m_topics_url=http://m.mofang.com/wapv6_topics/
+m_changye_url=http://m.mofang.com/wapv6_chanye/
+m_game_url=http://game.m.mofang.com
+m_cs_url=http://cs.m.mofang.com
+m_app_url=http://app.mofang.com//list/
+
+forum_statistics_id=290
+forum_statistics_url=<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256034454'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1256034454%26l%3D3' type='text/javascript'%3E%3C/script%3E"));</script>
+
+friendly_link_url = http://www.mofang.com/api_v2.php?op=mofang&file=friends&action=friend&page=1&typeid=716

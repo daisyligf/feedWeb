@@ -1,0 +1,10 @@
+feed.host=192.168.1.61
+feed.port=8099
+feed.maxTotal=100
+feed.charset=utf-8
+feed.connTimeout=30000
+feed.socketTimeout=30000
+feed.keepAliveTimeout=30000
+feed.checkIdleInitialDelay=5000
+feed.checkIdlePeriod=5000
+feed.closeIdleTimeout=30000
