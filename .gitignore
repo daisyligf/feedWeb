@@ -1,7 +1,11 @@
 .DS_Store
-*.classpath
+*.DS_Store
 *.gitignore
 *.prefs
+*.classpath
 .tern-project
-/bin
+.project
 .classpath
+/bin
+.idea/
+*.iml

@@ -1,0 +1,52 @@
+ #facebox {
+  position:absolute;
+  display:none;
+  z-index:99999;
+  background:#fff;
+}
+#facebox .demon{
+	display:none;
+}
+#facebox td img {
+  width:32px;
+  height:32px;
+  cursor:pointer;
+}
+#facebox .demon td img{
+	width:70px;
+	height:50px;
+}
+.edui-icon-feed-emotion {
+    background-position: -60px -20px;
+}
+#facebox .face-tab{
+	height: 30px;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 3px;
+}
+#facebox .face-tab a{
+	padding: 7px;
+  display: inline-block;
+  border-right: 1px solid #ccc;
+  text-align: center;
+}
+#facebox .face-tab a.last{
+	border:0px;
+}
+#facebox .face-tab a.active{
+	color:#fff;
+	background:#ccc;
+}
+.qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
+.qqFace table td{padding:0px; border:0 none;}
+.qqFace table td img{cursor:pointer;border:1px #fff solid;}
+.qqFace table td img:hover{border:1px #0066cc solid;}
+.emoji {
+  width: 20px !important;
+  height: 20px !important;
+  vertical-align:middle !important;
+  margin:0 2px !important;
+  display:inline !important;
+}
+

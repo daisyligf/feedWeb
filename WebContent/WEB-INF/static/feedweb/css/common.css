@@ -1,0 +1,1355 @@
+.page{
+	position: relative;
+}
+.icon-money{
+	display: inline-block;
+	width:18px;
+	height:18px;
+	margin-right:6px;
+	margin-bottom: 2px;
+	vertical-align: middle;
+	background: url(/feedweb/static/feedweb/img/icon/money.png) no-repeat;
+	background-size:100% 100%;
+}
+.icon-red{
+	position: absolute;
+	right:17px;
+	top:10px;
+	width:6px;
+	height:6px;
+	background: url(/feedweb/static/feedweb/img/icon/red.png) no-repeat;
+	background-size:100% 100%;
+	display: none;
+}
+/* 等级 */
+.grade{
+	background:#00c5e8;
+	color:#fff;
+	font-size:14px;
+	font-family:Arial;
+	padding:4px 5px;
+	font-weight:bold;
+	border-radius:3px;
+}
+.header{
+	height:50px;
+	background: #333333;
+	
+}
+.header .nav{
+	max-width:1228px;
+	margin:0 auto;
+}
+/**/
+.header .nav-wap{
+	max-width:1228px;
+	margin:0 auto;
+	display: none;
+}
+.header .nav-wap .wap-head{
+	display:none;
+}
+.header .nav-wap .wap-head img{
+	width:30px;
+	height:30px;
+	margin-top:-5px;
+	border-radius:50%;
+}
+/**/
+.header .nav .nav-left{
+	float:left;
+	font-size:14px;
+	font-weight: bold;
+	line-height:50px;
+}
+.header .nav .nav-left a{
+	color:#fff;
+	 float: left;
+}
+.header .nav .nav-left a.old-bbs{
+	margin-left:20px;
+}
+.header .nav .nav-left .nav-left-list{
+    float: left;
+    margin-right: -30px;
+    margin-left:50px;
+}
+.header .nav .nav-left .nav-left-list a{
+    margin-right: 35px;
+    line-height: 50px;
+}
+.header .nav .nav-right{
+	position:relative;
+	float:right;
+	
+}
+.header .nav .nav-right a{
+	color:#fff;
+	
+}
+.header .nav .nav-right .head{
+	
+	height:50px;
+	line-height: 50px;
+	padding-right:20px;
+	display: none;
+}
+.header .nav .nav-right .head a{
+	float:left;
+}
+.header .nav .nav-right .no-login{
+	color:#fff;
+	padding-right:5px;
+	line-height:52px;
+}
+.header .nav .nav-right .load{
+	height: 50px;
+	line-height: 50px;
+	margin-right:12px;
+}
+.header .nav .nav-right .load img{
+	float:left;
+	margin-top:15px;
+	margin-right: 2px;
+	width:20px;
+	height:21px;
+}
+.header .nav .nav-right .head .level-img{
+	position:relative;
+	z-index:10001;
+	display:block;
+	width:37px;
+	height:37px;
+    margin-top: 6px;
+    margin-right: 10px;
+    -webkit-transition:0.5s ease all;
+	transition:0.5s ease all; 
+}
+.header .nav .nav-right .head .level-text{
+	position:relative;
+	width:100px;
+	text-align:center;
+	display:block;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	z-index:10001;
+	-webkit-transition:0.5s ease all;
+	transition:0.5s ease all;
+}
+.header .nav .nav-right .head .level-text .icon-red{
+	right:6px;
+	top:15px;
+}
+.header .nav .nav-right .head .level-img-move{
+	
+	-webkit-transform:translate(7px,46px);
+	transform:translate(7px,46px);
+}
+.header .nav .nav-right .head .level-img-move img{
+	transform:scale(1.9);
+	-webkit-transform:scale(1.9);
+}
+.header .nav .nav-right .head .level-text-move{
+	-webkit-transform:translate(-72px,94px);
+	transform:translate(-72px,94px);
+	
+}
+.header .nav .nav-right .head .level-img .grade{
+	display:none;
+	position:absolute;
+	z-index:2;
+	right:-24px;
+	bottom:-17px;
+	line-height:12px;
+	font-size:12px;
+}
+.header .nav .nav-right .head .level-img-move .grade{
+	display:block;
+}
+.header .nav .nav-right .header-task{
+	margin-top:10px;
+	width:235px;
+	height:18px;
+	line-height:18px;
+	background:#828282;
+	border-radius:9px;
+	position:relative;
+	color:#fff;
+	text-align:center;
+}
+.header .nav .nav-right .header-task .task-info{
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:100%;
+	border-radius:9px;
+	background:#ff9900;
+} 
+.header .nav .nav-right .header-task .task-text{
+	position:absolute;
+	left:0px;
+	font-size:12px;
+	width:100%;
+	z-index:10;
+	text-align:center;
+}
+.header .nav .nav-right .head img{
+	
+	width:37px;
+	height:37px;
+	border-radius: 50%;
+	 -webkit-transition:0.5s ease all;
+	transition:0.5s ease all;
+}
+.header .nav .nav-right .no-login a:hover{
+	color:#ff9900;
+}
+.header .nav .user-info{
+	position: absolute;
+	top:50px;
+	right:0px;
+	background: #333;
+	padding:20px;
+	width:240px;
+	z-index:10000;
+	display:none;
+	overflow:hidden;
+}
+.header .nav .user-info .zuji{
+	margin-top:20px;
+}
+.header .nav .user-info .zuji a{
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	width:73px;
+	height:30px;
+	line-height: 30px;
+	text-align:center;
+	background: #444444;
+	border-radius: 30px;
+}
+.header .nav .user-info .zuji a.libao{
+	margin-right:0px;
+}
+.header .nav .user-info .zuji .msg{
+	position: relative;
+}
+.header .nav .user-info .zuji .icon-red{
+	right:10px;
+	top:7px;
+}
+.header .nav .user-info .info{
+	border-top:1px solid #444444;
+	padding-top:17px;
+	margin-right:-2px;
+	margin-top:18px;
+}
+.header .nav .user-info .info a{
+	display: inline-block;
+	width:80px;
+	border-right:1px solid #444444;
+	text-align:center;
+	font-size:14px;
+	color:#999;
+}
+.header .nav .user-info .info a.out{
+	border:0px;
+}
+.header .nav .header-money{
+	margin-top:65px;
+	color:#fff;
+	text-align:center;
+}
+.header .nav .header-money .grade{
+	position:relative;
+	padding:2px 5px;
+	margin-left:10px;
+	font-size:12px;
+	top:-2px;
+}
+.search{
+	max-width:1228px;
+	height:50px;
+	margin:20px auto;
+}
+.search .bbs-logo{
+	float:left;
+}
+.search .bbs-search{
+	float:right;
+	width:65%;
+}
+.search .bbs-search .ser-text{
+	float:right;
+	height:48px;
+	width:70%;
+	border: 0 none transparent;
+  border-radius: 0!important;
+  -webkit-appearance: none;
+	text-indent:20px;
+	font-size: 16px;
+	border:1px solid #eee;
+}
+.search .bbs-search .ser-but{
+	float:right;
+	width:80px;
+	height:50px;
+	border: 0 none transparent;
+  border-radius: 0!important;
+  -webkit-appearance: none;
+	background: url(/feedweb/static/feedweb/img/icon/search_btn.png) no-repeat center center;
+	cursor:pointer;
+}
+
+.con{
+	max-width:1228px;
+	margin:0 auto;
+    overflow: hidden;
+}
+.footer .wap-footer{
+	display:none;
+}
+.footer{
+	width:100%;
+	background:#28282A;
+}
+.footer-con{
+	padding: 20px 0;
+	max-width: 1228px;
+	margin: 0 auto;
+	color: #aaa;
+	line-height:30px;
+}
+.footer a{color: #888888;}
+	.footer a:hover{color: #ff9900;}
+	.footer .footer-nav .footer-crumbs{border-bottom:1px solid #444444;color:#e5e5e5;padding:32px 0px;}
+	.footer .footer-nav .footer-crumbs a{color:#e5e5e5;font-size:16px;}
+	.footer .footer-nav .footer-crumbs a:hover{color: #ff9900;}
+	.footer .footer-nav .footer-crumbs span{display: inline-block;width:6px;height:10px;background: url(/feedweb/static/feedweb/img/nav_jian.png) no-repeat;margin:0px 8px;}
+	.footer .footer-nav-list{padding:40px 0px 50px;}
+	.footer .footer-nav-list dl{
+	float:left;width:145px;
+	}
+	.footer .footer-nav-list dl.last-dl{float: right;width:223px;text-align: center;}
+	.footer .footer-nav-list dl dt{margin-bottom:22px;}
+	.footer .footer-nav-list dl.last-dl dt{margin-bottom:18px;}
+	@media (max-width:1110px){
+		.footer .footer-nav-list dl.last-dl{width:139px;}
+	}
+	.footer .footer-nav-list dl dt a{color:#fff;font-size: 18px;}
+	.footer .footer-nav-list dl dt a:hover{color: #ff9900;}
+	.footer .footer-nav-list dl dd{margin-bottom:14px;}
+	.footer .record{color:#888;}
+.footer-con .link {
+	color:#555;
+}
+/* .footer-con .link a{display:inline-block;color:#555;margin-right:20px;}
+.footer-con .link a:hover{
+	 color: #FD9814;
+} */
+.page-plug {
+	position: relative;
+	left:0px;
+	top:0px;
+	height:32px;
+}
+.page-plug .page-pc{
+	position: absolute;
+	right:0px;
+	top:0px;
+	display: block;
+}
+.page-plug .page-pc li{
+	display: inline-block;
+	float:left;
+	font-size:14px;
+	border:1px solid #eee!important;
+	cursor: pointer;
+	margin-left:4px;
+}
+.page-plug .page-pc li a{
+	display:block;
+	padding:8px 12px;
+	color:#999;
+	background: #fff;
+}
+.page-plug .page-pc li a:hover,.page-pc li.active a{
+	background: #999;
+	color:#fff;
+}
+.page-plug .page-pc li.prev a{
+	text-indent: -999999px;
+	background:#fff url(/feedweb/static/feedweb/img/icon/page_l.png) no-repeat center center;
+}
+.page-plug .page-pc li.next a{
+	text-indent: -999999px;
+	background:#fff url(/feedweb/static/feedweb/img/icon/page_r.png) no-repeat center center;
+}
+.page-plug .page-pc li.prev a:hover{
+	background:#999 url(/feedweb/static/feedweb/img/icon/page_l_hover.png) no-repeat center center;
+}
+.page-plug .page-pc li.next a:hover{
+	background:#999 url(/feedweb/static/feedweb/img/icon/page_r_hover.png) no-repeat center center;
+}
+
+.page-plug .page-pc li.jump-text input{
+	width:35px;
+	height:18px;
+	padding:6px 5px;
+	border:0px;
+	font-size:15px;
+	text-align:center;
+}
+
+.page-plug .page-mobile {
+
+	display:none;
+}
+.page-plug .page-mobile li{
+	float:left;
+	font-size:14px;
+	color:#999999;
+}
+.page-plug .page-mobile li.text{
+text-align: center;
+  line-height: 32px;
+  width: 100px;
+  margin: 0 auto;
+  float: none;
+  
+
+}
+.page-plug .page-mobile li.text input{
+	width:100%;
+	text-align:center;
+	border:0px;
+	color:#999999;
+	font-size:14px;
+	padding: 5px;
+}
+.page-plug .page-mobile li.prev{
+	position: absolute;
+	left:0px;
+	top:0px;
+}
+.page-plug .page-mobile li.next{
+	position: absolute;
+	right:0px;
+	top:0px;
+}
+.page-plug .page-mobile li.prev a{
+	text-align: center;
+	padding:8px;
+	padding-left:23px;
+	display: block;
+	border:1px solid #eee;
+	color:#999;
+	background:#fff url(/feedweb/static/feedweb/img/icon/page_l.png) no-repeat 13px 9px;
+}
+.page-plug .page-mobile li.next a{
+	float:right;
+	padding:8px;
+	display: block;
+	padding-right:23px;
+	border:1px solid #eee;
+	color:#999;
+	background:#fff url(/feedweb/static/feedweb/img/icon/page_r.png) no-repeat 54px 9px;
+}
+.icon-look{
+	display: inline-block;
+	margin:0px 10px -4px 0px;
+	width:21px;
+	height:17px;
+	background: url(/feedweb/static/feedweb/img/icon/look.png) no-repeat;
+	background-size: 100% 100%;
+}
+.icon-zan{
+	display: inline-block;
+	margin:0px 10px -4px 0px;
+	width:20px;
+	height:20px;
+	background: url(/feedweb/static/feedweb/img/icon/zan.png) no-repeat;
+	background-size: 100% 100%;
+}
+.icon-ask{
+	display: inline-block;
+	margin:0px 10px -6px 0px;
+	width:20px;
+	height:20px;
+	background: url(/feedweb/static/feedweb/img/icon/ask.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*弹出框样式开始*/
+.pop{
+	position: fixed;
+	z-index:99999;
+}
+/*确定不玩？弹出框*/
+.pop-play{
+	max-width: 380px;
+	width: 30%;
+	left: 50%;
+	top: 50%;
+	margin-left: -15%;
+	margin-top: -100px;
+	/*height: 200px;*/
+	padding: 20px;
+	box-sizing: border-box;
+	background: #fff;
+	display: none;	
+}
+.pop-play .pop-play-close{
+	text-align: right;
+}
+.pop-play .pop-play-close img{
+	cursor: pointer;
+}
+.pop-play .pop-play-word{
+	font-size: 14px;
+	line-height: 23px;
+	margin: 10px 0 15px 0;
+}
+.pop-play input{
+	width: 48%;
+	font-size: 14px;
+	line-height: 40px;
+	border: none;
+	cursor:pointer;
+}
+.pop-play .pop-play-cancel{
+	float: left;
+	color: #999;
+	background: #e9e9e9;
+}
+.pop-play .pop-play-ok{
+	float: right;
+	color: #fff;
+	background: #f90;
+}
+
+/*删除帖子*/
+.pop-post-delete{
+	max-width: 380px;
+	width: 30%;
+	left: 50%;
+	top: 50%;
+	margin-left: -15%;
+	margin-top: -200px;
+	box-sizing: border-box;
+	background: #fff;
+	display: none;
+}
+.pop-post-delete h2{
+	font-size: 18px;
+	line-height: 50px;
+	padding: 0 20px;
+	border-bottom: 1px solid #eee;
+}
+.pop-post-delete h2 span{
+	float: right;
+	cursor: pointer;
+}
+.pop-post-delete .post-delete-reason{
+	padding: 0 20px;
+	font-size: 14px;
+}
+.pop-post-delete .post-delete-reason .post-delete-sure{
+	line-height: 55px;
+}
+.pop-post-delete .post-delete-reason form{
+	color: #999;
+}
+.pop-post-delete .post-delete-reason .delete-reason-choose{
+	position: relative;
+}
+.pop-post-delete .post-delete-reason .delete-choose-title{
+	line-height: 40px;
+	font-size: 14px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	border: 1px solid #e9e9e9;
+	background: url(/feedweb/static/feedweb/img/icon/post_input.png) 98% center no-repeat;
+}
+.pop-post-delete .post-delete-reason .delete-choose-sort{
+	display: none;
+	position: absolute;
+	top: 42px;
+	width: 100%;
+	line-height: 40px;
+	background: #fff;
+
+}
+.pop-post-delete .delete-choose-sort span{
+	padding: 0 5px;
+	display: block;
+	border: 1px solid #e9e9e9;
+	margin-top: -1px;
+}
+.pop-post-delete .post-delete-reason textarea{
+	width: 100%;
+	height: 130px;
+	margin-bottom: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.pop-post-delete .post-delete-reason input{
+	width: 48%;
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	margin-bottom: 20px;
+}
+.pop-post-delete .post-delete-reason .delete-reason-cancel{
+	float: left;
+	background: #e9e9e9;
+	color: #999;
+}
+.pop-post-delete .post-delete-reason .delete-reason-ok{
+	float: right;
+	background: #f90;
+	color: #fff;
+}
+/* 奖励 */
+.pop-post-reward{
+	max-width: 380px;
+	width: 30%;
+	left: 50%;
+	top: 50%;
+	margin-left: -15%;
+	margin-top: -200px;
+	box-sizing: border-box;
+	background: #fff;
+	display: none;
+}
+.pop-post-reward h2{
+	font-size: 18px;
+	line-height: 50px;
+	padding: 0 20px;
+	border-bottom: 1px solid #eee;
+}
+.pop-post-reward h2 span{
+	float: right;
+	cursor: pointer;
+}
+.pop-post-reward .post-delete-reason{
+	padding: 0 20px;
+	font-size: 14px;
+}
+.pop-post-reward .post-delete-reason .post-delete-sure{
+	line-height: 55px;
+}
+.pop-post-reward .post-delete-reason form{
+	color: #999;
+}
+.pop-post-reward .post-delete-reason .delete-reason-choose{
+	position: relative;
+}
+.pop-post-reward .post-delete-reason .delete-choose-title{
+	line-height: 40px;
+	font-size: 14px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	border: 1px solid #e9e9e9;
+	background: url(/feedweb/static/feedweb/img/icon/post_input.png) 98% center no-repeat;
+}
+.pop-post-reward .post-delete-reason .delete-choose-sort{
+	display: none;
+	position: absolute;
+	top: 42px;
+	width: 100%;
+	line-height: 40px;
+	background: #fff;
+
+}
+.pop-post-reward .delete-choose-sort span{
+	padding: 0 5px;
+	display: block;
+	border: 1px solid #e9e9e9;
+	margin-top: -1px;
+}
+.pop-post-reward .post-delete-reason textarea{
+	width: 100%;
+	height: 130px;
+	margin-bottom: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.pop-post-reward .post-delete-reason input{
+	width: 48%;
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	margin-bottom: 20px;
+}
+.pop-post-reward .post-delete-reason input.reward-icon{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	text-indent: 4px;
+}
+.pop-post-reward .post-delete-reason .delete-reason-cancel{
+	float: left;
+	background: #e9e9e9;
+	color: #999;
+}
+.pop-post-reward .post-delete-reason .delete-reason-ok{
+	float: right;
+	background: #f90;
+	color: #fff;
+}
+
+/*发帖成功*/
+.pop-post-ok{
+	left: 50%;
+	top: 50%;
+	width: 18%;
+	max-width: 240px;
+	height: 80px;
+	line-height: 80px;
+	margin-left: -9%;
+	margin-top: -40px;
+	padding: 0 20px;
+	font-size: 18px;
+	color: #77d35b;
+	text-align: center;
+	box-sizing: border-box;
+	background: #fff;
+	display: none;
+}
+.pop-post-ok img{
+	width: 25%;
+	max-width: 40px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+/*置顶失败*/
+.pop-top-fail{
+	left: 50%;
+	top: 50%;
+	width: 18%;
+	max-width: 240px;
+	height: 80px;
+	line-height: 80px;
+	margin-left: -9%;
+	margin-top: -40px;
+	padding: 0 20px;
+	font-size: 18px;
+	color: #ec4747;
+	text-align: center;
+	box-sizing: border-box;
+	background: #fff;
+	display: none;
+}
+.pop-top-fail img{
+	width: 25%;
+	max-width: 40px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.mask-bg{
+	position: fixed;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	background: #000;
+	opacity: 0.6;
+	z-index:99998;
+	filter:alpha(opacity=60);
+	display: none;
+}
+
+
+/* 回到顶部 */
+.go-top{
+	position:fixed;
+	left:50%;
+	bottom:100px;
+	width:50PX;
+	height:193px;
+	background:url(/feedweb/static/feedweb/img/icon/go_top.png) no-repeat 0px bottom;
+	background-size:100%;
+	display:none;
+}
+.go-top a{
+	display:block;
+	height:60px;
+	width:100%;
+	border:1px solid #e9e9e9;
+	text-indent:-99999px;
+	box-sizing:border-box;
+}
+.go-top a.quick-reply{
+	background:url(/feedweb/static/feedweb/img/icon/go_top_hover.png) no-repeat;
+	background-position:0px 0px;
+	border:1px solid #ff9900;
+}
+.go-top a.get-post{
+	margin-bottom:13px;	
+}
+/* .go-top a.get-post:hover{
+	background:url(../img/icon/go_top_hover.png) no-repeat;
+	background-position:0px -60px;
+	border:1px solid #ff9900;
+} */
+.go-top a.scroll-top{
+	
+}
+/* 编辑框 */
+.editer{
+}
+.editer .editor-textarea{
+	width:100%;
+}
+.editor-textarea{
+	position: relative;
+}
+.textmask{
+	width: 100%;
+	height: 360px;
+	position: absolute;
+	z-index: 9991;
+	padding: 6px 12px;
+	text-align: center;
+	display: none;
+	line-height:360px;
+	box-sizing: border-box;
+}
+.editer .edui-container {
+    _margin-bottom:5px;
+    width:100% !important;
+    width:100%;
+}
+.editer .edui-container .edui-editor-body {
+	background:#fafafa;
+	padding:10px;
+}
+.edui-btn-toolbar .edui-btn .edui-icon-image{
+	width:25px;
+	height:25px;
+	background: url(/feedweb/static/feedweb/img/icon/editer_img.png) no-repeat;
+	background-position: 0px 1px;
+	background-size:100% 90%;
+	margin-right:6px;
+
+}
+.edui-btn-toolbar .edui-btn .edui-icon-feed-emotion{
+	width:25px;
+	height:25px;
+	background: url(/feedweb/static/feedweb/img/icon/editer_face.png) no-repeat;
+	background-position: 0px 0px;
+	background-size: 100% 100%;
+
+}
+.edui-btn-toolbar .edui-btn .edui-icon-video{
+	width:25px;
+	height:25px;
+	background: url(/feedweb/static/feedweb/img/icon/icon_video.png) no-repeat;
+	background-position: 0px 0px;
+	background-size: 100% 100%;
+}
+#myEditor{
+	width:100%!important;
+	height:300px!important;
+}
+.edui-dialog-video-body{
+	width:95%!important;
+}
+.emoji{
+	width: 20px !important;
+	height: 20px !important;
+	vertical-align: middle !important;
+	margin: 0 2px !important;
+	display: inline !important;
+}
+.emoji_demon{
+	width: 72px !important;
+	height: 52px !important;
+	vertical-align: middle !important;
+	margin: 0 2px !important;
+	display: inline !important;
+}
+/*移动端响应*/
+@media (max-width:1024px){
+	
+	.go-top{
+		display:none;
+	}
+	/**/
+	.header .nav{
+		display: none;
+	}
+	.header .nav-wap{
+		max-width:1228px;
+		margin:0 auto;
+		display: block;
+		position:relative;
+		z-index:20;
+	}
+	.header .nav-wap .wap-logo{
+		width:93px;
+		height:28px;
+		margin:11px auto;
+	}
+	.header .nav-wap .wap-logo img{
+		width:93px;
+		height:27px;
+	}
+	.header .nav-wap .wap-nav-text{
+		width:80%;
+		height:50px;
+		line-height:50px;
+		text-align:center;
+		color:#fff;
+		font-size:20px;
+		margin:0 auto;
+	}
+	
+	.header .nav-wap .nav-wap-left{
+		position: absolute;
+		height:20px;
+		left:15px;
+		top:15px;
+		z-index:2;
+	}
+	.header .nav-wap .nav-wap-left img{
+		height: 20px;
+	}
+	.header .nav-wap .nav-wap-back{
+		float:left;
+		width:11px;
+		height:20px;
+		margin-right:22px;
+		background:url(/feedweb/static/feedweb/img/icon/back_up.png) no-repeat;
+		background-size:100% 100%;
+		
+	}
+	.header .nav-wap .nav-wap-list{
+		float:left;
+		
+	}
+	.header .nav-wap .nav-info{
+		display: none;
+		position: absolute;
+		z-index: 20;
+		top: 35px;
+		left: -15px;
+		padding: 10px 20px;
+		opacity:.8;
+		filter: alpha(opacity = 80);
+		background: #000;
+	}
+	.header .nav-wap .nav-info a{
+		display: block;
+	    line-height: 50px;
+	    width: 80px;
+	    text-align: center;
+		color: #fff;
+		font-size: 16px;
+		font-family: "黑体";
+		
+	}
+	
+	.header .nav-wap .nav-info .nav-info-home{
+		border-bottom: 1px solid #3d4142;
+	}
+	.header .nav-wap .nav-wap-right{
+		position: absolute;
+		height:20px;
+		right:15px;
+		top:15px;
+		z-index:2;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-floor{
+		float:right;
+		color:#fff;
+		padding:4px;
+		border:3px solid #fff;
+		margin-top:-4px;
+		margin-right:23px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-comment{
+		float:right;
+		width:28px;
+		height:28px;
+		margin-top:-4px;
+		background:url(/feedweb/static/feedweb/img/icon/ask_m.png) no-repeat;
+		background-size:100% 100%;
+		text-indent:-999999px;
+		margin-right:10px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-post{
+		float:right;
+		width:22px;
+		height:22px;
+		margin-top:-2px;
+		background:url(/feedweb/static/feedweb/img/icon/m_post.png) no-repeat;
+		background-size:100% 100%;
+		text-indent:-999999px;
+		margin-right:10px;
+	}
+	/**/
+	.footer{
+		margin-top:0px;
+	}
+	.footer-con{
+		margin-left:10px;
+	}
+	
+	.footer-con .beian{
+		/* text-align:center; */
+	}
+	.footer-con .footer-nav{
+		display:none;
+	}
+	.footer-con .wap-footer{
+		display:block;
+	}
+	
+	
+	.footer .wap-footer-nav {
+	  display: -webkit-box; }
+	
+	.footer .wap-footer-nav a {
+	  display: block;
+	  -webkit-box-flex: 1;
+	  text-align: center;
+	  border-right:1px solid #4b4b4b;
+	  box-sizing: border-box;
+	  color: #fff; }
+	
+	.footer .footer-logo {
+	  width: 85px;
+	  height: 104px;
+	  background: url(/feedweb/static/feedweb/img/footer_logo.png) no-repeat;
+	  background-size: 100% 100%;
+	  margin:20px auto
+	  }
+	
+	.footer .beian {
+	font-size:12px;
+	  color: #4b4b4b;
+	  width: 300px;
+	  margin: 0 auto;
+	  text-align: center; }
+	.con{
+		padding: 0 15px;
+	}
+	.search{
+		margin: 15px 15px;
+	}
+	
+	.page-plug .page-pc {
+		display:none;
+	}
+	.page-plug .page-mobile {
+		display:block;
+		overflow:hidden;
+
+	}
+	.textmask{
+		height:360px;
+	}
+	/*弹出框样式*/
+	/*确定不玩？*/
+	.pop-play{
+		width: 36%;
+		padding: 15px;
+		margin-left: -18%;
+	}
+	.pop-play .pop-play-word{
+		font-size: 13px;
+		line-height: 20px;
+		margin: 5px 0 10px 0;
+	}
+	.pop-play input{
+		line-height: 35px;
+	}
+	/*删除帖子*/
+	.pop-post-delete{
+		width: 36%;
+		margin-left: -18%;
+		margin-top: -120px;
+	}
+	.pop-post-delete h2{
+		font-size: 16px;
+		line-height: 40px;
+		padding: 0 15px;
+	}
+	.pop-post-delete .post-delete-reason{
+		padding: 0 15px;
+		font-size: 12px;
+	}
+	.pop-post-delete .post-delete-reason .post-delete-sure{
+		line-height: 35px;
+	}
+	.pop-post-delete .post-delete-reason .delete-reason-choose{
+		line-height: 25px;
+		padding: 0 8px;
+		margin-bottom: 15px;
+	}
+	.pop-post-delete .post-delete-reason textarea{
+		height: 100px;
+		margin-bottom: 15px;
+		padding: 8px;
+	}
+	.pop-post-delete .post-delete-reason input{
+		height: 30px;
+		line-height: 30px;
+		margin-bottom: 15px;
+	}
+	/*发帖成功*/
+	.pop-post-ok{
+		box-sizing: border-box;
+		width: 30%;
+		margin-left: -15%;
+		height: 70px;
+		line-height: 70px;
+		margin-top: -35px;
+		max-width: 240px;
+		
+		padding: 0 15px;
+	}
+	.pop-post-ok img{
+		width: 25%;
+	}
+	/*置顶失败*/
+	.pop-top-fail{
+		box-sizing: border-box;
+		width: 30%;
+		margin-left: -15%;
+		height: 70px;
+		line-height: 70px;
+		margin-top: -35px;
+		max-width: 240px;
+		padding: 0 15px;
+	}
+	.pop-top-fail img{
+		width: 25%;
+	}
+	/*弹出框样式*/
+
+
+	/* 编辑框 */
+	.editer .edui-btn-toolbar .edui-btn-bold,.editer .edui-btn-toolbar .edui-btn-italic,.editer .edui-btn-toolbar .edui-btn-underline,.editer .edui-btn-toolbar .edui-btn-separator,.editer .edui-btn-toolbar .edui-separator,.editer .edui-btn-toolbar .edui-splitbutton-forecolor,.editer .edui-btn-toolbar .edui-combobox,.editer .edui-btn-toolbar .edui-separator,.editer .edui-btn-toolbar .edui-btn-link,.editer .edui-btn-toolbar .edui-btn-unlink{
+		display: none!important;
+	}
+	#myEditor{
+		width:100%!important; 
+		padding:0px;
+	}
+	.edui-modal{
+		width:96%!important;
+	}
+	.edui-dialog-image-body{
+		width:96%!important; 
+	}
+	.edui-dialog-image .edui-image-dragTip{
+		display: none!important;
+	}
+	.edui-dialog-image .edui-image-searchBar .edui-image-searchTxt{
+		width:auto!important;
+	}
+	.editer .edui-container .edui-editor-body{
+		background:#fff;
+	}
+	.edui-btn-toolbar .edui-btn .edui-icon-video{
+		display:none;
+	}
+	
+}
+
+@media (max-width:540px){
+	
+	.search .bbs-logo{
+		display: none;
+	}
+	.search .bbs-search {
+		width:100%;
+	}
+	.search .bbs-search .ser-but{
+		width: 20%;
+		height:48px;
+	}
+	.search .bbs-search .ser-text{
+		width: 80%;
+		float:left;
+		box-sizing: border-box;
+	}
+	.header .nav-wap .nav-wap-left img{
+		width: auto;
+	}
+	.header .nav-wap .nav-info{
+		top: 35px;
+		left: -15px;
+		padding: 5px 15px;
+
+	}
+	.header .nav-wap .nav-info a{
+	    line-height: 40px;
+	    width: 60px;
+		font-size: 14px;
+		
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-floor{
+		margin-right:15px;
+		padding:2px;
+		margin-top:-2px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-comment{
+		margin-right:0px;
+		width:24px;
+		height:24px;
+		padding:2px;
+		margin-top:-2px;
+	}
+	.header .nav-wap .nav-wap-right .nav-wap-post{
+		margin-right:0px;
+		width:22px;
+		height:22px;
+		padding:2px;
+		margin-top:-1px;
+	}
+	.header .nav-wap .nav-wap-back {
+	  margin-right: 15px;
+	}
+	.footer .wap-footer-nav a {
+	  border-right:0px solid #4b4b4b;
+	  font-size:12px;
+	}
+	.footer .beian {
+	  width: 250px;
+	  margin: 0 auto -20px;
+	  line-height:20px;
+		 }
+	.footer .footer-logo {
+	  width: 45px;
+	  height: 57px;
+	  margin:0 auto 10px;
+	  }
+	.search{
+		margin: 10px 10px;
+	}
+	.page-plug .page-pc {
+		display:none;
+	}
+	.page-plug .page-mobile {
+		display:block;
+
+	}
+	.icon-look { 
+	  margin: 0px 5px -3px 0px;
+	  width: 19px;
+	  height: 15px; 
+	}
+	.icon-ask {
+	  margin: 0px 5px -4px 0px;
+	  width: 19px;
+	  height: 18px;
+	 }
+	
+	.textmask{
+		height:225px;
+		line-height:225px;
+	}
+	/*弹出框样式*/
+	/*确定不玩？*/
+	.pop-play{
+		width: 60%;
+		padding: 10px;
+		margin-left: -30%;
+	}
+	.pop-play .pop-play-word{
+		font-size: 12px;
+		line-height: 18px;
+		margin: 3px 0 5px 0;
+	}
+	.pop-play input{
+		line-height: 30px;
+	}
+	/*删除帖子*/
+	.pop-post-delete{
+		width: 60%;
+		margin-top: -30px;
+		margin-left: -30%;
+		margin-top: -130px;
+	}
+	.pop-post-delete h2{
+		line-height: 35px;
+		padding: 0 10px;
+	}
+	.pop-post-delete .post-delete-reason{
+		padding: 0 10px;
+	}
+	.pop-post-delete .post-delete-reason .post-delete-sure{
+		line-height: 30px;
+	}
+	.pop-post-delete .post-delete-reason .delete-reason-choose{
+		line-height: 20px;
+		padding: 0 5px;
+		margin-bottom: 8px;
+	}
+	.pop-post-delete .post-delete-reason textarea{
+		height: 80px;
+		margin-bottom: 10px;
+		padding: 4px;
+	}
+	.pop-post-delete .post-delete-reason input{
+		height: 25px;
+		line-height: 25px;
+		margin-bottom: 10px;
+	}
+	/*发帖成功*/
+	.pop-post-ok{
+		width: 60%;
+		margin-left: -30%;
+		padding: 0 10px;
+		font-size: 16px;
+	}
+	.pop-post-ok img{
+		width: 25%;
+		margin-right: 5px;
+	}
+	/*置顶失败*/
+	.pop-top-fail{
+		width: 60%;
+		margin-left: -30%;
+		padding: 0 10px;
+		font-size: 16px;
+	}
+	.pop-top-fail img{
+		width: 25%;
+		margin-right: 5px;
+	}
+	/*弹出框样式*/
+
+	/* 编辑器 */
+	#myEditor{
+		width:100%!important;
+		height:165px!important;
+	}
+	.edui-btn-toolbar .edui-btn-video{
+		display:none;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

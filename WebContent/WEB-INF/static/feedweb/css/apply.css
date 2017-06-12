@@ -1,0 +1,176 @@
+.feed-user-apply {
+  background:#fff;
+  padding: 20px;
+}
+.feed-user-apply-hd {
+  margin-bottom: 25px;
+}
+.feed-user-apply-hd .apply-hd-title {
+  font-size: 28px;
+  color:#333;
+  position: relative;
+  margin-bottom:7px;
+}
+.apply-hd-title .apply-link {
+  color:#666;
+  text-decoration:underline;
+}
+.feed-user-apply-hd .apply-title-item {
+  color:#999;
+  font-size: 14px;
+  position: absolute;
+  right:0;
+  top: 12px;
+}
+.feed-user-apply-hd .apply-text {
+  border:1px solid #e6e6e6;
+  font-size: 14px;
+  color:#b2b2b2;
+  padding-left: 10px;
+  margin-bottom: 12px;
+  display:block;
+  width: 351px;
+  height: 38px;
+
+}
+.apply-hd-main {
+  float: left;
+  width: 364px;
+}
+.apply-hd-show {
+  float: right;
+  width: 567px;
+  height: 315px;
+}
+.apply-hd-show img {
+  display:block;
+}
+.apply-user-qq,
+.apply-user-phone{
+  height:38px;
+  line-height: 38px;
+}
+.feed-user-apply-hd .apply-user-text {
+  height: 87px;
+  resize:none;
+  line-height: 18px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+}
+.apply-user-btn{
+  width: 363px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  background:#2a74ee;
+  font-size: 18px;
+  border:0 none;
+  cursor:pointer;
+  color:#fff;
+}
+.feed-user-apply-bd dt {
+  color:#666;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.feed-user-apply-bd dd {
+  color:#999;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.feed-user-apply-bd dd p {
+  line-height: 25px;
+}
+
+/**error**/
+.apply-hd-error-title {
+  height: 50px;
+  line-height: 50px;
+  color:#fc7e8d;
+  font-size: 18px;
+  background: url("/feedweb/static/feedweb/img/status.png") 0 0 no-repeat;
+  padding-left: 60px;
+}
+.apply-status-list {
+  padding-left: 37px;
+}
+.apply-status-list ul {
+  margin-bottom: 80px;
+}
+.apply-status-list li{
+  font-size: 14px;
+  line-height: 25px;
+  margin-bottom: 8px;
+}
+
+.apply-status-list .meet {
+  color:#7ecefc;
+}
+.apply-status-list .no-meet {
+  color:#b2b2b2;
+}
+.meet,
+.no-meet {
+  background:url("/feedweb/static/feedweb/img/status-tip.png") 0 3px no-repeat;
+  padding-left: 24px;
+}
+.no-meet {
+  background-position: 0 -21px;
+}
+.apply-error-time {
+  text-align: right;
+  font-size: 12px;
+  color:#b2b2b2;
+  border-bottom:1px solid #e5e5e5;
+  padding-bottom: 10px;
+}
+.apply-line {
+  border-bottom:1px solid #e5e5e5;
+  margin: 10px 0 20px 0;
+  width: 100%;
+
+}
+.feed-user-infos {
+  color:#E01313;
+  display:inline-block;
+  *display:inline;
+  *zoom:1;
+  padding:4px;
+}
+@media (max-width:1024px){
+    .con .feed-user-apply-hd .apply-hd-main{
+        width: 100%;
+    }
+    .con .feed-user-apply-hd .apply-hd-show{
+        display: none;
+    }
+    .feed-user-apply-hd .apply-text{
+        width: 98%;
+        box-sizing: border-box;
+    }
+    .user-apply-form .apply-user-btn{
+        width: 99%;
+    }
+    .apply-hd-error-title {
+        padding-left: 20px; 
+    }
+    .apply-line{
+        margin: 10px 0 15px 0;
+    }
+    .apply-status-list {
+        padding-left: 15px;
+    }
+}
+@media (max-width:540px){
+    
+    .apply-hd-error-title {
+        font-size: 16px;
+        padding-left: 5px; 
+    }
+    .apply-line{
+        margin: 5px 0 10px 0;
+    }
+    .apply-status-list {
+        padding-left: 10px;
+    }
+}
