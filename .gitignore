@@ -4,7 +4,6 @@
 *.prefs
 *.classpath
 .tern-project
-.project
 .classpath
 /bin
 .idea/
